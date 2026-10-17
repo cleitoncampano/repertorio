@@ -203,7 +203,49 @@ class Library:
         with self.db.engine.begin() as conn:
             conn.execute(text('INSERT INTO packs VALUES(:id,:c,:t,:p,:d)'),dict(id=pid,c=req.context_id,t=req.title,p=dumps(payload),d=now()))
             self.db.log(conn,'pack_created',context_id=req.context_id,pack_id=pid,title=req.title)
-        return dict(id=pid,context_id=req.context_id,title=req.title,**payload)
+        return dict(id=pid,context_id=req.context_id,title=req.title,review_url=f'{self.settings.url}/?escolha={pid}',**payload)
+
+    def demands(self):
+        """Pedidos com seleções guardadas, do mais recente ao mais antigo, com o andamento da revisão."""
+        packs=self.db.query('''SELECT k.id,k.context_id,k.title,k.created,json_array_length(k.payload,'$.references') AS total,
+            (SELECT COUNT(*) FROM pack_reviews v WHERE v.pack_id=k.id AND v.verdict='approved') AS approved,
+            (SELECT COUNT(*) FROM pack_reviews v WHERE v.pack_id=k.id AND v.verdict='cut') AS cut
+            FROM packs k ORDER BY k.created DESC''')
+        rows=self.db.query('SELECT c.id,c.demand,c.created,p.name AS project_name FROM contexts c JOIN projects p ON p.id=c.project_id WHERE EXISTS(SELECT 1 FROM packs k WHERE k.context_id=c.id)')
+        for row in rows:
+            row['packs']=[k for k in packs if k['context_id']==row['id']]
+            row['updated']=row['packs'][0]['created']
+        return sorted(rows,key=lambda r:r['updated'],reverse=True)
+
+    def pack_detail(self,pid):
+        """Seleção guardada com a imagem atual de cada referência e o que o usuário decidiu sobre ela."""
+        row=self.db.one('SELECT k.*,c.demand,p.name AS project_name FROM packs k JOIN contexts c ON c.id=k.context_id JOIN projects p ON p.id=c.project_id WHERE k.id=:id',id=pid)
+        if not row:raise Problem(404,'Seleção não encontrada.')
+        payload=json.loads(row['payload'])
+        reviews={r['ref_id']:{k:r[k] for k in ('verdict','note','updated')} for r in self.db.query('SELECT * FROM pack_reviews WHERE pack_id=:id',id=pid)}
+        references=[]
+        for snap in payload['references']:
+            now=self.db.one('''SELECT r.state,r.hidden,r.kind,(SELECT a.id FROM assets a WHERE a.ref_id=r.id AND a.missing=0 AND a.role IN ('thumbnail','preview') ORDER BY CASE a.role WHEN 'thumbnail' THEN 0 ELSE 1 END,a.id LIMIT 1) AS thumbnail
+                FROM refs r WHERE r.id=:id''',id=snap['id'])
+            references.append({**snap,'kind':now['kind'] if now else None,'thumbnail':f"/api/assets/{now['thumbnail']}" if now and now['thumbnail'] else None,
+                               'available':bool(now and now['state']=='published' and not now['hidden']),'review':reviews.get(snap['id'])})
+        return dict(id=pid,context_id=row['context_id'],demand=row['demand'],project_name=row['project_name'],title=row['title'],created=row['created'],
+                    rationale=payload.get('rationale',''),references=references,payload=payload)
+
+    def review(self,pid,req):
+        pack=self.db.one('SELECT context_id,title,payload FROM packs WHERE id=:id',id=pid)
+        if not pack:raise Problem(404,'Seleção não encontrada.')
+        if req.reference_id not in {r['id'] for r in json.loads(pack['payload'])['references']}:
+            raise Problem(422,'Esta referência não faz parte da seleção.')
+        with self.db.engine.begin() as conn:
+            if req.verdict:
+                conn.execute(text('''INSERT INTO pack_reviews(pack_id,ref_id,verdict,note,updated) VALUES(:p,:r,:v,:n,:t)
+                    ON CONFLICT(pack_id,ref_id) DO UPDATE SET verdict=excluded.verdict,note=excluded.note,updated=excluded.updated'''),
+                             dict(p=pid,r=req.reference_id,v=req.verdict,n=req.note,t=now()))
+            else:
+                conn.execute(text('DELETE FROM pack_reviews WHERE pack_id=:p AND ref_id=:r'),dict(p=pid,r=req.reference_id))
+            self.db.log(conn,'pack_reviewed',req.reference_id,pack['context_id'],pack_id=pid,title=pack['title'],verdict=req.verdict)
+        return self.pack_detail(pid)
 
     def events(self,after=0):
         rows=self.db.query('SELECT e.*,p.name AS project_name FROM events e LEFT JOIN contexts c ON c.id=e.context_id LEFT JOIN projects p ON p.id=c.project_id WHERE e.id>:after ORDER BY e.id DESC LIMIT 100',after=after)

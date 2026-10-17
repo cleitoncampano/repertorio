@@ -30,7 +30,7 @@ def test_mcp_protocol_tools_and_image(library,context):
         init=rpc('initialize',{'protocolVersion':'2025-11-25','capabilities':{},'clientInfo':{'name':'repertorio-test','version':'1'}})
         assert init['result']['serverInfo']['name']=='Repertorio'
         result=rpc('tools/list')['result']
-        assert len(result['tools'])==8
+        assert len(result['tools'])==9
         result=rpc('tools/call',{'name':'search_references','arguments':{'request':{'query':'abertura','context_id':context['id']}}})['result']
         assert not result.get('isError'),result
         assert any(c['type']=='image' for c in result['content'])

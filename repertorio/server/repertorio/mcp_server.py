@@ -45,8 +45,13 @@ def create_mcp(lib,worker):
 
     @mcp.tool()
     def build_inspiration_pack(request:schemas.Pack)->dict:
-        """Persiste a seleção com versões e justificativa para retomada futura."""
+        """Persiste a seleção com versões e justificativa. O usuário revisa na tela Escolhas (review_url): mostre o link e, antes de criar, leia get_pack."""
         return lib.pack(request)
+
+    @mcp.tool()
+    def get_pack(pack_id:str)->dict:
+        """Seleção com a revisão do usuário: em cada referência, review.verdict é approved (usar), cut (descartar) ou vazio (sem resposta), e review.note traz o comentário. Use as aprovadas e respeite os cortes."""
+        out=lib.pack_detail(pack_id);out.pop('payload',None);return out
 
     @mcp.tool()
     def register_reference(request:schemas.Register)->dict:
@@ -89,8 +94,8 @@ def create_mcp(lib,worker):
 
     @mcp.resource('repertorio://packs/{pack_id}')
     def pack(pack_id:str)->str:
-        row=lib.db.one('SELECT payload FROM packs WHERE id=:id',id=pack_id)
-        return row['payload'] if row else 'Seleção não encontrada.'
+        from .db import dumps
+        out=lib.pack_detail(pack_id);out.pop('payload',None);return dumps(out)
 
     @mcp.resource('repertorio://contexts/{context_id}')
     def context(context_id:str)->str:

@@ -138,10 +138,13 @@ def create_app(settings=None,run_worker=True):
     def pack(req:schemas.Pack):return lib.pack(req)
 
     @app.get('/api/packs/{pid}')
-    def get_pack(pid:str):
-        row=db.one('SELECT * FROM packs WHERE id=:id',id=pid)
-        if not row:raise Problem(404,'Seleção não encontrada.')
-        return {**row,'payload':json.loads(row['payload'])}
+    def get_pack(pid:str):return lib.pack_detail(pid)
+
+    @app.post('/api/packs/{pid}/reviews')
+    def review_pack(pid:str,req:schemas.Review):return lib.review(pid,req)
+
+    @app.get('/api/demands')
+    def demands():return lib.demands()
 
     @app.get('/api/operations')
     def operations():return db.query('SELECT id,ref_id,state,progress,error,updated FROM operations ORDER BY created DESC LIMIT 100')

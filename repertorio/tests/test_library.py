@@ -158,3 +158,20 @@ def test_backup_now_keeps_recent_copies(library,tmp_path):
     assert len(list(target.glob('repertorio-*.zip')))==2
     assert result['managed_files']==0 and 'history' not in result
     assert any(e['action']=='backup_created' for e in library.events())
+
+
+def test_user_reviews_agent_selection(library,context):
+    from repertorio.schemas import Review
+    p=library.pack(Pack(context_id=context['id'],title='Abertura',reference_ids=['deck','free'],rationale='Contraste forte'))
+    assert p['review_url'].endswith('?escolha='+p['id'])
+    demands=library.demands()
+    assert demands[0]['demand']=='Criar carrossel' and demands[0]['packs'][0]['total']==2
+    library.review(p['id'],Review(reference_id='deck',verdict='approved',note='Usar a tipografia'))
+    detail=library.review(p['id'],Review(reference_id='free',verdict='cut'))
+    reviews={r['id']:r['review'] for r in detail['references']}
+    assert reviews['deck']['verdict']=='approved' and reviews['deck']['note']=='Usar a tipografia'
+    assert reviews['free']['verdict']=='cut' and detail['references'][0]['thumbnail']
+    assert library.demands()[0]['packs'][0]['approved']==1 and library.demands()[0]['packs'][0]['cut']==1
+    assert library.review(p['id'],Review(reference_id='free'))['references'][1]['review'] is None
+    with pytest.raises(Problem):library.review(p['id'],Review(reference_id='deck#1',verdict='cut'))
+    assert any(e['action']=='pack_reviewed' for e in library.events())

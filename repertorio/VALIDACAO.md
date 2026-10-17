@@ -93,3 +93,9 @@ Essas medições são do computador de desenvolvimento, não uma garantia para q
 
 - Antes, cada passo de zoom recalculava o estilo dos cerca de 5 mil elementos para manter linhas e nomes com espessura constante: 7 quadros por segundo e 22 s travados em 60 movimentos de rodinha (Chromium, tela 2x).
 - Agora a espessura é lida na hora do estilo e só linhas e nomes são recalculados, uma vez, quando o zoom para e mudou mais de 15%. Mesmo teste: 44 a 48 quadros por segundo e cerca de 0,2 s travados. Arrastar continua a 56 quadros por segundo.
+
+## Escolhas
+
+- Nova tela **Escolhas** (`web/src/Choices.tsx`): cada pedido com as seleções que o agente guardou, a justificativa e as referências em cartões. O usuário aprova, corta e comenta; clicar na imagem abre o painel de detalhes. Contador de itens sem resposta na navegação e link direto `/?escolha=ID`.
+- Servidor: tabela `pack_reviews` (migração 0003, só acrescenta), `GET /api/demands`, `GET /api/packs/{id}` com a imagem atual e a revisão de cada referência, `POST /api/packs/{id}/reviews`. `build_inspiration_pack` devolve `review_url`; nova ferramenta MCP `get_pack` para o agente ler a revisão antes de criar.
+- 20 testes Python (1 novo) e 9 testes Playwright (1 novo) aprovados. Conferido por captura nos temas escuro e claro, numa cópia temporária do banco para não criar pedidos de exemplo no acervo.

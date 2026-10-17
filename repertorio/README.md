@@ -40,6 +40,7 @@ O frontend compilado é servido pelo FastAPI. Os originais e o protótipo contin
 - O painel mostra princípio criativo, prévias, slides, relações, condições de uso conhecidas e o contexto disponibilizado ao agente.
 - **Excluir referência** envia à Lixeira, com Desfazer. A remoção de uma apresentação também a retira das buscas de seus slides; os originais e mídias compartilhadas não são apagados.
 - **Entradas** contém sugestões espontâneas. Pedidos explícitos de incorporação são publicados depois do processamento.
+- **Escolhas** mostra as referências que o agente separou para cada pedido. Aprove, corte e comente: o agente lê a revisão com `get_pack` antes de criar.
 - **Atividade** registra alterações e consultas por demanda. Trabalhos interrompidos podem ser tentados novamente.
 
 ## Conectar projetos e agentes
@@ -83,7 +84,8 @@ Depois, abra uma nova sessão e peça: **“Busque no Repertório referências p
 | `start_context` | Recebe `project_id` e `demand`; retorna um `id` de contexto independente |
 | `search_references` | Recebe `request` com `query` em português comum, `context_id` e filtros opcionais. Frases conhecidas viram intenção, técnica, movimento ou estética (`understood`); o resto é buscado no texto. Sem `kind`, deixa mídias soltas de fora. `per_group` (padrão 1) limita peças da mesma apresentação. Devolve também uma prancha numerada (`contact_sheet`, padrão ligado) |
 | `get_reference` | Recebe `reference_id`; `include_image: true` inclui imagem raster no resultado MCP |
-| `build_inspiration_pack` | Recebe `request` com contexto, título, IDs e justificativa; guarda versões selecionadas |
+| `build_inspiration_pack` | Recebe `request` com contexto, título, IDs e justificativa; guarda versões selecionadas e devolve `review_url` para a tela Escolhas |
+| `get_pack` | Recebe `pack_id`; devolve a seleção com a revisão do usuário em cada referência (`approved`, `cut` ou sem resposta, e comentário) |
 | `register_reference` | Recebe `request` com arquivos, ficha e intenção de publicação; retorna uma operação |
 | `update_reference` | Recebe ID e `request` com contexto, `expected_revision` e ficha completa |
 | `set_reference_state` | Recebe ID e `request` com revisão e estado: `published`, `pending` ou `trashed` |

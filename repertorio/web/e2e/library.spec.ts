@@ -161,3 +161,26 @@ test('prévia abre em destaque, passa os slides, aproxima e volta ao painel',asy
  await expect(page.getByRole('button',{name:'Ver em destaque'})).toBeFocused();
  expect(errors).toEqual([]);
 });
+
+test('escolhas do agente: aprovar, comentar, cortar e abrir detalhes',async({request,page})=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ const project=(await (await request.get('/api/projects')).json()).find((p:any)=>p.name==='Marketing');
+ const context=await (await request.post('/api/contexts',{data:{project_id:project.id,demand:'Palestra sobre contraste'}})).json();
+ const pack=await (await request.post('/api/packs',{data:{context_id:context.id,title:'Abertura',reference_ids:['deck','free'],rationale:'Começar pelo contraste'}})).json();
+ expect(pack.review_url).toContain('?escolha='+pack.id);
+ await page.goto('/?escolha='+pack.id);
+ await expect(page.getByRole('heading',{name:'O que eu separei para você.'})).toBeVisible();
+ await expect(page.locator('.choice-head h2')).toHaveText('Abertura');
+ await expect(page.getByRole('status').filter({hasText:'sem resposta'})).toContainText('2 sem resposta');
+ const deck=page.locator('.choice-card').filter({hasText:'Abertura criativa'});
+ await deck.getByRole('button',{name:'Aprovar'}).click();
+ await expect(deck).toHaveClass(/approved/);
+ await deck.getByRole('textbox').fill('Usar só a tipografia');
+ await deck.getByRole('textbox').press('Enter');
+ await page.locator('.choice-card').filter({hasText:'Textura verde'}).getByRole('button',{name:'Cortar'}).click();
+ await expect(page.getByRole('status').filter({hasText:'sem resposta'})).toContainText('0 sem resposta');
+ await expect.poll(async()=>(await (await request.get('/api/packs/'+pack.id)).json()).references[0].review?.note).toBe('Usar só a tipografia');
+ await deck.getByRole('button',{name:'Ver detalhes de Abertura criativa'}).click();
+ await expect(page.locator('.detail-body h2')).toHaveText('Abertura criativa');
+ expect(errors).toEqual([]);
+});

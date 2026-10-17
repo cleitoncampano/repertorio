@@ -80,6 +80,12 @@ class StateChange(Model):
     user_requested: bool = False
 
 
+class Review(Model):
+    reference_id: str
+    verdict: Literal['approved', 'cut'] | None = None
+    note: str = Field(default='', max_length=2000)
+
+
 class Pack(Model):
     context_id: str
     title: str = Field(min_length=1, max_length=240)

@@ -102,7 +102,7 @@ No app, o banco (`repertorio/.runtime/library.sqlite3`) é a fonte de verdade: i
 - **Imagens:** `/api/assets/{id}?w=128|256|512|1024|2048` serve cópias reduzidas (cache em `.runtime/miniaturas/`); o mapa troca a resolução conforme o zoom e o original intacto vai para download.
 - **Testes:** `repertorio/.venv/bin/python -m pytest repertorio/tests -q`, `pnpm --dir repertorio/web test` e, para o navegador, `pnpm --dir repertorio/web test:e2e` com `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` apontando para um Chromium instalado. Confira mudanças visuais com capturas.
 - **Não suje o acervo real** com pedidos ou seleções de demonstração: suba uma cópia com `REPERTORIO_HOME`, `REPERTORIO_PORT` e `REPERTORIO_BACKUP_DIR` apontando para uma pasta temporária.
-- **Conectar agentes ao MCP:** Claude Code já está conectado (escopo do usuário); Codex: `codex mcp add repertorio --url http://127.0.0.1:8766/mcp`; Gemini CLI: veja `GEMINI.md`.
+- **Conectar agentes ao MCP:** Claude Code e Gemini CLI já estão conectados (escopo do usuário); Codex: `codex mcp add repertorio --url http://127.0.0.1:8766/mcp`.
 - O que foi medido e validado em cada mudança está em `repertorio/VALIDACAO.md`.
 
 ## Versões e cópias de segurança

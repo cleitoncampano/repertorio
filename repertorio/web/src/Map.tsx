@@ -22,24 +22,28 @@ export function Map({data,selected,matches,technique,operation,theme,onSelect,on
  useEffect(()=>{
   if(!container.current)return;
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Zoom usado nos estilos: linhas e nomes ficam com espessura constante na tela.
+  const scale={z:1};
+  const measurement=document.createElement('canvas').getContext('2d');
+  if(measurement)measurement.font='11px sans-serif';
   const instance=cytoscape({container:container.current,elements:layoutGraph(data),layout:{name:'preset'},minZoom:.045,maxZoom:4,autoungrabify:true,boxSelectionEnabled:false,
    style:[
     {selector:'node',style:{'background-color':'data(color)','overlay-opacity':0,'border-width':0}},
-    {selector:'node[type="operation"]',style:{width:250,height:250,'background-color':()=>ink().operation,'border-color':'data(color)','border-width':12,'border-opacity':1,label:'data(label)',color:()=>ink().text,'font-weight':600,'text-valign':'center'}},
-    {selector:'node[type="cue"]',style:{width:28,height:28,label:'data(label)','text-opacity':0,'text-valign':'center','border-color':'data(color)',color:()=>ink().text}},
-    {selector:'node[type="technique"]',style:{width:18,height:18,label:'data(label)',color:()=>ink().text,'text-opacity':0,'text-valign':'center','text-halign':(node:NodeSingular)=>node.data('labelSide') as 'left'|'right','text-rotation':(node:NodeSingular)=>Number(node.data('rotation')),'text-margin-x':(node:NodeSingular)=>node.data('labelSide')==='left'?-16:16,'text-background-color':()=>ink().background,'text-background-opacity':.85,'text-background-padding':'3px'}},
+    {selector:'node[type="operation"]',style:{width:250,height:250,'background-color':()=>ink().operation,'border-color':'data(color)','border-width':()=>3/scale.z,'border-opacity':1,label:'data(label)',color:()=>ink().text,'font-weight':600,'font-size':()=>Math.max(9,Math.min(16,125*scale.z*.3))/scale.z,'text-valign':'center'}},
+    {selector:'node[type="cue"]',style:{width:28,height:28,label:'data(label)','text-opacity':0,'text-valign':'center','border-color':'data(color)',color:()=>ink().text,'font-size':()=>11/scale.z}},
+    {selector:'node[type="technique"]',style:{width:18,height:18,label:'data(label)',color:()=>ink().text,'font-size':()=>12/scale.z,'text-opacity':0,'text-valign':'center','text-halign':(node:NodeSingular)=>node.data('labelSide') as 'left'|'right','text-rotation':(node:NodeSingular)=>Number(node.data('rotation')),'text-margin-x':(node:NodeSingular)=>node.data('labelSide')==='left'?-16:16,'text-background-color':()=>ink().background,'text-background-opacity':.85,'text-background-padding':'3px'}},
     {selector:'node[type="reference"]',style:{width:'data(width)',height:'data(height)',shape:'rectangle','background-color':()=>ink().reference,'background-image':'data(image)','background-fit':'contain','background-image-containment':'inside','border-color':()=>ink().text}},
     {selector:'node[?external]',style:{'border-width':3,'border-opacity':.55}},
-    {selector:'edge',style:{'line-color':'data(color)',opacity:.13,'curve-style':'unbundled-bezier','control-point-distances':'data(distance)','control-point-weights':'data(weight)','edge-distances':'node-position'}},
+    {selector:'edge',style:{width:()=>1.1/scale.z,'line-color':'data(color)',opacity:.13,'curve-style':'unbundled-bezier','control-point-distances':'data(distance)','control-point-weights':'data(weight)','edge-distances':'node-position'}},
     {selector:'edge[?structure]',style:{'line-color':'#8f8a82',opacity:.28,'curve-style':'straight'}},
     {selector:'node.dim',style:{opacity:.1}},
     {selector:'node[type="operation"].dim',style:{opacity:.25}},
     {selector:'edge.dim',style:{opacity:.018}},
     {selector:'node.lit',style:{opacity:1}},
-    {selector:'edge.lit',style:{opacity:.85}},
+    {selector:'edge.lit',style:{width:()=>1.8/scale.z,opacity:.85}},
     {selector:'edge[?structure].lit',style:{'line-color':'data(color)',opacity:.65}},
     {selector:'node[type="technique"].lit',style:{width:26,height:26,'text-opacity':1,'font-weight':600}},
-    {selector:'node[type="cue"].lit',style:{shape:'roundrectangle',width:180,height:80,padding:'0px','background-color':()=>ink().background,'border-width':3,'text-opacity':1}},
+    {selector:'node[type="cue"].lit',style:{shape:'roundrectangle',width:(node:NodeSingular)=>((measurement?.measureText(node.data('label')).width||node.data('label').length*7)+12)/scale.z,height:()=>18/scale.z,padding:'0px','background-color':()=>ink().background,'border-width':()=>1/scale.z,'text-opacity':1}},
     {selector:'node.show-label',style:{'text-opacity':1}},
     {selector:'node.active',style:{'border-color':()=>ink().text,'border-width':12,'border-opacity':1}},
     {selector:'node[type="reference"].hovered',style:{'border-width':8,'border-color':()=>ink().text,'border-opacity':1}},
@@ -49,21 +53,23 @@ export function Map({data,selected,matches,technique,operation,theme,onSelect,on
   const saved=sessionStorage.getItem('repertorio-camera-v3');
   if(saved){try{const c=JSON.parse(saved);if(Number.isFinite(c.zoom)&&Number.isFinite(c.pan?.x)&&Number.isFinite(c.pan?.y)){instance.zoom(c.zoom);instance.pan(c.pan);}}catch{/* use fitted view */}}
   setZoom(instance.zoom());
-  let frame=0,lastZoom=0;
-  const measurement=document.createElement('canvas').getContext('2d');
-  if(measurement)measurement.font='11px sans-serif';
+  let frame=0,lastZoom=0,settle=0;
+  // Recalcular o estilo de tudo a cada passo de zoom travava o mapa. Agora só linhas e nomes são
+  // recalculados, uma vez, quando o zoom para (e se mudou mais de 15%); durante o gesto eles acompanham a escala.
+  const rescale=()=>{
+   const z=instance.zoom();
+   if(instance.destroyed()||Math.abs(Math.log(z/scale.z))<Math.log(1.15))return;
+   scale.z=z;instance.batch(()=>instance.elements('edge, node[type!="reference"]').toggleClass('escala'));
+  };
+  rescale();
   const images=new globalThis.Map<string,HTMLImageElement>(),requested=new globalThis.Map<string,number>(),shown=new globalThis.Map<string,number>();
   let bundled=false; // até o pacote inicial chegar, nenhuma miniatura é pedida sozinha
   const updateViewport=()=>{
    const z=instance.zoom(),extent=instance.extent(),density=window.devicePixelRatio||1;
    if(Math.abs(z-lastZoom)>.0001){
     lastZoom=z;
-    instance.style().selector('edge').style({width:1.1/z}).selector('edge.lit').style({width:1.8/z})
-     .selector('node[type="operation"]').style({'font-size':Math.max(9,Math.min(16,125*z*.3))/z,'border-width':3/z})
-     .selector('node[type="technique"]').style({'font-size':12/z})
-     .selector('node[type="cue"]').style({'font-size':11/z})
-     .selector('node[type="cue"].lit').style({width:(node:NodeSingular)=>((measurement?.measureText(node.data('label')).width||node.data('label').length*7)+12)/z,height:18/z,'border-width':1/z}).update();
     instance.nodes('[type="technique"]').toggleClass('show-label',z>.34);
+    clearTimeout(settle);settle=window.setTimeout(rescale,140);
    }
    if(!bundled)return;
    instance.nodes('[type="reference"]').forEach(node=>{
@@ -106,7 +112,7 @@ export function Map({data,selected,matches,technique,operation,theme,onSelect,on
   instance.on('viewport',()=>{setHover(null);setZoom(instance.zoom());sessionStorage.setItem('repertorio-camera-v3',JSON.stringify({zoom:instance.zoom(),pan:{x:instance.pan().x+panelInset.current,y:instance.pan().y}}));cancelAnimationFrame(frame);frame=requestAnimationFrame(updateViewport);});
   const resize=new ResizeObserver(()=>instance.resize());resize.observe(container.current);
   if(!reduced)container.current.animate([{opacity:.5},{opacity:1}],{duration:400});
-  return()=>{cancelAnimationFrame(frame);resize.disconnect();for(const img of images.values())img.onload=null;instance.destroy();cy.current=null;};
+  return()=>{cancelAnimationFrame(frame);clearTimeout(settle);resize.disconnect();for(const img of images.values())img.onload=null;instance.destroy();cy.current=null;};
  },[data]);
  const panelOpen=!!(selected||technique||operation||matches);
  useEffect(()=>{

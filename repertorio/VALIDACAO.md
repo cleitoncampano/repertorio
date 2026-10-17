@@ -88,3 +88,8 @@ Essas medições são do computador de desenvolvimento, não uma garantia para q
 - No painel "Olhar de perto", a prévia ganhou "Ampliar": abre a peça em tela cheia (`web/src/Viewer.tsx`). Numa apresentação, a visão geral vem primeiro e cada slide em seguida, com a numeração original; setas, teclado (← →) e fita de miniaturas. Zoom de visualizador, sem lupa: clique simples não faz nada; rodinha do mouse aproxima 20% por clique, pinça aproxima de forma contínua, sempre no ponto do cursor; dois dedos no trackpad e arrastar movem a imagem aproximada; duplo clique alterna; botões − / porcentagem / + e teclas + − 0. Limite de 4 vezes, ou até 12 quando o original tem pixels para isso. Esc ou o X fecham e devolvem ao painel, que continua aberto e com o foco na prévia.
 - Mostra a versão de 2048 px na hora e troca pelo original quando ele chega. Slides do curso têm prévias de 800 px, então aproximar muito neles perde nitidez; referências externas mantêm o detalhe.
 - 8 testes Playwright aprovados (1 novo), além de capturas com a apresentação "Cérebro".
+
+## Mapa fluido no zoom
+
+- Antes, cada passo de zoom recalculava o estilo dos cerca de 5 mil elementos para manter linhas e nomes com espessura constante: 7 quadros por segundo e 22 s travados em 60 movimentos de rodinha (Chromium, tela 2x).
+- Agora a espessura é lida na hora do estilo e só linhas e nomes são recalculados, uma vez, quando o zoom para e mudou mais de 15%. Mesmo teste: 44 a 48 quadros por segundo e cerca de 0,2 s travados. Arrastar continua a 56 quadros por segundo.

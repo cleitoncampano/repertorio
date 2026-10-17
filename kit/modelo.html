@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Título da apresentação</title>
+<!-- Fontes: para funcionar sem internet, baixe com
+     python3 -I ferramentas/fontes_google.py "Bricolage Grotesque" "Inter" --pasta <esta pasta>/fontes
+     e troque a linha abaixo por <link rel="stylesheet" href="fontes/fontes.css"> -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200..800&family=Inter:wght@300..800&display=swap">
+<link rel="stylesheet" href="motor.css">
+<style>
+  /* Identidade do projeto: troque estes tokens pela marca do cliente. */
+  :root {
+    --fundo: #0f0f0f;
+    --tinta: #f5f3ee;
+    --acento: #ff5a1f;
+    --apoio: #8c8c8c;
+    --fonte-titulo: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --fonte-texto: "Inter", "Helvetica Neue", Arial, sans-serif;
+  }
+  .slide { background: var(--fundo); color: var(--tinta); font-family: var(--fonte-texto); }
+  .t { position: absolute; margin: 0; }
+  .display { font-family: var(--fonte-titulo); font-weight: 800; line-height: .92; letter-spacing: -.02em; } /* fontes condensadas: perto de 0 */
+  .display em { font-style: normal; color: var(--acento); }
+  .eyebrow { font-size: 26px; letter-spacing: .28em; text-transform: uppercase; color: var(--apoio); }
+  .lead { font-size: 40px; line-height: 1.3; }
+  .corpo { font-size: 30px; line-height: 1.4; color: var(--apoio); }
+</style>
+</head>
+<body data-formato="16:9">
+<div class="palco">
+
+  <section class="slide">
+    <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">Evento · Data</div>
+    <h1 class="t display" style="left:112px;top:300px;font-size:200px" data-m="titulo">Título com uma<br><em>palavra-chave</em></h1>
+    <p class="t lead" style="left:120px;bottom:120px" data-passo="0" data-entra="sobe">Nome de quem apresenta</p>
+    <aside class="notas">O que dizer neste slide.</aside>
+  </section>
+
+  <section class="slide">
+    <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">Capítulo 1</div>
+    <h2 class="t display" style="left:112px;top:200px;font-size:110px" data-m="titulo">Próxima ideia</h2>
+    <p class="t corpo" style="left:120px;top:420px;max-width:900px" data-passo="1" data-entra="sobe">Primeiro ponto, revelado no clique.</p>
+    <div class="t display provisorio" data-provisorio="número provisório" style="left:120px;top:600px;font-size:200px;color:var(--acento)"><span data-conta="87">0</span>%</div>
+  </section>
+
+</div>
+<script src="motor.js"></script>
+</body>
+</html>

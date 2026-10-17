@@ -1,0 +1,31 @@
+# Histórico do projeto: código, textos e dados do acervo.
+# Fica de fora o que é pesado ou gerado a partir de _originais/ (refaça pelos scripts de ferramentas/construir e _catalogo/gerador).
+# A curadoria feita no app vive em repertorio/.runtime e vai no backup semanal (ver repertorio/README.md).
+.DS_Store
+__pycache__/
+.pnpm-store/
+
+_originais/
+acervo/
+perestroika/
+soap/
+
+# Estudos externos: só os textos; imagens e vídeos ficam fora
+_referencias/**
+!_referencias/**/
+!_referencias/**/*.md
+
+# Catálogo: o gerador e as páginas ficam; miniaturas e pranchas são geradas
+_catalogo/miniaturas/
+_catalogo/pranchas/
+_catalogo/mapa/m/
+_catalogo/mapa/r/
+
+# Saídas: as apresentações ficam; buscas e capturas de teste são descartáveis
+_saida/buscas/
+_saida/repertorio-qa/
+_saida/*/_ver/
+
+# Trabalho intermediário das fichas: só as instruções
+dados/_trabalho/**
+!dados/_trabalho/*.md

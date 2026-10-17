@@ -1,0 +1,686 @@
+{
+  "versao": 9,
+  "sobre": "Vocabulário único da biblioteca. Toda ficha (slide, arquivo, efeito, capa, anúncio, frame de vídeo) é marcada com estes termos, e é por eles que tudo se conecta. Use só estes ids; termo novo entra aqui primeiro.",
+  "intencoes": {
+    "sobre": "O papel do slide na história. Pergunta: o que este slide faz pela plateia?",
+    "itens": [
+      {
+        "id": "ABRIR",
+        "nome": "Abrir",
+        "def": "Capa, título da palestra, primeiro impacto. Promete o que vem."
+      },
+      {
+        "id": "SITUAR",
+        "nome": "Situar",
+        "def": "Agenda, sumário, contexto, onde estamos na jornada."
+      },
+      {
+        "id": "DIVIDIR",
+        "nome": "Dividir",
+        "def": "Divisor de capítulo ou seção. Respiro e mudança de assunto."
+      },
+      {
+        "id": "IMPACTAR",
+        "nome": "Impactar",
+        "def": "Momento de virada ou de uau: imagem, efeito ou revelação que para a sala."
+      },
+      {
+        "id": "DESTACAR",
+        "nome": "Destacar",
+        "def": "Dar peso a uma palavra, frase ou ideia única. Tipografia protagonista."
+      },
+      {
+        "id": "CITAR",
+        "nome": "Citar",
+        "def": "Frase de alguém, depoimento, manifesto, pergunta retórica."
+      },
+      {
+        "id": "APRESENTAR",
+        "nome": "Apresentar",
+        "def": "Pessoa, equipe, palestrante, empresa, quem somos."
+      },
+      {
+        "id": "EXPLICAR",
+        "nome": "Explicar",
+        "def": "Conceito, esquema, diagrama, como algo funciona."
+      },
+      {
+        "id": "SEQUENCIAR",
+        "nome": "Sequenciar",
+        "def": "Processo, passos, linha do tempo, jornada, antes e depois no tempo."
+      },
+      {
+        "id": "AGRUPAR",
+        "nome": "Agrupar",
+        "def": "Lista, cards, categorias, pilares, grade de itens ou serviços."
+      },
+      {
+        "id": "COMPARAR",
+        "nome": "Comparar",
+        "def": "A contra B, antes e depois, prós e contras, tabela comparativa."
+      },
+      {
+        "id": "PROVAR",
+        "nome": "Provar",
+        "def": "Número, gráfico, resultado, KPI, pesquisa, prova social."
+      },
+      {
+        "id": "MOSTRAR",
+        "nome": "Mostrar",
+        "def": "Produto, tela, mockup, galeria, portfólio, demonstração visual."
+      },
+      {
+        "id": "LOCALIZAR",
+        "nome": "Localizar",
+        "def": "Mapa, lugar, geografia, presença regional."
+      },
+      {
+        "id": "FECHAR",
+        "nome": "Fechar",
+        "def": "Conclusão, chamada para ação, contato, obrigado, próxima pergunta."
+      }
+    ]
+  },
+  "operacoes": {
+    "sobre": "Como a peça conduz o cérebro. Quatro operações do olhar, no centro do grafo (inspiradas no mapa de técnicas visuais com Differentiate, Group, Sequence e Predict).",
+    "itens": [
+      {
+        "id": "diferenciacao",
+        "nome": "Diferenciação",
+        "def": "Fazer uma coisa saltar do resto. O olho vai primeiro ao que é diferente."
+      },
+      {
+        "id": "agrupamento",
+        "nome": "Agrupamento",
+        "def": "Fazer partes virarem um todo. O olho junta o que está perto, parecido ou contido."
+      },
+      {
+        "id": "sequencia",
+        "nome": "Sequência",
+        "def": "Conduzir o olho numa ordem. Primeiro isto, depois aquilo."
+      },
+      {
+        "id": "previsao",
+        "nome": "Previsão",
+        "def": "Jogar com a expectativa: criar uma regra e quebrar, deixar o cérebro completar, surpreender."
+      }
+    ]
+  },
+  "pistas": {
+    "sobre": "De onde vem o sinal que a técnica usa. Segundo anel do grafo.",
+    "itens": [
+      {
+        "id": "caracteristica",
+        "nome": "Característica",
+        "def": "Cor, tamanho, forma, peso, textura."
+      },
+      {
+        "id": "espaco",
+        "nome": "Espaço",
+        "def": "Posição, distância, profundidade, enquadramento, vazio."
+      },
+      {
+        "id": "agrupamento",
+        "nome": "Agrupamento",
+        "def": "Proximidade, semelhança, contenção, conexão."
+      },
+      {
+        "id": "social",
+        "nome": "Social",
+        "def": "Rostos, olhares, gestos, corpo."
+      },
+      {
+        "id": "semantica",
+        "nome": "Semântica",
+        "def": "Significado, metáfora, símbolo, palavra."
+      },
+      {
+        "id": "cultural",
+        "nome": "Cultural",
+        "def": "Referências, códigos de gênero, ícones, época."
+      }
+    ]
+  },
+  "tecnicas": {
+    "sobre": "Técnicas concretas. Terceiro anel do grafo: cada referência aponta para 1 a 5 técnicas, e cada técnica aponta para uma operação e uma pista.",
+    "itens": [
+      {
+        "id": "contraste-de-cor",
+        "nome": "Contraste de cor",
+        "operacao": "diferenciacao",
+        "pista": "caracteristica",
+        "def": "Uma cor (ou a falta dela) quebra o conjunto e marca o que importa.",
+        "html": "Paleta neutra + 1 cor de destaque em variável CSS; aplicar só no elemento-alvo."
+      },
+      {
+        "id": "contraste-de-escala",
+        "nome": "Contraste de escala",
+        "operacao": "diferenciacao",
+        "pista": "caracteristica",
+        "def": "Um elemento gigante ao lado de outros minúsculos; a diferença de tamanho é a mensagem.",
+        "html": "No motor (palco de 1920 px), título com 300 a 500 px contra texto de apoio de 30 a 40 px; deixe vazar da tela."
+      },
+      {
+        "id": "destaque-tipografico",
+        "nome": "Destaque tipográfico",
+        "operacao": "diferenciacao",
+        "pista": "caracteristica",
+        "def": "Uma palavra marcada por cor, marca-texto, peso, sublinhado ou caixa dentro da frase.",
+        "html": "<mark> ou span com background linear-gradient animando background-size de 0 a 100%."
+      },
+      {
+        "id": "isolamento",
+        "nome": "Isolamento",
+        "operacao": "diferenciacao",
+        "pista": "espaco",
+        "def": "Um elemento sozinho cercado de vazio. O silêncio em volta dá importância.",
+        "html": "Slide com 1 elemento centralizado e 70%+ de área vazia; nada de rodapé."
+      },
+      {
+        "id": "foco-seletivo",
+        "nome": "Foco seletivo",
+        "operacao": "diferenciacao",
+        "pista": "caracteristica",
+        "def": "O resto escurece, desfoca ou perde cor; um item fica aceso como holofote.",
+        "html": "filter: blur()/grayscale()/opacity nos irmãos; o alvo mantém cor; transição de 400-600ms."
+      },
+      {
+        "id": "intruso",
+        "nome": "Intruso",
+        "operacao": "diferenciacao",
+        "pista": "semantica",
+        "def": "Um diferente no meio de vários iguais.",
+        "html": "Grid de N itens idênticos com 1 em cor/forma distinta; aparecer por último."
+      },
+      {
+        "id": "sangria-total",
+        "nome": "Sangria total",
+        "operacao": "diferenciacao",
+        "pista": "espaco",
+        "def": "Imagem ocupando a tela inteira, sem margem, com texto por cima.",
+        "html": "img com object-fit: cover em 100% do slide; texto sobre gradiente ou mix-blend-mode."
+      },
+      {
+        "id": "corte-radical",
+        "nome": "Corte radical",
+        "operacao": "diferenciacao",
+        "pista": "espaco",
+        "def": "Enquadramento que corta o sujeito de forma inesperada; o que fica de fora também fala.",
+        "html": "object-position fora do centro + escala 150-250%; só um pedaço do sujeito aparece."
+      },
+      {
+        "id": "textura-e-materia",
+        "nome": "Textura e matéria",
+        "operacao": "diferenciacao",
+        "pista": "caracteristica",
+        "def": "Grão, papel, ruído, vidro, metal, 3D que dão corpo e clima.",
+        "html": "Camada de ruído SVG (feTurbulence) ou PNG de grão com mix-blend-mode; backdrop-filter para vidro."
+      },
+      {
+        "id": "tipografia-como-imagem",
+        "nome": "Tipografia como imagem",
+        "operacao": "diferenciacao",
+        "pista": "caracteristica",
+        "def": "O texto é a própria imagem: gigante, recortado, preenchido por foto, contornado.",
+        "html": "background-clip: text com foto; -webkit-text-stroke para contorno; letras saindo da tela."
+      },
+      {
+        "id": "palavra-fantasma",
+        "nome": "Palavra fantasma",
+        "operacao": "diferenciacao",
+        "pista": "caracteristica",
+        "def": "Parte do título fica no tom do fundo e quase some; a palavra visível ganha força pelo contraste com a apagada.",
+        "html": "color igual ao fundo com leve diferença de luminosidade, ou -webkit-text-stroke fino com color transparente."
+      },
+      {
+        "id": "eco-tipografico",
+        "nome": "Eco tipográfico",
+        "operacao": "diferenciacao",
+        "pista": "caracteristica",
+        "def": "A mesma palavra repetida em pilha ou em linhas, às vezes vazada ou cortada pela borda, vira textura e martela a ideia.",
+        "html": "Pilha de spans iguais com line-height < 1, alternando cheio e contorno (-webkit-text-stroke) e overflow: hidden na borda."
+      },
+      {
+        "id": "mascara-de-forma",
+        "nome": "Máscara de forma",
+        "operacao": "diferenciacao",
+        "pista": "caracteristica",
+        "def": "Foto dentro de uma forma, letra ou silhueta.",
+        "html": "clip-path (circle, polygon, path) ou mask-image com SVG."
+      },
+      {
+        "id": "profundidade-em-camadas",
+        "nome": "Profundidade em camadas",
+        "operacao": "diferenciacao",
+        "pista": "espaco",
+        "def": "Primeiro plano, meio e fundo sobrepostos; texto entre camadas da foto.",
+        "html": "Foto + recorte PNG do sujeito por cima do título (z-index); parallax leve no movimento."
+      },
+      {
+        "id": "dado-como-heroi",
+        "nome": "Dado como herói",
+        "operacao": "diferenciacao",
+        "pista": "semantica",
+        "def": "Um número ou gráfico sozinho vira a imagem principal.",
+        "html": "Número em tipografia display gigante com contagem animada (requestAnimationFrame)."
+      },
+      {
+        "id": "proximidade",
+        "nome": "Proximidade",
+        "operacao": "agrupamento",
+        "pista": "agrupamento",
+        "def": "Itens perto viram grupo; distância separa assuntos.",
+        "html": "gap pequeno dentro do grupo, gap grande entre grupos (regra 1:3)."
+      },
+      {
+        "id": "similaridade",
+        "nome": "Similaridade",
+        "operacao": "agrupamento",
+        "pista": "agrupamento",
+        "def": "Mesma cor, forma ou estilo diz que é da mesma família.",
+        "html": "Classe única por família (cor/ícone/forma) repetida nos itens."
+      },
+      {
+        "id": "cor-por-capitulo",
+        "nome": "Cor por capítulo",
+        "operacao": "agrupamento",
+        "pista": "caracteristica",
+        "def": "Cada parte da apresentação tem a sua cor de fundo; a plateia sente a mudança de capítulo e reconhece onde está.",
+        "html": "Variável --fundo por seção; a forma que leva à nova cor cresce até cobrir a tela (data-m) no divisor."
+      },
+      {
+        "id": "regiao-comum",
+        "nome": "Região comum",
+        "operacao": "agrupamento",
+        "pista": "agrupamento",
+        "def": "Cards, caixas e fundos que contêm e unem.",
+        "html": "Cards com border-radius e fundo próprio; bento grid."
+      },
+      {
+        "id": "conexao",
+        "nome": "Conexão",
+        "operacao": "agrupamento",
+        "pista": "agrupamento",
+        "def": "Linhas, setas e conectores ligando partes.",
+        "html": "SVG path entre elementos com stroke-dasharray animado (desenho da linha)."
+      },
+      {
+        "id": "grade-modular",
+        "nome": "Grade modular",
+        "operacao": "agrupamento",
+        "pista": "espaco",
+        "def": "Grid rígido, mosaico ou bento que organiza muitos itens.",
+        "html": "CSS grid com áreas nomeadas; células de tamanhos diferentes para hierarquia."
+      },
+      {
+        "id": "sanfona",
+        "nome": "Sanfona",
+        "operacao": "agrupamento",
+        "pista": "espaco",
+        "def": "Faixas ou cards lado a lado; o da vez se alarga e mostra o conteúdo, os outros encolhem mas continuam visíveis.",
+        "html": "Flex com flex-grow animado (o ativo 6, os outros 1) ou mesmos data-m com larguras diferentes a cada slide."
+      },
+      {
+        "id": "simetria-e-eixo",
+        "nome": "Simetria e eixo",
+        "operacao": "agrupamento",
+        "pista": "espaco",
+        "def": "Composição espelhada ou centrada; ordem e calma.",
+        "html": "place-items: center; elementos pareados em colunas iguais."
+      },
+      {
+        "id": "fechamento",
+        "nome": "Fechamento",
+        "operacao": "agrupamento",
+        "pista": "agrupamento",
+        "def": "O cérebro completa a forma que falta.",
+        "html": "Forma incompleta (stroke parcial, peças separadas) que se fecha no movimento."
+      },
+      {
+        "id": "hierarquia-de-leitura",
+        "nome": "Hierarquia de leitura",
+        "operacao": "sequencia",
+        "pista": "caracteristica",
+        "def": "Sobretítulo, título, apoio: a ordem de leitura é óbvia.",
+        "html": "Escala tipográfica de 4 níveis (eyebrow, display, lead, body) em tokens CSS."
+      },
+      {
+        "id": "numeracao",
+        "nome": "Numeração",
+        "operacao": "sequencia",
+        "pista": "semantica",
+        "def": "Números grandes conduzem a ordem dos itens.",
+        "html": "Contador CSS (counter-increment) em tipografia display; 01, 02, 03."
+      },
+      {
+        "id": "linha-guia",
+        "nome": "Linha-guia",
+        "operacao": "sequencia",
+        "pista": "espaco",
+        "def": "Caminho, trilha ou linha do tempo que o olho segue.",
+        "html": "SVG path com marcadores; desenhar a linha com stroke-dashoffset e acender cada ponto."
+      },
+      {
+        "id": "direcao-de-leitura",
+        "nome": "Direção de leitura",
+        "operacao": "sequencia",
+        "pista": "espaco",
+        "def": "Composição em Z, F ou diagonal que leva do primeiro ao último ponto.",
+        "html": "Posicionar elementos-chave nos cantos do Z; entrada animada na mesma ordem."
+      },
+      {
+        "id": "olhar-que-guia",
+        "nome": "Olhar que guia",
+        "operacao": "sequencia",
+        "pista": "social",
+        "def": "A pessoa da foto olha ou aponta para o texto; a plateia segue o olhar.",
+        "html": "Foto com sujeito virado para o lado do texto; espelhar a imagem (scaleX(-1)) se precisar."
+      },
+      {
+        "id": "revelacao-progressiva",
+        "nome": "Revelação progressiva",
+        "operacao": "sequencia",
+        "pista": "espaco",
+        "def": "Elementos aparecem um a um no ritmo da fala.",
+        "html": "data-passo em cada item; avançar passo antes de avançar slide; stagger de 80-150ms."
+      },
+      {
+        "id": "camera-continua",
+        "nome": "Câmera contínua",
+        "operacao": "sequencia",
+        "pista": "espaco",
+        "def": "Os slides são partes de um mesmo espaço; a câmera viaja entre eles.",
+        "html": "Morph por data-m (View Transitions) ou um canvas grande com transform translate/scale entre seções."
+      },
+      {
+        "id": "sumario-navegavel",
+        "nome": "Sumário navegável",
+        "operacao": "sequencia",
+        "pista": "espaco",
+        "def": "Um slide-mapa mostra todas as partes em miniatura; cada parte se abre a partir dele e a apresentação volta ao mapa entre os capítulos (o Zoom de resumo do PowerPoint).",
+        "html": "Slide-mapa com cards de data-m iguais aos fundos de cada capítulo: o card cresce até a tela (zoom-mergulho) e, no fim do capítulo, volta ao mapa (zoom-recuo)."
+      },
+      {
+        "id": "progressao-de-escala",
+        "nome": "Progressão de escala",
+        "operacao": "sequencia",
+        "pista": "caracteristica",
+        "def": "Tamanhos crescentes ou decrescentes indicam ordem ou intensidade.",
+        "html": "Itens com font-size/altura em progressão (1x, 1,5x, 2x...)."
+      },
+      {
+        "id": "padrao-e-quebra",
+        "nome": "Padrão e quebra",
+        "operacao": "previsao",
+        "pista": "agrupamento",
+        "def": "Repetição cria uma regra; um elemento quebra a regra e vira a mensagem.",
+        "html": "Repetir o mesmo componente N vezes e alterar só o último (cor, rotação, conteúdo)."
+      },
+      {
+        "id": "metafora-visual",
+        "nome": "Metáfora visual",
+        "operacao": "previsao",
+        "pista": "semantica",
+        "def": "Dois conceitos fundidos numa imagem só; a imagem é o argumento.",
+        "html": "Composição de recortes PNG; a ideia vem antes do código."
+      },
+      {
+        "id": "dupla-exposicao",
+        "nome": "Dupla exposição",
+        "operacao": "previsao",
+        "pista": "semantica",
+        "def": "Uma imagem aparece dentro de outra (paisagem dentro da silhueta de uma pessoa, cidade dentro de uma cabeça): duas ideias viram uma só.",
+        "html": "Silhueta com mask-image (PNG recortado) aplicada sobre a segunda foto, ou mix-blend-mode: screen entre retrato claro e paisagem."
+      },
+      {
+        "id": "trompe-loeil",
+        "nome": "Trompe-l'œil",
+        "operacao": "previsao",
+        "pista": "semantica",
+        "def": "A tela vira objeto físico: rasgo, fita, dobra, etiqueta, papel.",
+        "html": "PNGs de fita/rasgo com sombra; clip-path irregular simulando papel rasgado."
+      },
+      {
+        "id": "transformacao",
+        "nome": "Transformação",
+        "operacao": "previsao",
+        "pista": "semantica",
+        "def": "Uma coisa vira outra diante da plateia: antes e depois, forma que muda.",
+        "html": "Morph por data-m entre dois estados; ou cruzamento de imagens com clip-path animado."
+      },
+      {
+        "id": "escala-impossivel",
+        "nome": "Escala impossível",
+        "operacao": "previsao",
+        "pista": "espaco",
+        "def": "Objeto gigante no mundo real, perspectiva forçada, miniatura.",
+        "html": "Recorte do objeto ampliado sobre foto de cenário; sombra de contato para assentar."
+      },
+      {
+        "id": "escala-inversa",
+        "nome": "Escala inversa",
+        "operacao": "previsao",
+        "pista": "espaco",
+        "def": "Dois elementos trocam de importância ao mesmo tempo: um encolhe enquanto o outro cresce.",
+        "html": "Dois data-m no mesmo par de slides, um com escala maior e outro menor no slide B."
+      },
+      {
+        "id": "pergunta-aberta",
+        "nome": "Pergunta aberta",
+        "operacao": "previsao",
+        "pista": "semantica",
+        "def": "Título-pergunta ou lacuna que pede resposta e segura a atenção até o próximo slide.",
+        "html": "Pergunta sozinha; resposta só no slide seguinte (revelação)."
+      },
+      {
+        "id": "emprestimo-de-codigo",
+        "nome": "Empréstimo de código",
+        "operacao": "previsao",
+        "pista": "cultural",
+        "def": "Usar a linguagem de outro gênero: passaporte, recibo, manchete, cartaz, interface de app, boletim.",
+        "html": "Recriar o objeto em HTML/CSS (cartão de embarque, nota fiscal, notificação) com o conteúdo da fala."
+      },
+      {
+        "id": "interface-imitada",
+        "nome": "Interface imitada",
+        "operacao": "previsao",
+        "pista": "cultural",
+        "def": "O slide imita uma tela conhecida (app de streaming, mensagens, busca, notificação, cursor, botão liga e desliga) e a plateia entende a mensagem pelo código da interface.",
+        "html": "Recriar a interface em HTML/CSS (barra de busca, card de streaming, balão de mensagem, cursor SVG) e animar o clique ou a digitação."
+      },
+      {
+        "id": "referencia-cultural",
+        "nome": "Referência cultural",
+        "operacao": "previsao",
+        "pista": "cultural",
+        "def": "Homenagem ou paródia de um ícone que a plateia reconhece.",
+        "html": "Citar o código visual (paleta, tipografia, composição) do ícone sem copiar a peça."
+      },
+      {
+        "id": "rosto-que-encara",
+        "nome": "Rosto que encara",
+        "operacao": "diferenciacao",
+        "pista": "social",
+        "def": "Rosto olhando para a lente, em close; cria conexão imediata.",
+        "html": "Foto em close com olhos no terço superior; sangria total."
+      },
+      {
+        "id": "quebra-de-moldura",
+        "nome": "Quebra de moldura",
+        "operacao": "previsao",
+        "pista": "espaco",
+        "def": "O sujeito sai do quadro e invade o título ou a borda.",
+        "html": "Recorte PNG do sujeito acima do texto e da moldura (z-index), com a foto original atrás."
+      },
+      {
+        "id": "inversao-figura-fundo",
+        "nome": "Inversão figura e fundo",
+        "operacao": "previsao",
+        "pista": "espaco",
+        "def": "O que era figura vira fundo e vice-versa: letras cheias de um lado e vazadas do outro, forma positiva e negativa, espaço negativo que forma uma segunda imagem.",
+        "html": "Duas camadas iguais com cores invertidas e clip-path dividindo a tela; ou mix-blend-mode: difference sobre uma divisória."
+      },
+      {
+        "id": "objeto-como-suporte",
+        "nome": "Objeto como suporte",
+        "operacao": "previsao",
+        "pista": "semantica",
+        "def": "O texto ou dado aparece escrito em um objeto do cotidiano.",
+        "html": "Mockup: texto posicionado com transform: perspective/rotate sobre a foto do objeto."
+      }
+    ]
+  },
+  "movimentos": {
+    "sobre": "Famílias de movimento entre slides (de onde vêm as transições do PPTRETA). A análise automática do Morph usa estes mesmos ids.",
+    "itens": [
+      {
+        "id": "zoom-mergulho",
+        "nome": "Zoom mergulho",
+        "def": "A câmera entra num elemento, que cresce e vira a próxima cena.",
+        "html": "data-m no elemento: pequeno no slide A, tela cheia no slide B."
+      },
+      {
+        "id": "zoom-recuo",
+        "nome": "Zoom recuo",
+        "def": "A câmera se afasta: o que ocupava a tela encolhe e revela o contexto.",
+        "html": "Inverso do mergulho: tela cheia no A, pequeno no B."
+      },
+      {
+        "id": "panorama",
+        "nome": "Panorama",
+        "def": "Tudo desliza junto, como a câmera andando por um cenário maior.",
+        "html": "Mesmos data-m deslocados igualmente; ou transição push."
+      },
+      {
+        "id": "voo",
+        "nome": "Voo",
+        "def": "Elementos entram ou saem vindo de fora da tela.",
+        "html": "No slide A, posicionar o elemento fora da área visível (left: 110%) com o mesmo data-m."
+      },
+      {
+        "id": "reorganizar",
+        "nome": "Reorganizar",
+        "def": "Os mesmos elementos trocam de lugar e o layout se rearranja.",
+        "html": "Mesmos data-m em posições diferentes nos dois slides."
+      },
+      {
+        "id": "transformacao",
+        "nome": "Transformação",
+        "def": "Forma, cor ou proporção muda; um objeto vira outro.",
+        "html": "data-m em formas com border-radius/cor/tamanho diferentes nos dois slides."
+      },
+      {
+        "id": "texto",
+        "nome": "Texto em movimento",
+        "def": "Palavras crescem, mudam de lugar ou trocam de conteúdo.",
+        "html": "data-m por palavra (span) para palavras que continuam; as novas entram com fade."
+      },
+      {
+        "id": "giro",
+        "nome": "Giro",
+        "def": "Rotação 2D ou 3D, inclusive de modelos 3D.",
+        "html": "rotate no estado final; para 3D, <model-viewer> com camera-orbit animado."
+      },
+      {
+        "id": "revelacao",
+        "nome": "Revelação",
+        "def": "Máscara, cortina ou wipe descobre o conteúdo.",
+        "html": "clip-path inset()/circle() animado de 0 a 100%."
+      },
+      {
+        "id": "troca",
+        "nome": "Troca",
+        "def": "Corte ou esmaecimento simples entre cenas diferentes.",
+        "html": "Fade do slide inteiro; usar quando nada continua de um slide para o outro."
+      },
+      {
+        "id": "escalonado",
+        "nome": "Escalonado",
+        "def": "Entradas em sequência, uma após a outra.",
+        "html": "animation-delay calc(var(--i) * 90ms)."
+      },
+      {
+        "id": "foco",
+        "nome": "Foco",
+        "def": "Holofote: desfoca ou escurece o resto para destacar um item.",
+        "html": "Classe .foco no alvo e .fora nos irmãos (blur/opacity)."
+      },
+      {
+        "id": "loop",
+        "nome": "Loop",
+        "def": "Movimento contínuo de ambiente (vídeo de fundo, gif, rotação lenta) ou sequência de slides que se repete (1-2-1-2) para virar vídeo em loop.",
+        "html": "<video autoplay muted loop playsinline> ou animation infinite lenta."
+      },
+      {
+        "id": "contagem",
+        "nome": "Contagem",
+        "def": "Números e gráficos que crescem até o valor final.",
+        "html": "Contador com requestAnimationFrame; barras com transform: scaleX de 0 a 1."
+      },
+      {
+        "id": "estatico",
+        "nome": "Estático",
+        "def": "Sem movimento; a força está na composição.",
+        "html": "Nenhuma transição além de um corte seco."
+      }
+    ]
+  },
+  "esteticas": {
+    "sobre": "Rótulos de estilo. Use 2 a 5 por ficha.",
+    "itens": [
+      "minimalista",
+      "editorial",
+      "revista",
+      "corporativo",
+      "tecnologico",
+      "futurista",
+      "neon",
+      "vintage",
+      "retro",
+      "organico",
+      "natureza",
+      "ludico",
+      "colorido",
+      "pastel",
+      "luxo",
+      "brutalista",
+      "suico",
+      "vidro",
+      "3d",
+      "fotografico",
+      "preto-e-branco",
+      "ilustrado",
+      "colagem",
+      "escuro",
+      "claro",
+      "gradiente",
+      "monocromatico",
+      "alto-contraste",
+      "artesanal",
+      "cinematografico",
+      "esportivo",
+      "gastronomico",
+      "moda",
+      "infantil",
+      "cientifico",
+      "dados"
+    ]
+  },
+  "tons": {
+    "sobre": "O clima emocional. Use 1 a 3.",
+    "itens": [
+      "serio",
+      "inspirador",
+      "divertido",
+      "tecnico",
+      "emocional",
+      "provocador",
+      "elegante",
+      "energetico",
+      "calmo",
+      "urgente",
+      "acolhedor",
+      "solene"
+    ]
+  }
+}

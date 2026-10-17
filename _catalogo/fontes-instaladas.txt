@@ -1,0 +1,631 @@
+# Fontes do curso PPTRETA instaladas em ~/Library/Fonts em 16/10/2026
+# Para remover, apague estes arquivos dessa pasta.
+1609469688276023.ttf
+18628564760.ttf
+20007011713.ttf
+20218403626.ttf
+20864176572.ttf
+21233063028.ttf
+21487742835.ttf
+21591177052.ttf
+21798841561.ttf
+21842599462.ttf
+21994779957.ttf
+22825441573.ttf
+23165521968.ttf
+23469729036.ttf
+23653161068.ttf
+23979306910.ttf
+24124201755.ttf
+24215180385.ttf
+24285140131.ttf
+24285841523.ttf
+24492784331.ttf
+24963305238.ttf
+25090817022.ttf
+25286035010.ttf
+25696234645.ttf
+25844591784.ttf
+26084221377.ttf
+26349292304.ttf
+26369665693.ttf
+26373818127.ttf
+26433847794.ttf
+27231098576.ttf
+28002816809.ttf
+28221965252.ttf
+29017869977.ttf
+31299379649.ttf
+Agraham.otf
+Akrobat-Black 2.ttf
+Akrobat-Bold 2.ttf
+Akrobat-ExtraBold 2.ttf
+Akrobat-ExtraLight 2.ttf
+Akrobat-Light 2.ttf
+Akrobat-Regular 2.ttf
+Akrobat-SemiBold 2.ttf
+Akrobat-Thin 2.ttf
+AmstirdamDemo 2.otf
+AndesRoundedBold.otf
+AndesRoundedBook.otf
+AndesRoundedLight.otf
+AndesRoundedSemiBold.otf
+Antonio-Bold 2.ttf
+Antonio-ExtraLight 2.ttf
+Antonio-Light 2.ttf
+Antonio-Medium 2.ttf
+Antonio-Regular 2.ttf
+Antonio-SemiBold 2.ttf
+Antonio-Thin 2.ttf
+Barlow-Black 2.ttf
+Barlow-BlackItalic 2.ttf
+Barlow-Bold 2.ttf
+Barlow-BoldItalic 2.ttf
+Barlow-ExtraBold 2.ttf
+Barlow-ExtraBoldItalic 2.ttf
+Barlow-ExtraLight 2.ttf
+Barlow-ExtraLightItalic 2.ttf
+Barlow-Italic 2.ttf
+Barlow-Light 2.ttf
+Barlow-LightItalic 2.ttf
+Barlow-Medium 2.ttf
+Barlow-MediumItalic 2.ttf
+Barlow-Regular 2.ttf
+Barlow-SemiBold 2.ttf
+Barlow-SemiBoldItalic 2.ttf
+Barlow-Thin 2.ttf
+Barlow-ThinItalic 2.ttf
+BebasNeue 2.otf
+BebasNeue Bold 2.otf
+BebasNeue Book 2.otf
+BebasNeue Light 2.otf
+BebasNeue Regular 2.otf
+BebasNeue Thin 2.otf
+BebasNeue-Regular 2.ttf
+BentonSans Black.otf
+BentonSans Bold.otf
+BentonSans Book.otf
+BentonSans Comp Black.otf
+BentonSans Comp Bold.otf
+BentonSans Comp Book.otf
+BentonSans Comp Light.otf
+BentonSans Comp Medium.otf
+BentonSans Comp Regular.otf
+BentonSans Cond Black.otf
+BentonSans Cond Bold.otf
+BentonSans Cond Book.otf
+BentonSans Cond Light.otf
+BentonSans Cond Medium.otf
+BentonSans Cond Regular.otf
+BentonSans ExtraComp Black.otf
+BentonSans ExtraComp Bold.otf
+BentonSans ExtraComp Book.otf
+BentonSans ExtraComp Light.otf
+BentonSans ExtraComp Medium.otf
+BentonSans ExtraComp Regular.otf
+BentonSans ExtraLight.otf
+BentonSans Light.otf
+BentonSans Medium.otf
+BentonSans Regular.otf
+BentonSans Thin.otf
+Branding Black Italic.otf
+Branding Black.otf
+Branding Bold Italic.otf
+Branding Bold.otf
+Branding Light Italic.otf
+Branding Light.otf
+Branding Medium Italic.otf
+Branding Medium.otf
+Branding Semibold Italic.otf
+Branding Semibold.otf
+Branding Semilight Italic.otf
+Branding Semilight.otf
+Branding Thin Italic.otf
+Branding Thin.otf
+D-DIN-Bold 2.otf
+DIN.ttf
+DINBlackAlternate.ttf
+DINBold.ttf
+DINBoldAlternate.ttf
+DINEngschriftStd.otf
+DINLightAlternate.ttf
+DINMedium.ttf
+DINMediumAlternate.ttf
+DINMittelschriftLTCYR.otf
+DINMittelschriftLTGRK.otf
+DINMittelschriftStd 2.otf
+DINNeuzeitGroteskStd-BdCond 2.otf
+DINNeuzeitGroteskStd-Light 2.otf
+DINNextLTPro-Black.otf
+DINNextLTPro-BlackCondensed.otf
+DINNextLTPro-BlackItalic.otf
+DINNextLTPro-Bold 2.otf
+DINNextLTPro-BoldCondensed.otf
+DINNextLTPro-BoldItalic.otf
+DINNextLTPro-Condensed 2.otf
+DINNextLTPro-Heavy.otf
+DINNextLTPro-HeavyCondensed.otf
+DINNextLTPro-HeavyItalic.otf
+DINNextLTPro-Italic.otf
+DINNextLTPro-Light 5.otf
+DINNextLTPro-LightCondensed.otf
+DINNextLTPro-LightItalic 2.otf
+DINNextLTPro-Medium 2.otf
+DINNextLTPro-MediumCond.otf
+DINNextLTPro-MediumItalic.otf
+DINNextLTPro-Regular 2.otf
+DINNextLTPro-UltraLight.otf
+DINNextLTPro-UltraLightCond 2.otf
+DINNextLTPro-UltraLightIt.otf
+DINNextRoundedLTPro-Bold.otf
+DINNextRoundedLTPro-Light.otf
+DINNextRoundedLTPro-Medium.otf
+DINNextRoundedLTPro-Regular.otf
+DINPro 2.otf
+DINPro-Black 2.otf
+DINPro-BlackItalic 2.otf
+DINPro-Bold 2.otf
+DINPro-BoldItalic 2.otf
+DINPro-Cond 2.otf
+DINPro-Cond.otf
+DINPro-CondBlack 2.otf
+DINPro-CondBlack.otf
+DINPro-CondBlackIta 2.otf
+DINPro-CondBlackIta.otf
+DINPro-CondBold 2.otf
+DINPro-CondBold.otf
+DINPro-CondBoldIta 2.otf
+DINPro-CondBoldIta.otf
+DINPro-CondIta 2.otf
+DINPro-CondIta.otf
+DINPro-CondLight 2.otf
+DINPro-CondLight.otf
+DINPro-CondLightIta 2.otf
+DINPro-CondLightIta.otf
+DINPro-CondMediIta 2.otf
+DINPro-CondMediIta.otf
+DINPro-CondMedium 2.otf
+DINPro-CondMedium.otf
+DINPro-Italic 2.otf
+DINPro-Italic.otf
+DINPro-Light 2.otf
+DINPro-LightItalic 2.otf
+DINPro-Medium 2.otf
+DINPro-MediumItalic 2.otf
+DINPro-Regular.otf
+DINRegularAlternate.ttf
+DeLatto.ttf
+DrukWide-Bold 2.otf
+DrukWide-BoldItalic 2.otf
+DrukWide-Heavy 2.otf
+DrukWide-HeavyItalic 2.otf
+DrukWide-Medium 2.otf
+DrukWide-MediumItalic 2.otf
+DrukWide-Super 2.otf
+DrukWide-SuperItalic 2.otf
+Excluded-z8XrX 2.ttf
+Excludeditalic-jEr99 2.ttf
+Fontfabric - Code Next ExtraBold 2.otf
+Gotham Black Italic.ttf
+Gotham Black.ttf
+Gotham Bold Italic.ttf
+Gotham Bold.ttf
+Gotham Book Italic.ttf
+Gotham Book.ttf
+Gotham ExtraLight Italic.ttf
+Gotham ExtraLight.ttf
+Gotham Light Italic.ttf
+Gotham Light.ttf
+Gotham Medium Italic.ttf
+Gotham Medium.ttf
+Gotham Thin Italic.ttf
+Gotham Thin.ttf
+Gotham Ultra Italic.ttf
+Gotham Ultra.ttf
+Gotham-Black 2.otf
+GothamRounded-Bold.otf
+GothamRounded-BoldItalic.otf
+GothamRounded-Book.otf
+GothamRounded-BookItalic.otf
+GothamRounded-Light.otf
+GothamRounded-LightItalic.otf
+GothamRounded-Medium.otf
+GothamRounded-MediumItalic.otf
+HelveticaNeueLTPro-Cn 2.otf
+HelveticaNeueLTStd-Bd 2.otf
+HelveticaNeueLTStd-BdCn 2.otf
+HelveticaNeueLTStd-BdCnO 2.otf
+HelveticaNeueLTStd-BdEx 2.otf
+HelveticaNeueLTStd-BdExO 2.otf
+HelveticaNeueLTStd-BdIt 2.otf
+HelveticaNeueLTStd-BdOu 2.otf
+HelveticaNeueLTStd-Blk 2.otf
+HelveticaNeueLTStd-BlkCn 2.otf
+HelveticaNeueLTStd-BlkCnO 2.otf
+HelveticaNeueLTStd-BlkEx 2.otf
+HelveticaNeueLTStd-BlkExO 2.otf
+HelveticaNeueLTStd-BlkIt 2.otf
+HelveticaNeueLTStd-Cn 2.otf
+HelveticaNeueLTStd-CnO 2.otf
+HelveticaNeueLTStd-Ex 2.otf
+HelveticaNeueLTStd-ExO 2.otf
+HelveticaNeueLTStd-Hv 2.otf
+HelveticaNeueLTStd-HvCn 2.otf
+HelveticaNeueLTStd-HvCnO 2.otf
+HelveticaNeueLTStd-HvEx 2.otf
+HelveticaNeueLTStd-HvExO 2.otf
+HelveticaNeueLTStd-HvIt 2.otf
+HelveticaNeueLTStd-It 2.otf
+HelveticaNeueLTStd-Lt 2.otf
+HelveticaNeueLTStd-LtCn 2.otf
+HelveticaNeueLTStd-LtCnO 2.otf
+HelveticaNeueLTStd-LtEx 2.otf
+HelveticaNeueLTStd-LtExO 2.otf
+HelveticaNeueLTStd-LtIt 2.otf
+HelveticaNeueLTStd-Md 2.otf
+HelveticaNeueLTStd-MdCn 2.otf
+HelveticaNeueLTStd-MdCnO 2.otf
+HelveticaNeueLTStd-MdEx 2.otf
+HelveticaNeueLTStd-MdExO 2.otf
+HelveticaNeueLTStd-MdIt 2.otf
+HelveticaNeueLTStd-Roman 2.otf
+HelveticaNeueLTStd-Th 2.otf
+HelveticaNeueLTStd-ThCn 2.otf
+HelveticaNeueLTStd-ThCnO 2.otf
+HelveticaNeueLTStd-ThEx 2.otf
+HelveticaNeueLTStd-ThExO 2.otf
+HelveticaNeueLTStd-ThIt 2.otf
+HelveticaNeueLTStd-UltLt 2.otf
+HelveticaNeueLTStd-UltLtCn 2.otf
+HelveticaNeueLTStd-UltLtCnO 2.otf
+HelveticaNeueLTStd-UltLtEx 2.otf
+HelveticaNeueLTStd-UltLtExO 2.otf
+HelveticaNeueLTStd-UltLtIt 2.otf
+HelveticaNeueLTStd-XBlkCn 2.otf
+HelveticaNeueLTStd-XBlkCnO 2.otf
+HelveticaNowText-Bold 2.ttf
+HelveticaNowText-ExtraBold 2.ttf
+HelveticaNowText-ExtraLight 2.ttf
+HelveticaNowText-Light 2.ttf
+HelveticaNowText-Medium 2.ttf
+HelveticaNowText-Regular 2.ttf
+HelveticaNowText-Thin 2.ttf
+Hogfish DEMO.otf
+Inter-Black 2.ttf
+Inter-Bold 2.ttf
+Inter-ExtraBold.otf
+Inter-ExtraLight.otf
+Inter-Light 2.ttf
+Inter-Medium.otf
+Inter-Regular 2.ttf
+Inter-SemiBold 2.ttf
+Inter-Thin.otf
+Inter-V.ttf
+LiebeFonts - LiebeDoris Bold.otf
+LiebeFonts - LiebeDoris.otf
+Montserrat-Black.ttf
+Montserrat-BlackItalic.ttf
+Montserrat-Bold.ttf
+Montserrat-BoldItalic.ttf
+Montserrat-ExtraBold.ttf
+Montserrat-ExtraBoldItalic.ttf
+Montserrat-ExtraLight.ttf
+Montserrat-ExtraLightItalic.ttf
+Montserrat-Italic.ttf
+Montserrat-Light.ttf
+Montserrat-LightItalic.ttf
+Montserrat-Medium.ttf
+Montserrat-MediumItalic.ttf
+Montserrat-Regular.ttf
+Montserrat-SemiBold.ttf
+Montserrat-SemiBoldItalic.ttf
+Montserrat-Thin.ttf
+Montserrat-ThinItalic.ttf
+Qatar2022Arabic-Bold 2.ttf
+Qatar2022Arabic-Heavy 2.ttf
+REZ 2.ttf
+Roboto-Black 2.ttf
+Roboto-BlackItalic 2.ttf
+Roboto-Bold 2.ttf
+Roboto-BoldCondensed.ttf
+Roboto-BoldCondensedItalic.ttf
+Roboto-BoldItalic 2.ttf
+Roboto-Condensed.ttf
+Roboto-CondensedItalic.ttf
+Roboto-Italic 2.ttf
+Roboto-Light 2.ttf
+Roboto-LightItalic 2.ttf
+Roboto-Medium 2.ttf
+Roboto-MediumItalic 2.ttf
+Roboto-Regular 2.ttf
+Roboto-Thin 2.ttf
+Roboto-ThinItalic 2.ttf
+RobotoCondensed-Black.ttf
+RockwellStd-Bold.ttf
+STRRETCH SANS 2.otf
+Sequel100Black-105 2.ttf
+Sequel100Black-106 2.ttf
+Sequel100Black-115 2.ttf
+Sequel100Black-116 2.ttf
+Sequel100Black-45 2.ttf
+Sequel100Black-46 2.ttf
+Sequel100Black-55 2.ttf
+Sequel100Black-56 2.ttf
+Sequel100Black-65 2.ttf
+Sequel100Black-66 2.ttf
+Sequel100Black-75 2.ttf
+Sequel100Black-76 2.ttf
+Sequel100Black-85 2.ttf
+Sequel100Black-86 2.ttf
+Sequel100Black-95 2.ttf
+Sequel100Black-96 2.ttf
+Serpentype - Albula Pro Bold 2.otf
+Serpentype - Albula Pro Bold Oblique 2.otf
+Serpentype - Albula Pro ExtraBold 2.otf
+Serpentype - Albula Pro ExtraBold Oblique 2.otf
+Serpentype - Albula Pro ExtraLight 2.otf
+Serpentype - Albula Pro ExtraLight Oblique 2.otf
+Serpentype - Albula Pro Light 2.otf
+Serpentype - Albula Pro Light Oblique 2.otf
+Serpentype - Albula Pro Medium 2.otf
+Serpentype - Albula Pro Medium Oblique 2.otf
+Serpentype - Albula Pro Oblique 2.otf
+Serpentype - Albula Pro Regular 2.otf
+Serpentype - Albula Pro SemiBold 2.otf
+Serpentype - Albula Pro SemiBold Oblique 2.otf
+Serpentype - Albula Pro SemiLight 2.otf
+Serpentype - Albula Pro SemiLight Oblique 2.otf
+Serpentype - Albula Pro Thin 2.otf
+Serpentype - Albula Pro Thin Oblique 2.otf
+Sora-Bold 2.ttf
+Sora-ExtraBold 2.ttf
+Sora-ExtraLight 2.ttf
+Sora-Light 2.ttf
+Sora-Medium 2.ttf
+Sora-Regular 2.ttf
+Sora-SemiBold 2.ttf
+Sora-Thin 2.ttf
+Surfing Capital 2.ttf
+The New Elegance Condensed Italic.otf
+The New Elegance Condensed.otf
+The New Elegance Italic.otf
+The New Elegance.otf
+UberMoveBold.otf
+UberMoveMedium.otf
+UglierThings-xzeq 2.otf
+UglierThings3D-pzdO 2.otf
+UglierThings3DItalic-D92R 2.otf
+UglierThingsCondensed-ABrA 2.otf
+UglierThingsCondensedItalic-qzP5 2.otf
+UglierThingsExpanded-VaZB 2.otf
+UglierThingsExpandedItalic-J7PM 2.otf
+UglierThingsItalic-G29g 2.otf
+UglierThingsLeftalic-jzK0 2.otf
+UglierThingsMangled-zza4 2.otf
+UglierThingsMangledItalic-5ZqV 2.otf
+UglierThingsRotalic-63VA 2.otf
+UglierThingsRotated-yzWe 2.otf
+UglierThingsRotated2-9Djn 2.otf
+UglierThingsStaggered-lyv0 2.otf
+UglierThingsStaggeredItalic-nz70 2.otf
+UglierThingsStaggeredRotalic-1WxB 2.otf
+UnileverShilling.ttf
+UnileverShillingBold.ttf
+UnileverShillingItalic.ttf
+UnileverShillingMedium.ttf
+WorkSans-Black.ttf
+WorkSans-BlackItalic.ttf
+WorkSans-Bold.ttf
+WorkSans-BoldItalic.ttf
+WorkSans-ExtraBold.ttf
+WorkSans-ExtraBoldItalic.ttf
+WorkSans-ExtraLight.ttf
+WorkSans-ExtraLightItalic.ttf
+WorkSans-Italic.ttf
+WorkSans-Light.ttf
+WorkSans-LightItalic.ttf
+WorkSans-Medium.ttf
+WorkSans-MediumItalic.ttf
+WorkSans-Regular.ttf
+WorkSans-SemiBold.ttf
+WorkSans-SemiBoldItalic.ttf
+WorkSans-Thin.ttf
+WorkSans-ThinItalic.ttf
+auto_digital 2.ttf
+din-black.otf
+din-bold.otf
+din-regular.otf
+tmpsequel100wide-75.ttf
+urban-shock-regular.otf
+# Gratuitas do Google Fonts e Aptos (fonte padrao do Office), usadas pelos modelos
+ABeeZee-Italic.ttf
+ABeeZee-Regular.ttf
+AlexBrush-Regular.ttf
+Anton-Regular.ttf
+Archivo-Black.ttf
+Archivo-BlackItalic.ttf
+Archivo-Bold.ttf
+Archivo-BoldItalic.ttf
+Archivo-ExtraBold.ttf
+Archivo-ExtraBoldItalic.ttf
+Archivo-ExtraLight.ttf
+Archivo-ExtraLightItalic.ttf
+Archivo-Italic.ttf
+Archivo-Light.ttf
+Archivo-LightItalic.ttf
+Archivo-Medium.ttf
+Archivo-MediumItalic.ttf
+Archivo-Regular.ttf
+Archivo-SemiBold.ttf
+Archivo-SemiBoldItalic.ttf
+Archivo-Thin.ttf
+Archivo-ThinItalic.ttf
+BricolageGrotesque-Bold.ttf
+BricolageGrotesque-ExtraBold.ttf
+BricolageGrotesque-ExtraLight.ttf
+BricolageGrotesque-Light.ttf
+BricolageGrotesque-Medium.ttf
+BricolageGrotesque-Regular.ttf
+BricolageGrotesque-SemiBold.ttf
+Comfortaa-Bold.ttf
+Comfortaa-Light.ttf
+Comfortaa-Medium.ttf
+Comfortaa-Regular.ttf
+Comfortaa-SemiBold.ttf
+DMSans-Black.ttf
+DMSans-BlackItalic.ttf
+DMSans-Bold.ttf
+DMSans-BoldItalic.ttf
+DMSans-ExtraBold.ttf
+DMSans-ExtraBoldItalic.ttf
+DMSans-ExtraLight.ttf
+DMSans-ExtraLightItalic.ttf
+DMSans-Italic.ttf
+DMSans-Light.ttf
+DMSans-LightItalic.ttf
+DMSans-Medium.ttf
+DMSans-MediumItalic.ttf
+DMSans-Regular.ttf
+DMSans-SemiBold.ttf
+DMSans-SemiBoldItalic.ttf
+DMSans-Thin.ttf
+DMSans-ThinItalic.ttf
+DelaGothicOne-Regular.ttf
+FjallaOne-Regular.ttf
+Manrope-Bold.ttf
+Manrope-ExtraBold.ttf
+Manrope-ExtraLight.ttf
+Manrope-Light.ttf
+Manrope-Medium.ttf
+Manrope-Regular.ttf
+Manrope-SemiBold.ttf
+Play-Bold.ttf
+Play-Regular.ttf
+PlusJakartaSans-Bold.ttf
+PlusJakartaSans-BoldItalic.ttf
+PlusJakartaSans-ExtraBold.ttf
+PlusJakartaSans-ExtraBoldItalic.ttf
+PlusJakartaSans-ExtraLight.ttf
+PlusJakartaSans-ExtraLightItalic.ttf
+PlusJakartaSans-Italic.ttf
+PlusJakartaSans-Light.ttf
+PlusJakartaSans-LightItalic.ttf
+PlusJakartaSans-Medium.ttf
+PlusJakartaSans-MediumItalic.ttf
+PlusJakartaSans-Regular.ttf
+PlusJakartaSans-SemiBold.ttf
+PlusJakartaSans-SemiBoldItalic.ttf
+Questrial-Regular.ttf
+Raleway-Black.ttf
+Raleway-BlackItalic.ttf
+Raleway-Bold.ttf
+Raleway-BoldItalic.ttf
+Raleway-ExtraBold.ttf
+Raleway-ExtraBoldItalic.ttf
+Raleway-ExtraLight.ttf
+Raleway-ExtraLightItalic.ttf
+Raleway-Italic.ttf
+Raleway-Light.ttf
+Raleway-LightItalic.ttf
+Raleway-Medium.ttf
+Raleway-MediumItalic.ttf
+Raleway-Regular.ttf
+Raleway-SemiBold.ttf
+Raleway-SemiBoldItalic.ttf
+Raleway-Thin.ttf
+Raleway-ThinItalic.ttf
+RobotoCondensed-BlackItalic.ttf
+RobotoCondensed-Bold.ttf
+RobotoCondensed-BoldItalic.ttf
+RobotoCondensed-ExtraBold.ttf
+RobotoCondensed-ExtraBoldItalic.ttf
+RobotoCondensed-ExtraLight.ttf
+RobotoCondensed-ExtraLightItalic.ttf
+RobotoCondensed-Italic.ttf
+RobotoCondensed-Light.ttf
+RobotoCondensed-LightItalic.ttf
+RobotoCondensed-Medium.ttf
+RobotoCondensed-MediumItalic.ttf
+RobotoCondensed-Regular.ttf
+RobotoCondensed-SemiBold.ttf
+RobotoCondensed-SemiBoldItalic.ttf
+RobotoCondensed-Thin.ttf
+RobotoCondensed-ThinItalic.ttf
+Rubik-Black.ttf
+Rubik-BlackItalic.ttf
+Rubik-Bold.ttf
+Rubik-BoldItalic.ttf
+Rubik-ExtraBold.ttf
+Rubik-ExtraBoldItalic.ttf
+Rubik-Italic.ttf
+Rubik-Light.ttf
+Rubik-LightItalic.ttf
+Rubik-Medium.ttf
+Rubik-MediumItalic.ttf
+Rubik-Regular.ttf
+Rubik-SemiBold.ttf
+Rubik-SemiBoldItalic.ttf
+ShadowsIntoLight.ttf
+Teko-Bold.ttf
+Teko-Light.ttf
+Teko-Medium.ttf
+Teko-Regular.ttf
+Teko-SemiBold.ttf
+TitilliumWeb-Black.ttf
+TitilliumWeb-Bold.ttf
+TitilliumWeb-BoldItalic.ttf
+TitilliumWeb-ExtraLight.ttf
+TitilliumWeb-ExtraLightItalic.ttf
+TitilliumWeb-Italic.ttf
+TitilliumWeb-Light.ttf
+TitilliumWeb-LightItalic.ttf
+TitilliumWeb-Regular.ttf
+TitilliumWeb-SemiBold.ttf
+TitilliumWeb-SemiBoldItalic.ttf
+Ubuntu-Bold.ttf
+Ubuntu-BoldItalic.ttf
+Ubuntu-Italic.ttf
+Ubuntu-Light.ttf
+Ubuntu-LightItalic.ttf
+Ubuntu-Medium.ttf
+Ubuntu-MediumItalic.ttf
+Ubuntu-Regular.ttf
+Urbanist-Black.ttf
+Urbanist-BlackItalic.ttf
+Urbanist-Bold.ttf
+Urbanist-BoldItalic.ttf
+Urbanist-ExtraBold.ttf
+Urbanist-ExtraBoldItalic.ttf
+Urbanist-ExtraLight.ttf
+Urbanist-ExtraLightItalic.ttf
+Urbanist-Italic.ttf
+Urbanist-Light.ttf
+Urbanist-LightItalic.ttf
+Urbanist-Medium.ttf
+Urbanist-MediumItalic.ttf
+Urbanist-Regular.ttf
+Urbanist-SemiBold.ttf
+Urbanist-SemiBoldItalic.ttf
+Urbanist-Thin.ttf
+Urbanist-ThinItalic.ttf
+Aptos-BlackItalic.ttf
+Aptos-Black.ttf
+Aptos-BoldItalic.ttf
+Aptos-Bold.ttf
+Aptos-ExtraBoldItalic.ttf
+Aptos-ExtraBold.ttf
+Aptos-Italic.ttf
+Aptos-LightItalic.ttf
+Aptos-Light.ttf
+Aptos-Narrow-Bold-Italic.ttf
+Aptos-Narrow-Bold.ttf
+Aptos-Narrow-Italic.ttf
+Aptos-Narrow.ttf
+Aptos-SemiBoldItalic.ttf
+Aptos-SemiBold.ttf
+Aptos.ttf
+AptosDisplay.ttf
+Carlito-Bold.ttf
+Carlito-BoldItalic.ttf
+Carlito-Italic.ttf
+Carlito-Regular.ttf

@@ -1,0 +1,2343 @@
+{
+ "familias": [
+  {
+   "familia": "Aptos",
+   "variantes_usadas": [],
+   "arquivos_pptx": 136,
+   "usos": 13753,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": true,
+   "licenca": "sistema/Office"
+  },
+  {
+   "familia": "Uber Move",
+   "variantes_usadas": [
+    "Uber Move Medium"
+   ],
+   "arquivos_pptx": 109,
+   "usos": 3225,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/UberMoveBold.otf",
+    "_originais/fontes/arquivos/Fontes/UberMoveMedium.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "SF Pro Display",
+   "variantes_usadas": [
+    "SF Pro Display Light",
+    "SF Pro Display Thin",
+    "SF Pro Display Semibold",
+    "SF Pro Display Heavy",
+    "SF Pro Display Medium",
+    "SF Pro Display Black"
+   ],
+   "arquivos_pptx": 49,
+   "usos": 1424,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/SF-Pro-Display-Black 2.otf",
+    "_originais/fontes/arquivos/Fontes/SF-Pro-Display-Black.otf",
+    "_originais/fontes/arquivos/Fontes/SF-Pro-Display-BoldItalic 2.otf",
+    "_originais/fontes/arquivos/Fontes/SF-Pro-Display-BoldItalic.otf",
+    "_originais/fontes/arquivos/Fontes/SF-Pro-Display-Heavy 2.otf",
+    "_originais/fontes/arquivos/Fontes/SF-Pro-Display-Heavy.otf",
+    "_originais/fontes/arquivos/Fontes/SF-Pro-Display-Light 2.otf",
+    "_originais/fontes/arquivos/Fontes/SF-Pro-Display-Light.otf",
+    "_originais/fontes/arquivos/Fontes/SF-Pro-Display-MediumItalic 2.otf",
+    "_originais/fontes/arquivos/Fontes/SF-Pro-Display-MediumItalic.otf",
+    "_originais/fontes/arquivos/Fontes/SF-Pro-Display-RegularItalic 2.otf",
+    "_originais/fontes/arquivos/Fontes/SF-Pro-Display-RegularItalic.otf"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Montserrat",
+   "variantes_usadas": [
+    "Montserrat ExtraLight",
+    "Montserrat Regular",
+    "Montserrat Light",
+    "Montserrat Black",
+    "Montserrat ExtraBold",
+    "Montserrat Thin"
+   ],
+   "arquivos_pptx": 51,
+   "usos": 3336,
+   "google_fonts": "Montserrat",
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Montserrat-Black.ttf",
+    "_originais/fontes/arquivos/Fontes/Montserrat-BlackItalic.ttf",
+    "_originais/fontes/arquivos/Fontes/Montserrat-Bold.ttf",
+    "_originais/fontes/arquivos/Fontes/Montserrat-BoldItalic.ttf",
+    "_originais/fontes/arquivos/Fontes/Montserrat-ExtraBold.ttf",
+    "_originais/fontes/arquivos/Fontes/Montserrat-ExtraBoldItalic.ttf",
+    "_originais/fontes/arquivos/Fontes/Montserrat-ExtraLight.ttf",
+    "_originais/fontes/arquivos/Fontes/Montserrat-ExtraLightItalic.ttf",
+    "_originais/fontes/arquivos/Fontes/Montserrat-Italic.ttf",
+    "_originais/fontes/arquivos/Fontes/Montserrat-Light.ttf",
+    "_originais/fontes/arquivos/Fontes/Montserrat-LightItalic.ttf",
+    "_originais/fontes/arquivos/Fontes/Montserrat-Medium.ttf"
+   ],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Sora",
+   "variantes_usadas": [
+    "Sora Light",
+    "Sora ExtraBold",
+    "Sora Thin",
+    "Sora ExtraLight"
+   ],
+   "arquivos_pptx": 43,
+   "usos": 2766,
+   "google_fonts": "Sora",
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Sora-Bold 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Sora-Bold.ttf",
+    "_originais/fontes/arquivos/Fontes/Sora-ExtraBold 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Sora-ExtraBold.ttf",
+    "_originais/fontes/arquivos/Fontes/Sora-ExtraLight 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Sora-ExtraLight.ttf",
+    "_originais/fontes/arquivos/Fontes/Sora-Light 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Sora-Light.ttf",
+    "_originais/fontes/arquivos/Fontes/Sora-Medium 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Sora-Medium.ttf",
+    "_originais/fontes/arquivos/Fontes/Sora-Regular 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Sora-Regular.ttf"
+   ],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Calibri",
+   "variantes_usadas": [],
+   "arquivos_pptx": 31,
+   "usos": 4731,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": true,
+   "licenca": "sistema/Office"
+  },
+  {
+   "familia": "Druk Wide",
+   "variantes_usadas": [
+    "Druk Wide Medium",
+    "Druk Wide Bold",
+    "Druk Wide Heavy"
+   ],
+   "arquivos_pptx": 34,
+   "usos": 958,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/DrukWide-Bold 2.otf",
+    "_originais/fontes/arquivos/Fontes/DrukWide-Bold.otf",
+    "_originais/fontes/arquivos/Fontes/DrukWide-BoldItalic 2.otf",
+    "_originais/fontes/arquivos/Fontes/DrukWide-BoldItalic.otf",
+    "_originais/fontes/arquivos/Fontes/DrukWide-Heavy 2.otf",
+    "_originais/fontes/arquivos/Fontes/DrukWide-Heavy.otf",
+    "_originais/fontes/arquivos/Fontes/DrukWide-HeavyItalic 2.otf",
+    "_originais/fontes/arquivos/Fontes/DrukWide-HeavyItalic.otf",
+    "_originais/fontes/arquivos/Fontes/DrukWide-Medium 2.otf",
+    "_originais/fontes/arquivos/Fontes/DrukWide-Medium.otf",
+    "_originais/fontes/arquivos/Fontes/DrukWide-MediumItalic 2.otf",
+    "_originais/fontes/arquivos/Fontes/DrukWide-MediumItalic.otf"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Bricolage Grotesque",
+   "variantes_usadas": [
+    "Bricolage Grotesque 14pt",
+    "Bricolage Grotesque 14pt ExtraBold",
+    "Bricolage Grotesque 14pt ExtraLight",
+    "Bricolage Grotesque 14pt Light",
+    "Bricolage Grotesque Light",
+    "Bricolage Grotesque 96pt ExtraBold",
+    "Bricolage Grotesque 14pt Medium",
+    "Bricolage Grotesque 24pt Conden",
+    "Bricolage Grotesque 14pt SemiBold"
+   ],
+   "arquivos_pptx": 55,
+   "usos": 1025,
+   "google_fonts": "Bricolage Grotesque",
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Helvetica",
+   "variantes_usadas": [
+    "Helvetica Light"
+   ],
+   "arquivos_pptx": 19,
+   "usos": 491,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Helvetica.ttc"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Akrobat",
+   "variantes_usadas": [
+    "Akrobat Light",
+    "Akrobat ExtraLight",
+    "Akrobat Black",
+    "Akrobat ExtraBold",
+    "Akrobat SemiBold"
+   ],
+   "arquivos_pptx": 49,
+   "usos": 1066,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Akrobat-Black 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Akrobat-Black.ttf",
+    "_originais/fontes/arquivos/Fontes/Akrobat-Bold 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Akrobat-Bold.ttf",
+    "_originais/fontes/arquivos/Fontes/Akrobat-ExtraBold 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Akrobat-ExtraBold.ttf",
+    "_originais/fontes/arquivos/Fontes/Akrobat-ExtraLight 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Akrobat-ExtraLight.ttf",
+    "_originais/fontes/arquivos/Fontes/Akrobat-Light 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Akrobat-Light.ttf",
+    "_originais/fontes/arquivos/Fontes/Akrobat-Regular 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Akrobat-Regular.ttf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "BIGGERDISPLAY",
+   "variantes_usadas": [],
+   "arquivos_pptx": 15,
+   "usos": 225,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "☞SEQUEL 100 BLACK 46",
+   "variantes_usadas": [],
+   "arquivos_pptx": 15,
+   "usos": 140,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Sequel100Black-46 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Sequel100Black-46.ttf"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "☞SEQUEL 100 BLACK 96",
+   "variantes_usadas": [],
+   "arquivos_pptx": 14,
+   "usos": 145,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Sequel100Black-96 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Sequel100Black-96.ttf"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Inter",
+   "variantes_usadas": [
+    "Inter 18pt 18pt",
+    "Inter Light",
+    "Inter 18pt 18pt Light",
+    "Inter Extra Light",
+    "Inter Black"
+   ],
+   "arquivos_pptx": 20,
+   "usos": 872,
+   "google_fonts": "Inter",
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Inter-Black 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Inter-Black 3.ttf",
+    "_originais/fontes/arquivos/Fontes/Inter-Black.otf",
+    "_originais/fontes/arquivos/Fontes/Inter-Black.ttf",
+    "_originais/fontes/arquivos/Fontes/Inter-Bold 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Inter-Bold 3.ttf",
+    "_originais/fontes/arquivos/Fontes/Inter-Bold.otf",
+    "_originais/fontes/arquivos/Fontes/Inter-Bold.ttf",
+    "_originais/fontes/arquivos/Fontes/Inter-ExtraBold.otf",
+    "_originais/fontes/arquivos/Fontes/Inter-ExtraBold.ttf",
+    "_originais/fontes/arquivos/Fontes/Inter-ExtraLight.otf",
+    "_originais/fontes/arquivos/Fontes/Inter-ExtraLight.ttf"
+   ],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Antonio",
+   "variantes_usadas": [
+    "Antonio Light",
+    "Antonio ExtraLight",
+    "Antonio Thin",
+    "Antonio Medium"
+   ],
+   "arquivos_pptx": 27,
+   "usos": 757,
+   "google_fonts": "Antonio",
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Antonio-Bold 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Antonio-Bold.ttf",
+    "_originais/fontes/arquivos/Fontes/Antonio-ExtraLight 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Antonio-ExtraLight.ttf",
+    "_originais/fontes/arquivos/Fontes/Antonio-Light 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Antonio-Light.ttf",
+    "_originais/fontes/arquivos/Fontes/Antonio-Medium 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Antonio-Medium.ttf",
+    "_originais/fontes/arquivos/Fontes/Antonio-Regular 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Antonio-Regular.ttf",
+    "_originais/fontes/arquivos/Fontes/Antonio-SemiBold 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Antonio-SemiBold.ttf"
+   ],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Atomic Marker",
+   "variantes_usadas": [],
+   "arquivos_pptx": 13,
+   "usos": 81,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "PT Sans",
+   "variantes_usadas": [],
+   "arquivos_pptx": 12,
+   "usos": 2076,
+   "google_fonts": "PT Sans",
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Questrial",
+   "variantes_usadas": [],
+   "arquivos_pptx": 12,
+   "usos": 1001,
+   "google_fonts": "Questrial",
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Roboto Condensed",
+   "variantes_usadas": [
+    "Roboto Condensed Condensed ExtraLight",
+    "Roboto Condensed Condensed Light"
+   ],
+   "arquivos_pptx": 14,
+   "usos": 3914,
+   "google_fonts": "Roboto Condensed",
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/RobotoCondensed-Black.ttf"
+   ],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Archivo",
+   "variantes_usadas": [],
+   "arquivos_pptx": 11,
+   "usos": 274,
+   "google_fonts": "Archivo",
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Aptos Display",
+   "variantes_usadas": [],
+   "arquivos_pptx": 11,
+   "usos": 24,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": true,
+   "licenca": "sistema/Office"
+  },
+  {
+   "familia": "AMSTIRDAM",
+   "variantes_usadas": [],
+   "arquivos_pptx": 10,
+   "usos": 23,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/AmstirdamDemo 2.otf",
+    "_originais/fontes/arquivos/Fontes/AmstirdamDemo 2.ttf",
+    "_originais/fontes/arquivos/Fontes/AmstirdamDemo.otf",
+    "_originais/fontes/arquivos/Fontes/AmstirdamDemo.ttf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "The New Elegance",
+   "variantes_usadas": [],
+   "arquivos_pptx": 10,
+   "usos": 68,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes__GRÁTIS-Feliz_2025/The New Elegance Condensed Italic.otf",
+    "_originais/fontes/arquivos/Fontes__GRÁTIS-Feliz_2025/The New Elegance Condensed Italic.ttf",
+    "_originais/fontes/arquivos/Fontes__GRÁTIS-Feliz_2025/The New Elegance Condensed.otf",
+    "_originais/fontes/arquivos/Fontes__GRÁTIS-Feliz_2025/The New Elegance Condensed.ttf",
+    "_originais/fontes/arquivos/Fontes__GRÁTIS-Feliz_2025/The New Elegance Italic.otf",
+    "_originais/fontes/arquivos/Fontes__GRÁTIS-Feliz_2025/The New Elegance Italic.ttf",
+    "_originais/fontes/arquivos/Fontes__GRÁTIS-Feliz_2025/The New Elegance.otf",
+    "_originais/fontes/arquivos/Fontes__GRÁTIS-Feliz_2025/The New Elegance.ttf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Bodoni 72 Book",
+   "variantes_usadas": [],
+   "arquivos_pptx": 8,
+   "usos": 63,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "☞SEQUEL 100 BLACK 86",
+   "variantes_usadas": [],
+   "arquivos_pptx": 8,
+   "usos": 95,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Sequel100Black-86 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Sequel100Black-86.ttf"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Roboto",
+   "variantes_usadas": [
+    "Roboto Light"
+   ],
+   "arquivos_pptx": 12,
+   "usos": 1304,
+   "google_fonts": "Roboto",
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Roboto-Black 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Roboto-Black.ttf",
+    "_originais/fontes/arquivos/Fontes/Roboto-BlackItalic 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Roboto-BlackItalic.ttf",
+    "_originais/fontes/arquivos/Fontes/Roboto-Bold 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Roboto-Bold.ttf",
+    "_originais/fontes/arquivos/Fontes/Roboto-BoldCondensed.ttf",
+    "_originais/fontes/arquivos/Fontes/Roboto-BoldCondensedItalic.ttf",
+    "_originais/fontes/arquivos/Fontes/Roboto-BoldItalic 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Roboto-BoldItalic.ttf",
+    "_originais/fontes/arquivos/Fontes/Roboto-Condensed.ttf",
+    "_originais/fontes/arquivos/Fontes/Roboto-CondensedItalic.ttf"
+   ],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Anton",
+   "variantes_usadas": [],
+   "arquivos_pptx": 7,
+   "usos": 84,
+   "google_fonts": "Anton",
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "STRRETCH SANS",
+   "variantes_usadas": [],
+   "arquivos_pptx": 6,
+   "usos": 43,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/STRRETCH SANS 2.otf",
+    "_originais/fontes/arquivos/Fontes/STRRETCH SANS 2.ttf",
+    "_originais/fontes/arquivos/Fontes/STRRETCH SANS.otf",
+    "_originais/fontes/arquivos/Fontes/STRRETCH SANS.ttf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Bebas Neue",
+   "variantes_usadas": [
+    "Bebas Neue Regular",
+    "Bebas Neue Bold",
+    "Bebas Neue Book",
+    "Bebas Neue Light"
+   ],
+   "arquivos_pptx": 13,
+   "usos": 126,
+   "google_fonts": "Bebas Neue",
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/BebasNeue 2.otf",
+    "_originais/fontes/arquivos/Fontes/BebasNeue Bold 2.otf",
+    "_originais/fontes/arquivos/Fontes/BebasNeue Bold.otf",
+    "_originais/fontes/arquivos/Fontes/BebasNeue Book 2.otf",
+    "_originais/fontes/arquivos/Fontes/BebasNeue Book.otf",
+    "_originais/fontes/arquivos/Fontes/BebasNeue Light 2.otf",
+    "_originais/fontes/arquivos/Fontes/BebasNeue Light.otf",
+    "_originais/fontes/arquivos/Fontes/BebasNeue Regular 2.otf",
+    "_originais/fontes/arquivos/Fontes/BebasNeue Regular.otf",
+    "_originais/fontes/arquivos/Fontes/BebasNeue Thin 2.otf",
+    "_originais/fontes/arquivos/Fontes/BebasNeue Thin.otf",
+    "_originais/fontes/arquivos/Fontes/BebasNeue-Regular 2.ttf"
+   ],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Open Sans",
+   "variantes_usadas": [
+    "Open Sans Light"
+   ],
+   "arquivos_pptx": 8,
+   "usos": 453,
+   "google_fonts": "Open Sans",
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/20007011713.ttf",
+    "_originais/fontes/arquivos/Fontes/20864176572.ttf",
+    "_originais/fontes/arquivos/Fontes/21233063028.ttf",
+    "_originais/fontes/arquivos/Fontes/21798841561.ttf",
+    "_originais/fontes/arquivos/Fontes/23165521968.ttf",
+    "_originais/fontes/arquivos/Fontes/24492784331.ttf"
+   ],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Albula Pro",
+   "variantes_usadas": [
+    "Albula Pro Light",
+    "Albula Pro Medium",
+    "Albula Pro SemiLight"
+   ],
+   "arquivos_pptx": 12,
+   "usos": 393,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Serpentype - Albula Pro Bold 2.otf",
+    "_originais/fontes/arquivos/Fontes/Serpentype - Albula Pro Bold Oblique 2.otf",
+    "_originais/fontes/arquivos/Fontes/Serpentype - Albula Pro Bold Oblique.otf",
+    "_originais/fontes/arquivos/Fontes/Serpentype - Albula Pro Bold.otf",
+    "_originais/fontes/arquivos/Fontes/Serpentype - Albula Pro ExtraBold 2.otf",
+    "_originais/fontes/arquivos/Fontes/Serpentype - Albula Pro ExtraBold Oblique 2.otf",
+    "_originais/fontes/arquivos/Fontes/Serpentype - Albula Pro ExtraBold Oblique.otf",
+    "_originais/fontes/arquivos/Fontes/Serpentype - Albula Pro ExtraBold.otf",
+    "_originais/fontes/arquivos/Fontes/Serpentype - Albula Pro ExtraLight 2.otf",
+    "_originais/fontes/arquivos/Fontes/Serpentype - Albula Pro ExtraLight Oblique 2.otf",
+    "_originais/fontes/arquivos/Fontes/Serpentype - Albula Pro ExtraLight Oblique.otf",
+    "_originais/fontes/arquivos/Fontes/Serpentype - Albula Pro ExtraLight.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Bodoni 72 Oldstyle Book",
+   "variantes_usadas": [],
+   "arquivos_pptx": 5,
+   "usos": 20,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "3M Circular Bold",
+   "variantes_usadas": [],
+   "arquivos_pptx": 5,
+   "usos": 47,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Work Sans",
+   "variantes_usadas": [
+    "Work Sans Light",
+    "Work Sans SemiBold",
+    "Work Sans Medium"
+   ],
+   "arquivos_pptx": 10,
+   "usos": 444,
+   "google_fonts": "Work Sans",
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/WorkSans-Black.ttf",
+    "_originais/fontes/arquivos/Fontes/WorkSans-BlackItalic.ttf",
+    "_originais/fontes/arquivos/Fontes/WorkSans-Bold.ttf",
+    "_originais/fontes/arquivos/Fontes/WorkSans-BoldItalic.ttf",
+    "_originais/fontes/arquivos/Fontes/WorkSans-ExtraBold.ttf",
+    "_originais/fontes/arquivos/Fontes/WorkSans-ExtraBoldItalic.ttf",
+    "_originais/fontes/arquivos/Fontes/WorkSans-ExtraLight.ttf",
+    "_originais/fontes/arquivos/Fontes/WorkSans-ExtraLightItalic.ttf",
+    "_originais/fontes/arquivos/Fontes/WorkSans-Italic.ttf",
+    "_originais/fontes/arquivos/Fontes/WorkSans-Light.ttf",
+    "_originais/fontes/arquivos/Fontes/WorkSans-LightItalic.ttf",
+    "_originais/fontes/arquivos/Fontes/WorkSans-Medium.ttf"
+   ],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Urban Shock",
+   "variantes_usadas": [],
+   "arquivos_pptx": 5,
+   "usos": 25,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/urban-shock-regular.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "BentonSans ExtraComp Bold",
+   "variantes_usadas": [],
+   "arquivos_pptx": 5,
+   "usos": 22,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/BentonSans ExtraComp Bold.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "☞SEQUEL 100 BLACK 76",
+   "variantes_usadas": [],
+   "arquivos_pptx": 5,
+   "usos": 90,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Sequel100Black-76 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Sequel100Black-76.ttf"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Arial",
+   "variantes_usadas": [],
+   "arquivos_pptx": 4,
+   "usos": 345,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": true,
+   "licenca": "sistema/Office"
+  },
+  {
+   "familia": "Dubai",
+   "variantes_usadas": [],
+   "arquivos_pptx": 4,
+   "usos": 182,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "☞ANDESROUNDEDBOOK",
+   "variantes_usadas": [],
+   "arquivos_pptx": 4,
+   "usos": 349,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/AndesRoundedBook.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "DINPRO-REGULARCONDENSED",
+   "variantes_usadas": [],
+   "arquivos_pptx": 4,
+   "usos": 32,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Hogfish DEMO",
+   "variantes_usadas": [],
+   "arquivos_pptx": 4,
+   "usos": 102,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Hogfish DEMO.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "DIN Next LT Pro",
+   "variantes_usadas": [
+    "DIN Next LT Pro Light Condensed",
+    "DIN Next LT Pro Black Italic",
+    "DIN Next LT Pro Bold Italic",
+    "DIN Next LT Pro Light Italic",
+    "DIN Next LT Pro Heavy Italic",
+    "DIN Next LT Pro UltraLight Ita",
+    "DIN Next LT Pro Italic",
+    "DIN Next LT Pro Medium",
+    "DIN Next LT Pro Light",
+    "DIN Next LT Pro Condensed",
+    "DIN Next LT Pro UltraLight Cond"
+   ],
+   "arquivos_pptx": 16,
+   "usos": 206,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/DINNextLTPro-Black.otf",
+    "_originais/fontes/arquivos/Fontes/DINNextLTPro-BlackCondensed.otf",
+    "_originais/fontes/arquivos/Fontes/DINNextLTPro-BlackItalic.otf",
+    "_originais/fontes/arquivos/Fontes/DINNextLTPro-Bold 2.otf",
+    "_originais/fontes/arquivos/Fontes/DINNextLTPro-Bold.otf",
+    "_originais/fontes/arquivos/Fontes/DINNextLTPro-BoldCondensed.otf",
+    "_originais/fontes/arquivos/Fontes/DINNextLTPro-BoldItalic.otf",
+    "_originais/fontes/arquivos/Fontes/DINNextLTPro-Condensed 2.otf",
+    "_originais/fontes/arquivos/Fontes/DINNextLTPro-Condensed.otf",
+    "_originais/fontes/arquivos/Fontes/DINNextLTPro-Heavy.otf",
+    "_originais/fontes/arquivos/Fontes/DINNextLTPro-HeavyCondensed.otf",
+    "_originais/fontes/arquivos/Fontes/DINNextLTPro-HeavyItalic.otf"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Circular Std Book Italic",
+   "variantes_usadas": [],
+   "arquivos_pptx": 4,
+   "usos": 77,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Manrope",
+   "variantes_usadas": [],
+   "arquivos_pptx": 4,
+   "usos": 472,
+   "google_fonts": "Manrope",
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "3M Circular Book",
+   "variantes_usadas": [],
+   "arquivos_pptx": 3,
+   "usos": 33,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Barlow",
+   "variantes_usadas": [
+    "Barlow ExtraLight",
+    "Barlow Thin",
+    "Barlow Medium",
+    "Barlow Light"
+   ],
+   "arquivos_pptx": 8,
+   "usos": 57,
+   "google_fonts": "Barlow",
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Barlow-Black 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Barlow-Black 3.ttf",
+    "_originais/fontes/arquivos/Fontes/Barlow-Black.ttf",
+    "_originais/fontes/arquivos/Fontes/Barlow-BlackItalic 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Barlow-BlackItalic 3.ttf",
+    "_originais/fontes/arquivos/Fontes/Barlow-BlackItalic.ttf",
+    "_originais/fontes/arquivos/Fontes/Barlow-Bold 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Barlow-Bold 3.ttf",
+    "_originais/fontes/arquivos/Fontes/Barlow-Bold.ttf",
+    "_originais/fontes/arquivos/Fontes/Barlow-BoldItalic 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Barlow-BoldItalic 3.ttf",
+    "_originais/fontes/arquivos/Fontes/Barlow-BoldItalic.ttf"
+   ],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Branding",
+   "variantes_usadas": [
+    "Branding Semilight",
+    "Branding Black",
+    "Branding Medium"
+   ],
+   "arquivos_pptx": 10,
+   "usos": 93,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Branding Black Italic.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Black.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Bold Italic.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Bold.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Light Italic.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Light.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Medium Italic.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Medium.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Semibold Italic.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Semibold.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Semilight Italic.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Semilight.otf"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Eurostile",
+   "variantes_usadas": [],
+   "arquivos_pptx": 3,
+   "usos": 63,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Century Gothic",
+   "variantes_usadas": [],
+   "arquivos_pptx": 3,
+   "usos": 222,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Raleway",
+   "variantes_usadas": [
+    "Raleway SemiBold"
+   ],
+   "arquivos_pptx": 4,
+   "usos": 154,
+   "google_fonts": "Raleway",
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Circular Std Bold",
+   "variantes_usadas": [],
+   "arquivos_pptx": 3,
+   "usos": 227,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Didot",
+   "variantes_usadas": [],
+   "arquivos_pptx": 3,
+   "usos": 104,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Didot 2.ttc",
+    "_originais/fontes/arquivos/Fontes/Didot.ttc"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Bebas",
+   "variantes_usadas": [],
+   "arquivos_pptx": 3,
+   "usos": 21,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "DINPRO-BOLDCONDENSED",
+   "variantes_usadas": [],
+   "arquivos_pptx": 3,
+   "usos": 6,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "DINPRO-LIGHTCONDENSED",
+   "variantes_usadas": [],
+   "arquivos_pptx": 3,
+   "usos": 12,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "☞ANDESROUNDEDBOLD",
+   "variantes_usadas": [],
+   "arquivos_pptx": 3,
+   "usos": 99,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/AndesRoundedBold.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Plus Jakarta Sans",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 35,
+   "google_fonts": "Plus Jakarta Sans",
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Etna",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 12,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Aptos Slab Light",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 116,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Rockwell",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 15,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Rockwell.ttc"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "BentonSans Comp Light",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 38,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/BentonSans Comp Light.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Flama Ultracondensed Bold",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 17,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Agraham",
+   "variantes_usadas": [
+    "Agraham Personal Use"
+   ],
+   "arquivos_pptx": 2,
+   "usos": 10,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Agraham.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Impact",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 46,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Impact.ttf"
+   ],
+   "sistema": true,
+   "licenca": "sistema/Office"
+  },
+  {
+   "familia": "Gotham Rounded",
+   "variantes_usadas": [
+    "Gotham Rounded Bold",
+    "Gotham Rounded Book"
+   ],
+   "arquivos_pptx": 3,
+   "usos": 24,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/GothamRounded-Bold.otf",
+    "_originais/fontes/arquivos/Fontes/GothamRounded-BoldItalic.otf",
+    "_originais/fontes/arquivos/Fontes/GothamRounded-Book.otf",
+    "_originais/fontes/arquivos/Fontes/GothamRounded-BookItalic.otf",
+    "_originais/fontes/arquivos/Fontes/GothamRounded-Light.otf",
+    "_originais/fontes/arquivos/Fontes/GothamRounded-LightItalic.otf",
+    "_originais/fontes/arquivos/Fontes/GothamRounded-Medium.otf",
+    "_originais/fontes/arquivos/Fontes/GothamRounded-MediumItalic.otf"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Bodoni 72",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 87,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "SCHABO X Condensed",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 14,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "LiebeDoris",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 64,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/LiebeFonts - LiebeDoris Bold.otf",
+    "_originais/fontes/arquivos/Fontes/LiebeFonts - LiebeDoris.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Qatar2022 Arabic",
+   "variantes_usadas": [
+    "Qatar2022 Arabic Heavy",
+    "Qatar2022 Arabic Bold"
+   ],
+   "arquivos_pptx": 3,
+   "usos": 37,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Qatar2022Arabic-Bold 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Qatar2022Arabic-Bold.ttf",
+    "_originais/fontes/arquivos/Fontes/Qatar2022Arabic-Heavy 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Qatar2022Arabic-Heavy.ttf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Dela Gothic One",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 8,
+   "google_fonts": "Dela Gothic One",
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "IberPangea Light",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 21,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "IberPangea",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 13,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Amino-Alt 5",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 36,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Amino-Alt",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 6,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Titillium Web",
+   "variantes_usadas": [
+    "Titillium Web Light",
+    "Titillium Web ExtraLight"
+   ],
+   "arquivos_pptx": 4,
+   "usos": 282,
+   "google_fonts": "Titillium Web",
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Shadows Into Light",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 22,
+   "google_fonts": "Shadows Into Light",
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "☞SEQUEL 100 BLACK 56",
+   "variantes_usadas": [],
+   "arquivos_pptx": 2,
+   "usos": 22,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Sequel100Black-56 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Sequel100Black-56.ttf"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Calibri Light",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 155,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": true,
+   "licenca": "sistema/Office"
+  },
+  {
+   "familia": "DIN Pro",
+   "variantes_usadas": [
+    "DIN Pro Condensed Medium",
+    "DIN Pro Condensed"
+   ],
+   "arquivos_pptx": 3,
+   "usos": 19,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/DINPro-Black 2.otf",
+    "_originais/fontes/arquivos/Fontes/DINPro-Bold 2.otf",
+    "_originais/fontes/arquivos/Fontes/DINPro-Light 2.otf",
+    "_originais/fontes/arquivos/Fontes/DINPro-Medium 2.otf",
+    "_originais/fontes/arquivos/Fontes/DINPro-Regular.otf",
+    "_originais/fontes/arquivos/Fontes/DINPro-Regular_13937.ttf"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Unilever Shilling",
+   "variantes_usadas": [
+    "Unilever Shilling Medium"
+   ],
+   "arquivos_pptx": 2,
+   "usos": 12,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/UnileverShilling.ttf",
+    "_originais/fontes/arquivos/Fontes/UnileverShillingBold.ttf",
+    "_originais/fontes/arquivos/Fontes/UnileverShillingItalic.ttf",
+    "_originais/fontes/arquivos/Fontes/UnileverShillingMedium.ttf"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Aptos Slab",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 34,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Flama Bold",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 22,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "ExcludedItalic",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 18,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Excludeditalic-jEr99 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Excludeditalic-jEr99.ttf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Flama Light",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 4,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Avenger",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 3,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Honey and Raspberries",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 8,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Google Sans",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 11,
+   "google_fonts": "Google Sans",
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Flama Semicondensed Ultralight",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 2,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "BODONI 72 BOOK",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 4,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Uglier Things Mangled",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 8,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/UglierThingsMangled-zza4 2.otf",
+    "_originais/fontes/arquivos/Fontes/UglierThingsMangled-zza4.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Arial Rounded MT Bold",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 12,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Mystical Woods Rough Script",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 1,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Boucherie Block",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 6,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Northwell Alt",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 1,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/1609469688276023.ttf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "DINPRO-MEDIUMCONDENSED",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 1,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "BentonSans Comp Bold",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 1,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/BentonSans Comp Bold.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "BentonSans ExtraComp Medium",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 1,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/BentonSans ExtraComp Medium.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Alex Brush",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 2,
+   "google_fonts": "Alex Brush",
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Hello Headline",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 7,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "David",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 2,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "BentonSans ExtraComp Black",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 5,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/BentonSans ExtraComp Black.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Flama Condensed Light",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 5,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Felix Titling",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 10,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Atomic Marker Extras",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 4,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Hackney Vector",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 4,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Excluded",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 9,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Excluded-z8XrX 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Excluded-z8XrX.ttf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Dubai Light",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 2,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Bodoni MT Poster Compressed",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 2,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "IberPangea Medium",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 2,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "DINPro-RegularItalic",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 3,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Merriweather",
+   "variantes_usadas": [
+    "Merriweather Light",
+    "Merriweather Black"
+   ],
+   "arquivos_pptx": 2,
+   "usos": 8,
+   "google_fonts": "Merriweather",
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/21842599462.ttf",
+    "_originais/fontes/arquivos/Fontes/22825441573.ttf",
+    "_originais/fontes/arquivos/Fontes/23469729036.ttf",
+    "_originais/fontes/arquivos/Fontes/24124201755.ttf",
+    "_originais/fontes/arquivos/Fontes/24285140131.ttf",
+    "_originais/fontes/arquivos/Fontes/24963305238.ttf"
+   ],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Comfortaa",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 2,
+   "google_fonts": "Comfortaa",
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Amino-Alt 6",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 14,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Georgia",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 2,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Georgia Bold Italic.ttf",
+    "_originais/fontes/arquivos/Fontes/Georgia Bold.ttf",
+    "_originais/fontes/arquivos/Fontes/Georgia Italic.ttf",
+    "_originais/fontes/arquivos/Fontes/Georgia.ttf"
+   ],
+   "sistema": true,
+   "licenca": "sistema/Office"
+  },
+  {
+   "familia": "Baguet Script",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 2,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Engravers MT",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 2,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Suissnord",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 6,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Margem Medium",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 32,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Poppins",
+   "variantes_usadas": [
+    "Poppins Light"
+   ],
+   "arquivos_pptx": 2,
+   "usos": 11,
+   "google_fonts": "Poppins",
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/21487742835.ttf",
+    "_originais/fontes/arquivos/Fontes/23653161068.ttf",
+    "_originais/fontes/arquivos/Fontes/23979306910.ttf",
+    "_originais/fontes/arquivos/Fontes/24215180385.ttf",
+    "_originais/fontes/arquivos/Fontes/25696234645.ttf",
+    "_originais/fontes/arquivos/Fontes/26084221377.ttf",
+    "_originais/fontes/arquivos/Fontes/26373818127.ttf",
+    "_originais/fontes/arquivos/Fontes/26433847794.ttf",
+    "_originais/fontes/arquivos/Fontes/27231098576.ttf",
+    "_originais/fontes/arquivos/Fontes/Poppins-Bold.ttf"
+   ],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Bodoni 72 Oldstyle",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 4,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Surfing Capital",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 4,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Surfing Capital 2.ttf",
+    "_originais/fontes/arquivos/Fontes/Surfing Capital.ttf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Modern No. 20",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 8,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "De Latto",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 5,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/de-latto/DeLatto.ttf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "BRANDING",
+   "variantes_usadas": [
+    "BRANDING SEMILIGHT"
+   ],
+   "arquivos_pptx": 1,
+   "usos": 3,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Branding Black Italic.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Black.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Bold Italic.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Bold.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Light Italic.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Light.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Medium Italic.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Medium.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Semibold Italic.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Semibold.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Semilight Italic.otf",
+    "_originais/fontes/arquivos/Fontes/Branding Semilight.otf"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Bahnschrift SemiCondensed",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 20,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Futura Std Book",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 536,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Futura Std Light",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 18,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Playfair Display",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 26,
+   "google_fonts": "Playfair Display",
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/18628564760.ttf",
+    "_originais/fontes/arquivos/Fontes/20218403626.ttf",
+    "_originais/fontes/arquivos/Fontes/21591177052.ttf"
+   ],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "EA Font v1.5 by Ghettoshark",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 2,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Cochin",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 4,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "THENEWELEGANCE-CONDENSEDREGULAR",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 19,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Elza Text",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 17,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "HelveticaNeueLT Std",
+   "variantes_usadas": [
+    "HelveticaNeueLT Std Cn",
+    "HelveticaNeueLT Std Lt Cn"
+   ],
+   "arquivos_pptx": 2,
+   "usos": 8,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/HelveticaNeueLTStd-Bd 2.otf",
+    "_originais/fontes/arquivos/Fontes/HelveticaNeueLTStd-Bd.otf",
+    "_originais/fontes/arquivos/Fontes/HelveticaNeueLTStd-BdCn 2.otf",
+    "_originais/fontes/arquivos/Fontes/HelveticaNeueLTStd-BdCn.otf",
+    "_originais/fontes/arquivos/Fontes/HelveticaNeueLTStd-BdCnO 2.otf",
+    "_originais/fontes/arquivos/Fontes/HelveticaNeueLTStd-BdCnO.otf",
+    "_originais/fontes/arquivos/Fontes/HelveticaNeueLTStd-BdEx 2.otf",
+    "_originais/fontes/arquivos/Fontes/HelveticaNeueLTStd-BdEx.otf",
+    "_originais/fontes/arquivos/Fontes/HelveticaNeueLTStd-BdExO 2.otf",
+    "_originais/fontes/arquivos/Fontes/HelveticaNeueLTStd-BdExO.otf",
+    "_originais/fontes/arquivos/Fontes/HelveticaNeueLTStd-BdIt 2.otf",
+    "_originais/fontes/arquivos/Fontes/HelveticaNeueLTStd-BdIt.otf"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "REZ",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 2,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/REZ 2.ttf",
+    "_originais/fontes/arquivos/Fontes/REZ.ttf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Code Next",
+   "variantes_usadas": [
+    "Code Next ExtraBold"
+   ],
+   "arquivos_pptx": 1,
+   "usos": 19,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/Fontfabric - Code Next ExtraBold 2.otf",
+    "_originais/fontes/arquivos/Fontes/Fontfabric - Code Next ExtraBold.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "DIN Condensed",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 17,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/DIN Condensed Bold 2.ttf",
+    "_originais/fontes/arquivos/Fontes/DIN Condensed Bold.ttf",
+    "_originais/fontes/arquivos/Fontes/DINCondensed-Bold.ttf"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Auto Digital",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 12,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/auto_digital 2.ttf",
+    "_originais/fontes/arquivos/Fontes/auto_digital.ttf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Uglier Things",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 4,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/UglierThings-xzeq 2.otf",
+    "_originais/fontes/arquivos/Fontes/UglierThings-xzeq.otf"
+   ],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "BM HANNA 11yrs old OTF",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 3,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Edwardian Script ITC",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 4,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  },
+  {
+   "familia": "Oswald",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 18,
+   "google_fonts": "Oswald",
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/21994779957.ttf",
+    "_originais/fontes/arquivos/Fontes/25286035010.ttf",
+    "_originais/fontes/arquivos/Fontes/25844591784.ttf"
+   ],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Urbanist",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 223,
+   "google_fonts": "Urbanist",
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "livre (Google Fonts)"
+  },
+  {
+   "familia": "Helvetica Neue",
+   "variantes_usadas": [
+    "Helvetica Neue Medium"
+   ],
+   "arquivos_pptx": 1,
+   "usos": 89,
+   "google_fonts": null,
+   "arquivos_locais": [
+    "_originais/fontes/arquivos/Fontes/HelveticaNeue 2.ttc",
+    "_originais/fontes/arquivos/Fontes/HelveticaNeue 3.ttc",
+    "_originais/fontes/arquivos/Fontes/HelveticaNeue-CondObl.ttf",
+    "_originais/fontes/arquivos/Fontes/HelveticaNeue.ttc"
+   ],
+   "sistema": false,
+   "licenca": "provavelmente comercial"
+  },
+  {
+   "familia": "Source Sans Pro",
+   "variantes_usadas": [],
+   "arquivos_pptx": 1,
+   "usos": 188,
+   "google_fonts": null,
+   "arquivos_locais": [],
+   "sistema": false,
+   "licenca": "verificar"
+  }
+ ],
+ "pares": [
+  {
+   "titulo": "☞SEQUEL 100 BLACK 96",
+   "texto": "☞SEQUEL 100 BLACK 46",
+   "arquivos": 5
+  },
+  {
+   "titulo": "Atomic Marker",
+   "texto": "Uber Move",
+   "arquivos": 4
+  },
+  {
+   "titulo": "BIGGERDISPLAY",
+   "texto": "Uber Move",
+   "arquivos": 4
+  },
+  {
+   "titulo": "Inter",
+   "texto": "Bricolage Grotesque",
+   "arquivos": 3
+  },
+  {
+   "titulo": "Roboto Condensed",
+   "texto": "Plus Jakarta Sans",
+   "arquivos": 2
+  },
+  {
+   "titulo": "Uber Move",
+   "texto": "BIGGERDISPLAY",
+   "arquivos": 2
+  },
+  {
+   "titulo": "3M Circular Bold",
+   "texto": "3M Circular Book",
+   "arquivos": 2
+  },
+  {
+   "titulo": "☞SEQUEL 100 BLACK 46",
+   "texto": "☞SEQUEL 100 BLACK 96",
+   "arquivos": 2
+  },
+  {
+   "titulo": "Akrobat",
+   "texto": "Bodoni 72 Book",
+   "arquivos": 2
+  },
+  {
+   "titulo": "Druk Wide",
+   "texto": "Sora",
+   "arquivos": 2
+  },
+  {
+   "titulo": "Bodoni 72 Book",
+   "texto": "Akrobat",
+   "arquivos": 2
+  },
+  {
+   "titulo": "The New Elegance",
+   "texto": "Montserrat",
+   "arquivos": 2
+  },
+  {
+   "titulo": "☞SEQUEL 100 BLACK 76",
+   "texto": "☞SEQUEL 100 BLACK 46",
+   "arquivos": 2
+  },
+  {
+   "titulo": "☞SEQUEL 100 BLACK 86",
+   "texto": "☞SEQUEL 100 BLACK 46",
+   "arquivos": 2
+  },
+  {
+   "titulo": "Circular Std Bold",
+   "texto": "Circular Std Book Italic",
+   "arquivos": 2
+  },
+  {
+   "titulo": "Roboto",
+   "texto": "Druk Wide",
+   "arquivos": 2
+  },
+  {
+   "titulo": "Roboto",
+   "texto": "Roboto Condensed",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Uber Move",
+   "texto": "Unilever Shilling",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Aptos Slab",
+   "texto": "Aptos Slab Light",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Flama Bold",
+   "texto": "ExcludedItalic",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Etna",
+   "texto": "Avenger",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Uber Move",
+   "texto": "Antonio",
+   "arquivos": 1
+  },
+  {
+   "titulo": "DIN Next LT Pro",
+   "texto": "Atomic Marker",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Bodoni 72 Book",
+   "texto": "BIGGERDISPLAY",
+   "arquivos": 1
+  },
+  {
+   "titulo": "3M Circular Book",
+   "texto": "3M Circular Bold",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Honey and Raspberries",
+   "texto": "Uber Move",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Antonio",
+   "texto": "Google Sans",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Bricolage Grotesque",
+   "texto": "Atomic Marker",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Uber Move",
+   "texto": "Druk Wide",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Bodoni 72 Book",
+   "texto": "AMSTIRDAM",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Anton",
+   "texto": "Akrobat",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Druk Wide",
+   "texto": "Barlow",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Uber Move",
+   "texto": "BODONI 72 BOOK",
+   "arquivos": 1
+  },
+  {
+   "titulo": "BentonSans Comp Light",
+   "texto": "Bricolage Grotesque",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Akrobat",
+   "texto": "AMSTIRDAM",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Druk Wide",
+   "texto": "Atomic Marker",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Akrobat",
+   "texto": "BIGGERDISPLAY",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Arial Rounded MT Bold",
+   "texto": "☞SEQUEL 100 BLACK 86",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Akrobat",
+   "texto": "Flama Ultracondensed Bold",
+   "arquivos": 1
+  },
+  {
+   "titulo": "Uber Move",
+   "texto": "Mystical Woods Rough Script",
+   "arquivos": 1
+  }
+ ],
+ "familia_unica": [
+  {
+   "familia": "Uber Move",
+   "arquivos": 24
+  },
+  {
+   "familia": "Bricolage Grotesque",
+   "arquivos": 13
+  },
+  {
+   "familia": "SF Pro Display",
+   "arquivos": 11
+  },
+  {
+   "familia": "Montserrat",
+   "arquivos": 10
+  },
+  {
+   "familia": "Akrobat",
+   "arquivos": 10
+  },
+  {
+   "familia": "Sora",
+   "arquivos": 6
+  },
+  {
+   "familia": "Antonio",
+   "arquivos": 5
+  },
+  {
+   "familia": "Albula Pro",
+   "arquivos": 4
+  },
+  {
+   "familia": "Helvetica",
+   "arquivos": 3
+  },
+  {
+   "familia": "DIN Next LT Pro",
+   "arquivos": 3
+  },
+  {
+   "familia": "Bebas Neue",
+   "arquivos": 3
+  },
+  {
+   "familia": "Branding",
+   "arquivos": 2
+  },
+  {
+   "familia": "Work Sans",
+   "arquivos": 2
+  },
+  {
+   "familia": "Druk Wide",
+   "arquivos": 2
+  },
+  {
+   "familia": "Inter",
+   "arquivos": 2
+  },
+  {
+   "familia": "Titillium Web",
+   "arquivos": 2
+  },
+  {
+   "familia": "Roboto",
+   "arquivos": 2
+  },
+  {
+   "familia": "DIN Pro",
+   "arquivos": 1
+  },
+  {
+   "familia": "Roboto Condensed",
+   "arquivos": 1
+  },
+  {
+   "familia": "Barlow",
+   "arquivos": 1
+  },
+  {
+   "familia": "Gotham Rounded",
+   "arquivos": 1
+  },
+  {
+   "familia": "Qatar2022 Arabic",
+   "arquivos": 1
+  },
+  {
+   "familia": "HelveticaNeueLT Std",
+   "arquivos": 1
+  }
+ ],
+ "locais_sem_uso": [
+  "Amstirdam",
+  "AndesRoundedBold",
+  "AndesRoundedBook",
+  "AndesRoundedLight",
+  "AndesRoundedSemiBold",
+  "BentonSans Black",
+  "BentonSans Bold",
+  "BentonSans Book",
+  "BentonSans Comp Black",
+  "BentonSans Comp Book",
+  "BentonSans Comp Medium",
+  "BentonSans Comp Regular",
+  "BentonSans Cond Black",
+  "BentonSans Cond Bold",
+  "BentonSans Cond Book",
+  "BentonSans Cond Light",
+  "BentonSans Cond Medium",
+  "BentonSans Cond Regular",
+  "BentonSans ExtraComp Book",
+  "BentonSans ExtraComp Light",
+  "BentonSans ExtraComp Regular",
+  "BentonSans ExtraLight",
+  "BentonSans Light",
+  "BentonSans Medium",
+  "BentonSans Regular",
+  "BentonSans Thin",
+  "D-DIN",
+  "DIN",
+  "DIN 1451 LT CYR",
+  "DIN 1451 LT GRK",
+  "DIN 1451 Std",
+  "DIN 30640 Std",
+  "DIN Alternate",
+  "DIN Black",
+  "DIN Next Rounded LT Pro",
+  "DINPro",
+  "Gotham",
+  "Gotham Black",
+  "Gotham Bold",
+  "Gotham Book",
+  "Gotham ExtraLight",
+  "Gotham Light",
+  "Gotham Medium",
+  "Gotham Thin",
+  "Gotham Ultra",
+  "Helvetica Neue LT Pro",
+  "Helvetica Neue LT Std",
+  "Helvetica Now Text",
+  "Inter V",
+  "Lato",
+  "Rockwell Std",
+  "SF Pro Text",
+  "Sequel 100 Wide",
+  "Sequel100Black-105",
+  "Sequel100Black-106",
+  "Sequel100Black-115",
+  "Sequel100Black-116",
+  "Sequel100Black-45",
+  "Sequel100Black-46",
+  "Sequel100Black-55",
+  "Sequel100Black-56",
+  "Sequel100Black-65",
+  "Sequel100Black-66",
+  "Sequel100Black-75",
+  "Sequel100Black-76",
+  "Sequel100Black-85",
+  "Sequel100Black-86",
+  "Sequel100Black-95",
+  "Sequel100Black-96",
+  "Uglier Things 3D",
+  "Uglier Things 3D Italic",
+  "Uglier Things Condensed",
+  "Uglier Things Condensed Italic",
+  "Uglier Things Expanded",
+  "Uglier Things Expanded Italic",
+  "Uglier Things Italic",
+  "Uglier Things Leftalic",
+  "Uglier Things Mangled Italic",
+  "Uglier Things Rotalic",
+  "Uglier Things Rotated",
+  "Uglier Things Rotated 2",
+  "Uglier Things Staggered",
+  "Uglier Things Staggered Italic",
+  "Uglier Things Staggered Rotalic"
+ ]
+}

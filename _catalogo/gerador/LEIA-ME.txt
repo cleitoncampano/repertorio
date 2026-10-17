@@ -1,0 +1,11 @@
+Gerador do catálogo (uso técnico; o catálogo em si abre pelo "Abrir catálogo.command").
+
+Refazer tudo, a partir da pasta dos materiais:
+  python3 -I _catalogo/gerador/thumbs.py _originais/pptx _catalogo/miniaturas /tmp/pptreta-tmp
+  python3 -I _catalogo/gerador/build_data.py .
+  (REFAZER=1 na frente do primeiro comando refaz até as miniaturas que já existem)
+
+slim.py        cria uma cópia de cada slide sozinho (troca Calibri por Carlito só na prévia)
+thumbs.py      gera as miniaturas com a pré-visualização do Mac (qlmanage)
+build_data.py  monta dados.js (aula, módulo, recursos, fontes e texto de cada arquivo)
+canva.json     links do Canva e do Instagram dos 24 PDFs

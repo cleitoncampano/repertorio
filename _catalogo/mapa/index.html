@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa da biblioteca</title>
+<style>
+  :root {
+    --fundo: #121212; --painel: rgba(24,24,24,.94); --borda: #2c2c2c; --texto: #ECE8E1; --apagado: #8F8A82; --fraco: #5B5752;
+    --dif: #FF5A3C; --agr: #3E7BFF; --seq: #F5B400; --pre: #B455FF;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--fundo); color: var(--texto); font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif; overflow: hidden; }
+  canvas { position: fixed; inset: 0; width: 100%; height: 100%; cursor: grab; }
+  canvas.arrastando { cursor: grabbing; }
+  canvas.sobre { cursor: pointer; }
+  header { position: fixed; left: 0; right: 0; top: 0; height: 64px; display: flex; align-items: center; gap: 18px; padding: 0 18px;
+    background: linear-gradient(#121212 70%, rgba(18,18,18,0)); z-index: 3; }
+  .marca b { display: block; font-size: 15px; letter-spacing: .02em; }
+  .marca span { color: var(--apagado); font-size: 12px; }
+  form { display: flex; gap: 8px; align-items: center; flex: 1; max-width: 980px; }
+  input, select, button { font: inherit; color: var(--texto); background: #1d1d1d; border: 1px solid var(--borda); border-radius: 8px; height: 36px; padding: 0 10px; }
+  input[type=search] { flex: 1; min-width: 220px; }
+  input[type=number] { width: 64px; }
+  button { cursor: pointer; }
+  button.prim { background: var(--texto); color: #111; border-color: var(--texto); font-weight: 600; }
+  label.peq { color: var(--apagado); font-size: 12px; display: flex; align-items: center; gap: 6px; }
+  aside { position: fixed; right: 14px; top: 72px; bottom: 14px; width: 440px; background: var(--painel); border: 1px solid var(--borda); border-radius: 14px;
+    overflow-y: auto; z-index: 3; padding: 18px 20px 26px; backdrop-filter: blur(8px); }
+  aside h2 { margin: 6px 0 4px; font-size: 20px; line-height: 1.2; }
+  aside h3 { margin: 22px 0 8px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--apagado); font-weight: 600; }
+  aside p { margin: 6px 0; }
+  .sub { color: var(--apagado); font-size: 12px; }
+  .campo { margin: 8px 0; }
+  .campo b { display: block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--fraco); font-weight: 600; margin-bottom: 2px; }
+  .chip { display: inline-block; margin: 2px 4px 2px 0; padding: 2px 8px; border-radius: 20px; border: 1px solid var(--borda); font-size: 12px; cursor: pointer; white-space: nowrap; }
+  .chip:hover { border-color: var(--texto); }
+  .chip i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+  .img { width: 100%; border-radius: 8px; display: block; background: #222; }
+  .forca { color: #F5B400; letter-spacing: 2px; }
+  .lista { margin: 0; padding: 0; list-style: none; }
+  .lista li { display: flex; gap: 10px; padding: 8px 6px; border-radius: 8px; cursor: pointer; align-items: flex-start; }
+  .lista li:hover { background: #222; }
+  .lista img { width: 92px; height: 56px; object-fit: cover; border-radius: 5px; flex: none; background: #222; }
+  .lista .num { font-weight: 700; color: var(--apagado); width: 18px; flex: none; }
+  .lista small { display: block; color: var(--apagado); font-size: 12px; }
+  .lista em { font-style: normal; color: #F5B400; font-size: 11px; }
+  pre { white-space: pre-wrap; word-break: break-word; font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; background: #0d0d0d; border: 1px solid var(--borda); border-radius: 8px; padding: 10px; color: #CFC9BF; }
+  .cmd { font: 12px/1.5 ui-monospace, Menlo, monospace; background: #0d0d0d; border: 1px solid var(--borda); border-radius: 8px; padding: 8px 10px; color: #F5B400; word-break: break-all; }
+  .acoes { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+  .acoes button { height: 30px; font-size: 12px; }
+  #legenda { position: fixed; left: 14px; bottom: 14px; background: var(--painel); border: 1px solid var(--borda); border-radius: 12px; padding: 12px 14px; z-index: 3; font-size: 12px; width: max-content; }
+  #legenda div { display: flex; align-items: center; gap: 8px; margin: 3px 0; cursor: pointer; }
+  #legenda i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  #dica { position: fixed; pointer-events: none; z-index: 4; background: #000; border: 1px solid var(--borda); border-radius: 8px; padding: 6px 9px; font-size: 12px; display: none; max-width: 300px; }
+  .slides { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .slide-item { display: grid; grid-template-columns: 120px 1fr; gap: 10px; align-items: start; }
+  .slide-item img { width: 120px; border-radius: 5px; background: #222; }
+  .slide-item small { color: var(--apagado); }
+  .zoom { position: fixed; left: 14px; top: 76px; z-index: 3; display: flex; flex-direction: column; gap: 6px; }
+  .zoom button { width: 36px; padding: 0; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<header>
+  <div class="marca"><b>Mapa da biblioteca</b><span id="contagem"></span></div>
+  <form id="busca" autocomplete="off">
+    <input type="search" id="q" placeholder="Simule um pedido ao modelo: ex. abertura com impacto, número grande, jornada do cliente">
+    <select id="fi"><option value="">toda intenção</option></select>
+    <select id="ft"><option value="">tudo</option><option value="modelo">modelos</option><option value="efeito">efeitos</option><option value="componente">componentes</option><option value="ref">referências externas</option></select>
+    <select id="fe"><option value="">toda estética</option></select>
+    <label class="peq">força ≥ <input type="number" id="ff" min="1" max="5" value="1"></label>
+    <button class="prim" type="submit">Buscar</button>
+    <button type="button" id="limpar">Limpar</button>
+  </form>
+</header>
+<div class="zoom"><button id="zmais" title="aproximar">+</button><button id="zmenos" title="afastar">−</button><button id="zfit" title="ver tudo">⤢</button></div>
+<aside id="painel"></aside>
+<div id="legenda"></div>
+<div id="dica"></div>
+<script src="dados.js"></script>
+<script>
+(() => {
+  const D = window.MAPA;
+  const SERVIDOR = location.protocol === 'http:' && location.hostname === '127.0.0.1';
+  const COR = { diferenciacao: '#FF5A3C', agrupamento: '#3E7BFF', sequencia: '#F5B400', previsao: '#B455FF' };
+  const ANG = { diferenciacao: -Math.PI / 2, agrupamento: 0, sequencia: Math.PI / 2, previsao: Math.PI };
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  // ---------- vocabulário ----------
+  const OPS = D.voc.operacoes;
+  const PISTA_NOME = Object.fromEntries(D.voc.pistas.map((p) => [p.id, p.nome]));
+  const TEC = Object.fromEntries(D.voc.tecnicas.map((t) => [t.id, t]));
+  const INT = Object.fromEntries(D.voc.intencoes.map((i) => [i.id, i]));
+  const MOV = Object.fromEntries(D.voc.movimentos.map((m) => [m.id, m]));
+  D.voc.intencoes.forEach((i) => $('fi').insertAdjacentHTML('beforeend', `<option value="${i.id}">${i.id}</option>`));
+  D.esteticas.forEach((e) => $('fe').insertAdjacentHTML('beforeend', `<option value="${e}">${e}</option>`));
+  const nA = D.itens.filter((i) => i.k === 'a').length, nR = D.itens.length - nA;
+  $('contagem').textContent = `${nA} arquivos do PPTRETA · ${nR} referências externas · ${D.voc.tecnicas.length} técnicas · 4 operações do olhar`;
+
+  // ---------- geometria ----------
+  const nos = { op: {}, pista: {}, tec: {} };
+  OPS.forEach((o) => { const a = ANG[o.id]; nos.op[o.id] = { x: Math.cos(a) * 300, y: Math.sin(a) * 300, r: 125, o }; });
+  const ordemPista = D.voc.pistas.map((p) => p.id);
+  OPS.forEach((o) => {
+    const ts = D.voc.tecnicas.filter((t) => t.operacao === o.id).sort((a, b) => ordemPista.indexOf(a.pista) - ordemPista.indexOf(b.pista) || a.nome.localeCompare(b.nome));
+    const ini = ANG[o.id] - Math.PI / 4 + 0.09, passo = (Math.PI / 2 - 0.18) / ts.length;
+    ts.forEach((t, i) => { const a = ini + (i + 0.5) * passo; nos.tec[t.id] = { x: Math.cos(a) * 780, y: Math.sin(a) * 780, a, t }; });
+    const grupos = {};
+    ts.forEach((t) => (grupos[t.pista] ||= []).push(nos.tec[t.id].a));
+    Object.entries(grupos).forEach(([p, as]) => {
+      const a = as.reduce((s, x) => s + x, 0) / as.length;
+      nos.pista[o.id + '/' + p] = { x: Math.cos(a) * 540, y: Math.sin(a) * 540, nome: PISTA_NOME[p], op: o.id, pista: p };
+    });
+  });
+
+  // posição das peças: direção média das técnicas que usam, espalhada pelo círculo inteiro (mantendo a ordem),
+  // as mais fortes mais perto do centro
+  let semente = 7;
+  const rnd = () => (semente = (semente * 16807) % 2147483647) / 2147483647;
+  const CEL = 86, ocupado = new Set();
+  const itens = D.itens.map((it) => ({ ...it }));
+  const porId = Object.fromEntries(itens.map((i) => [i.id, i]));
+  itens.forEach((it) => {
+    let sx = 0, sy = 0;
+    it.te.forEach((t) => { if (nos.tec[t]) { sx += Math.cos(nos.tec[t].a); sy += Math.sin(nos.tec[t].a); } });
+    it.alvo = (sx || sy) ? Math.atan2(sy, sx) : rnd() * Math.PI * 2 - Math.PI;
+  });
+  const porAngulo = [...itens].sort((a, b) => a.alvo - b.alvo);
+  porAngulo.forEach((it, k) => {
+    const igual = -Math.PI + 2 * Math.PI * (k + 0.5) / porAngulo.length;
+    let d = igual - it.alvo; d = Math.atan2(Math.sin(d), Math.cos(d));
+    it.ang = it.alvo + 0.7 * d;
+  });
+  const faixa = { 5: [1020, 1180], 4: [1080, 1650], 3: [1350, 2150], 2: [1900, 2250], 1: [2000, 2300] };
+  itens.sort((a, b) => (b.fo || 0) - (a.fo || 0));
+  itens.forEach((it) => {
+    const [r0, r1] = faixa[it.fo || 3], r = r0 + rnd() * (r1 - r0);
+    const gx0 = Math.round(Math.cos(it.ang) * r / CEL), gy0 = Math.round(Math.sin(it.ang) * r / CEL);
+    for (let raio = 0; raio < 50; raio++) {
+      let achou = null;
+      for (let dx = -raio; dx <= raio && !achou; dx++) for (let dy = -raio; dy <= raio && !achou; dy++) {
+        if (Math.max(Math.abs(dx), Math.abs(dy)) !== raio) continue;
+        const gx = gx0 + dx, gy = gy0 + dy, k = gx + ',' + gy;
+        if (ocupado.has(k) || Math.hypot(gx * CEL, gy * CEL) < 980) continue;
+        achou = [gx, gy, k];
+      }
+      if (achou) { ocupado.add(achou[2]); it.x = achou[0] * CEL + (rnd() - 0.5) * 22; it.y = achou[1] * CEL + (rnd() - 0.5) * 22; break; }
+    }
+    const base = { 5: 70, 4: 58, 3: 48, 2: 40, 1: 36 }[it.fo || 3];
+    if (it.ra >= 1) { it.w = base; it.h = base / it.ra; } else { it.h = base; it.w = base * it.ra; }
+    it.img = new Image();
+    it.img.onload = agendar;
+    it.img.src = 'm/' + encodeURIComponent(it.id) + '.jpg';
+  });
+  const slidesPor = {};
+  D.slides.forEach((s) => (slidesPor[s[0]] ||= []).push(s));
+
+  // ligações: peça -> técnica (cor da operação da técnica)
+  const corDaTec = (t) => COR[TEC[t].operacao];
+  const caminhoBase = {};
+  Object.values(COR).forEach((c) => (caminhoBase[c] = new Path2D()));
+  const curva = (p, it, t) => {
+    const n = nos.tec[t];
+    p.moveTo(it.x, it.y);
+    p.quadraticCurveTo((it.x + n.x) * 0.36, (it.y + n.y) * 0.36, n.x, n.y);
+  };
+  itens.forEach((it) => it.te.forEach((t) => { if (nos.tec[t]) curva(caminhoBase[corDaTec(t)], it, t); }));
+  const estrutura = new Path2D();
+  Object.values(nos.tec).forEach((n) => {
+    const p = nos.pista[n.t.operacao + '/' + n.t.pista], o = nos.op[n.t.operacao];
+    estrutura.moveTo(n.x, n.y); estrutura.lineTo(p.x, p.y); estrutura.lineTo(o.x, o.y);
+  });
+
+  // ---------- estado ----------
+  let escala = 0.3, tx = 0, ty = 0, dpr = window.devicePixelRatio || 1;
+  let sel = null;                 // {tipo, id}
+  let hiItens = null, hiTecs = null, hiOps = null, ranking = null;
+  let filtro = { it: '', tp: '', es: '', fo: 1 };
+  const cv = $('c'), ctx = cv.getContext('2d');
+
+  const visivel = (it) => (!filtro.it || it.it.includes(filtro.it)) && (!filtro.tp || (filtro.tp === 'ref' ? it.k === 'r' : it.k === 'a' && it.tp === filtro.tp)) &&
+    (!filtro.es || it.es.includes(filtro.es)) && (it.fo || 0) >= filtro.fo;
+
+  function ajustarTela() {
+    dpr = window.devicePixelRatio || 1;
+    cv.width = innerWidth * dpr; cv.height = innerHeight * dpr;
+    agendar();
+  }
+  function verTudo() {
+    let R = 0; itens.forEach((i) => { R = Math.max(R, Math.abs(i.x) + 40, Math.abs(i.y) + 40); });
+    const largura = innerWidth - 470, altura = innerHeight - 80;
+    escala = Math.min(largura, altura) / (2 * R) * 1.06;
+    tx = largura / 2; ty = 72 + altura / 2;
+    agendar();
+  }
+
+  let pedido = false;
+  function agendar() { if (!pedido) { pedido = true; requestAnimationFrame(desenhar); } }
+
+  function desenhar() {
+    pedido = false;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.fillStyle = '#121212'; ctx.fillRect(0, 0, cv.width, cv.height);
+    ctx.setTransform(dpr * escala, 0, 0, dpr * escala, dpr * tx, dpr * ty);
+    const px = 1 / escala, focando = !!hiItens;
+    // ligações de fundo
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.lineWidth = 1.1 * px;
+    Object.entries(caminhoBase).forEach(([c, p]) => { ctx.strokeStyle = c; ctx.globalAlpha = focando ? 0.02 : 0.13; ctx.stroke(p); });
+    // ligações em destaque
+    if (focando) {
+      const porCor = {};
+      itens.forEach((it) => {
+        if (!hiItens.has(it.id) || !visivel(it)) return;
+        it.te.forEach((t) => { if (nos.tec[t] && (!hiTecs || hiTecs.has(t))) curva(porCor[corDaTec(t)] ||= new Path2D(), it, t); });
+      });
+      ctx.lineWidth = 1.8 * px;
+      Object.entries(porCor).forEach(([c, p]) => { ctx.strokeStyle = c; ctx.globalAlpha = 0.85; ctx.stroke(p); });
+    }
+    ctx.globalCompositeOperation = 'source-over';
+    // estrutura: técnica -> pista -> operação
+    ctx.globalAlpha = 0.28; ctx.strokeStyle = '#8F8A82'; ctx.lineWidth = 1 * px; ctx.stroke(estrutura);
+    // operações
+    Object.values(nos.op).forEach((n) => {
+      const ativo = !focando || hiOps?.has(n.o.id);
+      ctx.globalAlpha = ativo ? 1 : 0.25;
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = '#161616'; ctx.fill(); ctx.lineWidth = 3 * px; ctx.strokeStyle = COR[n.o.id]; ctx.stroke();
+      const fs = Math.max(9, Math.min(16, n.r * escala * 0.3));
+      ctx.save(); ctx.translate(n.x, n.y); ctx.scale(px, px);
+      ctx.fillStyle = '#ECE8E1'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.font = `600 ${fs}px -apple-system, sans-serif`; ctx.fillText(n.o.nome, 0, 0); ctx.restore();
+    });
+    // pistas
+    const pistasAcesas = new Set([...(hiTecs || [])].map((t) => TEC[t] && TEC[t].operacao + '/' + TEC[t].pista));
+    Object.entries(nos.pista).forEach(([chave, n]) => {
+      const acesa = pistasAcesas.has(chave);
+      if (!acesa && escala < 0.3) { ctx.globalAlpha = focando ? 0.15 : 0.6; ctx.beginPath(); ctx.arc(n.x, n.y, 4 * px, 0, Math.PI * 2); ctx.fillStyle = COR[n.op]; ctx.fill(); return; }
+      ctx.globalAlpha = !focando || acesa ? 0.95 : 0.2;
+      ctx.save(); ctx.translate(n.x, n.y); ctx.scale(px, px);
+      ctx.font = '500 11px -apple-system, sans-serif'; const w = ctx.measureText(n.nome).width + 12;
+      ctx.fillStyle = '#121212'; ctx.strokeStyle = COR[n.op]; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.roundRect(-w / 2, -9, w, 18, 3); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#CFC9BF'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(n.nome, 0, 0.5); ctx.restore();
+    });
+    // técnicas
+    Object.values(nos.tec).forEach((n) => {
+      const h = hiTecs?.has(n.t.id);
+      ctx.globalAlpha = !focando || h ? 1 : 0.18;
+      ctx.beginPath(); ctx.arc(n.x, n.y, h ? 13 : 9, 0, Math.PI * 2); ctx.fillStyle = COR[n.t.operacao]; ctx.fill();
+      if (h || escala > 0.34) {
+        // rótulo girado na direção do raio, para o lado de fora do anel (não se sobrepõe)
+        ctx.save(); ctx.translate(n.x, n.y);
+        const direita = Math.cos(n.a) >= 0;
+        ctx.rotate(direita ? n.a : n.a + Math.PI); ctx.scale(px, px);
+        ctx.font = (h ? '600 ' : '') + '12px -apple-system, sans-serif'; ctx.fillStyle = h ? '#FFFFFF' : '#CFC9BF'; ctx.textBaseline = 'middle';
+        ctx.textAlign = direita ? 'left' : 'right';
+        ctx.fillText(n.t.nome, direita ? 16 : -16, 0); ctx.restore();
+      }
+    });
+    // peças
+    itens.forEach((it) => {
+      if (!visivel(it)) return;
+      const h = hiItens?.has(it.id);
+      ctx.globalAlpha = !focando || h ? 1 : 0.1;
+      const x = it.x - it.w / 2, y = it.y - it.h / 2;
+      if (it.img.complete && it.img.naturalWidth) ctx.drawImage(it.img, x, y, it.w, it.h);
+      else { ctx.fillStyle = '#2a2a2a'; ctx.fillRect(x, y, it.w, it.h); }
+      if (it.k === 'r') { ctx.lineWidth = 1.2 * px; ctx.strokeStyle = 'rgba(255,255,255,.55)'; ctx.strokeRect(x, y, it.w, it.h); }
+      if (h && sel && (sel.id === it.id)) { ctx.lineWidth = 3 * px; ctx.strokeStyle = '#ECE8E1'; ctx.strokeRect(x - 3 * px, y - 3 * px, it.w + 6 * px, it.h + 6 * px); }
+      if (ranking && ranking.pos.has(it.id)) {
+        const n = ranking.pos.get(it.id);
+        ctx.save(); ctx.translate(x, y); ctx.scale(px, px);
+        ctx.fillStyle = '#F5B400'; ctx.beginPath(); ctx.arc(0, 0, 11, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#111'; ctx.font = '700 12px -apple-system, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(n, 0, 0.5);
+        ctx.restore();
+      }
+    });
+    ctx.globalAlpha = 1;
+  }
+
+  // ---------- interação ----------
+  const mundo = (sx, sy) => [(sx - tx) / escala, (sy - ty) / escala];
+  function acertar(sx, sy) {
+    const [x, y] = mundo(sx, sy);
+    for (let i = itens.length - 1; i >= 0; i--) {
+      const it = itens[i];
+      if (visivel(it) && Math.abs(x - it.x) <= it.w / 2 && Math.abs(y - it.y) <= it.h / 2) return { tipo: 'item', id: it.id };
+    }
+    for (const n of Object.values(nos.tec)) if (Math.hypot(x - n.x, y - n.y) < 16) return { tipo: 'tec', id: n.t.id };
+    for (const n of Object.values(nos.op)) if (Math.hypot(x - n.x, y - n.y) < n.r) return { tipo: 'op', id: n.o.id };
+    return null;
+  }
+  let arrasto = null, moveu = false;
+  cv.addEventListener('mousedown', (e) => { arrasto = [e.clientX, e.clientY, tx, ty]; moveu = false; cv.classList.add('arrastando'); });
+  addEventListener('mouseup', (e) => {
+    cv.classList.remove('arrastando');
+    if (arrasto && !moveu && e.target === cv) { const a = acertar(e.clientX, e.clientY); a ? selecionar(a) : limpar(); }
+    arrasto = null;
+  });
+  addEventListener('mousemove', (e) => {
+    if (arrasto) {
+      const dx = e.clientX - arrasto[0], dy = e.clientY - arrasto[1];
+      if (Math.abs(dx) + Math.abs(dy) > 3) moveu = true;
+      tx = arrasto[2] + dx; ty = arrasto[3] + dy; agendar(); $('dica').style.display = 'none'; return;
+    }
+    if (e.target !== cv) { $('dica').style.display = 'none'; return; }
+    const a = acertar(e.clientX, e.clientY), dica = $('dica');
+    cv.classList.toggle('sobre', !!a);
+    if (!a) { dica.style.display = 'none'; return; }
+    let t = '';
+    if (a.tipo === 'item') { const it = porId[a.id]; t = `<b>${esc(it.ti)}</b><br><span class="sub">${it.k === 'r' ? 'referência externa' : it.tp} · força ${it.fo}</span>`; }
+    if (a.tipo === 'tec') { const tc = TEC[a.id]; t = `<b>${esc(tc.nome)}</b><br><span class="sub">${esc(tc.def)}</span>`; }
+    if (a.tipo === 'op') { const o = OPS.find((x) => x.id === a.id); t = `<b>${esc(o.nome)}</b><br><span class="sub">${esc(o.def)}</span>`; }
+    dica.innerHTML = t; dica.style.display = 'block'; dica.style.left = e.clientX + 14 + 'px'; dica.style.top = e.clientY + 14 + 'px';
+  });
+  cv.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const f = Math.exp(-e.deltaY * 0.0016), [wx, wy] = mundo(e.clientX, e.clientY);
+    escala = Math.min(4, Math.max(0.05, escala * f)); tx = e.clientX - wx * escala; ty = e.clientY - wy * escala; agendar();
+  }, { passive: false });
+  const zoomCentro = (f) => { const cx = (innerWidth - 470) / 2, cy = innerHeight / 2, [wx, wy] = mundo(cx, cy); escala *= f; tx = cx - wx * escala; ty = cy - wy * escala; agendar(); };
+  $('zmais').onclick = () => zoomCentro(1.3); $('zmenos').onclick = () => zoomCentro(1 / 1.3); $('zfit').onclick = verTudo;
+  addEventListener('resize', ajustarTela);
+
+  // ---------- seleção ----------
+  function selecionar(a) {
+    sel = a; ranking = null;
+    if (a.tipo === 'item') {
+      const it = porId[a.id];
+      hiItens = new Set([it.id]); hiTecs = new Set(it.te); hiOps = new Set(it.te.map((t) => TEC[t].operacao));
+      painelItem(it);
+    } else if (a.tipo === 'tec') {
+      hiTecs = new Set([a.id]); hiOps = new Set([TEC[a.id].operacao]);
+      hiItens = new Set(itens.filter((i) => i.te.includes(a.id) && visivel(i)).map((i) => i.id));
+      painelTec(a.id);
+    } else if (a.tipo === 'op') {
+      hiTecs = new Set(D.voc.tecnicas.filter((t) => t.operacao === a.id).map((t) => t.id)); hiOps = new Set([a.id]);
+      hiItens = new Set(itens.filter((i) => visivel(i) && i.te.some((t) => hiTecs.has(t))).map((i) => i.id));
+      painelOp(a.id);
+    }
+    agendar();
+  }
+  function limpar() { sel = null; hiItens = hiTecs = hiOps = ranking = null; painelInicio(); agendar(); }
+  $('limpar').onclick = () => { $('q').value = ''; ['fi', 'ft', 'fe'].forEach((i) => ($(i).value = '')); $('ff').value = 1; filtro = { it: '', tp: '', es: '', fo: 1 }; limpar(); };
+
+  const chipTec = (t) => TEC[t] ? `<span class="chip" data-tec="${t}"><i style="background:${corDaTec(t)}"></i>${esc(TEC[t].nome)}</span>` : '';
+  const chipInt = (i) => `<span class="chip" data-int="${i}">${i}</span>`;
+  const estrelas = (n) => '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n);
+  const campo = (rot, val) => val && (Array.isArray(val) ? val.length : true) ? `<div class="campo"><b>${rot}</b>${Array.isArray(val) ? val.map(esc).join(' · ') : esc(val)}</div>` : '';
+
+  function painelInicio() {
+    $('painel').innerHTML = `
+      <h2>Como ler o mapa</h2>
+      <p class="sub">É a biblioteca vista do jeito que o modelo enxerga: ele não olha a imagem primeiro, ele segue o vocabulário.</p>
+      <h3>Do centro para fora</h3>
+      <p><b>4 operações do olhar</b> no centro: diferenciação, agrupamento, sequência, previsão.</p>
+      <p><b>Pistas</b> (as etiquetas pequenas): de onde vem o sinal (cor e forma, espaço, social, significado, cultura).</p>
+      <p><b>${D.voc.tecnicas.length} técnicas</b> no anel colorido, cada uma pertence a uma operação.</p>
+      <p><b>Peças em volta</b>: arquivos do PPTRETA (miniatura do melhor slide) e referências externas (com borda branca). As mais fortes ficam mais perto do centro.</p>
+      <p><b>Linhas</b>: a peça usa aquela técnica. É a mesma ligação que o modelo usa quando busca por técnica.</p>
+      <h3>Experimente</h3>
+      <p>Clique numa <b>peça</b> para ver o que o modelo lê dela. Clique numa <b>técnica</b> ou numa <b>operação</b> para ver tudo que se liga a ela.
+      Escreva um <b>pedido</b> na busca: o mapa acende as peças que o modelo escolheria, na mesma ordem e com a mesma conta da ferramenta de busca.</p>
+      <p class="sub">Arraste para mover, use a roda do mouse para aproximar. Os slides "antes" não aparecem.</p>`;
+  }
+
+  function painelItem(it) {
+    const ref = it.k === 'r';
+    const img = ref ? 'r/' + encodeURIComponent(it.id) + '.jpg' : it.pr;
+    let h = `<img class="img" src="${img}" alt="">
+      <h2>${esc(it.ti)}</h2>
+      <div class="sub">${esc(it.id)} · ${ref ? 'referência externa · ' + esc(it.tp) : esc(it.tp) + ' · ' + esc((it.gr || []).join(', '))}</div>
+      <div class="forca">${estrelas(it.fo || 0)}</div>
+      <h3>O que o modelo lê</h3>
+      ${campo(ref ? 'o que se vê' : 'resumo', it.re)}
+      ${campo('ideia transferível', it.ide)}
+      ${campo(ref ? 'como levar para o slide' : 'como funciona', it.co)}
+      ${campo('como fazer em HTML', it.ht)}
+      <div class="campo"><b>intenções</b>${it.it.map(chipInt).join('')}</div>
+      <div class="campo"><b>técnicas (as linhas do mapa)</b>${it.te.map(chipTec).join('')}</div>
+      ${campo('movimento', (it.mo || []).map((m) => MOV[m] ? MOV[m].nome : m))}
+      ${campo('estética', it.es)}${campo('tom', it.to)}${campo('bom para', it.bp)}${campo('cuidados', it.cu)}
+      <div class="acoes">`;
+    if (!ref && SERVIDOR) h += `<button data-abrir="${esc(it.ar)}">Abrir no PowerPoint</button>`;
+    h += `<button data-copiar="${esc(ref ? it.orig : '_originais/' + (it.ar.endsWith('.pdf') ? 'canva/' : 'pptx/') + it.ar)}">Copiar caminho</button>
+      <button data-json="1">Ver como dado</button></div><pre id="json" hidden></pre>`;
+    h += `<h3>Como o modelo chegaria aqui</h3><div class="cmd">python3 -I ferramentas/buscar.py ${it.te.length ? '-t ' + it.te.slice(0, 2).join(',') : ''} ${it.it[0] ? '-i ' + it.it[0] : ''} --doc ${ref ? 'referencia' : 'arquivo'} --prancha</div>`;
+    const parecidos = itens.filter((o) => o.id !== it.id && visivel(o)).map((o) => [o, o.te.filter((t) => it.te.includes(t)).length + (o.it.some((x) => it.it.includes(x)) ? 0.5 : 0)])
+      .filter(([, n]) => n >= 2).sort((a, b) => b[1] - a[1] || (b[0].fo || 0) - (a[0].fo || 0)).slice(0, 6);
+    if (parecidos.length) h += `<h3>Parecidos pelo vocabulário</h3><ul class="lista">${parecidos.map(([o]) => linhaLista(o)).join('')}</ul>`;
+    if (!ref) {
+      const ss = (slidesPor[it.id] || []).sort((a, b) => a[1] - b[1]);
+      if (ss.length) h += `<h3>Slides (${ss.length}, sem os "antes")</h3><div class="slides">${ss.map((s) => `
+        <div class="slide-item"><img loading="lazy" src="../miniaturas/${encodeURIComponent(s[0])}/${String(s[1]).padStart(2, '0')}.jpg" alt="">
+        <div><b>${s[1]}</b> · ${chipInt(s[2])}${s[6] ? ' <span class="forca">★ destaque</span>' : ''}<br>${s[3].map(chipTec).join('')}<br><small>${esc(s[4])}</small></div></div>`).join('')}</div>`;
+    }
+    $('painel').innerHTML = h;
+    const js = { id: it.id, tipo: it.tp, forca: it.fo, intencoes: it.it, tecnicas: it.te, movimento: it.mo, estetica: it.es, tom: it.to,
+      [ref ? 'o_que' : 'resumo']: it.re, ideia: it.ide, [ref ? 'como_levar_para_slide' : 'como_funciona']: it.co, html: it.ht, bom_para: it.bp, cuidados: it.cu };
+    Object.keys(js).forEach((k) => (js[k] === undefined || js[k] === null) && delete js[k]);
+    $('json').textContent = JSON.stringify(js, null, 1);
+    $('painel').scrollTop = 0;
+  }
+  const linhaLista = (o, n, extra) => `<li data-item="${esc(o.id)}">${n ? `<span class="num">${n}</span>` : ''}<img loading="lazy" src="m/${encodeURIComponent(o.id)}.jpg" alt="">
+    <div><b>${esc(o.ti)}</b> <span class="forca">${'★'.repeat(o.fo || 0)}</span><small>${esc(o.ide || o.re || '')}</small>${extra || ''}</div></li>`;
+
+  function painelTec(id) {
+    const t = TEC[id], lista = itens.filter((i) => i.te.includes(id) && visivel(i)).sort((a, b) => (b.fo || 0) - (a.fo || 0));
+    $('painel').innerHTML = `<h2><span style="color:${COR[t.operacao]}">●</span> ${esc(t.nome)}</h2>
+      <div class="sub">técnica · ${esc(OPS.find((o) => o.id === t.operacao).nome)} · pista: ${esc(PISTA_NOME[t.pista])}</div>
+      <p>${esc(t.def)}</p><div class="campo"><b>como fazer em HTML</b>${esc(t.html)}</div>
+      <h3>Como o modelo busca</h3><div class="cmd">python3 -I ferramentas/buscar.py -t ${id} --prancha</div>
+      <h3>${lista.length} peças usam esta técnica</h3><ul class="lista">${lista.slice(0, 40).map((o) => linhaLista(o)).join('')}</ul>`;
+    $('painel').scrollTop = 0;
+  }
+  function painelOp(id) {
+    const o = OPS.find((x) => x.id === id), ts = D.voc.tecnicas.filter((t) => t.operacao === id);
+    $('painel').innerHTML = `<h2><span style="color:${COR[id]}">●</span> ${esc(o.nome)}</h2><p>${esc(o.def)}</p>
+      <h3>${ts.length} técnicas</h3>${ts.map((t) => `<div class="campo">${chipTec(t.id)}<br><span class="sub">${esc(t.def)}</span></div>`).join('')}
+      <p class="sub">${hiItens.size} peças ligadas a esta operação.</p>`;
+    $('painel').scrollTop = 0;
+  }
+
+  $('painel').addEventListener('click', (e) => {
+    const c = e.target.closest('[data-tec],[data-int],[data-item],[data-abrir],[data-copiar],[data-json]');
+    if (!c) return;
+    if (c.dataset.tec) selecionar({ tipo: 'tec', id: c.dataset.tec });
+    else if (c.dataset.int) { $('fi').value = c.dataset.int; $('busca').requestSubmit(); }
+    else if (c.dataset.item) { selecionar({ tipo: 'item', id: c.dataset.item }); centrar(porId[c.dataset.item]); }
+    else if (c.dataset.abrir) fetch('/abrir', { method: 'POST', headers: { 'X-Catalogo': '1', 'Content-Type': 'application/json' }, body: JSON.stringify({ arq: c.dataset.abrir }) });
+    else if (c.dataset.copiar) { navigator.clipboard?.writeText(c.dataset.copiar); c.textContent = 'Copiado'; }
+    else if (c.dataset.json) { const p = $('json'); p.hidden = !p.hidden; }
+  });
+  function centrar(it) {
+    if (!it) return;
+    const cx = (innerWidth - 470) / 2, cy = innerHeight / 2;
+    escala = Math.max(escala, 0.45); tx = cx - it.x * escala; ty = cy - it.y * escala; agendar();
+  }
+
+  // ---------- busca: a mesma conta do ferramentas/buscar.py ----------
+  const PARADAS = new Set('a o e de da do das dos em no na nos nas um uma uns umas para por com que se ao aos as os the of and'.split(' '));
+  const norm = (s) => String(s || '').normalize('NFKD').replace(/[^\x00-\x7f]/g, '').toLowerCase().replace(/[^a-z0-9%]+/g, ' ').trim();
+  const termos = (q) => norm(q).split(' ').filter((t) => t && t.length > 1 && !PARADAS.has(t));
+  const cache = new Map();
+  const palavrasDe = (t) => { if (!cache.has(t)) cache.set(t, new Set(t.split(' '))); return cache.get(t); };
+  function casa(t, palavras, texto) {
+    if (palavras.has(t)) return 1;
+    if (t.length >= 5) { const pre = t.slice(0, Math.max(5, t.length - 2)); for (const p of palavras) if (p.startsWith(pre)) return 0.7; }
+    return texto.includes(t) ? 0.5 : 0;
+  }
+  function pontuar(texto, forca, destaque, q) {
+    let s = 0, achados = [];
+    if (q.length) {
+      const pal = palavrasDe(texto), v = q.map((t) => casa(t, pal, texto));
+      const n = v.filter(Boolean).length;
+      if (!n || (q.length >= 3 && n < q.length / 2)) return null;
+      s += 4 * v.reduce((a, b) => a + b, 0) / q.length;
+      achados = q.filter((t, i) => v[i]);
+    }
+    s += 0.6 * (forca || 3) + (destaque ? 0.8 : 0);
+    return { s, achados };
+  }
+  function buscar(q, comTexto = true) {
+    const res = [];
+    itens.forEach((it) => {
+      if (!visivel(it)) return;
+      const r = pontuar(it.t, it.fo, false, comTexto ? q : []);
+      if (r) res.push({ s: r.s, achados: r.achados, it, doc: it.k === 'r' ? 'referência' : 'arquivo' });
+    });
+    if (filtro.tp !== 'ref') D.slides.forEach((s) => {
+      const it = porId[s[0]];
+      if (!it || !visivel({ ...it, it: [s[2]] })) return;
+      if (filtro.it && s[2] !== filtro.it) return;
+      const r = pontuar(s[7], s[5], s[6], comTexto ? q : []);
+      if (r) res.push({ s: r.s, achados: r.achados, it, doc: 'slide', slide: s });
+    });
+    return res.sort((a, b) => b.s - a.s);
+  }
+  $('busca').addEventListener('submit', (e) => {
+    e.preventDefault();
+    filtro = { it: $('fi').value, tp: $('ft').value, es: $('fe').value, fo: +$('ff').value || 1 };
+    const texto = $('q').value.trim(), q = termos(texto);
+    if (!q.length && !filtro.it && !filtro.tp && !filtro.es && filtro.fo <= 1) { limpar(); return; }
+    let res = buscar(q), aviso = '';
+    if (!res.length && q.length) { res = buscar(q, false); aviso = 'Nada casou com o texto dentro desses filtros; o modelo mostraria só pelos filtros.'; }
+    const top = res.slice(0, 12), pos = new Map();
+    top.forEach((r, i) => { if (!pos.has(r.it.id)) pos.set(r.it.id, i + 1); });
+    sel = { tipo: 'busca' };
+    hiItens = new Set(top.map((r) => r.it.id));
+    hiTecs = new Set(top.flatMap((r) => r.slide ? r.slide[3] : r.it.te));
+    hiOps = new Set([...hiTecs].map((t) => TEC[t]?.operacao));
+    ranking = { pos };
+    const cmd = ['python3 -I ferramentas/buscar.py', texto ? `"${texto}"` : '', filtro.it ? '-i ' + filtro.it : '', filtro.es ? '-e ' + filtro.es : '',
+      filtro.tp === 'ref' ? '--doc referencia' : filtro.tp ? '--tipo ' + filtro.tp : '', filtro.fo > 1 ? '--forca ' + filtro.fo : '', '--prancha'].filter(Boolean).join(' ');
+    $('painel').innerHTML = `<h2>O que o modelo escolheria</h2>
+      <p class="sub">${res.length} resultado(s). Os 12 melhores estão numerados no mapa. A conta é a mesma da ferramenta de busca:
+      quantos termos do pedido aparecem no texto da ficha, mais a força da peça.</p>
+      <div class="cmd">${esc(cmd)}</div>${aviso ? `<p class="sub" style="color:#F5B400">${aviso}</p>` : ''}
+      <ul class="lista">${top.map((r, i) => {
+        const extra = `<small>${r.doc}${r.slide ? ' ' + r.slide[1] + ' · ' + esc(r.slide[4]) : ''}</small>` +
+          (r.achados.length ? `<em>casou: ${r.achados.map(esc).join(', ')}</em>` : '');
+        if (r.slide) return `<li data-item="${esc(r.it.id)}"><span class="num">${i + 1}</span><img loading="lazy" src="../miniaturas/${encodeURIComponent(r.it.id)}/${String(r.slide[1]).padStart(2, '0')}.jpg" alt=""><div><b>${esc(r.it.ti)}</b> <span class="forca">${'★'.repeat(r.slide[5])}</span>${extra}</div></li>`;
+        return linhaLista(r.it, i + 1, extra);
+      }).join('')}</ul>`;
+    $('painel').scrollTop = 0;
+    agendar();
+  });
+
+  // legenda
+  $('legenda').innerHTML = OPS.map((o) => `<div data-op="${o.id}" title="${esc(o.def)}"><i style="background:${COR[o.id]}"></i>${esc(o.nome)}</div>`).join('') +
+    '<div style="margin-top:6px;cursor:default"><span class="sub">sem borda: PPTRETA · borda branca: referência externa</span></div>';
+  $('legenda').addEventListener('click', (e) => { const d = e.target.closest('[data-op]'); if (d) selecionar({ tipo: 'op', id: d.dataset.op }); });
+
+  painelInicio();
+  ajustarTela();
+  verTudo();
+})();
+</script>
+</body>
+</html>

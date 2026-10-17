@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo do motor</title>
+<link rel="stylesheet" href="motor.css">
+<style>
+  :root { --tinta: #f4f1ea; --fundo: #121212; --acento: #ff5a1f; --apoio: #8a8a8a; }
+  .slide { background: var(--fundo); color: var(--tinta); font-family: "Helvetica Neue", Arial, sans-serif; }
+  .eyebrow { position: absolute; left: 120px; top: 110px; font-size: 26px; letter-spacing: .3em; text-transform: uppercase; color: var(--apoio); }
+  .display { position: absolute; left: 112px; font-weight: 900; line-height: .86; letter-spacing: -.04em; text-transform: uppercase; margin: 0; }
+  .display em { font-style: normal; color: var(--acento); }
+  .apoio { position: absolute; font-size: 34px; line-height: 1.35; color: var(--apoio); max-width: 760px; }
+  .bola { position: absolute; background: var(--acento); border-radius: 50%; }
+  .card { position: absolute; border-radius: 28px; background: #1f1f1f; padding: 44px; }
+  .card b { display: block; font-size: 120px; line-height: 1; color: var(--acento); font-weight: 900; }
+  .card span { display: block; margin-top: 18px; font-size: 34px; line-height: 1.2; }
+  .palavra { position: absolute; font-weight: 900; text-transform: uppercase; letter-spacing: -.03em; line-height: 1; white-space: nowrap; }
+  .barra { position: absolute; left: 120px; height: 56px; background: var(--acento); border-radius: 6px; }
+  .rotulo-barra { position: absolute; left: 120px; font-size: 28px; color: var(--apoio); }
+</style>
+</head>
+<body>
+<div class="palco">
+
+  <!-- 1. ABRIR: título gigante, um objeto-símbolo pequeno que vai virar a próxima cena -->
+  <section class="slide">
+    <div class="eyebrow" data-m="eyebrow">Motor PPTRETA · demonstração</div>
+    <h1 class="display" style="top:250px;font-size:220px" data-m="titulo">Ideias que<br><em>se movem</em></h1>
+    <div class="bola" data-m="bola" style="right:180px;bottom:170px;width:150px;height:150px"></div>
+    <p class="apoio" style="left:120px;bottom:120px" data-passo="0" data-entra="sobe">Aperte a seta para a direita.</p>
+  </section>
+
+  <!-- 2. zoom-mergulho: a bola vira a tela inteira -->
+  <section class="slide">
+    <div class="bola" data-m="bola" style="inset:0;width:100%;height:100%;border-radius:0"></div>
+    <h2 class="display" style="top:330px;font-size:250px;color:var(--fundo)" data-passo="0" data-entra="escala">Mergulho</h2>
+    <p class="apoio" style="left:120px;bottom:120px;color:var(--fundo)" data-passo="0" data-entra="sobe">Mesmo data-m: pequeno no slide anterior, tela cheia aqui.</p>
+  </section>
+
+  <!-- 3. AGRUPAR com revelação escalonada -->
+  <section class="slide">
+    <div class="eyebrow" data-m="eyebrow">Agrupar</div>
+    <h2 class="display" style="top:170px;font-size:110px" data-m="titulo">Quatro <em>pilares</em></h2>
+    <div class="card" data-m="c1" data-passo="1" data-entra="sobe" style="left:120px;top:420px;width:390px;height:480px"><b>01</b><span>Primeiro item do grupo</span></div>
+    <div class="card" data-m="c2" data-passo="1" data-entra="sobe" style="left:540px;top:420px;width:390px;height:480px"><b>02</b><span>Segundo item do grupo</span></div>
+    <div class="card" data-m="c3" data-passo="1" data-entra="sobe" style="left:960px;top:420px;width:390px;height:480px"><b>03</b><span>Terceiro item do grupo</span></div>
+    <div class="card" data-m="c4" data-passo="1" data-entra="sobe" style="left:1380px;top:420px;width:390px;height:480px"><b>04</b><span>Quarto item do grupo</span></div>
+  </section>
+
+  <!-- 4. reorganizar + DESTACAR: os mesmos cards mudam de lugar e um cresce -->
+  <section class="slide">
+    <div class="eyebrow" data-m="eyebrow">Reorganizar e destacar</div>
+    <div class="card" data-m="c2" style="left:120px;top:200px;width:1100px;height:760px;background:var(--acento);color:var(--fundo)"><b style="color:var(--fundo);font-size:260px">02</b><span style="font-size:64px;font-weight:800">O segundo item vira o assunto</span></div>
+    <div class="card" data-m="c1" style="left:1290px;top:200px;width:510px;height:236px"><b style="font-size:80px">01</b></div>
+    <div class="card" data-m="c3" style="left:1290px;top:462px;width:510px;height:236px"><b style="font-size:80px">03</b></div>
+    <div class="card" data-m="c4" style="left:1290px;top:724px;width:510px;height:236px"><b style="font-size:80px">04</b></div>
+  </section>
+
+  <!-- 5. PROVAR: dado como herói, contagem e barras -->
+  <section class="slide" data-trans="empurrar">
+    <div class="eyebrow">Provar</div>
+    <div class="display" style="top:190px;font-size:330px;color:var(--acento)"><span data-conta="87">0</span>%</div>
+    <p class="apoio" style="left:1180px;top:300px">dos números ficam na memória quando aparecem sozinhos e grandes.</p>
+    <div class="rotulo-barra" style="top:700px">Antes</div>
+    <div class="barra" data-barra style="--v:.32;top:745px;width:1680px;background:#3a3a3a"></div>
+    <div class="rotulo-barra" style="top:840px">Depois</div>
+    <div class="barra" data-barra style="--v:.87;top:885px;width:1680px"></div>
+  </section>
+
+  <!-- 6 e 7. texto em movimento: as mesmas palavras mudam de lugar e de peso -->
+  <section class="slide">
+    <div class="palavra" data-m="w1" style="left:120px;top:260px;font-size:150px">O que</div>
+    <div class="palavra" data-m="w2" style="left:120px;top:420px;font-size:150px">importa</div>
+    <div class="palavra" data-m="w3" style="left:120px;top:580px;font-size:150px">é a</div>
+    <div class="palavra" data-m="w4" style="left:120px;top:740px;font-size:150px;color:var(--apoio)">ideia</div>
+  </section>
+  <section class="slide">
+    <div class="palavra" data-m="w1" style="left:120px;top:140px;font-size:60px;color:var(--apoio)">O que</div>
+    <div class="palavra" data-m="w2" style="left:330px;top:140px;font-size:60px;color:var(--apoio)">importa</div>
+    <div class="palavra" data-m="w3" style="left:640px;top:140px;font-size:60px;color:var(--apoio)">é a</div>
+    <div class="palavra" data-m="w4" style="left:100px;top:300px;font-size:520px;color:var(--acento)">ideia</div>
+  </section>
+
+  <!-- 8. CITAR com revelação por máscara circular e voo de fora da tela -->
+  <section class="slide" data-trans="circulo">
+    <div class="bola" data-m="bola2" style="left:1250px;top:240px;width:600px;height:600px;background:linear-gradient(135deg,#ff5a1f,#ffc04d)" data-passo="1" data-entra="circulo"></div>
+    <p class="display" style="top:280px;font-size:96px;max-width:1080px;text-transform:none;letter-spacing:-.02em;line-height:1.05">"Mostre uma coisa por vez, e cada uma vai parecer a mais importante."</p>
+    <p class="apoio" style="left:120px;top:820px" data-passo="2" data-entra="esquerda">Princípio de revelação progressiva</p>
+  </section>
+
+  <!-- 9. voo: a bola entra de fora da tela -->
+  <section class="slide">
+    <div class="bola" data-m="bola2" style="left:860px;top:340px;width:200px;height:200px;background:linear-gradient(135deg,#ff5a1f,#ffc04d)"></div>
+    <h2 class="display" style="top:640px;font-size:150px;left:0;right:0;text-align:center">Fim</h2>
+  </section>
+
+</div>
+<script src="motor.js"></script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catálogo PPTRETA</title>
+<style>
+:root {
+  --bg: #f4f4f1; --surface: #ffffff; --surface-2: #ecece8; --ink: #16171a; --muted: #686c73;
+  --line: #e2e2dc; --accent: #2f55ff; --accent-ink: #ffffff; --warn: #b4541a; --shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
+  --thumb-bg: #e6e6e1;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e0f11; --surface: #17181b; --surface-2: #202226; --ink: #f0f0ec; --muted: #9a9ea6;
+    --line: #2a2c31; --accent: #7f98ff; --accent-ink: #0e0f11; --warn: #f0a46c; --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    --thumb-bg: #08090a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e0f11; --surface: #17181b; --surface-2: #202226; --ink: #f0f0ec; --muted: #9a9ea6;
+  --line: #2a2c31; --accent: #7f98ff; --accent-ink: #0e0f11; --warn: #f0a46c; --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  --thumb-bg: #08090a;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 15px/1.45 Manrope, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select { font: inherit; color: inherit; }
+a { color: inherit; }
+
+/* topo */
+.top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.top-inner { max-width: 1680px; margin: 0 auto; padding: 18px 28px 14px; }
+.row1 { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.brand { display: flex; flex-direction: column; min-width: 220px; }
+.brand h1 { margin: 0; font-size: 22px; letter-spacing: -.02em; font-weight: 800; }
+.brand span { color: var(--muted); font-size: 13px; }
+.search { flex: 1; min-width: 260px; position: relative; }
+.search input {
+  width: 100%; height: 46px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface);
+  padding: 0 18px 0 44px; font-size: 15px; outline: none; box-shadow: var(--shadow);
+}
+.search input:focus { border-color: var(--accent); }
+.search svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--muted); }
+.search kbd { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font: 12px/1 ui-monospace, Menlo, monospace; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; padding: 4px 6px; }
+.tools { display: flex; gap: 10px; align-items: center; }
+select, .btn-ghost {
+  height: 40px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); padding: 0 14px; cursor: pointer;
+}
+.chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.chip {
+  border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 12px; cursor: pointer;
+  font-size: 13px; font-weight: 600; display: inline-flex; gap: 6px; align-items: center; white-space: nowrap;
+}
+.chip small { color: var(--muted); font-weight: 600; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip[aria-pressed="true"] small { color: inherit; opacity: .7; }
+.chips.flags .chip { font-weight: 500; }
+.chips.flags .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+
+/* grade */
+main { max-width: 1680px; margin: 0 auto; padding: 20px 28px 80px; }
+.count { color: var(--muted); font-size: 13px; margin: 2px 0 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 22px; }
+.card { background: var(--surface); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); cursor: pointer; border: 1px solid var(--line); transition: transform .15s ease, box-shadow .15s ease; text-align: left; padding: 0; }
+.card:hover, .card:focus-visible { transform: translateY(-2px); outline: none; border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
+.shot { position: relative; aspect-ratio: 16 / 9; background: var(--thumb-bg); overflow: hidden; }
+.shot img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.shot .n { position: absolute; right: 8px; bottom: 8px; background: rgba(0,0,0,.62); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 7px; border-radius: 999px; letter-spacing: .02em; }
+.shot .play { position: absolute; left: 8px; bottom: 8px; display: flex; gap: 3px; opacity: 0; transition: opacity .2s; }
+.card:hover .shot .play { opacity: 1; }
+.shot .play i { width: 14px; height: 3px; border-radius: 2px; background: rgba(255,255,255,.45); }
+.shot .play i.on { background: #fff; }
+.meta { padding: 12px 14px 14px; }
+.meta h3 { margin: 0 0 2px; font-size: 15px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; }
+.meta p { margin: 0; color: var(--muted); font-size: 12.5px; }
+.tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 9px; }
+.tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--muted); }
+.tag.hot { color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.empty { padding: 80px 0; text-align: center; color: var(--muted); }
+
+/* detalhe */
+.overlay { position: fixed; inset: 0; z-index: 50; background: var(--bg); overflow-y: auto; display: none; }
+.overlay.open { display: block; }
+.d-head { position: sticky; top: 0; z-index: 2; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.d-head-inner { max-width: 1680px; margin: 0 auto; padding: 16px 28px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+.back { width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; display: grid; place-items: center; flex: none; }
+.d-title { flex: 1; min-width: 220px; }
+.d-title h2 { margin: 0; font-size: 22px; letter-spacing: -.02em; }
+.d-title p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn { height: 40px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); padding: 0 16px; cursor: pointer; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.d-body { max-width: 1680px; margin: 0 auto; padding: 20px 28px 80px; }
+.facts { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; font-size: 13px; color: var(--muted); }
+.facts b { color: var(--ink); font-weight: 700; }
+.facts .warn { color: var(--warn); }
+.slides { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.slides.vert { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+.slide { position: relative; border-radius: 10px; overflow: hidden; background: var(--thumb-bg); border: 1px solid var(--line); cursor: zoom-in; padding: 0; }
+.slide img { width: 100%; display: block; }
+.slide span { position: absolute; left: 8px; top: 8px; background: rgba(0,0,0,.62); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 999px; }
+.slide em { position: absolute; right: 8px; top: 8px; background: rgba(0,0,0,.62); color: #ffd28a; font-size: 11px; font-weight: 700; font-style: normal; padding: 2px 7px; border-radius: 999px; }
+.slide .miss { aspect-ratio: 16/9; display: grid; place-items: center; color: var(--muted); font-size: 12px; }
+
+/* tela cheia */
+.lb { position: fixed; inset: 0; z-index: 80; background: rgba(5,6,8,.94); display: none; align-items: center; justify-content: center; }
+.lb.open { display: flex; }
+.lb img { max-width: calc(100vw - 160px); max-height: calc(100vh - 110px); border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+.lb .nav { position: absolute; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 999px; border: 0; background: rgba(255,255,255,.1); color: #fff; font-size: 24px; cursor: pointer; }
+.lb .nav:hover { background: rgba(255,255,255,.2); }
+.lb .prev { left: 24px; } .lb .next { right: 24px; }
+.lb .info { position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,.8); font-size: 13px; }
+.lb .close { position: absolute; top: 18px; right: 22px; width: 44px; height: 44px; border-radius: 999px; border: 0; background: rgba(255,255,255,.1); color: #fff; font-size: 22px; cursor: pointer; }
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-size: 14px; font-weight: 600; opacity: 0; transition: all .2s; z-index: 100; pointer-events: none; }
+.toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 720px) {
+  .top-inner, main, .d-head-inner, .d-body { padding-left: 16px; padding-right: 16px; }
+  .brand { min-width: 0; }
+  .search kbd { display: none; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+  .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; }
+  .lb img { max-width: calc(100vw - 24px); }
+  .lb .nav { display: none; }
+  .slides { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div class="row1">
+      <div class="brand">
+        <h1>Catálogo PPTRETA</h1>
+        <span id="resumo"></span>
+      </div>
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Buscar por tema, marca, texto do slide ou nome do arquivo" autocomplete="off">
+        <kbd>/</kbd>
+      </label>
+      <div class="tools">
+        <select id="ordem" aria-label="Ordenar">
+          <option value="categoria">Por categoria</option>
+          <option value="novos">Mais recentes</option>
+          <option value="curso">Ordem do curso</option>
+          <option value="slides">Mais slides</option>
+          <option value="nome">Nome A-Z</option>
+        </select>
+        <button class="btn-ghost" id="tema" title="Alternar claro e escuro">◐</button>
+      </div>
+    </div>
+    <div class="chips" id="grupos"></div>
+    <div class="chips flags" id="flags"></div>
+  </div>
+</header>
+
+<main>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" hidden>Nada encontrado. Tente outra palavra ou limpe os filtros.</div>
+</main>
+
+<section class="overlay" id="det" aria-modal="true" role="dialog">
+  <div class="d-head"><div class="d-head-inner">
+    <button class="back" id="voltar" aria-label="Voltar">←</button>
+    <div class="d-title"><h2 id="d-titulo"></h2><p id="d-sub"></p></div>
+    <div class="actions" id="d-acoes"></div>
+  </div></div>
+  <div class="d-body">
+    <div class="facts" id="d-fatos"></div>
+    <div class="slides" id="d-slides"></div>
+  </div>
+</section>
+
+<div class="lb" id="lb">
+  <button class="close" id="lb-x" aria-label="Fechar">×</button>
+  <button class="nav prev" id="lb-p" aria-label="Anterior">‹</button>
+  <img id="lb-img" alt="">
+  <button class="nav next" id="lb-n" aria-label="Próximo">›</button>
+  <div class="info" id="lb-info"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="dados.js"></script>
+<script>
+(function () {
+  const C = window.CATALOGO;
+  const $ = (id) => document.getElementById(id);
+  const pad = (n) => String(n).padStart(2, '0');
+  const norm = (s) => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const base = new URL('../', location.href);
+  // aberto pelo atalho "Abrir catálogo": dá para abrir os arquivos direto
+  const SERVIDOR = location.protocol === 'http:' && location.hostname === '127.0.0.1';
+
+  // junta apresentações e PDFs do Canva num formato só
+  const itens = C.decks.map((d) => ({
+    ...d, tipo: 'pptx', busca: norm([d.titulo, d.grupos.join(' '), d.modulo, d.arq, d.texto, d.fontes.join(' ')].join(' ')),
+  })).concat(C.canva.map((c) => ({
+    id: c.id, tipo: 'canva', titulo: c.aula, arq: c.arq, grupos: ['Canva (PDF)'], modulo: 'Canva', ordem: [16, c.n],
+    slides: c.paginas, thumbs: c.thumbs, canva: c.canva, insta: c.insta, vertical: false,
+    busca: norm(['canva', c.aula, c.arq].join(' ')),
+  })));
+
+  const ORDEM_GRUPOS = ['Templates completos', 'Templates temáticos', 'Efeito WOW', 'Capas', 'Gráficos e esquemas', 'Linha do tempo',
+    'Mapas', 'Organograma', 'Pessoal', 'Produto', 'Padrões', '3D', 'Instagram', 'Diversos', 'Grátis', 'Canva (PDF)', 'Outros'];
+  const FLAGS = [
+    { k: 'morph', label: 'Com Morph', test: (d) => d.morph > 0 },
+    { k: 'video', label: 'Com vídeo', test: (d) => d.video },
+    { k: 'tres_d', label: 'Objeto 3D', test: (d) => d.tres_d },
+    { k: 'grafico', label: 'Gráfico editável', test: (d) => d.grafico },
+    { k: 'tabela', label: 'Tabela', test: (d) => d.tabela },
+    { k: 'vertical', label: 'Vertical 9:16', test: (d) => d.vertical },
+  ];
+  const st = { q: '', grupo: null, flags: new Set(), ordem: 'categoria' };
+  try { const s = JSON.parse(localStorage.getItem('pptreta-filtros') || '{}'); if (s.ordem) st.ordem = s.ordem; } catch (e) {}
+
+  const totSlides = C.decks.reduce((a, d) => a + d.slides, 0);
+  $('resumo').textContent = `${C.decks.length} apresentações, ${totSlides.toLocaleString('pt-BR')} slides e ${C.canva.length} PDFs do Canva`;
+
+  function chipsGrupos() {
+    const cont = {};
+    itens.forEach((d) => d.grupos.forEach((g) => (cont[g] = (cont[g] || 0) + 1)));
+    const el = $('grupos');
+    el.innerHTML = `<button class="chip" data-g="" aria-pressed="${!st.grupo}">Tudo <small>${itens.length}</small></button>` +
+      ORDEM_GRUPOS.filter((g) => cont[g]).map((g) => `<button class="chip" data-g="${esc(g)}" aria-pressed="${st.grupo === g}">${esc(g)} <small>${cont[g]}</small></button>`).join('');
+    el.onclick = (e) => { const b = e.target.closest('.chip'); if (!b) return; st.grupo = b.dataset.g || null; chipsGrupos(); render(); };
+  }
+  function chipsFlags() {
+    const el = $('flags');
+    el.innerHTML = FLAGS.map((f) => `<button class="chip" data-k="${f.k}" aria-pressed="${st.flags.has(f.k)}">${f.label}</button>`).join('');
+    el.onclick = (e) => { const b = e.target.closest('.chip'); if (!b) return; const k = b.dataset.k; st.flags.has(k) ? st.flags.delete(k) : st.flags.add(k); chipsFlags(); render(); };
+  }
+
+  const img = (d, n) => `miniaturas/${d.id}/${pad(n)}.jpg`;
+  function tags(d) {
+    if (d.tipo === 'canva') return '<span class="tag">PDF do Canva</span>';
+    const t = [];
+    if (d.morph) t.push('<span class="tag hot">Morph</span>');
+    if (d.video) t.push('<span class="tag">Vídeo</span>');
+    if (d.tres_d) t.push('<span class="tag">3D</span>');
+    if (d.grafico) t.push('<span class="tag">Gráfico</span>');
+    if (d.tabela) t.push('<span class="tag">Tabela</span>');
+    if (d.vertical) t.push('<span class="tag">9:16</span>');
+    return t.join('');
+  }
+
+  function filtrar() {
+    const toks = norm(st.q).split(/\s+/).filter(Boolean);
+    let r = itens.filter((d) => (!st.grupo || d.grupos.includes(st.grupo)) &&
+      [...st.flags].every((k) => d.tipo === 'pptx' && FLAGS.find((f) => f.k === k).test(d)) &&
+      toks.every((t) => d.busca.includes(t)));
+    const cmpCurso = (a, b) => a.ordem[0] - b.ordem[0] || a.ordem[1] - b.ordem[1];
+    const pos = (d) => ORDEM_GRUPOS.indexOf(d.grupos[0]);
+    if (st.ordem === 'categoria') r.sort((a, b) => pos(a) - pos(b) || b.ordem[0] - a.ordem[0] || b.ordem[1] - a.ordem[1]);
+    if (st.ordem === 'curso') r.sort(cmpCurso);
+    if (st.ordem === 'novos') r.sort((a, b) => b.ordem[0] - a.ordem[0] || b.ordem[1] - a.ordem[1]);
+    if (st.ordem === 'slides') r.sort((a, b) => b.slides - a.slides || cmpCurso(a, b));
+    if (st.ordem === 'nome') r.sort((a, b) => a.titulo.localeCompare(b.titulo, 'pt-BR'));
+    return r;
+  }
+
+  let lista = [];
+  function render() {
+    lista = filtrar();
+    $('count').textContent = lista.length === itens.length ? `${lista.length} itens` : `${lista.length} de ${itens.length} itens`;
+    $('empty').hidden = lista.length > 0;
+    $('grid').innerHTML = lista.map((d, i) => {
+      const capa = d.thumbs.length ? `<img loading="lazy" decoding="async" src="${img(d, d.thumbs[0])}" alt="">` : '';
+      const dots = d.thumbs.length > 1 ? `<div class="play">${d.thumbs.slice(0, 12).map((_, j) => `<i class="${j ? '' : 'on'}"></i>`).join('')}</div>` : '';
+      const sub = `${esc(d.grupos[0])} · ${d.slides} ${d.tipo === 'canva' ? (d.slides > 1 ? 'páginas' : 'página') : (d.slides > 1 ? 'slides' : 'slide')}`;
+      return `<button class="card" data-i="${i}"><div class="shot">${capa}<span class="n">${d.slides}</span>${dots}</div>
+        <div class="meta"><h3>${esc(d.titulo)}</h3><p>${sub}</p><div class="tags">${tags(d)}</div></div></button>`;
+    }).join('');
+    try { localStorage.setItem('pptreta-filtros', JSON.stringify({ ordem: st.ordem })); } catch (e) {}
+  }
+
+  // passa os slides ao parar o mouse em cima do card
+  let timer = null;
+  $('grid').addEventListener('mouseover', (e) => {
+    const card = e.target.closest('.card'); if (!card || card.dataset.anim) return;
+    const d = lista[+card.dataset.i]; if (!d || d.thumbs.length < 2) return;
+    card.dataset.anim = '1'; let k = 0; const im = card.querySelector('img'); const dots = card.querySelectorAll('.play i');
+    clearInterval(timer);
+    timer = setInterval(() => {
+      k = (k + 1) % Math.min(d.thumbs.length, 12);
+      im.src = img(d, d.thumbs[k]); dots.forEach((x, j) => x.classList.toggle('on', j === k));
+    }, 750);
+    card.addEventListener('mouseleave', function out() {
+      clearInterval(timer); delete card.dataset.anim; im.src = img(d, d.thumbs[0]);
+      dots.forEach((x, j) => x.classList.toggle('on', j === 0)); card.removeEventListener('mouseleave', out);
+    });
+  });
+  $('grid').addEventListener('click', (e) => { const c = e.target.closest('.card'); if (c) abrir(lista[+c.dataset.i]); });
+
+  // tela de detalhe
+  let atual = null;
+  function abrir(d, semHash) {
+    atual = d;
+    $('d-titulo').textContent = d.titulo;
+    $('d-sub').textContent = `${d.grupos.join(', ')}${d.modulo && d.tipo === 'pptx' ? ' · módulo ' + d.modulo : ''}`;
+    const arqURL = new URL((d.tipo === 'canva' ? '_originais/canva/' : '_originais/pptx/') + encodeURIComponent(d.arq), base).href;
+    const arq = esc(d.arq);
+    let acoes = '';
+    if (d.tipo === 'pptx') {
+      acoes += SERVIDOR
+        ? `<button class="btn primary" data-abrir="${arq}">Abrir no PowerPoint</button><button class="btn" data-abrir="${arq}" data-finder="1">Mostrar no Finder</button>`
+        : `<button class="btn primary" data-copy="${arq}">Copiar nome do arquivo</button>`;
+    } else {
+      acoes += `<a class="btn primary" href="${esc(d.canva)}" target="_blank" rel="noopener">Abrir no Canva</a>`;
+      acoes += SERVIDOR ? `<button class="btn" data-abrir="${arq}">Ver PDF</button>` : `<a class="btn" href="${arqURL}" target="_blank">Ver PDF</a>`;
+      acoes += `<a class="btn" href="${esc(d.insta)}" target="_blank" rel="noopener">Post no Instagram</a>`;
+    }
+    $('d-acoes').innerHTML = acoes;
+    const f = [`<span>Arquivo <b>${esc(d.arq)}</b></span>`];
+    if (d.tipo === 'pptx') {
+      f.push(`<span><b>${d.slides}</b> slides</span>`, `<span><b>${d.mb}</b> MB</span>`);
+      if (d.morph) f.push(`<span>Morph em <b>${d.morph}</b> slides</span>`);
+      if (d.fontes.length) f.push(`<span>Fontes <b>${d.fontes.map(esc).join(', ')}</b></span>`);
+      if (d.faltam.length) f.push(`<span class="warn">Não instaladas: ${d.faltam.map(esc).join(', ')}</span>`);
+    } else f.push(`<span><b>${d.slides}</b> páginas</span>`, '<span>PDF não editável, use o link do Canva para editar</span>');
+    $('d-fatos').innerHTML = f.join('');
+    const total = Array.from({ length: d.slides }, (_, i) => i + 1);
+    $('d-slides').className = 'slides' + (d.vertical ? ' vert' : '');
+    $('d-slides').innerHTML = total.map((n) => d.thumbs.includes(n)
+      ? `<button class="slide" data-n="${n}"><img loading="lazy" decoding="async" src="${img(d, n)}" alt="Slide ${n}"><span>${n}</span>${(d.ocultos || []).includes(n) ? '<em title="Slide oculto: não aparece na apresentação">oculto</em>' : ''}</button>`
+      : `<div class="slide"><div class="miss">Slide ${n} sem prévia</div><span>${n}</span></div>`).join('');
+    $('det').classList.add('open'); $('det').scrollTop = 0; document.body.style.overflow = 'hidden';
+    if (!semHash) history.pushState({ id: d.id }, '', '#' + d.id);
+  }
+  function fechar(semHash) {
+    $('det').classList.remove('open'); document.body.style.overflow = ''; atual = null;
+    if (!semHash && location.hash) history.pushState({}, '', location.pathname + location.search);
+  }
+  $('voltar').onclick = () => (history.state && history.state.id ? history.back() : fechar());
+  window.addEventListener('popstate', () => {
+    const id = location.hash.slice(1); const d = itens.find((x) => x.id === id);
+    fecharLb(); d ? abrir(d, true) : fechar(true);
+  });
+  $('d-acoes').addEventListener('click', (e) => {
+    const a = e.target.closest('[data-abrir]');
+    if (a) {
+      fetch('/abrir', { method: 'POST', headers: { 'X-Catalogo': '1', 'Content-Type': 'application/json' }, body: JSON.stringify({ arq: a.dataset.abrir, finder: !!a.dataset.finder }) })
+        .then((r) => toast(r.ok ? (a.dataset.finder ? 'Mostrando no Finder' : 'Abrindo...') : 'Arquivo não encontrado na pasta'))
+        .catch(() => toast('O atalho Abrir catálogo foi fechado. Abra de novo.'));
+      return;
+    }
+    const b = e.target.closest('[data-copy]'); if (!b) return;
+    navigator.clipboard.writeText(b.dataset.copy).then(() => toast('Nome copiado. Cole na busca do Finder.'), () => toast(b.dataset.copy));
+  });
+
+  // slide em tela cheia
+  let lbN = 0;
+  function abrirLb(n) { lbN = n; mostrarLb(); $('lb').classList.add('open'); }
+  function mostrarLb() { $('lb-img').src = img(atual, atual.thumbs[lbN]); $('lb-info').textContent = `${atual.titulo} · slide ${atual.thumbs[lbN]} de ${atual.slides}`; }
+  function fecharLb() { $('lb').classList.remove('open'); }
+  function passo(k) { if (!atual) return; lbN = (lbN + k + atual.thumbs.length) % atual.thumbs.length; mostrarLb(); }
+  $('d-slides').addEventListener('click', (e) => { const s = e.target.closest('.slide[data-n]'); if (s) abrirLb(atual.thumbs.indexOf(+s.dataset.n)); });
+  $('lb-x').onclick = fecharLb; $('lb-p').onclick = () => passo(-1); $('lb-n').onclick = () => passo(1);
+  $('lb').addEventListener('click', (e) => { if (e.target.id === 'lb') fecharLb(); });
+
+  document.addEventListener('keydown', (e) => {
+    if ($('lb').classList.contains('open')) {
+      if (e.key === 'Escape') fecharLb(); if (e.key === 'ArrowRight') passo(1); if (e.key === 'ArrowLeft') passo(-1); return;
+    }
+    if ($('det').classList.contains('open')) { if (e.key === 'Escape') $('voltar').click(); return; }
+    if (e.key === '/' && document.activeElement !== $('q')) { e.preventDefault(); $('q').focus(); }
+  });
+
+  let tq;
+  $('q').addEventListener('input', () => { clearTimeout(tq); tq = setTimeout(() => { st.q = $('q').value; render(); }, 120); });
+  $('ordem').value = st.ordem;
+  $('ordem').onchange = () => { st.ordem = $('ordem').value; render(); };
+  $('tema').onclick = () => {
+    const escuro = document.documentElement.dataset.theme ? document.documentElement.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.dataset.theme = escuro ? 'light' : 'dark';
+  };
+
+  let tt;
+  function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('on'), 2200); }
+
+  chipsGrupos(); chipsFlags(); render();
+  if (location.hash) { const d = itens.find((x) => x.id === location.hash.slice(1)); if (d) abrir(d, true); }
+})();
+</script>
+</body>
+</html>

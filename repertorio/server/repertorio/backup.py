@@ -75,3 +75,40 @@ def restore(settings,source):
                 if previous:previous.rename(settings.home)
                 raise
     return {'restored':str(settings.home),'previous':str(previous) if previous else None}
+
+
+def backup_dir(settings):
+    """Pasta das cópias semanais: REPERTORIO_BACKUP_DIR, ou o iCloud Drive (fora do Mac), ou ao lado dos dados."""
+    if os.getenv('REPERTORIO_BACKUP_DIR'):return Path(os.environ['REPERTORIO_BACKUP_DIR']).expanduser()
+    icloud=Path.home()/'Library/Mobile Documents/com~apple~CloudDocs'
+    return icloud/'Backups'/'Repertório' if icloud.is_dir() else settings.home.parent/'backups'
+
+
+def backup_now(lib,target,keep=6):
+    """Uma cópia da curadoria (banco e criações) e do histórico do projeto; guarda só as mais recentes."""
+    import subprocess
+    from datetime import datetime
+    target.mkdir(parents=True,exist_ok=True)
+    stamp=datetime.now().strftime('%Y-%m-%d-%H%M%S')
+    result=backup(lib.settings,target/f'repertorio-{stamp}.zip')
+    if (lib.settings.root/'.git').exists():
+        done=subprocess.run(['git','-C',str(lib.settings.root),'bundle','create',str(target/f'pptreta-{stamp}.bundle'),'--all'],capture_output=True,text=True)
+        result['history']=str(target/f'pptreta-{stamp}.bundle') if done.returncode==0 else 'falhou: '+done.stderr.strip()[-200:]
+    for pattern in ('repertorio-*.zip','pptreta-*.bundle'):
+        for old in sorted(target.glob(pattern))[:-keep]:old.unlink()
+    with lib.db.engine.begin() as conn:lib.db.log(conn,'backup_created',**result)
+    return result
+
+
+def weekly(lib,stop,every=7*86400):
+    """Confere a cada 6 horas; faz a cópia quando a última tem mais de uma semana (ou ainda não existe)."""
+    import logging
+    import time
+    while not stop.is_set():
+        target=backup_dir(lib.settings)
+        try:
+            latest=max((p.stat().st_mtime for p in target.glob('repertorio-*.zip')),default=0)
+            if time.time()-latest>every:backup_now(lib,target)
+        except Exception:
+            logging.exception('Backup semanal falhou; nova tentativa em 6 horas.')
+        stop.wait(6*3600)

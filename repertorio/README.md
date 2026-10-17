@@ -143,6 +143,21 @@ A API está documentada em **http://127.0.0.1:8766/docs**. Browser, CLI e MCP us
 
 ## Persistência, importação e recuperação
 
+### Cópia de segurança automática
+
+O serviço faz sozinho, uma vez por semana, uma cópia em **iCloud Drive › Backups › Repertório** (fora do Mac): `repertorio-DATA.zip` com a curadoria (banco e criações) e `pptreta-DATA.bundle` com o histórico do projeto. Guarda as 6 mais recentes e registra "Cópia de segurança salva" em Atividade. `REPERTORIO_BACKUP_DIR` troca a pasta.
+
+```sh
+./repertorio/run.sh backup-now     # faz uma cópia agora (com o serviço parado ou rodando)
+./repertorio/run.sh doctor         # mostra a última cópia
+git clone "…/Backups/Repertório/pptreta-DATA.bundle" pptreta   # recupera o projeto
+./repertorio/run.sh restore "…/Backups/Repertório/repertorio-DATA.zip"  # recupera a curadoria (serviço parado)
+```
+
+O histórico (git) guarda código, textos, dados e as apresentações de `_saida`. Os 12 GB de `_originais/` e as imagens geradas a partir deles ficam fora (ver `.gitignore`); numa migração, copie `_originais/` à parte.
+
+### Importação e restauração manual
+
 ```sh
 ./repertorio/run.sh import
 ./repertorio/run.sh backup /caminho/backup-repertorio.zip

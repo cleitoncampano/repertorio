@@ -147,3 +147,14 @@ def test_html_requires_preview_and_is_not_executed(library,context):
     req.request_key='html-preview';req.previews=['carrossel.png']
     op=register(library,req);Worker(library).process(op['id'])
     assert library.operation(op['id'])['state']=='completed'
+
+
+def test_backup_now_keeps_recent_copies(library,tmp_path):
+    from repertorio.backup import backup_now
+    target=tmp_path/'copias'
+    for _ in range(3):
+        result=backup_now(library,target,keep=2)
+        import time;time.sleep(1.1)
+    assert len(list(target.glob('repertorio-*.zip')))==2
+    assert result['managed_files']==0 and 'history' not in result
+    assert any(e['action']=='backup_created' for e in library.events())

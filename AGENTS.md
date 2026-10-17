@@ -68,6 +68,7 @@ Toda referência (arquivo, slide, capa, anúncio, frame) é marcada com o mesmo 
 
 Se os arquivos de `_originais/` mudarem, refaça na ordem: `ferramentas/construir/extrair.py`, `pranchas.py`, `pacotes.py`, fichas novas (instruções em `dados/_trabalho/INSTRUCOES-FICHAS.md`), `montar.py`.
 O catálogo visual se refaz com `_catalogo/gerador/` (ver `LEIA-ME.txt` lá dentro).
+Depois de mudar código, textos ou dados, salve uma versão (`git add -A && git commit`). O serviço do Repertório copia o histórico e a curadoria para o iCloud toda semana.
 
 <!-- repertorio:start -->
 ## Repertório: inspiração para demandas criativas

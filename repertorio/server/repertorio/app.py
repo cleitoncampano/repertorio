@@ -19,6 +19,7 @@ from .service import Library, Problem
 from .jobs import Worker, register
 from .agent import smart_search, contact_sheet, sheet_items
 from . import thumbs
+from .backup import weekly
 from .mcp_server import create_mcp
 from . import schemas
 
@@ -42,6 +43,7 @@ def create_app(settings=None,run_worker=True):
             if run_worker:
                 worker.start()
                 threading.Thread(target=thumbs.warm,args=(lib,stop_warm),daemon=True,name='repertorio-miniaturas').start()
+                threading.Thread(target=weekly,args=(lib,stop_warm),daemon=True,name='repertorio-backup').start()
             async with mcp.session_manager.run():yield
         finally:
             stop_warm.set()

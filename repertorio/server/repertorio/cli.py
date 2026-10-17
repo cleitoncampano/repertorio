@@ -26,7 +26,7 @@ def main():
     p=argparse.ArgumentParser(description='Repertório: serviço e cliente da biblioteca criativa local')
     p.add_argument('--url',help='Endereço do serviço local')
     sub=p.add_subparsers(dest='cmd',required=True)
-    sub.add_parser('serve');sub.add_parser('import');sub.add_parser('doctor')
+    sub.add_parser('serve');sub.add_parser('import');sub.add_parser('doctor');sub.add_parser('backup-now')
     connect=sub.add_parser('connect');connect.add_argument('path');connect.add_argument('--name');connect.add_argument('--write-instructions',action='store_true')
     search=sub.add_parser('search');search.add_argument('query',nargs='?',default='');search.add_argument('--context-id');search.add_argument('--technique',default='');search.add_argument('--kind',default='');search.add_argument('--reusable',action='store_true');search.add_argument('--intention',default='');search.add_argument('--limit',type=int,default=16);search.add_argument('--per-group',type=int,default=1);search.add_argument('--prancha',nargs='?',const='auto',help='salva a prancha numerada (padrão: _saida/buscas/)');search.add_argument('--json',action='store_true')
     get=sub.add_parser('get');get.add_argument('id')
@@ -44,6 +44,10 @@ def main():
         return
     if args.cmd=='import':
         db=Database(settings);db.migrate();output(import_library(db));return
+    if args.cmd=='backup-now':
+        from .backup import backup_dir,backup_now
+        from .service import Library
+        db=Database(settings);output(backup_now(Library(db),backup_dir(settings)));return
     if args.cmd in ('backup','restore'):
         from .backup import backup,restore
         output(backup(settings,args.destination) if args.cmd=='backup' else restore(settings,args.source));return
@@ -56,6 +60,9 @@ def main():
             db=Database(settings)
             info['integrity']=db.one('PRAGMA integrity_check')
             info['missing_assets']=db.one('SELECT COUNT(*) AS total FROM assets WHERE missing=1')
+            from .backup import backup_dir
+            copies=sorted(backup_dir(settings).glob('repertorio-*.zip'))
+            info['backup']={'folder':str(backup_dir(settings)),'latest':copies[-1].name if copies else None,'copies':len(copies)}
         output(info);return
     with httpx.Client(base_url=url,timeout=120) as client:
         if args.cmd=='connect':

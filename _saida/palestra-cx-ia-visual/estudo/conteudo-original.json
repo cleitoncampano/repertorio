@@ -1,0 +1,506 @@
+{
+  "source": "_saida/palestra-cx-ia/palestra.html",
+  "sha256": "0ed99985bc6433933f0b8681197b37afc5294f5e2b6ac5a38ffc3680681b5198",
+  "slide_count": 24,
+  "slides": [
+    {
+      "slide": 1,
+      "visible_text_nodes": [
+        "Experiência do cliente · Inteligência artificial",
+        "Você compraria",
+        "de você mesmo",
+        "?",
+        "Cleiton Campano"
+      ],
+      "speaker_notes": [
+        "Boa noite, pessoal. Um prazer enorme estar aqui, dedicando meu tempo, minha energia, para contribuir com a vida e o negócio de vocês."
+      ],
+      "steps": []
+    },
+    {
+      "slide": 2,
+      "visible_text_nodes": [
+        "Antes de começar",
+        "Vocês poderiam estar em vários outros lugares.",
+        "E escolheram",
+        "estar",
+        "aqui"
+      ],
+      "speaker_notes": [
+        "Quero agradecer desde já por vocês disponibilizarem o tempo de vocês. Vocês poderiam estar em vários outros lugares, mas escolheram estar aqui."
+      ],
+      "steps": [
+        "0",
+        "1"
+      ]
+    },
+    {
+      "slide": 3,
+      "visible_text_nodes": [
+        "O meu objetivo hoje",
+        "Que você saia daqui",
+        "PROVOCADO",
+        "PROVOCADO",
+        "PROVOCADO",
+        "a estudar.",
+        "a mudar.",
+        "a se desenvolver."
+      ],
+      "speaker_notes": [
+        "Seja qual for a expectativa que você tenha hoje, eu espero supri-la. Meu intuito é que vocês saiam daqui provocados: a estudar, a mudar, a se desenvolver."
+      ],
+      "steps": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "slide": 4,
+      "visible_text_nodes": [
+        "Hoje",
+        "A nossa noite",
+        "01 · 10 min",
+        "Experiência do cliente",
+        "02 · 10 min",
+        "Inteligência artificial",
+        "03",
+        "Onde as duas se encontram",
+        "04",
+        "Como fazer na prática",
+        "05",
+        "Cases",
+        "Repare: isso também é uma jornada."
+      ],
+      "speaker_notes": [
+        "A noite vai ter algumas partes. Primeiros 10 minutos: todo mundo na mesma página sobre experiência do cliente. Mais 10 minutos sobre inteligência artificial. No meio, como os dois conceitos se conectam e por que isso importa para a sua organização. Depois, como fazer. Por fim, cases de projetos que estamos construindo e exemplos de mercado."
+      ],
+      "steps": [
+        "0",
+        "2",
+        "3",
+        "4",
+        "5",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    {
+      "slide": 5,
+      "visible_text_nodes": [
+        "01",
+        "Experiência",
+        "do cliente"
+      ],
+      "speaker_notes": [
+        "Vamos lá, galera. Para começar: o que é experiência do cliente?"
+      ],
+      "steps": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slide": 6,
+      "visible_text_nodes": [
+        "01 · Experiência do cliente",
+        "Experiência do cliente é",
+        "como o seu cliente",
+        "se sente",
+        "quando se relaciona com a sua marca"
+      ],
+      "speaker_notes": [
+        "Experiência do cliente, basicamente, é a forma como o meu cliente se sente quando ele se relaciona com a minha marca."
+      ],
+      "steps": [
+        "1"
+      ]
+    },
+    {
+      "slide": 7,
+      "visible_text_nodes": [
+        "01 · Experiência do cliente",
+        "Só que ele se relaciona com a sua marca em",
+        "muitos",
+        "momentos.",
+        "Pontos de contato",
+        "touchpoints"
+      ],
+      "speaker_notes": [
+        "A grande questão é que esse cliente se relaciona com a minha marca em diversos momentos. É o que a gente chama de pontos de contato, do inglês touchpoints: momentos através dos quais o cliente se relaciona com a minha marca."
+      ],
+      "steps": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "slide": 8,
+      "visible_text_nodes": [
+        "01 · Experiência do cliente",
+        "Somados, esses momentos formam a",
+        "jornada do cliente",
+        "."
+      ],
+      "speaker_notes": [
+        "E esses momentos juntos se tornam uma jornada do cliente. A jornada do cliente é a somatória de todos os momentos através dos quais o cliente se relaciona com a minha marca."
+      ],
+      "steps": [
+        "0"
+      ]
+    },
+    {
+      "slide": 9,
+      "visible_text_nodes": [
+        "01 · Experiência do cliente",
+        "Três momentos.",
+        "Pré",
+        "tudo o que acontece antes de ele comprar",
+        "Durante",
+        "enquanto ele compra",
+        "Pós",
+        "depois que ele comprou"
+      ],
+      "speaker_notes": [
+        "Para trazer exemplos de pontos de contato, a gente precisa separar a jornada em três momentos: pré, durante e pós. Pré: todos os momentos em que o cliente se relaciona com a marca mas ainda não comprou. Durante: enquanto compra. Pós: depois que comprou."
+      ],
+      "steps": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "slide": 10,
+      "visible_text_nodes": [
+        "Um exemplo",
+        "Acabei de me mudar de Uberlândia para Araguari.",
+        "E quero me matricular numa academia.",
+        "Uberlândia",
+        "Araguari"
+      ],
+      "speaker_notes": [
+        "Vou pegar um exemplo num cenário B2C: uma academia. Vamos imaginar que eu estou vindo de Uberlândia para cá, não conheço nenhuma academia em Araguari, e quero me matricular numa. A gente tem que entender a jornada do ponto de vista do cliente e do contexto em que ele está, para o nosso produto estar pronto para atendê-lo."
+      ],
+      "steps": [
+        "1",
+        "0"
+      ]
+    },
+    {
+      "slide": 11,
+      "visible_text_nodes": [
+        "Pense como cliente",
+        "Como eu descubro",
+        "uma academia aqui",
+        "?"
+      ],
+      "speaker_notes": [
+        "Contexto: mudança. Vamos pensar na lógica do Cleiton, na cabeça do ser humano. Como é que eu vou descobrir uma academia aqui?"
+      ],
+      "steps": []
+    },
+    {
+      "slide": 12,
+      "visible_text_nodes": [
+        "Pontos de contato antes da compra",
+        "Os caminhos até a academia",
+        "01",
+        "Indicação",
+        "pergunto para quem já mora aqui",
+        "02",
+        "Google",
+        "busco academias em Araguari",
+        "03",
+        "Avaliações",
+        "leio o que os alunos dizem",
+        "04",
+        "Anúncio",
+        "sou impactado no Instagram",
+        "05",
+        "Conteúdo orgânico",
+        "vejo um reels, uma foto",
+        "06",
+        "Inteligência artificial",
+        "pergunto para uma IA"
+      ],
+      "speaker_notes": [
+        "Primeira coisa que eu faria: perguntar para alguém. Ou mandar uma pergunta para o Google e ler as avaliações. Posso ser impactado por um anúncio, ou por um conteúdo orgânico. E também posso ir numa inteligência artificial. Cada uma dessas formas é um ponto de contato."
+      ],
+      "steps": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    {
+      "slide": 13,
+      "visible_text_nodes": [
+        "Ponto de contato 01",
+        "Amigos de Araguari",
+        "Gente, qual academia boa vocês me indicam aqui?",
+        "Ana",
+        "A academia A é muito boa!",
+        "Rafa",
+        "Eu treino na B, recomendo.",
+        "Paulo",
+        "C, sem dúvida.",
+        "Indicação",
+        "a voz de quem já é cliente."
+      ],
+      "speaker_notes": [
+        "Pergunto para duas, três pessoas. E elas vão falar: a academia A é muito boa, a B é muito boa, a C é muito boa. Pela recomendação, eu posso ir até a academia."
+      ],
+      "steps": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slide": 14,
+      "visible_text_nodes": [
+        "Pontos de contato 02 e 03",
+        "academias em Araguari",
+        "Academia A",
+        "★★★★★",
+        "4,8 (312 avaliações)",
+        "Academia B",
+        "★★★★☆",
+        "4,1 (98 avaliações)",
+        "Academia C",
+        "★★★☆☆",
+        "3,2 (41 avaliações)",
+        "★★★★★",
+        "Equipamentos novos e professores que corrigem de verdade.",
+        "★★☆☆☆",
+        "Liguei três vezes e ninguém atendeu.",
+        "Google",
+        "e o que as pessoas dizem da experiência delas."
+      ],
+      "speaker_notes": [
+        "Se não quiser conversar com ninguém, mando a pergunta para o Google: quais são as academias em Araguari? Ele lista as principais. E eu posso ler os reviews: o que as pessoas estão falando sobre a experiência delas nessa academia."
+      ],
+      "steps": [
+        "0",
+        "0",
+        "0",
+        "1",
+        "2"
+      ]
+    },
+    {
+      "slide": 15,
+      "visible_text_nodes": [
+        "Pontos de contato 04 e 05",
+        "Anúncio",
+        "ou orgânico",
+        "Está organizado? Está bonito?",
+        "Mostra o espaço, as pessoas, a equipe?",
+        "Responde os comentários?",
+        "Os alunos são engajados?",
+        "academiaxpto",
+        "Patrocinado",
+        "Treine com a gente.",
+        "Saiba mais",
+        "›",
+        "academiaxpto",
+        "Primeira semana grátis para quem chegou agora."
+      ],
+      "speaker_notes": [
+        "Posso ser impactado por um anúncio de tráfego pago no Instagram, ou por um conteúdo orgânico, um reels, uma foto. Se eu entro no Instagram da academia: está organizado, estruturado, bonito? Mostra os ambientes, as pessoas que treinam, os colaboradores? Responde os alunos nos comentários? Tudo isso o cliente faz antes de te contratar."
+      ],
+      "steps": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "slide": 16,
+      "visible_text_nodes": [
+        "Ponto de contato 06",
+        "ChatGPT",
+        "Gemini",
+        "Claude",
+        "Qual é a melhor academia de Araguari?",
+        "Inteligência artificial",
+        "a nova porta de entrada."
+      ],
+      "speaker_notes": [
+        "E eu também posso ir numa inteligência artificial: no Gemini, no ChatGPT, no Claude, e perguntar qual é a melhor academia de Araguari, onde treinar aqui."
+      ],
+      "steps": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slide": 17,
+      "visible_text_nodes": [
+        "01 · Experiência do cliente",
+        "Tudo isso acontece",
+        "antes",
+        "de ele",
+        "comprar",
+        "Pré",
+        "Durante",
+        "Pós"
+      ],
+      "speaker_notes": [
+        "Então a forma de descobrir o negócio: cada uma dessas formas é um ponto de contato. Ele já está se relacionando com a minha marca antes de comprar."
+      ],
+      "steps": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slide": 18,
+      "visible_text_nodes": [
+        "Etapa da jornada",
+        "Awareness",
+        "a etapa do conhecimento.",
+        "O cliente está buscando informações sobre o seu negócio."
+      ],
+      "speaker_notes": [
+        "Essa etapa da jornada do cliente a gente chama de awareness: etapa de conhecimento, em que ele está buscando informações a respeito do negócio."
+      ],
+      "steps": [
+        "1"
+      ]
+    },
+    {
+      "slide": 19,
+      "visible_text_nodes": [
+        "E não é só academia",
+        "cafeteria",
+        "clínica odontológica",
+        "clínica de estética",
+        "salão de cabeleireiro",
+        "garagem de veículos",
+        "lava-jato",
+        "a sua empresa"
+      ],
+      "speaker_notes": [
+        "Eu dei o exemplo da academia, mas o cliente faz a mesma coisa para vários outros contextos: uma cafeteria, uma clínica odontológica, uma clínica de estética, um salão de cabeleireiro, uma garagem de veículos, um lava-jato."
+      ],
+      "steps": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "slide": 20,
+      "visible_text_nodes": [
+        "Por quê?",
+        "A gente faz isso o tempo inteiro.",
+        "Porque nós somos consumidores"
+      ],
+      "speaker_notes": [
+        "A gente faz isso constantemente, o tempo inteiro. Sabe por quê? Porque nós somos consumidores. E enquanto consumidores, nós queremos que as empresas nos tratem com o devido respeito e nos deem as devidas informações."
+      ],
+      "steps": [
+        "1"
+      ]
+    },
+    {
+      "slide": 21,
+      "visible_text_nodes": [
+        "Agora, inverta",
+        "E se você comprasse",
+        "de você mesmo",
+        "?",
+        "E se você comprasse",
+        "de você mesmo",
+        "?"
+      ],
+      "speaker_notes": [
+        "Mas quando se trata de nós enquanto comunicadores, empresários, donos das empresas, vendedores dos nossos produtos e serviços: como seria a nossa experiência com a nossa própria marca se nós fôssemos os compradores?"
+      ],
+      "steps": [
+        "0"
+      ]
+    },
+    {
+      "slide": 22,
+      "visible_text_nodes": [
+        "Como cliente de você mesmo",
+        "1",
+        "Lendo as avaliações da sua empresa no Google,",
+        "você compraria?",
+        "2",
+        "Ligando agora para a sua empresa,",
+        "você compraria?",
+        "3",
+        "Perguntando para uma IA,",
+        "a sua empresa apareceria?"
+      ],
+      "speaker_notes": [
+        "Se nós, enquanto compradores, entrássemos agora no Google e lêssemos as avaliações dos clientes sobre a nossa empresa, nós compraríamos? Se ligássemos agora na nossa empresa e a nossa colaboradora nos atendesse, nós compraríamos? Se precisássemos buscar referência nos maiores mecanismos de busca ou em alguma inteligência artificial, a nossa empresa apareceria?"
+      ],
+      "steps": []
+    },
+    {
+      "slide": 23,
+      "visible_text_nodes": [
+        "Dever de casa nº 1",
+        "Isso foi só o",
+        "primeiro",
+        "ponto de contato",
+        "É fácil?",
+        "Não.",
+        "Se fosse fácil, todo mundo fazia."
+      ],
+      "speaker_notes": [
+        "Ou seja: só no primeiro ponto de contato vocês já têm um dever de casa gigantesco. Porque, galera, é fácil fazer isso? Não é. Se fosse fácil, todo mundo fazia."
+      ],
+      "steps": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "slide": 24,
+      "visible_text_nodes": [
+        "Então, o que impede",
+        "?",
+        "As limitações e os problemas para executar isso dentro das nossas organizações."
+      ],
+      "speaker_notes": [
+        "Existem uma série de limitações e de problemas para a gente executar isso dentro das nossas organizações. (Continua.)"
+      ],
+      "steps": [
+        "1"
+      ]
+    }
+  ]
+}

@@ -60,7 +60,8 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
     {selector:'node[type="reference"].hovered',style:{'border-width':8,'border-color':()=>ink().text,'border-opacity':1}},
    ]});
   cy.current=instance;panelInset.current=0;framedMatches.current='';
-  const saveCamera=()=>{try{sessionStorage.setItem(cameraKey(workspaceId,currentView),JSON.stringify({zoom:instance.zoom(),pan:{x:instance.pan().x+panelInset.current,y:instance.pan().y}}));}catch{/* A câmera continua utilizável sem armazenamento. */}};
+  let cameraTimer=0;
+  const saveCamera=()=>{clearTimeout(cameraTimer);try{sessionStorage.setItem(cameraKey(workspaceId,currentView),JSON.stringify({zoom:instance.zoom(),pan:{x:instance.pan().x+panelInset.current,y:instance.pan().y}}));}catch{/* A câmera continua utilizável sem armazenamento. */}};
   const restoreCamera=()=>{try{const saved=sessionStorage.getItem(cameraKey(workspaceId,currentView));if(saved){const camera=JSON.parse(saved);if(Number.isFinite(camera.zoom)&&camera.zoom>0&&Number.isFinite(camera.pan?.x)&&Number.isFinite(camera.pan?.y)){instance.viewport({zoom:Math.max(instance.minZoom(),Math.min(instance.maxZoom(),camera.zoom)),pan:{x:camera.pan.x-panelInset.current,y:camera.pan.y}});return true;}}}catch{/* Usa o enquadramento inicial. */}return false;};
   instance.fit(undefined,instance.width()<760?30:72);
   restoreCamera();
@@ -75,17 +76,18 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
   };
   rescale();
   const images=new globalThis.Map<string,HTMLImageElement>(),requested=new globalThis.Map<string,number>(),shown=new globalThis.Map<string,number>();
+  const referenceNodes=instance.nodes('[type="reference"]'),techniqueNodes=instance.nodes('[type="technique"]');
   let bundled=false; // até o pacote inicial chegar, nenhuma miniatura é pedida sozinha
   const updateViewport=()=>{
    const z=instance.zoom(),extent=instance.extent(),density=window.devicePixelRatio||1;
    if(Math.abs(z-lastZoom)>.0001){
     lastZoom=z;
     const threshold=currentView==='hierarchy'?.24:skinRef.current&&!['cosmos','circuit'].includes(currentView)?.6:.34;
-    instance.nodes('[type="technique"]').toggleClass('show-label',z>threshold);
+    techniqueNodes.toggleClass('show-label',z>threshold);
     clearTimeout(settle);settle=window.setTimeout(rescale,140);
    }
    if(!bundled)return;
-   instance.nodes('[type="reference"]').forEach(node=>{
+   referenceNodes.forEach(node=>{
     const p=node.position(),src=node.data('preview'),id=node.id();
     if(!src||p.x<extent.x1-150||p.x>extent.x2+150||p.y<extent.y1-150||p.y>extent.y2+150)return;
     const level=LEVELS.find(l=>l>=node.data('size')*z*density)??LEVELS[LEVELS.length-1];
@@ -106,7 +108,7 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
   // As miniaturas de 128 px chegam todas num pedido só; resoluções maiores vêm uma a uma ao aproximar.
   api<Record<string,{src:string;width:number;height:number}>>('/previews?workspace_id='+encodeURIComponent(workspaceId)+'&w='+LEVELS[0]).then(previews=>{
    if(instance.destroyed())return;
-   instance.batch(()=>instance.nodes('[type="reference"]').forEach(node=>{
+   instance.batch(()=>referenceNodes.forEach(node=>{
     const preview=previews[node.data('preview')];if(!preview)return;
     requested.set(node.id(),LEVELS[0]);shown.set(node.id(),LEVELS[0]);
     const ratio=preview.width/preview.height,size=node.data('size');
@@ -122,7 +124,12 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
    if(item&&window.matchMedia('(hover: hover)').matches){const p=e.target.renderedPosition();setHover({item,x:Math.max(12,Math.min(p.x+22,instance.width()-260)),y:Math.max(64,Math.min(p.y+18,instance.height()-270))});}
   });
   instance.on('mouseout','node',e=>{setHover(null);e.target.removeClass('hovered');if(container.current)container.current.style.cursor='grab';});
-  instance.on('viewport',()=>{setHover(null);setZoom(instance.zoom());saveCamera();cancelAnimationFrame(frame);frame=requestAnimationFrame(updateViewport);});
+  instance.on('viewport',()=>{
+   clearTimeout(cameraTimer);cameraTimer=window.setTimeout(saveCamera,160);
+   if(frame)return;
+   frame=requestAnimationFrame(()=>{frame=0;setHover(null);setZoom(instance.zoom());updateViewport();});
+  });
+  window.addEventListener('pagehide',saveCamera);
   const resize=new ResizeObserver(()=>instance.resize());resize.observe(container.current);
   applyView.current=next=>{
    if(currentView===next)return;
@@ -145,7 +152,7 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
    rescale();updateViewport();
   };
   if(!reduced)container.current.animate([{opacity:.5},{opacity:1}],{duration:400});
-  return()=>{saveCamera();applyView.current=null;cancelAnimationFrame(frame);clearTimeout(settle);resize.disconnect();for(const img of images.values())img.onload=null;instance.destroy();cy.current=null;};
+  return()=>{saveCamera();window.removeEventListener('pagehide',saveCamera);applyView.current=null;cancelAnimationFrame(frame);clearTimeout(settle);resize.disconnect();for(const img of images.values())img.onload=null;instance.destroy();cy.current=null;};
  },[data,workspaceId]);
  useEffect(()=>{applyView.current?.(view);},[view,data,workspaceId]);
  const panelOpen=!!(selected||technique||operation||matches);

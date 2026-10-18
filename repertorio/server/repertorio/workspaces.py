@@ -99,17 +99,36 @@ class Workspaces:
             ORDER BY CASE m.state WHEN 'published' THEN 0 WHEN 'pending' THEN 1 ELSE 2 END,w.name_key''',
             rid=rid,ids=dumps(ids) if ids is not None else None)
 
-    def scoped_summary(self, row, ids, state=None):
+    def scoped_summaries(self, rows, ids, state=None):
+        """Carrega os vínculos da página e dos pais de uma vez, sem consultas por referência."""
+        if not rows:
+            return []
+        refs=list(dict.fromkeys([r['id'] for r in rows]+[r['parent_id'] for r in rows if r['parent_id']]))
+        memberships,available={},{}
+        for item in self.db.query('''SELECT m.ref_id,r.ready,r.hidden,m.workspace_id,w.name,m.state,m.revision AS membership_revision
+            FROM workspace_references m JOIN workspaces w ON w.id=m.workspace_id JOIN refs r ON r.id=m.ref_id
+            WHERE m.ref_id IN (SELECT value FROM json_each(:refs)) AND m.detached=0 AND w.deleted IS NULL
+            AND m.workspace_id IN (SELECT value FROM json_each(:ids))
+            ORDER BY CASE m.state WHEN 'published' THEN 0 WHEN 'pending' THEN 1 ELSE 2 END,w.name_key''',refs=dumps(refs),ids=dumps(ids)):
+            rid,ready,hidden=item.pop('ref_id'),item.pop('ready'),item.pop('hidden')
+            memberships.setdefault(rid,[]).append(item)
+            if ready and not hidden and item['state']=='published':
+                available.setdefault(rid,set()).add(item['workspace_id'])
+        return [self.scoped_summary(row,ids,state,memberships=memberships.get(row['id'],[]),parent_available=available.get(row['parent_id'],set())) for row in rows]
+
+    def scoped_summary(self, row, ids, state=None, *, memberships=None, parent_available=None):
         out = self.summary(row)
-        memberships = self.memberships(row['id'], ids)
+        if memberships is None:
+            memberships = self.memberships(row['id'], ids)
         if not memberships:
             raise Problem(404, 'Referência não encontrada neste espaço.')
         candidates=[m for m in memberships if state is None or m['state']==state]
         published=[m for m in candidates if m['state']=='published']
         if row['parent_id']:
-            parent=self.db.one('SELECT ready,hidden FROM refs WHERE id=:id',id=row['parent_id'])
-            available={m['workspace_id'] for m in self.memberships(row['parent_id'],ids) if m['state']=='published'} if parent and parent['ready'] and not parent['hidden'] else set()
-            published=[m for m in published if m['workspace_id'] in available]
+            if parent_available is None:
+                parent=self.db.one('SELECT ready,hidden FROM refs WHERE id=:id',id=row['parent_id'])
+                parent_available={m['workspace_id'] for m in self.memberships(row['parent_id'],ids) if m['state']=='published'} if parent and parent['ready'] and not parent['hidden'] else set()
+            published=[m for m in published if m['workspace_id'] in parent_available]
         selected=(published or candidates or memberships)[0]
         matching=published if published and selected['state']=='published' else [m for m in memberships if m['state']==selected['state']]
         out.update(state=selected['state'],membership_revision=selected['membership_revision'],workspace_id=selected['workspace_id'],
@@ -125,7 +144,7 @@ class Workspaces:
         rows = self.db.query(f'''SELECT r.*,(SELECT a.id FROM assets a WHERE a.ref_id=r.id AND a.missing=0 AND a.role IN ('thumbnail','preview')
             ORDER BY CASE a.role WHEN 'thumbnail' THEN 0 ELSE 1 END,a.id LIMIT 1) AS thumbnail
             FROM refs r WHERE {' AND '.join(clauses)} ORDER BY r.id''', **params)
-        return dict(items=[self.scoped_summary(r,[workspace_id]) for r in rows],vocabulary=self.meta('vocabulary',{}))
+        return dict(items=self.scoped_summaries(rows,[workspace_id]),vocabulary=self.meta('vocabulary',{}))
 
     def reference_workspaces(self, rid, req, from_ui=False):
         ids = self.scope([req.source_workspace_id], req.context_id)

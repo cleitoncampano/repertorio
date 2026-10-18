@@ -105,8 +105,7 @@ class Library(Workspaces):
         return clauses
 
     def search(self, args: Search, log=True):
-        if args.context_id:
-            self.context(args.context_id)
+        ids=self.scope(args.workspace_ids,args.context_id)
         params={'limit':args.limit,'offset':args.offset}
         clauses=self.filters(args,params)
         words=re.findall(r'\w+',args.query,flags=re.UNICODE)
@@ -124,8 +123,7 @@ class Library(Workspaces):
             (SELECT a.id FROM assets a WHERE a.ref_id=r.id AND a.missing=0 AND a.role IN ('thumbnail','preview') ORDER BY CASE a.role WHEN 'thumbnail' THEN 0 ELSE 1 END,a.id LIMIT 1) AS thumbnail
             FROM refs r {join} WHERE {where} ORDER BY rank ASC,COALESCE(json_extract(r.payload,'$.strength'),3) DESC,r.id LIMIT :limit OFFSET :offset''',**params)
         results=[]
-        for r in rows:
-            s=self.scoped_summary(r,self.scope(args.workspace_ids,args.context_id),state=args.state)
+        for s in self.scoped_summaries(rows,ids,state=args.state):
             s['matched_by']=[f'{k}: {getattr(args,k)}' for k in ['intention','technique','operation','movement','aesthetic','origin','format'] if getattr(args,k)]
             if words: s['matched_by'].insert(0,'Texto da ficha ou do slide')
             results.append(s)

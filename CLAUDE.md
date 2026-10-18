@@ -2,6 +2,8 @@
 
 ## Só para o Claude Code
 
+- Na manutenção de performance, preserve o visual aprovado e consulte `docs/REPERTORIO-DESEMPENHO.md` e o checkpoint em `docs/RETOMADA.md`. As regras de espaços, Skills e reordenação dos nove templates estão em `AGENTS.md`; use os testes de consultas em lote e persistência da câmera para evitar regressões.
+
 - O MCP do Repertório está registrado no escopo do usuário (`claude mcp add --transport http -s user repertorio http://127.0.0.1:8766/mcp`). As ferramentas aparecem como `mcp__repertorio__*`. Se não aparecerem, a sessão começou com o serviço fora do ar: reconecte com `/mcp` ou use o plano B do bloco do Repertório.
 - A prancha de `search_references` e a imagem de `get_reference(include_image=true)` chegam direto na conversa. Pranchas do `buscar.py`, do `run.sh search --prancha` e capturas do `ver.py` são arquivos: abra com a ferramenta de leitura de arquivos.
 - O hook de travessão desta conta recusa o caractere e também o escape `\u2014` escrito no comando. Em código, gere com `chr(0x2014)`.

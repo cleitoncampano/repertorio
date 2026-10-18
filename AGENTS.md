@@ -8,6 +8,12 @@ Biblioteca local de referências para criar apresentações, sites e vídeos ori
 - Decisões e pendências: Engram local, consultado pelo terminal quando necessário. Uso, validação e recuperação em `docs/EFICIENCIA.md`.
 - O usuário manda ideias ou transcrição bruta: extraia a história sem pedir uma estrutura pronta. Respostas curtas, em linguagem simples; decida detalhes de rotina.
 
+## Estado atual e desempenho
+
+- O app trabalha com espaços independentes, catálogo de Skills escolhido pelo usuário e nove visualizações do grafo. O menu tem uma coluna e permite reordenar os templates por arraste, com preferência salva no navegador. Histórico e validação em `docs/RETOMADA.md` e `repertorio/VALIDACAO.md`.
+- O usuário aprovou o visual e o comportamento atuais. Revisões de performance devem preservá-los e comparar medições antes e depois, usando cópia temporária para testes com escrita. Referência da revisão atual: `docs/REPERTORIO-DESEMPENHO.md`.
+- Grafo e busca carregam os vínculos em lote com `scoped_summaries`; não volte a consultar o banco por referência da lista. Eventos de câmera são agrupados por quadro e a posição é gravada ao fim do gesto, na troca de visualização, na saída da página e ao desmontar o mapa. Preserve esses contratos e os testes de regressão.
+
 ## Regras essenciais
 
 1. História antes do visual: siga `biblioteca/processo.md` e `biblioteca/principios/narrativa.md` ao criar.

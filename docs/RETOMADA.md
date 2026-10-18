@@ -4,9 +4,19 @@ Atualizado em 17/10/2026 (America/Sao_Paulo).
 
 ## Objetivo atual
 
-Fazer a assinatura do Codex render mais em todos os projetos, reduzindo leituras repetidas e preservando decisões entre sessões. O usuário autorizou instalar as ferramentas escolhidas.
+Incorporar ao Repertório os carrosséis do projeto Growmate a partir de Simon Sinek, com assets, cores e construção, para orientar futuras criações com Cleiton.
 
 ## Entregue
+
+- Incorporados pelo MCP 32 carrosséis, pastas 18 a 49, nas versões atuais: 429 lâminas e 229 arquivos de imagem em assets. A contagem inclui variantes e repetições entre produções.
+- As 32 fichas e uma ficha de componentes estão publicadas, prontas e pesquisáveis. A ficha de componentes separa a paleta e 73 ícones SVG das fotografias de terceiros.
+- Catálogo e estudos: `_referencias/growmate-livros/README.md`. Cada ficha explica a metáfora, a narrativa, as cores, os tipos e a ideia transferível, com links para o app.
+- Originais, PNGs, recortes, fotos, fontes WOFF2, créditos e kit compartilhado: `_originais/growmate-livros/`, fora do Git. O projeto de origem não foi modificado.
+- HTMLs autocontidos dos 32 carrosséis anexados ao app junto das lâminas e imagens-fonte. CSS, fontes, SVG e fotografias estão incorporados; os HTMLs originais e suas dependências também foram preservados localmente.
+- Verificado: processamento de 33 fichas, busca, ausência de assets marcados como faltantes, download, hashes de 1.019 arquivos copiados e abertura dos 32 HTMLs sem dependências externas. Capas e miolos de quatro carrosséis idênticos entre fonte e cópia em comparação de capturas; interface local conferida.
+- Manifesto com arquivos, hashes, IDs e resultados: `docs/REPERTORIO-GROWMATE-LIVROS.json`. Rotina retomável: `ferramentas/incorporar_growmate_livros.py`; renderização: `ferramentas/incorporar-growmate-render.cjs`.
+
+## Base de eficiência preservada
 
 - RTK OSS 1.0.1 e Engram 3.4.0 instalados em `~/.local/bin`, com os downloads oficiais verificados por SHA-256.
 - RTK registrado no perfil Codex ativo, `expresso`. Novas sessões carregam o hook; nesta sessão, usar `rtk` explicitamente nos comandos compatíveis.
@@ -22,4 +32,6 @@ Há versões da palestra “Você compraria de você mesmo?”, com 24 slides. E
 
 ## Próxima ação
 
-A próxima demanda de produto ou apresentação ainda será definida pelo usuário. Começar por este checkpoint e pelo Git; consultar os manuais pertinentes e a memória somente quando o histórico ajudar. O funcionamento automático do hook em um Codex reiniciado e a economia total da assinatura ainda não foram medidos.
+Para criar novos materiais, consultar o catálogo Growmate e buscar no MCP por livro ou metáfora, como iceberg, corrente, estrada, estante ou círculo dourado. Montar a seleção e ler a revisão na tela Escolhas antes de criar. Preservar os créditos; o cadastro dos carrosséis não autoriza reaproveitar suas fotos. Os componentes internos estão em ficha separada com reutilização indicada.
+
+A incorporação está concluída. Falta definir a próxima peça com o usuário. O funcionamento automático do hook RTK em um Codex reiniciado e a economia total da assinatura ainda não foram medidos.

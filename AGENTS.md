@@ -25,6 +25,7 @@ Biblioteca local de referências para criar apresentações, sites e vídeos ori
 | Busca e seleção de referências | MCP Repertório, conforme o bloco abaixo |
 | Narrativa e construção | `biblioteca/processo.md`, `biblioteca/principios/narrativa.md` |
 | Técnicas, movimento e vocabulário | `biblioteca/LEIA-PRIMEIRO.md` |
+| Carrosséis Growmate, cores, assets e construção | `_referencias/growmate-livros/README.md` (32 carrosséis desde Simon Sinek; fichas no MCP e originais locais) |
 | Apresentação HTML e entrega offline | `kit/LEIA-ME.md` |
 | Desenvolvimento, serviço e manutenção do app | `repertorio/README.md`, `biblioteca/manual-agentes.md` |
 | Validações anteriores do app | `repertorio/VALIDACAO.md` |

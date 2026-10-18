@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Você compraria de você mesmo?</title>
+<link rel="stylesheet" href="fontes/fontes.css">
+<link rel="stylesheet" href="motor.css">
+<style>
+  /* Sistema visual: um ponto laranja é o "ponto de contato" e atravessa a palestra inteira. */
+  :root {
+    --papel: #F1ECE3;
+    --tinta: #141414;
+    --ponto: #FF4A1C;
+    --cinza: #8C867C;
+    --cinza-escuro: #5E5A54;
+    --linha: #CFC7BA;
+    --painel: #1F1F1F;
+    --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --serifa: "Instrument Serif", Georgia, serif;
+    --texto: "Inter", "Helvetica Neue", Arial, sans-serif;
+    --dur: 1000ms;
+  }
+  .slide { background: var(--papel); color: var(--tinta); font-family: var(--texto); }
+  .slide.escuro { background: var(--tinta); color: var(--papel); }
+  .slide.laranja { background: var(--ponto); }
+  .t { position: absolute; margin: 0; }
+  .eyebrow { font: 600 24px/1 var(--texto); letter-spacing: .22em; text-transform: uppercase; color: var(--cinza); }
+  .display { font-family: var(--display); font-weight: 800; letter-spacing: -.045em; line-height: .9; }
+  .serif { font-family: var(--serifa); font-style: italic; font-weight: 400; letter-spacing: -.015em; }
+  .acento { color: var(--ponto); }
+  .apagado { color: var(--cinza); }
+  .lead { font: 400 46px/1.3 var(--texto); }
+  .corpo { font: 400 32px/1.4 var(--texto); color: var(--cinza-escuro); }
+  .escuro .corpo { color: #A9A39A; }
+  .ponto { position: absolute; border-radius: 50%; background: var(--ponto); }
+  .ponto-in { display: inline-block; width: .2em; height: .2em; border-radius: 50%; background: var(--ponto); margin-left: .06em; vertical-align: baseline; }
+  .cinza-p { background: var(--linha); }
+  .escuro .cinza-p { background: #4A4743; }
+  .contorno-t { color: transparent; -webkit-text-stroke: 3px #B9AFA0; }
+  .mt-contador { color: #fff; mix-blend-mode: difference; }
+  @keyframes pulsa { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+  .pulsa { animation: pulsa 2.4s ease-in-out infinite; }
+
+  /* marca-texto que corre por trás da palavra */
+  .marca { background: linear-gradient(var(--ponto), var(--ponto)) no-repeat 0 82% / 0% 30%; transition: background-size 900ms var(--curva) !important; padding: 0 .05em; }
+  .marca[data-passo]:not(.visto) { opacity: 1; }
+  .marca.visto { background-size: 100% 30%; } .marca.visto { color: var(--tinta); }
+
+  /* linha da jornada */
+  .trilho { position: absolute; height: 4px; background: var(--tinta); border-radius: 2px; }
+  .escuro .trilho { background: var(--papel); }
+  .parada { position: absolute; width: 330px; }
+  .parada b { display: block; font: 600 26px/1 var(--texto); letter-spacing: .12em; color: var(--cinza); margin-bottom: 14px; }
+  .parada span { display: block; font: 700 40px/1.08 var(--display); letter-spacing: -.02em; }
+
+  /* cards dos caminhos */
+  .card { position: absolute; border-radius: 28px; background: var(--painel); padding: 40px 44px; color: var(--papel); }
+  .card b { display: block; font: 700 48px/1 var(--display); letter-spacing: -.02em; margin-bottom: 16px; }
+  .card i { display: block; font: 400 30px/1.25 var(--texto); font-style: normal; color: #A9A39A; }
+  .card em { position: absolute; top: 34px; right: 40px; font: 600 24px/1 var(--texto); font-style: normal; color: var(--ponto); letter-spacing: .1em; }
+
+  /* interfaces imitadas */
+  .tela { position: absolute; border-radius: 34px; background: #FBFAF7; color: #1A1A1A; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.35); }
+  .tela .barra { height: 92px; display: flex; align-items: center; gap: 22px; padding: 0 36px; border-bottom: 1px solid #E7E2D8; font: 600 30px var(--texto); }
+  .avatar { width: 52px; height: 52px; border-radius: 50%; background: #D9D2C5; flex: none; }
+  .bolha { position: absolute; max-width: 640px; padding: 22px 30px; border-radius: 30px; font: 400 32px/1.3 var(--texto); }
+  .bolha.eu { right: 36px; background: var(--ponto); color: #fff; border-bottom-right-radius: 8px; }
+  .bolha.ela { left: 36px; background: #ECE7DE; border-bottom-left-radius: 8px; }
+  .bolha small { display: block; font: 600 26px var(--texto); color: var(--cinza-escuro); margin-bottom: 6px; }
+  .busca { position: absolute; left: 50px; right: 50px; top: 56px; height: 104px; border-radius: 52px; border: 2px solid #E2DCD1; display: flex; align-items: center; padding: 0 44px; font: 400 40px var(--texto); gap: 22px; background: #fff; }
+  .lupa { width: 34px; height: 34px; border: 4px solid #9A948A; border-radius: 50%; position: relative; flex: none; }
+  .lupa::after { content: ""; position: absolute; width: 4px; height: 16px; background: #9A948A; right: -9px; bottom: -14px; transform: rotate(-45deg); border-radius: 2px; }
+  .digita { display: inline-block; overflow: hidden; white-space: nowrap; width: 0; animation: digita 1.5s steps(21) .5s forwards; }
+  @keyframes digita { to { width: 19.5ch; } }
+  .cursor { width: 4px; height: 48px; background: var(--ponto); animation: pisca 1s steps(1) infinite; }
+  @keyframes pisca { 50% { opacity: 0; } }
+  .resultado { position: absolute; left: 80px; right: 80px; font: 400 30px/1.35 var(--texto); }
+  .resultado b { display: block; font: 600 38px var(--texto); color: #1B3FB8; margin-bottom: 6px; }
+  .estrelas { color: #F2A100; letter-spacing: 3px; }
+  .review { position: absolute; width: 620px; padding: 34px 38px; border-radius: 26px; background: #fff; color: #1A1A1A; box-shadow: 0 30px 60px rgba(0,0,0,.35); font: 400 32px/1.35 var(--texto); }
+  .review .estrelas { display: block; font-size: 34px; margin-bottom: 10px; }
+  .celular { position: absolute; width: 470px; height: 940px; border-radius: 64px; background: #0B0B0B; padding: 18px; box-shadow: 0 50px 90px rgba(0,0,0,.45); }
+  .celular .vidro-tela { width: 100%; height: 100%; border-radius: 48px; background: #fff; overflow: hidden; position: relative; color: #111; }
+  .post-topo { display: flex; align-items: center; gap: 16px; padding: 70px 26px 18px; font: 600 28px var(--texto); }
+  .post-topo small { display: block; font: 400 24px var(--texto); color: #777; }
+  .post-img { height: 520px; background: radial-gradient(circle at 70% 30%, #FF8A5C, var(--ponto) 45%, #9E1E00); display: flex; align-items: flex-end; padding: 34px; font: 800 64px/0.92 var(--display); color: #fff; letter-spacing: -.03em; }
+  .post-cta { margin: 0; padding: 22px 26px; background: #F3F1EC; font: 600 24px var(--texto); display: flex; justify-content: space-between; }
+  .checagem { position: absolute; font: 400 40px/1.3 var(--texto); padding-left: 64px; }
+  .checagem::before { content: ""; position: absolute; left: 0; top: 12px; width: 34px; height: 34px; border-radius: 50%; border: 3px solid var(--ponto); }
+  .ia { background: #121212; color: #EDE9E1; }
+  .ia .barra { border-color: #2A2A2A; }
+  .chip { display: inline-block; padding: 10px 22px; border-radius: 30px; border: 2px solid #3A3A3A; font: 600 24px var(--texto); color: #CFC9BF; margin-right: 12px; }
+  .esqueleto { position: absolute; left: 50px; height: 26px; border-radius: 13px; background: linear-gradient(90deg, #2A2A2A, #3B3B3B, #2A2A2A); background-size: 200% 100%; animation: brilho 1.6s linear infinite; }
+  @keyframes brilho { to { background-position: -200% 0; } }
+  .pontinhos span { display: inline-block; width: 16px; height: 16px; margin-right: 10px; border-radius: 50%; background: var(--ponto); animation: pula 1s ease-in-out infinite; }
+  .pontinhos span:nth-child(2) { animation-delay: .15s; } .pontinhos span:nth-child(3) { animation-delay: .3s; }
+  @keyframes pula { 0%, 100% { transform: translateY(0); opacity: .5; } 50% { transform: translateY(-10px); opacity: 1; } }
+
+  /* espelho */
+  .reflexo { transform: scaleY(-1); -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,.35), transparent 70%); mask-image: linear-gradient(to top, rgba(0,0,0,.35), transparent 70%); }
+  .pergunta { position: absolute; left: 120px; width: 1680px; font: 700 64px/1.08 var(--display); letter-spacing: -.025em; padding-left: 110px; }
+  .pergunta b { position: absolute; left: 0; top: -4px; font: 400 80px/1 var(--serifa); font-style: italic; color: var(--ponto); }
+</style>
+<link rel="stylesheet" href="visual.css">
+<link rel="stylesheet" href="recursos.css">
+</head>
+<body data-formato="16:9">
+<div class="palco">
+
+<!-- ============ ABERTURA ============ -->
+
+<!-- 1. Capa -->
+<section class="slide s01">
+  <div class="foto foto-total" data-m="foto-reflexo" aria-hidden="true"><img src="img/reflexo.png" alt="" decoding="sync"></div>
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">Experiência do cliente · Inteligência artificial</div>
+  <h1 class="t display" style="left:110px;top:300px;font-size:200px" data-m="titulo">Você compraria<br>de você mesmo<span class="acento">?</span></h1>
+  <div class="t" style="left:120px;bottom:110px;font:600 34px var(--texto)">Cleiton Campano</div>
+  <div class="ponto pulsa" data-m="ponto" style="left:1700px;top:880px;width:80px;height:80px"></div>
+  <aside class="notas">Boa noite, pessoal. Um prazer enorme estar aqui, dedicando meu tempo, minha energia, para contribuir com a vida e o negócio de vocês.</aside>
+</section>
+
+<!-- 2. Agradecimento -->
+<section class="slide s02">
+  <div class="foto foto-total" data-m="foto-acolhimento" aria-hidden="true"><img src="img/acolhimento.png" alt="" decoding="sync"></div>
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">Antes de começar</div>
+  <p class="t lead apagado" style="left:120px;top:300px" data-passo="0" data-entra="sobe">Vocês poderiam estar em vários outros lugares.</p>
+  <h2 class="t display" style="left:110px;top:430px;font-size:190px" data-passo="1" data-entra="sobe">E escolheram<br>estar <span class="serif" style="font-size:1.08em">aqui</span><span class="ponto-in" data-m="ponto"></span></h2>
+  <aside class="notas">Quero agradecer desde já por vocês disponibilizarem o tempo de vocês. Vocês poderiam estar em vários outros lugares, mas escolheram estar aqui.</aside>
+</section>
+
+<!-- 3. Promessa -->
+<section class="slide s03">
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">O meu objetivo hoje</div>
+  <p class="t lead" style="left:120px;top:200px">Que você saia daqui</p>
+  <div class="t display contorno-t" style="left:104px;top:300px;font-size:200px;line-height:.82">PROVOCADO</div>
+  <div class="t display contorno-t" style="left:104px;top:464px;font-size:200px;line-height:.82">PROVOCADO</div>
+  <div class="t display acento" style="left:104px;top:628px;font-size:200px;line-height:.82">PROVOCADO<span class="ponto-in" data-m="ponto" style="width:.16em;height:.16em"></span></div>
+  <div class="t serif" style="left:120px;top:880px;font-size:76px" data-passo="1" data-entra="sobe">a estudar.</div>
+  <div class="t serif" style="left:560px;top:880px;font-size:76px" data-passo="2" data-entra="sobe">a mudar.</div>
+  <div class="t serif" style="left:950px;top:880px;font-size:76px" data-passo="3" data-entra="sobe">a se desenvolver.</div>
+  <aside class="notas">Seja qual for a expectativa que você tenha hoje, eu espero supri-la. Meu intuito é que vocês saiam daqui provocados: a estudar, a mudar, a se desenvolver.</aside>
+</section>
+
+<!-- 4. Mapa da noite -->
+<section class="slide s04">
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">Hoje</div>
+  <h2 class="t display" style="left:110px;top:170px;font-size:120px" data-m="titulo">A nossa noite</h2>
+  <div class="trilho" style="left:180px;top:618px;width:1400px" data-passo="0" data-entra="mascara"></div>
+  <div class="ponto" data-m="ponto" style="left:158px;top:598px;width:44px;height:44px"></div>
+  <div class="ponto cinza-p" data-m="s2" style="left:516px;top:606px;width:28px;height:28px" data-passo="2" data-entra="escala"></div>
+  <div class="ponto cinza-p" data-m="s3" style="left:866px;top:606px;width:28px;height:28px" data-passo="3" data-entra="escala"></div>
+  <div class="ponto cinza-p" data-m="s4" style="left:1216px;top:606px;width:28px;height:28px" data-passo="4" data-entra="escala"></div>
+  <div class="ponto cinza-p" data-m="s5" style="left:1566px;top:606px;width:28px;height:28px" data-passo="5" data-entra="escala"></div>
+  <div class="parada" style="left:160px;top:690px;width:310px" data-passo="1" data-entra="sobe"><svg class="agenda-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21S2 14.7 2 8a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 6.7-10 13-10 13z"/></svg><b>01 · 10 min</b><span>Experiência do cliente</span></div>
+  <div class="parada" style="left:510px;top:690px;width:310px" data-passo="2" data-entra="sobe"><svg class="agenda-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg><b>02 · 10 min</b><span>Inteligência artificial</span></div>
+  <div class="parada" style="left:860px;top:690px;width:310px" data-passo="3" data-entra="sobe"><svg class="agenda-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg><b>03</b><span>Onde as duas se encontram</span></div>
+  <div class="parada" style="left:1210px;top:690px;width:310px" data-passo="4" data-entra="sobe"><svg class="agenda-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg><b>04</b><span>Como fazer na prática</span></div>
+  <div class="parada" style="left:1560px;top:690px;width:300px" data-passo="5" data-entra="sobe"><svg class="agenda-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-7"/><path d="M16 7h4v4"/></svg><b>05</b><span>Cases</span></div>
+  <p class="t serif apagado" style="left:120px;top:950px;font-size:48px" data-passo="6" data-entra="sobe">Repare: isso também é uma jornada.</p>
+  <aside class="notas">A noite vai ter algumas partes. Primeiros 10 minutos: todo mundo na mesma página sobre experiência do cliente. Mais 10 minutos sobre inteligência artificial. No meio, como os dois conceitos se conectam e por que isso importa para a sua organização. Depois, como fazer. Por fim, cases de projetos que estamos construindo e exemplos de mercado.</aside>
+</section>
+
+<!-- ============ 01 EXPERIÊNCIA DO CLIENTE ============ -->
+
+<!-- 5. Divisor: o ponto vira a tela -->
+<section class="slide s05" data-dur="1200">
+  <div class="ponto" data-m="ponto" style="left:0;top:0;width:100%;height:100%;border-radius:0"></div>
+  <div class="t display" style="left:96px;top:80px;font-size:560px;line-height:.8;color:var(--tinta)" data-passo="0" data-entra="sobe">01</div>
+  <h2 class="t display" style="left:110px;bottom:120px;font-size:150px;color:var(--tinta)" data-passo="0" data-entra="sobe">Experiência<br>do cliente</h2>
+  <aside class="notas">Vamos lá, galera. Para começar: o que é experiência do cliente?</aside>
+</section>
+
+<!-- 6. Definição -->
+<section class="slide s06">
+  <div class="foto foto-lateral" data-m="foto-atendimento" aria-hidden="true"><img src="img/atendimento.png" alt="" decoding="sync"></div>
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">01 · Experiência do cliente</div>
+  <p class="t lead apagado" style="left:120px;top:250px">Experiência do cliente é</p>
+  <h2 class="t display" style="left:110px;top:350px;font-size:118px;width:1700px;line-height:.98">como o seu cliente <span class="serif marca" style="font-size:1.12em" data-passo="1">se sente</span> quando se relaciona com a sua marca<span class="ponto-in" data-m="ponto"></span></h2>
+  <aside class="notas">Experiência do cliente, basicamente, é a forma como o meu cliente se sente quando ele se relaciona com a minha marca.</aside>
+</section>
+
+<!-- 7. Pontos de contato -->
+<section class="slide s07">
+  <div class="foto foto-a" data-m="foto-cotidiano" aria-hidden="true"><img src="img/cotidiano.png" alt="" decoding="sync"></div>
+  <div class="foto foto-b" data-m="foto-atendimento" aria-hidden="true"><img src="img/atendimento.png" alt="" decoding="sync"></div>
+  <div class="foto foto-c" data-m="foto-consumo" aria-hidden="true"><img src="img/consumo.png" alt="" decoding="sync"></div>
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">01 · Experiência do cliente</div>
+  <h2 class="t display" style="left:110px;top:180px;font-size:84px;width:1500px;line-height:1" data-m="titulo">Só que ele se relaciona com a sua marca em <span class="serif">muitos</span> momentos.</h2>
+  <div class="ponto" data-m="ponto" style="left:300px;top:560px;width:64px;height:64px"></div>
+  <div class="ponto" data-m="p2" style="left:560px;top:720px;width:40px;height:40px" data-passo="0" data-entra="escala"></div>
+  <div class="ponto" data-m="p3" style="left:760px;top:520px;width:52px;height:52px" data-passo="0" data-entra="escala"></div>
+  <div class="ponto" data-m="p4" style="left:980px;top:800px;width:34px;height:34px" data-passo="0" data-entra="escala"></div>
+  <div class="ponto" data-m="p5" style="left:1150px;top:600px;width:58px;height:58px" data-passo="0" data-entra="escala"></div>
+  <div class="ponto" data-m="p6" style="left:1380px;top:760px;width:42px;height:42px" data-passo="0" data-entra="escala"></div>
+  <div class="ponto" data-m="p7" style="left:1560px;top:540px;width:48px;height:48px" data-passo="0" data-entra="escala"></div>
+  <div class="ponto" data-m="p8" style="left:1700px;top:860px;width:36px;height:36px" data-passo="0" data-entra="escala"></div>
+  <div class="t" style="left:120px;top:900px" data-passo="1" data-entra="sobe"><span class="display" style="font-size:64px">Pontos de contato</span> <span class="serif apagado" style="font-size:58px">touchpoints</span></div>
+  <svg class="recurso rede-contatos" aria-hidden="true" focusable="false" width="1920" height="1080" viewBox="0 0 1920 1080" data-m="percurso-cx" xmlns="http://www.w3.org/2000/svg"><path class="fio-suave" d="M188 818H1763"/></svg>
+  <aside class="notas">A grande questão é que esse cliente se relaciona com a minha marca em diversos momentos. É o que a gente chama de pontos de contato, do inglês touchpoints: momentos através dos quais o cliente se relaciona com a minha marca.</aside>
+</section>
+
+<!-- 8. Jornada -->
+<section class="slide s08">
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">01 · Experiência do cliente</div>
+  <h2 class="t display" style="left:110px;top:180px;font-size:84px;width:1500px;line-height:1" data-m="titulo">Somados, esses momentos formam a <span class="serif">jornada do cliente</span>.</h2>
+  <div class="trilho" style="left:200px;top:678px;width:1520px" data-passo="0" data-entra="mascara"></div>
+  <div class="ponto" data-m="ponto" style="left:182px;top:662px;width:36px;height:36px"></div>
+  <div class="ponto" data-m="p2" style="left:399px;top:662px;width:36px;height:36px"></div>
+  <div class="ponto" data-m="p3" style="left:616px;top:662px;width:36px;height:36px"></div>
+  <div class="ponto" data-m="p4" style="left:833px;top:662px;width:36px;height:36px"></div>
+  <div class="ponto" data-m="p5" style="left:1050px;top:662px;width:36px;height:36px"></div>
+  <div class="ponto" data-m="p6" style="left:1267px;top:662px;width:36px;height:36px"></div>
+  <div class="ponto" data-m="p7" style="left:1484px;top:662px;width:36px;height:36px"></div>
+  <div class="ponto" data-m="p8" style="left:1701px;top:662px;width:36px;height:36px"></div>
+  <svg class="recurso estacoes-jornada" aria-hidden="true" focusable="false" width="1920" height="1080" viewBox="0 0 1920 1080" data-m="percurso-cx" xmlns="http://www.w3.org/2000/svg"><path class="fio-fino" d="M200 610V660"/><circle cx="200" cy="565" r="49" class="estacao"/><g transform="translate(176 541)"><svg class="icone" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></g><path class="fio-fino" d="M417 610V660"/><circle cx="417" cy="565" r="49" class="estacao"/><g transform="translate(393 541)"><svg class="icone" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 13.5c2.4.9 4 3.2 4 6"/></svg></g><path class="fio-fino" d="M634 610V660"/><circle cx="634" cy="565" r="49" class="estacao"/><g transform="translate(610 541)"><svg class="icone" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v13H9l-6 5z"/><path d="M7 9h10M7 13h7"/></svg></g><path class="fio-fino" d="M851 610V660"/><circle cx="851" cy="565" r="49" class="estacao"/><g transform="translate(827 541)"><svg class="icone" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l2-5h14l2 5M4 9v11h16V9M3 9h18M9 20v-6h6v6"/></svg></g><path class="fio-fino" d="M1068 610V660"/><circle cx="1068" cy="565" r="49" class="estacao"/><g transform="translate(1044 541)"><svg class="icone" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11h11l2-8H6.3"/><circle cx="9" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></svg></g><path class="fio-fino" d="M1285 610V660"/><circle cx="1285" cy="565" r="49" class="estacao"/><g transform="translate(1261 541)"><svg class="icone" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21S2 14.7 2 8a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 6.7-10 13-10 13z"/></svg></g><path class="fio-fino" d="M1502 610V660"/><circle cx="1502" cy="565" r="49" class="estacao"/><g transform="translate(1478 541)"><svg class="icone" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v9H4v-9zM7 11l4-8c1.7 0 3 1.3 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.2 7A2 2 0 0 1 18.3 21H7"/></svg></g><path class="fio-fino" d="M1719 610V660"/><circle cx="1719" cy="565" r="49" class="estacao"/><g transform="translate(1695 541)"><svg class="icone" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.7-4.3L3 9M3 4v5h5M4 13a8 8 0 0 0 14.7 4.3L21 15M21 20v-5h-5"/></svg></g></svg>
+  <aside class="notas">E esses momentos juntos se tornam uma jornada do cliente. A jornada do cliente é a somatória de todos os momentos através dos quais o cliente se relaciona com a minha marca.</aside>
+</section>
+
+<!-- 9. Pré, durante, pós -->
+<section class="slide s09">
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">01 · Experiência do cliente</div>
+  <h2 class="t display" style="left:110px;top:180px;font-size:84px;width:1500px;line-height:1" data-m="titulo">Três momentos.</h2>
+  <div class="trilho" style="left:200px;top:678px;width:1520px"></div>
+  <div class="ponto" data-m="ponto" style="left:182px;top:662px;width:36px;height:36px"></div>
+  <div class="ponto" data-m="p2" style="left:399px;top:662px;width:36px;height:36px"></div>
+  <div class="ponto" data-m="p3" style="left:616px;top:662px;width:36px;height:36px"></div>
+  <div class="ponto" data-m="p4" style="left:833px;top:662px;width:36px;height:36px"></div>
+  <div class="ponto" data-m="p5" style="left:1050px;top:662px;width:36px;height:36px"></div>
+  <div class="ponto" data-m="p6" style="left:1267px;top:662px;width:36px;height:36px"></div>
+  <div class="ponto" data-m="p7" style="left:1484px;top:662px;width:36px;height:36px"></div>
+  <div class="ponto" data-m="p8" style="left:1701px;top:662px;width:36px;height:36px"></div>
+  <div class="t" style="left:180px;top:420px" data-passo="1" data-entra="sobe"><svg class="momento-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><div class="display" style="font-size:110px">Pré</div><div class="corpo" style="margin-top:300px;width:460px">tudo o que acontece antes de ele comprar</div></div>
+  <div class="t" style="left:820px;top:420px" data-passo="2" data-entra="sobe"><svg class="momento-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11h11l2-8H6.3"/><circle cx="9" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></svg><div class="display" style="font-size:110px">Durante</div><div class="corpo" style="margin-top:300px;width:420px">enquanto ele compra</div></div>
+  <div class="t" style="left:1430px;top:420px" data-passo="3" data-entra="sobe"><svg class="momento-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21S2 14.7 2 8a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 6.7-10 13-10 13z"/></svg><div class="display" style="font-size:110px">Pós</div><div class="corpo" style="margin-top:300px;width:400px">depois que ele comprou</div></div>
+  <svg class="recurso fases-jornada" aria-hidden="true" focusable="false" width="1920" height="1080" viewBox="0 0 1920 1080" data-m="percurso-cx" xmlns="http://www.w3.org/2000/svg"><rect class="regiao-jornada" x="112" y="370" width="540" height="590" rx="24"/><rect class="regiao-jornada" x="690" y="370" width="540" height="590" rx="24"/><rect class="regiao-jornada" x="1268" y="370" width="540" height="590" rx="24"/></svg>
+  <aside class="notas">Para trazer exemplos de pontos de contato, a gente precisa separar a jornada em três momentos: pré, durante e pós. Pré: todos os momentos em que o cliente se relaciona com a marca mas ainda não comprou. Durante: enquanto compra. Pós: depois que comprou.</aside>
+</section>
+
+<!-- 10. O exemplo: mudança -->
+<section class="slide s10 escuro" data-trans="circulo">
+  <div class="foto foto-lateral" data-m="foto-mudanca" aria-hidden="true"><img src="img/mudanca.png" alt="" decoding="sync"></div>
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">Um exemplo</div>
+  <h2 class="t display" style="left:110px;top:190px;font-size:104px;width:1000px;line-height:.98">Acabei de me mudar de Uberlândia para Araguari.</h2>
+  <p class="t serif" style="left:120px;top:560px;font-size:80px;width:900px;line-height:1.05;color:var(--ponto)" data-passo="1" data-entra="sobe">E quero me matricular numa academia.</p>
+  <svg class="t" style="left:1100px;top:250px" width="700" height="680" viewBox="0 0 700 680" data-passo="0" data-entra="mascara-cima">
+    <path d="M120 600 C 160 380, 420 260, 560 130" fill="none" stroke="#F1ECE3" stroke-width="4" stroke-dasharray="14 14"/>
+  </svg>
+  <div class="ponto cinza-p" style="left:1200px;top:832px;width:40px;height:40px"></div>
+  <div class="t" style="left:1260px;top:832px;font:600 32px var(--texto);color:#A9A39A">Uberlândia</div>
+  <div class="ponto pulsa" data-m="ponto" style="left:1632px;top:352px;width:56px;height:56px"></div>
+  <div class="t" style="left:1520px;top:432px;font:700 40px var(--display)">Araguari</div>
+  <svg class="recurso destino" aria-hidden="true" focusable="false" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"><circle cx="1660" cy="380" r="58" class="halo"/><circle cx="1660" cy="380" r="88" class="halo fino"/></svg>
+  <aside class="notas">Vou pegar um exemplo num cenário B2C: uma academia. Vamos imaginar que eu estou vindo de Uberlândia para cá, não conheço nenhuma academia em Araguari, e quero me matricular numa. A gente tem que entender a jornada do ponto de vista do cliente e do contexto em que ele está, para o nosso produto estar pronto para atendê-lo.</aside>
+</section>
+
+<!-- 11. Pergunta -->
+<section class="slide s11 escuro">
+  <div class="foto foto-total" data-m="foto-academia" aria-hidden="true"><img src="img/academia.png" alt="" decoding="sync"></div>
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">Pense como cliente</div>
+  <h2 class="t display" style="left:110px;top:300px;font-size:170px;line-height:.92" data-m="titulo">Como eu descubro<br>uma academia aqui<span class="acento">?</span></h2>
+  <div class="ponto pulsa" data-m="ponto" style="left:1690px;top:820px;width:56px;height:56px"></div>
+  <aside class="notas">Contexto: mudança. Vamos pensar na lógica do Cleiton, na cabeça do ser humano. Como é que eu vou descobrir uma academia aqui?</aside>
+</section>
+
+<!-- 12. Os caminhos -->
+<section class="slide s12 escuro">
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">Pontos de contato antes da compra</div>
+  <h2 class="t display" style="left:110px;top:160px;font-size:84px" data-m="titulo">Os caminhos até a academia</h2>
+  <div class="card" data-m="c1" style="left:120px;top:340px;width:540px;height:270px" data-passo="1" data-entra="sobe"><svg class="caminho-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 13.5c2.4.9 4 3.2 4 6"/></svg><em>01</em><b>Indicação</b><i>pergunto para quem já mora aqui</i></div>
+  <div class="card" data-m="c2" style="left:690px;top:340px;width:540px;height:270px" data-passo="2" data-entra="sobe"><svg class="caminho-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><em>02</em><b>Google</b><i>busco academias em Araguari</i></div>
+  <div class="card" data-m="c3" style="left:1260px;top:340px;width:540px;height:270px" data-passo="3" data-entra="sobe"><svg class="caminho-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/></svg><em>03</em><b>Avaliações</b><i>leio o que os alunos dizem</i></div>
+  <div class="card" data-m="c4" style="left:120px;top:640px;width:540px;height:270px" data-passo="4" data-entra="sobe"><svg class="caminho-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4h4l7 5V5L7 10z"/><path d="M17 9a4 4 0 0 1 0 6"/></svg><em>04</em><b>Anúncio</b><i>sou impactado no Instagram</i></div>
+  <div class="card" data-m="c5" style="left:690px;top:640px;width:540px;height:270px" data-passo="5" data-entra="sobe"><svg class="caminho-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><em>05</em><b>Conteúdo orgânico</b><i>vejo um reels, uma foto</i></div>
+  <div class="card" data-m="c6" style="left:1260px;top:640px;width:540px;height:270px;outline:3px solid var(--ponto)" data-passo="6" data-entra="sobe"><svg class="caminho-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg><em>06</em><b>Inteligência artificial</b><i>pergunto para uma IA</i></div>
+  <div class="ponto" data-m="ponto" style="left:1760px;top:192px;width:40px;height:40px"></div>
+  <svg class="recurso convergencia" aria-hidden="true" focusable="false" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"><path class="fio-suave" d="M950 450V860M890 450H1010M890 655H1010M890 860H1010"/></svg>
+  <aside class="notas">Primeira coisa que eu faria: perguntar para alguém. Ou mandar uma pergunta para o Google e ler as avaliações. Posso ser impactado por um anúncio, ou por um conteúdo orgânico. E também posso ir numa inteligência artificial. Cada uma dessas formas é um ponto de contato.</aside>
+</section>
+
+<!-- 13. Indicação -->
+<section class="slide s13 escuro">
+  <div class="foto " data-m="foto-cotidiano" aria-hidden="true"><img src="img/cotidiano.png" alt="" decoding="sync"></div>
+  <div class="t eyebrow" style="left:1240px;top:110px" data-m="eyebrow">Ponto de contato 01</div>
+  <div class="tela" data-m="c1" style="left:120px;top:110px;width:1000px;height:860px">
+    <div class="barra"><span class="avatar"></span>Amigos de Araguari<span class="ponto" data-m="ponto" style="position:relative;width:18px;height:18px;margin-left:auto"></span></div>
+    <div class="bolha eu" style="top:140px" data-passo="0" data-entra="sobe">Gente, qual academia boa vocês me indicam aqui?</div>
+    <div class="bolha ela" style="top:330px;--i:7" data-passo="0" data-entra="sobe"><small>Ana</small>A academia A é muito boa!</div>
+    <div class="bolha ela" style="top:490px;--i:14" data-passo="0" data-entra="sobe"><small>Rafa</small>Eu treino na B, recomendo.</div>
+    <div class="bolha ela" style="top:650px;--i:21" data-passo="0" data-entra="sobe"><small>Paulo</small>C, sem dúvida.</div>
+  </div>
+  <h2 class="t display" style="left:1230px;top:200px;font-size:110px">Indicação</h2>
+  <p class="t serif" style="left:1240px;top:340px;font-size:60px;width:600px;line-height:1.05;color:var(--ponto)">a voz de quem já é cliente.</p>
+  <svg class="recurso linha-conversa" aria-hidden="true" focusable="false" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"><path class="fio-suave" d="M1100 576H1640Q1760 576 1760 620"/><circle class="marcador" cx="1100" cy="576" r="7"/></svg>
+  <aside class="notas">Pergunto para duas, três pessoas. E elas vão falar: a academia A é muito boa, a B é muito boa, a C é muito boa. Pela recomendação, eu posso ir até a academia.</aside>
+</section>
+
+<!-- 14. Google e avaliações -->
+<section class="slide s14 escuro">
+  <div class="t eyebrow" style="left:1240px;top:110px" data-m="eyebrow">Pontos de contato 02 e 03</div>
+  <div class="tela" data-m="c2" style="left:120px;top:110px;width:1000px;height:860px">
+    <div class="busca"><span class="lupa"></span><span class="digita">academias em Araguari</span><span class="cursor" data-m="ponto"></span></div>
+    <div class="resultado" style="top:230px" data-passo="0" data-entra="sobe"><b>Academia A</b><span class="estrelas">★★★★★</span> 4,8 (312 avaliações)</div>
+    <div class="resultado" style="top:400px;--i:4" data-passo="0" data-entra="sobe"><b>Academia B</b><span class="estrelas">★★★★☆</span> 4,1 (98 avaliações)</div>
+    <div class="resultado" style="top:570px;--i:8" data-passo="0" data-entra="sobe"><b>Academia C</b><span class="estrelas">★★★☆☆</span> 3,2 (41 avaliações)</div>
+  </div>
+  <div class="review" data-m="c3" style="left:900px;top:560px" data-passo="1" data-entra="escala"><span class="estrelas">★★★★★</span>Equipamentos novos e professores que corrigem de verdade.</div>
+  <div class="review" style="left:1180px;top:770px" data-passo="2" data-entra="escala"><span class="estrelas">★★☆☆☆</span>Liguei três vezes e ninguém atendeu.</div>
+  <h2 class="t display" style="left:1230px;top:200px;font-size:110px">Google</h2>
+  <p class="t serif" style="left:1240px;top:340px;font-size:60px;width:600px;line-height:1.05;color:var(--ponto)">e o que as pessoas dizem da experiência delas.</p>
+  <svg class="recurso linha-avaliacoes" aria-hidden="true" focusable="false" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"><path class="fio-suave" d="M1080 650V850"/><circle class="marcador" cx="1080" cy="650" r="7"/><circle class="marcador" cx="1080" cy="850" r="7"/></svg>
+  <aside class="notas">Se não quiser conversar com ninguém, mando a pergunta para o Google: quais são as academias em Araguari? Ele lista as principais. E eu posso ler os reviews: o que as pessoas estão falando sobre a experiência delas nessa academia.</aside>
+</section>
+
+<!-- 15. Instagram: anúncio e orgânico -->
+<section class="slide s15 escuro">
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">Pontos de contato 04 e 05</div>
+  <h2 class="t display" style="left:110px;top:170px;font-size:110px;line-height:.95">Anúncio<br><span class="serif" style="color:var(--ponto)">ou orgânico</span></h2>
+  <div class="checagem" style="left:120px;top:480px" data-passo="1" data-entra="esquerda">Está organizado? Está bonito?</div>
+  <div class="checagem" style="left:120px;top:580px" data-passo="2" data-entra="esquerda">Mostra o espaço, as pessoas, a equipe?</div>
+  <div class="checagem" style="left:120px;top:680px" data-passo="3" data-entra="esquerda">Responde os comentários?</div>
+  <div class="checagem" style="left:120px;top:780px" data-passo="4" data-entra="esquerda">Os alunos são engajados?</div>
+  <div class="celular" data-m="c4" style="left:1330px;top:70px">
+    <div class="vidro-tela">
+      <div class="post-topo"><span class="avatar" style="width:56px;height:56px"></span><div>academiaxpto<small>Patrocinado</small></div><span class="ponto" data-m="ponto" style="position:relative;width:18px;height:18px;margin-left:auto"></span></div>
+      <div class="post-img">Treine com a gente.</div>
+      <div class="post-cta">Saiba mais <span>›</span></div>
+      <div style="padding:22px 26px;font:400 26px/1.4 var(--texto);color:#333"><b>academiaxpto</b> Primeira semana grátis para quem chegou agora.</div>
+    </div>
+  </div>
+  <aside class="notas">Posso ser impactado por um anúncio de tráfego pago no Instagram, ou por um conteúdo orgânico, um reels, uma foto. Se eu entro no Instagram da academia: está organizado, estruturado, bonito? Mostra os ambientes, as pessoas que treinam, os colaboradores? Responde os alunos nos comentários? Tudo isso o cliente faz antes de te contratar.</aside>
+</section>
+
+<!-- 16. Inteligência artificial -->
+<section class="slide s16 escuro">
+  <div class="t eyebrow" style="left:1240px;top:110px" data-m="eyebrow">Ponto de contato 06</div>
+  <div class="tela ia" data-m="c6" style="left:120px;top:110px;width:1000px;height:860px">
+    <div class="barra"><span class="chip">ChatGPT</span><span class="chip">Gemini</span><span class="chip">Claude</span></div>
+    <div class="bolha eu" style="top:140px">Qual é a melhor academia de Araguari?</div>
+    <div class="pontinhos" style="position:absolute;left:50px;top:320px" data-m="ponto"><span></span><span></span><span></span></div>
+    <div class="esqueleto" style="top:400px;width:820px" data-passo="0" data-entra="mascara"></div>
+    <div class="esqueleto" style="top:450px;width:700px;--i:3" data-passo="0" data-entra="mascara"></div>
+    <div class="esqueleto" style="top:500px;width:760px;--i:6" data-passo="0" data-entra="mascara"></div>
+    <div class="esqueleto" style="top:580px;width:520px;--i:9" data-passo="0" data-entra="mascara"></div>
+    <div class="esqueleto" style="top:630px;width:600px;--i:12" data-passo="0" data-entra="mascara"></div>
+  </div>
+  <h2 class="t display" style="left:1230px;top:200px;font-size:96px;line-height:.95">Inteligência artificial</h2>
+  <p class="t serif" style="left:1240px;top:420px;font-size:60px;width:600px;line-height:1.05;color:var(--ponto)">a nova porta de entrada.</p>
+  <svg class="recurso porta-ia" aria-hidden="true" focusable="false" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"><g transform="translate(1140 790)"><svg class="icone" width="92" height="92" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21h16M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><circle cx="14.5" cy="12.5" r="1"/></svg></g><path class="fio-suave" d="M1260 842H1760"/><circle class="marcador" cx="1760" cy="842" r="11"/></svg>
+  <aside class="notas">E eu também posso ir numa inteligência artificial: no Gemini, no ChatGPT, no Claude, e perguntar qual é a melhor academia de Araguari, onde treinar aqui.</aside>
+</section>
+
+<!-- 17. Antes -->
+<section class="slide s17" data-trans="corte">
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">01 · Experiência do cliente</div>
+  <p class="t lead" style="left:120px;top:230px">Tudo isso acontece</p>
+  <div class="t serif acento" style="left:90px;top:250px;font-size:440px;line-height:1">antes</div>
+  <p class="t display" style="left:1180px;top:520px;font-size:86px;font-weight:700">de ele<br>comprar<span class="ponto-in" data-m="ponto"></span></p>
+  <div class="trilho" style="left:200px;top:900px;width:1520px;background:var(--linha)"></div>
+  <div class="trilho" style="left:200px;top:900px;width:560px" data-passo="0" data-entra="mascara"></div>
+  <div class="t eyebrow" style="left:200px;top:940px;color:var(--tinta)">Pré</div>
+  <div class="t eyebrow" style="left:900px;top:940px">Durante</div>
+  <div class="t eyebrow" style="left:1600px;top:940px">Pós</div>
+  <div class="ponto" style="left:230px;top:886px;width:30px;height:30px" data-passo="0" data-entra="escala"></div>
+  <div class="ponto" style="left:320px;top:886px;width:30px;height:30px;--i:1" data-passo="0" data-entra="escala"></div>
+  <div class="ponto" style="left:410px;top:886px;width:30px;height:30px;--i:2" data-passo="0" data-entra="escala"></div>
+  <div class="ponto" style="left:500px;top:886px;width:30px;height:30px;--i:3" data-passo="0" data-entra="escala"></div>
+  <div class="ponto" style="left:590px;top:886px;width:30px;height:30px;--i:4" data-passo="0" data-entra="escala"></div>
+  <div class="ponto" style="left:680px;top:886px;width:30px;height:30px;--i:5" data-passo="0" data-entra="escala"></div>
+  <svg class="recurso regiao-pre" aria-hidden="true" focusable="false" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"><rect x="142" y="820" width="628" height="188" rx="22" class="faixa-pre"/></svg>
+  <aside class="notas">Então a forma de descobrir o negócio: cada uma dessas formas é um ponto de contato. Ele já está se relacionando com a minha marca antes de comprar.</aside>
+</section>
+
+<!-- 18. Awareness -->
+<section class="slide s18">
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">Etapa da jornada</div>
+  <h2 class="t display" style="left:104px;top:270px;font-size:250px">Awareness<span class="ponto-in" data-m="ponto"></span></h2>
+  <p class="t serif" style="left:120px;top:520px;font-size:96px;color:var(--cinza-escuro)">a etapa do conhecimento.</p>
+  <p class="t lead" style="left:120px;top:740px;width:1300px" data-passo="1" data-entra="sobe">O cliente está buscando informações sobre o seu negócio.</p>
+  <svg class="recurso lupa-descoberta" aria-hidden="true" focusable="false" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"><circle cx="1460" cy="466" r="244" class="orbita"/><circle cx="1460" cy="466" r="176" class="anel"/><circle cx="1460" cy="466" r="118" class="lente"/><path d="M1545 551L1642 648" class="cabo-lupa"/><g transform="translate(1406 412)"><svg class="icone" width="108" height="108" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></g><circle cx="1460" cy="222" r="17" class="marcador"/><circle cx="1216" cy="466" r="13" class="marcador"/><circle cx="1650" cy="313" r="13" class="marcador"/></svg>
+  <aside class="notas">Essa etapa da jornada do cliente a gente chama de awareness: etapa de conhecimento, em que ele está buscando informações a respeito do negócio.</aside>
+</section>
+
+<!-- 19. Não é só academia -->
+<section class="slide s19">
+  <div class="foto foto-lateral" data-m="foto-comercio" aria-hidden="true"><img src="img/comercio.png" alt="" decoding="sync"></div>
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">E não é só academia</div>
+  <div class="t display apagado" style="left:110px;top:200px;font-size:76px;line-height:1.08" data-passo="0" data-entra="sobe"><svg class="setor-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 10h2a3 3 0 0 1 0 6h-2M3 22h16M8 2v3M12 2v3"/></svg>cafeteria</div>
+  <div class="t display apagado" style="left:110px;top:290px;font-size:76px;line-height:1.08;--i:2" data-passo="0" data-entra="sobe"><svg class="setor-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5c-3-2-8-3-8 3 0 5 2 13 5 13 2 0 1-7 3-7s1 7 3 7c3 0 5-8 5-13 0-6-5-5-8-3z"/></svg>clínica odontológica</div>
+  <div class="t display apagado" style="left:110px;top:380px;font-size:76px;line-height:1.08;--i:4" data-passo="0" data-entra="sobe"><svg class="setor-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg>clínica de estética</div>
+  <div class="t display apagado" style="left:110px;top:470px;font-size:76px;line-height:1.08;--i:6" data-passo="0" data-entra="sobe"><svg class="setor-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="3"/><circle cx="5" cy="18" r="3"/><path d="M7.5 7.5L21 21M7.5 16.5L21 3M14 10l-3 4"/></svg>salão de cabeleireiro</div>
+  <div class="t display apagado" style="left:110px;top:560px;font-size:76px;line-height:1.08;--i:8" data-passo="0" data-entra="sobe"><svg class="setor-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15V9l2-5h14l2 5v6M3 9h18M3 15h18M6 12h2M16 12h2M5 15v4M19 15v4"/></svg>garagem de veículos</div>
+  <div class="t display apagado" style="left:110px;top:650px;font-size:76px;line-height:1.08;--i:10" data-passo="0" data-entra="sobe"><svg class="setor-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16v-4l2-4h14l2 4v4M3 12h18M3 16h18M5 16v3M19 16v3M8 2v3M12 1v4M16 2v3"/></svg>lava-jato</div>
+  <div class="t display" style="left:110px;top:780px;font-size:150px;line-height:1" data-passo="1" data-entra="esquerda">a sua empresa<span class="ponto-in" data-m="ponto"></span></div>
+  <aside class="notas">Eu dei o exemplo da academia, mas o cliente faz a mesma coisa para vários outros contextos: uma cafeteria, uma clínica odontológica, uma clínica de estética, um salão de cabeleireiro, uma garagem de veículos, um lava-jato.</aside>
+</section>
+
+<!-- 20. Nós somos consumidores -->
+<section class="slide s20">
+  <div class="foto foto-total" data-m="foto-consumo" aria-hidden="true"><img src="img/consumo.png" alt="" decoding="sync"></div>
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">Por quê?</div>
+  <h2 class="t display" style="left:110px;top:270px;font-size:130px;width:1600px;line-height:.95">A gente faz isso o tempo inteiro.</h2>
+  <p class="t serif acento" style="left:120px;top:620px;font-size:110px;width:1500px;line-height:1" data-passo="1" data-entra="sobe">Porque nós somos consumidores<span class="ponto-in" data-m="ponto" style="background:var(--tinta)"></span></p>
+  <aside class="notas">A gente faz isso constantemente, o tempo inteiro. Sabe por quê? Porque nós somos consumidores. E enquanto consumidores, nós queremos que as empresas nos tratem com o devido respeito e nos deem as devidas informações.</aside>
+</section>
+
+<!-- ============ VIRADA ============ -->
+
+<!-- 21. Inverta -->
+<section class="slide s21 escuro" data-trans="corte">
+  <div class="foto foto-total" data-m="foto-reflexo" aria-hidden="true"><img src="img/reflexo.png" alt="" decoding="sync"></div>
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">Agora, inverta</div>
+  <h2 class="t display" style="left:110px;top:230px;font-size:160px;line-height:.92" data-m="titulo">E se você comprasse<br>de você mesmo<span class="acento">?</span></h2>
+  <div class="t display reflexo" style="left:110px;top:540px;font-size:160px;line-height:.92" data-passo="0" data-entra="desfoque">E se você comprasse<br>de você mesmo<span class="acento">?</span></div>
+  <div class="ponto" data-m="ponto" style="left:1700px;top:120px;width:40px;height:40px"></div>
+  <aside class="notas">Mas quando se trata de nós enquanto comunicadores, empresários, donos das empresas, vendedores dos nossos produtos e serviços: como seria a nossa experiência com a nossa própria marca se nós fôssemos os compradores?</aside>
+</section>
+
+<!-- 22. Três perguntas -->
+<section class="slide s22 escuro">
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">Como cliente de você mesmo</div>
+  <div class="pergunta" style="top:260px" data-foco="perg" data-foco-em="1"><svg class="pergunta-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><b>1</b>Lendo as avaliações da sua empresa no Google, <span class="acento">você compraria?</span></div>
+  <div class="pergunta" style="top:500px" data-foco="perg" data-foco-em="2"><svg class="pergunta-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg><b>2</b>Ligando agora para a sua empresa, <span class="acento">você compraria?</span></div>
+  <div class="pergunta" style="top:740px" data-foco="perg" data-foco-em="3"><svg class="pergunta-icone" aria-hidden="true" focusable="false" style="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg><b>3</b>Perguntando para uma IA, <span class="acento">a sua empresa apareceria?</span></div>
+  <div class="ponto" data-m="ponto" style="left:1700px;top:120px;width:40px;height:40px"></div>
+  <aside class="notas">Se nós, enquanto compradores, entrássemos agora no Google e lêssemos as avaliações dos clientes sobre a nossa empresa, nós compraríamos? Se ligássemos agora na nossa empresa e a nossa colaboradora nos atendesse, nós compraríamos? Se precisássemos buscar referência nos maiores mecanismos de busca ou em alguma inteligência artificial, a nossa empresa apareceria?</aside>
+</section>
+
+<!-- 23. Dever de casa -->
+<section class="slide s23">
+  <div class="t eyebrow" style="left:120px;top:110px" data-m="eyebrow">Dever de casa nº 1</div>
+  <h2 class="t display" style="left:110px;top:250px;font-size:128px;width:1650px;line-height:.95">Isso foi só o <span class="serif acento">primeiro</span> ponto de contato<span class="ponto-in" data-m="ponto"></span></h2>
+  <p class="t lead" style="left:120px;top:720px" data-passo="1" data-entra="sobe">É fácil? <b>Não.</b></p>
+  <p class="t lead apagado" style="left:120px;top:800px" data-passo="2" data-entra="sobe">Se fosse fácil, todo mundo fazia.</p>
+  <svg class="recurso levar" aria-hidden="true" focusable="false" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"><g transform="translate(1600 770)"><svg class="icone" width="126" height="126" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v19l-6-4-6 4z"/></svg></g><path class="fio-suave" d="M1600 941H1740"/></svg>
+  <aside class="notas">Ou seja: só no primeiro ponto de contato vocês já têm um dever de casa gigantesco. Porque, galera, é fácil fazer isso? Não é. Se fosse fácil, todo mundo fazia.</aside>
+</section>
+
+<!-- 24. O que impede -->
+<section class="slide s24">
+  <div class="ponto" data-m="ponto" style="left:930px;top:330px;width:60px;height:60px"></div>
+  <h2 class="t display" style="left:0;right:0;top:470px;font-size:120px;text-align:center">Então, o que impede<span class="acento">?</span></h2>
+  <p class="t corpo" style="left:0;right:0;top:640px;text-align:center" data-passo="1" data-entra="sobe">As limitações e os problemas para executar isso dentro das nossas organizações.</p>
+  <svg class="recurso limite" aria-hidden="true" focusable="false" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"><path class="fio-final" d="M112 970H1330M1490 970H1808"/><path class="barreira" d="M1408 934V1006"/><circle cx="1808" cy="970" r="10" fill="currentColor"/></svg>
+  <aside class="notas">Existem uma série de limitações e de problemas para a gente executar isso dentro das nossas organizações. (Continua.)</aside>
+</section>
+
+</div>
+<script src="motor.js"></script>
+</body>
+</html>

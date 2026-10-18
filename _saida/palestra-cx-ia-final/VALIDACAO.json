@@ -1,0 +1,90 @@
+{
+  "data": "2026-10-18",
+  "escopo": "Finalização visual da primeira parte existente",
+  "conteudo": {
+    "slides": 24,
+    "trechos": 185,
+    "falas": 24,
+    "textos_identicos_ao_original": true,
+    "falas_identicas_ao_original": true,
+    "passos_e_foco_identicos_ao_original": true
+  },
+  "navegacao": {
+    "slides": 24,
+    "estados_de_clique": 53,
+    "erros_javascript": [],
+    "recursos_faltantes": [],
+    "avisos_de_texto": []
+  },
+  "transicoes": {
+    "quantidade": 23,
+    "erros": [],
+    "teclado": {
+      "home": true,
+      "pageDown": true,
+      "end": true,
+      "fullscreen": true
+    }
+  },
+  "offline": {
+    "slides": 24,
+    "images": true,
+    "embeddedImages": true,
+    "externalDependencies": 0,
+    "errors": [],
+    "requests": [],
+    "failed": [],
+    "presenter": true,
+    "comparacoes_visuais": [
+      {
+        "slide": 7,
+        "pixels_identicos": true
+      },
+      {
+        "slide": 9,
+        "pixels_identicos": true
+      },
+      {
+        "slide": 18,
+        "pixels_identicos": true
+      },
+      {
+        "slide": 19,
+        "pixels_identicos": true
+      },
+      {
+        "slide": 22,
+        "pixels_identicos": true
+      }
+    ]
+  },
+  "pdf": {
+    "paginas": 24,
+    "dimensoes_pontos": [
+      1440,
+      810
+    ],
+    "renderizador_de_conferencia": "Poppler pdftoppm",
+    "paginas_revisadas_visualmente": 24,
+    "todas_as_revelacoes_visiveis": true
+  },
+  "conferencia_visual": {
+    "slides": 24,
+    "transicoes": 23,
+    "slide_7_corrigido": true
+  },
+  "arquivos": {
+    "palestra.html": {
+      "bytes": 55857,
+      "sha256": "70df231381e8b4050b92aa9c847390f15fe20431b4be003059946cf6b3c9fcd5"
+    },
+    "palestra-arquivo-unico.html": {
+      "bytes": 37384108,
+      "sha256": "8145f6c1915fa8468bfd6fc10267aadd54a9e3c0bc3226e2a13115a0f848241b"
+    },
+    "palestra.pdf": {
+      "bytes": 23178811,
+      "sha256": "2d5cdb05fe1d7d2473726a1e4585f25929365de56568ae10930ba473febf5ab7"
+    }
+  }
+}

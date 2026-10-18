@@ -1,0 +1,38 @@
+{
+  "generation": "Ferramenta integrada image_gen",
+  "purpose": "Cenas ilustrativas originais. Pessoas, empresas e locais fictícios.",
+  "prompts": [
+    {
+      "file": "img/reflexo.png",
+      "prompt": "Use case: photorealistic-natural. Create an original cinematic editorial photograph for a Brazilian keynote about customer experience and the question of buying from your own business. Wide landscape 16:9. On the RIGHT HALF of the composition an ordinary adult man around 40, short hair, wearing a simple dark jacket, seen in three-quarter back view outside the glass entrance of a small contemporary local business, looking at his plausible subtle reflection in the glass. He is an anonymous fictional consumer, not a portrait of any real person. Strong vertical architecture, reflection as an introspective visual metaphor. LEFT HALF is deep dark nearly black negative space, without objects or bright patterns, usable for large cream typography to be added later. Rich black and white photograph, natural film grain, convincing realistic textures, soft daylight on glass, restrained contrast retaining shadow detail, photographic depth. No writing, no letters, no logos, no signage, no watermark. No futuristic tech, no neon, no illustration."
+    },
+    {
+      "file": "img/acolhimento.png",
+      "prompt": "Use case: photorealistic-natural. Original wide landscape 16:9 editorial photograph for an in-person talk's thank-you slide. Anonymous fictional audience in a modest elegant auditorium, photographed quietly from the back and slightly to the side. A few people settled into their seats, the nearest human figure and seats mainly on the RIGHT side, faces not recognizable. Warm human attentive atmosphere, soft stage illumination ahead, beautiful subtle architectural geometry. The LEFT 45 percent is a deep black uncluttered shadow area, reserved for large presentation text added later. Pure black and white, thoughtful documentary photography, realistic materials, no contrived applause, no visible presenter, no projected slides. This is an illustrative scene, not an actual event. No text, letters, logos or watermark."
+    },
+    {
+      "file": "img/atendimento.png",
+      "prompt": "Use case: photorealistic-natural. Original natural editorial photograph, wide landscape 16:9, of a meaningful customer experience in a small contemporary Brazilian café: a female staff member attentively listening to a customer across a simple counter, both ordinary adults around 30-45, candid subtle expressions, genuine eye contact. Both people grouped toward the RIGHT TWO THIRDS, left third soft empty pale plaster wall. Close enough to show human warmth and attention, not a handshake, not exaggerated smiles. Soft window light, beautiful honest skin detail, restrained black and white documentary aesthetic, deep but detailed shadows, light film grain, realistic anatomy. Modest neighborhood business, not luxury. No written words, menus, signage, brands, logos or watermark. Fictional people and business."
+    },
+    {
+      "file": "img/academia.png",
+      "prompt": "Use case: photorealistic-natural. Create an original wide landscape 16:9 editorial photograph inside a believable well-kept neighborhood gym in Brazil. RIGHT HALF: an ordinary adult trainee using a dumbbell with an attentive trainer nearby, candid moment, natural bodies, simple unbranded sportswear. Background weight racks, windows, rubber floor, convincing equipment construction. LEFT HALF: softer, darker uncluttered gym interior, useful as negative space for slide title. Crisp elegant black and white sports documentary photograph, natural side light with a luminous window edge, nuanced shadows, subtle grain. Avoid extreme muscle posing, luxury gym clichés and dramatic smoke. No text, signage, brand logos, numbers or watermark. Fictional gym, not a depiction of a specific business."
+    },
+    {
+      "file": "img/cotidiano.png",
+      "prompt": "Use case: photorealistic-natural. Original wide 16:9 editorial still-life photograph about the everyday journey of a customer. High three-quarter overhead view of a simple café table. On the RIGHT side: one adult hand holding an unbranded smartphone with a black unlit screen, a small ceramic coffee cup, house keys and a plain closed notebook. Natural coherent arrangement, realistic anatomy, no clutter. LEFT HALF a calm dark table surface with fine texture and no objects, reserved for typography. Black and white photography, quiet natural window light, rich tactile materials, slightly cinematic, restrained film grain, excellent photographic detail. No readable text, no logos, no interface graphics, no watermarks."
+    },
+    {
+      "file": "img/consumo.png",
+      "prompt": "Use case: photorealistic-natural. Original wide landscape 16:9 close editorial photograph of a consumer receiving a ceramic coffee cup from a barista across a café counter. The hand-to-hand exchange of the cup is the focal point on the RIGHT half, both hands anatomically correct and natural, partial soft silhouettes of two ordinary fictional adults visible in context. Left half is dark softly blurred café space with very little visual detail, for presentation text added later. A humane everyday commercial exchange, no exaggerated smile or posed handshake. Rich black and white documentary photograph, natural light illuminating cup and hands, soft grain and realistic textures. No text, labels, menus, brands, logos or watermarks."
+    },
+    {
+      "file": "img/mudanca.png",
+      "prompt": "Use case: photorealistic-natural. Original wide landscape 16:9 editorial photograph illustrating a move to another city. In the RIGHT HALF: a few plain cardboard moving boxes, a dark duffel bag and simple house keys resting on a box, beside an open apartment doorway, a hint of soft daylight and a real ordinary Brazilian neighborhood street outside, no recognizable city monuments. LEFT HALF is an uncluttered dim plaster wall reserved for slide text. Beautiful realistic black and white photography, quiet arrival atmosphere, detailed cardboard and fabric, natural daylight, moderate contrast, no people needed. No printed text, no labels, no numbers, no signs, no logos and no watermark. This is a fictional illustrative place, not a photo of any specific city."
+    },
+    {
+      "file": "img/comercio.png",
+      "prompt": "Use case: photorealistic-natural. Create one original wide landscape 16:9 black and white documentary editorial photograph of a lively but calm neighborhood commercial street in Brazil. Framed at human eye level, a small café frontage, a barbershop doorway and other modest local businesses next door, a couple of anonymous ordinary adults walking naturally. Focus on authentic approachable business architecture, windows, chairs, a barber pole without text and a café counter seen through an open entrance. No luxury malls, no monumental landmarks. Composition is harmonious and readable when cropped into a tall photo on the right side of a slide. Soft late afternoon light, deep blacks with detailed midtones, classic photographic grain. Absolutely no legible writing, store names, brand logos, advertisements or watermark. Entirely fictional location, illustrative of different local businesses, not a depiction of any named city."
+    }
+  ]
+}

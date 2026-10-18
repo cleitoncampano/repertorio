@@ -4,13 +4,17 @@ Atualizado em 18/10/2026 (America/Sao_Paulo).
 
 ## Objetivo atual
 
-Retomar a apresentação da palestra “Você compraria de você mesmo?”. O usuário pediu primeiro o diagnóstico do que falta para finalizar, sem alterar a apresentação nesta etapa.
+Finalização visual da primeira parte da palestra “Você compraria de você mesmo?”, autorizada pelo usuário com liberdade para escolher recursos dos carrosséis. Entrega consolidada em `_saida/palestra-cx-ia-final/`.
 
 ## Retomada da palestra
 
 - Contexto e conversa anterior recuperados. O pedido original era melhorar apenas o visual, preservando texto, falas e storytelling da primeira parte.
-- Base recomendada: `_saida/palestra-cx-ia-editorial/palestra.html`, com oito imagens geradas e todos os 185 trechos e 24 falas preservados. A sessão anterior parou na conferência visual.
-- Pendências confirmadas: corrigir texto sobreposto e cortado no slide 7; concluir revisão dos 24 slides e dos cliques/transições; ensaiar tempo; gerar HTML único offline e PDF da editorial; consolidar a entrega.
+- Entrega oficial: `_saida/palestra-cx-ia-final/palestra-arquivo-unico.html`, independente e offline, e `palestra.pdf`, com 24 páginas. A fonte editável é `palestra.html` na mesma pasta.
+- Base editorial preservada, com as oito imagens geradas. Os 185 trechos, as 24 falas, os passos e os grupos de foco continuam idênticos ao roteiro original.
+- Aplicados percurso contínuo, estações com ícones, cartões, círculos de descoberta e marcadores de foco derivados dos carrosséis. Corrigido o corte e a sobreposição do slide 7.
+- Conferidos os 24 slides, 53 estados de clique, 23 transições, notas, teclado, tela cheia e janela P. HTML único aberto numa pasta isolada sem requisições externas; cinco slides idênticos em comparação de pixels. PDF renderizado com Poppler e 24 páginas revisadas. Evidências locais em `_ver/`; resultados e hashes em `VALIDACAO.json`.
+- Seleção atual: `ee7c76be-312c-4896-a618-e256fed3555f`, no contexto existente `ca3449a4-fc0e-431b-9dac-9709490c6888`. O usuário delegou a escolha nesta rodada. A referência Vogue, cortada na revisão anterior, continua descartada.
+- O tempo da fala ainda depende de ensaio do apresentador. A janela P inclui cronômetro.
 - O roteiro existente é só a primeira parte. A palestra inteira ainda precisa dos blocos de IA, conexão com CX, prática, cases e conclusão.
 - A visual-v2 contém acréscimos e mudanças de conteúdo, portanto não substitui automaticamente a editorial. Detalhes, evidências e próxima ação: `docs/RETOMADA-PALESTRA-CX-IA.md`.
 
@@ -42,6 +46,6 @@ Há versões da palestra “Você compraria de você mesmo?”, com 24 slides. E
 
 ## Próxima ação
 
-Para a palestra, seguir `docs/RETOMADA-PALESTRA-CX-IA.md`: retomar a editorial pela correção do slide 7 e concluir a revisão visual da primeira parte, sem reescrever a fala. Os blocos restantes exigem a continuação do conteúdo e a definição dos cases e duração total.
+Para apresentar a primeira parte, abrir o HTML único em `_saida/palestra-cx-ia-final/`. A revisão visual e a exportação estão concluídas. Para avançar a palestra completa, receber ou recuperar a continuação da fala e definir os cases e a duração total. Detalhes em `docs/RETOMADA-PALESTRA-CX-IA.md`.
 
 O repertório Growmate está incorporado e visível no grafo. Para novos materiais, consultar o catálogo e ler a revisão em Escolhas; preservar os créditos. O funcionamento automático do hook RTK em um Codex reiniciado e a economia total da assinatura ainda não foram medidos.

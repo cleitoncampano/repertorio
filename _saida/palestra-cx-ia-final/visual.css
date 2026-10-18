@@ -1,0 +1,248 @@
+/* Direção editorial. O conteúdo permanece no HTML original, sem reescrita. */
+:root {
+  --papel: #f3efe7;
+  --tinta: #171715;
+  --ponto: #ff572c;
+  --cinza: #6c665d;
+  --cinza-escuro: #5a554e;
+  --linha: #c8c0b4;
+  --painel: #242422;
+  --dur: 900ms;
+}
+.slide { isolation: isolate; }
+.slide > :not(.foto) { z-index: 1; }
+.display { font-weight: 750; letter-spacing: -.045em; }
+.eyebrow { font-size: 24px; font-weight: 600; letter-spacing: .16em; }
+.escuro .eyebrow { color: #b5b1a8; }
+.escuro .apagado { color: #b5b1a8; }
+.foto { position: absolute; overflow: hidden; margin: 0; z-index: 0; pointer-events: none; }
+.foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.foto-total { inset: 0; }
+.foto-total::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12,12,11,.45), rgba(12,12,11,.12) 50%, transparent 75%); }
+.foto-lateral { right: 0; top: 0; height: 100%; }
+.pulsa { animation: none; }
+.mt-contador { right: 26px; bottom: 22px; }
+
+/* 01. A pergunta abre a relação entre pessoa e reflexo. */
+.s01 { background: #10100f; color: var(--papel); }
+.s01 .eyebrow { left: 112px !important; top: 100px !important; color: #c6c1b8; }
+.s01 h1 { left: 104px !important; top: 345px !important; width: 1120px; font-size: 154px !important; line-height: .98; font-weight: 700; }
+.s01 > div.t:not(.eyebrow) { left: 154px !important; bottom: 112px !important; font-size: 32px !important; }
+.s01 > .ponto { left: 112px !important; top: 934px !important; width: 18px !important; height: 18px !important; }
+.s01 .foto img { object-position: center; }
+
+/* 02. Um agradecimento com presença humana e área de leitura livre. */
+.s02 { color: var(--papel); background: #10100f; }
+.s02 .eyebrow { top: 100px !important; left: 112px !important; color: #b9b5ac; }
+.s02 > p { left: 112px !important; top: 270px !important; width: 770px; font-size: 38px; line-height: 1.4; color: #c9c4bb; }
+.s02 h2 { left: 104px !important; top: 435px !important; width: 1100px; font-size: 150px !important; line-height: .98; font-weight: 700; }
+.s02 .foto::after { background: linear-gradient(90deg, rgba(8,8,8,.15), rgba(8,8,8,.02) 60%, transparent); }
+
+/* 03. A repetição tipográfica permanece, com hierarquia mais clara. */
+.s03 .eyebrow { top: 100px !important; left: 112px !important; }
+.s03 > p { top: 195px !important; left: 112px !important; font-size: 40px; }
+.s03 > .display { left: 104px !important; font-size: 202px !important; line-height: .88 !important; }
+.s03 > .display:nth-of-type(2) { top: 300px !important; }
+.s03 > .display:nth-of-type(3) { top: 478px !important; }
+.s03 > .display:nth-of-type(4) { top: 656px !important; }
+.s03 .contorno-t { -webkit-text-stroke: 2px #b5ad9f; }
+.s03 > .serif { top: 900px !important; font-size: 66px !important; }
+
+/* 04. Cinco etapas com o mesmo espaço de leitura. */
+.s04 h2 { top: 180px !important; font-size: 130px !important; }
+.s04 .trilho { left: 134px !important; top: 550px !important; width: 1400px !important; height: 3px; background: #a69c8e; }
+.s04 > .ponto { top: 538px !important; width: 26px !important; height: 26px !important; }
+.s04 [data-m="ponto"] { left: 112px !important; top: 529px !important; width: 44px !important; height: 44px !important; }
+.s04 [data-m="s2"] { left: 472px !important; }
+.s04 [data-m="s3"] { left: 822px !important; }
+.s04 [data-m="s4"] { left: 1172px !important; }
+.s04 [data-m="s5"] { left: 1522px !important; }
+.s04 .parada { top: 620px !important; width: 310px !important; }
+.s04 .parada[data-passo="1"] { left: 112px !important; }
+.s04 .parada[data-passo="2"] { left: 462px !important; }
+.s04 .parada[data-passo="3"] { left: 812px !important; }
+.s04 .parada[data-passo="4"] { left: 1162px !important; }
+.s04 .parada[data-passo="5"] { left: 1512px !important; }
+.s04 .parada b { color: #6c6257; font-size: 27px; margin-bottom: 24px; }
+.s04 .parada span { font-size: 44px; line-height: 1.12; font-weight: 650; }
+.s04 > p { top: 935px !important; font-size: 44px !important; }
+
+/* 05. Uma pausa de cor para abrir o capítulo. */
+.s05 > div.display { left: 92px !important; top: 330px !important; font-size: 480px !important; font-weight: 700; }
+.s05 h2 { left: 780px !important; top: 415px !important; bottom: auto !important; width: 1060px; font-size: 150px !important; line-height: 1; font-weight: 700; }
+
+/* 06. O sentimento aparece no contato entre duas pessoas. */
+.s06 .foto { width: 860px; }
+.s06 .foto img { object-position: 73% center; }
+.s06 .eyebrow { left: 112px !important; top: 100px !important; }
+.s06 > p { left: 112px !important; top: 250px !important; font-size: 37px; }
+.s06 h2 { left: 104px !important; top: 350px !important; width: 890px !important; font-size: 91px !important; line-height: 1.08 !important; font-weight: 700; }
+.s06 .marca { background-position: 0 87%; background-size: 0% 18%; }
+.s06 .marca.visto { background-size: 100% 18%; }
+
+/* 07 e 08. Imagens concretas viram pontos de uma sequência. */
+.s07 h2, .s08 h2 { left: 104px !important; top: 185px !important; width: 1620px !important; font-size: 88px !important; line-height: 1.05 !important; font-weight: 700; }
+.s07 .foto { top: 445px; width: 510px; height: 300px; }
+.s07 .foto-a { left: 112px; }
+.s07 .foto-b { left: 704px; }
+.s07 .foto-c { left: 1296px; }
+.s07 .foto-a img { object-position: 80% center; }
+.s07 .foto-b img { object-position: 70% center; }
+.s07 .foto-c img { object-position: 70% center; }
+.s07 > .ponto { top: 804px !important; width: 28px !important; height: 28px !important; }
+.s07 [data-m="ponto"] { left: 174px !important; }
+.s07 [data-m="p2"] { left: 399px !important; }
+.s07 [data-m="p3"] { left: 624px !important; }
+.s07 [data-m="p4"] { left: 849px !important; }
+.s07 [data-m="p5"] { left: 1074px !important; }
+.s07 [data-m="p6"] { left: 1299px !important; }
+.s07 [data-m="p7"] { left: 1524px !important; }
+.s07 [data-m="p8"] { left: 1749px !important; }
+.s07 > .t:last-of-type { left: 112px !important; top: 915px !important; }
+.s07 > .t:last-of-type .display { font-size: 56px !important; }
+.s07 > .t:last-of-type .serif { margin-left: 18px; font-size: 52px !important; }
+.s08 .trilho { height: 3px; }
+.s08 h2 .serif { font-size: 1.12em; }
+.s08 > .ponto { box-shadow: 0 0 0 10px var(--papel); }
+
+/* 09. Mesmo percurso, agora dividido em três momentos. */
+.s09 h2 { left: 104px !important; top: 180px !important; font-size: 100px !important; }
+.s09 > .t[data-passo] { top: 415px !important; }
+.s09 > .t[data-passo="1"] { left: 174px !important; }
+.s09 > .t[data-passo="2"] { left: 790px !important; }
+.s09 > .t[data-passo="3"] { left: 1420px !important; }
+.s09 .corpo { margin-top: 300px !important; font-size: 34px; }
+.s09 .trilho { height: 3px; }
+.s09 > .ponto { box-shadow: 0 0 0 8px var(--papel); }
+
+/* 10. A fotografia situa a mudança; o diagrama mantém os nomes. */
+.s10 .foto { width: 960px; }
+.s10 .foto img { object-position: 77% center; opacity: .48; }
+.s10 .foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--tinta), transparent 75%); }
+.s10 h2 { left: 104px !important; top: 215px !important; width: 950px !important; font-size: 106px !important; line-height: 1.02 !important; font-weight: 700; }
+.s10 > p { left: 112px !important; top: 625px !important; width: 840px !important; font-size: 78px !important; line-height: 1.12 !important; }
+.s10 > .t:not(.eyebrow):not(h2):not(p):not(svg) { text-shadow: 0 2px 16px #000; }
+
+/* 11. A academia aparece no mesmo campo da pergunta. */
+.s11 h2 { left: 104px !important; top: 310px !important; width: 1070px; font-size: 139px !important; line-height: .99 !important; font-weight: 700; }
+.s11 .foto::after { background: linear-gradient(90deg, rgba(9,9,8,.75), rgba(9,9,8,.36) 49%, transparent 74%); }
+.s11 > .ponto { left: 112px !important; top: 920px !important; width: 24px !important; height: 24px !important; }
+
+/* 12. Seis caminhos em composição editorial, com revelação preservada. */
+.s12 h2 { left: 104px !important; top: 180px !important; font-size: 99px !important; }
+.s12 .card { background: transparent; border-radius: 0; border-top: 1px solid #4b4944; padding: 32px 0 0 85px; width: 780px !important; height: 170px !important; outline: none !important; }
+.s12 .card b { font-size: 47px; line-height: 1.08; font-weight: 650; margin-bottom: 18px; }
+.s12 .card i { font-size: 31px; line-height: 1.3; color: #c4beb4; }
+.s12 .card em { top: 31px; left: 0; right: auto; font: italic 44px/1 var(--serifa); letter-spacing: 0; color: #ff784f; }
+.s12 [data-m="c1"] { left: 112px !important; top: 365px !important; }
+.s12 [data-m="c2"] { left: 1010px !important; top: 365px !important; }
+.s12 [data-m="c3"] { left: 112px !important; top: 570px !important; }
+.s12 [data-m="c4"] { left: 1010px !important; top: 570px !important; }
+.s12 [data-m="c5"] { left: 112px !important; top: 775px !important; }
+.s12 [data-m="c6"] { left: 1010px !important; top: 775px !important; }
+.s12 > .ponto { left: 1760px !important; top: 110px !important; width: 24px !important; height: 24px !important; }
+
+/* 13. Conversa legível, com o cotidiano em segundo plano. */
+.s13 .tela { left: 112px !important; top: 145px !important; width: 900px !important; height: 795px !important; border-radius: 18px; box-shadow: none; }
+.s13 .barra { font-size: 29px; height: 90px; }
+.s13 .bolha { font-size: 34px; transition-delay: calc(var(--i, 0) * 25ms); }
+.s13 .bolha.eu { top: 128px !important; max-width: 710px; }
+.s13 .bolha.ela { padding: 20px 28px; }
+.s13 .bolha small { color: #625c52; }
+.s13 .eyebrow { left: 1100px !important; top: 150px !important; }
+.s13 h2 { left: 1090px !important; top: 240px !important; font-size: 124px !important; }
+.s13 > p { left: 1100px !important; top: 390px !important; width: 640px !important; font-size: 68px !important; line-height: 1.07 !important; }
+.s13 .foto { left: 1100px; top: 620px; width: 700px; height: 320px; }
+.s13 .foto img { object-position: 78% 70%; }
+
+/* 14. Busca e avaliações ficam separadas, sem encobrir informações. */
+.s14 .tela { left: 112px !important; top: 145px !important; width: 900px !important; height: 795px !important; border-radius: 18px; box-shadow: none; }
+.s14 .busca { left: 38px; right: 38px; top: 46px; height: 100px; font-size: 34px; padding: 0 32px; gap: 20px; }
+.s14 .resultado { left: 62px; right: 62px; font-size: 32px; }
+.s14 .resultado b { font-size: 43px; margin-bottom: 12px; }
+.s14 .eyebrow { left: 1100px !important; top: 145px !important; }
+.s14 h2 { left: 1090px !important; top: 225px !important; font-size: 124px !important; }
+.s14 > p { left: 1100px !important; top: 365px !important; font-size: 61px !important; line-height: 1.08 !important; width: 680px !important; }
+.s14 .review { left: 1100px !important; width: 700px; padding: 24px 30px; border-radius: 14px; box-shadow: none; font-size: 30px; line-height: 1.3; }
+.s14 .review[data-passo="1"] { top: 600px !important; }
+.s14 .review[data-passo="2"] { top: 800px !important; }
+.s14 .review .estrelas { font-size: 28px; margin-bottom: 8px; }
+
+/* 15. O anúncio passa a mostrar a experiência oferecida. */
+.s15 h2 { font-size: 122px !important; }
+.s15 .checagem { font-size: 38px; }
+.s15 .celular { left: 1320px !important; box-shadow: 0 24px 55px rgba(0,0,0,.25); }
+.s15 .post-img { background-image: linear-gradient(0deg, rgba(0,0,0,.82), transparent 72%), url('img/academia.png'); background-size: cover; background-position: 76% center; font-size: 64px; padding: 30px; }
+.s15 .post-topo { padding-top: 60px; }
+.s15 .checagem::before { border-width: 2px; }
+
+/* 16. Pergunta e resposta em processamento, sem conteúdo novo. */
+.s16 .tela { left: 112px !important; top: 145px !important; width: 940px !important; height: 795px !important; border: 1px solid #4a4842; border-radius: 18px; box-shadow: none; background: #20201e; }
+.s16 .barra { border-color: #41403b; }
+.s16 .chip { border: 0; padding: 0; margin-right: 28px; font-size: 29px; color: #d8d2c8; }
+.s16 .bolha { font-size: 34px; max-width: 730px; }
+.s16 .eyebrow { left: 1130px !important; top: 150px !important; }
+.s16 h2 { left: 1120px !important; top: 265px !important; width: 680px; font-size: 108px !important; line-height: 1.02 !important; font-weight: 700; }
+.s16 > p { left: 1130px !important; top: 535px !important; width: 640px !important; font-size: 68px !important; line-height: 1.1 !important; }
+.s16 .esqueleto { height: 22px; }
+
+/* 17 e 18. Respiro depois dos exemplos de descoberta. */
+.s17 > .serif { font-size: 430px !important; }
+.s17 > .lead { font-size: 43px; }
+.s17 > p.display { left: 1240px !important; top: 525px !important; font-size: 88px !important; }
+.s17 .trilho { height: 3px; }
+.s17 .eyebrow:not([data-m]) { font-size: 28px; letter-spacing: .08em; }
+.s18 { background: #e9e3d9; }
+.s18 h2 { left: 104px !important; top: 285px !important; font-size: 242px !important; font-weight: 700; }
+.s18 > .serif { top: 560px !important; font-size: 90px !important; }
+.s18 > .lead { top: 800px !important; width: 1530px !important; font-size: 43px; }
+
+/* 19. Uma rua comercial acompanha os negócios citados na fala. */
+.s19 .foto { width: 610px; }
+.s19 .foto img { object-position: 59% center; }
+.s19 > .apagado { font-size: 71px !important; color: #625b53; font-weight: 650; }
+.s19 > .display:not(.apagado) { font-size: 139px !important; width: 1200px; top: 810px !important; }
+
+/* 20. Um gesto cotidiano liga a frase ao papel de consumidor. */
+.s20 { background: #111110; color: var(--papel); }
+.s20 .eyebrow { color: #c5bfb6; }
+.s20 .foto::after { background: linear-gradient(90deg, rgba(8,8,8,.6), rgba(8,8,8,.25) 48%, transparent 77%); }
+.s20 h2 { left: 104px !important; top: 245px !important; width: 1000px !important; font-size: 129px !important; line-height: 1.02 !important; font-weight: 700; }
+.s20 > p { left: 112px !important; top: 650px !important; width: 1020px; font-size: 85px !important; line-height: 1.08 !important; color: #ff7953 !important; }
+
+/* 21. O fundo da abertura volta com um enquadramento mais próximo. */
+.s21 .foto img { transform: scale(1.1); transform-origin: 78% 50%; }
+.s21 .foto::after { background: linear-gradient(90deg, rgba(8,8,8,.75), rgba(8,8,8,.45) 56%, rgba(8,8,8,.08)); }
+.s21 h2 { left: 104px !important; top: 250px !important; width: 1300px; font-size: 143px !important; line-height: 1.02 !important; font-weight: 700; }
+.s21 .reflexo { left: 104px !important; top: 590px !important; width: 1300px; font-size: 143px !important; line-height: 1.02 !important; font-weight: 700; }
+.s21 > .ponto { left: 1760px !important; top: 110px !important; width: 24px !important; height: 24px !important; }
+
+/* 22. Cada pergunta mantém o seu passo e ganha área de leitura. */
+.s22 .pergunta { left: 112px; width: 1650px; padding-left: 112px; font-size: 64px; line-height: 1.16; font-weight: 650; }
+.s22 .pergunta b { font-size: 94px; color: #ff7953; }
+.s22 .pergunta .acento { color: #ff7953; }
+.s22 .pergunta[data-foco-em="1"] { top: 255px !important; }
+.s22 .pergunta[data-foco-em="2"] { top: 495px !important; }
+.s22 .pergunta[data-foco-em="3"] { top: 735px !important; }
+.s22 > .ponto { left: 1760px !important; top: 110px !important; width: 24px !important; height: 24px !important; }
+
+/* 23. Primeiro ganha ênfase, mantendo a frase completa. */
+.s23 h2 { left: 104px !important; top: 240px !important; width: 1680px !important; font-size: 146px !important; line-height: 1.02 !important; font-weight: 700; }
+.s23 h2 .serif { font-size: 1.12em; }
+.s23 p[data-passo="1"] { top: 735px !important; font-size: 54px; }
+.s23 p[data-passo="2"] { top: 835px !important; font-size: 43px; }
+
+/* 24. Uma pergunta aberta encerra esta primeira parte. */
+.s24 { background: var(--ponto); }
+.s24 > .ponto { left: 112px !important; top: 160px !important; width: 26px !important; height: 26px !important; background: var(--tinta); }
+.s24 h2 { left: 104px !important; right: auto !important; top: 300px !important; width: 1470px; font-size: 182px !important; line-height: .98; text-align: left !important; font-weight: 700; }
+.s24 .acento { color: var(--tinta); }
+.s24 > p { left: 112px !important; right: auto !important; top: 805px !important; width: 1500px; font-size: 43px; line-height: 1.32; text-align: left !important; color: var(--tinta); }
+
+@media print {
+  .s07 .foto, .s13 .foto { print-color-adjust: exact; }
+  .marca { background-size: 100% 18% !important; }
+  .reflexo { transform: scaleY(-1) !important; }
+  .focado-fora { opacity: 1 !important; filter: none !important; }
+  .digita { width: 19.5ch !important; }
+}

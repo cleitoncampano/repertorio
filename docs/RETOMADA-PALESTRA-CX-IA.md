@@ -1,6 +1,17 @@
 # Retomada da palestra: Você compraria de você mesmo?
 
-Conferido em 18/10/2026. Nesta etapa foi recuperado o contexto e levantado o trabalho restante. A apresentação não foi alterada.
+Atualizado em 18/10/2026. Após a recuperação do contexto, o usuário autorizou acrescentar recursos visuais dos carrosséis e finalizar. A primeira parte de 24 slides foi consolidada em `_saida/palestra-cx-ia-final/`.
+
+## Entrega oficial
+
+- `_saida/palestra-cx-ia-final/palestra-arquivo-unico.html`: arquivo independente, com imagens, fontes, falas e motor incorporados.
+- `_saida/palestra-cx-ia-final/palestra.pdf`: 24 páginas, com todas as revelações visíveis.
+- `_saida/palestra-cx-ia-final/palestra.html`: versão editável com dependências locais.
+- `LEIA-ME.md`, `REFERENCIAS.md` e `VALIDACAO.json` na mesma pasta: operação, procedência visual, resultados e hashes.
+
+Recursos acrescentados: linha contínua de jornada, estações com ícones, cartões dos três momentos, seis caminhos de descoberta, círculos e lupa, sinais para os setores e cartões de perguntas. Paleta coral, papel e preto do kit Growmate, mantendo a tipografia e as oito imagens ilustrativas da editorial. Não foram acrescentados textos ou fotografias de terceiros dos carrosséis.
+
+O usuário delegou a seleção visual ao pedir os elementos que fizessem sentido. Seleção registrada em `ee7c76be-312c-4896-a618-e256fed3555f`, contexto `ca3449a4-fc0e-431b-9dac-9709490c6888`. Referências Simon Sinek, Hug Your Haters, Mapeamento de Experiências, Would You Do That to Your Mother? e kit de componentes. A revisão antiga continua respeitada, incluindo o corte de Vogue.
 
 ## Contexto recuperado
 
@@ -9,7 +20,7 @@ Conferido em 18/10/2026. Nesta etapa foi recuperado o contexto e levantado o tra
 - A sessão terminou durante a conferência visual, depois de montar `_saida/palestra-cx-ia-editorial/`. Não foi encontrada uma entrega final dessa versão.
 - O roteiro original está em `_saida/palestra-cx-ia/palestra.html`. São 24 slides, da abertura até “Então, o que impede?”. A última fala termina com “(Continua.)”.
 
-## Base indicada para continuar
+## Base usada nesta finalização
 
 `_saida/palestra-cx-ia-editorial/palestra.html`.
 
@@ -17,23 +28,22 @@ Conferido em 18/10/2026. Nesta etapa foi recuperado o contexto e levantado o tra
 
 Direção: fotografias ilustrativas em preto e branco, marfim, preto e ponto laranja como elemento recorrente. Os personagens, estabelecimentos e cenas são fictícios; não representam Cleiton, o evento ou uma academia específica de Araguari.
 
-## O que foi conferido
+## Verificação da versão final
 
-- Comparação estrutural: os 185 trechos visíveis, 24 falas, passos de revelação e grupos de foco da editorial são idênticos ao original.
-- Os 24 slides abrem no navegador. As 12 ocorrências de imagem carregam; todos os caminhos de imagens, CSS, motor e fontes referenciados no HTML existem.
-- Nenhum erro JavaScript na navegação pelos 24 slides.
-- A tecla P abre a janela do apresentador com a área de notas.
-- A prancha existente foi inspecionada. Conferência atual em 1920 × 1080 confirmou texto sobreposto e fora da tela no slide 7.
-- Não houve ensaio completo dos cliques e transições nesta retomada. A captura anterior é um rascunho; não contém pranchas dos passos ou das transições.
+- Os 185 trechos visíveis, 24 falas, passos de revelação e grupos de foco da versão final são idênticos ao original.
+- Os 24 slides e 53 estados de clique foram capturados e conferidos em 1920 × 1080. Nenhum texto fora da tela ou menor que o limite da verificação; nenhum erro JavaScript ou recurso faltante.
+- As 23 transições foram exercitadas em velocidade normal e capturadas. Nenhuma falha de View Transitions.
+- Home, End, PageDown, tecla F para entrar e sair da tela cheia e P com falas foram verificados.
+- O slide 7 foi corrigido com posicionamento específico para o título e a legenda, eliminando o conflito do seletor `last-of-type` anterior.
+- O HTML único foi aberto sozinho numa pasta temporária com requisições externas bloqueadas. Carregou todas as imagens, fontes, motor e falas, com zero dependências externas. Os slides 7, 9, 18, 19 e 22 produziram capturas idênticas às da versão editável.
+- O PDF tem 24 páginas de 1440 × 810 pontos. Todas foram renderizadas com Poppler e revisadas visualmente. Na impressão, as três perguntas do slide 22 aparecem legíveis ao mesmo tempo.
+- Rotinas: `ferramentas/finalizar_palestra_cx_ia.py`, `ferramentas/conferir_palestra_cx_ia.cjs` e `ferramentas/exportar_palestra_cx_ia.cjs`. Capturas em `_saida/palestra-cx-ia-final/_ver/`, fora do Git.
 
-## Pendências da primeira parte
+## Uso e ensaio
 
-1. Corrigir o slide 7: título e rótulo de pontos de contato estão sobrepostos e cortados na borda inferior. Corrigir a composição mantendo as mesmas palavras.
-2. Concluir a revisão visual dos 24 slides, especialmente quebras de linha, legibilidade no telão, recortes e relação entre fotografias e fala.
-3. Ensaiar a sequência de cliques, o ponto laranja e as transições. Conferir notas, janela do apresentador, tela cheia e operação com teclado ou passador.
-4. Conferir a duração. A agenda prevê 10 minutos para a parte de experiência do cliente; ainda não há medição de um ensaio.
-5. Gerar e revisar um HTML único offline e um PDF da editorial. Esses arquivos ainda não existem nessa pasta. Os PDFs de outras versões não correspondem à editorial.
-6. Consolidar a versão escolhida como entrega oficial, atualizar instruções e registrar os arquivos pertinentes no Git, preservando alternativas e alterações anteriores.
+Abrir o HTML único em Chrome ou Edge. F abre a tela cheia; P abre as falas e o cronômetro; setas, espaço e PageDown respeitam cada revelação antes de avançar o slide. O PDF serve para consulta e compartilhamento.
+
+A revisão visual, os cliques e a exportação estão concluídos. A duração ainda depende de um ensaio da fala do apresentador. A agenda prevê 10 minutos para a parte de experiência do cliente.
 
 ## Outras versões
 
@@ -51,4 +61,4 @@ Para desenvolver esses blocos, recuperar ou receber a continuação da fala e de
 
 ## Próxima ação
 
-Retomar a editorial pela correção do slide 7 e concluir a revisão dos 24 slides. Não reescrever o conteúdo original. Separar a finalização visual desta primeira parte da criação dos blocos restantes.
+Usar a pasta final para apresentar a primeira parte. Para criar os blocos restantes, recuperar ou receber a continuação da fala, os cases e a duração total. Preservar as versões anteriores e a fala já revisada.

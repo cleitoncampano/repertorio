@@ -349,11 +349,19 @@ h1 { font-size: 30px; letter-spacing: -.03em; line-height: 1.2; font-weight: 500
 .graph-view-menu { position: absolute; top: 52px; right: -52px; width: 370px; max-width: calc(100vw - 24px); max-height: calc(100dvh - 88px); overflow-y: auto; display: grid; grid-template-columns: minmax(0,1fr); gap: 4px; padding: 7px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--text); box-shadow: 0 12px 36px var(--shadow); }
 .graph-view-heading { grid-column: 1/-1; padding: 11px 10px 15px; font-size: 13px; font-weight: 500; }
 .graph-view-heading small { display: block; color: var(--muted); font-size: 11px; font-weight: 400; line-height: 1.5; margin-top: 5px; }
-.graph-view-menu>button { display: flex; align-items: center; gap: 13px; width: 100%; padding: 10px; border: 1px solid transparent; border-radius: 7px; text-align: left; }
+.graph-view-card { position: relative; display: flex; align-items: center; gap: 13px; width: 100%; padding: 10px; border: 1px solid transparent; border-radius: 7px; text-align: left; user-select: none; -webkit-user-select: none; }
 .graph-view-menu>button:hover,.graph-view-menu>button:focus-visible { background: var(--surface-hover); }
 .graph-view-menu>button[aria-checked="true"] { background: var(--surface-hover); border-color: var(--line); }
-.graph-view-menu>button>span { flex: 1; min-width: 0; }.graph-view-menu strong { display: block; font-size: 12px; font-weight: 500; }
-.graph-view-menu button small { display: block; margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.graph-view-copy { flex: 1; min-width: 0; }.graph-view-card strong { display: block; font-size: 12px; font-weight: 500; }
+.graph-view-card small { display: block; margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.graph-view-grip { display: grid; place-items: center; align-self: stretch; flex-shrink: 0; width: 18px; margin-left: -4px; margin-right: -7px; color: var(--muted); cursor: grab; touch-action: none; }
+.graph-view-menu>button[data-dragging] { border: 1px dashed var(--muted); background: var(--surface-hover); }
+.graph-view-menu>button[data-dragging]>* { visibility: hidden; }
+.graph-view-menu>button[data-drop-before]::before,.graph-view-menu>button[data-drop-after]::after { content: ''; position: absolute; left: 0; right: 0; height: 3px; border-radius: 2px; background: var(--accent); pointer-events: none; }
+.graph-view-menu>button[data-drop-before]::before { top: -4px; }.graph-view-menu>button[data-drop-after]::after { bottom: -4px; }
+.graph-view-drag-preview { position: fixed; z-index: 200; pointer-events: none; background: var(--surface-hover); color: var(--text); border-color: var(--line); box-shadow: 0 12px 36px var(--shadow); cursor: grabbing; transform: rotate(-1deg); }
+.graph-view-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media(prefers-reduced-motion:reduce) { .graph-view-drag-preview { transform: none; } }
 .graph-view-preview { width: 84px; height: 60px; flex-shrink: 0; color: var(--text); background: var(--canvas); border: 1px solid var(--line); border-radius: 5px; }
 .graph-skin { background-color: var(--graph-background); }
 .graph-skin .map-help { color: var(--graph-ink); opacity: .65; }

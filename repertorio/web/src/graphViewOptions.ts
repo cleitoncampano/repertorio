@@ -14,6 +14,12 @@ export function graphView(value:string|null):GraphView{
  return graphViews.find(view=>view.id===value)?.id||'free';
 }
 
+export function graphViewOrder(value:unknown):GraphView[]{
+ const ids=graphViews.map(view=>view.id);
+ const saved=Array.isArray(value)?value.filter((id):id is GraphView=>ids.includes(id)):[];
+ return [...new Set([...saved,...ids])];
+}
+
 // Mantém a câmera original e separa as novas câmeras por espaço e visualização.
 export function cameraKey(workspace:string,view:GraphView){
  return 'repertorio-camera-v3:'+workspace+(view==='free'?'':':'+view);

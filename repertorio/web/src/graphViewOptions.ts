@@ -2,10 +2,16 @@ export const graphViews=[
  {id:'free',name:'Mapa livre',description:'Explore as conexões no mapa original.'},
  {id:'grouped',name:'Por grupos',description:'Veja conjuntos separados por operação criativa.'},
  {id:'hierarchy',name:'Hierárquico',description:'Siga das operações às técnicas e referências.'},
+ {id:'cosmos',name:'Cosmos',description:'Constelações, órbitas e luz em azul e violeta.'},
+ {id:'metro',name:'Metrô',description:'Rotas coloridas, estações e encontros de ideias.'},
+ {id:'circuit',name:'Circuito',description:'Chips e trilhas verdes em uma placa digital.'},
+ {id:'garden',name:'Jardim',description:'Ramos, folhas e ideias em tons naturais.'},
+ {id:'editorial',name:'Editorial',description:'Um mural de papel, tipografia e tinta vermelha.'},
+ {id:'prism',name:'Prisma',description:'Losangos e cores vibrantes em um mosaico isométrico.'},
 ] as const;
 export type GraphView=typeof graphViews[number]['id'];
 export function graphView(value:string|null):GraphView{
- return value==='grouped'||value==='hierarchy'?value:'free';
+ return graphViews.find(view=>view.id===value)?.id||'free';
 }
 
 // Mantém a câmera original e separa as novas câmeras por espaço e visualização.

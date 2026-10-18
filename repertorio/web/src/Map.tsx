@@ -1,4 +1,4 @@
-import {useEffect,useRef,useState} from 'react';
+import {useEffect,useRef,useState,type CSSProperties} from 'react';
 import cytoscape,{type Core,type NodeSingular} from 'cytoscape';
 import {Plus,Minus,Maximize,LocateFixed} from 'lucide-react';
 import {kindName,type GraphData,type Reference} from './types';
@@ -6,6 +6,7 @@ import {layoutGraph} from './layout';
 import {graphFocus} from './focus';
 import {api,sized} from './api';
 import {cameraKey,type GraphView} from './graphViewOptions';
+import {graphColors,graphSkin,readableInk} from './graphSkins';
 
 // Resoluções do mapa: cada miniatura usa a menor que cobre o tamanho real na tela e melhora ao aproximar.
 const LEVELS=[128,256,512,1024];
@@ -14,6 +15,8 @@ type Props={workspaceId:string;view:GraphView;data:GraphData;selected:string|nul
 export function Map({workspaceId,view,data,selected,matches,technique,operation,theme,onSelect,onTerm,onClear}:Props){
  const container=useRef<HTMLDivElement>(null),cy=useRef<Core|null>(null);
  const viewRef=useRef(view);viewRef.current=view;
+ const skin=graphSkin(view,theme),skinRef=useRef(skin);skinRef.current=skin;
+ const paletteRef=useRef(graphColors(view,theme));paletteRef.current=graphColors(view,theme);
  const applyView=useRef<((next:GraphView)=>void)|null>(null);
  const focusRef=useRef({selected,matches,technique,operation});focusRef.current={selected,matches,technique,operation};
  const panelInset=useRef(0);
@@ -23,7 +26,8 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
  const [hover,setHover]=useState<{item:Reference;x:number;y:number}|null>(null);
  // Cores do tema lidas na hora do estilo: trocar o tema reestiliza só os nós que mudam, nunca as milhares de linhas.
  const themeRef=useRef(theme);themeRef.current=theme;
- const ink=()=>themeRef.current==='light'?{text:'#282520',background:'#f7f5f0',operation:'#fffdfa',reference:'#e0dcd4'}:{text:'#ECE8E1',background:'#121212',operation:'#161616',reference:'#2a2a2a'};
+ const ink=()=>skinRef.current?{text:skinRef.current.ink,background:skinRef.current.background,operation:skinRef.current.surface,reference:skinRef.current.surface}:themeRef.current==='light'?{text:'#282520',background:'#f7f5f0',operation:'#fffdfa',reference:'#e0dcd4'}:{text:'#ECE8E1',background:'#121212',operation:'#161616',reference:'#2a2a2a'};
+ const paint=(node:NodeSingular)=>skinRef.current?(paletteRef.current[node.data('operation')]||skinRef.current.ink):node.data('color');
  useEffect(()=>{
   if(!container.current)return;
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -34,21 +38,21 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
   let currentView=viewRef.current;
   const instance=cytoscape({container:container.current,elements:layoutGraph(data,currentView),layout:{name:'preset'},minZoom:.045,maxZoom:4,autoungrabify:true,boxSelectionEnabled:false,
    style:[
-    {selector:'node',style:{'background-color':'data(color)','overlay-opacity':0,'border-width':0}},
-    {selector:'node[type="operation"]',style:{width:()=>viewRef.current==='hierarchy'?700:250,height:()=>viewRef.current==='hierarchy'?180:250,shape:()=>viewRef.current==='hierarchy'?'roundrectangle':'ellipse','background-color':()=>ink().operation,'border-color':'data(color)','border-width':()=>3/scale.z,'border-opacity':1,label:'data(label)',color:()=>ink().text,'font-weight':600,'font-size':()=>(viewRef.current==='hierarchy'?12:Math.max(9,Math.min(16,125*scale.z*.3)))/scale.z,'text-valign':'center'}},
-    {selector:'node[type="cue"]',style:{width:28,height:28,label:'data(label)','text-opacity':0,'text-valign':'center','border-color':'data(color)',color:()=>ink().text,'font-size':()=>11/scale.z}},
-    {selector:'node[type="technique"]',style:{width:18,height:18,label:'data(label)',color:()=>ink().text,'font-size':()=>12/scale.z,'text-opacity':0,'text-valign':'center','text-halign':(node:NodeSingular)=>node.data('labelSide') as 'left'|'right','text-rotation':(node:NodeSingular)=>Number(node.data('rotation')),'text-margin-x':(node:NodeSingular)=>node.data('labelSide')==='left'?-16:16,'text-background-color':()=>ink().background,'text-background-opacity':.85,'text-background-padding':'3px'}},
-    {selector:'node[type="reference"]',style:{width:'data(width)',height:'data(height)',shape:'rectangle','background-color':()=>ink().reference,'background-image':'data(image)','background-fit':'contain','background-image-containment':'inside','border-color':()=>ink().text}},
+    {selector:'node',style:{'background-color':paint,'overlay-opacity':0,'border-width':0,'font-family':()=>skinRef.current?.font||'Avenir Next, sans-serif'}},
+    {selector:'node[type="operation"]',style:{width:(node:NodeSingular)=>viewRef.current==='prism'?Math.max(skinRef.current!.operationWidth,(String(node.data('label')).length*8+36)/scale.z):skinRef.current?.operationWidth||(viewRef.current==='hierarchy'?700:250),height:()=>viewRef.current==='prism'?Math.max(skinRef.current!.operationHeight,30/scale.z):skinRef.current?.operationHeight||(viewRef.current==='hierarchy'?180:250),shape:()=>skinRef.current?.operationShape||(viewRef.current==='hierarchy'?'roundrectangle':'ellipse'),'background-color':(node:NodeSingular)=>viewRef.current==='prism'?paint(node):ink().operation,'border-color':paint,'border-width':()=>3/scale.z,'border-opacity':1,label:'data(label)',color:(node:NodeSingular)=>viewRef.current==='prism'?readableInk(paint(node)):ink().text,'font-weight':600,'font-size':()=>(skinRef.current||viewRef.current==='hierarchy'?12:Math.max(9,Math.min(16,125*scale.z*.3)))/scale.z,'text-valign':'center'}},
+    {selector:'node[type="cue"]',style:{width:28,height:28,label:'data(label)','text-opacity':0,'text-valign':'center','border-color':paint,color:()=>ink().text,'font-size':()=>11/scale.z}},
+    {selector:'node[type="technique"]',style:{width:18,height:18,shape:()=>skinRef.current?.techniqueShape||'ellipse','background-color':(node:NodeSingular)=>viewRef.current==='metro'?ink().operation:paint(node),'border-color':paint,'border-width':()=>viewRef.current==='metro'?2/scale.z:0,label:'data(label)',color:()=>ink().text,'font-size':()=>12/scale.z,'text-opacity':0,'text-valign':'center','text-halign':(node:NodeSingular)=>node.data('labelSide') as 'left'|'right','text-rotation':(node:NodeSingular)=>Number(node.data('rotation')),'text-margin-x':(node:NodeSingular)=>node.data('labelSide')==='left'?-16:16,'text-background-color':()=>ink().background,'text-background-opacity':.85,'text-background-padding':'3px'}},
+    {selector:'node[type="reference"]',style:{width:(node:NodeSingular)=>skinRef.current?.referenceRatio?node.data('size'):node.data('width'),height:(node:NodeSingular)=>skinRef.current?.referenceRatio?node.data('size')/skinRef.current.referenceRatio:node.data('height'),shape:()=>skinRef.current?.referenceShape||'rectangle','background-color':()=>ink().reference,'background-image':'data(image)','background-fit':()=>skinRef.current?.referenceRatio?'cover':'contain','background-image-containment':'inside','border-color':(node:NodeSingular)=>skinRef.current?paint(node):ink().text,'border-width':()=>skinRef.current?5:0}},
     {selector:'node[?external]',style:{'border-width':3,'border-opacity':.55}},
-    {selector:'edge',style:{width:()=>1.1/scale.z,'line-color':'data(color)',opacity:.13,'curve-style':'unbundled-bezier','control-point-distances':'data(distance)','control-point-weights':'data(weight)','edge-distances':'node-position'}},
-    {selector:'edge[?structure]',style:{'line-color':'#8f8a82',opacity:.28,'curve-style':'straight'}},
-    {selector:'edge[?cross]',style:{opacity:()=>viewRef.current==='hierarchy'?.025:.04}},
+    {selector:'edge',style:{width:()=>(skinRef.current?.edgeWidth||1.1)/scale.z,'line-color':edge=>skinRef.current?(paletteRef.current[edge.data('operation')]||ink().text):edge.data('color'),opacity:()=>skinRef.current?.edgeOpacity||.13,'curve-style':()=>skinRef.current?.curve||'unbundled-bezier','line-style':()=>skinRef.current?.line||'solid','taxi-direction':'auto','taxi-turn':'50%','control-point-distances':'data(distance)','control-point-weights':'data(weight)','edge-distances':'node-position'}},
+    {selector:'edge[?structure]',style:{'line-color':edge=>skinRef.current?(paletteRef.current[edge.data('operation')]||ink().text):'#8f8a82',opacity:()=>skinRef.current?.curve==='taxi'?.55:.28,'curve-style':()=>skinRef.current?.curve||'straight'}},
+    {selector:'edge[?cross]',style:{opacity:()=>viewRef.current==='hierarchy'||skinRef.current?.curve==='taxi'?.025:.04}},
     {selector:'node.dim',style:{opacity:.1}},
     {selector:'node[type="operation"].dim',style:{opacity:.25}},
     {selector:'edge.dim',style:{opacity:.018}},
     {selector:'node.lit',style:{opacity:1}},
     {selector:'edge.lit',style:{width:()=>1.8/scale.z,opacity:.85}},
-    {selector:'edge[?structure].lit',style:{'line-color':'data(color)',opacity:.65}},
+    {selector:'edge[?structure].lit',style:{'line-color':edge=>skinRef.current?(paletteRef.current[edge.data('operation')]||ink().text):edge.data('color'),opacity:.65}},
     {selector:'node[type="technique"].lit',style:{width:26,height:26,'text-opacity':1,'font-weight':600}},
     {selector:'node[type="cue"].lit',style:{shape:'roundrectangle',width:(node:NodeSingular)=>((measurement?.measureText(node.data('label')).width||node.data('label').length*7)+12)/scale.z,height:()=>18/scale.z,padding:'0px','background-color':()=>ink().background,'border-width':()=>1/scale.z,'text-opacity':1}},
     {selector:'node.show-label',style:{'text-opacity':1}},
@@ -76,7 +80,8 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
    const z=instance.zoom(),extent=instance.extent(),density=window.devicePixelRatio||1;
    if(Math.abs(z-lastZoom)>.0001){
     lastZoom=z;
-    instance.nodes('[type="technique"]').toggleClass('show-label',z>(currentView==='hierarchy'?.24:.34));
+    const threshold=currentView==='hierarchy'?.24:skinRef.current&&!['cosmos','circuit'].includes(currentView)?.6:.34;
+    instance.nodes('[type="technique"]').toggleClass('show-label',z>threshold);
     clearTimeout(settle);settle=window.setTimeout(rescale,140);
    }
    if(!bundled)return;
@@ -121,14 +126,14 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
   const resize=new ResizeObserver(()=>instance.resize());resize.observe(container.current);
   applyView.current=next=>{
    if(currentView===next)return;
-   saveCamera();currentView=next;setHover(null);framedMatches.current='';
+   saveCamera();currentView=next;lastZoom=0;setHover(null);framedMatches.current='';
    instance.batch(()=>{
     for(const element of layoutGraph(data,next)){
      const target=instance.getElementById(element.data.id!);
-     if(element.position){target.position(element.position);if(element.data.type==='technique')target.data({rotation:element.data.rotation,labelSide:element.data.labelSide});}
+     if(element.position){target.position(element.position);target.data('operation',element.data.operation||'');if(element.data.type==='technique')target.data({rotation:element.data.rotation,labelSide:element.data.labelSide});}
      else target.data({distance:element.data.distance,weight:element.data.weight,cross:!!element.data.cross});
     }
-    instance.elements('edge, node[type!="reference"]').toggleClass('layout-changed');
+   instance.elements().toggleClass('layout-changed');
    });
    const focused=focusRef.current.selected&&instance.getElementById('ref:'+focusRef.current.selected);
    if(focused&&focused.length){
@@ -152,7 +157,7 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
  useEffect(()=>{
   const c=cy.current;if(!c)return;
   // A classe só serve para reestilizar quem tem cor de tema visível; as miniaturas cobrem o fundo das referências.
-  c.nodes('[type!="reference"], .active, .hovered').toggleClass('light',theme==='light');
+  (skinRef.current?c.elements():c.nodes('[type!="reference"], .active, .hovered')).toggleClass('light',theme==='light');
  },[theme,data]);
  useEffect(()=>{
   const instance=cy.current;if(!instance)return;
@@ -168,6 +173,14 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
   });
  },[selected,matches,technique,operation,data]);
  useEffect(()=>{
+  const c=cy.current;
+  if(!c||!skinRef.current||selected||!(operation||technique)||c.width()<=760)return;
+  const nodes=c.nodes('.lit');if(!nodes.length)return;
+  const bounds=nodes.boundingBox({includeLabels:true,includeOverlays:false}),width=c.width()-panelInset.current*2,height=c.height()-200;
+  const level=Math.max(c.minZoom(),Math.min(.9,(width-192)/Math.max(1,bounds.w),height/Math.max(1,bounds.h)));
+  c.viewport({zoom:level,pan:{x:width/2-(bounds.x1+bounds.x2)/2*level,y:112+height/2-(bounds.y1+bounds.y2)/2*level}});
+ },[selected,matches,technique,operation,data,view]);
+ useEffect(()=>{
   if(!matches){framedMatches.current='';return;}
   const c=cy.current;if(!c||selected||!matches.length)return;
   const key=view+JSON.stringify([...matches].sort());
@@ -182,7 +195,7 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
   framedMatches.current=key;
  },[matches,selected,data,view]);
  const adjust=(factor:number)=>{const c=cy.current;if(c)c.zoom({level:c.zoom()*factor,renderedPosition:{x:c.width()/2,y:c.height()/2}});};
- return <div className="map-stage" data-view={view}><div className="map-surface" ref={container} role="img" aria-label="Mapa de referências conectadas às técnicas. Use a busca ou a lista para navegar com teclado."/>
+ return <div className={'map-stage'+(skin?' graph-skin graph-skin-'+view:'')} data-view={view} style={skin?{'--graph-background':skin.background,'--graph-ink':skin.ink,'--graph-surface':skin.surface,'--graph-accent':skin.palette[0]} as CSSProperties:undefined}><div className="map-surface" ref={container} role="img" aria-label="Mapa de referências conectadas às técnicas. Use a busca ou a lista para navegar com teclado."/>
   {hover&&<div className="map-hover" style={{left:hover.x,top:hover.y}}>{hover.item.thumbnail&&<img src={sized(hover.item.thumbnail,512)} alt=""/>}<div><small>{kindName[hover.item.kind]||'Referência'} · Clique para explorar</small><strong>{hover.item.title}</strong></div></div>}
   <span className="map-help">Arraste para explorar · Role para aproximar</span>
   <div className="map-controls"><button title="Aproximar" aria-label="Aproximar" onClick={()=>adjust(1.25)}><Plus size={17}/></button><span>{Math.round(zoom*100)}%</span><button title="Afastar" aria-label="Afastar" onClick={()=>adjust(.8)}><Minus size={17}/></button><i/><button title="Ver todo o mapa" aria-label="Ver todo o mapa" onClick={()=>{const c=cy.current;if(c){c.fit(undefined,c.width()<760?30:72);c.panBy({x:-panelInset.current,y:0});}}}><Maximize size={16}/></button>{selected&&<button title="Localizar seleção" aria-label="Localizar seleção" onClick={()=>{const c=cy.current;if(c){c.fit(c.getElementById('ref:'+selected),200);c.zoom(Math.min(c.zoom(),1.3));}}}><LocateFixed size={17}/></button>}</div>

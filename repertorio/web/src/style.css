@@ -346,8 +346,8 @@ h1 { font-size: 30px; letter-spacing: -.03em; line-height: 1.2; font-weight: 500
 .graph-view-toggle:hover,.graph-view-toggle[aria-expanded="true"] { background: var(--surface-hover); }
 .map-page:not(.list-view) .workspace-bar { max-width: calc(100% - 132px); }
 @media(min-width:761px) { .map-page:not(.list-view) .library-status { right: 128px; } }
-.graph-view-menu { position: absolute; top: 52px; right: -52px; width: 346px; max-width: calc(100vw - 24px); padding: 7px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--text); box-shadow: 0 12px 36px var(--shadow); }
-.graph-view-heading { padding: 11px 10px 15px; font-size: 13px; font-weight: 500; }
+.graph-view-menu { position: absolute; top: 52px; right: -52px; width: 690px; max-width: calc(100vw - 24px); max-height: calc(100dvh - 88px); overflow-y: auto; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4px; padding: 7px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--text); box-shadow: 0 12px 36px var(--shadow); }
+.graph-view-heading { grid-column: 1/-1; padding: 11px 10px 15px; font-size: 13px; font-weight: 500; }
 .graph-view-heading small { display: block; color: var(--muted); font-size: 11px; font-weight: 400; line-height: 1.5; margin-top: 5px; }
 .graph-view-menu>button { display: flex; align-items: center; gap: 13px; width: 100%; padding: 10px; border: 1px solid transparent; border-radius: 7px; text-align: left; }
 .graph-view-menu>button:hover,.graph-view-menu>button:focus-visible { background: var(--surface-hover); }
@@ -355,6 +355,15 @@ h1 { font-size: 30px; letter-spacing: -.03em; line-height: 1.2; font-weight: 500
 .graph-view-menu>button>span { flex: 1; min-width: 0; }.graph-view-menu strong { display: block; font-size: 12px; font-weight: 500; }
 .graph-view-menu button small { display: block; margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.5; }
 .graph-view-preview { width: 84px; height: 60px; flex-shrink: 0; color: var(--text); background: var(--canvas); border: 1px solid var(--line); border-radius: 5px; }
+.graph-skin { background-color: var(--graph-background); }
+.graph-skin .map-help { color: var(--graph-ink); opacity: .65; }
+.graph-skin-cosmos { background-image: radial-gradient(circle at 46% 48%,#6079ff14,transparent 48%),radial-gradient(circle,#a9d9ff55 .7px,transparent 1px),radial-gradient(circle,#a9d9ff33 .6px,transparent 1px); background-size: auto,47px 47px,83px 83px; background-position: center,0 0,19px 23px; }
+.graph-skin-metro { background-image: linear-gradient(30deg,transparent 48%,color-mix(in srgb,var(--graph-ink) 3%,transparent) 49%,color-mix(in srgb,var(--graph-ink) 3%,transparent) 51%,transparent 52%); background-size: 56px 96px; }
+.graph-skin-circuit { background-image: linear-gradient(color-mix(in srgb,var(--graph-accent) 5%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--graph-accent) 5%,transparent) 1px,transparent 1px); background-size: 24px 24px; }
+.graph-skin-garden { background-image: radial-gradient(ellipse at 15% 80%,color-mix(in srgb,var(--graph-accent) 10%,transparent),transparent 55%),radial-gradient(ellipse at 90% 10%,color-mix(in srgb,var(--graph-ink) 4%,transparent),transparent 50%); }
+.graph-skin-editorial { background-image: repeating-linear-gradient(0deg,transparent,transparent 31px,color-mix(in srgb,var(--graph-ink) 3%,transparent) 31px,color-mix(in srgb,var(--graph-ink) 3%,transparent) 32px); }
+.graph-skin-prism { background-image: linear-gradient(30deg,color-mix(in srgb,var(--graph-accent) 5%,transparent) 12%,transparent 12.5%,transparent 87%,color-mix(in srgb,var(--graph-accent) 5%,transparent) 87.5%),linear-gradient(150deg,color-mix(in srgb,var(--graph-ink) 3%,transparent) 12%,transparent 12.5%,transparent 87%,color-mix(in srgb,var(--graph-ink) 3%,transparent) 87.5%); background-size: 90px 156px; }
+@media(max-width:650px) { .graph-view-menu { grid-template-columns: minmax(0,1fr); } }
 @media(max-width:430px) { .map-page:not(.list-view) .workspace-current { max-width: 70px; }.map-page:not(.list-view) .wordmark { display: none; } }
 @media(max-width:1100px) { .skills-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.skills-intro { align-items: flex-start; flex-direction: column; gap: 12px; }.skills-context small { margin-left: 0; width: 100%; } }
 @media(max-width:760px) {

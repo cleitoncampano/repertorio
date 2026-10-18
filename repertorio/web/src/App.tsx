@@ -11,6 +11,7 @@ import {Choices,type Demand} from './Choices';
 import {Skills} from './Skills';
 import {GraphViews} from './GraphViews';
 import {graphView,type GraphView} from './graphViewOptions';
+import {graphColors} from './graphSkins';
 import {graphFocus} from './focus';
 import {colors,kindName,terms,type Reference,type Detail,type GraphData,type Vocabulary,type Workspace} from './types';
 
@@ -38,6 +39,7 @@ export default function App(){
  useEffect(()=>{if(!active)return;try{localStorage.setItem('repertorio-workspace',workspace);}catch{/* Storage is optional. */}const url=new URL(location.href);url.searchParams.set('workspace',workspace);history.replaceState({},'',url);},[workspace,active]);
  const [theme,setTheme]=useState<'dark'|'light'>(()=>{try{return localStorage.getItem('repertorio-theme')==='light'?'light':'dark';}catch{return 'dark';}});
  const [mapView,setMapView]=useState<GraphView>(()=>{try{return graphView(localStorage.getItem('repertorio-graph-view'));}catch{return 'free';}});
+ const mapColors=graphColors(mapView,theme);
  useEffect(()=>{try{localStorage.setItem('repertorio-graph-view',mapView);}catch{/* Visualização continua disponível sem armazenamento. */}},[mapView]);
  useLayoutEffect(()=>{document.documentElement.dataset.theme=theme;try{localStorage.setItem('repertorio-theme',theme);}catch{/* Theme remains usable without storage. */}},[theme]);
  const searchInput=useRef<HTMLInputElement>(null);
@@ -93,7 +95,7 @@ export default function App(){
    <button className="nav-item connect-button" onClick={()=>setConnect(true)} aria-label="Conectar agentes"><Plug size={18}/><span className="nav-tooltip">Conectar agentes</span></button>
   </nav>
   <button className="theme-toggle" aria-label={theme==='dark'?'Ativar modo claro':'Ativar modo escuro'} title={theme==='dark'?'Ativar modo claro':'Ativar modo escuro'} onClick={()=>setTheme(theme==='dark'?'light':'dark')}>{theme==='dark'?<Sun size={18}/>:<Moon size={18}/>}</button>
-  {view==='map'&&!list&&<GraphViews value={mapView} onChange={setMapView}/>}
+  {view==='map'&&!list&&<GraphViews value={mapView} theme={theme} onChange={setMapView}/>}
   <main className={'main-shell '+(view==='map'?'map-page':'')+(list&&view==='map'?' list-view':'')+(selected||operation||technique?' has-detail':'')}>
    <header className="workspace-bar">
     <a className="wordmark" href="/" onClick={e=>{e.preventDefault();navigate('map');}} aria-label="Repertório, início"><Network size={18}/><span>repertório</span></a><button className="workspace-current" onClick={()=>setSpaceMenu(true)} title="Trocar espaço">{currentSpace?.name||"Escolher espaço"}</button>
@@ -114,11 +116,11 @@ export default function App(){
      {graph.isPending?<div className="loading"><LoaderCircle className="spin"/> Preparando seu universo de referências…</div>:graph.isError?<div className="empty"><h2>Não foi possível carregar o mapa.</h2><p>{graph.error.message}</p><button onClick={()=>graph.refetch()}>Tentar novamente</button></div>:!graph.data?.items.length?<div className="empty"><Sparkles/><h2>O repertório começa aqui.</h2><p>Este espaço ainda não tem referências. Peça ao seu agente para adicionar materiais ao espaço {currentSpace?.name} ou compartilhe referências de outro espaço.</p></div>:list?<div className="gallery">{(results.data?.items||[]).map(item=><Card key={item.id} item={item} onSelect={select}/>)}</div>:<Map key={workspace} workspaceId={workspace} view={mapView} data={graph.data} theme={theme} technique={technique} operation={operation} onClear={()=>{select(null);setTechnique('');setOperation('');}} selected={detail.data?.parent_id||selected} matches={matches} onSelect={select} onTerm={(type,id)=>{select(null);if(type==='technique'){setTechnique(id);setOperation('');}else{setOperation(id);setTechnique('');} }}/>
      }
      {hasFilter&&!selected&&!list&&!operation&&!technique&&<aside className="results-panel"><div className="panel-heading"><span>DESCOBERTAS</span><b>{format(results.data?.total||0)}</b></div>{results.isError?<p role="alert">{results.error.message}</p>:results.data?.items.length?results.data.items.map(item=><button className="result-row" key={item.id} onClick={()=>select(item.id)}>{item.thumbnail?<img src={sized(item.thumbnail,256)} alt="" loading="lazy"/>:<BookOpen/>}<span><strong>{item.title}</strong><small>{item.idea||item.description}</small></span><ChevronRight size={14}/></button>):<div className="empty small"><Search/><h3>Nenhuma referência por aqui.</h3><p>Tente outra palavra ou ajuste os filtros.</p></div>}<Pagination total={results.data?.total||0} offset={offset} setOffset={setOffset}/></aside>}
-     {!selected&&!list&&(operation||technique)&&graph.data&&termFocus&&<TermPanel data={graph.data} operation={operation} technique={technique} referenceIds={termFocus.references} onTechnique={id=>{setTechnique(id);setOperation('');}} onOperation={id=>{setOperation(id);setTechnique('');}} onSelect={select} onClose={()=>{setOperation('');setTechnique('');}}/>}
+     {!selected&&!list&&(operation||technique)&&graph.data&&termFocus&&<TermPanel data={graph.data} palette={mapColors} operation={operation} technique={technique} referenceIds={termFocus.references} onTechnique={id=>{setTechnique(id);setOperation('');}} onOperation={id=>{setOperation(id);setTechnique('');}} onSelect={select} onClose={()=>{setOperation('');setTechnique('');}}/>}
      {selected&&<DetailPanel detail={detail.data} loading={detail.isPending} error={detail.error?.message} onClose={()=>select(null)} onSelect={select} onChange={change} busy={busy} copy={copy} vocab={vocab} onTechnique={id=>{select(null);setTechnique(id);setOperation('');}}/>}
     </div>
     {list&&<Pagination total={results.data?.total||0} offset={offset} setOffset={setOffset}/>}
-    {!list&&<footer className="map-footer"><button className="legend-toggle" onClick={()=>setLegendOpen(!legendOpen)} aria-expanded={legendOpen} aria-controls="map-legend">Legenda</button><div id="map-legend" data-open={legendOpen} className="legend" aria-label="Operações do olhar">{terms(vocab,'operacoes').map(op=><button key={op.id} className={operation===op.id?'active':''} onClick={()=>{select(null);setTechnique('');setOperation(operation===op.id?'':op.id);}} aria-pressed={operation===op.id}><i style={{background:colors[op.id]}}/>{op.nome||op.id}</button>)}</div></footer>}
+    {!list&&<footer className="map-footer"><button className="legend-toggle" onClick={()=>setLegendOpen(!legendOpen)} aria-expanded={legendOpen} aria-controls="map-legend">Legenda</button><div id="map-legend" data-open={legendOpen} className="legend" aria-label="Operações do olhar">{terms(vocab,'operacoes').map(op=><button key={op.id} className={operation===op.id?'active':''} onClick={()=>{select(null);setTechnique('');setOperation(operation===op.id?'':op.id);}} aria-pressed={operation===op.id}><i style={{background:mapColors[op.id]}}/>{op.nome||op.id}</button>)}</div></footer>}
     <div className="library-status" title={`${format(total)} itens catalogados. ${online?'Serviço local conectado':'Reconectando ao serviço'}`}><i className={online?'':'offline'}/><span>{format(graph.data?.items.length||0)} referências</span></div>
 
    </>}

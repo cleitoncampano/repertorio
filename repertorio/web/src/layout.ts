@@ -2,6 +2,8 @@ import type {GraphData} from './types';
 import {colors,terms} from './types';
 import type {ElementDefinition} from 'cytoscape';
 import type {GraphView} from './graphViewOptions';
+import {isExperimental} from './graphSkins';
+import {arrangeAlternate} from './alternateLayouts';
 
 // The prototype's radial grammar: operation → cue → technique → reference.
 // Seeded placement feels organic without moving the library on every refresh.
@@ -14,7 +16,7 @@ function freeLayout(graph:GraphData):ElementDefinition[]{
  const colorFor=(id:string)=>colors[tech.find(t=>t.id===id)?.operacao||'']||'#8f8a82';
  ops.forEach((op,i)=>{
   const angle=angles[op.id]??(-Math.PI/2+i*2*Math.PI/Math.max(ops.length,1));
-  nodes.push({data:{id:'op:'+op.id,entity:op.id,type:'operation',label:op.nome||op.id,color:colors[op.id]},position:{x:Math.cos(angle)*300,y:Math.sin(angle)*300}});
+  nodes.push({data:{id:'op:'+op.id,entity:op.id,type:'operation',operation:op.id,label:op.nome||op.id,color:colors[op.id]},position:{x:Math.cos(angle)*300,y:Math.sin(angle)*300}});
   const ts=tech.filter(t=>t.operacao===op.id).sort((a,b)=>cues.findIndex(c=>c.id===a.pista)-cues.findIndex(c=>c.id===b.pista)||(a.nome||a.id).localeCompare(b.nome||b.id));
   const groups=new Map<string,number[]>();
   ts.forEach((t,j)=>{
@@ -23,12 +25,12 @@ function freeLayout(graph:GraphData):ElementDefinition[]{
    const cue=cues.find(c=>c.id===t.pista);
    if(cue)groups.set(cue.id,[...(groups.get(cue.id)||[]),a]);
    nodes.push({data:{id:'tech:'+t.id,entity:t.id,type:'technique',operation:op.id,cue:cue?.id,label:t.nome||t.id,color:colors[op.id],rotation:Math.cos(a)>=0?a:a+Math.PI,labelSide:Math.cos(a)>=0?'right':'left'},position:p});
-   edges.push({data:{id:'e-structure:'+t.id,source:cue?'cue:'+op.id+':'+cue.id:'op:'+op.id,target:'tech:'+t.id,structure:true,distance:0,weight:.5,color:colors[op.id]}});
+   edges.push({data:{id:'e-structure:'+t.id,source:cue?'cue:'+op.id+':'+cue.id:'op:'+op.id,target:'tech:'+t.id,operation:op.id,structure:true,distance:0,weight:.5,color:colors[op.id]}});
   });
   groups.forEach((as,id)=>{
    const a=as.reduce((s,x)=>s+x,0)/as.length;
    nodes.push({data:{id:'cue:'+op.id+':'+id,entity:op.id,type:'cue',operation:op.id,label:cues.find(c=>c.id===id)?.nome||id,color:colors[op.id]},position:{x:Math.cos(a)*540,y:Math.sin(a)*540}});
-   edges.push({data:{id:'e-cue:'+op.id+':'+id,source:'op:'+op.id,target:'cue:'+op.id+':'+id,structure:true,distance:0,weight:.5,color:colors[op.id]}});
+   edges.push({data:{id:'e-cue:'+op.id+':'+id,source:'op:'+op.id,target:'cue:'+op.id+':'+id,operation:op.id,structure:true,distance:0,weight:.5,color:colors[op.id]}});
   });
  });
  let seed=7;
@@ -59,7 +61,7 @@ function freeLayout(graph:GraphData):ElementDefinition[]{
    }
   }
   const size=({5:90,4:74,3:62,2:50,1:42}[strength]||62);
-  nodes.push({data:{id:'ref:'+item.id,entity:item.id,type:'reference',label:item.title,image:'none',preview:item.thumbnail||'',color:item.techniques.length?colorFor(item.techniques[0]):'#8f8a82',size,width:size,height:size*9/16,external:item.origin==='externa'},position:point});
+  nodes.push({data:{id:'ref:'+item.id,entity:item.id,type:'reference',operation:tech.find(t=>t.id===item.techniques[0])?.operacao||'',label:item.title,image:'none',preview:item.thumbnail||'',color:item.techniques.length?colorFor(item.techniques[0]):'#8f8a82',size,width:size,height:size*9/16,external:item.origin==='externa'},position:point});
   for(const tid of item.techniques){
    const target=positions.get(tid);if(!target)continue;
    // The same inward quadratic control point as the prototype, represented
@@ -68,7 +70,7 @@ function freeLayout(graph:GraphData):ElementDefinition[]{
    const cx=(point.x+target.x)*.36,cy=(point.y+target.y)*.36;
    const weight=((cx-point.x)*dx+(cy-point.y)*dy)/(length*length);
    const distance=((cx-point.x)*-dy+(cy-point.y)*dx)/length;
-   edges.push({data:{id:'e:'+item.id+':'+tid,source:'ref:'+item.id,target:'tech:'+tid,color:colorFor(tid),weight,distance}});
+   edges.push({data:{id:'e:'+item.id+':'+tid,source:'ref:'+item.id,target:'tech:'+tid,operation:tech.find(t=>t.id===tid)?.operacao||'',color:colorFor(tid),weight,distance}});
   }
  }
  return [...nodes,...edges];
@@ -77,7 +79,7 @@ function freeLayout(graph:GraphData):ElementDefinition[]{
 export function layoutGraph(graph:GraphData,view:GraphView='free'):ElementDefinition[]{
  const elements=freeLayout(graph);
  if(view==='free')return elements;
- const nodes=new Map(elements.filter(node=>node.position).map(node=>[node.data.id,node]));
+ const nodes=new Map<string,ElementDefinition>(elements.filter(node=>node.position).map(node=>[node.data.id!,node]));
  const ops=terms(graph.vocabulary,'operacoes'),techniques=terms(graph.vocabulary,'tecnicas');
  const validTechniques=techniques.filter(tech=>nodes.has('tech:'+tech.id));
  const order=new Map(validTechniques.map((tech,index)=>[tech.id,index]));
@@ -93,7 +95,10 @@ export function layoutGraph(graph:GraphData,view:GraphView='free'):ElementDefini
   if(first)primary.set(item.id,first);
  }
  const place=(id:string,x:number,y:number)=>{const node=nodes.get(id);if(node){node.position={x,y};if(node.data.type==='technique'){node.data.rotation=0;node.data.labelSide='right';}}};
- if(view==='grouped'){
+ if(isExperimental(view)){
+  graph.items.forEach(item=>{nodes.get('ref:'+item.id)!.data.operation=byId.get(primary.get(item.id)||'')?.operacao||'';});
+  arrangeAlternate({graph,nodes,ops,techniques:validTechniques,primary,place},view);
+ }else if(view==='grouped'){
   const groups=[...ops.map(op=>({id:op.id,items:graph.items.filter(item=>byId.get(primary.get(item.id)||'')?.operacao===op.id)}))];
   const unclassified=graph.items.filter(item=>!primary.has(item.id));
   if(unclassified.length)groups.push({id:'',items:unclassified});
@@ -144,6 +149,13 @@ export function layoutGraph(graph:GraphData,view:GraphView='free'):ElementDefini
   graph.items.filter(item=>!primary.has(item.id)).sort((a,b)=>a.id.localeCompare(b.id)).forEach((item,i)=>place('ref:'+item.id,2400+i%columns*124,top+Math.floor(i/columns)*gap));
  }
  // Mantém os mesmos nós e relações; apenas reposiciona e simplifica as curvas.
- elements.filter(element=>!element.position).forEach(edge=>{edge.data.distance=0;edge.data.weight=.5;if(!edge.data.structure)edge.data.cross='tech:'+primary.get(String(edge.data.source).slice(4))!==edge.data.target;});
+ elements.filter(element=>!element.position).forEach(edge=>{
+  edge.data.distance=0;edge.data.weight=.5;
+  if(!edge.data.structure)edge.data.cross='tech:'+primary.get(String(edge.data.source).slice(4))!==edge.data.target;
+  if(view==='cosmos'||view==='garden'){
+   const a=nodes.get(String(edge.data.source))?.position,b=nodes.get(String(edge.data.target))?.position;
+   if(a&&b)edge.data.distance=Math.hypot(a.x-b.x,a.y-b.y)*(view==='garden'?.12:.08);
+  }
+ });
  return elements;
 }

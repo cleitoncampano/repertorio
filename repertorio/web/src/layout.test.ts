@@ -16,7 +16,12 @@ describe('mapa',()=>{
  });
  it.each(graphViews)('$name mantém todas as conexões apontando para nós existentes',({id})=>{
   const elements=layoutGraph(graph,id);const ids=new Set(elements.filter(e=>e.position).map(e=>e.data.id));
+  expect(elements.map(element=>element.data.id).sort()).toEqual(layoutGraph(graph).map(element=>element.data.id).sort());
   for(const e of elements.filter(e=>e.data.source)){expect(ids.has(e.data.source)).toBe(true);expect(ids.has(e.data.target)).toBe(true);}
+ });
+ it('cada proposta reorganiza o acervo com uma geometria diferente',()=>{
+  const signatures=graphViews.map(({id})=>JSON.stringify(layoutGraph(graph,id).filter(element=>element.data.type==='reference').map(element=>element.position)));
+  expect(new Set(signatures).size).toBe(graphViews.length);
  });
  const mixed:GraphData={vocabulary:{operacoes:{itens:[{id:'diferenciacao',def:''},{id:'agrupamento',def:''}]},pistas:{itens:[{id:'cor',def:''}]},tecnicas:{itens:[{id:'contraste',operacao:'diferenciacao',pista:'cor',def:''},{id:'semelhanca',operacao:'agrupamento',def:''},{id:'proximidade',operacao:'agrupamento',def:''}]}},items:[{id:'mista',techniques:['contraste','semelhanca','proximidade'],strength:5},{id:'sem-tecnica',techniques:[],strength:5},{id:'desconhecida',techniques:['nao-existe'],strength:5}] as Reference[]};
  it('agrupa pela operação com mais conexões, mantendo também as relações cruzadas e peças sem classificação',()=>{

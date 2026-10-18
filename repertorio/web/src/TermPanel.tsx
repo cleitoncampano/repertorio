@@ -3,7 +3,7 @@ import {ArrowLeft,ArrowUpRight,ChevronRight,X} from 'lucide-react';
 import {colors,terms,type GraphData} from './types';
 import {sized} from './api';
 
-export function TermPanel({data,operation,technique,referenceIds,onTechnique,onOperation,onSelect,onClose}:{data:GraphData;operation:string;technique:string;referenceIds:Set<string>;onTechnique:(id:string)=>void;onOperation:(id:string)=>void;onSelect:(id:string)=>void;onClose:()=>void}){
+export function TermPanel({data,palette=colors,operation,technique,referenceIds,onTechnique,onOperation,onSelect,onClose}:{data:GraphData;palette?:Record<string,string>;operation:string;technique:string;referenceIds:Set<string>;onTechnique:(id:string)=>void;onOperation:(id:string)=>void;onSelect:(id:string)=>void;onClose:()=>void}){
  const [limit,setLimit]=useState(48);
  useEffect(()=>setLimit(48),[operation,technique]);
  const ts=terms(data.vocabulary,'tecnicas'),ops=terms(data.vocabulary,'operacoes');
@@ -13,7 +13,7 @@ export function TermPanel({data,operation,technique,referenceIds,onTechnique,onO
  const cue=terms(data.vocabulary,'pistas').find(c=>c.id===term.pista);
  const linkedTechniques=ts.filter(t=>t.operacao===op?.id);
  const refs=data.items.filter(i=>referenceIds.has(i.id)).sort((a,b)=>b.strength-a.strength);
- return <aside className="detail-panel term-panel" aria-label={technique?'Detalhes da técnica':'Detalhes do eixo'} style={{'--term-color':colors[op?.id||'']} as React.CSSProperties}>
+ return <aside className="detail-panel term-panel" aria-label={technique?'Detalhes da técnica':'Detalhes do eixo'} style={{'--term-color':palette[op?.id||'']} as React.CSSProperties}>
   <div className="panel-heading"><span>{technique?'TÉCNICA VISUAL':'OPERAÇÃO DO OLHAR'}</span><button onClick={onClose} aria-label="Fechar eixo"><X size={18}/></button></div>
   <div className="term-body">
    {technique&&op&&<button className="term-back" onClick={()=>onOperation(op.id)}><ArrowLeft size={13}/>{op.nome}</button>}

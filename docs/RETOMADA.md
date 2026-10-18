@@ -4,12 +4,12 @@ Atualizado em 18/10/2026 (America/Sao_Paulo).
 
 ## Objetivo atual
 
-Finalização visual da primeira parte da palestra “Você compraria de você mesmo?”, autorizada pelo usuário com liberdade para escolher recursos dos carrosséis. Entrega consolidada em `_saida/palestra-cx-ia-final/`.
+Finalização visual da primeira parte da palestra “Você compraria de você mesmo?”, autorizada pelo usuário com liberdade para escolher recursos dos carrosséis. Entrega consolidada em `_saida/palestra-cx-ia-codex/`.
 
 ## Retomada da palestra
 
 - Contexto e conversa anterior recuperados. O pedido original era melhorar apenas o visual, preservando texto, falas e storytelling da primeira parte.
-- Entrega oficial: `_saida/palestra-cx-ia-final/palestra-arquivo-unico.html`, independente e offline, e `palestra.pdf`, com 24 páginas. A fonte editável é `palestra.html` na mesma pasta.
+- Entrega oficial: `_saida/palestra-cx-ia-codex/palestra-arquivo-unico.html`, independente e offline, e `palestra.pdf`, com 24 páginas. A fonte editável é `palestra.html` na mesma pasta.
 - Base editorial preservada, com as oito imagens geradas. Os 185 trechos, as 24 falas, os passos e os grupos de foco continuam idênticos ao roteiro original.
 - Aplicados percurso contínuo, estações com ícones, cartões, círculos de descoberta e marcadores de foco derivados dos carrosséis. Corrigido o corte e a sobreposição do slide 7.
 - Conferidos os 24 slides, 53 estados de clique, 23 transições, notas, teclado, tela cheia e janela P. HTML único aberto numa pasta isolada sem requisições externas; cinco slides idênticos em comparação de pixels. PDF renderizado com Poppler e 24 páginas revisadas. Evidências locais em `_ver/`; resultados e hashes em `VALIDACAO.json`.
@@ -46,6 +46,6 @@ Há versões da palestra “Você compraria de você mesmo?”, com 24 slides. E
 
 ## Próxima ação
 
-Para apresentar a primeira parte, abrir o HTML único em `_saida/palestra-cx-ia-final/`. A revisão visual e a exportação estão concluídas. Para avançar a palestra completa, receber ou recuperar a continuação da fala e definir os cases e a duração total. Detalhes em `docs/RETOMADA-PALESTRA-CX-IA.md`.
+Para apresentar a primeira parte, abrir o HTML único em `_saida/palestra-cx-ia-codex/`. A revisão visual e a exportação estão concluídas. Para avançar a palestra completa, receber ou recuperar a continuação da fala e definir os cases e a duração total. Detalhes em `docs/RETOMADA-PALESTRA-CX-IA.md`.
 
 O repertório Growmate está incorporado e visível no grafo. Para novos materiais, consultar o catálogo e ler a revisão em Escolhas; preservar os créditos. O funcionamento automático do hook RTK em um Codex reiniciado e a economia total da assinatura ainda não foram medidos.

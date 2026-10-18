@@ -1,12 +1,12 @@
 # Retomada da palestra: Você compraria de você mesmo?
 
-Atualizado em 18/10/2026. Após a recuperação do contexto, o usuário autorizou acrescentar recursos visuais dos carrosséis e finalizar. A primeira parte de 24 slides foi consolidada em `_saida/palestra-cx-ia-final/`.
+Atualizado em 18/10/2026. Após a recuperação do contexto, o usuário autorizou acrescentar recursos visuais dos carrosséis e finalizar. A primeira parte de 24 slides foi consolidada em `_saida/palestra-cx-ia-codex/`.
 
 ## Entrega oficial
 
-- `_saida/palestra-cx-ia-final/palestra-arquivo-unico.html`: arquivo independente, com imagens, fontes, falas e motor incorporados.
-- `_saida/palestra-cx-ia-final/palestra.pdf`: 24 páginas, com todas as revelações visíveis.
-- `_saida/palestra-cx-ia-final/palestra.html`: versão editável com dependências locais.
+- `_saida/palestra-cx-ia-codex/palestra-arquivo-unico.html`: arquivo independente, com imagens, fontes, falas e motor incorporados.
+- `_saida/palestra-cx-ia-codex/palestra.pdf`: 24 páginas, com todas as revelações visíveis.
+- `_saida/palestra-cx-ia-codex/palestra.html`: versão editável com dependências locais.
 - `LEIA-ME.md`, `REFERENCIAS.md` e `VALIDACAO.json` na mesma pasta: operação, procedência visual, resultados e hashes.
 
 Recursos acrescentados: linha contínua de jornada, estações com ícones, cartões dos três momentos, seis caminhos de descoberta, círculos e lupa, sinais para os setores e cartões de perguntas. Paleta coral, papel e preto do kit Growmate, mantendo a tipografia e as oito imagens ilustrativas da editorial. Não foram acrescentados textos ou fotografias de terceiros dos carrosséis.
@@ -37,7 +37,7 @@ Direção: fotografias ilustrativas em preto e branco, marfim, preto e ponto lar
 - O slide 7 foi corrigido com posicionamento específico para o título e a legenda, eliminando o conflito do seletor `last-of-type` anterior.
 - O HTML único foi aberto sozinho numa pasta temporária com requisições externas bloqueadas. Carregou todas as imagens, fontes, motor e falas, com zero dependências externas. Os slides 7, 9, 18, 19 e 22 produziram capturas idênticas às da versão editável.
 - O PDF tem 24 páginas de 1440 × 810 pontos. Todas foram renderizadas com Poppler e revisadas visualmente. Na impressão, as três perguntas do slide 22 aparecem legíveis ao mesmo tempo.
-- Rotinas: `ferramentas/finalizar_palestra_cx_ia.py`, `ferramentas/conferir_palestra_cx_ia.cjs` e `ferramentas/exportar_palestra_cx_ia.cjs`. Capturas em `_saida/palestra-cx-ia-final/_ver/`, fora do Git.
+- Rotinas: `ferramentas/finalizar_palestra_cx_ia.py`, `ferramentas/conferir_palestra_cx_ia.cjs` e `ferramentas/exportar_palestra_cx_ia.cjs`. Capturas em `_saida/palestra-cx-ia-codex/_ver/`, fora do Git.
 
 ## Uso e ensaio
 

@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / '_saida/palestra-cx-ia-editorial'
-DEST = ROOT / '_saida/palestra-cx-ia-final'
+DEST = ROOT / '_saida/palestra-cx-ia-codex'
 KIT = ROOT / '_originais/growmate-livros/series/livros-kit'
 
 

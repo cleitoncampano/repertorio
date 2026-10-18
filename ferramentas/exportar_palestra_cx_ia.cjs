@@ -4,7 +4,7 @@ const os = require('node:os');
 const path = require('node:path');
 const {pathToFileURL} = require('node:url');
 const {chromium} = require('../repertorio/web/node_modules/@playwright/test');
-const dest = path.resolve(__dirname, '../_saida/palestra-cx-ia-final');
+const dest = path.resolve(__dirname, '../_saida/palestra-cx-ia-codex');
 const output = path.join(dest, '_ver');
 const source = pathToFileURL(path.join(dest, 'palestra.html')).href;
 const ready = page => page.evaluate(async () => {

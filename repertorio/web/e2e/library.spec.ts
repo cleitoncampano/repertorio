@@ -1,5 +1,43 @@
 import {test,expect} from '@playwright/test';
 
+test('link de busca enquadra as capas, preserva a navegação e permite explorar o mapa',async({page})=>{
+ // Uma câmera anterior pode estar distante do conjunto que a busca vai encontrar.
+ await page.addInitScript(()=>sessionStorage.setItem('repertorio-camera-v3',JSON.stringify({zoom:.1,pan:{x:5000,y:5000}})));
+ await page.goto('/?q=Abertura');
+ const input=page.getByRole('textbox',{name:'Buscar inspiração'});
+ await expect(input).toHaveValue('Abertura');
+ await expect(page.locator('.result-row').filter({hasText:'Abertura criativa'})).toBeVisible();
+ const camera=()=>page.evaluate(()=>{
+  const c=(document.querySelector('.map-surface') as any)._cyreg.cy;
+  const node=c.getElementById('ref:deck');
+  return {zoom:c.zoom(),pan:c.pan(),bounds:node.renderedBoundingBox()};
+ });
+ await expect.poll(async()=>(await camera()).zoom).toBeGreaterThan(.1);
+ const result=await camera(),panel=(await page.locator('.results-panel').boundingBox())!;
+ expect(result.bounds.x1).toBeGreaterThan(72);
+ expect(result.bounds.x2).toBeLessThan(panel.x);
+ expect(result.bounds.y1).toBeGreaterThan(64);
+ expect(result.bounds.y2).toBeLessThan(950);
+ await page.getByRole('button',{name:'Aproximar',exact:true}).click();
+ const moved=await camera();
+ await input.fill('Textura');
+ // Digitar não deve reposicionar o mapa ou alterar a busca antes do envio.
+ expect((await camera()).zoom).toBe(moved.zoom);
+ expect(new URL(page.url()).searchParams.get('q')).toBe('Abertura');
+ await input.press('Enter');
+ await expect(page.locator('.result-row').filter({hasText:'Textura verde'})).toBeVisible();
+ expect(new URL(page.url()).searchParams.get('q')).toBe('Textura');
+ await page.goBack();
+ await expect(input).toHaveValue('Abertura');
+ await expect(page.locator('.result-row').filter({hasText:'Abertura criativa'})).toBeVisible();
+ await page.reload();
+ await expect(input).toHaveValue('Abertura');
+ await expect(page.locator('.result-row').filter({hasText:'Abertura criativa'})).toBeVisible();
+ await page.getByRole('button',{name:'Limpar filtros',exact:true}).click();
+ await expect(page.locator('.results-panel')).not.toBeVisible();
+ expect(new URL(page.url()).searchParams.has('q')).toBe(false);
+});
+
 test('explora, exclui e restaura sem editar arquivos',async({page})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('/');

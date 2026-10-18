@@ -99,3 +99,12 @@ Essas medições são do computador de desenvolvimento, não uma garantia para q
 - Nova tela **Escolhas** (`web/src/Choices.tsx`): cada pedido com as seleções que o agente guardou, a justificativa e as referências em cartões. O usuário aprova, corta e comenta; clicar na imagem abre o painel de detalhes. Contador de itens sem resposta na navegação e link direto `/?escolha=ID`.
 - Servidor: tabela `pack_reviews` (migração 0003, só acrescenta), `GET /api/demands`, `GET /api/packs/{id}` com a imagem atual e a revisão de cada referência, `POST /api/packs/{id}/reviews`. `build_inspiration_pack` devolve `review_url`; nova ferramenta MCP `get_pack` para o agente ler a revisão antes de criar.
 - 20 testes Python (1 novo) e 9 testes Playwright (1 novo) aprovados. Conferido por captura nos temas escuro e claro, numa cópia temporária do banco para não criar pedidos de exemplo no acervo.
+
+## Localizar os carrosséis Growmate no grafo
+
+- Diagnóstico em 17/10/2026: os 32 carrosséis e a ficha de componentes já estavam em `/api/graph`, com miniaturas, mas a câmera mantinha a visão geral. Mesmo após buscar, as 33 capas ocupavam só 209 × 151 px no mapa de 1440 × 1000 px.
+- A busca agora enquadra as referências encontradas na área livre à esquerda do painel. O enquadramento acontece quando o conjunto muda; digitar no campo ou explorar o mapa manualmente não dispara uma nova centralização. O restante do acervo permanece no mapa, escurecido como antes.
+- Links com `q` abrem uma busca pronta e preservam a consulta ao recarregar ou navegar pelo histórico. `/?q=Growmate` isola os 33 registros; `Growmate #Livros` também encontra referências que só mencionam livros, pois a busca existente usa OR entre palavras.
+- Conferido no acervo real: 33 referências iluminadas e com miniaturas carregadas, zoom de 69% e conjunto ocupando 796 × 576 px, inteiro antes do painel lateral. Sem erros JavaScript.
+- Build de produção, 7 testes unitários e 10 testes Playwright aprovados. O novo teste cobre link de busca, enquadramento após uma câmera salva fora da área visível, histórico, recarga, limpeza e exploração manual. Testes de navegador usam biblioteca temporária, sem criar referências de demonstração no acervo real.
+- Capturas antes e depois e relatório: `_saida/repertorio-qa/growmate-grafo/`. A interface local já foi compilada; o app aberto carrega a nova versão com ⌘R.

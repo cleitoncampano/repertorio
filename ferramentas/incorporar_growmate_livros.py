@@ -338,6 +338,8 @@ def write_index(m):
              f'**32 carrosséis, {sum(x["slides"] for x in m["entries"])} lâminas, '
              f'{sum(x["assets"] for x in m["entries"])} arquivos de imagem em assets e {m["icons"]} ícones SVG.** '
              'A contagem de assets inclui variantes, recortes, logos e fotografias repetidas entre produções.', '',
+             f'[Abrir os 33 registros no grafo]({URL}/?q=Growmate). A busca aproxima e enquadra o conjunto; '
+             'se o app já estava aberto antes desta atualização, recarregar com ⌘R.', '',
              f'[Abrir paleta e componentes no Repertório]({m["kit"]["url"]}).', '',
              '## Identidade preservada', '',
              '| Papel | Cor |', '|---|---|']

@@ -13,6 +13,7 @@ type Props={data:GraphData;selected:string|null;matches:string[]|null;technique:
 export function Map({data,selected,matches,technique,operation,theme,onSelect,onTerm,onClear}:Props){
  const container=useRef<HTMLDivElement>(null),cy=useRef<Core|null>(null);
  const panelInset=useRef(0);
+ const framedMatches=useRef('');
  const callbacks=useRef({onSelect,onTerm,onClear});callbacks.current={onSelect,onTerm,onClear};
  const [zoom,setZoom]=useState(1);
  const [hover,setHover]=useState<{item:Reference;x:number;y:number}|null>(null);
@@ -138,6 +139,20 @@ export function Map({data,selected,matches,technique,operation,theme,onSelect,on
    if(selected)instance.getElementById('ref:'+selected).addClass('active');
   });
  },[selected,matches,technique,operation,data]);
+ useEffect(()=>{
+  if(!matches){framedMatches.current='';return;}
+  const c=cy.current;if(!c||selected||!matches.length)return;
+  const key=JSON.stringify([...matches].sort());
+  if(framedMatches.current===key)return;
+  const ids=new Set(matches),nodes=c.nodes('[type="reference"]').filter(node=>ids.has(node.data('entity')));
+  if(!nodes.length)return;
+  // A busca enquadra as capas na área livre, sem deixá-las sob o painel de resultados.
+  const bounds=nodes.boundingBox({includeLabels:false}),padding=c.width()<760?48:96;
+  const width=c.width()-panelInset.current*2;
+  const level=Math.max(c.minZoom(),Math.min(1.3,(width-padding*2)/bounds.w,(c.height()-padding*2)/bounds.h));
+  c.viewport({zoom:level,pan:{x:width/2-(bounds.x1+bounds.x2)/2*level,y:c.height()/2-(bounds.y1+bounds.y2)/2*level}});
+  framedMatches.current=key;
+ },[matches,selected,data]);
  const adjust=(factor:number)=>{const c=cy.current;if(c)c.zoom({level:c.zoom()*factor,renderedPosition:{x:c.width()/2,y:c.height()/2}});};
  return <div className="map-stage"><div className="map-surface" ref={container} role="img" aria-label="Mapa de referências conectadas às técnicas. Use a busca ou a lista para navegar com teclado."/>
   {hover&&<div className="map-hover" style={{left:hover.x,top:hover.y}}>{hover.item.thumbnail&&<img src={sized(hover.item.thumbnail,512)} alt=""/>}<div><small>{kindName[hover.item.kind]||'Referência'} · Clique para explorar</small><strong>{hover.item.title}</strong></div></div>}

@@ -4,6 +4,8 @@ Incorporado a pedido de Cleiton em 17/10/2026. Origem: `growmate/growmate-market
 
 **32 carrosséis, 429 lâminas, 229 arquivos de imagem em assets e 73 ícones SVG.** A contagem de assets inclui variantes, recortes, logos e fotografias repetidas entre produções.
 
+[Abrir os 33 registros no grafo](http://127.0.0.1:8766/?q=Growmate). A busca aproxima e enquadra o conjunto; se o app já estava aberto antes desta atualização, recarregar com ⌘R.
+
 [Abrir paleta e componentes no Repertório](http://127.0.0.1:8766/?ref=criacao-b6d2ab25-b054-43d6-a592-833fb2fca647).
 
 ## Identidade preservada

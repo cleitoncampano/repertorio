@@ -46,6 +46,7 @@ Os agentes precisam receber os espaços explicitamente. Exemplo: “Use os espa�
 ## Como usar
 
 - Explore o mapa com arraste e zoom. Clique nas operações, técnicas ou imagens para investigar suas relações.
+- Ao lado do botão de tema, **Visualização do grafo** oferece **Mapa livre**, **Por grupos** e **Hierárquico**, com pequenas prévias. São as mesmas referências e conexões do espaço aberto, com posições diferentes. A preferência fica salva no navegador; a câmera de cada organização é independente por espaço. Busca, filtros e ficha aberta permanecem durante a troca. **Mapa livre** mantém a organização original.
 - Busque por palavras e refine por intenção, origem, movimento, formato e estética. A lista oferece navegação por teclado.
 - O painel mostra princípio criativo, prévias, slides, relações, condições de uso conhecidas e o contexto disponibilizado ao agente.
 - **Excluir deste espaço** envia à Lixeira daquele espaço, com Desfazer. A remoção de uma apresentação também a retira das buscas de seus slides; os originais e mídias compartilhadas não são apagados.

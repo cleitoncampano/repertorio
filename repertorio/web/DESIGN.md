@@ -30,3 +30,11 @@ Playwright verifica área do mapa acima de 95% da janela, barra até 48 px, esta
 - Tamanhos variam conforme a força e a proporção real da miniatura. Distribuição com semente fixa e espaço entre peças evita um mosaico uniforme e mantém a localização estável.
 - O painel do eixo explica a operação e suas técnicas. A técnica mostra sua definição, orientação HTML e referências. O painel da peça mantém os dados e ações de curadoria.
 - Alternador claro/escuro no canto superior direito, disponível em todas as telas. Preferência local persistida, sem alterar a câmera nem remontar o grafo.
+
+## Visualizações do grafo
+
+- Ao lado do tema, um menu compacto com prévias oferece Mapa livre (organização original), Por grupos (conjuntos por operação) e Hierárquico (operações, pistas, técnicas e referências da esquerda para a direita).
+- Mudar a organização reposiciona o mesmo grafo e preserva seleção, busca, filtros, cores e miniaturas. A preferência é global no navegador; as câmeras são independentes por organização e espaço. O menu aparece no mapa; a alternância para lista continua na barra de busca.
+- Uma referência com várias técnicas ocupa um único lugar, na operação com mais relações. As conexões cruzadas continuam presentes, discretas na visão geral e realçadas quando selecionadas.
+- Hierarquia usa blocos de miniaturas com várias colunas e compacta técnicas sem referências diretas, para equilibrar bibliotecas pequenas e grandes. Nenhum modo altera a curadoria ou os vínculos dos espaços.
+- Menu com seleção indicada, navegação por setas, Home/End e Escape. Fechar o menu por Escape preserva a ficha e devolve o foco ao botão. No celular, busca e controles reservam espaço uns para os outros.

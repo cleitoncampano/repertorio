@@ -1,10 +1,11 @@
 import type {GraphData} from './types';
 import {colors,terms} from './types';
 import type {ElementDefinition} from 'cytoscape';
+import type {GraphView} from './graphViewOptions';
 
 // The prototype's radial grammar: operation → cue → technique → reference.
 // Seeded placement feels organic without moving the library on every refresh.
-export function layoutGraph(graph:GraphData):ElementDefinition[]{
+function freeLayout(graph:GraphData):ElementDefinition[]{
  const nodes:ElementDefinition[]=[],edges:ElementDefinition[]=[];
  const ops=terms(graph.vocabulary,'operacoes'),tech=terms(graph.vocabulary,'tecnicas');
  const cues=terms(graph.vocabulary,'pistas');
@@ -71,4 +72,78 @@ export function layoutGraph(graph:GraphData):ElementDefinition[]{
   }
  }
  return [...nodes,...edges];
+}
+
+export function layoutGraph(graph:GraphData,view:GraphView='free'):ElementDefinition[]{
+ const elements=freeLayout(graph);
+ if(view==='free')return elements;
+ const nodes=new Map(elements.filter(node=>node.position).map(node=>[node.data.id,node]));
+ const ops=terms(graph.vocabulary,'operacoes'),techniques=terms(graph.vocabulary,'tecnicas');
+ const validTechniques=techniques.filter(tech=>nodes.has('tech:'+tech.id));
+ const order=new Map(validTechniques.map((tech,index)=>[tech.id,index]));
+ const byId=new Map(validTechniques.map(tech=>[tech.id,tech]));
+ const primary=new Map<string,string>();
+ // Cada peça ocupa um lugar só. Todas as suas conexões continuam visíveis.
+ for(const item of graph.items){
+  const counts=new Map<string,number>();
+  item.techniques.forEach(id=>{const op=byId.get(id)?.operacao;if(op)counts.set(op,(counts.get(op)||0)+1);});
+  const op=ops.slice().sort((a,b)=>(counts.get(b.id)||0)-(counts.get(a.id)||0)).find(op=>counts.has(op.id));
+  if(!op)continue;
+  const first=item.techniques.filter(id=>byId.get(id)?.operacao===op.id).sort((a,b)=>order.get(a)!-order.get(b)!)[0];
+  if(first)primary.set(item.id,first);
+ }
+ const place=(id:string,x:number,y:number)=>{const node=nodes.get(id);if(node){node.position={x,y};if(node.data.type==='technique'){node.data.rotation=0;node.data.labelSide='right';}}};
+ if(view==='grouped'){
+  const groups=[...ops.map(op=>({id:op.id,items:graph.items.filter(item=>byId.get(primary.get(item.id)||'')?.operacao===op.id)}))];
+  const unclassified=graph.items.filter(item=>!primary.has(item.id));
+  if(unclassified.length)groups.push({id:'',items:unclassified});
+  const layouts=groups.map(group=>{
+   const tech=validTechniques.filter(tech=>tech.operacao===group.id),points:{x:number;y:number}[]=[];
+   // Une os anéis internos às referências sem sobrepor suas miniaturas.
+   const inner=Math.max(500,tech.length*26),cell=116;
+   for(let ring=0;points.length<group.items.length;ring++){
+    for(let x=-ring;x<=ring;x++)for(let y=-ring;y<=ring;y++){
+     if(Math.max(Math.abs(x),Math.abs(y))!==ring||Math.hypot(x*cell,y*cell)<inner)continue;
+     points.push({x:x*cell,y:y*cell});
+    }
+   }
+   points.sort((a,b)=>Math.hypot(a.x,a.y)-Math.hypot(b.x,b.y)||a.x-b.x||a.y-b.y);
+   const chosen=points.slice(0,group.items.length).sort((a,b)=>Math.atan2(a.y,a.x)-Math.atan2(b.y,b.x));
+   return {...group,tech,points:chosen,radius:Math.max(inner+80,...chosen.map(point=>Math.hypot(point.x,point.y)+70))};
+  });
+  const columns=Math.max(1,Math.ceil(Math.sqrt(layouts.length))),widths:number[]=[],heights:number[]=[];
+  layouts.forEach((group,index)=>{const col=index%columns,row=Math.floor(index/columns);widths[col]=Math.max(widths[col]||0,group.radius*2);heights[row]=Math.max(heights[row]||0,group.radius*2);});
+  const start=(sizes:number[],index:number)=>sizes.slice(0,index).reduce((sum,size)=>sum+size+200,0)+sizes[index]/2;
+  layouts.forEach((group,index)=>{
+   const x=start(widths,index%columns),y=start(heights,Math.floor(index/columns));
+   place('op:'+group.id,x,y);
+   const cues=Array.from(nodes.values()).filter(node=>node.data.type==='cue'&&node.data.operation===group.id);
+   cues.forEach((node,i)=>{const angle=-Math.PI/2+2*Math.PI*i/cues.length;place(node.data.id!,x+Math.cos(angle)*220,y+Math.sin(angle)*220);});
+   group.tech.forEach((tech,i)=>{const angle=-Math.PI/2+2*Math.PI*(i+.5)/group.tech.length;place('tech:'+tech.id,x+Math.cos(angle)*360,y+Math.sin(angle)*360);const node=nodes.get('tech:'+tech.id)!;node.data.labelSide=Math.cos(angle)<0?'left':'right';});
+   group.items.slice().sort((a,b)=>(order.get(primary.get(a.id)||'')??Infinity)-(order.get(primary.get(b.id)||'')??Infinity)||a.id.localeCompare(b.id)).forEach((item,i)=>place('ref:'+item.id,x+group.points[i].x,y+group.points[i].y));
+  });
+ }else{
+  let top=0;
+  const gap=108,columns=Math.max(2,Math.min(36,Math.ceil(Math.sqrt(graph.items.length)*1.2)));
+  for(const op of ops){
+   const start=top;
+   const cuePositions=new Map<string,number[]>();
+   for(const tech of validTechniques.filter(tech=>tech.operacao===op.id).sort((a,b)=>(a.pista||'').localeCompare(b.pista||'')||(a.nome||a.id).localeCompare(b.nome||b.id))){
+    const items=graph.items.filter(item=>primary.get(item.id)===tech.id).sort((a,b)=>a.id.localeCompare(b.id));
+    const height=items.length?Math.ceil(items.length/columns)*gap+16:52,middle=top+height/2;
+    place('tech:'+tech.id,1200,middle);
+    if(tech.pista)cuePositions.set(tech.pista,[...(cuePositions.get(tech.pista)||[]),middle]);
+    items.forEach((item,i)=>place('ref:'+item.id,2400+i%columns*124,top+height/2-(Math.ceil(items.length/columns)-1)*gap/2+Math.floor(i/columns)*gap));
+    top+=height;
+   }
+   top=Math.max(top,start+200);
+   place('op:'+op.id,0,(start+top)/2);
+   cuePositions.forEach((ys,cue)=>place('cue:'+op.id+':'+cue,600,ys.reduce((sum,y)=>sum+y,0)/ys.length));
+   top+=120;
+  }
+  graph.items.filter(item=>!primary.has(item.id)).sort((a,b)=>a.id.localeCompare(b.id)).forEach((item,i)=>place('ref:'+item.id,2400+i%columns*124,top+Math.floor(i/columns)*gap));
+ }
+ // Mantém os mesmos nós e relações; apenas reposiciona e simplifica as curvas.
+ elements.filter(element=>!element.position).forEach(edge=>{edge.data.distance=0;edge.data.weight=.5;if(!edge.data.structure)edge.data.cross='tech:'+primary.get(String(edge.data.source).slice(4))!==edge.data.target;});
+ return elements;
 }

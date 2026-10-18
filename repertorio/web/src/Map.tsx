@@ -5,13 +5,17 @@ import {kindName,type GraphData,type Reference} from './types';
 import {layoutGraph} from './layout';
 import {graphFocus} from './focus';
 import {api,sized} from './api';
+import {cameraKey,type GraphView} from './graphViewOptions';
 
 // Resoluções do mapa: cada miniatura usa a menor que cobre o tamanho real na tela e melhora ao aproximar.
 const LEVELS=[128,256,512,1024];
 
-type Props={workspaceId:string;data:GraphData;selected:string|null;matches:string[]|null;technique:string;operation:string;theme:'dark'|'light';onSelect:(id:string)=>void;onTerm:(type:string,id:string)=>void;onClear:()=>void};
-export function Map({workspaceId,data,selected,matches,technique,operation,theme,onSelect,onTerm,onClear}:Props){
+type Props={workspaceId:string;view:GraphView;data:GraphData;selected:string|null;matches:string[]|null;technique:string;operation:string;theme:'dark'|'light';onSelect:(id:string)=>void;onTerm:(type:string,id:string)=>void;onClear:()=>void};
+export function Map({workspaceId,view,data,selected,matches,technique,operation,theme,onSelect,onTerm,onClear}:Props){
  const container=useRef<HTMLDivElement>(null),cy=useRef<Core|null>(null);
+ const viewRef=useRef(view);viewRef.current=view;
+ const applyView=useRef<((next:GraphView)=>void)|null>(null);
+ const focusRef=useRef({selected,matches,technique,operation});focusRef.current={selected,matches,technique,operation};
  const panelInset=useRef(0);
  const framedMatches=useRef('');
  const callbacks=useRef({onSelect,onTerm,onClear});callbacks.current={onSelect,onTerm,onClear};
@@ -27,16 +31,18 @@ export function Map({workspaceId,data,selected,matches,technique,operation,theme
   const scale={z:1};
   const measurement=document.createElement('canvas').getContext('2d');
   if(measurement)measurement.font='11px sans-serif';
-  const instance=cytoscape({container:container.current,elements:layoutGraph(data),layout:{name:'preset'},minZoom:.045,maxZoom:4,autoungrabify:true,boxSelectionEnabled:false,
+  let currentView=viewRef.current;
+  const instance=cytoscape({container:container.current,elements:layoutGraph(data,currentView),layout:{name:'preset'},minZoom:.045,maxZoom:4,autoungrabify:true,boxSelectionEnabled:false,
    style:[
     {selector:'node',style:{'background-color':'data(color)','overlay-opacity':0,'border-width':0}},
-    {selector:'node[type="operation"]',style:{width:250,height:250,'background-color':()=>ink().operation,'border-color':'data(color)','border-width':()=>3/scale.z,'border-opacity':1,label:'data(label)',color:()=>ink().text,'font-weight':600,'font-size':()=>Math.max(9,Math.min(16,125*scale.z*.3))/scale.z,'text-valign':'center'}},
+    {selector:'node[type="operation"]',style:{width:()=>viewRef.current==='hierarchy'?700:250,height:()=>viewRef.current==='hierarchy'?180:250,shape:()=>viewRef.current==='hierarchy'?'roundrectangle':'ellipse','background-color':()=>ink().operation,'border-color':'data(color)','border-width':()=>3/scale.z,'border-opacity':1,label:'data(label)',color:()=>ink().text,'font-weight':600,'font-size':()=>(viewRef.current==='hierarchy'?12:Math.max(9,Math.min(16,125*scale.z*.3)))/scale.z,'text-valign':'center'}},
     {selector:'node[type="cue"]',style:{width:28,height:28,label:'data(label)','text-opacity':0,'text-valign':'center','border-color':'data(color)',color:()=>ink().text,'font-size':()=>11/scale.z}},
     {selector:'node[type="technique"]',style:{width:18,height:18,label:'data(label)',color:()=>ink().text,'font-size':()=>12/scale.z,'text-opacity':0,'text-valign':'center','text-halign':(node:NodeSingular)=>node.data('labelSide') as 'left'|'right','text-rotation':(node:NodeSingular)=>Number(node.data('rotation')),'text-margin-x':(node:NodeSingular)=>node.data('labelSide')==='left'?-16:16,'text-background-color':()=>ink().background,'text-background-opacity':.85,'text-background-padding':'3px'}},
     {selector:'node[type="reference"]',style:{width:'data(width)',height:'data(height)',shape:'rectangle','background-color':()=>ink().reference,'background-image':'data(image)','background-fit':'contain','background-image-containment':'inside','border-color':()=>ink().text}},
     {selector:'node[?external]',style:{'border-width':3,'border-opacity':.55}},
     {selector:'edge',style:{width:()=>1.1/scale.z,'line-color':'data(color)',opacity:.13,'curve-style':'unbundled-bezier','control-point-distances':'data(distance)','control-point-weights':'data(weight)','edge-distances':'node-position'}},
     {selector:'edge[?structure]',style:{'line-color':'#8f8a82',opacity:.28,'curve-style':'straight'}},
+    {selector:'edge[?cross]',style:{opacity:()=>viewRef.current==='hierarchy'?.025:.04}},
     {selector:'node.dim',style:{opacity:.1}},
     {selector:'node[type="operation"].dim',style:{opacity:.25}},
     {selector:'edge.dim',style:{opacity:.018}},
@@ -49,10 +55,11 @@ export function Map({workspaceId,data,selected,matches,technique,operation,theme
     {selector:'node.active',style:{'border-color':()=>ink().text,'border-width':12,'border-opacity':1}},
     {selector:'node[type="reference"].hovered',style:{'border-width':8,'border-color':()=>ink().text,'border-opacity':1}},
    ]});
-  cy.current=instance;panelInset.current=0;
+  cy.current=instance;panelInset.current=0;framedMatches.current='';
+  const saveCamera=()=>{try{sessionStorage.setItem(cameraKey(workspaceId,currentView),JSON.stringify({zoom:instance.zoom(),pan:{x:instance.pan().x+panelInset.current,y:instance.pan().y}}));}catch{/* A câmera continua utilizável sem armazenamento. */}};
+  const restoreCamera=()=>{try{const saved=sessionStorage.getItem(cameraKey(workspaceId,currentView));if(saved){const camera=JSON.parse(saved);if(Number.isFinite(camera.zoom)&&camera.zoom>0&&Number.isFinite(camera.pan?.x)&&Number.isFinite(camera.pan?.y)){instance.viewport({zoom:Math.max(instance.minZoom(),Math.min(instance.maxZoom(),camera.zoom)),pan:{x:camera.pan.x-panelInset.current,y:camera.pan.y}});return true;}}}catch{/* Usa o enquadramento inicial. */}return false;};
   instance.fit(undefined,instance.width()<760?30:72);
-  const saved=sessionStorage.getItem('repertorio-camera-v3:'+workspaceId);
-  if(saved){try{const c=JSON.parse(saved);if(Number.isFinite(c.zoom)&&Number.isFinite(c.pan?.x)&&Number.isFinite(c.pan?.y)){instance.zoom(c.zoom);instance.pan(c.pan);}}catch{/* use fitted view */}}
+  restoreCamera();
   setZoom(instance.zoom());
   let frame=0,lastZoom=0,settle=0;
   // Recalcular o estilo de tudo a cada passo de zoom travava o mapa. Agora só linhas e nomes são
@@ -69,7 +76,7 @@ export function Map({workspaceId,data,selected,matches,technique,operation,theme
    const z=instance.zoom(),extent=instance.extent(),density=window.devicePixelRatio||1;
    if(Math.abs(z-lastZoom)>.0001){
     lastZoom=z;
-    instance.nodes('[type="technique"]').toggleClass('show-label',z>.34);
+    instance.nodes('[type="technique"]').toggleClass('show-label',z>(currentView==='hierarchy'?.24:.34));
     clearTimeout(settle);settle=window.setTimeout(rescale,140);
    }
    if(!bundled)return;
@@ -110,11 +117,32 @@ export function Map({workspaceId,data,selected,matches,technique,operation,theme
    if(item&&window.matchMedia('(hover: hover)').matches){const p=e.target.renderedPosition();setHover({item,x:Math.max(12,Math.min(p.x+22,instance.width()-260)),y:Math.max(64,Math.min(p.y+18,instance.height()-270))});}
   });
   instance.on('mouseout','node',e=>{setHover(null);e.target.removeClass('hovered');if(container.current)container.current.style.cursor='grab';});
-  instance.on('viewport',()=>{setHover(null);setZoom(instance.zoom());sessionStorage.setItem('repertorio-camera-v3:'+workspaceId,JSON.stringify({zoom:instance.zoom(),pan:{x:instance.pan().x+panelInset.current,y:instance.pan().y}}));cancelAnimationFrame(frame);frame=requestAnimationFrame(updateViewport);});
+  instance.on('viewport',()=>{setHover(null);setZoom(instance.zoom());saveCamera();cancelAnimationFrame(frame);frame=requestAnimationFrame(updateViewport);});
   const resize=new ResizeObserver(()=>instance.resize());resize.observe(container.current);
+  applyView.current=next=>{
+   if(currentView===next)return;
+   saveCamera();currentView=next;setHover(null);framedMatches.current='';
+   instance.batch(()=>{
+    for(const element of layoutGraph(data,next)){
+     const target=instance.getElementById(element.data.id!);
+     if(element.position){target.position(element.position);if(element.data.type==='technique')target.data({rotation:element.data.rotation,labelSide:element.data.labelSide});}
+     else target.data({distance:element.data.distance,weight:element.data.weight,cross:!!element.data.cross});
+    }
+    instance.elements('edge, node[type!="reference"]').toggleClass('layout-changed');
+   });
+   const focused=focusRef.current.selected&&instance.getElementById('ref:'+focusRef.current.selected);
+   if(focused&&focused.length){
+    const point=focused.position(),level=Math.min(1.3,instance.maxZoom());
+    instance.viewport({zoom:level,pan:{x:(instance.width()-panelInset.current*2)/2-point.x*level,y:instance.height()/2-point.y*level}});
+   }else if(!restoreCamera()){
+    instance.fit(undefined,instance.width()<760?30:72);instance.panBy({x:-panelInset.current,y:0});
+   }
+   rescale();updateViewport();
+  };
   if(!reduced)container.current.animate([{opacity:.5},{opacity:1}],{duration:400});
-  return()=>{cancelAnimationFrame(frame);clearTimeout(settle);resize.disconnect();for(const img of images.values())img.onload=null;instance.destroy();cy.current=null;};
+  return()=>{saveCamera();applyView.current=null;cancelAnimationFrame(frame);clearTimeout(settle);resize.disconnect();for(const img of images.values())img.onload=null;instance.destroy();cy.current=null;};
  },[data,workspaceId]);
+ useEffect(()=>{applyView.current?.(view);},[view,data,workspaceId]);
  const panelOpen=!!(selected||technique||operation||matches);
  useEffect(()=>{
   const c=cy.current;if(!c)return;
@@ -142,7 +170,7 @@ export function Map({workspaceId,data,selected,matches,technique,operation,theme
  useEffect(()=>{
   if(!matches){framedMatches.current='';return;}
   const c=cy.current;if(!c||selected||!matches.length)return;
-  const key=JSON.stringify([...matches].sort());
+  const key=view+JSON.stringify([...matches].sort());
   if(framedMatches.current===key)return;
   const ids=new Set(matches),nodes=c.nodes('[type="reference"]').filter(node=>ids.has(node.data('entity')));
   if(!nodes.length)return;
@@ -152,9 +180,9 @@ export function Map({workspaceId,data,selected,matches,technique,operation,theme
   const level=Math.max(c.minZoom(),Math.min(1.3,(width-padding*2)/bounds.w,(c.height()-padding*2)/bounds.h));
   c.viewport({zoom:level,pan:{x:width/2-(bounds.x1+bounds.x2)/2*level,y:c.height()/2-(bounds.y1+bounds.y2)/2*level}});
   framedMatches.current=key;
- },[matches,selected,data]);
+ },[matches,selected,data,view]);
  const adjust=(factor:number)=>{const c=cy.current;if(c)c.zoom({level:c.zoom()*factor,renderedPosition:{x:c.width()/2,y:c.height()/2}});};
- return <div className="map-stage"><div className="map-surface" ref={container} role="img" aria-label="Mapa de referências conectadas às técnicas. Use a busca ou a lista para navegar com teclado."/>
+ return <div className="map-stage" data-view={view}><div className="map-surface" ref={container} role="img" aria-label="Mapa de referências conectadas às técnicas. Use a busca ou a lista para navegar com teclado."/>
   {hover&&<div className="map-hover" style={{left:hover.x,top:hover.y}}>{hover.item.thumbnail&&<img src={sized(hover.item.thumbnail,512)} alt=""/>}<div><small>{kindName[hover.item.kind]||'Referência'} · Clique para explorar</small><strong>{hover.item.title}</strong></div></div>}
   <span className="map-help">Arraste para explorar · Role para aproximar</span>
   <div className="map-controls"><button title="Aproximar" aria-label="Aproximar" onClick={()=>adjust(1.25)}><Plus size={17}/></button><span>{Math.round(zoom*100)}%</span><button title="Afastar" aria-label="Afastar" onClick={()=>adjust(.8)}><Minus size={17}/></button><i/><button title="Ver todo o mapa" aria-label="Ver todo o mapa" onClick={()=>{const c=cy.current;if(c){c.fit(undefined,c.width()<760?30:72);c.panBy({x:-panelInset.current,y:0});}}}><Maximize size={16}/></button>{selected&&<button title="Localizar seleção" aria-label="Localizar seleção" onClick={()=>{const c=cy.current;if(c){c.fit(c.getElementById('ref:'+selected),200);c.zoom(Math.min(c.zoom(),1.3));}}}><LocateFixed size={17}/></button>}</div>

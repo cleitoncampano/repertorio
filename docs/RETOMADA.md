@@ -1,10 +1,18 @@
 # Retomada do projeto
 
-Atualizado em 17/10/2026 (America/Sao_Paulo).
+Atualizado em 18/10/2026 (America/Sao_Paulo).
 
 ## Objetivo atual
 
-Incorporar ao Repertório os carrosséis do projeto Growmate a partir de Simon Sinek, com assets, cores e construção, para orientar futuras criações com Cleiton.
+Retomar a apresentação da palestra “Você compraria de você mesmo?”. O usuário pediu primeiro o diagnóstico do que falta para finalizar, sem alterar a apresentação nesta etapa.
+
+## Retomada da palestra
+
+- Contexto e conversa anterior recuperados. O pedido original era melhorar apenas o visual, preservando texto, falas e storytelling da primeira parte.
+- Base recomendada: `_saida/palestra-cx-ia-editorial/palestra.html`, com oito imagens geradas e todos os 185 trechos e 24 falas preservados. A sessão anterior parou na conferência visual.
+- Pendências confirmadas: corrigir texto sobreposto e cortado no slide 7; concluir revisão dos 24 slides e dos cliques/transições; ensaiar tempo; gerar HTML único offline e PDF da editorial; consolidar a entrega.
+- O roteiro existente é só a primeira parte. A palestra inteira ainda precisa dos blocos de IA, conexão com CX, prática, cases e conclusão.
+- A visual-v2 contém acréscimos e mudanças de conteúdo, portanto não substitui automaticamente a editorial. Detalhes, evidências e próxima ação: `docs/RETOMADA-PALESTRA-CX-IA.md`.
 
 ## Entregue
 
@@ -34,6 +42,6 @@ Há versões da palestra “Você compraria de você mesmo?”, com 24 slides. E
 
 ## Próxima ação
 
-Para criar novos materiais, consultar o catálogo Growmate e buscar no MCP por livro ou metáfora, como iceberg, corrente, estrada, estante ou círculo dourado. Montar a seleção e ler a revisão na tela Escolhas antes de criar. Preservar os créditos; o cadastro dos carrosséis não autoriza reaproveitar suas fotos. Os componentes internos estão em ficha separada com reutilização indicada.
+Para a palestra, seguir `docs/RETOMADA-PALESTRA-CX-IA.md`: retomar a editorial pela correção do slide 7 e concluir a revisão visual da primeira parte, sem reescrever a fala. Os blocos restantes exigem a continuação do conteúdo e a definição dos cases e duração total.
 
-A incorporação está concluída. Falta definir a próxima peça com o usuário. O funcionamento automático do hook RTK em um Codex reiniciado e a economia total da assinatura ainda não foram medidos.
+O repertório Growmate está incorporado e visível no grafo. Para novos materiais, consultar o catálogo e ler a revisão em Escolhas; preservar os créditos. O funcionamento automático do hook RTK em um Codex reiniciado e a economia total da assinatura ainda não foram medidos.

@@ -49,8 +49,9 @@ Os agentes precisam receber os espaços explicitamente. Exemplo: “Use os espa�
 - Busque por palavras e refine por intenção, origem, movimento, formato e estética. A lista oferece navegação por teclado.
 - O painel mostra princípio criativo, prévias, slides, relações, condições de uso conhecidas e o contexto disponibilizado ao agente.
 - **Excluir deste espaço** envia à Lixeira daquele espaço, com Desfazer. A remoção de uma apresentação também a retira das buscas de seus slides; os originais e mídias compartilhadas não são apagados.
-- **Entradas** contém sugestões espontâneas. Pedidos explícitos de incorporação são publicados depois do processamento.
+- **Skills** reúne somente as habilidades escolhidas pelo usuário: Impeccable, Frontend Design, Landing Page Design, ImageGen, Presentations, HyperFrames e HyperFrames Creative. Busque por objetivo ou categoria e use **Montar pedido** para copiar uma solicitação com a skill, sua ideia e o espaço de inspiração. Cole na conversa com o agente para iniciar o trabalho. O catálogo é global, acessível também sem espaço aberto; novas instalações não entram automaticamente. A lista é mantida em `web/src/skillCatalog.ts`, e `/?view=skills` abre a tela diretamente.
 - **Escolhas** mostra as referências que o agente separou para cada pedido. Aprove, corte e comente: o agente lê a revisão com `get_pack` antes de criar.
+- Quando há sugestões espontâneas, **Escolhas** também oferece **Sugestões para o acervo**. Abra a ficha e use **Publicar no espaço** ou **Excluir deste espaço**. Pedidos explícitos de incorporação continuam publicados depois do processamento.
 - **Atividade** registra alterações e consultas por demanda. Trabalhos interrompidos podem ser tentados novamente.
 
 ## Conectar projetos e agentes

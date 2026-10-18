@@ -85,9 +85,11 @@ test('sugestão aguarda revisão e configuração é acessível por teclado',asy
  const op=await (await request.post('/api/references',{data:{context_id:context.id,target_workspace_ids:['pp-treta'],request_key:'pending-e2e',files:['carrossel.png'],data:{title:'Sugestão para revisar',description:'Uma ideia possível',idea:'Explorar outra leitura'}}})).json();
  await expect.poll(async()=>(await (await request.get('/api/operations/'+op.id)).json()).state).toBe('completed');
  await page.goto('/');
- await page.getByRole('button',{name:'Entradas',exact:true}).click();
+ await page.getByRole('button',{name:'Escolhas',exact:true}).click();
+ await page.getByRole('button',{name:/Sugestões para o acervo/}).click();
+ await expect(page.getByRole('button',{name:'Escolhas',exact:true})).toHaveAttribute('aria-current','page');
  await page.locator('.reference-card').filter({hasText:'Sugestão para revisar'}).click();
- await page.getByRole('button',{name:'Publicar na biblioteca'}).click();
+ await page.getByRole('button',{name:'Publicar no espaço'}).click();
  await expect(page.getByRole('status',{name:'Notificação'})).toContainText('disponível');
  await page.getByRole('button',{name:'Conectar agentes',exact:true}).focus();
  await page.keyboard.press('Enter');

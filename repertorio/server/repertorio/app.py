@@ -51,7 +51,7 @@ def create_app(settings=None,run_worker=True):
             db.engine.dispose()
             lock.close()
 
-    app=FastAPI(title='Repertório',version='0.2.0',lifespan=lifespan)
+    app=FastAPI(title='Repertório',version='0.2.1',lifespan=lifespan)
     app.state.library=lib;app.state.worker=worker
     app.add_middleware(TrustedHostMiddleware,allowed_hosts=['localhost','127.0.0.1','testserver'])
 
@@ -73,13 +73,13 @@ def create_app(settings=None,run_worker=True):
         return JSONResponse({'detail':exc.message},status_code=exc.status)
 
     @app.get('/api/health')
-    def health():return dict(status='ok',version='0.2.0',database='ready',schema='0004')
+    def health():return dict(status='ok',version='0.2.1',database='ready',schema='0004')
 
     @app.get('/api/stats')
     def stats(workspace_id:str):return lib.stats(workspace_id)
 
     @app.get('/api/workspaces')
-    def workspaces(deleted:bool=False):return lib.workspaces(deleted)
+    def workspaces():return lib.workspaces()
 
     @app.post('/api/workspaces')
     def create_workspace(req:schemas.Workspace):return lib.save_workspace(req)

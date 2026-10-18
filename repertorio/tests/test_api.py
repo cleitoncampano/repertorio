@@ -30,7 +30,7 @@ def test_mcp_protocol_tools_and_image(library,context):
         init=rpc('initialize',{'protocolVersion':'2025-11-25','capabilities':{},'clientInfo':{'name':'repertorio-test','version':'1'}})
         assert init['result']['serverInfo']['name']=='Repertorio'
         result=rpc('tools/list')['result']
-        assert {'list_workspaces','create_workspace','set_reference_workspaces'}.issubset({t['name'] for t in result['tools']})
+        assert {'list_workspaces','create_workspace','delete_workspace','set_reference_workspaces'}.issubset({t['name'] for t in result['tools']})
         result=rpc('tools/call',{'name':'search_references','arguments':{'request':{'query':'abertura','context_id':context['id']}}})['result']
         assert not result.get('isError'),result
         assert any(c['type']=='image' for c in result['content'])

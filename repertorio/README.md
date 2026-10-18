@@ -35,11 +35,11 @@ O frontend compilado é servido pelo FastAPI. Os originais e o protótipo contin
 
 ## Espaços de trabalho
 
-O seletor **Espaços**, no canto esquerdo, permite criar, entrar, renomear, excluir e restaurar espaços. O nome atual aparece no cabeçalho. Novos espaços começam vazios; todo o acervo anterior ficou em **PP Treta**, cujo ID é `pp-treta`.
+O seletor **Espaços**, no canto esquerdo, permite criar, entrar, renomear e excluir espaços. O nome atual aparece no cabeçalho. Novos espaços começam vazios; todo o acervo anterior ficou em **PP Treta**, cujo ID é `pp-treta`.
 
 Uma referência pode aparecer em vários espaços sem duplicar a ficha nem os arquivos. Alterar título, descrição ou classificação atualiza todos os espaços. Publicação e lixeira são independentes: excluir de A preserva a referência em B. Pelo painel da referência, use **Adicionar ao espaço** ou **Mover para o espaço**. Mover retira apenas do espaço de origem. Apresentações levam seus slides.
 
-Espaços excluídos ficam disponíveis para restauração no seletor. Os arquivos e as referências dos demais espaços são preservados. Vocabulário, princípios criativos e fontes continuam compartilhados.
+Excluir um espaço remove-o imediatamente, sem opção de restauração. Seus vínculos são removidos; os arquivos e as referências dos demais espaços são preservados. Vocabulário, princípios criativos e fontes continuam compartilhados.
 
 Os agentes precisam receber os espaços explicitamente. Exemplo: “Use os espaços GrowMate e PP Treta como inspiração”. Se você não indicar, o agente deve perguntar. O espaço aberto no app não muda o contexto do agente. Ao incorporar o resultado, indique também os espaços de destino.
 
@@ -101,7 +101,7 @@ Depois, abra uma nova sessão e peça: **“Busque no Repertório referências p
 | `set_reference_state` | Recebe ID e `request` com revisão e espaço e `expected_membership_revision`, com estado `published`, `pending` ou `trashed` |
 | `get_operation` | Recebe `operation_id`; `retry: true` tenta novamente um processamento com falha |
 
-Novas ferramentas MCP: `list_workspaces`, `create_workspace`, `rename_workspace`, `set_workspace_state` e `set_reference_workspaces`. Excluir/restaurar um espaço e vincular/mover referências pelo agente exigem `user_requested=true`. Vínculos existentes são compartilhados sem envio de arquivos.
+Novas ferramentas MCP: `list_workspaces`, `create_workspace`, `rename_workspace`, `delete_workspace` e `set_reference_workspaces`. Excluir um espaço e vincular/mover referências pelo agente exigem `user_requested=true`. Vínculos existentes são compartilhados sem envio de arquivos.
 
 Recursos MCP: `repertorio://workspaces`, `repertorio://projects`, `repertorio://vocabulary`, `repertorio://fonts`, `repertorio://principles/narrativa`, `repertorio://principles/direcao-de-arte`, `repertorio://contexts/{id}` e `repertorio://packs/{id}`.
 
@@ -148,6 +148,7 @@ HTML e demais originais são entregues como download, não executados no domíni
 ```sh
 ./repertorio/run.sh workspaces
 ./repertorio/run.sh create-workspace "GrowMate"
+./repertorio/run.sh delete-workspace ID_DO_ESPACO --revision REVISAO_ATUAL
 ./repertorio/run.sh search "abertura com impacto" --workspace pp-treta --prancha
 ./repertorio/run.sh get '284-reel-cerebro-3d' --workspace pp-treta
 ./repertorio/run.sh context PROJECT_ID "Apresentação comercial" --workspace pp-treta

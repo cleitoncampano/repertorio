@@ -142,23 +142,30 @@ def test_independent_states_and_concurrent_revisions(library):
     with ThreadPoolExecutor(2) as pool:assert sorted(pool.map(publish,[1,2]))==[200,409]
 
 
-def test_workspace_lifecycle_names_and_conflicts(library):
+def test_workspace_lifecycle_names_and_conflicts(library,context):
     a=space(library)
     with pytest.raises(Problem):space(library,'  growmate  ')
     with pytest.raises(Problem):space(library,'   ')
     link(library,a)
-    deleted=library.workspace_state(a,s.WorkspaceState(deleted=True,expected_revision=1))
-    assert library.workspaces(True)[0]['id']==a
+    source=library.start(s.StartContext(project_id=context['project_id'],workspace_ids=[a],demand='Histórico preservado'))
+    pack=library.pack(s.Pack(context_id=source['id'],title='Antes da exclusão',reference_ids=['deck']))
+    assets=library.db.query('SELECT * FROM assets ORDER BY id')
+    renamed=library.save_workspace(s.WorkspaceUpdate(name='GrowMate novo',expected_revision=1),a)
+    assert renamed['id']==a and renamed['revision']==2
+    with pytest.raises(Problem):library.workspace_state(a,s.WorkspaceState(deleted=True,expected_revision=1))
+    library.workspace_state(a,s.WorkspaceState(deleted=True,expected_revision=2))
+    assert a not in {w['id'] for w in library.workspaces()}
+    assert library.db.one('SELECT COUNT(*) AS n FROM workspace_references WHERE workspace_id=:id',id=a)['n']==0
+    assert library.db.query('SELECT * FROM assets ORDER BY id')==assets
     assert library.get('deck',workspace_ids=[PP])['state']=='published'
     with pytest.raises(Problem):library.graph(a)
-    with pytest.raises(Problem):library.workspace_state(a,s.WorkspaceState(deleted=False,expected_revision=1))
-    library.workspace_state(a,s.WorkspaceState(deleted=False,expected_revision=deleted['revision']))
-    assert library.graph(a)['items'][0]['id']=='deck'
-    renamed=library.save_workspace(s.WorkspaceUpdate(name='GrowMate novo',expected_revision=3),a)
-    assert renamed['id']==a and renamed['revision']==4
-    library.workspace_state(a,s.WorkspaceState(deleted=True,expected_revision=4))
-    space(library,'GrowMate novo')
-    with pytest.raises(Problem):library.workspace_state(a,s.WorkspaceState(deleted=False,expected_revision=5))
+    assert not library.pack_detail(pack['id'])['references'][0]['available']
+    assert library.context(source['id'])['workspace_ids']==[a]
+    replacement=space(library,'GrowMate novo')
+    assert replacement!=a and library.graph(replacement)['items']==[]
+    with TestClient(create_app(library.settings,run_worker=False)) as client:
+        assert client.post('/api/workspaces/'+a+'/state',json={'deleted':False,'expected_revision':3}).status_code==422
+        assert client.get('/api/workspaces?deleted=true').json()==library.workspaces()
 
 
 def test_explicit_destinations_one_processing_deleted_destination(library,context):

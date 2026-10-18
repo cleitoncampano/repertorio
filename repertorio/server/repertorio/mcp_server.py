@@ -17,9 +17,9 @@ def create_mcp(lib,worker):
         return lib.start(schemas.StartContext(project_id=project_id,demand=demand,workspace_ids=workspace_ids))
 
     @mcp.tool()
-    def list_workspaces(deleted:bool=False)->list:
-        """Lista IDs e nomes dos espaços ativos ou excluídos. Não adivinhe o espaço: pergunte se o usuário não indicou."""
-        return lib.workspaces(deleted)
+    def list_workspaces()->list:
+        """Lista IDs e nomes dos espaços disponíveis. Não adivinhe o espaço: pergunte se o usuário não indicou."""
+        return lib.workspaces()
 
     @mcp.tool()
     def create_workspace(name:str)->dict:
@@ -32,11 +32,11 @@ def create_mcp(lib,worker):
         return lib.save_workspace(schemas.WorkspaceUpdate(name=name,expected_revision=expected_revision),workspace_id)
 
     @mcp.tool()
-    def set_workspace_state(workspace_id:str,deleted:bool,expected_revision:int,user_requested:bool=False)->dict:
-        """Exclui ou restaura um espaço, sem afetar outros espaços nem apagar arquivos. Exige pedido explícito."""
+    def delete_workspace(workspace_id:str,expected_revision:int,user_requested:bool=False)->dict:
+        """Exclui definitivamente um espaço e seus vínculos, preservando os demais espaços e os arquivos compartilhados. Exige pedido explícito."""
         from .service import Problem
-        if not user_requested:raise Problem(422,'Alterar o estado do espaço exige pedido explícito do usuário.')
-        return lib.workspace_state(workspace_id,schemas.WorkspaceState(deleted=deleted,expected_revision=expected_revision))
+        if not user_requested:raise Problem(422,'Excluir um espaço exige pedido explícito do usuário.')
+        return lib.workspace_state(workspace_id,schemas.WorkspaceState(deleted=True,expected_revision=expected_revision))
 
     @mcp.tool()
     def set_reference_workspaces(reference_id:str,request:schemas.ReferenceWorkspaces)->dict:

@@ -21,11 +21,11 @@ class Workspaces:
             raise Problem(404, 'Espaço não encontrado ou excluído.')
         return row
 
-    def workspaces(self, deleted=False):
+    def workspaces(self):
         return self.db.query("""SELECT w.*,(SELECT COUNT(*) FROM workspace_references m JOIN refs r ON r.id=m.ref_id
             WHERE m.workspace_id=w.id AND m.detached=0 AND m.state='published' AND r.ready=1 AND r.hidden=0
             AND r.kind IN ('arquivo','referencia','criacao')) AS references_count
-            FROM workspaces w WHERE (w.deleted IS NOT NULL)=:deleted ORDER BY w.name_key,w.id""", deleted=deleted)
+            FROM workspaces w WHERE w.deleted IS NULL ORDER BY w.name_key,w.id""")
 
     def save_workspace(self, req, wid=None):
         name = req.name.strip()
@@ -50,19 +50,21 @@ class Workspaces:
         return self.workspace(wid)
 
     def workspace_state(self, wid, req):
-        try:
-            with self.db.engine.begin() as conn:
-                row = conn.execute(text('SELECT * FROM workspaces WHERE id=:id'), dict(id=wid)).mappings().first()
-                if not row:
-                    raise Problem(404, 'Espaço não encontrado.')
-                changed = conn.execute(text('UPDATE workspaces SET deleted=:d,revision=revision+1,updated=:t WHERE id=:id AND revision=:v'),
-                                       dict(d=now() if req.deleted else None,t=now(),id=wid,v=req.expected_revision))
-                if changed.rowcount != 1:
-                    raise Problem(409, 'O espaço mudou. Atualize antes de tentar novamente.')
-                self.db.log(conn,'workspace_deleted' if req.deleted else 'workspace_restored',workspace_ids=[wid],title=row['name'])
-        except IntegrityError:
-            raise Problem(409, 'Renomeie o espaço ativo com o mesmo nome antes de restaurar este.')
-        return self.workspace(wid, active=False)
+        if req.deleted is not True:
+            raise Problem(422, 'A exclusão de espaços é definitiva.')
+        with self.db.engine.begin() as conn:
+            row = conn.execute(text('SELECT * FROM workspaces WHERE id=:id AND deleted IS NULL'), dict(id=wid)).mappings().first()
+            if not row:
+                raise Problem(404, 'Espaço não encontrado.')
+            changed = conn.execute(text('UPDATE workspaces SET deleted=:t,revision=revision+1,updated=:t WHERE id=:id AND revision=:v AND deleted IS NULL'),
+                                   dict(t=now(),id=wid,v=req.expected_revision))
+            if changed.rowcount != 1:
+                raise Problem(409, 'O espaço mudou. Atualize antes de tentar novamente.')
+            # O registro do espaço continua somente para procedência de demandas e operações.
+            # Seus vínculos são removidos; referências e arquivos compartilhados permanecem intactos.
+            conn.execute(text('DELETE FROM workspace_references WHERE workspace_id=:id'),dict(id=wid))
+            self.db.log(conn,'workspace_deleted',workspace_ids=[wid],title=row['name'])
+        return dict(id=wid,deleted=True)
 
     def scope(self, workspace_ids=None, context_id=None, active=True):
         ids = list(dict.fromkeys(workspace_ids or []))

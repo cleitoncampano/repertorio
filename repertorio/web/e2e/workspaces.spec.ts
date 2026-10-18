@@ -2,7 +2,7 @@ import {test,expect} from '@playwright/test';
 
 const evidence='/tmp/repertorio-workspaces-qa';
 
-test('cria, renomeia, compartilha, remove localmente e restaura espaços',async({page,request})=>{
+test('cria, renomeia, compartilha e exclui espaços diretamente sem restauração',async({page,request})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('/?workspace=pp-treta');
  await page.getByRole('button',{name:'Espaços',exact:true}).click();
@@ -29,19 +29,16 @@ test('cria, renomeia, compartilha, remove localmente e restaura espaços',async(
  await page.screenshot({path:evidence+'/referencia-compartilhada.png'});
  await page.getByRole('button',{name:'Excluir deste espaço',exact:true}).click();
  expect((await (await request.get('/api/references/deck?workspace_id=pp-treta')).json()).state).toBe('published');
+  await page.getByRole('button',{name:'Lixeira',exact:true}).click();
+  await expect(page.locator('.reference-card').filter({hasText:'Abertura criativa'})).toBeVisible();
  await page.getByRole('button',{name:'Espaços',exact:true}).click();
  await page.getByRole('button',{name:'Excluir espaço GrowMate QA novo',exact:true}).click();
- await expect(page.getByRole('alert')).toContainText('Referências compartilhadas continuarão disponíveis');
- await page.getByRole('button',{name:'Excluir espaço',exact:true}).click();
  await expect(page.locator('.space-enter').filter({hasText:'GrowMate QA novo'})).toHaveCount(0);
- await page.locator('.deleted-spaces summary').click();
- await page.locator('.deleted-spaces .space-row').filter({hasText:'GrowMate QA novo'}).getByRole('button',{name:'Restaurar'}).click();
- await expect(page.locator('.space-enter').filter({hasText:'GrowMate QA novo'})).toBeVisible();
- await page.locator('.space-enter').filter({hasText:'GrowMate QA novo'}).click();
- await page.getByRole('button',{name:'Lixeira',exact:true}).click();
- await expect(page.locator('.reference-card').filter({hasText:'Abertura criativa'})).toBeVisible();
+  await expect(page.getByRole('button',{name:'Restaurar',exact:true})).toHaveCount(0);
+  expect((await request.post('/api/workspaces/'+grow+'/state',{data:{deleted:false,expected_revision:3}})).status()).toBe(422);
+  await page.locator('.space-enter').filter({hasText:'PP Treta'}).click();
  await page.reload();
- expect(new URL(page.url()).searchParams.get('workspace')).toBe(grow);
+  expect(new URL(page.url()).searchParams.get('workspace')).toBe('pp-treta');
  await page.setViewportSize({width:390,height:844});
  await page.getByRole('button',{name:'Ativar modo claro',exact:true}).click();
  await page.getByRole('button',{name:'Espaços',exact:true}).click();

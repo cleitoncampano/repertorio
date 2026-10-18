@@ -75,7 +75,7 @@ kbd { font-size: 11px; font-family: inherit; border: 1px solid var(--line); bord
 .spaces-dialog>p { color: var(--muted); font-size: 13px; line-height: 1.6; margin-top: 12px; }
 .space-form { display: flex; gap: 8px; flex-wrap: wrap; margin: 24px 0 18px; }
 .space-form input { flex: 1; min-width: 150px; padding: 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--canvas); color: var(--text); font-size: 13px; }
-.space-form button,.space-actions button,.space-confirm button,.deleted-spaces button { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); border-radius: 6px; padding: 9px; font-size: 12px; }
+.space-form button,.space-actions button { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); border-radius: 6px; padding: 9px; font-size: 12px; }
 .space-form button[type="submit"] { background: var(--accent); color: var(--accent-ink); }
 .space-list { display: grid; gap: 5px; }
 .space-row { display: flex; align-items: center; gap: 10px; padding: 5px 8px; border: 1px solid transparent; border-radius: 8px; }
@@ -86,13 +86,7 @@ kbd { font-size: 11px; font-family: inherit; border: 1px solid var(--line); bord
 .space-enter strong,.space-enter small { display: block; }
 .space-enter strong { font-size: 14px; }
 .space-enter small { color: var(--muted); font-size: 11px; margin-top: 4px; }
-.space-confirm { margin-top: 18px; padding: 16px; border: 1px solid var(--danger); border-radius: 8px; }
-.space-confirm p { margin: 10px 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
-.space-confirm button { margin-right: 8px; }
 .space-error { color: var(--danger)!important; }
-.deleted-spaces { border-top: 1px solid var(--line); margin-top: 20px; padding-top: 16px; font-size: 13px; }
-.deleted-spaces summary { cursor: pointer; color: var(--muted); }
-.deleted-spaces .space-row { justify-content: space-between; margin-top: 8px; }
 .reference-spaces label { display: grid; gap: 8px; font-size: 12px; color: var(--muted); }
 .reference-spaces select { width: 100%; background: var(--canvas); color: var(--text); border: 1px solid var(--line); border-radius: 5px; padding: 8px; }
 .reference-spaces .space-actions { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0; }

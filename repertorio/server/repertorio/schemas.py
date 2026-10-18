@@ -96,7 +96,7 @@ class WorkspaceUpdate(Workspace):
 
 class WorkspaceState(Model):
     expected_revision: int = Field(ge=1)
-    deleted: bool
+    deleted: Literal[True]
 
 
 class ReferenceWorkspaces(Model):

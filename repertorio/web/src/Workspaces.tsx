@@ -1,17 +1,16 @@
 import {useState} from 'react';
 import {useQuery,useQueryClient} from '@tanstack/react-query';
 import * as Dialog from '@radix-ui/react-dialog';
-import {Layers,Plus,X,Pencil,Trash2,RotateCcw,ArrowRight} from 'lucide-react';
+import {Layers,Plus,X,Pencil,Trash2,ArrowRight} from 'lucide-react';
 import {api} from './api';
 import type {Detail,Workspace} from './types';
 
 export function WorkspaceMenu({spaces,current,onSelect,open,onOpenChange}:{spaces:Workspace[];current:string;onSelect:(id:string)=>void;open:boolean;onOpenChange:(open:boolean)=>void}){
  const client=useQueryClient();
- const [name,setName]=useState(''),[editing,setEditing]=useState<Workspace|null>(null),[deleting,setDeleting]=useState<Workspace|null>(null),[error,setError]=useState(''),[busy,setBusy]=useState(false);
- const deleted=useQuery({queryKey:['workspaces','deleted'],queryFn:()=>api<Workspace[]>('/workspaces?deleted=true'),enabled:open});
+ const [name,setName]=useState(''),[editing,setEditing]=useState<Workspace|null>(null),[error,setError]=useState(''),[busy,setBusy]=useState(false);
  const change=async(action:()=>Promise<unknown>)=>{setBusy(true);setError('');try{await action();await client.invalidateQueries({queryKey:['workspaces']});}catch(e){setError((e as Error).message);}finally{setBusy(false);}};
  const enter=(id:string)=>{onSelect(id);onOpenChange(false);};
- return <Dialog.Root open={open} onOpenChange={value=>{if(!busy){onOpenChange(value);setError('');setDeleting(null);}}}><Dialog.Portal><Dialog.Overlay className="dialog-overlay"/><Dialog.Content className="spaces-dialog">
+ return <Dialog.Root open={open} onOpenChange={value=>{if(!busy){onOpenChange(value);setError('');}}}><Dialog.Portal><Dialog.Overlay className="dialog-overlay"/><Dialog.Content className="spaces-dialog">
   <Dialog.Close className="dialog-close" aria-label="Fechar espaços"><X size={20}/></Dialog.Close>
   <Dialog.Title><Layers size={22}/> Espaços</Dialog.Title><Dialog.Description>Escolha o repertório que deseja explorar. Cada espaço tem seu próprio acervo.</Dialog.Description>
   <form className="space-form" onSubmit={e=>{e.preventDefault();void change(async()=>{const saved=await api<Workspace>('/workspaces'+(editing?'/'+editing.id:''),{name,...(editing?{expected_revision:editing.revision}:{})},editing?'PUT':'POST');client.setQueryData<Workspace[]>(['workspaces'],old=>[...(old||[]).filter(w=>w.id!==saved.id),{...saved,references_count:old?.find(w=>w.id===saved.id)?.references_count||0}]);setName('');setEditing(null);if(!editing)enter(saved.id);});}}>
@@ -20,11 +19,9 @@ export function WorkspaceMenu({spaces,current,onSelect,open,onOpenChange}:{space
   </form>
   <div className="space-list">{spaces.map(space=><div key={space.id} className={'space-row'+(current===space.id?' current':'')}>
    <button className="space-enter" onClick={()=>enter(space.id)}><Layers size={18}/><span><strong>{space.name}</strong><small>{space.references_count} referências{space.id===current?' · aberto':''}</small></span><ArrowRight size={16}/></button>
-   <button aria-label={'Renomear '+space.name} title="Renomear" onClick={()=>{setEditing(space);setName(space.name);setDeleting(null);}}><Pencil size={16}/></button>
-   <button aria-label={'Excluir espaço '+space.name} title="Excluir espaço" onClick={()=>setDeleting(space)}><Trash2 size={16}/></button>
+   <button aria-label={'Renomear '+space.name} title="Renomear" onClick={()=>{setEditing(space);setName(space.name);}}><Pencil size={16}/></button>
+   <button aria-label={'Excluir espaço '+space.name} title="Excluir espaço" disabled={busy} onClick={()=>void change(async()=>{await api('/workspaces/'+space.id+'/state',{deleted:true,expected_revision:space.revision});if(editing?.id===space.id){setEditing(null);setName('');}if(current===space.id)onSelect('');})}><Trash2 size={16}/></button>
   </div>)}</div>
-  {deleting&&<div className="space-confirm" role="alert"><strong>Excluir o espaço “{deleting.name}”?</strong><p>Você poderá restaurar este espaço. Referências compartilhadas continuarão disponíveis nos outros espaços. Os arquivos serão preservados.</p><button disabled={busy} onClick={()=>void change(async()=>{await api('/workspaces/'+deleting.id+'/state',{deleted:true,expected_revision:deleting.revision});setDeleting(null);if(current===deleting.id)onSelect('');})}>Excluir espaço</button><button disabled={busy} onClick={()=>setDeleting(null)}>Cancelar</button></div>}
-  {!!deleted.data?.length&&<details className="deleted-spaces"><summary>Espaços excluídos ({deleted.data.length})</summary>{deleted.data.map(space=><div className="space-row" key={space.id}><span>{space.name}</span><button disabled={busy} onClick={()=>void change(()=>api('/workspaces/'+space.id+'/state',{deleted:false,expected_revision:space.revision}))}><RotateCcw size={15}/> Restaurar</button></div>)}</details>}
   {error&&<p className="space-error" role="alert">{error}</p>}
  </Dialog.Content></Dialog.Portal></Dialog.Root>;
 }

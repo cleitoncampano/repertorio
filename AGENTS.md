@@ -1,121 +1,44 @@
-# PPTRETA e Repertório: biblioteca de referências para criar apresentações
+# PPTRETA e Repertório
 
-Esta pasta é um ecossistema de referências visuais, narrativas e de movimento para você **criar apresentações, sites e vídeos
-originais para qualquer cliente e qualquer tema**. A base é o curso PPTRETA (688 arquivos de PowerPoint, 4.709 slides,
-24 PDFs do Canva) somado a referências de nível mundial (capas de revista, anúncios, ativações, aberturas de filmes,
-estudos de storytelling e de direção de arte).
+Biblioteca local de referências para criar apresentações, sites e vídeos originais. O app Repertório fica em http://127.0.0.1:8766 e oferece busca, mapa, revisão e MCP. O manual detalhado está em `biblioteca/manual-agentes.md`; consulte apenas as seções pertinentes à tarefa.
 
-O acervo é consultado pelo **Repertório**, um app local feito para você usar: mapa, busca e conexão MCP em
-http://127.0.0.1:8766. Ele fica sempre ligado no Mac do dono do projeto (ícone psicodélico de olho no Dock).
+## Comece pelo trabalho atual
 
-## Regras de ouro
+- Ao retomar uma demanda, leia `docs/RETOMADA.md`, confira o Git e os arquivos envolvidos. Não releia todos os manuais por rotina.
+- Decisões e pendências: Engram local, consultado pelo terminal quando necessário. Uso, validação e recuperação em `docs/EFICIENCIA.md`.
+- O usuário manda ideias ou transcrição bruta: extraia a história sem pedir uma estrutura pronta. Respostas curtas, em linguagem simples; decida detalhes de rotina.
 
-1. **Inspire, não copie.** Pegue a ideia por trás da referência e reconstrua com outro tema, outra composição e a marca do usuário.
-2. **A identidade é do usuário.** Cores, fontes, logo e tom vêm do pedido. O acervo dá linguagem, ritmo e efeitos. Se faltar identidade, pergunte.
-3. **História antes de visual.** Roteiro primeiro (`biblioteca/principios/narrativa.md`), depois o visual.
-4. **O usuário revisa antes de você criar.** Guarde a seleção de referências, mostre o link da tela Escolhas e leia a revisão (aprovadas, cortadas, comentários) antes de montar os slides.
-5. **Mídia de terceiros é só referência.** Fotos de marcas, famosos e logos do acervo não entram em material de cliente (`reusable=true` no Repertório, `--livre` no `buscar.py`).
-6. **Saída padrão: HTML com o motor do `kit/`** (Morph entre slides, passos, PDF). PowerPoint só se o usuário pedir.
-7. **Textos sem travessão nem meia-risca** (preferência do dono do projeto): use vírgula, dois-pontos, parênteses ou ponto. Em código que precise do caractere, gere com `chr(0x2014)`.
+## Regras essenciais
 
-## Como o dono do projeto trabalha
+1. História antes do visual: siga `biblioteca/processo.md` e `biblioteca/principios/narrativa.md` ao criar.
+2. Inspire, não copie. Reconstrua a ideia com o tema e a identidade do usuário. Se faltar identidade e não houver liberdade criativa, pergunte.
+3. O usuário revisa as referências na tela Escolhas antes da criação. Leia a revisão, use aprovadas, descarte cortadas e respeite comentários.
+4. Mídia de terceiros serve só de referência. Para incorporar mídia do acervo, filtre `reusable=true` ou `--livre`.
+5. Entrega padrão: HTML com o motor de `kit/`, em `_saida/<trabalho>/`. PowerPoint somente quando solicitado.
+6. Confira visualmente pranchas, capturas, passos e transições antes de entregar. Manual e comandos em `kit/LEIA-ME.md` e `biblioteca/processo.md`.
+7. Textos sem travessão nem meia-risca. Em código que precise do caractere, use `chr(0x2014)`.
 
-- **Manda material bruto.** Ideias soltas ou a transcrição de uma palestra. Você extrai a história, divide em slides, busca referências para cada um e monta. Não peça estrutura pronta.
-- **Não é técnico.** Fale do efeito prático, sem jargão. Respostas curtas, sem preâmbulo nem resumo no fim.
-- **Decida o que é rotina.** Só leve a ele o que muda o resultado. Quando precisar de uma escolha, ofereça opções e diga qual recomenda, com o motivo em uma linha.
-- **Mostre, não descreva.** Confira o que fez olhando a imagem (pranchas, capturas) antes de entregar.
+## Onde consultar
 
-## Fluxo de uma apresentação
-
-1. Leia o pedido e o material. Monte o roteiro com `biblioteca/processo.md` e `biblioteca/principios/narrativa.md`.
-2. Abra um contexto no Repertório (`start_context`) e busque referências por momento da história (`search_references`). Olhe a prancha que vem na resposta e abra só as fichas promissoras (`get_reference`).
-3. Guarde a seleção com o motivo (`build_inspiration_pack`) e mostre ao usuário o `review_url`: na tela **Escolhas** ele aprova, corta e comenta cada referência.
-4. Leia a revisão com `get_pack`. Use as aprovadas, descarte as cortadas, siga os comentários.
-5. Crie em HTML com o `kit/`, confira com `ferramentas/ver.py` e entregue em `_saida/<nome-do-trabalho>/`.
-6. Se o usuário pedir, incorpore o resultado ao acervo com `register_reference` (`user_requested=true`).
-
-## Por onde começar
-
-| quero | leia ou rode |
+| Tarefa | Fonte |
 |---|---|
-| ver o acervo com os olhos | o app Repertório no Dock, ou http://127.0.0.1:8766 |
-| achar referências (preferido) | MCP `search_references`, ou `./repertorio/run.sh search "pedido" --prancha` |
-| achar referências com filtros finos | `python3 -I ferramentas/buscar.py --help` |
-| criar uma apresentação | `biblioteca/processo.md` (o passo a passo inteiro) |
-| entender o que tem aqui | `biblioteca/LEIA-PRIMEIRO.md` |
-| ver o vocabulário (intenções, técnicas, movimentos) | `python3 -I ferramentas/buscar.py --vocab` |
-| referências para o roteiro inteiro de uma vez | `python3 -I ferramentas/roteiro.py roteiro.md` |
-| usar o motor HTML | `kit/LEIA-ME.md` e `kit/demo.html` |
-| fontes sem depender de internet | `python3 -I ferramentas/fontes_google.py "Família" --pasta <pasta>/fontes` |
-| conferir o que eu fiz | `python3 -I ferramentas/ver.py arquivo.html --passos --transicoes` e abrir as pranchas geradas |
-| arquivo único para entregar | `python3 -I ferramentas/embutir.py arquivo.html --imagens` |
-| mexer no app Repertório | `repertorio/README.md` e a seção "O app Repertório" abaixo |
+| Busca e seleção de referências | MCP Repertório, conforme o bloco abaixo |
+| Narrativa e construção | `biblioteca/processo.md`, `biblioteca/principios/narrativa.md` |
+| Técnicas, movimento e vocabulário | `biblioteca/LEIA-PRIMEIRO.md` |
+| Apresentação HTML e entrega offline | `kit/LEIA-ME.md` |
+| Desenvolvimento, serviço e manutenção do app | `repertorio/README.md`, `biblioteca/manual-agentes.md` |
+| Validações anteriores do app | `repertorio/VALIDACAO.md` |
 
-## Busca
+## Desenvolvimento e dados
 
-O Repertório entende pedidos em português comum: "abertura com impacto", "números grandes em fundo escuro", "linha do tempo da empresa".
-Frases conhecidas viram intenção, técnica, movimento ou estética (o campo `understood` mostra a leitura) e o resto é buscado no texto.
-Sem `kind`, mídias soltas ficam de fora (use `kind="midia"` para buscá-las); `per_group` evita repetir a mesma apresentação.
-A resposta traz uma prancha numerada com as prévias, na ordem da lista: olhe a prancha antes de abrir fichas.
-
-`ferramentas/buscar.py` continua útil para filtros finos, mas lê os arquivos de `dados/` e **não enxerga a curadoria feita no app** (exclusões, edições).
-
-```
-python3 -I ferramentas/buscar.py "abertura com impacto" -i ABRIR --doc slide --forca 4 --prancha
-python3 -I ferramentas/buscar.py -t metafora-visual --doc referencia --prancha
-python3 -I ferramentas/buscar.py -m zoom-mergulho --doc arquivo --tipo efeito --prancha
-python3 -I ferramentas/buscar.py "pessoa sorrindo" --doc midia --uso recorte --livre --prancha
-python3 -I ferramentas/buscar.py --ver 284-reel-cerebro-3d
-```
-Slides "antes" (a versão comum que o curso mostra antes do efeito) ficam fora das duas buscas.
-As miniaturas às vezes não mostram o efeito real (são fotos estáticas do Mac); a nota e o `como_funciona` da ficha descrevem o que existe de verdade.
-
-## Mapa das pastas
-
-| pasta | o que tem |
-|---|---|
-| `repertorio/` | o app: `server/` (FastAPI, SQLite, MCP), `web/` (React, Cytoscape), `mac/` (app nativo e ícone), `tests/`; dados do app em `.runtime/` |
-| `biblioteca/` | o conhecimento em texto: processo, princípios, páginas por intenção, técnica e movimento, índices de estilos, efeitos, componentes e tipografia |
-| `dados/` | os mesmos dados para máquina: `indice.jsonl`, `fichas.jsonl`, `slides.jsonl`, `transicoes.jsonl` (Morph analisado), `midia.jsonl`, `vocabulario.json`, `grafo.json`; o app importa daqui |
-| `kit/` | motor de apresentação HTML (`motor.css`, `motor.js`), modelo em branco e demonstração |
-| `ferramentas/` | `buscar.py`, `roteiro.py`, `ver.py`, `embutir.py`, `fontes_google.py`, `midia.py` e `construir/` (scripts que geram tudo) |
-| `acervo/` | prévias das imagens e vídeos do acervo e os ícones SVG soltos |
-| `_catalogo/` | para humanos: catálogo de slides, mapa antigo, miniaturas e pranchas por arquivo |
-| `_referencias/` | estudos completos e imagens das referências externas (o resumo está em `biblioteca/principios/`) |
-| `_originais/` | os arquivos do curso: `pptx/`, `canva/`, `fontes/`, `curso/` (12 GB, fora do git) |
-| `_saida/` | o que foi criado com a biblioteca (apresentações, buscas, testes) |
-| `docs/` | imagens do README |
-
-## Como os dados se ligam
-
-Toda referência (arquivo, slide, capa, anúncio, frame) é marcada com o mesmo vocabulário (`dados/vocabulario.json`):
-**intenção** (o papel do slide na história: ABRIR, PROVAR...), **técnica** (como prende o olho: contraste-de-escala, metafora-visual...),
-**operação do olhar** de cada técnica (diferenciação, agrupamento, sequência, previsão), **movimento** (zoom-mergulho, reorganizar...), **estética** e **tom**.
-No app, o banco (`repertorio/.runtime/library.sqlite3`) é a fonte de verdade: importa `dados/` e guarda a curadoria por cima.
-
-## O app Repertório
-
-- **Sempre ligado.** `~/Applications/Repertório.app` (Swift + WebKit, código em `repertorio/mac/`) abre o acervo em janela própria, confere o serviço a cada 30 s e o religa. `~/Library/LaunchAgents/local.repertorio.plist` abre o app sem janela no login. O launchd não pode rodar o serviço direto: o macOS bloqueia a pasta Documentos para processos em segundo plano, e quem tem essa permissão é o app. Registro em `~/Library/Logs/repertorio.log`.
-- **Código novo no servidor:** encerre o processo do serviço (`lsof -nP -iTCP:8766 -sTCP:LISTEN -t`); o app o religa com o código novo. Migrações rodam sozinhas na partida.
-- **Código novo na interface:** `pnpm --dir repertorio/web build`; o usuário aperta ⌘R no app.
-- **Recompilar o app do Mac:** `./repertorio/mac/build.sh <destino>`. O Mac pede de novo a permissão de Documentos; avise o usuário antes.
-- **Imagens:** `/api/assets/{id}?w=128|256|512|1024|2048` serve cópias reduzidas (cache em `.runtime/miniaturas/`); o mapa troca a resolução conforme o zoom e o original intacto vai para download.
-- **Testes:** `repertorio/.venv/bin/python -m pytest repertorio/tests -q`, `pnpm --dir repertorio/web test` e, para o navegador, `pnpm --dir repertorio/web test:e2e` com `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` apontando para um Chromium instalado. Confira mudanças visuais com capturas.
-- **Não suje o acervo real** com pedidos ou seleções de demonstração: suba uma cópia com `REPERTORIO_HOME`, `REPERTORIO_PORT` e `REPERTORIO_BACKUP_DIR` apontando para uma pasta temporária.
-- **Conectar agentes ao MCP:** Claude Code e Gemini CLI já estão conectados (escopo do usuário); Codex: `codex mcp add repertorio --url http://127.0.0.1:8766/mcp`.
-- O que foi medido e validado em cada mudança está em `repertorio/VALIDACAO.md`.
-
-## Versões e cópias de segurança
-
-- O projeto tem git próprio (branch `main`), enviado ao GitHub privado `cleitoncampano/repertorio`. Depois de mudar código, textos ou dados: `git add -A && git commit && git push`.
-- Ficam fora do git os originais, as mídias e as imagens geradas a partir deles (ver `.gitignore`).
-- O serviço copia toda semana a curadoria e o histórico git para iCloud Drive › Backups › Repertório (6 cópias). `./repertorio/run.sh backup-now` faz uma na hora; `doctor` mostra a última; `restore` recupera: antes, encerre o app do Repertório e o serviço, senão o app religa o serviço no meio da restauração.
-
-## Manutenção do acervo
-
-Se os arquivos de `_originais/` mudarem, refaça na ordem: `ferramentas/construir/extrair.py`, `pranchas.py`, `pacotes.py`, fichas novas (instruções em `dados/_trabalho/INSTRUCOES-FICHAS.md`), `montar.py`. Depois rode `./repertorio/run.sh import`: ele preserva a curadoria do app.
-O catálogo visual se refaz com `_catalogo/gerador/` (ver `LEIA-ME.txt` lá dentro).
-O bloco abaixo é gerado por `./repertorio/run.sh connect --write-instructions`; se mudar o texto, mude também o modelo em `repertorio/server/repertorio/cli.py`.
+- `repertorio/`: servidor FastAPI/SQLite/MCP, interface React/TypeScript/Cytoscape e app nativo Swift/WebKit. O banco em `repertorio/.runtime/library.sqlite3` é a fonte de verdade da curadoria; `dados/` é a origem de importação.
+- Os scripts antigos de busca não refletem a curadoria do app. Miniaturas podem esconder o movimento real: confira a ficha e o `como_funciona`.
+- Testes e demonstrações usam uma cópia temporária, com `REPERTORIO_HOME`, `REPERTORIO_PORT` e `REPERTORIO_BACKUP_DIR` separados. Não crie demandas de demonstração no acervo real.
+- Testes do servidor: `repertorio/.venv/bin/python -m pytest repertorio/tests -q`. Interface: `pnpm --dir repertorio/web test` e `pnpm --dir repertorio/web build`. Navegador: `pnpm --dir repertorio/web test:e2e`, com Chromium instalado. Rode apenas os checks pertinentes e confira capturas nas mudanças visuais.
+- O app nativo mantém o serviço ligado. Leia o manual antes de reiniciar, restaurar backup ou recompilar o app. Recompilar exige avisar o usuário sobre a nova permissão de Documentos. Para código novo da interface, faça o build; o usuário atualiza com ⌘R.
+- Depois de alterar código, textos ou dados, faça commit e push para o GitHub privado. Preserve alterações preexistentes e inclua somente os arquivos desta tarefa no commit.
+- Originais, mídias e dados de execução ficam fora do Git. Importação, backup, recuperação e manutenção do acervo: `biblioteca/manual-agentes.md`.
+- O bloco MCP abaixo é gerado por `repertorio/server/repertorio/cli.py`. Se alterar seu texto, atualize também o modelo do gerador.
 
 <!-- repertorio:start -->
 ## Repertório: inspiração para demandas criativas

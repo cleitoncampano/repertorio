@@ -1,5 +1,13 @@
 # Retomada do projeto
 
+## Espaços de trabalho implementados em 18/10/2026
+
+O Repertório agora tem espaços com criação, renomeação, exclusão recuperável e troca pela navegação esquerda. O acervo anterior está em PP Treta; novos espaços começam vazios. Fichas e arquivos são compartilhados, com publicação e lixeira independentes por espaço. Agentes recebem os espaços de inspiração e os destinos de incorporação explicitamente.
+
+Validação: 32 testes do servidor, 7 da interface e 14 de navegador aprovados; build e migração numa cópia dos 15.662 registros aprovados. Backup anterior verificado em `_saida/repertorio-qa/espacos/antes-dos-espacos.zip`. Operação, contratos e recuperação: `docs/REPERTORIO-ESPACOS.md`.
+
+Próxima ação: atualizar o app com ⌘R, criar GrowMate no seletor Espaços e indicar as referências desejadas. Preservar os trabalhos de palestra descritos abaixo.
+
 Atualizado em 18/10/2026 (America/Sao_Paulo).
 
 ## Objetivo atual

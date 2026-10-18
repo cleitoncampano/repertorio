@@ -7,14 +7,10 @@ from sqlalchemy import text
 from .db import dumps, now
 from .importer import index_text
 from .schemas import Search
+from .workspaces import Workspaces, Problem
 
 
-class Problem(Exception):
-    def __init__(self, status, message):
-        self.status, self.message = status, message
-
-
-class Library:
+class Library(Workspaces):
     def __init__(self, db):
         self.db = db
         self.settings = db.settings
@@ -23,16 +19,20 @@ class Library:
         row = self.db.one('SELECT value FROM meta WHERE key=:key',key=key)
         return json.loads(row['value']) if row else default
 
-    def stats(self):
-        rows = self.db.query("SELECT kind,COUNT(*) AS total FROM refs r WHERE state='published' AND ready=1 AND hidden=0 AND NOT EXISTS(SELECT 1 FROM refs p WHERE p.id=r.parent_id AND (p.state!='published' OR p.hidden=1)) GROUP BY kind")
+    def stats(self, workspace_id):
+        params={}
+        clauses=self.filters(Search(workspace_ids=[workspace_id]),params)
+        rows = self.db.query(f"SELECT kind,COUNT(*) AS total FROM refs r WHERE {' AND '.join(clauses)} GROUP BY kind",**params)
         return dict(counts={r['kind']:r['total'] for r in rows}, report=self.meta('import_report',{}),
-                    pending=self.db.one("SELECT COUNT(*) AS n FROM refs WHERE state='pending'")['n'],
+                    pending=self.search(Search(workspace_ids=[workspace_id],state='pending',limit=1),log=False)['total'],
                     projects=self.db.one('SELECT COUNT(*) AS n FROM projects')['n'])
 
     def context(self, cid):
         row = self.db.one('SELECT c.*,p.name AS project_name,p.root FROM contexts c JOIN projects p ON c.project_id=p.id WHERE c.id=:id',id=cid)
         if not row:
             raise Problem(404,'Contexto não encontrado. Inicie uma demanda com start_context.')
+        row['workspaces']=self.db.query('SELECT w.id,w.name,w.deleted FROM workspaces w JOIN context_workspaces cw ON cw.workspace_id=w.id WHERE cw.context_id=:id ORDER BY w.name_key',id=cid)
+        row['workspace_ids']=[w['id'] for w in row['workspaces']]
         return row
 
     def project(self, data):
@@ -51,13 +51,16 @@ class Library:
         return row
 
     def start(self, data):
+        ids=self.scope(data.workspace_ids)
         if not self.db.one('SELECT id FROM projects WHERE id=:id',id=data.project_id):
             raise Problem(404,'Cadastre esta pasta primeiro com repertorio connect.')
         row=dict(id=str(uuid.uuid4()),project_id=data.project_id,demand=data.demand,created=now())
         with self.db.engine.begin() as conn:
             conn.execute(text('INSERT INTO contexts VALUES(:id,:project_id,:demand,:created)'),row)
+            for wid in ids:
+                conn.execute(text('INSERT INTO context_workspaces VALUES(:c,:w)'),dict(c=row['id'],w=wid))
             self.db.log(conn,'context_started',context_id=row['id'],demand=data.demand)
-        return {**row,'instructions':'História primeiro. Busque referências, examine imagens e adapte a ideia à identidade do projeto. Não copie. Publique apenas quando o usuário solicitar; sugestões ficam pendentes.',
+        return {**self.context(row['id']),'instructions':'História primeiro. Consulte somente os espaços desta demanda. Na incorporação, informe os espaços de destino. Examine imagens e adapte a ideia à identidade do projeto. Não copie. Publique apenas quando o usuário solicitar; sugestões ficam pendentes.',
                 'vocabulary':self.meta('vocabulary',{}),'principles_available':['narrativa','direcao-de-arte']}
 
     def summary(self, row):
@@ -72,10 +75,11 @@ class Library:
 
     def filters(self, args, params):
         """Condições estritas compartilhadas pela busca do mapa e pela busca dos agentes."""
-        params.update(state=args.state,min_strength=args.min_strength)
-        clauses=['r.state=:state']
+        ids=self.scope(args.workspace_ids,args.context_id)
+        params.update(min_strength=args.min_strength)
+        clauses=[self.membership_clause(ids,params,args.state)]
         if args.state == 'published':
-            clauses += ['r.ready=1','r.hidden=0',"NOT EXISTS(SELECT 1 FROM refs p WHERE p.id=r.parent_id AND (p.state!='published' OR p.ready=0 OR p.hidden=1))"]
+            clauses += ['r.ready=1','r.hidden=0']
         for field, column in [('kind','r.kind'),('origin','r.origin')]:
             value=getattr(args,field)
             if value:
@@ -121,7 +125,7 @@ class Library:
             FROM refs r {join} WHERE {where} ORDER BY rank ASC,COALESCE(json_extract(r.payload,'$.strength'),3) DESC,r.id LIMIT :limit OFFSET :offset''',**params)
         results=[]
         for r in rows:
-            s=self.summary(r)
+            s=self.scoped_summary(r,self.scope(args.workspace_ids,args.context_id),state=args.state)
             s['matched_by']=[f'{k}: {getattr(args,k)}' for k in ['intention','technique','operation','movement','aesthetic','origin','format'] if getattr(args,k)]
             if words: s['matched_by'].insert(0,'Texto da ficha ou do slide')
             results.append(s)
@@ -130,40 +134,45 @@ class Library:
                 self.db.log(conn,'references_searched',context_id=args.context_id,query=args.query,total=total)
         return dict(items=results,total=total,offset=args.offset,limit=args.limit)
 
-    def get(self,rid,include_children=True):
+    def get(self,rid,include_children=True,workspace_ids=None,context_id=None):
+        ids=self.scope(workspace_ids,context_id)
         row=self.db.one('SELECT * FROM refs WHERE id=:id',id=rid)
         if not row: raise Problem(404,'Referência não encontrada.')
         data=json.loads(row['payload'])
-        out={**self.summary(row),**{k:v for k,v in data.items() if k!='legacy'}}
+        out={**{k:v for k,v in data.items() if k!='legacy'},**self.scoped_summary(row,ids)}
+        out['workspaces']=self.memberships(rid)
         out['assets']=[{**a,'url':f"/api/assets/{a['id']}"} for a in self.db.query('SELECT id,role,mime,missing FROM assets WHERE ref_id=:id ORDER BY role,path,id',id=rid)]
         if row['parent_id']:
-            parent=self.db.one('SELECT state,hidden FROM refs WHERE id=:id',id=row['parent_id'])
-            out['unavailable_by_parent']=bool(parent and (parent['state']!='published' or parent['hidden']))
+            parent=self.db.one('SELECT hidden,ready FROM refs WHERE id=:id',id=row['parent_id'])
+            out['unavailable_by_parent']=not bool(parent and not parent['hidden'] and parent['ready'] and any(m['state']=='published' and m['workspace_id'] in out['workspace_ids'] for m in self.memberships(row['parent_id'],ids)))
         if include_children:
-            children=self.db.query("SELECT * FROM refs WHERE parent_id=:id AND state='published' AND hidden=0 ORDER BY CAST(json_extract(payload,'$.number') AS INTEGER)",id=rid)
-            out['children']=[self.summary(c) for c in children]
+            params={'id':rid}
+            clause=self.membership_clause(ids,params,'published')
+            children=self.db.query(f"SELECT r.* FROM refs r WHERE r.parent_id=:id AND r.hidden=0 AND r.ready=1 AND {clause} ORDER BY CAST(json_extract(r.payload,'$.number') AS INTEGER)",**params)
+            out['children']=[self.scoped_summary(c,ids) for c in children]
             for child in out['children']:
                 a=self.db.one("SELECT id FROM assets WHERE ref_id=:id AND role='preview' AND missing=0 LIMIT 1",id=child['id'])
                 child['thumbnail']=f"/api/assets/{a['id']}" if a else None
         out['transitions']=self.meta('transitions:'+rid,[])
         related=[]
-        for technique in out.get('techniques',[])[:3]:
-            related.extend(self.search(Search(technique=technique,kind='arquivo,referencia,criacao',limit=8),log=False)['items'])
+        for technique in (out.get('techniques') or [])[:3]:
+            related.extend(self.search(Search(workspace_ids=ids,technique=technique,kind='arquivo,referencia,criacao',limit=8),log=False)['items'])
         out['related']=list({r['id']:r for r in related if r['id']!=rid}.values())[:6]
         return out
 
-    def validate_data(self,data):
+    def validate_data(self,data,workspace_ids=None):
         vocab=self.meta('vocabulary',{})
         for field,key in [('techniques','tecnicas'),('intentions','intencoes'),('movements','movimentos'),('aesthetics','esteticas')]:
             allowed={i['id'] if isinstance(i,dict) else i for i in vocab.get(key,{}).get('itens',[])}
             bad=set(getattr(data,field))-allowed
             if bad: raise Problem(422,f'Valores fora do vocabulário em {field}: {sorted(bad)}')
         for rid in data.source_reference_ids:
-            if not self.db.one('SELECT id FROM refs WHERE id=:id',id=rid):
-                raise Problem(422,f'Referência de origem não encontrada: {rid}')
+            self.get(rid,False,workspace_ids=workspace_ids)
 
     def update(self,rid,req):
-        self.context(req.context_id); self.validate_data(req.data)
+        ids=self.scope(context_id=req.context_id)
+        self.get(rid,False,workspace_ids=ids)
+        self.validate_data(req.data,ids)
         with self.db.engine.begin() as conn:
             row=conn.execute(text('SELECT * FROM refs WHERE id=:id'),dict(id=rid)).mappings().first()
             if not row: raise Problem(404,'Referência não encontrada.')
@@ -172,40 +181,40 @@ class Library:
                                  dict(title=d['title'],p=dumps(d),s=index_text(d),t=now(),id=rid,rev=req.expected_revision))
             if changed.rowcount!=1: raise Problem(409,'A referência mudou. Leia a revisão atual antes de atualizar.')
             conn.execute(text('INSERT INTO revisions VALUES(:id,:r,:p)'),dict(id=rid,r=row['revision'],p=dumps(dict(row))))
-            self.db.log(conn,'reference_updated',rid,req.context_id,revision=row['revision']+1)
-        return self.get(rid)
+            self.db.log(conn,'reference_updated',rid,req.context_id,revision=row['revision']+1,workspace_ids=[m['workspace_id'] for m in self.memberships(rid)])
+        return self.get(rid,workspace_ids=ids)
 
     def state(self,rid,req,from_ui=False):
-        if req.context_id: self.context(req.context_id)
+        ids=self.scope([req.workspace_id],req.context_id)
         if not from_ui and not req.context_id: raise Problem(422,'Informe o contexto da alteração.')
         if not from_ui and req.state in ('published','trashed') and not req.user_requested:
             raise Problem(422,'Publicação e exclusão pelo agente exigem pedido explícito do usuário.')
         with self.db.engine.begin() as conn:
-            row=conn.execute(text('SELECT * FROM refs WHERE id=:id'),dict(id=rid)).mappings().first()
+            row=conn.execute(text('SELECT * FROM workspace_references WHERE ref_id=:id AND workspace_id=:w AND detached=0'),dict(id=rid,w=req.workspace_id)).mappings().first()
             if not row: raise Problem(404,'Referência não encontrada.')
-            changed=conn.execute(text('UPDATE refs SET state=:state,curated=1,revision=revision+1,updated=:t WHERE id=:id AND revision=:rev'),
-                                 dict(state=req.state,t=now(),id=rid,rev=req.expected_revision))
+            changed=conn.execute(text('UPDATE workspace_references SET state=:state,revision=revision+1,updated=:t WHERE ref_id=:id AND workspace_id=:w AND revision=:rev'),
+                                 dict(state=req.state,t=now(),id=rid,w=req.workspace_id,rev=req.expected_membership_revision))
             if changed.rowcount!=1: raise Problem(409,'A referência mudou. Atualize antes de tentar novamente.')
-            conn.execute(text('INSERT INTO revisions VALUES(:id,:r,:p)'),dict(id=rid,r=row['revision'],p=dumps(dict(row))))
-            self.db.log(conn,'reference_'+req.state,rid,req.context_id,previous_state=row['state'],user_requested=req.user_requested or from_ui)
-        return self.get(rid)
+            self.db.log(conn,'reference_'+req.state,rid,req.context_id,workspace_ids=ids,previous_state=row['state'],user_requested=req.user_requested or from_ui)
+        return self.get(rid,workspace_ids=ids)
 
     def pack(self,req):
-        self.context(req.context_id)
+        ids=self.scope(context_id=req.context_id)
         snapshots=[]
         for rid in dict.fromkeys(req.reference_ids):
-            ref=self.get(rid,False)
+            ref=self.get(rid,False,workspace_ids=ids)
             if ref['state']!='published' or not ref['ready'] or ref.get('hidden') or ref.get('unavailable_by_parent'):
                 raise Problem(409,'Uma referência selecionada não está disponível.')
-            snapshots.append({k:ref.get(k) for k in ['id','revision','title','description','idea','techniques','intentions','movements','aesthetics','reusable','usage_notes','assets','url']})
+            snapshots.append({k:ref.get(k) for k in ['id','revision','title','description','idea','techniques','intentions','movements','aesthetics','reusable','usage_notes','assets','url','workspace_ids']})
         pid=str(uuid.uuid4())
         payload=dict(references=snapshots,rationale=req.rationale)
         with self.db.engine.begin() as conn:
             conn.execute(text('INSERT INTO packs VALUES(:id,:c,:t,:p,:d)'),dict(id=pid,c=req.context_id,t=req.title,p=dumps(payload),d=now()))
             self.db.log(conn,'pack_created',context_id=req.context_id,pack_id=pid,title=req.title)
-        return dict(id=pid,context_id=req.context_id,title=req.title,review_url=f'{self.settings.url}/?escolha={pid}',**payload)
+        return dict(id=pid,context_id=req.context_id,workspace_ids=ids,title=req.title,review_url=f'{self.settings.url}/?workspace={ids[0]}&escolha={pid}',**payload)
 
-    def demands(self):
+    def demands(self,workspace_id):
+        self.workspace(workspace_id)
         """Pedidos com seleções guardadas, do mais recente ao mais antigo, com o andamento da revisão."""
         packs=self.db.query('''SELECT k.id,k.context_id,k.title,k.created,json_array_length(k.payload,'$.references') AS total,
             (SELECT COUNT(*) FROM pack_reviews v WHERE v.pack_id=k.id AND v.verdict='approved') AS approved,
@@ -213,24 +222,32 @@ class Library:
             FROM packs k ORDER BY k.created DESC''')
         rows=self.db.query('SELECT c.id,c.demand,c.created,p.name AS project_name FROM contexts c JOIN projects p ON p.id=c.project_id WHERE EXISTS(SELECT 1 FROM packs k WHERE k.context_id=c.id)')
         for row in rows:
+            row['workspaces']=self.context(row['id'])['workspaces']
             row['packs']=[k for k in packs if k['context_id']==row['id']]
             row['updated']=row['packs'][0]['created']
-        return sorted(rows,key=lambda r:r['updated'],reverse=True)
+        return sorted([r for r in rows if workspace_id in [w['id'] for w in r['workspaces']]],key=lambda r:r['updated'],reverse=True)
 
     def pack_detail(self,pid):
         """Seleção guardada com a imagem atual de cada referência e o que o usuário decidiu sobre ela."""
         row=self.db.one('SELECT k.*,c.demand,p.name AS project_name FROM packs k JOIN contexts c ON c.id=k.context_id JOIN projects p ON p.id=c.project_id WHERE k.id=:id',id=pid)
         if not row:raise Problem(404,'Seleção não encontrada.')
+        spaces=self.context(row['context_id'])['workspaces']
+        ids=[w['id'] for w in spaces if not w['deleted']]
         payload=json.loads(row['payload'])
         reviews={r['ref_id']:{k:r[k] for k in ('verdict','note','updated')} for r in self.db.query('SELECT * FROM pack_reviews WHERE pack_id=:id',id=pid)}
         references=[]
         for snap in payload['references']:
             now=self.db.one('''SELECT r.state,r.hidden,r.kind,(SELECT a.id FROM assets a WHERE a.ref_id=r.id AND a.missing=0 AND a.role IN ('thumbnail','preview') ORDER BY CASE a.role WHEN 'thumbnail' THEN 0 ELSE 1 END,a.id LIMIT 1) AS thumbnail
                 FROM refs r WHERE r.id=:id''',id=snap['id'])
+            current=None
+            if ids:
+                try:current=self.get(snap['id'],False,workspace_ids=ids)
+                except Problem:pass
             references.append({**snap,'kind':now['kind'] if now else None,'thumbnail':f"/api/assets/{now['thumbnail']}" if now and now['thumbnail'] else None,
-                               'available':bool(now and now['state']=='published' and not now['hidden']),'review':reviews.get(snap['id'])})
+                               'available':bool(current and current['state']=='published' and current['ready'] and not current['hidden'] and not current.get('unavailable_by_parent')),
+                               'workspace_ids':current['workspace_ids'] if current else [],'review':reviews.get(snap['id'])})
         return dict(id=pid,context_id=row['context_id'],demand=row['demand'],project_name=row['project_name'],title=row['title'],created=row['created'],
-                    rationale=payload.get('rationale',''),references=references,payload=payload)
+                    workspaces=spaces,workspace_ids=[w['id'] for w in spaces],rationale=payload.get('rationale',''),references=references,payload=payload)
 
     def review(self,pid,req):
         pack=self.db.one('SELECT context_id,title,payload FROM packs WHERE id=:id',id=pid)
@@ -247,12 +264,15 @@ class Library:
             self.db.log(conn,'pack_reviewed',req.reference_id,pack['context_id'],pack_id=pid,title=pack['title'],verdict=req.verdict)
         return self.pack_detail(pid)
 
-    def events(self,after=0):
-        rows=self.db.query('SELECT e.*,p.name AS project_name FROM events e LEFT JOIN contexts c ON c.id=e.context_id LEFT JOIN projects p ON p.id=c.project_id WHERE e.id>:after ORDER BY e.id DESC LIMIT 100',after=after)
+    def events(self,after=0,workspace_id=None):
+        if workspace_id:self.workspace(workspace_id)
+        rows=self.db.query('''SELECT e.*,p.name AS project_name FROM events e LEFT JOIN contexts c ON c.id=e.context_id LEFT JOIN projects p ON p.id=c.project_id
+            WHERE e.id>:after AND (:w IS NULL OR EXISTS(SELECT 1 FROM event_workspaces ew WHERE ew.event_id=e.id AND ew.workspace_id=:w)
+            OR NOT EXISTS(SELECT 1 FROM event_workspaces ew WHERE ew.event_id=e.id)) ORDER BY e.id DESC LIMIT 100''',after=after,w=workspace_id)
         for r in rows:r['payload']=json.loads(r['payload'])
         return rows
 
     def operation(self,oid):
         row=self.db.one('SELECT * FROM operations WHERE id=:id',id=oid)
         if not row: raise Problem(404,'Operação não encontrada.')
-        return {k:v for k,v in row.items() if k!='payload'}
+        return {**{k:v for k,v in row.items() if k!='payload'},'target_workspace_ids':[w['workspace_id'] for w in self.db.query('SELECT workspace_id FROM operation_workspaces WHERE operation_id=:id',id=oid)]}

@@ -35,4 +35,4 @@ def context(library,tmp_path):
     project=tmp_path/'marketing';project.mkdir()
     Image.new('RGB',(300,200),'#e5ab8c').save(project/'carrossel.png')
     p=library.project(Project(name='Marketing',root=str(project)))
-    return library.start(StartContext(project_id=p['id'],demand='Criar carrossel'))
+    return library.start(StartContext(project_id=p['id'],demand='Criar carrossel',workspace_ids=['pp-treta']))

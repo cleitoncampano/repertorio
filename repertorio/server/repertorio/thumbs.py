@@ -33,10 +33,13 @@ def thumbnail(settings,aid,path,width):
     return out
 
 
-def graph_assets(lib):
+def graph_assets(lib,workspace_id=None):
     """Prévia de cada peça do mapa: (id do arquivo, caminho), só imagens."""
-    rows=lib.db.query("""SELECT a.id AS aid,a.path FROM refs r JOIN assets a ON a.id=(SELECT b.id FROM assets b WHERE b.ref_id=r.id AND b.missing=0 AND b.role IN ('thumbnail','preview') ORDER BY CASE b.role WHEN 'thumbnail' THEN 0 ELSE 1 END,b.id LIMIT 1)
-        WHERE r.state='published' AND r.ready=1 AND r.hidden=0 AND r.kind IN ('arquivo','referencia','criacao')""")
+    ids=lib.scope([workspace_id]) if workspace_id else [w['id'] for w in lib.workspaces()]
+    params={}
+    clause=lib.membership_clause(ids,params,'published')
+    rows=lib.db.query(f"""SELECT a.id AS aid,a.path FROM refs r JOIN assets a ON a.id=(SELECT b.id FROM assets b WHERE b.ref_id=r.id AND b.missing=0 AND b.role IN ('thumbnail','preview') ORDER BY CASE b.role WHEN 'thumbnail' THEN 0 ELSE 1 END,b.id LIMIT 1)
+        WHERE {clause} AND r.ready=1 AND r.hidden=0 AND r.kind IN ('arquivo','referencia','criacao')""",**params)
     return [(r['aid'],Path(r['path'])) for r in rows if Path(r['path']).suffix.lower() in RASTER]
 
 
@@ -49,11 +52,11 @@ def warm(lib,stop,sizes=(128,256)):
             except Exception:logging.exception('Não foi possível reduzir %s',path)
 
 
-def bundle(lib,width):
+def bundle(lib,width,workspace_id):
     """Todas as miniaturas já preparadas do mapa numa resposta só, por endereço da prévia.
     As que ainda não existem ficam de fora e o mapa as pede uma a uma."""
     out={}
-    for aid,path in graph_assets(lib):
+    for aid,path in graph_assets(lib,workspace_id):
         small=lib.settings.home/'miniaturas'/f'{aid}-{width}.webp'
         try:
             fresh=small.exists() and small.stat().st_mtime>=path.stat().st_mtime

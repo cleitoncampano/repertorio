@@ -242,7 +242,7 @@ async def mcp_work(mode):
 
             if mode == 'register':
                 if not manifest.get('context_id'):
-                    context = await call('start_context', dict(project_id=PROJECT, demand=
+                    context = await call('start_context', dict(project_id=PROJECT, workspace_ids=['pp-treta'], demand=
                         'Incorporar por pedido explícito do usuário os 32 carrosséis Growmate da pasta '
                         '18 (Simon Sinek) à 49, com lâminas, assets, cores, tipografia, créditos e '
                         'construção narrativa para servir de repertório neste projeto.'))
@@ -254,7 +254,7 @@ async def mcp_work(mode):
                     files = [html] + entry['files']
                     assert len(files) <= 60
                     op = await call('register_reference', dict(request=dict(
-                        context_id=manifest['context_id'], request_key='growmate-livros-20261017-' + entry['folder'],
+                        context_id=manifest['context_id'], target_workspace_ids=['pp-treta'], request_key='growmate-livros-20261017-' + entry['folder'],
                         user_requested=True, files=files, previews=entry['previews'], data=reference_data(entry))))
                     entry['operation_id'] = op['id']
                     entry['reference_id'] = op['ref_id']
@@ -285,7 +285,7 @@ async def mcp_work(mode):
                                 'Fontes WOFF2 guardadas como dependência da produção, sem nova auditoria de licença.',
                 )
                 kit = await call('register_reference', dict(request=dict(
-                    context_id=manifest['context_id'], request_key='growmate-livros-20261017-componentes',
+                    context_id=manifest['context_id'], target_workspace_ids=['pp-treta'], request_key='growmate-livros-20261017-componentes',
                     user_requested=True, data=kit_data,
                     files=[str((kit_path / 'repertorio-componentes.html').relative_to(ROOT))],
                     previews=[str((kit_path / 'repertorio-componentes.png').relative_to(ROOT))])))
@@ -301,7 +301,7 @@ async def mcp_work(mode):
                             break
                         await asyncio.sleep(3)
                         op = await call('get_operation', dict(operation_id=entry['operation_id']))
-                    ref = await call('get_reference', dict(reference_id=entry['reference_id'], include_image=False))
+                    ref = await call('get_reference', dict(reference_id=entry['reference_id'], include_image=False, workspace_ids=['pp-treta']))
                     assert op['state'] == 'completed', (entry.get('folder'), op)
                     assert ref['ready'] and ref['state'] == 'published'
                     assert not any(a['missing'] for a in ref['assets'])

@@ -51,7 +51,7 @@ def create_app(settings=None,run_worker=True):
             db.engine.dispose()
             lock.close()
 
-    app=FastAPI(title='Repertório',version='0.1.0',lifespan=lifespan)
+    app=FastAPI(title='Repertório',version='0.2.0',lifespan=lifespan)
     app.state.library=lib;app.state.worker=worker
     app.add_middleware(TrustedHostMiddleware,allowed_hosts=['localhost','127.0.0.1','testserver'])
 
@@ -73,10 +73,22 @@ def create_app(settings=None,run_worker=True):
         return JSONResponse({'detail':exc.message},status_code=exc.status)
 
     @app.get('/api/health')
-    def health():return dict(status='ok',version='0.1.0',database='ready')
+    def health():return dict(status='ok',version='0.2.0',database='ready',schema='0004')
 
     @app.get('/api/stats')
-    def stats():return lib.stats()
+    def stats(workspace_id:str):return lib.stats(workspace_id)
+
+    @app.get('/api/workspaces')
+    def workspaces(deleted:bool=False):return lib.workspaces(deleted)
+
+    @app.post('/api/workspaces')
+    def create_workspace(req:schemas.Workspace):return lib.save_workspace(req)
+
+    @app.put('/api/workspaces/{wid}')
+    def rename_workspace(wid:str,req:schemas.WorkspaceUpdate):return lib.save_workspace(req,wid)
+
+    @app.post('/api/workspaces/{wid}/state')
+    def workspace_state(wid:str,req:schemas.WorkspaceState):return lib.workspace_state(wid,req)
 
     @app.get('/api/vocabulary')
     def vocab():return lib.meta('vocabulary',{})
@@ -95,23 +107,26 @@ def create_app(settings=None,run_worker=True):
 
     @app.post('/api/sheet')
     def sheet(req:schemas.Sheet):
-        image=contact_sheet(lib,sheet_items(lib,req.ids))
+        image=contact_sheet(lib,sheet_items(lib,req.ids,req.workspace_ids,req.context_id))
         if not image:raise Problem(404,'Nenhuma referência encontrada.')
         return Response(image,media_type='image/jpeg')
 
     @app.get('/api/graph')
-    def graph():
-        rows=db.query("""SELECT r.*, (SELECT a.id FROM assets a WHERE a.ref_id=r.id AND a.missing=0 AND a.role IN ('thumbnail','preview') ORDER BY CASE a.role WHEN 'thumbnail' THEN 0 ELSE 1 END,a.id LIMIT 1) AS thumbnail
-        FROM refs r WHERE state='published' AND ready=1 AND hidden=0 AND kind IN ('arquivo','referencia','criacao') ORDER BY id""")
-        return {'items':[lib.summary(r) for r in rows],'vocabulary':lib.meta('vocabulary',{})}
+    def graph(workspace_id:str):return lib.graph(workspace_id)
 
     @app.get('/api/previews')
-    def previews(w:int=128):
+    def previews(workspace_id:str,w:int=128):
         if w not in thumbs.SIZES:raise Problem(422,'Tamanhos disponíveis: '+', '.join(map(str,sorted(thumbs.SIZES))))
-        return JSONResponse(thumbs.bundle(lib,w),headers={'Cache-Control':'private, max-age=300'})
+        return JSONResponse(thumbs.bundle(lib,w,workspace_id),headers={'Cache-Control':'private, max-age=300'})
 
     @app.get('/api/references/{rid}')
-    def reference(rid:str):return lib.get(rid)
+    def reference(rid:str,workspace_id:str|None=None,context_id:str|None=None):return lib.get(rid,workspace_ids=[workspace_id] if workspace_id else None,context_id=context_id)
+
+    @app.post('/api/references/{rid}/workspaces')
+    def reference_workspaces(rid:str,req:schemas.ReferenceWorkspaces):return lib.reference_workspaces(rid,req,from_ui=True)
+
+    @app.post('/api/agent/references/{rid}/workspaces')
+    def agent_reference_workspaces(rid:str,req:schemas.ReferenceWorkspaces):return lib.reference_workspaces(rid,req)
 
     @app.put('/api/references/{rid}')
     def update(rid:str,req:schemas.Update):return lib.update(rid,req)
@@ -144,10 +159,10 @@ def create_app(settings=None,run_worker=True):
     def review_pack(pid:str,req:schemas.Review):return lib.review(pid,req)
 
     @app.get('/api/demands')
-    def demands():return lib.demands()
+    def demands(workspace_id:str):return lib.demands(workspace_id)
 
     @app.get('/api/operations')
-    def operations():return db.query('SELECT id,ref_id,state,progress,error,updated FROM operations ORDER BY created DESC LIMIT 100')
+    def operations(workspace_id:str):return lib.operations(workspace_id)
 
     @app.get('/api/operations/{oid}')
     def operation(oid:str):return lib.operation(oid)
@@ -156,14 +171,15 @@ def create_app(settings=None,run_worker=True):
     def retry(oid:str):return worker.retry(oid)
 
     @app.get('/api/activity')
-    def activity():return lib.events()
+    def activity(workspace_id:str):return lib.events(workspace_id=workspace_id)
 
     @app.get('/api/events')
-    async def events(request:Request,after:int=0):
+    async def events(request:Request,after:int=0,workspace_id:str|None=None):
+        if workspace_id:lib.workspace(workspace_id)
         async def stream():
             cursor=after
             while not await request.is_disconnected():
-                items=await asyncio.to_thread(lib.events,cursor)
+                items=await asyncio.to_thread(lib.events,cursor,workspace_id)
                 for item in reversed(items):
                     cursor=max(cursor,item['id'])
                     yield f'id: {cursor}\ndata: {dumps(item)}\n\n'

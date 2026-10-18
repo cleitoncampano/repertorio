@@ -37,16 +37,24 @@ def project_file(root,value,preview=False):
 
 def register(lib,req):
     context=lib.context(req.context_id)
-    lib.validate_data(req.data)
+    source_ids=lib.scope(context_id=req.context_id)
+    targets=lib.scope(req.target_workspace_ids)
+    lib.validate_data(req.data,source_ids)
     root=Path(context['root'])
     paths=[project_file(root,p) for p in req.files]
     previews=[project_file(root,p,True) for p in req.previews]
     hashes=[file_digest(p) for p in paths+previews]
     request_key=context['project_id']+':'+req.request_key
-    fingerprint=hashlib.sha256(dumps(dict(data=req.data.model_dump(),hashes=hashes,user_requested=req.user_requested)).encode()).hexdigest()
+    fingerprint=hashlib.sha256(dumps(dict(data=req.data.model_dump(),hashes=hashes,user_requested=req.user_requested,target_workspace_ids=sorted(targets))).encode()).hexdigest()
     previous=lib.db.one('SELECT id,payload FROM operations WHERE request_key=:k',k=request_key)
+    def same_request(previous):
+        saved=json.loads(previous['payload'])['fingerprint']
+        if saved==fingerprint:return True
+        # Envios feitos antes dos espaços continuam retomáveis no destino migrado.
+        legacy=hashlib.sha256(dumps(dict(data=req.data.model_dump(),hashes=hashes,user_requested=req.user_requested)).encode()).hexdigest()
+        return saved==legacy and set(lib.operation(previous['id'])['target_workspace_ids'])==set(targets)
     if previous:
-        if json.loads(previous['payload'])['fingerprint']!=fingerprint:
+        if not same_request(previous):
             raise Problem(409,'Esta chave de envio já foi usada para outro conteúdo.')
         return lib.operation(previous['id'])
     oid=str(uuid.uuid4()); rid='criacao-'+str(uuid.uuid4()); stamp=now()
@@ -60,10 +68,13 @@ def register(lib,req):
                          dict(id=rid,t=data['title'],state='published' if req.user_requested else 'pending',p=dumps(data),s=index_text(data),d=stamp))
             conn.execute(text("INSERT INTO operations(id,context_id,ref_id,request_key,state,payload,created,updated) VALUES(:id,:c,:r,:k,'queued',:p,:d,:d)"),
                          dict(id=oid,c=req.context_id,r=rid,k=request_key,p=dumps(job),d=stamp))
-            lib.db.log(conn,'reference_submitted',rid,req.context_id,user_requested=req.user_requested,operation_id=oid)
+            for wid in targets:
+                conn.execute(text('INSERT INTO workspace_references(workspace_id,ref_id,state,created,updated) VALUES(:w,:r,:s,:t,:t)'),dict(w=wid,r=rid,s='published' if req.user_requested else 'pending',t=stamp))
+                conn.execute(text('INSERT INTO operation_workspaces VALUES(:o,:w)'),dict(o=oid,w=wid))
+            lib.db.log(conn,'reference_submitted',rid,req.context_id,workspace_ids=targets,user_requested=req.user_requested,operation_id=oid)
     except IntegrityError:
         previous=lib.db.one('SELECT id,payload FROM operations WHERE request_key=:k',k=request_key)
-        if not previous or json.loads(previous['payload'])['fingerprint']!=fingerprint:raise Problem(409,'Envio concorrente com conteúdo diferente.')
+        if not previous or not same_request(previous):raise Problem(409,'Envio concorrente com conteúdo diferente.')
         return lib.operation(previous['id'])
     return lib.operation(oid)
 
@@ -151,11 +162,11 @@ class Worker:
                 asset(conn,self.lib.settings,rid,thumb,'thumbnail')
                 conn.execute(text('UPDATE refs SET ready=1,updated=:t WHERE id=:id'),dict(t=now(),id=rid))
                 conn.execute(text("UPDATE operations SET state='completed',progress=100,updated=:t WHERE id=:id"),dict(t=now(),id=oid))
-                self.lib.db.log(conn,'reference_ready',rid,row['context_id'],operation_id=oid)
+                self.lib.db.log(conn,'reference_ready',rid,row['context_id'],workspace_ids=self.lib.operation(oid)['target_workspace_ids'],operation_id=oid)
         except Exception as exc:
             with self.lib.db.engine.begin() as conn:
                 conn.execute(text("UPDATE operations SET state='failed',error=:e,updated=:t WHERE id=:id"),dict(e=str(exc)[:1500],t=now(),id=oid))
-                self.lib.db.log(conn,'operation_failed',row['ref_id'],row['context_id'],operation_id=oid,error=str(exc)[:1500])
+                self.lib.db.log(conn,'operation_failed',row['ref_id'],row['context_id'],workspace_ids=self.lib.operation(oid)['target_workspace_ids'],operation_id=oid,error=str(exc)[:1500])
 
     def retry(self,oid):
         with self.lib.db.engine.begin() as conn:

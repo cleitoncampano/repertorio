@@ -43,5 +43,13 @@ class Database:
 
     @staticmethod
     def log(conn, action, ref_id=None, context_id=None, **payload):
-        conn.execute(text('INSERT INTO events(action,ref_id,context_id,payload,created) VALUES(:a,:r,:c,:p,:t)'),
-                     dict(a=action, r=ref_id, c=context_id, p=dumps(payload), t=now()))
+        ids = payload.get('workspace_ids')
+        if ids is None and context_id:
+            ids = conn.execute(text('SELECT workspace_id FROM context_workspaces WHERE context_id=:id'),dict(id=context_id)).scalars().all()
+        if ids is None and ref_id:
+            ids = conn.execute(text('SELECT workspace_id FROM workspace_references WHERE ref_id=:id AND detached=0'),dict(id=ref_id)).scalars().all()
+        payload['workspace_ids'] = list(ids or [])
+        result = conn.execute(text('INSERT INTO events(action,ref_id,context_id,payload,created) VALUES(:a,:r,:c,:p,:t)'),
+                              dict(a=action,r=ref_id,c=context_id,p=dumps(payload),t=now()))
+        for wid in dict.fromkeys(ids or []):
+            conn.execute(text('INSERT INTO event_workspaces(event_id,workspace_id) VALUES(:e,:w)'),dict(e=result.lastrowid,w=wid))

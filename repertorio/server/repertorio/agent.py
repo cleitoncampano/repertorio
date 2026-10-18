@@ -177,7 +177,7 @@ def interpret(query,vocab):
 
 
 def smart_search(lib,args,log=True):
-    if args.context_id:lib.context(args.context_id)
+    ids=lib.scope(args.workspace_ids,args.context_id)
     found,understood,terms=interpret(args.query,lib.meta('vocabulary',{}))
     params={}
     clauses=lib.filters(args.model_copy(update={'kind':args.kind or KINDS}),params)
@@ -216,16 +216,23 @@ def smart_search(lib,args,log=True):
     for n,(_,r,hits) in enumerate(page,args.offset+1):
         row=lib.db.one('''SELECT r.*,(SELECT a.id FROM assets a WHERE a.ref_id=r.id AND a.missing=0 AND a.role IN ('thumbnail','preview') ORDER BY CASE a.role WHEN 'thumbnail' THEN 0 ELSE 1 END,a.id LIMIT 1) AS thumbnail
             FROM refs r WHERE r.id=:id''',id=r['id'])
-        items.append({'n':n,**lib.summary(row),'matched_by':hits})
+        items.append({'n':n,**lib.scoped_summary(row,ids,state=args.state),'matched_by':hits})
     if log and args.context_id:
         with lib.db.engine.begin() as conn:
             lib.db.log(conn,'references_searched',context_id=args.context_id,query=args.query,total=len(kept))
     return dict(items=items,total=len(kept),offset=args.offset,limit=args.limit,understood=understood,text_terms=terms)
 
 
-def sheet_items(lib,ids):
+def sheet_items(lib,ids,workspace_ids=None,context_id=None):
+    scope=lib.scope(workspace_ids,context_id)
     rows={r['id']:r for r in lib.db.query('SELECT * FROM refs WHERE id IN (SELECT value FROM json_each(:ids))',ids=dumps(ids))}
-    return [{'n':n,**lib.summary(rows[i])} for n,i in enumerate(ids,1) if i in rows]
+    result=[]
+    for n,i in enumerate(ids,1):
+        if i in rows:
+            ref=lib.get(i,False,workspace_ids=scope)
+            if ref['state']=='published' and ref['ready'] and not ref['hidden'] and not ref.get('unavailable_by_parent'):
+                result.append({'n':n,**ref})
+    return result
 
 
 def font(bold,size):
@@ -247,8 +254,10 @@ def picture(lib,item):
     """Apresentação usa o primeiro slide visível: a miniatura do mapa é pequena e a prévia é uma faixa com todos."""
     a=None
     if item.get('kind')=='arquivo':
-        a=lib.db.one("""SELECT a.path FROM refs c JOIN assets a ON a.ref_id=c.id AND a.role='preview' AND a.missing=0
-            WHERE c.parent_id=:id AND c.hidden=0 AND c.state='published' ORDER BY CAST(json_extract(c.payload,'$.number') AS INTEGER) LIMIT 1""",id=item['id'])
+        params={'id':item['id']}
+        clause=lib.membership_clause(item['workspace_ids'],params,'published',alias='c')
+        a=lib.db.one(f"""SELECT a.path FROM refs c JOIN assets a ON a.ref_id=c.id AND a.role='preview' AND a.missing=0
+            WHERE c.parent_id=:id AND c.hidden=0 AND {clause} ORDER BY CAST(json_extract(c.payload,'$.number') AS INTEGER) LIMIT 1""",**params)
     a=a or lib.db.one("SELECT path FROM assets WHERE ref_id=:id AND missing=0 AND role IN ('thumbnail','preview') ORDER BY CASE role WHEN 'preview' THEN 0 ELSE 1 END,path,id LIMIT 1",id=item['id'])
     return Path(a['path']) if a else None
 

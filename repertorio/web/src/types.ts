@@ -1,6 +1,8 @@
-export type Reference={id:string;kind:string;title:string;origin:string;state:string;revision:number;ready:number;parent_id?:string;updated:string;description:string;idea:string;techniques:string[];intentions:string[];movements:string[];aesthetics:string[];strength:number;reusable:boolean|null;thumbnail?:string;url:string;format?:string;unclassified?:boolean;number?:number|null;matched_by?:string[]};
+export type Workspace={id:string;name:string;revision:number;deleted:string|null;references_count:number};
+export type Membership={workspace_id:string;name:string;state:string;membership_revision:number};
+export type Reference={workspace_id:string;workspace_ids:string[];membership_revision:number;memberships:Membership[];id:string;kind:string;title:string;origin:string;state:string;revision:number;ready:number;parent_id?:string;updated:string;description:string;idea:string;techniques:string[];intentions:string[];movements:string[];aesthetics:string[];strength:number;reusable:boolean|null;thumbnail?:string;url:string;format?:string;unclassified?:boolean;number?:number|null;matched_by?:string[]};
 export type Asset={id:string;role:string;mime:string;missing:number;url:string};
-export type Detail=Reference & {assets:Asset[];children:Reference[];related:Reference[];usage_notes:string;how?:string;html?:string;good_for?:string[];project_name?:string;source_reference_ids?:string[];unavailable_by_parent?:boolean};
+export type Detail=Reference & {workspaces:Membership[];assets:Asset[];children:Reference[];related:Reference[];usage_notes:string;how?:string;html?:string;good_for?:string[];project_name?:string;source_reference_ids?:string[];unavailable_by_parent?:boolean};
 export type Term={id:string;nome?:string;def:string;operacao?:string;pista?:string;html?:string};
 export type Vocabulary=Record<string,{itens:(Term|string)[]}>;
 export type GraphData={items:Reference[];vocabulary:Vocabulary};

@@ -30,7 +30,10 @@ def asset(conn, settings, rid, path, role, member=None):
     return aid
 
 
-def import_library(db):
+def import_library(db, workspace_id='pp-treta'):
+    from .workspaces import Workspaces
+    manager=Workspaces();manager.db=db
+    manager.workspace(workspace_id)
     root = db.settings.root
     index = list(read_jsonl(root / 'dados/indice.jsonl'))
     if not index:
@@ -43,6 +46,7 @@ def import_library(db):
             index.append({**d, 'doc': 'midia', 'unclassified': True, 'o_que': 'Mídia ainda sem classificação'})
     report = dict(inserted=0, updated=0, preserved=0, total=len(index), missing_assets=0)
     stamp = now()
+    inserted_ids=[]
     with db.engine.begin() as conn:
         existing = {r['id']: dict(r) for r in conn.execute(text('SELECT id,source_hash,curated,revision FROM refs')).mappings()}
         for source in index:
@@ -50,6 +54,9 @@ def import_library(db):
             d = {**fichas.get(rid, {}), **source}
             digest = hashlib.sha256(('schema-2:'+dumps(d)).encode()).hexdigest()
             old = existing.get(rid)
+            if old:
+                conn.execute(text('''INSERT OR IGNORE INTO workspace_references(workspace_id,ref_id,state,created,updated)
+                    SELECT :w,id,'published',:t,:t FROM refs WHERE id=:r'''),dict(w=workspace_id,t=stamp,r=rid))
             if old and (old['source_hash'] == digest or old['curated']):
                 report['preserved'] += 1
                 continue
@@ -73,6 +80,8 @@ def import_library(db):
                 report['updated'] += 1
             else:
                 conn.execute(text('INSERT INTO refs(id,kind,title,parent_id,origin,hidden,source_hash,payload,search_text,created,updated) VALUES(:id,:kind,:title,:parent,:origin,:hidden,:hash,:payload,:search,:t,:t)'),params)
+                conn.execute(text("INSERT INTO workspace_references(workspace_id,ref_id,state,created,updated) VALUES(:w,:r,'published',:t,:t)"),dict(w=workspace_id,r=rid,t=stamp))
+                inserted_ids.append(rid)
                 report['inserted'] += 1
             if d.get('imagem'):
                 asset(conn, db.settings, rid, d['imagem'], 'preview')
@@ -85,6 +94,15 @@ def import_library(db):
             if kind == 'midia' and d.get('origem',{}).get('arq'):
                 orig = d['origem']
                 asset(conn, db.settings, rid, root / '_originais/pptx' / orig['arq'], 'original', orig.get('parte'))
+        # Slides novos acompanham todos os vínculos da apresentação, inclusive as retiradas.
+        # O passe final também cobre índices que listam o slide antes da apresentação.
+        conn.execute(text('''DELETE FROM workspace_references WHERE ref_id IN
+            (SELECT r.id FROM refs r WHERE r.id IN (SELECT value FROM json_each(:ids))
+             AND EXISTS(SELECT 1 FROM workspace_references pm WHERE pm.ref_id=r.parent_id))'''),dict(ids=dumps(inserted_ids)))
+        conn.execute(text('''INSERT INTO workspace_references(workspace_id,ref_id,state,detached,created,updated)
+            SELECT pm.workspace_id,r.id,'published',pm.detached,:t,:t FROM refs r
+            JOIN workspace_references pm ON pm.ref_id=r.parent_id WHERE r.id IN (SELECT value FROM json_each(:ids))'''),
+            dict(ids=dumps(inserted_ids),t=stamp))
         for name, file in [('vocabulary','dados/vocabulario.json'),('fonts','dados/fontes.json')]:
             if (root / file).exists():
                 conn.execute(text('INSERT OR REPLACE INTO meta(key,value) VALUES(:k,:v)'),dict(k=name,v=(root/file).read_text()))
@@ -102,5 +120,5 @@ def import_library(db):
         conn.execute(text('INSERT OR REPLACE INTO meta(key,value) VALUES(:k,:v)'),dict(k='principles',v=dumps(principles)))
         report['missing_assets'] = conn.execute(text('SELECT COUNT(*) FROM assets WHERE missing=1')).scalar()
         conn.execute(text('INSERT OR REPLACE INTO meta(key,value) VALUES(:k,:v)'),dict(k='import_report',v=dumps({**report,'at':stamp})))
-        db.log(conn,'library_imported',**report)
+        db.log(conn,'library_imported',workspace_ids=[workspace_id],**report)
     return report

@@ -7,6 +7,7 @@ class Model(BaseModel):
 
 
 class Search(Model):
+    workspace_ids: list[str] = Field(default_factory=list, max_length=50)
     query: str = Field(default='', max_length=500)
     kind: str = ''
     intention: str = ''
@@ -32,10 +33,13 @@ class AgentSearch(Search):
 
 class Sheet(Model):
     ids: list[str] = Field(min_length=1, max_length=24)
+    workspace_ids: list[str] = Field(default_factory=list, max_length=50)
+    context_id: str | None = None
 
 
 class StartContext(Model):
     project_id: str
+    workspace_ids: list[str] = Field(min_length=1, max_length=50)
     demand: str = Field(min_length=3, max_length=3000)
 
 
@@ -60,6 +64,7 @@ class ReferenceData(Model):
 
 class Register(Model):
     context_id: str
+    target_workspace_ids: list[str] = Field(min_length=1, max_length=50)
     request_key: str = Field(min_length=6, max_length=180)
     data: ReferenceData
     files: list[str] = Field(min_length=1, max_length=60)
@@ -74,8 +79,31 @@ class Update(Model):
 
 
 class StateChange(Model):
-    expected_revision: int = Field(ge=1)
+    workspace_id: str
+    expected_membership_revision: int = Field(ge=1)
     state: Literal['published', 'pending', 'trashed']
+    context_id: str | None = None
+    user_requested: bool = False
+
+
+class Workspace(Model):
+    name: str = Field(min_length=1, max_length=120)
+
+
+class WorkspaceUpdate(Workspace):
+    expected_revision: int = Field(ge=1)
+
+
+class WorkspaceState(Model):
+    expected_revision: int = Field(ge=1)
+    deleted: bool
+
+
+class ReferenceWorkspaces(Model):
+    source_workspace_id: str
+    target_workspace_ids: list[str] = Field(min_length=1, max_length=50)
+    expected_membership_revision: int = Field(ge=1)
+    move: bool = False
     context_id: str | None = None
     user_requested: bool = False
 

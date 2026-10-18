@@ -1,6 +1,6 @@
 # Repertório
 
-Biblioteca visual local compartilhada entre seus projetos e agentes. O mapa mantém as operações do olhar, técnicas e referências do PPTRETA; o serviço central persiste curadoria, buscas, seleções e novas criações.
+Biblioteca visual local organizada em espaços e compartilhada entre seus projetos e agentes. O mapa mantém as operações do olhar, técnicas e referências do PPTRETA; o serviço central persiste curadoria, buscas, seleções e novas criações.
 
 ## Abrir
 
@@ -33,12 +33,22 @@ Primeira instalação em outro ambiente, com Python 3.12, uv, Node.js >=22.12 e 
 
 O frontend compilado é servido pelo FastAPI. Os originais e o protótipo continuam nos locais anteriores. O banco e as novas criações ficam em `repertorio/.runtime/`, fora do versionamento.
 
+## Espaços de trabalho
+
+O seletor **Espaços**, no canto esquerdo, permite criar, entrar, renomear, excluir e restaurar espaços. O nome atual aparece no cabeçalho. Novos espaços começam vazios; todo o acervo anterior ficou em **PP Treta**, cujo ID é `pp-treta`.
+
+Uma referência pode aparecer em vários espaços sem duplicar a ficha nem os arquivos. Alterar título, descrição ou classificação atualiza todos os espaços. Publicação e lixeira são independentes: excluir de A preserva a referência em B. Pelo painel da referência, use **Adicionar ao espaço** ou **Mover para o espaço**. Mover retira apenas do espaço de origem. Apresentações levam seus slides.
+
+Espaços excluídos ficam disponíveis para restauração no seletor. Os arquivos e as referências dos demais espaços são preservados. Vocabulário, princípios criativos e fontes continuam compartilhados.
+
+Os agentes precisam receber os espaços explicitamente. Exemplo: “Use os espaços GrowMate e PP Treta como inspiração”. Se você não indicar, o agente deve perguntar. O espaço aberto no app não muda o contexto do agente. Ao incorporar o resultado, indique também os espaços de destino.
+
 ## Como usar
 
 - Explore o mapa com arraste e zoom. Clique nas operações, técnicas ou imagens para investigar suas relações.
 - Busque por palavras e refine por intenção, origem, movimento, formato e estética. A lista oferece navegação por teclado.
 - O painel mostra princípio criativo, prévias, slides, relações, condições de uso conhecidas e o contexto disponibilizado ao agente.
-- **Excluir referência** envia à Lixeira, com Desfazer. A remoção de uma apresentação também a retira das buscas de seus slides; os originais e mídias compartilhadas não são apagados.
+- **Excluir deste espaço** envia à Lixeira daquele espaço, com Desfazer. A remoção de uma apresentação também a retira das buscas de seus slides; os originais e mídias compartilhadas não são apagados.
 - **Entradas** contém sugestões espontâneas. Pedidos explícitos de incorporação são publicados depois do processamento.
 - **Escolhas** mostra as referências que o agente separou para cada pedido. Aprove, corte e comente: o agente lê a revisão com `get_pack` antes de criar.
 - **Atividade** registra alterações e consultas por demanda. Trabalhos interrompidos podem ser tentados novamente.
@@ -81,17 +91,19 @@ Depois, abra uma nova sessão e peça: **“Busque no Repertório referências p
 
 | Ferramenta | Uso |
 |---|---|
-| `start_context` | Recebe `project_id` e `demand`; retorna um `id` de contexto independente |
+| `start_context` | Recebe `project_id`, `demand` e `workspace_ids`; retorna um `id` de contexto independente |
 | `search_references` | Recebe `request` com `query` em português comum, `context_id` e filtros opcionais. Frases conhecidas viram intenção, técnica, movimento ou estética (`understood`); o resto é buscado no texto. Sem `kind`, deixa mídias soltas de fora. `per_group` (padrão 1) limita peças da mesma apresentação. Devolve também uma prancha numerada (`contact_sheet`, padrão ligado) |
-| `get_reference` | Recebe `reference_id`; `include_image: true` inclui imagem raster no resultado MCP |
+| `get_reference` | Recebe `reference_id` e `context_id` ou `workspace_ids`; `include_image: true` inclui imagem raster no resultado MCP |
 | `build_inspiration_pack` | Recebe `request` com contexto, título, IDs e justificativa; guarda versões selecionadas e devolve `review_url` para a tela Escolhas |
 | `get_pack` | Recebe `pack_id`; devolve a seleção com a revisão do usuário em cada referência (`approved`, `cut` ou sem resposta, e comentário) |
-| `register_reference` | Recebe `request` com arquivos, ficha e intenção de publicação; retorna uma operação |
+| `register_reference` | Recebe `request` com arquivos, ficha, `target_workspace_ids` e intenção de publicação; retorna uma operação |
 | `update_reference` | Recebe ID e `request` com contexto, `expected_revision` e ficha completa |
-| `set_reference_state` | Recebe ID e `request` com revisão e estado: `published`, `pending` ou `trashed` |
+| `set_reference_state` | Recebe ID e `request` com revisão e espaço e `expected_membership_revision`, com estado `published`, `pending` ou `trashed` |
 | `get_operation` | Recebe `operation_id`; `retry: true` tenta novamente um processamento com falha |
 
-Recursos MCP: `repertorio://projects`, `repertorio://vocabulary`, `repertorio://fonts`, `repertorio://principles/narrativa`, `repertorio://principles/direcao-de-arte`, `repertorio://contexts/{id}` e `repertorio://packs/{id}`.
+Novas ferramentas MCP: `list_workspaces`, `create_workspace`, `rename_workspace`, `set_workspace_state` e `set_reference_workspaces`. Excluir/restaurar um espaço e vincular/mover referências pelo agente exigem `user_requested=true`. Vínculos existentes são compartilhados sem envio de arquivos.
+
+Recursos MCP: `repertorio://workspaces`, `repertorio://projects`, `repertorio://vocabulary`, `repertorio://fonts`, `repertorio://principles/narrativa`, `repertorio://principles/direcao-de-arte`, `repertorio://contexts/{id}` e `repertorio://packs/{id}`.
 
 Para inspeção visual de outros slides, obtenha a ficha do slide pelo ID listado nos filhos. A resposta inicial inclui até 12 filhos e 8 resumos de transição para limitar o contexto; a interface permite explorar todos.
 
@@ -102,6 +114,7 @@ O agente inicia um contexto e envia uma ficha como esta (os valores de classific
 ```json
 {
   "context_id": "ID_RETORNADO_POR_START_CONTEXT",
+  "target_workspace_ids": ["pp-treta"],
   "request_key": "carrossel-christensen-v1",
   "user_requested": true,
   "files": ["saida/carrossel.pdf"],
@@ -133,15 +146,17 @@ HTML e demais originais são entregues como download, não executados no domíni
 ### CLI e API
 
 ```sh
-./repertorio/run.sh search "abertura com impacto" --prancha
-./repertorio/run.sh get '284-reel-cerebro-3d'
-./repertorio/run.sh context PROJECT_ID "Apresentação comercial"
+./repertorio/run.sh workspaces
+./repertorio/run.sh create-workspace "GrowMate"
+./repertorio/run.sh search "abertura com impacto" --workspace pp-treta --prancha
+./repertorio/run.sh get '284-reel-cerebro-3d' --workspace pp-treta
+./repertorio/run.sh context PROJECT_ID "Apresentação comercial" --workspace pp-treta
 ./repertorio/run.sh register /tmp/envio.json
 ./repertorio/run.sh operation OPERATION_ID
 ./repertorio/run.sh doctor
 ```
 
-A API está documentada em **http://127.0.0.1:8766/docs**. Browser, CLI e MCP usam a mesma camada de serviço. Não há busca vetorial nem API de IA paga embutida; o agente do harness interpreta o pedido e escolhe consultas complementares.
+A API está documentada em **http://127.0.0.1:8766/docs**. Browser, CLI e MCP usam a mesma camada de serviço. Grafo, contadores, demandas, operações, atividade e prévias recebem `workspace_id`; buscas recebem `workspace_ids` ou `context_id`. A ficha mantém `revision` editorial e o vínculo mantém `membership_revision`. A alteração de estado exige `workspace_id` e `expected_membership_revision`. Chamadas sem repertório explícito retornam 422; links antigos da interface continuam usando PP Treta. Não há busca vetorial nem API de IA paga embutida; o agente do harness interpreta o pedido e escolhe consultas complementares.
 
 ## Persistência, importação e recuperação
 
@@ -161,7 +176,7 @@ O histórico (git) guarda código, textos, dados e as apresentações de `_saida
 ### Importação e restauração manual
 
 ```sh
-./repertorio/run.sh import
+./repertorio/run.sh import --workspace pp-treta
 ./repertorio/run.sh backup /caminho/backup-repertorio.zip
 # Encerre o serviço antes de restaurar:
 ./repertorio/run.sh restore /caminho/backup-repertorio.zip

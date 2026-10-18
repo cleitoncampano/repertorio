@@ -9,8 +9,8 @@ import {api,sized} from './api';
 // Resoluções do mapa: cada miniatura usa a menor que cobre o tamanho real na tela e melhora ao aproximar.
 const LEVELS=[128,256,512,1024];
 
-type Props={data:GraphData;selected:string|null;matches:string[]|null;technique:string;operation:string;theme:'dark'|'light';onSelect:(id:string)=>void;onTerm:(type:string,id:string)=>void;onClear:()=>void};
-export function Map({data,selected,matches,technique,operation,theme,onSelect,onTerm,onClear}:Props){
+type Props={workspaceId:string;data:GraphData;selected:string|null;matches:string[]|null;technique:string;operation:string;theme:'dark'|'light';onSelect:(id:string)=>void;onTerm:(type:string,id:string)=>void;onClear:()=>void};
+export function Map({workspaceId,data,selected,matches,technique,operation,theme,onSelect,onTerm,onClear}:Props){
  const container=useRef<HTMLDivElement>(null),cy=useRef<Core|null>(null);
  const panelInset=useRef(0);
  const framedMatches=useRef('');
@@ -51,7 +51,7 @@ export function Map({data,selected,matches,technique,operation,theme,onSelect,on
    ]});
   cy.current=instance;panelInset.current=0;
   instance.fit(undefined,instance.width()<760?30:72);
-  const saved=sessionStorage.getItem('repertorio-camera-v3');
+  const saved=sessionStorage.getItem('repertorio-camera-v3:'+workspaceId);
   if(saved){try{const c=JSON.parse(saved);if(Number.isFinite(c.zoom)&&Number.isFinite(c.pan?.x)&&Number.isFinite(c.pan?.y)){instance.zoom(c.zoom);instance.pan(c.pan);}}catch{/* use fitted view */}}
   setZoom(instance.zoom());
   let frame=0,lastZoom=0,settle=0;
@@ -92,7 +92,7 @@ export function Map({data,selected,matches,technique,operation,theme,onSelect,on
   };
   updateViewport();
   // As miniaturas de 128 px chegam todas num pedido só; resoluções maiores vêm uma a uma ao aproximar.
-  api<Record<string,{src:string;width:number;height:number}>>('/previews?w='+LEVELS[0]).then(previews=>{
+  api<Record<string,{src:string;width:number;height:number}>>('/previews?workspace_id='+encodeURIComponent(workspaceId)+'&w='+LEVELS[0]).then(previews=>{
    if(instance.destroyed())return;
    instance.batch(()=>instance.nodes('[type="reference"]').forEach(node=>{
     const preview=previews[node.data('preview')];if(!preview)return;
@@ -110,11 +110,11 @@ export function Map({data,selected,matches,technique,operation,theme,onSelect,on
    if(item&&window.matchMedia('(hover: hover)').matches){const p=e.target.renderedPosition();setHover({item,x:Math.max(12,Math.min(p.x+22,instance.width()-260)),y:Math.max(64,Math.min(p.y+18,instance.height()-270))});}
   });
   instance.on('mouseout','node',e=>{setHover(null);e.target.removeClass('hovered');if(container.current)container.current.style.cursor='grab';});
-  instance.on('viewport',()=>{setHover(null);setZoom(instance.zoom());sessionStorage.setItem('repertorio-camera-v3',JSON.stringify({zoom:instance.zoom(),pan:{x:instance.pan().x+panelInset.current,y:instance.pan().y}}));cancelAnimationFrame(frame);frame=requestAnimationFrame(updateViewport);});
+  instance.on('viewport',()=>{setHover(null);setZoom(instance.zoom());sessionStorage.setItem('repertorio-camera-v3:'+workspaceId,JSON.stringify({zoom:instance.zoom(),pan:{x:instance.pan().x+panelInset.current,y:instance.pan().y}}));cancelAnimationFrame(frame);frame=requestAnimationFrame(updateViewport);});
   const resize=new ResizeObserver(()=>instance.resize());resize.observe(container.current);
   if(!reduced)container.current.animate([{opacity:.5},{opacity:1}],{duration:400});
   return()=>{cancelAnimationFrame(frame);clearTimeout(settle);resize.disconnect();for(const img of images.values())img.onload=null;instance.destroy();cy.current=null;};
- },[data]);
+ },[data,workspaceId]);
  const panelOpen=!!(selected||technique||operation||matches);
  useEffect(()=>{
   const c=cy.current;if(!c)return;

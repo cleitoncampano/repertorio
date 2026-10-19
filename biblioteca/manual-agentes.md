@@ -31,7 +31,7 @@ http://127.0.0.1:8766. Ele fica sempre ligado no Mac do dono do projeto (ícone 
 2. Abra um contexto no Repertório (`start_context`) e busque referências por momento da história (`search_references`). Olhe a prancha que vem na resposta e abra só as fichas promissoras (`get_reference`).
 3. Guarde a seleção com o motivo (`build_inspiration_pack`) e mostre ao usuário o `review_url`: na tela **Escolhas** ele aprova, corta e comenta cada referência.
 4. Leia a revisão com `get_pack`. Use as aprovadas, descarte as cortadas, siga os comentários.
-5. Crie em HTML com o `kit/`, confira com `ferramentas/ver.py` e entregue em `_saida/<nome-do-trabalho>/`.
+5. Crie no projeto de destino, copie o motor do `kit/` quando necessário e confira com `ferramentas/ver.py`. Rascunhos, imagens, prévias e entregas ficam na pasta daquela produção, fora do Repertório.
 6. Se o usuário pedir, incorpore o resultado ao acervo com `register_reference` (`user_requested=true`).
 
 ## Por onde começar
@@ -44,7 +44,7 @@ http://127.0.0.1:8766. Ele fica sempre ligado no Mac do dono do projeto (ícone 
 | criar uma apresentação | `biblioteca/processo.md` (o passo a passo inteiro) |
 | entender o que tem aqui | `biblioteca/LEIA-PRIMEIRO.md` |
 | ver o vocabulário (intenções, técnicas, movimentos) | `python3 -I ferramentas/buscar.py --vocab` |
-| referências para o roteiro inteiro de uma vez | `python3 -I ferramentas/roteiro.py roteiro.md` |
+| referências para o roteiro inteiro de uma vez | `python3 -I ferramentas/roteiro.py roteiro.md --saida /projeto-de-destino/producao/referencias` |
 | usar o motor HTML | `kit/LEIA-ME.md` e `kit/demo.html` |
 | fontes sem depender de internet | `python3 -I ferramentas/fontes_google.py "Família" --pasta <pasta>/fontes` |
 | conferir o que eu fiz | `python3 -I ferramentas/ver.py arquivo.html --passos --transicoes` e abrir as pranchas geradas |
@@ -83,8 +83,11 @@ As miniaturas às vezes não mostram o efeito real (são fotos estáticas do Mac
 | `_catalogo/` | para humanos: catálogo de slides, mapa antigo, miniaturas e pranchas por arquivo |
 | `_referencias/` | estudos completos e imagens das referências externas (o resumo está em `biblioteca/principios/`) |
 | `_originais/` | os arquivos do curso: `pptx/`, `canva/`, `fontes/`, `curso/` (12 GB, fora do git) |
-| `_saida/` | o que foi criado com a biblioteca (apresentações, buscas, testes) |
-| `docs/` | imagens do README |
+| `app/.runtime/search-previews/` | pranchas temporárias de busca, fora do Git |
+| `app/.runtime/qa/` | evidências da manutenção do próprio aplicativo, fora do Git |
+| `docs/` | decisões, operação, imagens do README e checkpoints do acervo |
+
+Criações, seus arquivos de apoio e checkpoints de produção ficam no projeto de destino. Para Growmate, use `/Users/cleiton/Documents/Desenvolvimento/growmate/growmate-marketing`. A palestra existente está em `apresentacoes/palestra-cx-ia/` daquele projeto. Não crie novas entregas em `_saida/` desta biblioteca.
 
 ## Como os dados se ligam
 

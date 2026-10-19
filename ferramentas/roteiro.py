@@ -5,8 +5,8 @@ Formato do roteiro (o mesmo de biblioteca/principios/narrativa.md, seção 8), u
   n | INTENÇÃO | batida (o que a plateia entende) | conector | fala | visual
 Linhas de tabela markdown com essas colunas também servem. Só as duas primeiras colunas e a batida são obrigatórias.
 
-Uso: python3 -I ferramentas/roteiro.py roteiro.md [--saida pasta] [--forca 4] [-n 4]
-Gera em <pasta> (padrão: _saida/roteiro/): uma prancha por slide (slide-NN.jpg) e referencias.md com ids, notas e ideias.
+Uso: python3 -I ferramentas/roteiro.py roteiro.md --saida pasta [--forca 4] [-n 4]
+Gera na pasta explícita da produção: uma prancha por slide (slide-NN.jpg) e referencias.md com ids, notas e ideias.
 """
 import argparse
 import json
@@ -65,7 +65,7 @@ def melhores(idx, intencao, texto, doc, forca, n):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('roteiro')
-    ap.add_argument('--saida', default=os.path.join(RAIZ, '_saida', 'roteiro'))
+    ap.add_argument('--saida', required=True, help='pasta de referências da produção no projeto de destino')
     ap.add_argument('--forca', type=int, default=4)
     ap.add_argument('-n', type=int, default=4, help='slides do PPTRETA por linha (mais 2 referências externas)')
     a = ap.parse_args()

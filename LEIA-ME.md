@@ -2,7 +2,7 @@
 
 ## Aplicação Repertório
 
-**Repertório** é o projeto e sua aplicação local, com mapa interativo, busca compartilhada, curadoria, histórico e conexão MCP para agentes. **PPT Treta** e **Growmate** são espaços dentro dele. O software fica em `app/`; os acervos e as criações ficam nas pastas descritas no [mapa da organização](docs/ORGANIZACAO.md).
+**Repertório** é o projeto e sua aplicação local, com mapa interativo, busca compartilhada, curadoria, histórico e conexão MCP para agentes. **PPT Treta** e **Growmate** são espaços dentro dele. O software fica em `app/`; o acervo está organizado conforme o [mapa da organização](docs/ORGANIZACAO.md). As criações ficam nos projetos de destino.
 
 - Abra `app/Abrir Repertório.command` ou execute `./app/run.sh serve`.
 - Acesse **http://127.0.0.1:8766**.
@@ -12,12 +12,11 @@ O protótipo e os scripts descritos abaixo continuam disponíveis. A curadoria f
 
 ## No dia a dia
 
-1. Abra o terminal nesta pasta com o seu harness (Claude Code, Codex, OpenCode, Antigravity).
-   Ele lê sozinho o manual (`AGENTS.md`) e já sabe o que existe aqui.
+1. Abra o projeto em que vai criar com o seu harness (Claude Code, Codex, OpenCode, Antigravity). Para materiais da Growmate, use `/Users/cleiton/Documents/Desenvolvimento/growmate/growmate-marketing`.
+   O projeto consulta o Repertório pelo MCP. O cadastro e as instruções são feitos uma vez com `./app/run.sh connect /caminho/do/projeto --write-instructions`, a partir desta biblioteca.
 2. Peça do seu jeito, por exemplo:
    > Quero uma apresentação para uma palestra sobre X, para tal público, 20 minutos. A estrutura é esta: ... Minha identidade visual: cores ..., fonte ..., logo em ...
-3. O modelo monta a história, busca referências no acervo, escolhe os movimentos e entrega um arquivo HTML que roda no navegador
-   (seta para avançar, tecla F para tela cheia) e vira PDF.
+3. O modelo monta a história, busca referências no acervo, apresenta a seleção para sua revisão e cria no projeto de destino. Para apresentações, entrega um arquivo HTML que roda no navegador (seta para avançar, tecla F para tela cheia) e vira PDF. Os arquivos de trabalho e as entregas permanecem naquele projeto.
 
 Dica: se a sessão não parecer ter lido o manual, diga "leia o AGENTS.md antes de começar".
 

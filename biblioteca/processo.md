@@ -1,7 +1,7 @@
 # Processo: do pedido à apresentação pronta
 
 Use este roteiro sempre que pedirem uma apresentação (palestra, pitch, aula, proposta), um site ou um vídeo com cara de apresentação.
-Cada etapa diz o que ler, o que rodar e o que entregar. Os comandos rodam da raiz do projeto.
+Cada etapa diz o que ler, o que rodar e o que entregar. A produção fica no projeto de destino, com roteiro, imagens, prévias, validações e arquivos finais. Os comandos abaixo são utilitários da raiz do Repertório: informe caminhos do projeto de destino ou invoque os utilitários pelo caminho absoluto. `<pasta>` sempre representa a pasta daquela produção, fora desta biblioteca.
 
 ## 0. Entenda o pedido (2 minutos)
 
@@ -62,7 +62,7 @@ Ritmo: Morph para continuidade, corte seco (`data-trans="corte"`) para virada, m
 
 ## 6. Construa com o kit
 
-1. Crie a pasta da apresentação e copie `kit/modelo.html`, `kit/motor.css` e `kit/motor.js` para ela.
+1. Crie a pasta da apresentação no projeto de destino e copie `kit/modelo.html`, `kit/motor.css` e `kit/motor.js` para ela. Não use `_saida/` do Repertório.
 2. Fontes offline: `python3 -I ferramentas/fontes_google.py "Família 1" "Família 2" --pasta <pasta>/fontes` e use `<link rel="stylesheet" href="fontes/fontes.css">`.
 3. Troque os tokens de identidade no topo do modelo. Manual do motor: `kit/LEIA-ME.md`; todos os recursos em `kit/demo.html`.
 4. Slides em pixels fixos de 1920x1080 (ou 1080x1920), `position:absolute`, texto real. Se uma ficha falar em vw, 1vw = 19,2 px.

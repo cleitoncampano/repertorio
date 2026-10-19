@@ -65,7 +65,7 @@ Cadastre cada pasta uma vez. Este comando apenas registra a pasta; `--write-inst
 ./app/run.sh connect /caminho/growmate-comercial --write-instructions
 ```
 
-A saída inclui o `project_id` e os exemplos de configuração. Não é preciso mover projetos ou conversas para esta aplicação.
+A saída inclui o `project_id` e os exemplos de configuração. Rascunhos, imagens, prévias e arquivos finais ficam no projeto cadastrado. O Repertório mantém a biblioteca e sua curadoria; a incorporação de uma criação é uma decisão explícita do usuário. Não mova projetos ou conversas para esta aplicação.
 
 No Codex:
 
@@ -175,7 +175,7 @@ git clone "…/Backups/Repertório/pptreta-DATA.bundle" pptreta   # recupera o p
 ./app/run.sh restore "…/Backups/Repertório/repertorio-DATA.zip"  # recupera a curadoria (serviço parado)
 ```
 
-O histórico (git) guarda código, textos, dados e as apresentações de `_saida`. Os 12 GB de `_originais/` e as imagens geradas a partir deles ficam fora (ver `.gitignore`); numa migração, copie `_originais/` à parte.
+O histórico (git) guarda código, textos e dados do acervo. As produções são versionadas e preservadas pelos respectivos projetos de destino. Os 12 GB de `_originais/` e as imagens geradas a partir deles ficam fora (ver `.gitignore`); numa migração, copie `_originais/` à parte.
 
 ### Importação e restauração manual
 
@@ -210,7 +210,7 @@ pnpm exec playwright install chromium
 pnpm test:e2e
 ```
 
-Para usar um Chromium já instalado, informe `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. As capturas e medições da validação local estão em `_saida/repertorio-qa/` na raiz do acervo.
+Para usar um Chromium já instalado, informe `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. Novas capturas e medições da validação local ficam em `app/.runtime/qa/` ou em uma pasta temporária. Caminhos `_saida/repertorio-qa/` nas validações anteriores são registros históricos.
 
 O frontend de desenvolvimento usa a porta 5173 e encaminha `/api` para 8766. Python usa SQLAlchemy/Alembic, SQLite WAL e FTS5; a interface usa React, TypeScript, Radix, Tailwind, TanStack Query e Cytoscape. As dependências estão fixadas em `requirements.lock` e `web/pnpm-lock.yaml`.
 

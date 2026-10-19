@@ -1,5 +1,13 @@
 # Validação da primeira versão
 
+## Produção externa e transferência em 19/10/2026
+
+- Produções mantidas transferidas para `growmate-marketing/apresentacoes/palestra-cx-ia/`: 298 arquivos de origem inventariados, 301 arquivos preparados e conferidos no destino. HTMLs, PDFs, fontes e imagens preservados por SHA-256. Cópias da origem removidas apenas depois da conferência e do push privado da produção (`9f3ab50`).
+- Biblioteca preservada: 15.662 referências, 26.235 arquivos, nenhum vínculo de arquivo apontando para `_saida/`. Apenas o cadastro real do Growmate Marketing foi acrescentado aos projetos, mantendo contextos e escolhas anteriores.
+- 37 testes Python aprovados. CLI conferida em diretório temporário: preserva instruções existentes, salva pranchas no runtime respeitando `REPERTORIO_HOME` e exige destino explícito no roteiro.
+- Oito aberturas no Chromium, comparando os quatro HTMLs antes/depois: 24 slides e 24 falas em cada arquivo, imagens decodificadas, sem erros JavaScript, recursos faltantes ou requisições externas. Capas da versão final idênticas em pixels. Original com cinco ou seis pixels de suavização diferentes, variação máxima de um nível por canal, sem mudança de layout.
+- Pranchas existentes movidas para `app/.runtime/search-previews/`; `_saida/` retirada. Evidências desta mudança em `app/.runtime/qa/producao-externa/`, fora do Git. Nenhuma alteração visual, recompilação ou reinício do aplicativo.
+
 ## Organização do projeto em 19/10/2026
 
 Raiz renomeada para `repertorio/`, software movido para `app/` e espaço existente renomeado para PPT Treta. Caminhos do banco atualizados com backup, sem reimportar o acervo. Preservados todos os IDs e vínculos, 15.662 referências e 26.235 arquivos; nenhum arquivo ausente. Comando `relocate` recusa serviço ativo e desfaz a transação quando o destino está incompleto. A importação reutiliza os IDs dos arquivos já cadastrados após a mudança.

@@ -1,5 +1,13 @@
 # Retomada do projeto
 
+## Acervo e produção separados em 19/10/2026
+
+A pedido do Cleiton, as duas apresentações mantidas foram transferidas para `/Users/cleiton/Documents/Desenvolvimento/growmate/growmate-marketing/apresentacoes/palestra-cx-ia/`. Organização: `original/`, `final/`, `ferramentas/`, `historico/`, `project.md` e inventário `TRANSFERENCIA.json`. Foram inventariados 298 arquivos de origem e conferidos os 301 arquivos preparados no destino, incluindo as imagens e evidências locais que estavam fora do Git. HTMLs, PDFs, fontes e imagens preservados por SHA-256. As variantes excluídas pelo usuário não foram restauradas. Produção salva no GitHub privado do marketing, commit `9f3ab50`, usando checkout isolado para preservar alterações locais e a fila do agendador.
+
+O projeto Growmate Marketing está conectado ao MCP como `growmate-marketing-15e1a6`, com as instruções anteriores preservadas. As 15.662 referências, os 26.235 arquivos do acervo e os contextos antigos permanecem no Repertório. A pasta `_saida/` foi retirada; as 24 prévias de busca foram levadas para `app/.runtime/search-previews/`. Novas evidências do aplicativo ficam em `app/.runtime/qa/` ou em pasta temporária. O roteiro exige `--saida` explícita no projeto de destino. Instruções e manuais atualizados para produzir fora desta biblioteca.
+
+Validação: 37 testes Python aprovados, fluxo da CLI conferido em diretório temporário, oito aberturas dos quatro HTMLs antes/depois sem erros, com 24 slides e 24 falas por arquivo. Capas da versão final idênticas em pixels; capas da original diferem apenas em até seis pixels de suavização, um nível por canal. Evidências em `app/.runtime/qa/producao-externa/`. Próxima ação: abrir o Growmate Marketing para criar; consultar o Repertório pelo MCP e incorporar resultados apenas quando solicitado. Não restaurar `_saida/` nem mover as pastas preexistentes dos gateways nesta tarefa.
+
 ## Projeto reorganizado como Repertório em 19/10/2026
 
 Raiz canônica: `/Users/cleiton/Documents/Desenvolvimento/repertorio`. O software saiu da subpasta `repertorio/` para `app/`. PPT Treta é um espaço do acervo, com o mesmo ID `pp-treta`; Growmate continua independente. O projeto mantém o ID `repert-rio-87e17c`. Links locais ocultos preservam os caminhos antigos, sem duplicar pastas ou arquivos.
@@ -10,7 +18,7 @@ Validação: 37 testes Python, 34 testes unitários da interface, 25 testes de n
 
 ## Firefly autônomo e anúncio atualizado em 18/10/2026
 
-Imagem do anúncio no celular do slide 15 gerada e baixada no Adobe Firefly, sem clique do usuário. HTML editável, HTML offline e PDF atualizados em `_saida/palestra-cx-ia-codex/`; recorte e página 15 conferidos. As duas versões HTML produziram capturas idênticas, sem erros. Controle reutilizável em `ferramentas/firefly.py`, operação e correção do foco preso em `docs/FIREFLY.md`. Prompt e procedência salvos na entrega. Próxima ação: usar esse controle para novas imagens quando o usuário pedir.
+Imagem do anúncio no celular do slide 15 gerada e baixada no Adobe Firefly, sem clique do usuário. HTML editável, HTML offline e PDF atualizados em `/Users/cleiton/Documents/Desenvolvimento/growmate/growmate-marketing/apresentacoes/palestra-cx-ia/final/`; recorte e página 15 conferidos. As duas versões HTML produziram capturas idênticas, sem erros. Controle reutilizável em `ferramentas/firefly.py`, operação e correção do foco preso em `docs/FIREFLY.md`. Prompt e procedência salvos na entrega. Próxima ação: usar esse controle para novas imagens quando o usuário pedir.
 
 ## Revisão de desempenho concluída em 18/10/2026
 
@@ -54,19 +62,9 @@ Atualizado em 18/10/2026 (America/Sao_Paulo).
 
 ## Objetivo atual
 
-Finalização visual da primeira parte da palestra “Você compraria de você mesmo?”, autorizada pelo usuário com liberdade para escolher recursos dos carrosséis. Entrega consolidada em `_saida/palestra-cx-ia-codex/`.
+Manter o Repertório como biblioteca compartilhada, curadoria e aplicativo. Novas criações e seus arquivos de trabalho ficam no projeto de destino, consultando o acervo pelo MCP.
 
-## Retomada da palestra
-
-- Contexto e conversa anterior recuperados. O pedido original era melhorar apenas o visual, preservando texto, falas e storytelling da primeira parte.
-- Entrega oficial: `_saida/palestra-cx-ia-codex/palestra-arquivo-unico.html`, independente e offline, e `palestra.pdf`, com 24 páginas. A fonte editável é `palestra.html` na mesma pasta.
-- Base editorial preservada, com as oito imagens geradas. Os 185 trechos, as 24 falas, os passos e os grupos de foco continuam idênticos ao roteiro original.
-- Aplicados percurso contínuo, estações com ícones, cartões, círculos de descoberta e marcadores de foco derivados dos carrosséis. Corrigido o corte e a sobreposição do slide 7.
-- Conferidos os 24 slides, 53 estados de clique, 23 transições, notas, teclado, tela cheia e janela P. HTML único aberto numa pasta isolada sem requisições externas; cinco slides idênticos em comparação de pixels. PDF renderizado com Poppler e 24 páginas revisadas. Evidências locais em `_ver/`; resultados e hashes em `VALIDACAO.json`.
-- Seleção atual: `ee7c76be-312c-4896-a618-e256fed3555f`, no contexto existente `ca3449a4-fc0e-431b-9dac-9709490c6888`. O usuário delegou a escolha nesta rodada. A referência Vogue, cortada na revisão anterior, continua descartada.
-- O tempo da fala ainda depende de ensaio do apresentador. A janela P inclui cronômetro.
-- O roteiro existente é só a primeira parte. A palestra inteira ainda precisa dos blocos de IA, conexão com CX, prática, cases e conclusão.
-- A visual-v2 contém acréscimos e mudanças de conteúdo, portanto não substitui automaticamente a editorial. Detalhes, evidências e próxima ação: `docs/RETOMADA-PALESTRA-CX-IA.md`.
+A palestra “Você compraria de você mesmo?” está no Growmate Marketing, em `apresentacoes/palestra-cx-ia/`. O checkpoint da produção é `project.md` naquela pasta. A primeira parte de 24 slides está pronta; a continuação depende da fala, dos cases e da duração. `docs/RETOMADA-PALESTRA-CX-IA.md` aponta para o novo local.
 
 ## Entregue
 
@@ -92,10 +90,12 @@ Finalização visual da primeira parte da palestra “Você compraria de você m
 
 Repertório é o projeto e o app de busca e curadoria de referências. PPT Treta e Growmate são espaços dentro dele. A criação segue roteiro, referências, revisão do usuário e conferência visual. A biblioteca real não recebe dados de demonstração.
 
-Há versões da palestra “Você compraria de você mesmo?”, com 24 slides. Existem alterações anteriores em `_saida/palestra-cx-ia-visual/`, variantes `palestra-cx-ia-visual-v2/` e `palestra-cx-ia-editorial/`, além de duas pastas externas de gateway. Preservar esse trabalho; ele não pertence à instalação das ferramentas.
+As duas versões da palestra mantidas pelo usuário foram transferidas para o Growmate Marketing, com imagens, fontes, histórico e evidências. As demais variantes foram excluídas pelo usuário antes desta organização e não devem ser restauradas. As duas pastas locais de gateway são alterações anteriores e não pertencem a esta transferência; preservá-las.
 
 ## Próxima ação
 
-Para apresentar a primeira parte, abrir o HTML único em `_saida/palestra-cx-ia-codex/`. A revisão visual e a exportação estão concluídas. Para avançar a palestra completa, receber ou recuperar a continuação da fala e definir os cases e a duração total. Detalhes em `docs/RETOMADA-PALESTRA-CX-IA.md`.
+Para novas peças da Growmate, abrir `/Users/cleiton/Documents/Desenvolvimento/growmate/growmate-marketing` e trabalhar na pasta daquela produção. O projeto está cadastrado no MCP como `growmate-marketing-15e1a6`; o espaço de inspiração é informado por demanda, sem inferir o espaço aberto no aplicativo.
 
-O repertório Growmate está incorporado e visível no grafo. Para novos materiais, consultar o catálogo e ler a revisão em Escolhas; preservar os créditos. O funcionamento automático do hook RTK em um Codex reiniciado e a economia total da assinatura ainda não foram medidos.
+Para apresentar ou continuar a palestra, consultar `apresentacoes/palestra-cx-ia/project.md` no Growmate Marketing. A entrega principal está em `final/palestra-arquivo-unico.html` dentro da produção.
+
+Para manter o acervo, usar este projeto. Novas evidências de manutenção ficam em `app/.runtime/qa/` ou em pasta temporária. Preservar as alterações anteriores dos gateways. O funcionamento automático do hook RTK em um Codex reiniciado e a economia total da assinatura ainda não foram medidos.

@@ -10,6 +10,8 @@ As referências compartilham um vocabulário criativo: o papel de cada peça na 
 
 Ele foi feito para trabalhar junto com agentes (Claude Code, Codex, OpenCode). O agente busca referências aqui, mostra o que escolheu e só cria depois da sua revisão. A regra é inspirar, não copiar: a identidade visual vem sempre de quem pede.
 
+As criações ficam no projeto a que pertencem. Por exemplo, uma capa de LinkedIn da Growmate é produzida em `growmate-marketing`, que consulta esta biblioteca pelo MCP. Rascunhos, imagens, prévias e arquivos finais ficam juntos naquele projeto. Uma criação só entra no acervo quando você pede sua incorporação.
+
 ![Mapa do Repertório com a apresentação "Cérebro" aberta no painel lateral](docs/mapa.jpg)
 
 ## O app
@@ -65,7 +67,7 @@ Sem o MCP, a mesma busca funciona pelo terminal: `./app/run.sh search "abertura 
 | `ferramentas/` | busca, roteiro, conferência visual e arquivo único, pelo terminal |
 | `_catalogo/` | catálogo de slides e mapa navegável do acervo |
 | `_referencias/` | estudos completos das referências externas (só os textos) |
-| `_saida/` | o que já foi criado com a biblioteca |
+| `app/.runtime/` | curadoria e dados internos do app, cache de buscas e evidências de manutenção, fora do Git |
 
 [AGENTS.md](AGENTS.md) é o manual que os agentes leem ao abrir a pasta. [LEIA-ME.md](LEIA-ME.md) explica o uso no dia a dia.
 

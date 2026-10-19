@@ -23,7 +23,7 @@ import unicodedata
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INDICE = os.path.join(RAIZ, 'dados', 'indice.jsonl')
-SAIDA = os.path.join(RAIZ, '_saida', 'buscas')
+SAIDA = os.path.join(os.path.expanduser(os.getenv('REPERTORIO_HOME', os.path.join(RAIZ, 'app', '.runtime'))), 'search-previews')
 
 
 def norm(s):

@@ -23,10 +23,8 @@ _catalogo/pranchas/
 _catalogo/mapa/m/
 _catalogo/mapa/r/
 
-# Saídas: as apresentações ficam; buscas e capturas de teste são descartáveis
-_saida/buscas/
-_saida/repertorio-qa/
-_saida/*/_ver/
+# As produções ficam nos projetos de destino. Cache e QA ficam em app/.runtime/.
+/_saida/
 
 # Trabalho intermediário das fichas: só as instruções
 dados/_trabalho/**

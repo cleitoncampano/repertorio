@@ -2,7 +2,7 @@ name: Repertorio local em Mac e Windows
 on:
   push:
     branches: [main]
-    paths: ['app/**', '.github/workflows/local.yml']
+    paths: ['app/server/**', 'app/tests/**', 'app/requirements.lock', 'app/setup*', 'app/run*', 'ferramentas/empacotar_produto.py', '.github/workflows/local.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -26,3 +26,20 @@ jobs:
       - run: uv venv app/.venv --python 3.12
       - run: uv pip sync --python ${{ matrix.python }} app/requirements.lock
       - run: ${{ matrix.python }} -m pytest app/tests -q
+      - name: Preparar instalação pelo PowerShell do Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force app/web/dist | Out-Null
+          Set-Content app/web/dist/index.html '<!doctype html><title>Teste de instalação</title>'
+          powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\app\setup.ps1
+          if ($LASTEXITCODE -ne 0) { throw 'A instalação Windows falhou.' }
+          powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\app\run.ps1 demo --home app\.demo-ci
+          if ($LASTEXITCODE -ne 0) { throw 'O iniciador Windows falhou.' }
+      - name: Preparar instalação pelo shell do Mac
+        if: runner.os == 'macOS'
+        run: |
+          mkdir -p app/web/dist
+          printf '<!doctype html><title>Teste de instalação</title>' > app/web/dist/index.html
+          ./app/setup.sh
+          ./app/run.sh demo --home app/.demo-ci

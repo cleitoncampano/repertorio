@@ -1,5 +1,11 @@
 # Retomada da palestra: Você compraria de você mesmo?
 
+## Anúncio atualizado pelo Firefly em 18/10/2026
+
+A foto da mulher no celular do slide 15 foi substituída por uma cena vertical com aluno e professor, gerada no Firefly Image 5 pela conta autenticada do usuário. Arquivo `img/anuncio-academia-firefly.png`, 896 × 1152 pixels; prompt e procedência na pasta oficial. HTML offline e PDF atualizados, com recorte e página 15 conferidos; versões editável e offline idênticas em pixels. O roteiro e os demais slides não foram alterados.
+
+A automação de geração e download funciona sem clique do usuário. Controle em `ferramentas/firefly.py`, detalhes em `docs/FIREFLY.md`. O bloqueio era a captura de foco de um aviso introdutório que já estava fechado. Próxima ação: novas gerações pelo mesmo fluxo, conforme o pedido do usuário.
+
 Atualizado em 18/10/2026. Após a recuperação do contexto, o usuário autorizou acrescentar recursos visuais dos carrosséis e finalizar. A primeira parte de 24 slides foi consolidada em `_saida/palestra-cx-ia-codex/`.
 
 ## Entrega oficial

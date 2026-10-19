@@ -19,7 +19,7 @@ O `palestra.pdf` contém uma página por slide, com todas as revelações visív
 
 Fotografias ilustrativas em preto e branco, papel claro, preto e coral. Os recursos dos carrosséis foram reconstruídos para esta fala: percurso contínuo, estações com ícones, cartões de momentos, círculos de descoberta e marcadores de foco. A procedência e as aplicações estão em `REFERENCIAS.md`.
 
-Os 185 trechos, as 24 falas, a ordem, os passos e os grupos de foco são iguais aos da apresentação original. O título e a legenda do slide 7 foram reposicionados para eliminar a sobreposição. As oito imagens geradas anteriormente foram mantidas; os prompts estão em `imagens.json`. São cenas fictícias e ilustrativas.
+Os 185 trechos, as 24 falas, a ordem, os passos e os grupos de foco são iguais aos da apresentação original. O título e a legenda do slide 7 foram reposicionados para eliminar a sobreposição. As oito imagens anteriores continuam no material. A fotografia do anúncio no celular do slide 15 foi substituída por uma imagem vertical gerada no Adobe Firefly, com aluno e professor. Os prompts e a procedência estão em `imagens.json`. São cenas fictícias e ilustrativas.
 
 ## Arquivos de trabalho
 

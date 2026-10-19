@@ -172,7 +172,7 @@
 .s15 h2 { font-size: 122px !important; }
 .s15 .checagem { font-size: 38px; }
 .s15 .celular { left: 1320px !important; box-shadow: 0 24px 55px rgba(0,0,0,.25); }
-.s15 .post-img { background-image: linear-gradient(0deg, rgba(0,0,0,.82), transparent 72%), url('img/academia.png'); background-size: cover; background-position: 76% center; font-size: 64px; padding: 30px; }
+.s15 .post-img { background-image: linear-gradient(0deg, rgba(0,0,0,.82), transparent 72%), url('img/anuncio-academia-firefly.png'); background-size: cover; background-position: center top; font-size: 64px; padding: 30px; }
 .s15 .post-topo { padding-top: 60px; }
 .s15 .checagem::before { border-width: 2px; }
 

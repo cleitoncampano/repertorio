@@ -1,5 +1,5 @@
 {
-  "generation": "Ferramenta integrada image_gen",
+  "generation": "Ferramenta integrada image_gen nas oito cenas originais; Adobe Firefly na imagem do anúncio.",
   "purpose": "Cenas ilustrativas originais. Pessoas, empresas e locais fictícios.",
   "prompts": [
     {
@@ -33,6 +33,19 @@
     {
       "file": "img/comercio.png",
       "prompt": "Use case: photorealistic-natural. Create one original wide landscape 16:9 black and white documentary editorial photograph of a lively but calm neighborhood commercial street in Brazil. Framed at human eye level, a small café frontage, a barbershop doorway and other modest local businesses next door, a couple of anonymous ordinary adults walking naturally. Focus on authentic approachable business architecture, windows, chairs, a barber pole without text and a café counter seen through an open entrance. No luxury malls, no monumental landmarks. Composition is harmonious and readable when cropped into a tall photo on the right side of a slide. Soft late afternoon light, deep blacks with detailed midtones, classic photographic grain. Absolutely no legible writing, store names, brand logos, advertisements or watermark. Entirely fictional location, illustrative of different local businesses, not a depiction of any named city."
+    },
+    {
+      "file": "img/anuncio-academia-firefly.png",
+      "generation": "Adobe Firefly, conta autenticada no Chrome, Firefly Image 5",
+      "purpose": "Substituição da fotografia do anúncio de academia no celular do slide 15.",
+      "prompt": "Fotografia publicitária realista em preto e branco, retrato vertical 3:4. Em uma academia de bairro brasileira bem cuidada, um homem comum de 40 anos, camiseta cinza clara, sentado em um banco faz uma rosca com halter. Ao lado, um professor com camiseta escura orienta o movimento com atenção. Pessoas fictícias, corpos naturais, expressão acolhedora e espontânea. Os dois rostos e o halter aparecem inteiros, centralizados nos dois terços superiores. Na parte inferior, piso escuro e poucos detalhes para receber um título depois. Luz natural de janela, pele realista, equipamentos ao fundo desfocados, fotografia documental elegante. Somente a fotografia, sem celular, interface, moldura, texto, letras, marcas ou logotipos.",
+      "downloaded_dimensions": [
+        896,
+        1152
+      ],
+      "ui_resolution_label": "2K",
+      "ui_generation_cost_credits": 10,
+      "sha256": "4740f91b0a05a9428f6729300e471c0b7f7930d81abeade232a96ab3545325e4"
     }
   ]
 }

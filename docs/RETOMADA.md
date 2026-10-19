@@ -1,5 +1,21 @@
 # Retomada do projeto
 
+## Preparação do produto para apresentação e venda em 19/10/2026
+
+O Cleiton quer comercializar o Repertório e que novos usuários entendam sua função. Modelo confirmado: uso local no navegador em Mac e Windows, com aplicativo opcional no Mac acessando a mesma biblioteca. A frase principal é “Suas referências, prontas para orientar a criação.” Definição, instalação, demonstração, operação e preparação comercial em `docs/produto/`. README e LEIA-ME passam a explicar o produto antes dos detalhes técnicos.
+
+Novo guia dentro do app: `/?view=guide`, acessível pelo botão “Conheça o Repertório” no cabeçalho. Mostra o fluxo, o papel de cada parte, exemplo de pedido e ações reais para explorar, copiar, abrir Skills e conectar um agente. Mantidos o mapa, as nove visualizações e os contratos de performance. Interface compilada; atualizar com ⌘R. O app nativo instalado não foi recompilado nem substituído.
+
+Instalação nova usa `init`: biblioteca vazia e vocabulário próprio, sem importar o acervo de desenvolvimento. Windows tem `setup.ps1`, `run.ps1` e iniciador CMD; bloqueio do serviço, backup e restauração usam mecanismos compatíveis. Dependências resolvidas para os dois sistemas. Corrigido o fechamento explícito de conexões SQLite após o teste Windows revelar arquivos abertos no backup.
+
+A demonstração `demo --home app/.demo --serve`, na porta 8768, tem dois espaços fictícios, seis referências originais e uma seleção para revisão, sem consultar os dados reais nem executar backup automático. O empacotador `ferramentas/empacotar_produto.py` usa lista explícita de arquivos e inventário com hashes. O candidato de avaliação fica em `growmate-marketing/produtos/repertorio/avaliacao-20261019/`; não contém acervo particular, materiais de cursos ou projetos de clientes.
+
+Perestroika e SOAP permanecem aqui a pedido do usuário para documentação em sessões futuras. Os 111 arquivos foram preservados; não apagar essas pastas nem incluí-las no pacote. Acervo real preservado, com 15.662 referências e 26.235 arquivos. Gateways anteriores continuam fora dos commits desta tarefa.
+
+Verificações locais: 43 testes Python, 34 testes da interface e 27 de navegador aprovados; os três testes do guia e da revisão passaram novamente após o ajuste final de texto. Capturas em desktop e celular, nos dois temas, sem transbordamento até 320 px. Pacote extraído em pasta com espaços, inicialização limpa e demonstração servindo interface e prévias aprovadas. Evidências em `app/.runtime/qa/produto/`. Execução remota aprovada em Mac e Windows: 43 testes do servidor em cada sistema e preparo da instalação pelos iniciadores de shell e PowerShell. Evidência: https://github.com/cleitoncampano/repertorio/actions/runs/39272717798, código `56105e0`. Pacote de avaliação com 51 arquivos e 1.125.468 bytes, registrado no marketing em `5e1e213`.
+
+Pendências de distribuição comercial: definir oferta, suporte e licenciamento. PyMuPDF informa opções AGPL e comercial; a escolha não foi feita. O aplicativo do Mac ainda usa build local, sem instalador comercial assinado e notarizado. O pacote é de avaliação interna. Próxima ação: abrir o guia, apresentar a demonstração e definir a oferta e o conteúdo autorizado que acompanhará a venda.
+
 ## Acervo e produção separados em 19/10/2026
 
 A pedido do Cleiton, as duas apresentações mantidas foram transferidas para `/Users/cleiton/Documents/Desenvolvimento/growmate/growmate-marketing/apresentacoes/palestra-cx-ia/`. Organização: `original/`, `final/`, `ferramentas/`, `historico/`, `project.md` e inventário `TRANSFERENCIA.json`. Foram inventariados 298 arquivos de origem e conferidos os 301 arquivos preparados no destino, incluindo as imagens e evidências locais que estavam fora do Git. HTMLs, PDFs, fontes e imagens preservados por SHA-256. As variantes excluídas pelo usuário não foram restauradas. Produção salva no GitHub privado do marketing, commit `9f3ab50`, usando checkout isolado para preservar alterações locais e a fila do agendador.

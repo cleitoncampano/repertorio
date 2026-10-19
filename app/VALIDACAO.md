@@ -1,5 +1,18 @@
 # Validação da primeira versão
 
+## Produto, demonstração e instalação local em 19/10/2026
+
+- Nova entrada **Conheça o Repertório**, em `/?view=guide`: proposta do produto, fluxo, papéis, exemplo de pedido e ações funcionais para copiar, explorar, abrir Skills e conectar um agente. Navegador local em Mac e Windows, aplicativo opcional no Mac. Visual do mapa e nove visualizações preservados.
+- 43 testes do servidor, 34 da interface e 27 de navegador aprovados localmente. Após o ajuste final de texto, os três testes do guia e da revisão passaram novamente. Build da interface aprovado; não foi recompilado ou substituído o aplicativo nativo instalado.
+- Validação remota do código `56105e0`: 43 testes em cada sistema, Mac e Windows, mais preparação da instalação e execução do iniciador de demonstração por shell e PowerShell. [Execução aprovada no GitHub](https://github.com/cleitoncampano/repertorio/actions/runs/39272717798). Essa execução usa macOS e Windows Server hospedados; não equivale a homologação de um instalador comercial assinado.
+- Portabilidade: bloqueio por `fcntl` em Unix e `msvcrt` no Windows, dependências universais com os marcadores de plataforma, arquivos ZIP com caminhos POSIX e fechamento explícito das conexões SQLite antes da limpeza ou renomeação de arquivos. O teste real do Windows detectou as dependências condicionais e os arquivos abertos do backup; corrigidos e revalidados.
+- Inicialização `init` preserva bibliotecas existentes e começa vazia em novas instalações. `demo` exige dados separados do acervo real e outra porta, com seis exemplos originais, dois espaços e uma seleção. Sem processamento ou backup automático na demonstração.
+- Guia conferido visualmente em 1440, 390 e 320 pixels, em temas claro e escuro, sem transbordamento. Capturas compartilháveis da documentação usam somente os exemplos originais. Evidências em `app/.runtime/qa/produto/`.
+- Pacote de avaliação: 51 arquivos, 1.125.468 bytes, inventário e hashes válidos, links internos conferidos. Extraído em pasta com espaços, iniciou biblioteca vazia e demonstração na porta 8769, servindo interface e prévias. O ambiente Python foi reutilizado nesse teste; a instalação limpa das dependências foi validada separadamente pelos runners Mac e Windows.
+- Pacote salvo em `growmate-marketing/produtos/repertorio/avaliacao-20261019/`, fora desta biblioteca, commit privado `5e1e213`. O empacotador exclui banco, originais, materiais de cursos e projetos de clientes por uma lista explícita de arquivos permitidos.
+- Preservação conferida: 15.662 referências e 26.235 arquivos no acervo real; 36 arquivos Perestroika e 75 SOAP, com nomes, tamanhos e datas de modificação inalterados. Nenhum pedido de exclusão ou importação desses materiais foi executado.
+- Preparação comercial e limites documentados em `docs/produto/COMERCIALIZACAO.md`: oferta e licença a definir, PyMuPDF com opções AGPL/comercial, e distribuição assinada do app do Mac ainda não preparada. Repositório permanece privado e o pacote é de avaliação interna.
+
 ## Produção externa e transferência em 19/10/2026
 
 - Produções mantidas transferidas para `growmate-marketing/apresentacoes/palestra-cx-ia/`: 298 arquivos de origem inventariados, 301 arquivos preparados e conferidos no destino. HTMLs, PDFs, fontes e imagens preservados por SHA-256. Cópias da origem removidas apenas depois da conferência e do push privado da produção (`9f3ab50`).

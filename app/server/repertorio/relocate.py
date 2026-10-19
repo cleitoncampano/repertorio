@@ -3,6 +3,7 @@ import json
 import os
 import re
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 from .locking import lock_file
 
@@ -35,11 +36,11 @@ def relocate(settings, previous_root, backup_path):
             lock_file(lock)
         except BlockingIOError:
             raise ValueError('Encerre o serviço antes de atualizar os caminhos.') from None
-        with sqlite3.connect(settings.db) as db:
+        with closing(sqlite3.connect(settings.db)) as db, db:
             if db.execute('PRAGMA integrity_check').fetchone()[0] != 'ok':
                 raise ValueError('O banco precisa passar pela verificação de integridade.')
             backup_path.parent.mkdir(parents=True, exist_ok=True)
-            with sqlite3.connect(backup_path) as backup:
+            with closing(sqlite3.connect(backup_path)) as backup:
                 db.backup(backup)
             db.execute('PRAGMA foreign_keys=ON')
             tables = [r[0] for r in db.execute(

@@ -5,6 +5,7 @@ import shutil
 import sqlite3
 import tempfile
 import zipfile
+from contextlib import closing
 from pathlib import Path
 from .locking import lock_file
 
@@ -15,8 +16,8 @@ def backup(settings,destination):
     destination.parent.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='repertorio-backup-') as tmp:
         snapshot=Path(tmp)/'library.sqlite3'
-        with sqlite3.connect(settings.db) as source,sqlite3.connect(snapshot) as target:source.backup(target)
-        with sqlite3.connect(snapshot) as db:
+        with closing(sqlite3.connect(settings.db)) as source,closing(sqlite3.connect(snapshot)) as target:source.backup(target)
+        with closing(sqlite3.connect(snapshot)) as db:
             paths={Path(r[0]) for r in db.execute('SELECT path FROM assets')}
         files={'library.sqlite3':snapshot}
         external=[]
@@ -57,7 +58,7 @@ def restore(settings,source):
                     with archive.open(name) as src,p.open('wb') as out:
                         for chunk in iter(lambda:src.read(1024*1024),b''):h.update(chunk);out.write(chunk)
                     if h.hexdigest()!=digest:raise ValueError('Checksum inválido: '+name)
-            with sqlite3.connect(stage/'library.sqlite3') as db:
+                with closing(sqlite3.connect(stage/'library.sqlite3')) as db,db:
                 if db.execute('PRAGMA integrity_check').fetchone()[0]!='ok':raise ValueError('Banco corrompido.')
                 for aid,value in db.execute('SELECT id,path FROM assets').fetchall():
                     p=Path(value)

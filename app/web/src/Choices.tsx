@@ -37,7 +37,7 @@ export function Choices({demands,pack,onPack,onOpen,onError}:{demands:Demand[];p
   </div>)}</nav>
   <section className="choice-detail" aria-label="Seleção">{detail.isPending?<p className="page-intro">Carregando…</p>:d&&<>
    <header className="choice-head"><small>{d.project_name} · {d.workspaces.map(w=>w.name).join(" + ")} · {when(d.created)}</small><h2>{d.title}</h2><p>{d.demand}</p>{d.rationale&&<p className="choice-rationale">{d.rationale}</p>}</header>
-   <div className="choice-counts" role="status"><span><Check size={13}/> {approved} aprovadas</span><span><X size={13}/> {cut} cortadas</span><span>{refs.length-approved-cut} sem resposta</span></div>
+   <div className="choice-counts" role="status"><span><Check size={13}/> {approved} {approved===1?'aprovada':'aprovadas'}</span><span><X size={13}/> {cut} {cut===1?'cortada':'cortadas'}</span><span>{refs.length-approved-cut} sem resposta</span></div>
    <div className="choice-grid">{refs.map(ref=>{const verdict=ref.review?.verdict;return <article key={ref.id} className={'choice-card'+(verdict?' '+verdict:'')}>
     <button className="choice-image" onClick={()=>onOpen(ref.id,ref.workspace_ids[0])} aria-label={'Ver detalhes de '+ref.title}>{ref.thumbnail?<img src={sized(ref.thumbnail,512)} alt="" loading="lazy"/>:<BookOpen size={28}/>}{ref.kind&&<span>{kindName[ref.kind]||ref.kind}</span>}</button>
     <div className="card-text"><h3>{ref.title}</h3><p>{ref.idea||ref.description}</p>{!ref.available&&<p className="status-note">Saiu da biblioteca depois da escolha.</p>}</div>
@@ -45,7 +45,7 @@ export function Choices({demands,pack,onPack,onOpen,onError}:{demands:Demand[];p
      <button className={verdict==='approved'?'approve on':'approve'} aria-pressed={verdict==='approved'} onClick={()=>decide(ref,verdict==='approved'?null:'approved')}><Check size={14}/> Aprovar</button>
      <button className={verdict==='cut'?'cut on':'cut'} aria-pressed={verdict==='cut'} onClick={()=>decide(ref,verdict==='cut'?null:'cut')}><X size={14}/> Cortar</button>
     </div>
-    {verdict&&<input className="choice-note" aria-label={'Comentário sobre '+ref.title} placeholder="Comentário para o Claude (opcional)" value={notes[ref.id]||''}
+    {verdict&&<input className="choice-note" aria-label={'Comentário sobre '+ref.title} placeholder="Comentário para o agente (opcional)" value={notes[ref.id]||''}
      onChange={e=>setNotes({...notes,[ref.id]:e.target.value})} onBlur={()=>{if((notes[ref.id]||'')!==(ref.review?.note||''))decide(ref,verdict);}}
      onKeyDown={e=>{if(e.key==='Enter')(e.target as HTMLInputElement).blur();}}/>}
    </article>;})}</div>

@@ -11,6 +11,10 @@ Projeto e biblioteca local de referências para criar apresentações, sites e v
 
 ## Comece pelo trabalho atual
 
+- O produto é local em Mac e Windows, com navegador nos dois sistemas e aplicativo opcional no Mac. Definição e preparação comercial em `docs/produto/PRODUTO.md` e `docs/produto/COMERCIALIZACAO.md`. Não apresentar como SaaS ou como gerador autônomo de peças.
+- Perestroika e SOAP permanecem aqui para documentação futura a pedido do usuário. Não apagar essas pastas nem incluir seus materiais em pacotes de demonstração ou distribuição.
+- Demonstrações usam `demo --home PASTA_SEPARADA --serve`, com exemplos originais e outra porta. Instalações novas usam `init`, sem importar automaticamente o acervo de desenvolvimento.
+
 - Ao retomar uma demanda, leia `docs/RETOMADA.md`, confira o Git e os arquivos envolvidos. Não releia todos os manuais por rotina.
 - Decisões e pendências: Engram local, consultado pelo terminal quando necessário. Uso, validação e recuperação em `docs/EFICIENCIA.md`.
 - O usuário manda ideias ou transcrição bruta: extraia a história sem pedir uma estrutura pronta. Respostas curtas, em linguagem simples; decida detalhes de rotina.

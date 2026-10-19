@@ -1,4 +1,5 @@
 $ErrorActionPreference = 'Stop'
+$env:PYTHONUTF8 = '1'
 $repertorioPython = Join-Path $PSScriptRoot '.venv\Scripts\python.exe'
 if (-not (Test-Path $repertorioPython)) {
     throw 'Execute app\setup.ps1 antes de iniciar o Repertorio.'

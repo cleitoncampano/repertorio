@@ -58,7 +58,7 @@ def restore(settings,source):
                     with archive.open(name) as src,p.open('wb') as out:
                         for chunk in iter(lambda:src.read(1024*1024),b''):h.update(chunk);out.write(chunk)
                     if h.hexdigest()!=digest:raise ValueError('Checksum inválido: '+name)
-                with closing(sqlite3.connect(stage/'library.sqlite3')) as db,db:
+            with closing(sqlite3.connect(stage/'library.sqlite3')) as db,db:
                 if db.execute('PRAGMA integrity_check').fetchone()[0]!='ok':raise ValueError('Banco corrompido.')
                 for aid,value in db.execute('SELECT id,path FROM assets').fetchall():
                     p=Path(value)

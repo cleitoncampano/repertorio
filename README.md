@@ -1,84 +1,78 @@
-<p align="center"><img src="app/mac/icone.png" width="112" alt="Ícone do Repertório: um olho com a íris nas cores das quatro operações do olhar"></p>
+<p align="center"><img src="app/mac/icone.png" width="96" alt="Ícone do Repertório"></p>
 
 <h1 align="center">Repertório</h1>
 
-<p align="center">Biblioteca visual local para criar apresentações, sites e vídeos originais, sozinho ou com agentes de IA.</p>
+<p align="center"><strong>Suas referências, prontas para orientar a criação.</strong></p>
 
-O Repertório organiza referências em espaços independentes. **PPT Treta** reúne o acervo do curso PPTRETA e estudos de apresentações, anúncios e outras linguagens visuais. **Growmate** reúne os materiais e referências da marca. Cada espaço tem sua curadoria, suas escolhas e seu mapa.
+Repertório é uma biblioteca visual que você e seu agente de IA podem consultar. Reúna referências, entenda a ideia por trás de cada uma e escolha uma direção antes de criar apresentações, páginas, posts e vídeos com a identidade da sua marca.
 
-As referências compartilham um vocabulário criativo: o papel de cada peça na história, a técnica que prende o olho e o movimento entre slides. Assim, novos acervos podem entrar no projeto sem assumir o nome ou a identidade dos anteriores.
+**Funciona localmente no navegador, em Mac e Windows. No Mac, você também pode usar o aplicativo em uma janela própria.** As duas formas de acesso usam a mesma biblioteca do computador.
 
-Ele foi feito para trabalhar junto com agentes (Claude Code, Codex, OpenCode). O agente busca referências aqui, mostra o que escolheu e só cria depois da sua revisão. A regra é inspirar, não copiar: a identidade visual vem sempre de quem pede.
+[Conheça o produto](docs/produto/PRODUTO.md) · [Instale e comece](docs/produto/INSTALACAO.md) · [Veja a demonstração](docs/produto/DEMONSTRACAO.md)
 
-As criações ficam no projeto a que pertencem. Por exemplo, uma capa de LinkedIn da Growmate é produzida em `growmate-marketing`, que consulta esta biblioteca pelo MCP. Rascunhos, imagens, prévias e arquivos finais ficam juntos naquele projeto. Uma criação só entra no acervo quando você pede sua incorporação.
+## O que ele resolve
 
-![Mapa do Repertório com a apresentação "Cérebro" aberta no painel lateral](docs/mapa.jpg)
+Você guarda uma referência porque ela chama atenção. Quando precisa criar, ainda precisa encontrá-la, entender o recurso que funcionou e explicar ao agente como isso se relaciona com o seu trabalho.
 
-## O app
+O Repertório aproxima essas etapas. A referência ganha uma ficha com contexto, ideia transferível, técnica e explicação. Você encontra conexões pelo mapa e pela busca. O agente consulta o mesmo acervo e mostra uma seleção para você aprovar, cortar e comentar.
 
-- **Espaços:** separe acervos e marcas, mantendo a curadoria de cada um.
-- **Mapa:** as quatro operações do olhar (diferenciação, agrupamento, sequência e previsão) no centro, as técnicas em volta e cerca de mil peças ligadas a elas. Zoom até 400% com imagens nítidas.
-- **Olhar de perto:** a ficha de cada peça, com a ideia que dá para levar, como fazer em HTML e as conexões criativas. A prévia abre em destaque, slide por slide, com zoom.
-- **Busca:** entende pedidos em português comum, como "abertura com impacto" ou "números grandes em fundo escuro".
-- **Escolhas:** as referências que o agente separou para cada pedido, para você aprovar, cortar e comentar antes da criação.
-- **Skills, Atividade e Lixeira:** habilidades escolhidas pelo usuário, histórico e exclusões com desfazer. Sugestões dos agentes ficam em Escolhas.
+## Como funciona
 
-![Tela Escolhas com referências aprovadas, cortadas e sem resposta](docs/escolhas.jpg)
+1. **Reúna suas referências.** Organize marcas, clientes ou temas em espaços independentes. O cadastro e a descrição dos materiais podem ser feitos pelo agente conectado.
+2. **Encontre uma direção.** Explore o mapa, busque uma ideia e abra a ficha para entender o recurso por trás da referência.
+3. **Revise a seleção.** Em Escolhas, aprove, corte e comente o que deve orientar o trabalho.
+4. **Crie no projeto de destino.** O agente aplica a direção aprovada com a sua identidade. Rascunhos e entregas ficam no projeto da produção.
 
-## Como rodar
+Se quiser guardar um resultado como referência, peça para incorporá-lo ao acervo.
 
-Requisitos: macOS, Python 3.12, [uv](https://docs.astral.sh/uv/), Node.js 22.12 ou mais novo e pnpm 11.
+![Guia do produto com demonstração original](docs/produto/guia-demo.png)
+
+## Para quem serve
+
+Para designers, profissionais de marketing, criadores e equipes que produzem apresentações ou conteúdo com agentes de IA e querem trabalhar a partir de referências que conhecem e escolheram.
+
+Um profissional pode separar seus temas. Uma equipe pode manter espaços para marcas e clientes. Uma biblioteca local pode orientar vários projetos de produção no mesmo computador.
+
+## O que você encontra
+
+| Recurso | Como ajuda no trabalho |
+| --- | --- |
+| Espaços | Separam a curadoria de cada marca, cliente ou tema |
+| Mapa visual | Mostra relações entre referências, intenções e técnicas, com nove visualizações |
+| Busca e fichas | Ajudam a encontrar uma referência e entender sua aplicação |
+| Escolhas | Registram aprovações, cortes e comentários antes da criação |
+| Conexão com agentes | Permite consultar o acervo na conversa do seu projeto, pelo padrão MCP |
+| Catálogo de Skills | Ajuda a escolher uma habilidade e preparar o pedido para seu agente |
+| Histórico e backup | Preservam decisões e a curadoria local |
+
+As ferramentas de criação, skills e contas de IA são configuradas separadamente. A biblioteca funciona com materiais próprios ou autorizados; o acervo particular usado no desenvolvimento é separado do produto.
+
+## Experimente
+
+Depois da instalação, abra o guia dentro do app pelo botão **Conheça o Repertório**, ou acesse `http://127.0.0.1:8766/?view=guide`.
+
+Para apresentar o produto com exemplos originais e marcas fictícias:
 
 ```sh
-./app/setup.sh        # primeira vez: instala, compila a interface e importa o acervo
-./app/run.sh serve    # abre em http://127.0.0.1:8766
+./app/run.sh demo --home app/.demo --serve
 ```
 
-No Mac, `./app/mac/build.sh ~/Applications/Repertório.app` gera o app com janela própria e ícone no Dock. Ele mantém o serviço ligado e o religa se cair. O passo a passo para abrir junto com o Mac está em [app/README.md](app/README.md).
+No Windows, depois da instalação:
 
-## Conectar agentes
-
-O serviço oferece MCP em `http://127.0.0.1:8766/mcp`.
-
-```sh
-claude mcp add --transport http -s user repertorio http://127.0.0.1:8766/mcp
-codex mcp add repertorio --url http://127.0.0.1:8766/mcp
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\app\run.ps1 demo --home app\.demo --serve
 ```
 
-| ferramenta | para quê |
-|---|---|
-| `start_context` | abre um pedido (uma apresentação, um carrossel) |
-| `search_references` | busca em português comum e devolve uma prancha numerada com as prévias |
-| `get_reference` | ficha completa, com imagem |
-| `build_inspiration_pack` | guarda a seleção e devolve o link da tela Escolhas |
-| `get_pack` | lê o que você aprovou, cortou e comentou |
-| `register_reference` | incorpora ao acervo um material aprovado |
+Abra `http://127.0.0.1:8768/?view=guide`. A demonstração tem dados próprios, outra porta e não importa sua biblioteca. [Roteiro de cinco minutos](docs/produto/DEMONSTRACAO.md).
 
-Sem o MCP, a mesma busca funciona pelo terminal: `./app/run.sh search "abertura com impacto" --prancha`.
+## Instalação e operação
 
-## O que tem aqui
+O [guia de instalação](docs/produto/INSTALACAO.md) mostra o caminho para Mac, Windows e o aplicativo opcional do Mac. A preparação pelo código-fonte usa Python 3.12, uv e, para compilar a interface, Node.js 22.12 ou superior e pnpm 11. Pacotes de avaliação podem levar a interface já compilada.
 
-| pasta | o que é |
-|---|---|
-| `app/` | o app: serviço local em Python, interface em React e app do Mac |
-| `biblioteca/` | o conhecimento em texto: processo, princípios de narrativa e direção de arte, páginas por intenção, técnica e movimento |
-| `dados/` | os mesmos dados para máquina: fichas, slides, transições, mídia e vocabulário |
-| `kit/` | motor de apresentação em HTML, com efeito Morph entre slides, passos e exportação em PDF |
-| `ferramentas/` | busca, roteiro, conferência visual e arquivo único, pelo terminal |
-| `_catalogo/` | catálogo de slides e mapa navegável do acervo |
-| `_referencias/` | estudos completos das referências externas (só os textos) |
-| `app/.runtime/` | curadoria e dados internos do app, cache de buscas e evidências de manutenção, fora do Git |
+[LEIA-ME.md](LEIA-ME.md) orienta o uso. [app/README.md](app/README.md) documenta a manutenção. [AGENTS.md](AGENTS.md) contém as instruções de desenvolvimento e curadoria.
 
-[AGENTS.md](AGENTS.md) é o manual que os agentes leem ao abrir a pasta. [LEIA-ME.md](LEIA-ME.md) explica o uso no dia a dia.
+## Preparação comercial
 
-A pasta principal é `repertorio/`; `app/` contém o software. A organização e a mudança dos caminhos estão registradas em [docs/ORGANIZACAO.md](docs/ORGANIZACAO.md).
+A definição do produto, o roteiro de demonstração, as decisões de oferta ainda abertas e a preparação do pacote estão em [docs/produto/COMERCIALIZACAO.md](docs/produto/COMERCIALIZACAO.md). O pacote de avaliação usa uma lista explícita de arquivos do software e não inclui a biblioteca particular, projetos de clientes ou materiais de cursos.
 
-## O que não está no repositório
-
-Os arquivos originais do curso (`_originais/`, cerca de 12 GB), as mídias extraídas e as imagens geradas a partir deles ficam fora do git (veja o [.gitignore](.gitignore)). Sem essas pastas, o app funciona, mas as imagens não aparecem.
-
-A curadoria feita no app (exclusões, edições, revisões em Escolhas) fica em `app/.runtime/`. O próprio serviço copia essa curadoria e este histórico toda semana para o iCloud Drive, guardando as 6 cópias mais recentes.
-
-## Uso
-
-Repositório privado, para uso pessoal. O acervo do PPTRETA e as referências externas são material de terceiros: servem de inspiração e não entram em material de cliente.
+Perestroika e SOAP permanecem na biblioteca de desenvolvimento para documentação futura. Essa preparação não publica o repositório, não define preço e não concede uma licença de redistribuição para os materiais do acervo.

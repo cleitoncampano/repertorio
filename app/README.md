@@ -1,5 +1,7 @@
 # Repertório
 
+Para conhecer o produto e instalar em Mac ou Windows, comece pelo [guia do produto](../docs/produto/PRODUTO.md) e pela [instalação](../docs/produto/INSTALACAO.md). Este arquivo documenta a manutenção da instalação de desenvolvimento. Novas instalações usam `init`, sem importar o acervo particular; o modo `demo` cria exemplos originais em dados separados.
+
 Biblioteca visual local organizada em espaços e compartilhada entre seus projetos e agentes. O mapa mantém as operações do olhar, técnicas e referências do PPTRETA; o serviço central persiste curadoria, buscas, seleções e novas criações.
 
 ## Abrir

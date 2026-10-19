@@ -8,7 +8,8 @@ RAIZ=$(CDPATH= cd -- "$AQUI/../.." && pwd -P)
 APP=${1:?informe o caminho do .app}
 OBRA=$(mktemp -d)
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources" "$OBRA/Repertorio.iconset"
-swiftc -O -target arm64-apple-macos13 -o "$APP/Contents/MacOS/Repertorio" "$AQUI/main.swift" -framework Cocoa -framework WebKit
+ARQUITETURA=$(uname -m)
+swiftc -O -target "$ARQUITETURA-apple-macos13" -o "$APP/Contents/MacOS/Repertorio" "$AQUI/main.swift" -framework Cocoa -framework WebKit
 for s in 16 32 128 256 512; do
   sips -z $s $s "$AQUI/icone.png" --out "$OBRA/Repertorio.iconset/icon_${s}x${s}.png" >/dev/null
   sips -z $((s*2)) $((s*2)) "$AQUI/icone.png" --out "$OBRA/Repertorio.iconset/icon_${s}x${s}@2x.png" >/dev/null

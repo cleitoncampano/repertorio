@@ -380,3 +380,48 @@ h1 { font-size: 30px; letter-spacing: -.03em; line-height: 1.2; font-weight: 500
  .skill-dialog { padding: 26px 20px; }.skill-dialog h2 { font-size: 24px; }.skill-dialog-actions { flex-direction: column-reverse; align-items: stretch; gap: 12px; }.skill-dialog-actions>button { justify-content: center; }
  .choices-tabs { gap: 18px; }.choices-tabs button { font-size: 11px; }
 }
+
+/* Guia do produto: mantém o mapa e os controles existentes. */
+.product-help { flex-shrink: 0; margin-left: 2px; }
+.product-page { width: 100%; padding: 110px max(36px,calc((100vw - 1260px)/2)) 90px max(90px,calc((100vw - 1160px)/2)); }
+.product-intro { max-width: 900px; }
+.product-intro .eyebrow { display: block; margin-bottom: 20px; }
+.product-intro h1 { max-width: 850px; font-size: clamp(38px,4.6vw,66px); line-height: 1.08; letter-spacing: -.055em; font-weight: 500; }
+.product-intro>p { max-width: 740px; margin-top: 24px; color: var(--muted); font-size: 17px; line-height: 1.75; }
+.product-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 20px; }
+.product-actions button,.product-primary,.product-closing button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 1px solid var(--line); border-radius: 7px; padding: 12px 16px; font-size: 13px; line-height: 1.4; }
+button.product-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.product-platform,.product-space { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.product-platform svg { align-self: flex-start; margin-top: 2px; }
+.product-demo { display: inline-block; margin-bottom: 18px; padding: 8px 12px; border: 1px solid var(--warning-line); border-radius: 6px; color: var(--warning); font-size: 12px; }
+.product-benefits { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; margin-top: 52px; }
+.product-benefits article { border: 1px solid var(--line); border-radius: 10px; padding: 25px; background: var(--surface); }
+.product-benefits article>svg { color: var(--muted); margin-bottom: 22px; }
+.product-benefits h2 { font-size: 19px; font-weight: 500; line-height: 1.35; letter-spacing: -.02em; }
+.product-benefits p,.product-section p { color: var(--muted); font-size: 14px; line-height: 1.75; margin-top: 12px; }
+.product-section { margin-top: 62px; padding-top: 36px; border-top: 1px solid var(--line); }
+.product-section-heading { max-width: 690px; }
+.product-section h2 { font-size: clamp(25px,2.7vw,34px); font-weight: 500; line-height: 1.2; letter-spacing: -.04em; margin-top: 14px; }
+.product-steps { list-style: none; padding: 0; margin: 30px 0 0; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 28px; }
+.product-steps li>span { color: var(--muted); font-size: 12px; letter-spacing: .08em; }
+.product-steps h3 { font-size: 17px; font-weight: 500; line-height: 1.4; margin-top: 16px; }
+.product-steps p { font-size: 13px; }
+.product-example { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 40px; align-items: start; }
+.product-example>div { max-width: 480px; }
+.product-example blockquote { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 26px; margin: 0; overflow-wrap: anywhere; }
+.product-example blockquote p { color: var(--text); font-size: 13px; margin: 0 0 18px; }
+.product-example blockquote p:last-child { margin-bottom: 0; }
+.product-example .product-space { margin: 20px 0; }
+.product-searches { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.product-searches button { display: inline-flex; align-items: center; gap: 10px; padding: 13px 16px; border: 1px solid var(--line); border-radius: 8px; font-size: 13px; background: var(--surface); }
+.product-skills { display: flex; align-items: center; gap: 13px; text-align: left; width: 100%; border: 1px solid var(--line); border-radius: 9px; padding: 20px; margin-top: 22px; }
+.product-skills span { flex: 1; color: var(--muted); font-size: 13px; line-height: 1.7; }
+.product-skills strong { display: block; color: var(--text); font-weight: 500; }
+.product-faq details { border-bottom: 1px solid var(--line); padding: 20px 0; }
+.product-faq details:first-of-type { margin-top: 22px; }
+.product-faq summary { cursor: pointer; font-size: 15px; font-weight: 500; line-height: 1.5; }
+.product-faq details p { max-width: 830px; }
+.product-closing { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; padding: 36px 0 0; margin-top: 40px; }
+.product-closing p { flex: 1; min-width: 200px; font-size: 16px; line-height: 1.65; }
+@media(max-width:1000px) { .product-benefits { gap: 12px; }.product-benefits article { padding: 20px; }.product-steps { grid-template-columns: repeat(2,minmax(0,1fr)); }.product-example { gap: 24px; } }
+@media(max-width:760px) { .product-page { padding: 90px 20px 110px; }.product-intro h1 { font-size: 38px; }.product-intro>p { font-size: 15px; }.product-benefits { grid-template-columns: 1fr; margin-top: 36px; }.product-benefits article>svg { margin-bottom: 14px; }.product-section { margin-top: 38px; padding-top: 28px; }.product-example { grid-template-columns: 1fr; }.product-steps { gap: 20px; }.product-platform { font-size: 11px; }.product-closing { align-items: flex-start; }.product-help { width: 30px; }.product-actions button { width: 100%; } }

@@ -1,9 +1,10 @@
 #!/bin/sh
 # Gera o Repertório.app nativo (janela própria, ícone psicodélico) no caminho indicado.
-# Uso: ./repertorio/mac/build.sh /caminho/Repertório.app
-# O ícone vem de icone.png; para redesenhar: python3 -I repertorio/mac/icone.py repertorio/mac/icone.png (precisa de numpy).
+# Uso: ./app/mac/build.sh /caminho/Repertório.app
+# O ícone vem de icone.png; para redesenhar: python3 -I app/mac/icone.py app/mac/icone.png (precisa de numpy).
 set -eu
-AQUI=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+AQUI=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
+RAIZ=$(CDPATH= cd -- "$AQUI/../.." && pwd -P)
 APP=${1:?informe o caminho do .app}
 OBRA=$(mktemp -d)
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources" "$OBRA/Repertorio.iconset"
@@ -34,5 +35,6 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
 </dict>
 </plist>
 PLIST
+/usr/libexec/PlistBuddy -c "Add :RepertorioProjectRoot string $RAIZ" "$APP/Contents/Info.plist"
 codesign --force -s - "$APP"
 echo "$APP"

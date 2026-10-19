@@ -16,7 +16,7 @@ class Settings:
     @classmethod
     def load(cls):
         root = Path(os.getenv("REPERTORIO_ROOT", Path(__file__).resolve().parents[3])).resolve()
-        home = Path(os.getenv("REPERTORIO_HOME", root / "repertorio/.runtime")).resolve()
+        home = Path(os.getenv("REPERTORIO_HOME", root / "app/.runtime")).resolve()
         return cls(root, home, int(os.getenv("REPERTORIO_PORT", "8766")))
 
     @property

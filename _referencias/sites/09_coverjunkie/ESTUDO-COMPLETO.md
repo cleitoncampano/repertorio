@@ -3,7 +3,7 @@
 - **URL de Origem:** `https://coverjunkie.com/`
 - **Curador / Criador:** **Jaap Biemans** — Diretor de Arte da *Volkskrant Magazine* (Amsterdã, Holanda), fundador do Coverjunkie e autor do livro *Coverjunkie: Sparking Creativity Through Magazine Covers*.
 - **Data da Extração e Análise:** Outubro de 2026
-- **Diretório Local:** `/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/09_coverjunkie/`
+- **Diretório Local:** `/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/09_coverjunkie/`
 - **Acervo Mapeado:** 34 categorias editoriais (`categories.json`), mais de 360 capas icônicas catalogadas (`curated_by_category.json`) e **37 imagens de alta resolução** baixadas e inspecionadas individualmente em `./imagens/` (2 capturas de interface + 35 capas históricas, premiadas e contemporâneas).
 
 ---
@@ -85,7 +85,7 @@ Grandes publicações constroem autoridade mantendo uma moldura rigorosa (a bord
 
 ## 4. Catálogo Visual Completo das 37 Imagens Inspecionadas (`./imagens/`)
 
-Todas as imagens abaixo estão salvas localmente em `/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/09_coverjunkie/imagens/` e foram inspecionadas visualmente uma a uma.
+Todas as imagens abaixo estão salvas localmente em `/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/09_coverjunkie/imagens/` e foram inspecionadas visualmente uma a uma.
 
 ### 4.1. Interface e Curadoria da Plataforma (`00_ui_*`)
 

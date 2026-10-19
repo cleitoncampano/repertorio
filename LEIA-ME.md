@@ -1,12 +1,12 @@
-# Como usar esta pasta
+# Como usar o Repertório
 
 ## Aplicação Repertório
 
-O acervo agora também tem uma aplicação local: **Repertório**, com mapa interativo, busca compartilhada, curadoria, histórico e conexão MCP para agentes de projetos independentes.
+**Repertório** é o projeto e sua aplicação local, com mapa interativo, busca compartilhada, curadoria, histórico e conexão MCP para agentes. **PPT Treta** e **Growmate** são espaços dentro dele. O software fica em `app/`; os acervos e as criações ficam nas pastas descritas no [mapa da organização](docs/ORGANIZACAO.md).
 
-- Abra `repertorio/Abrir Repertório.command` ou execute `./repertorio/run.sh serve`.
+- Abra `app/Abrir Repertório.command` ou execute `./app/run.sh serve`.
 - Acesse **http://127.0.0.1:8766**.
-- Instalação, integração com Codex/OpenCode, cadastro de criações e backup: [manual do Repertório](repertorio/README.md).
+- Instalação, integração com Codex/OpenCode, cadastro de criações e backup: [manual do Repertório](app/README.md).
 
 O protótipo e os scripts descritos abaixo continuam disponíveis. A curadoria feita na aplicação é persistida no banco do Repertório; os índices antigos permanecem como origem da importação.
 

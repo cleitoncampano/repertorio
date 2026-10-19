@@ -8,4 +8,4 @@ if [ ! -x .venv/bin/python ]; then uv venv .venv --python 3.12; fi
 uv pip sync --python .venv/bin/python requirements.lock
 (cd web && CI=true pnpm install --frozen-lockfile && pnpm build)
 ./run.sh import
-echo 'Repertório pronto. Execute ./repertorio/run.sh serve a partir da raiz e abra http://127.0.0.1:8766.'
+echo 'Repertório pronto. Execute ./app/run.sh serve a partir da raiz e abra http://127.0.0.1:8766.'

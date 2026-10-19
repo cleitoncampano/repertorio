@@ -1,6 +1,8 @@
 # Histórico do projeto: código, textos e dados do acervo.
 # Fica de fora o que é pesado ou gerado a partir de _originais/ (refaça pelos scripts de ferramentas/construir e _catalogo/gerador).
-# A curadoria feita no app vive em repertorio/.runtime e vai no backup semanal (ver repertorio/README.md).
+# A curadoria feita no app vive em app/.runtime e vai no backup semanal (ver app/README.md).
+# Link local para compatibilidade com comandos e sessões anteriores à organização.
+/repertorio
 .DS_Store
 __pycache__/
 .pnpm-store/

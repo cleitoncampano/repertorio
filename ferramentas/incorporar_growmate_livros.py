@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Incorpora o recorte 18 a 49 da Growmate, sem modificar o projeto de origem.
 
-Preparar: repertorio/.venv/bin/python ferramentas/incorporar_growmate_livros.py prepare
+Preparar: app/.venv/bin/python ferramentas/incorporar_growmate_livros.py prepare
 Renderizar: node ferramentas/incorporar-growmate-render.cjs
-Registrar: repertorio/.venv/bin/python ferramentas/incorporar_growmate_livros.py register
-Conferir: repertorio/.venv/bin/python ferramentas/incorporar_growmate_livros.py verify
+Registrar: app/.venv/bin/python ferramentas/incorporar_growmate_livros.py register
+Conferir: app/.venv/bin/python ferramentas/incorporar_growmate_livros.py verify
 
 As mutações do acervo passam pelo MCP; não há escrita direta no SQLite.
 """

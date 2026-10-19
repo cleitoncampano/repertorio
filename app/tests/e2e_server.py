@@ -17,7 +17,7 @@ with tempfile.TemporaryDirectory(prefix='repertorio-e2e-') as temp:
     context.__wrapped__(lib,tmp)
     sales=tmp/'sales';sales.mkdir()
     lib.project(Project(name='Comercial',root=str(sales)))
-    web=lib.settings.root/'repertorio/web';web.mkdir(parents=True)
+    web=lib.settings.root/'app/web';web.mkdir(parents=True)
     (web/'dist').symlink_to(BASE/'web/dist',target_is_directory=True)
     try:uvicorn.run(create_app(lib.settings),host='127.0.0.1',port=8767,log_level='warning')
     finally:fixture.close()

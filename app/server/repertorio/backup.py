@@ -92,9 +92,9 @@ def backup_now(lib,target,keep=6):
     stamp=datetime.now().strftime('%Y-%m-%d-%H%M%S')
     result=backup(lib.settings,target/f'repertorio-{stamp}.zip')
     if (lib.settings.root/'.git').exists():
-        done=subprocess.run(['git','-C',str(lib.settings.root),'bundle','create',str(target/f'pptreta-{stamp}.bundle'),'--all'],capture_output=True,text=True)
-        result['history']=str(target/f'pptreta-{stamp}.bundle') if done.returncode==0 else 'falhou: '+done.stderr.strip()[-200:]
-    for pattern in ('repertorio-*.zip','pptreta-*.bundle'):
+        done=subprocess.run(['git','-C',str(lib.settings.root),'bundle','create',str(target/f'repertorio-{stamp}.bundle'),'--all'],capture_output=True,text=True)
+        result['history']=str(target/f'repertorio-{stamp}.bundle') if done.returncode==0 else 'falhou: '+done.stderr.strip()[-200:]
+    for pattern in ('repertorio-*.zip','repertorio-*.bundle','pptreta-*.bundle'):
         for old in sorted(target.glob(pattern))[:-keep]:old.unlink()
     with lib.db.engine.begin() as conn:lib.db.log(conn,'backup_created',**result)
     return result

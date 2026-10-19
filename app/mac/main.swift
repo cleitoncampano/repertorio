@@ -1,11 +1,16 @@
 // Repertório para Mac: janela própria para o acervo e guarda que mantém o serviço ligado.
-// Compile com ./repertorio/mac/build.sh (gera ~/Applications/Repertório.app).
+// Compile com ./app/mac/build.sh (gera ~/Applications/Repertório.app).
 import Cocoa
 import WebKit
 
 let endereco = URL(string: "http://127.0.0.1:8766/")!
 let saude = URL(string: "http://127.0.0.1:8766/api/health")!
-let acervo = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent().path
+let acervo: String = {
+    let caminho = Bundle.main.object(forInfoDictionaryKey: "RepertorioProjectRoot") as? String
+    let origem = caminho.map { URL(fileURLWithPath: $0) }
+        ?? URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+    return origem.resolvingSymlinksInPath().path
+}()
 
 let pagina = { (texto: String) in """
 <html><body style="margin:0;height:100vh;display:grid;place-items:center;background:#121212;color:#ECE8E1;font:15px -apple-system,sans-serif">
@@ -52,7 +57,7 @@ final class App: NSObject, NSApplicationDelegate, WKNavigationDelegate, WKUIDele
                 let processo = Process()
                 processo.executableURL = URL(fileURLWithPath: "/bin/sh")
                 processo.currentDirectoryURL = URL(fileURLWithPath: acervo)
-                processo.arguments = ["-c", "/usr/bin/nohup /bin/sh repertorio/run.sh serve >> \"$HOME/Library/Logs/repertorio.log\" 2>&1 &"]
+                processo.arguments = ["-c", "/usr/bin/nohup /bin/sh app/run.sh serve >> \"$HOME/Library/Logs/repertorio.log\" 2>&1 &"]
                 try? processo.run()
             }
             depois?(ok)

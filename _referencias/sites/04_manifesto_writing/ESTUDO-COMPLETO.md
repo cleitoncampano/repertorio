@@ -18,7 +18,7 @@ Para dominar a escrita de manifestos, o método divide-se em **4 pilares fundame
 3. **As 16 Técnicas de Estilo (*Mastering the Manifesto Style*):** As ferramentas de micro-copywriting (ritmo, música verbal, especificidade extrema, justaposição, estrutura paralela, *show don't tell*).
 4. **Mecânicas de Abertura, Fechamento e Inserção de Produto (*Cheat Sheets*):** As 8 formas de abrir a primeira frase, as 7 formas de fechar com chave de ouro, as 6 formas de inserir o produto sem quebrar a magia e os 59 *Thought Starters* (gatilhos de pensamento para destravar a página em branco).
 
-![Visão Geral das 6 Estruturas de Manifesto](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/meta_og_structures.png)
+![Visão Geral das 6 Estruturas de Manifesto](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/meta_og_structures.png)
 
 ---
 
@@ -39,7 +39,7 @@ Toda grande narrativa de manifesto desenha uma trajetória na mente e no estôma
 
 ### 1.1. The U Shape — Para Criar Emoção (*Going for the Gut*)
 
-![Diagrama U Shape](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/diagram_u_shape.png)
+![Diagrama U Shape](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/diagram_u_shape.png)
 
 * **Lógica estrutural:** Você puxa o público para baixo, para dentro do vale sombrio do problema (**FALL**), até que a tensão fique quase insuportável. No fundo do poço, você aplica uma virada curtíssima (**TURN**) e passa a segunda metade inteira subindo em direção à luz (**RISE**), mostrando como o mundo se transforma quando adotamos a visão da marca.
 * **Proporção matemática:**
@@ -56,7 +56,7 @@ Toda grande narrativa de manifesto desenha uma trajetória na mente e no estôma
 
 ### 1.2. The Z Shape — Para Defender Um Único Ponto com Brilhantismo (*Going for the Mind*)
 
-![Diagrama Z Shape](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/diagram_z_shape.png)
+![Diagrama Z Shape](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/diagram_z_shape.png)
 
 * **Lógica estrutural:** O **Z Shape** é uma máquina de persuasão lógica e poética. Ele começa com uma provocação rápida no topo esquerdo (**WTF**), desliza horizontalmente para declarar a tese central logo no início (**POV**), atravessa toda a extensão diagonal do texto empilhando provas e exemplos irresistíveis (**PROOF**), e fecha a base com uma conclusão evolutiva (**THUS**).
 * **Proporção matemática:**
@@ -74,7 +74,7 @@ Toda grande narrativa de manifesto desenha uma trajetória na mente e no estôma
 
 ### 1.3. The S Shape — Para Grandes Ideias, Rebrands e Pitches (*Going for the Heart*)
 
-![Diagrama S Shape](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/diagram_s_shape.png)
+![Diagrama S Shape](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/diagram_s_shape.png)
 
 * **Lógica estrutural:** É a estrutura mais completa e cinematográfica — a favorita para **apresentações de posicionamento de marca, *rebrands* e aberturas de *pitches***. Ela combina a crítica cultural com a visão de futuro e termina com um discurso de convocação digno de cinema.
 * **Proporção matemática:**
@@ -92,7 +92,7 @@ Toda grande narrativa de manifesto desenha uma trajetória na mente e no estôma
 
 ### 1.4. The W Shape — Para Viagens, Contos e Tours Guiados (*Trips, Tales, and Tours*)
 
-![Diagrama W Shape](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/diagram_w_shape.png)
+![Diagrama W Shape](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/diagram_w_shape.png)
 
 * **Lógica estrutural:** Nem todo manifesto precisa de um grande drama existencial. Às vezes, a melhor forma de persuadir é colocar o público dentro de um ônibus de turismo e guiá-lo por **3 a 5 paradas (*Stops*) fascinantes** — uma aula de história da categoria, um tour pela fábrica, a anatomia de um produto ou uma sequência cronológica de fatos — antes de amarrar tudo à marca.
 * **Proporção matemática:**
@@ -109,7 +109,7 @@ Toda grande narrativa de manifesto desenha uma trajetória na mente e no estôma
 
 ### 1.5. The E Shape — Para Honrarias, Tributos e Celebrações (*Parallel Structure*)
 
-![Diagrama E Shape](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/diagram_e_shape.png)
+![Diagrama E Shape](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/diagram_e_shape.png)
 
 * **Lógica estrutural:** O **E Shape** é um manifesto construído quase inteiramente sobre uma **espinha dorsal vertical (um dispositivo de repetição / anáfora)** da qual saem múltiplos braços horizontais independentes (**VARIETY**). Não há arco dramático de queda e subida nem linha do tempo: há um **mosaico caleidoscópico** que ilumina um tema por todos os ângulos possíveis.
 * **Proporção matemática:**
@@ -126,7 +126,7 @@ Toda grande narrativa de manifesto desenha uma trajetória na mente e no estôma
 
 ### 1.6. The J Shape — Para o Desvio Delicioso (*Delightful Misdirection*)
 
-![Diagrama J Shape](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/diagram_j_shape.png)
+![Diagrama J Shape](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/diagram_j_shape.png)
 
 * **Lógica estrutural:** O **J Shape** é o formato mais ousado e artístico. Você começa com uma linha levemente confusa ou intrigante (**HOOK**) sem dar nenhum contexto comercial. Em seguida, mergulha em uma longa descida vertical de puro entretenimento, pintura de cena, ironia ou espetáculo sensorial (**SPECTACLE**) durante 90% do tempo. Só na curvinha final do "J" você entrega a chave decodificadora (**REVEAL**) que ressignifica tudo o que o público acabou de assistir/ler.
 * **Proporção matemática:**
@@ -144,7 +144,7 @@ Toda grande narrativa de manifesto desenha uma trajetória na mente e no estôma
 
 Lonnie Elliott catalogou os **24 temas universais de manifestos**, divididos em **4 grandes categorias estratégicas** (cada uma com 6 arquétipos e um "segredo de execução" próprio), além do Cheat Sheet clássico dos **8 Tipos de Manifestos**.
 
-![Cheat Sheet: 8 Tipos Clássicos de Manifestos](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_8_types_of_manifestos.png)
+![Cheat Sheet: 8 Tipos Clássicos de Manifestos](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_8_types_of_manifestos.png)
 
 ### Os 8 Tipos Clássicos (Resumo Rápido do Cheat Sheet)
 1. **The North Star (A Estrela Guia):** Declara a visão de mundo da marca e o que ela defende (ex.: Apple *Think Different*).
@@ -206,7 +206,7 @@ Lonnie Elliott catalogou os **24 temas universais de manifestos**, divididos em 
 
 A estrutura (*Shape*) garante que o manifesto faça sentido; **o estilo garante que ele dê arrepios.** Lonnie Elliott sistematiza **16 técnicas estilísticas** (complementadas pelo Cheat Sheet *12 Tips for Crafting Manifestos*):
 
-![Cheat Sheet: 12 Dicas para Escrever Manifestos](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_12_tips_crafting_manifestos.png)
+![Cheat Sheet: 12 Dicas para Escrever Manifestos](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_12_tips_crafting_manifestos.png)
 
 ### Bloco 1: Ritmo e Música Verbal (*Rhythm & Music*)
 1. **Estrutura Paralela (*Parallel Structure*):** Repita o mesmo esqueleto sintático em linhas consecutivas (*Anáfora* no início da frase; *Epístrofe* no fim da frase). Isso cria hipnose rítmica e faz o argumento parecer uma lei da natureza.
@@ -240,7 +240,7 @@ A estrutura (*Shape*) garante que o manifesto faça sentido; **o estilo garante 
 
 ### 4.1. As 8 Maneiras de Abrir um Manifesto (*8 Ways to Open a Manifesto*)
 
-![Cheat Sheet: 8 Maneiras de Abrir um Manifesto](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_8_ways_to_open.png)
+![Cheat Sheet: 8 Maneiras de Abrir um Manifesto](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_8_ways_to_open.png)
 
 A primeira frase de um manifesto tem uma única missão: **impedir que a pessoa pule o anúncio ou desligue o cérebro no *pitch*.**
 
@@ -265,7 +265,7 @@ A primeira frase de um manifesto tem uma única missão: **impedir que a pessoa 
 
 ### 4.2. As 7 Maneiras de Fechar um Manifesto (*7 Ways to End a Manifesto*)
 
-![Cheat Sheet: 7 Maneiras de Fechar um Manifesto](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_7_ways_to_end.png)
+![Cheat Sheet: 7 Maneiras de Fechar um Manifesto](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_7_ways_to_end.png)
 
 1. **The Call to Arms / Rally (A Convocação para a Ação):** Termine com um verbo no imperativo que empurra o leitor para a rua (*"Don't go there. Live there."* — Airbnb).
 2. **The Full Circle / Callback (O Fechamento de Ciclo):** Retome exatamente a imagem, pergunta ou frase da primeira linha, mas agora com o seu significado completamente invertido ou elevado.
@@ -292,7 +292,7 @@ Um dos maiores dilemas de redatores e estrategistas é: *"O manifesto está lind
 
 ### 4.4. Os 59 *Thought Starters* (Gatilhos para Destravar a Escrita)
 
-![Cheat Sheet: 59 Thought Starters](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_59_thought_starters.png)
+![Cheat Sheet: 59 Thought Starters](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_59_thought_starters.png)
 
 Para nunca sofrer de bloqueio criativo, Lonnie Elliott oferece **59 perguntas e inícios de frases** divididos por ângulo psicológico (extraídos do Cheat Sheet oficial):
 
@@ -320,7 +320,7 @@ Para nunca sofrer de bloqueio criativo, Lonnie Elliott oferece **59 perguntas e 
   19. *"Isto não é para quem quer [X]. Isto é para quem..."*
   20. *"Talvez o segredo não seja [X]. Talvez seja..."*
 
-*(O arquivo complementar [`BANCO-DE-ROTEIROS-MANIFESTOS.md`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/BANCO-DE-ROTEIROS-MANIFESTOS.md) contém os 186 roteiros completos da base de dados que materializam esses gatilhos na prática.)*
+*(O arquivo complementar [`BANCO-DE-ROTEIROS-MANIFESTOS.md`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/BANCO-DE-ROTEIROS-MANIFESTOS.md) contém os 186 roteiros completos da base de dados que materializam esses gatilhos na prática.)*
 
 ---
 
@@ -382,26 +382,26 @@ Após escrever o primeiro rascunho respeitando as proporções do *Shape*, passe
 
 ## Parte 7: Índice de Ativos Visuais Salvos Localmente (`04_manifesto_writing/imagens/`)
 
-Todos os diagramas, *cheat sheets* em alta resolução, prévias do livro e capturas das páginas originais foram salvos em `/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/`:
+Todos os diagramas, *cheat sheets* em alta resolução, prévias do livro e capturas das páginas originais foram salvos em `/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/`:
 
 ### Cheat Sheets Oficiais (PNG & PDF)
-* [`cheatsheet_8_types_of_manifestos.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_8_types_of_manifestos.png) — Os 8 tipos clássicos de manifestos de marca.
-* [`cheatsheet_12_tips_crafting_manifestos.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_12_tips_crafting_manifestos.png) — 12 regras de ouro de estilo e redação.
-* [`cheatsheet_8_ways_to_open.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_8_ways_to_open.png) — 8 técnicas para a primeira linha.
-* [`cheatsheet_7_ways_to_end.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_7_ways_to_end.png) — 7 técnicas de fechamento.
-* [`cheatsheet_59_thought_starters.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_59_thought_starters.png) — 59 gatilhos criativos para destravar roteiros.
-* [`cheatsheet_6_ways_honor_product.pdf`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_6_ways_honor_product.pdf) — 6 formas de inserir o cliente/produto organicamente.
-* [`cheatsheet_100_manifesto_references.pdf`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_100_manifesto_references.pdf) — Catálogo de 100 referências de manifestos.
-* [`cheatsheet_75_brand_manifesto_examples.pdf`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_75_brand_manifesto_examples.pdf) — 75 exemplos de manifestos analisados.
+* [`cheatsheet_8_types_of_manifestos.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_8_types_of_manifestos.png) — Os 8 tipos clássicos de manifestos de marca.
+* [`cheatsheet_12_tips_crafting_manifestos.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_12_tips_crafting_manifestos.png) — 12 regras de ouro de estilo e redação.
+* [`cheatsheet_8_ways_to_open.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_8_ways_to_open.png) — 8 técnicas para a primeira linha.
+* [`cheatsheet_7_ways_to_end.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_7_ways_to_end.png) — 7 técnicas de fechamento.
+* [`cheatsheet_59_thought_starters.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_59_thought_starters.png) — 59 gatilhos criativos para destravar roteiros.
+* [`cheatsheet_6_ways_honor_product.pdf`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_6_ways_honor_product.pdf) — 6 formas de inserir o cliente/produto organicamente.
+* [`cheatsheet_100_manifesto_references.pdf`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_100_manifesto_references.pdf) — Catálogo de 100 referências de manifestos.
+* [`cheatsheet_75_brand_manifesto_examples.pdf`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/cheatsheet_75_brand_manifesto_examples.pdf) — 75 exemplos de manifestos analisados.
 
 ### Diagramas das 6 Estruturas e Capturas de Página (Playwright Full-Page)
-* [`diagram_u_shape.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/diagram_u_shape.png) & [`page_u_shape_deep_dive.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/page_u_shape_deep_dive.png)
-* [`diagram_z_shape.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/diagram_z_shape.png) & [`page_z_shape_deep_dive.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/page_z_shape_deep_dive.png)
-* [`diagram_s_shape.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/diagram_s_shape.png) & [`page_s_shape_deep_dive.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/page_s_shape_deep_dive.png)
-* [`diagram_w_shape.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/diagram_w_shape.png) & [`page_w_shape_deep_dive.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/page_w_shape_deep_dive.png)
-* [`diagram_e_shape.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/diagram_e_shape.png) & [`page_e_shape_deep_dive.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/page_e_shape_deep_dive.png)
-* [`diagram_j_shape.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/diagram_j_shape.png) & [`page_j_shape_deep_dive.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/page_j_shape_deep_dive.png)
-* [`page_how_to_write_full.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/page_how_to_write_full.png), [`page_types_of_manifestos.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/page_types_of_manifestos.png), [`page_mastering_style.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/page_mastering_style.png), [`page_top_10_lists.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/page_top_10_lists.png), [`page_workspace.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/page_workspace.png).
-* [`book_preview_1.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/book_preview_1.png), [`book_preview_2.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/book_preview_2.png), [`book_preview_3.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/imagens/book_preview_3.png).
+* [`diagram_u_shape.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/diagram_u_shape.png) & [`page_u_shape_deep_dive.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/page_u_shape_deep_dive.png)
+* [`diagram_z_shape.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/diagram_z_shape.png) & [`page_z_shape_deep_dive.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/page_z_shape_deep_dive.png)
+* [`diagram_s_shape.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/diagram_s_shape.png) & [`page_s_shape_deep_dive.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/page_s_shape_deep_dive.png)
+* [`diagram_w_shape.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/diagram_w_shape.png) & [`page_w_shape_deep_dive.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/page_w_shape_deep_dive.png)
+* [`diagram_e_shape.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/diagram_e_shape.png) & [`page_e_shape_deep_dive.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/page_e_shape_deep_dive.png)
+* [`diagram_j_shape.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/diagram_j_shape.png) & [`page_j_shape_deep_dive.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/page_j_shape_deep_dive.png)
+* [`page_how_to_write_full.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/page_how_to_write_full.png), [`page_types_of_manifestos.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/page_types_of_manifestos.png), [`page_mastering_style.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/page_mastering_style.png), [`page_top_10_lists.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/page_top_10_lists.png), [`page_workspace.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/page_workspace.png).
+* [`book_preview_1.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/book_preview_1.png), [`book_preview_2.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/book_preview_2.png), [`book_preview_3.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/imagens/book_preview_3.png).
 
-> **Consulte também:** [`BANCO-DE-ROTEIROS-MANIFESTOS.md`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/04_manifesto_writing/BANCO-DE-ROTEIROS-MANIFESTOS.md) para ler os **roteiros dissecados ato por ato** e o **arquivo integral dos 186 manifestos** extraídos do banco de dados de `manifestowriting.com`.
+> **Consulte também:** [`BANCO-DE-ROTEIROS-MANIFESTOS.md`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/04_manifesto_writing/BANCO-DE-ROTEIROS-MANIFESTOS.md) para ler os **roteiros dissecados ato por ato** e o **arquivo integral dos 186 manifestos** extraídos do banco de dados de `manifestowriting.com`.

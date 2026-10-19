@@ -7,7 +7,7 @@ Biblioteca visual local organizada em espaços e compartilhada entre seus projet
 Dois cliques em **Abrir Repertório.command**, ou na raiz do acervo:
 
 ```sh
-./repertorio/run.sh serve
+./app/run.sh serve
 ```
 
 Abra **http://127.0.0.1:8766**. Deixe o processo em execução enquanto os agentes consultam a biblioteca. Use Ctrl+C para encerrar. Não é necessário login; o serviço só escuta no computador local.
@@ -16,7 +16,7 @@ Abra **http://127.0.0.1:8766**. Deixe o processo em execução enquanto os agent
 
 Neste computador o Repertório é um aplicativo: **Repertório**, com o ícone psicodélico do olho, fixado no Dock. Clicar abre o acervo numa janela própria (sem navegador). Fechar a janela não desliga nada; ⌘Q encerra só o app, e o serviço continua no ar para os agentes.
 
-- `~/Applications/Repertório.app` é nativo (Swift + WebKit). O código está em `repertorio/mac/main.swift`; o ícone em `repertorio/mac/icone.png` (desenhado por `icone.py`). Para gerar de novo: `./repertorio/mac/build.sh /caminho/Repertório.app`, depois encerre o app e troque o arquivo.
+- `~/Applications/Repertório.app` é nativo (Swift + WebKit). O código está em `app/mac/main.swift`; o ícone em `app/mac/icone.png` (desenhado por `icone.py`). Para gerar de novo: `./app/mac/build.sh /caminho/Repertório.app`, depois encerre o app e troque o arquivo.
 - O app confere o serviço a cada 30 segundos e o religa se cair. Downloads perguntam onde salvar; links externos abrem no navegador.
 - `~/Library/LaunchAgents/local.repertorio.plist` abre o app sem janela ao entrar no Mac e confere a cada 5 minutos se ele está aberto.
 - O macOS impede que serviços em segundo plano leiam a pasta Documentos; por isso quem liga o serviço é o app, que recebeu essa permissão. Se o app for recompilado, o Mac pede a permissão de novo.
@@ -28,10 +28,10 @@ No Claude Code o MCP está registrado para todos os projetos com `claude mcp add
 Primeira instalação em outro ambiente, com Python 3.12, uv, Node.js >=22.12 e pnpm 11 disponíveis:
 
 ```sh
-./repertorio/setup.sh
+./app/setup.sh
 ```
 
-O frontend compilado é servido pelo FastAPI. Os originais e o protótipo continuam nos locais anteriores. O banco e as novas criações ficam em `repertorio/.runtime/`, fora do versionamento.
+O frontend compilado é servido pelo FastAPI. Os originais e o protótipo continuam nos locais anteriores. O banco e as novas criações ficam em `app/.runtime/`, fora do versionamento.
 
 ## Espaços de trabalho
 
@@ -61,8 +61,8 @@ Os agentes precisam receber os espaços explicitamente. Exemplo: “Use os espa�
 Cadastre cada pasta uma vez. Este comando apenas registra a pasta; `--write-instructions` acrescenta um bloco delimitado ao AGENTS.md, preservando o restante:
 
 ```sh
-./repertorio/run.sh connect /caminho/growmate-marketing --write-instructions
-./repertorio/run.sh connect /caminho/growmate-comercial --write-instructions
+./app/run.sh connect /caminho/growmate-marketing --write-instructions
+./app/run.sh connect /caminho/growmate-comercial --write-instructions
 ```
 
 A saída inclui o `project_id` e os exemplos de configuração. Não é preciso mover projetos ou conversas para esta aplicação.
@@ -149,15 +149,15 @@ HTML e demais originais são entregues como download, não executados no domíni
 ### CLI e API
 
 ```sh
-./repertorio/run.sh workspaces
-./repertorio/run.sh create-workspace "GrowMate"
-./repertorio/run.sh delete-workspace ID_DO_ESPACO --revision REVISAO_ATUAL
-./repertorio/run.sh search "abertura com impacto" --workspace pp-treta --prancha
-./repertorio/run.sh get '284-reel-cerebro-3d' --workspace pp-treta
-./repertorio/run.sh context PROJECT_ID "Apresentação comercial" --workspace pp-treta
-./repertorio/run.sh register /tmp/envio.json
-./repertorio/run.sh operation OPERATION_ID
-./repertorio/run.sh doctor
+./app/run.sh workspaces
+./app/run.sh create-workspace "GrowMate"
+./app/run.sh delete-workspace ID_DO_ESPACO --revision REVISAO_ATUAL
+./app/run.sh search "abertura com impacto" --workspace pp-treta --prancha
+./app/run.sh get '284-reel-cerebro-3d' --workspace pp-treta
+./app/run.sh context PROJECT_ID "Apresentação comercial" --workspace pp-treta
+./app/run.sh register /tmp/envio.json
+./app/run.sh operation OPERATION_ID
+./app/run.sh doctor
 ```
 
 A API está documentada em **http://127.0.0.1:8766/docs**. Browser, CLI e MCP usam a mesma camada de serviço. Grafo, contadores, demandas, operações, atividade e prévias recebem `workspace_id`; buscas recebem `workspace_ids` ou `context_id`. A ficha mantém `revision` editorial e o vínculo mantém `membership_revision`. A alteração de estado exige `workspace_id` e `expected_membership_revision`. Chamadas sem repertório explícito retornam 422; links antigos da interface continuam usando PP Treta. Não há busca vetorial nem API de IA paga embutida; o agente do harness interpreta o pedido e escolhe consultas complementares.
@@ -169,10 +169,10 @@ A API está documentada em **http://127.0.0.1:8766/docs**. Browser, CLI e MCP us
 O serviço faz sozinho, uma vez por semana, uma cópia em **iCloud Drive › Backups › Repertório** (fora do Mac): `repertorio-DATA.zip` com a curadoria (banco e criações) e `pptreta-DATA.bundle` com o histórico do projeto. Guarda as 6 mais recentes e registra "Cópia de segurança salva" em Atividade. `REPERTORIO_BACKUP_DIR` troca a pasta.
 
 ```sh
-./repertorio/run.sh backup-now     # faz uma cópia agora (com o serviço parado ou rodando)
-./repertorio/run.sh doctor         # mostra a última cópia
+./app/run.sh backup-now     # faz uma cópia agora (com o serviço parado ou rodando)
+./app/run.sh doctor         # mostra a última cópia
 git clone "…/Backups/Repertório/pptreta-DATA.bundle" pptreta   # recupera o projeto
-./repertorio/run.sh restore "…/Backups/Repertório/repertorio-DATA.zip"  # recupera a curadoria (serviço parado)
+./app/run.sh restore "…/Backups/Repertório/repertorio-DATA.zip"  # recupera a curadoria (serviço parado)
 ```
 
 O histórico (git) guarda código, textos, dados e as apresentações de `_saida`. Os 12 GB de `_originais/` e as imagens geradas a partir deles ficam fora (ver `.gitignore`); numa migração, copie `_originais/` à parte.
@@ -180,10 +180,10 @@ O histórico (git) guarda código, textos, dados e as apresentações de `_saida
 ### Importação e restauração manual
 
 ```sh
-./repertorio/run.sh import --workspace pp-treta
-./repertorio/run.sh backup /caminho/backup-repertorio.zip
+./app/run.sh import --workspace pp-treta
+./app/run.sh backup /caminho/backup-repertorio.zip
 # Encerre o serviço antes de restaurar:
-./repertorio/run.sh restore /caminho/backup-repertorio.zip
+./app/run.sh restore /caminho/backup-repertorio.zip
 ```
 
 - O importador migra os dados existentes, incluindo mídias sem classificação, e preserva IDs, curadoria e exclusões em reimportações.
@@ -196,16 +196,16 @@ O histórico (git) guarda código, textos, dados e as apresentações de `_saida
 ## Desenvolvimento e testes
 
 ```sh
-./repertorio/.venv/bin/python -m pytest repertorio/tests -q
-pnpm --dir repertorio/web test
-pnpm --dir repertorio/web build
-pnpm --dir repertorio/web dev
+./app/.venv/bin/python -m pytest app/tests -q
+pnpm --dir app/web test
+pnpm --dir app/web build
+pnpm --dir app/web dev
 ```
 
 Testes completos no navegador, em uma biblioteca temporária que não altera o acervo real:
 
 ```sh
-cd repertorio/web
+cd app/web
 pnpm exec playwright install chromium
 pnpm test:e2e
 ```

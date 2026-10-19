@@ -1,7 +1,7 @@
 /* Confere os estados finais e cada clique usando o motor existente. */
 const fs=require('node:fs'),path=require('node:path');
 const {pathToFileURL}=require('node:url');
-const {chromium}=require('../repertorio/web/node_modules/@playwright/test');
+const {chromium}=require('../app/web/node_modules/@playwright/test');
 const root=path.resolve(__dirname,'..'),dest=path.join(root,'_saida/palestra-cx-ia-codex');
 const output=path.join(dest,'_ver');fs.mkdirSync(output,{recursive:true});
 const check=()=>{

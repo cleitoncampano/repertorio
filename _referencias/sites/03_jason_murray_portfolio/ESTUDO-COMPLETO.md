@@ -2,7 +2,7 @@
 
 > **URL Principal:** `https://www.jasonmurray.com/`  
 > **Páginas Analisadas:** `Home` (`/`), `About` (`/about`) e todas as 14 páginas individuais de projetos (`/work/*`) + preview de `Lululemon x John Summit`.  
-> **Diretório Local:** `/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/03_jason_murray_portfolio/`  
+> **Diretório Local:** `/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/03_jason_murray_portfolio/`
 > **Acervo Visual Local:** `imagens/` (36 arquivos em alta resolução entre screenshots completos e stills/renders de direção de arte).
 
 ---

@@ -32,7 +32,7 @@ Espaços e fichas têm IDs estáveis. Os vínculos usam chave composta, estado l
 
 Atualizar o app aberto com ⌘R. O aplicativo nativo não precisa ser recompilado. O serviço limita o encerramento das conexões abertas a cinco segundos, para que o monitor consiga reiniciá-lo.
 
-Para reverter a migração, encerrar o app e o serviço, recuperar também o código anterior e restaurar o backup com `./repertorio/run.sh restore _saida/repertorio-qa/espacos/antes-dos-espacos.zip`. Reabrir o app somente depois da restauração. Não executar código anterior sobre o banco com a migração nova.
+Para reverter a migração, encerrar o app e o serviço, recuperar também o código anterior e restaurar o backup com `./app/run.sh restore _saida/repertorio-qa/espacos/antes-dos-espacos.zip`. Reabrir o app somente depois da restauração. Não executar código anterior sobre o banco com a migração nova.
 
 A próxima ação de uso é criar GrowMate pelo seletor e indicar quais referências deseja adicionar ou compartilhar.
 

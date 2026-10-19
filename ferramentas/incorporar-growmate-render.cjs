@@ -3,7 +3,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const {pathToFileURL, fileURLToPath} = require('node:url');
-const {chromium} = require('../repertorio/web/node_modules/@playwright/test');
+const {chromium} = require('../app/web/node_modules/@playwright/test');
 const root = path.resolve(__dirname, '..');
 const manifestPath = path.join(root, 'docs/REPERTORIO-GROWMATE-LIVROS.json');
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));

@@ -224,7 +224,7 @@ def create_app(settings=None,run_worker=True):
 
     # Mount at the root after API routes, before the SPA catch-all; /mcp is handled by the SDK.
     for route in mcp_app.routes:app.router.routes.append(route)
-    dist=settings.root/'repertorio/web/dist'
+    dist=settings.root/'app/web/dist'
     if dist.exists():
         if (dist/'assets').exists():app.mount('/assets',StaticFiles(directory=dist/'assets'),name='web-assets')
         @app.get('/{path:path}')

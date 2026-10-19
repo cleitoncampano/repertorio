@@ -1,5 +1,12 @@
 # Validação da primeira versão
 
+## Organização do projeto em 19/10/2026
+
+Raiz renomeada para `repertorio/`, software movido para `app/` e espaço existente renomeado para PPT Treta. Caminhos do banco atualizados com backup, sem reimportar o acervo. Preservados todos os IDs e vínculos, 15.662 referências e 26.235 arquivos; nenhum arquivo ausente. Comando `relocate` recusa serviço ativo e desfaz a transação quando o destino está incompleto. A importação reutiliza os IDs dos arquivos já cadastrados após a mudança.
+
+Aprovados 37 testes do servidor, 34 da interface, 25 de navegador e build. Testes Python e compilação repetidos pela raiz definitiva. Aplicativo Swift compilado e instalado, inicialização do serviço pelo app conferida na nova raiz, integridade SQLite e chaves estrangeiras válidas. Mapas reais de PPT Treta e Growmate preservam contagens e conexões; miniaturas respondem HTTP 200, sem erros JavaScript. Evidências locais e backup anterior em `_saida/repertorio-qa/organizacao/`. Organização documentada em `docs/ORGANIZACAO.md`.
+
+
 Executada em 17/10/2026 no computador de desenvolvimento.
 
 ## Dados reais

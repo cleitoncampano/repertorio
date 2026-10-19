@@ -11,4 +11,4 @@
   ```
 
   `gemini mcp list` confere a conexão e `/mcp`, dentro da sessão, lista as ferramentas (`start_context`, `search_references`, `get_reference`, `build_inspiration_pack`, `get_pack`...).
-- Se aparecer desconectado, o serviço estava fora do ar quando a sessão começou: o app do Repertório o religa em até 30 s; abra uma nova sessão. Enquanto isso, use o plano B (`./repertorio/run.sh search "pedido" --workspace ID_DO_ESPACO --prancha` e abra a imagem indicada em Prancha) e avise o usuário.
+- Se aparecer desconectado, o serviço estava fora do ar quando a sessão começou: o app do Repertório o religa em até 30 s; abra uma nova sessão. Enquanto isso, use o plano B (`./app/run.sh search "pedido" --workspace ID_DO_ESPACO --prancha` e abra a imagem indicada em Prancha) e avise o usuário.

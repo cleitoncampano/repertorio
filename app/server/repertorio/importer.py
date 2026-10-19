@@ -24,6 +24,10 @@ def asset(conn, settings, rid, path, role, member=None):
     p = (settings.root / p).resolve() if not p.is_absolute() else p.resolve()
     if not p.is_relative_to(settings.root) and not p.is_relative_to(settings.home):
         return None
+    existing = conn.execute(text('SELECT id FROM assets WHERE ref_id=:rid AND path=:p AND role=:r AND member IS :m LIMIT 1'),
+                            dict(rid=rid,p=str(p),r=role,m=member)).scalar()
+    if existing:
+        return existing
     aid = hashlib.sha256(f'{rid}|{p}|{member}|{role}'.encode()).hexdigest()[:32]
     conn.execute(text('INSERT OR IGNORE INTO assets(id,ref_id,path,role,member,mime,missing) VALUES(:id,:rid,:p,:r,:m,:mime,:missing)'),
                  dict(id=aid,rid=rid,p=str(p),r=role,m=member,mime=mimetypes.guess_type(member or str(p))[0] or 'application/octet-stream',missing=int(not p.is_file())))

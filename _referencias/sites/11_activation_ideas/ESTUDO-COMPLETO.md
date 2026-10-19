@@ -14,7 +14,7 @@ A tese central de **Dani Comar** e da escola da **OgilvyAction / Geometry Global
 
 Enquanto um comercial de TV ou um manifesto busca construir a história da marca (*Brand Storytelling*), a **Ativação de Marca (*Brand Activation*)** é a arte e a ciência de **dar vida física, digital ou transacional a essa história**, fazendo o público **agir** — ir do ponto A ao ponto B, tocar, testar, escanear, doar, compartilhar ou comprar.
 
-![Exemplo de Ativação Física OOH: Generous Billboard (JCDecaux / Coeur de Pomme)](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/01_case_generous_billboard.jpg)
+![Exemplo de Ativação Física OOH: Generous Billboard (JCDecaux / Coeur de Pomme)](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/01_case_generous_billboard.jpg)
 
 ---
 
@@ -43,7 +43,7 @@ Inspirado nos artigos de **Julian Cole (*Planning Dirty*)** e **Rory Sutherland 
 * **O Problema Bonito (Comportamental):** *"Para testar seu tipo de medula basta uma gota de sangue — e as pessoas já sangram acidentalmente em casa toda semana quando fazem pequenos cortes."*
 * **A Ativação Resultante (*Help: I Want to Save a Life* — Droga5):** Colocar um cotonete de teste de medula óssea e um envelope pré-pago **dentro da caixinha de curativos (Band-Aid)**. Da próxima vez que você se cortar (Estado Quente + Hábito Existente), você aproveita a gota de sangue para salvar uma vida!
 
-![Case Icônico: Help: I Want To Save a Life (Droga5 / DKMS)](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/28_icon_help_i_want_to_save_a_life.jpg)
+![Case Icônico: Help: I Want To Save a Life (Droga5 / DKMS)](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/28_icon_help_i_want_to_save_a_life.jpg)
 
 ---
 
@@ -69,7 +69,7 @@ O site organiza seus mais de 1.500 cases em **9 disciplinas fundamentais de ativ
   * **SOS POS (*Winter's / Peru*):** Hackear as maquininhas de cartão de crédito (POS) de milhares de mercearias de bairro para que funcionem como um botão de pânico silencioso e rede de proteção para mulheres em perigo na rua.
   * **0.0 Prohibition Shelf (*Heineken*):** Usar brechas criativas nas leis de proibição de venda de álcool em determinados horários/locais para ocupar a prateleira com cerveja 0.0%.
 
-![Case Shopper & B2B: SOS POS — Maquininha de cartão como rede de emergência no varejo](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/09_case_sos_pos.jpg)
+![Case Shopper & B2B: SOS POS — Maquininha de cartão como rede de emergência no varejo](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/09_case_sos_pos.jpg)
 
 ### 2.3. Promo (`/promo`)
 * **Definição oficial:** *"Brindes, degustação (sampling), produtos promocionais (swag) e campanhas promocionais que impulsionam a experimentação (trial), recompensam a fidelidade e colocam seu produto nas mãos certas."*
@@ -79,9 +79,9 @@ O site organiza seus mais de 1.500 cases em **9 disciplinas fundamentais de ativ
   * **The Oreo Cows (*Oreo*):** Encontrar vacas reais da raça *Belted Galloway* (que possuem pelagem preta nas pontas e uma faixa branca perfeita no meio, idêntica a um biscoito Oreo) e transformá-las em mídia viva promocional.
   * **Build Your Own Super Bowl Commercial / DoorDash-All-The-Ads:** Transformar o maior evento televisivo dos EUA em uma promoção interativa onde um único código sorteia todos os produtos anunciados por todas as marcas durante o intervalo comercial.
 
-![Case Promo & Sponsorship: Field Barcode (Mercado Livre Arena Pacaembu)](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/13_case_field_barcode.jpg)
+![Case Promo & Sponsorship: Field Barcode (Mercado Livre Arena Pacaembu)](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/13_case_field_barcode.jpg)
 
-![Case Promo & Design: The Oreo Cows](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/12_case_the_oreo_cows.jpg)
+![Case Promo & Design: The Oreo Cows](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/12_case_the_oreo_cows.jpg)
 
 ### 2.4. PR Stunts (`/pr-stunts`)
 * **Definição oficial:** *"Ideias ousadas e magnéticas que geram manchetes na imprensa, inflamam conversas e colocam o mundo inteiro falando sobre a sua marca."*
@@ -91,9 +91,9 @@ O site organiza seus mais de 1.500 cases em **9 disciplinas fundamentais de ativ
   * **Bentley Burial (*ABTO / Leo Burnett Brasil*):** O bilionário brasileiro "Conde Chiquinho Scarpa" anuncia na imprensa que vai enterrar seu Bentley de 500 mil dólares no jardim de sua mansão no estilo dos faraós egípcios. Após uma semana de indignação nacional na TV e nas redes ("Que desperdício enterrar algo tão valioso!"), no dia do enterro, diante das câmeras ao vivo, ele revela que a cova está vazia: *"Abdo: Eu não enterrei meu carro, mas todo dia pessoas enterram algo muito mais valioso que pode salvar vidas: seus órgãos. Seja um doador."*
   * **The American Takeover (*ROM Chocolate / McCann Romênia*):** Substituir da noite para o dia a embalagem histórica com a bandeira da Romênia pela bandeira dos EUA, gerando revolta nacional nos jovens romenos antes de revelar que tudo era um choque para fazê-los defender o orgulho nacional.
 
-![Case PR Stunt: The Trojan Fax](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/05_case_the_trojan_fax.jpg)
+![Case PR Stunt: The Trojan Fax](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/05_case_the_trojan_fax.jpg)
 
-![Case PR Stunt Clássico: Bentley Burial (ABTO Brasil)](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/26_icon_bentley_burial.jpg)
+![Case PR Stunt Clássico: Bentley Burial (ABTO Brasil)](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/26_icon_bentley_burial.jpg)
 
 ### 2.5. Creative Commerce (`/creative-commerce`)
 * **Definição oficial:** *"Experiências compráveis (shoppable), inovação direta ao consumidor (D2C) e novas formas de colapsar a distância entre a inspiração e a compra."*
@@ -104,7 +104,7 @@ O site organiza seus mais de 1.500 cases em **9 disciplinas fundamentais de ativ
   * **Enjoy Before Returning (*Diesel*):** Subverter a política de devolução do e-commerce incentivando abertamente os consumidores a comprarem a roupa para usar na festa de sexta-feira e devolverem na segunda.
   * **Hope Store (*Cruz Vermelha Portugal*):** Abrir uma loja de shopping inteira onde as prateleiras, caixas e etiquetas elegantes não vendem objetos físicos para o comprador levar para casa, mas doações tangíveis ("1 kit de abrigo", "1 refeição quente") para quem precisa.
 
-![Case Creative Commerce & Retail: Hope Store (Cruz Vermelha)](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/27_icon_hope_store.jpg)
+![Case Creative Commerce & Retail: Hope Store (Cruz Vermelha)](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/27_icon_hope_store.jpg)
 
 ### 2.6. Social Media (`/social-media`)
 * **Definição oficial:** *"Campanhas desenhadas para os feeds, momentos virais, parcerias com criadores e conteúdos que se espalham organicamente pelas plataformas."*
@@ -114,9 +114,9 @@ O site organiza seus mais de 1.500 cases em **9 disciplinas fundamentais de ativ
   * **Vaseline Originals / Vaseline Verified:** Pegar os milhares de *hacks* virais de beleza e cuidados com a pele criados espontaneamente por usuários no TikTok usando Vaselina, testá-los em laboratório científico e conceder o selo oficial "Vaseline Verified" (mais embalagens especiais co-criadas com as autoras dos *hacks*) para os truques que realmente funcionam.
   * **The Ice Bucket Challenge (*ALS*):** O padrão-ouro da mecânica viral de desafio com gatilho de nominação pública + janela de 24 horas + doação.
 
-![Case Social Media Clássico: Old Spice Response Campaign](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/25_icon_response_campaign.jpg)
+![Case Social Media Clássico: Old Spice Response Campaign](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/25_icon_response_campaign.jpg)
 
-![Case Social Media & Design: Vaseline Originals / Verified](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/16_case_vaseline_originals.jpg)
+![Case Social Media & Design: Vaseline Originals / Verified](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/16_case_vaseline_originals.jpg)
 
 ### 2.7. Events & Sponsorship (`/events-sponsorship`)
 * **Definição oficial:** *"Ativações de marca em festivais, eventos esportivos e experiências patrocinadas que se conectam com o público em seus momentos de paixão."*
@@ -133,9 +133,9 @@ O site organiza seus mais de 1.500 cases em **9 disciplinas fundamentais de ativ
   * **1837 Tiffany Blue Conservation (*Tiffany & Co.*):** Usar o ativo visual mais protegido da marca — a cor *Tiffany Blue* (Pantone 1837) — encontrando os exatos tons de azul-turquesa dos oceanos ameaçados para financiar a conservação marinha.
   * **A Can Has No Name (*Mountain Dew × Game of Thrones*):** Latas totalmente brancas em temperatura ambiente que só revelam a lista de alvos de Arya Stark quando colocadas no gelo (tinta termocrômica).
 
-![Case Design & Packaging: Heinz Dipper](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/02_case_heinz_dipper.jpg)
+![Case Design & Packaging: Heinz Dipper](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/02_case_heinz_dipper.jpg)
 
-![Case Design & OOH: 1837 Tiffany Blue Conservation](/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/21_case_1837_tiffany_blue_conservation.jpg)
+![Case Design & OOH: 1837 Tiffany Blue Conservation](/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/21_case_1837_tiffany_blue_conservation.jpg)
 
 ### 2.9. B2B & Trade (`/b2b-trade`)
 * **Definição oficial:** *"Campanhas voltadas para varejistas, distribuidores e audiências corporativas — de feiras de negócios a ferramentas de vendas e experiências de marca B2B."*
@@ -275,34 +275,34 @@ Gere pelo menos **3 rotas criativas distintas** cruzando disciplinas e mecânica
 
 ## Parte 6: Índice de Ativos Visuais Salvos Localmente (`11_activation_ideas/imagens/`)
 
-Foram baixadas **35 imagens em alta resolução** (1500px) dos principais cases, ícones históricos e festivais de ciência comportamental para `/Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/`:
+Foram baixadas **35 imagens em alta resolução** (1500px) dos principais cases, ícones históricos e festivais de ciência comportamental para `/Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/`:
 
-1. [`01_case_generous_billboard.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/01_case_generous_billboard.jpg) — *Generous Billboard* (Experiential / Shopper OOH).
-2. [`02_case_heinz_dipper.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/02_case_heinz_dipper.jpg) & [`20_case_heinz_dipper.png`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/20_case_heinz_dipper.png) — *Heinz Dipper* (Design & Packaging / Cannes Winner).
-3. [`03_case_expensive_sh_t.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/03_case_expensive_sh_t.jpg) — *Expensive Sh*t* (Social Media / Cannes Winner).
-4. [`04_case_uva_uva_bomb_n.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/04_case_uva_uva_bomb_n.jpg) — *Uva, Uva Bombón* (Promo / PR Stunts / Creative Commerce).
-5. [`05_case_the_trojan_fax.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/05_case_the_trojan_fax.jpg) — *The Trojan Fax* (PR Stunts / Cannes Winner).
-6. [`06_case_clean_my_name.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/06_case_clean_my_name.jpg) — *Clean my Name* (Promo / Shopper / PR Stunts).
-7. [`07_case_askmaud_the_ai_that_knows_what_we_do.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/07_case_askmaud_the_ai_that_knows_what_we_do.jpg) — *AskMaud AI* (Tool).
-8. [`08_case_build_your_own_super_bowl_commercial.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/08_case_build_your_own_super_bowl_commercial.jpg) — *Build Your Own Super Bowl Commercial* (Promo / Winners).
-9. [`09_case_sos_pos.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/09_case_sos_pos.jpg) — *SOS POS* (Shopper & Retail / B2B & Trade).
-10. [`10_case_the_emergency_slice.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/10_case_the_emergency_slice.jpg) — *The Emergency Slice* (Social Media / Promo).
-11. [`11_case_lucky_fan_index.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/11_case_lucky_fan_index.jpg) — *Lucky Fan Index* (Events & Sponsorship / Creative Commerce).
-12. [`12_case_the_oreo_cows.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/12_case_the_oreo_cows.jpg) — *The Oreo Cows* (Promo / Design / Creative Commerce).
-13. [`13_case_field_barcode.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/13_case_field_barcode.jpg) — *Field Barcode* (Mercado Livre — Events & Sponsorship / Creative Commerce).
-14. [`14_case_deliver_the_rainbow.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/14_case_deliver_the_rainbow.jpg) — *Deliver the Rainbow* (Promo / PR Stunts).
-15. [`15_case_tocayos_inc.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/15_case_tocayos_inc.jpg) — *Tocayos Inc.* (B2B & Trade / Winners).
-16. [`16_case_vaseline_originals.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/16_case_vaseline_originals.jpg) — *Vaseline Originals* (Social Media / Design & Packaging).
-17. [`17_case_rocking_the_maracan.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/17_case_rocking_the_maracan.jpg) — *Rocking the Maracanã* (Sports & Sponsorship).
-18. [`18_case_vehicle_of_hope.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/18_case_vehicle_of_hope.jpg) — *Vehicle of Hope* (Experiential / PR Stunts).
-19. [`21_case_1837_tiffany_blue_conservation.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/21_case_1837_tiffany_blue_conservation.jpg) — *1837 Tiffany Blue Conservation* (Design / Winners).
-20. [`22_case_expedition_impossible.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/22_case_expedition_impossible.jpg) — *Expedition Impossible* (PR Stunts / Sports).
-21. [`23_icon_still_free.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/23_icon_still_free.jpg) — *Still Free* (Ecko Unltd. Air Force One Graffiti Stunt — Droga5).
-22. [`24_icon_the_american_takeover.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/24_icon_the_american_takeover.jpg) — *The American Takeover* (ROM Chocolate — McCann Romania).
-23. [`25_icon_response_campaign.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/25_icon_response_campaign.jpg) — *Old Spice Response Campaign* (Wieden+Kennedy).
-24. [`26_icon_bentley_burial.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/26_icon_bentley_burial.jpg) — *Bentley Burial* (ABTO / Leo Burnett Brasil).
-25. [`27_icon_hope_store.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/27_icon_hope_store.jpg) — *Hope Store* (Cruz Vermelha Portugal).
-26. [`28_icon_help_i_want_to_save_a_life.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/28_icon_help_i_want_to_save_a_life.jpg) — *Help: I Want To Save a Life* (Droga5).
-27. [`29_special_race_to_the_death.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/29_special_race_to_the_death.jpg), [`30_special_icons.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/30_special_icons.jpg), [`31_special_nudgestock_2023.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/31_special_nudgestock_2023.jpg), [`32_special_international_women_s_day_2023.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/32_special_international_women_s_day_2023.jpg), [`34_special_nudgestock_2022.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/34_special_nudgestock_2022.jpg), [`35_special_the_best_secret_source_of_insights.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/imagens/35_special_the_best_secret_source_of_insights.jpg).
+1. [`01_case_generous_billboard.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/01_case_generous_billboard.jpg) — *Generous Billboard* (Experiential / Shopper OOH).
+2. [`02_case_heinz_dipper.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/02_case_heinz_dipper.jpg) & [`20_case_heinz_dipper.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/20_case_heinz_dipper.png) — *Heinz Dipper* (Design & Packaging / Cannes Winner).
+3. [`03_case_expensive_sh_t.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/03_case_expensive_sh_t.jpg) — *Expensive Sh*t* (Social Media / Cannes Winner).
+4. [`04_case_uva_uva_bomb_n.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/04_case_uva_uva_bomb_n.jpg) — *Uva, Uva Bombón* (Promo / PR Stunts / Creative Commerce).
+5. [`05_case_the_trojan_fax.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/05_case_the_trojan_fax.jpg) — *The Trojan Fax* (PR Stunts / Cannes Winner).
+6. [`06_case_clean_my_name.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/06_case_clean_my_name.jpg) — *Clean my Name* (Promo / Shopper / PR Stunts).
+7. [`07_case_askmaud_the_ai_that_knows_what_we_do.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/07_case_askmaud_the_ai_that_knows_what_we_do.jpg) — *AskMaud AI* (Tool).
+8. [`08_case_build_your_own_super_bowl_commercial.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/08_case_build_your_own_super_bowl_commercial.jpg) — *Build Your Own Super Bowl Commercial* (Promo / Winners).
+9. [`09_case_sos_pos.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/09_case_sos_pos.jpg) — *SOS POS* (Shopper & Retail / B2B & Trade).
+10. [`10_case_the_emergency_slice.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/10_case_the_emergency_slice.jpg) — *The Emergency Slice* (Social Media / Promo).
+11. [`11_case_lucky_fan_index.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/11_case_lucky_fan_index.jpg) — *Lucky Fan Index* (Events & Sponsorship / Creative Commerce).
+12. [`12_case_the_oreo_cows.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/12_case_the_oreo_cows.jpg) — *The Oreo Cows* (Promo / Design / Creative Commerce).
+13. [`13_case_field_barcode.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/13_case_field_barcode.jpg) — *Field Barcode* (Mercado Livre — Events & Sponsorship / Creative Commerce).
+14. [`14_case_deliver_the_rainbow.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/14_case_deliver_the_rainbow.jpg) — *Deliver the Rainbow* (Promo / PR Stunts).
+15. [`15_case_tocayos_inc.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/15_case_tocayos_inc.jpg) — *Tocayos Inc.* (B2B & Trade / Winners).
+16. [`16_case_vaseline_originals.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/16_case_vaseline_originals.jpg) — *Vaseline Originals* (Social Media / Design & Packaging).
+17. [`17_case_rocking_the_maracan.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/17_case_rocking_the_maracan.jpg) — *Rocking the Maracanã* (Sports & Sponsorship).
+18. [`18_case_vehicle_of_hope.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/18_case_vehicle_of_hope.jpg) — *Vehicle of Hope* (Experiential / PR Stunts).
+19. [`21_case_1837_tiffany_blue_conservation.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/21_case_1837_tiffany_blue_conservation.jpg) — *1837 Tiffany Blue Conservation* (Design / Winners).
+20. [`22_case_expedition_impossible.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/22_case_expedition_impossible.jpg) — *Expedition Impossible* (PR Stunts / Sports).
+21. [`23_icon_still_free.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/23_icon_still_free.jpg) — *Still Free* (Ecko Unltd. Air Force One Graffiti Stunt — Droga5).
+22. [`24_icon_the_american_takeover.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/24_icon_the_american_takeover.jpg) — *The American Takeover* (ROM Chocolate — McCann Romania).
+23. [`25_icon_response_campaign.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/25_icon_response_campaign.jpg) — *Old Spice Response Campaign* (Wieden+Kennedy).
+24. [`26_icon_bentley_burial.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/26_icon_bentley_burial.jpg) — *Bentley Burial* (ABTO / Leo Burnett Brasil).
+25. [`27_icon_hope_store.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/27_icon_hope_store.jpg) — *Hope Store* (Cruz Vermelha Portugal).
+26. [`28_icon_help_i_want_to_save_a_life.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/28_icon_help_i_want_to_save_a_life.jpg) — *Help: I Want To Save a Life* (Droga5).
+27. [`29_special_race_to_the_death.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/29_special_race_to_the_death.jpg), [`30_special_icons.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/30_special_icons.jpg), [`31_special_nudgestock_2023.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/31_special_nudgestock_2023.jpg), [`32_special_international_women_s_day_2023.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/32_special_international_women_s_day_2023.jpg), [`34_special_nudgestock_2022.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/34_special_nudgestock_2022.jpg), [`35_special_the_best_secret_source_of_insights.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/imagens/35_special_the_best_secret_source_of_insights.jpg).
 
-> **Consulte também:** [`CATALOGO-ATIVACOES.md`](file:///Users/cleiton/Documents/Desenvolvimento/pptreta/_referencias/sites/11_activation_ideas/CATALOGO-ATIVACOES.md) para explorar o **banco completo com centenas de estudos de caso, ferramentas, livros e artigos** extraídos do `activationideas.com`.
+> **Consulte também:** [`CATALOGO-ATIVACOES.md`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/11_activation_ideas/CATALOGO-ATIVACOES.md) para explorar o **banco completo com centenas de estudos de caso, ferramentas, livros e artigos** extraídos do `activationideas.com`.

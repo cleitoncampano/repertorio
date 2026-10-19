@@ -1,33 +1,38 @@
 """Atualiza caminhos locais depois de mover a pasta, preservando os identificadores."""
-import fcntl
+import json
 import os
 import re
 import sqlite3
 from pathlib import Path
+from .locking import lock_file
 
 
 def relocate(settings, previous_root, backup_path):
     # O caminho antigo pode ser um link de compatibilidade. Não o resolva.
-    previous = os.path.abspath(os.path.expanduser(str(previous_root))).rstrip('/')
+    previous = os.path.abspath(os.path.expanduser(str(previous_root))).rstrip('/\\')
     current = str(settings.root)
     backup_path = Path(backup_path).expanduser().resolve()
     if previous == current:
         raise ValueError('Informe uma raiz anterior diferente da raiz atual.')
     if backup_path.exists() or backup_path.is_relative_to(settings.home):
         raise ValueError('Use um backup novo fora da pasta de dados.')
-    patterns = [
-        (re.compile(re.escape(previous + '/repertorio') + r'(?=/|$|["\s])'), current + '/app'),
-        (re.compile(re.escape(previous) + r'(?=/|$|["\s])'), current),
-    ]
+    patterns = []
+    for old, new in [(os.path.join(previous, 'repertorio'), os.path.join(current, 'app')), (previous, current)]:
+        for source, target in dict.fromkeys([
+            (old, new),
+            (json.dumps(old, ensure_ascii=False)[1:-1], json.dumps(new, ensure_ascii=False)[1:-1]),
+            (old.replace('\\', '/'), new.replace('\\', '/')),
+        ]):
+            patterns.append((re.compile(re.escape(source) + r'(?=[/\\]|$|["\s])'), target))
     def rewritten(value):
         for pattern, replacement in patterns:
             value = pattern.sub(lambda _: replacement, value)
         return value
 
     lock_path = settings.home.parent / (settings.home.name + '.lock')
-    with lock_path.open('a') as lock:
+    with lock_path.open('a+b') as lock:
         try:
-            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            lock_file(lock)
         except BlockingIOError:
             raise ValueError('Encerre o serviço antes de atualizar os caminhos.') from None
         with sqlite3.connect(settings.db) as db:

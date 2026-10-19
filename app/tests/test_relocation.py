@@ -1,11 +1,12 @@
-import fcntl
 from pathlib import Path
+import sys
 
 import pytest
 
 from repertorio.config import Settings
 from repertorio.db import Database
 from repertorio.importer import asset
+from repertorio.locking import lock_file
 from repertorio.relocate import relocate
 from repertorio.schemas import Project
 
@@ -18,7 +19,8 @@ def test_relocation_preserves_links_and_asset_ids(library, tmp_path):
     target = tmp_path / 'repertorio'
     old.rename(target)
     # A raiz anterior pode continuar acessível aos atalhos de uma sessão antiga.
-    old.symlink_to(target, target_is_directory=True)
+    if sys.platform != 'win32':
+        old.symlink_to(target, target_is_directory=True)
     settings = Settings(target, library.settings.home)
     result = relocate(settings, old, tmp_path / 'before.sqlite3')
     assert result['identifiers_preserved']
@@ -49,8 +51,8 @@ def test_relocation_rolls_back_when_target_files_are_missing(library, tmp_path):
 
 def test_relocation_refuses_running_service(library, tmp_path):
     home = library.settings.home
-    with (home.parent / (home.name + '.lock')).open('a') as lock:
-        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    with (home.parent / (home.name + '.lock')).open('a+b') as lock:
+        lock_file(lock)
         with pytest.raises(ValueError, match='Encerre o serviço'):
             relocate(library.settings, tmp_path / 'old', tmp_path / 'unused.sqlite3')
     assert not (tmp_path / 'unused.sqlite3').exists()

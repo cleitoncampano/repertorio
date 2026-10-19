@@ -20,6 +20,7 @@ from .jobs import Worker, register
 from .agent import smart_search, contact_sheet, sheet_items
 from . import thumbs
 from .backup import weekly
+from .locking import lock_file
 from .mcp_server import create_mcp
 from . import schemas
 
@@ -31,10 +32,9 @@ def create_app(settings=None,run_worker=True):
 
     @asynccontextmanager
     async def lifespan(app):
-        import fcntl
-        lock=(settings.home.parent/(settings.home.name+'.lock')).open('a')
+        lock=(settings.home.parent/(settings.home.name+'.lock')).open('a+b')
         try:
-            fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+            lock_file(lock)
         except BlockingIOError:
             lock.close()
             raise RuntimeError('Já existe um serviço usando esta biblioteca.')
@@ -73,7 +73,7 @@ def create_app(settings=None,run_worker=True):
         return JSONResponse({'detail':exc.message},status_code=exc.status)
 
     @app.get('/api/health')
-    def health():return dict(status='ok',version='0.2.1',database='ready',schema='0004')
+    def health():return dict(status='ok',version='0.2.1',database='ready',schema='0004',platform=sys.platform,demo=bool(lib.meta('demo',False)))
 
     @app.get('/api/stats')
     def stats(workspace_id:str):return lib.stats(workspace_id)
@@ -218,8 +218,11 @@ def create_app(settings=None,run_worker=True):
     def open_file(aid:str):
         row,path=get_asset(aid)
         if row['member'] or path.suffix.lower() not in {'.pptx','.pdf'}:raise Problem(422,'Abertura local disponível para PPTX e PDF.')
-        if sys.platform!='darwin':raise Problem(422,'Use Baixar original neste sistema.')
-        subprocess.run(['open',str(path)],check=True)
+        if sys.platform=='win32':
+            import os
+            os.startfile(str(path))
+        elif sys.platform=='darwin':subprocess.run(['open',str(path)],check=True)
+        else:raise Problem(422,'Use Baixar original neste sistema.')
         return {'ok':True}
 
     # Mount at the root after API routes, before the SPA catch-all; /mcp is handled by the SDK.

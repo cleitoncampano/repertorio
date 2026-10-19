@@ -1,5 +1,6 @@
 """Servidor descartável para Playwright. Nunca altera o acervo real."""
 import sys
+import os
 import tempfile
 from pathlib import Path
 import uvicorn
@@ -12,6 +13,7 @@ from repertorio.schemas import Project
 
 with tempfile.TemporaryDirectory(prefix='repertorio-e2e-') as temp:
     tmp=Path(temp)
+    os.environ.setdefault('REPERTORIO_BACKUP_DIR',str(tmp/'backups'))
     fixture=library.__wrapped__(tmp)
     lib=next(fixture)
     context.__wrapped__(lib,tmp)

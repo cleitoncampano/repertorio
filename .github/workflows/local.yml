@@ -1,0 +1,28 @@
+name: Repertorio local em Mac e Windows
+on:
+  push:
+    branches: [main]
+    paths: ['app/**', '.github/workflows/local.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  local:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            python: app/.venv/bin/python
+          - os: windows-latest
+            python: app/.venv/Scripts/python.exe
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
+        with:
+          python-version: '3.12'
+      - run: uv venv app/.venv --python 3.12
+      - run: uv pip sync --python ${{ matrix.python }} app/requirements.lock
+      - run: ${{ matrix.python }} -m pytest app/tests -q

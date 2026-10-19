@@ -6,6 +6,7 @@ import sqlite3
 import tempfile
 import zipfile
 from pathlib import Path
+from .locking import lock_file
 
 
 def backup(settings,destination):
@@ -20,7 +21,7 @@ def backup(settings,destination):
         files={'library.sqlite3':snapshot}
         external=[]
         for p in paths:
-            if p.is_relative_to(settings.home) and p.is_file():files[str(p.relative_to(settings.home))]=p
+            if p.is_relative_to(settings.home) and p.is_file():files[p.relative_to(settings.home).as_posix()]=p
             elif not p.is_relative_to(settings.home):external.append(str(p))
         manifest={'version':1,'root':str(settings.root),'home':str(settings.home),'external_files':sorted(external),'checksums':{}}
         temporary=destination.with_suffix(destination.suffix+'.tmp')
@@ -36,11 +37,10 @@ def backup(settings,destination):
 
 
 def restore(settings,source):
-    import fcntl
     lockpath=settings.home.parent/(settings.home.name+'.lock')
     lockpath.parent.mkdir(parents=True,exist_ok=True)
-    with lockpath.open('a') as lock:
-        try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+    with lockpath.open('a+b') as lock:
+        try:lock_file(lock)
         except BlockingIOError:raise ValueError('Encerre o serviço antes de restaurar o backup.')
         with tempfile.TemporaryDirectory(dir=settings.home.parent,prefix='repertorio-restore-') as tmp:
             stage=Path(tmp)/'data';stage.mkdir()

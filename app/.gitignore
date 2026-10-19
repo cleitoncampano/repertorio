@@ -1,6 +1,7 @@
 .venv/
 .runtime/
 .demo/
+.demo.lock
 __pycache__/
 .pytest_cache/
 *.egg-info/

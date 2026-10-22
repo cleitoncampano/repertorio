@@ -55,4 +55,14 @@ describe('mapa',()=>{
   expect(width/height).toBeGreaterThan(.5);
   expect(width/height).toBeLessThan(3);
  });
+ const videos:GraphData={...graph,items:graph.items.map(item=>({...item,motion:{loop:'/api/assets/'+item.id}}))};
+ it.each(graphViews)('$name dobra as capas de vídeo e afasta na mesma proporção, sem sobrepor',({id})=>{
+  const sizes=(g:GraphData)=>layoutGraph(g,id).filter(e=>e.data.type==='reference').map(e=>e.data.size);
+  expect(sizes(videos)).toEqual(sizes(graph).map(size=>size*2));
+  const refs=layoutGraph(videos,id).filter(e=>e.data.type==='reference');
+  for(let i=0;i<refs.length;i++)for(let j=i+1;j<refs.length;j++){
+   const a=refs[i].position!,b=refs[j].position!;
+   expect(Math.abs(a.x-b.x)>=180||Math.abs(a.y-b.y)>=180).toBe(true);
+  }
+ });
 });

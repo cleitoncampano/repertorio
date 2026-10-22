@@ -2,9 +2,10 @@ import type {ElementDefinition} from 'cytoscape';
 import type {GraphData,Term} from './types';
 import type {ExperimentalView} from './graphSkins';
 
-type Context={graph:GraphData;nodes:Map<string,ElementDefinition>;ops:Term[];techniques:Term[];primary:Map<string,string>;place:(id:string,x:number,y:number)=>void};
+// scale afasta as capas quando o espaço tem vídeos, que aparecem com o dobro do tamanho.
+type Context={graph:GraphData;nodes:Map<string,ElementDefinition>;ops:Term[];techniques:Term[];primary:Map<string,string>;place:(id:string,x:number,y:number)=>void;scale?:number};
 
-export function arrangeAlternate({graph,nodes,ops,techniques,primary,place}:Context,view:ExperimentalView){
+export function arrangeAlternate({graph,nodes,ops,techniques,primary,place,scale:S=1}:Context,view:ExperimentalView){
  const refs=graph.items.slice().sort((a,b)=>a.id.localeCompare(b.id));
  const byTech=new Map(techniques.map(tech=>[tech.id,tech]));
  const operation=(id:string)=>byTech.get(primary.get(id)||'')?.operacao||'';
@@ -23,7 +24,7 @@ export function arrangeAlternate({graph,nodes,ops,techniques,primary,place}:Cont
   });
   let offset=0,ring=0;
   while(offset<ordered.length){
-   const radius=1120+ring*164,capacity=Math.floor(2*Math.PI*radius/156),count=Math.min(capacity,ordered.length-offset);
+   const radius=1120+ring*164*S,capacity=Math.floor(2*Math.PI*radius/(156*S)),count=Math.min(capacity,ordered.length-offset);
    for(let i=0;i<count;i++){const a=-Math.PI/2+(i+.5*(ring%2))*2*Math.PI/count;place('ref:'+ordered[offset+i].id,Math.cos(a)*radius,Math.sin(a)*radius);}
    offset+=count;ring++;
   }
@@ -31,17 +32,17 @@ export function arrangeAlternate({graph,nodes,ops,techniques,primary,place}:Cont
   const columns=Math.max(5,Math.ceil(Math.sqrt(refs.length)*1.1));
   let top=0;
   groups.forEach(group=>{
-   const rows=Math.ceil(group.items.length/columns),half=Math.ceil(rows/2),middle=top+half*144+250;
+   const rows=Math.ceil(group.items.length/columns),half=Math.ceil(rows/2),middle=top+half*144*S+250;
    place('op:'+group.id,-600,middle);
    cues(group.id).forEach((cue,i)=>place(cue.data.id!,100+i*220,middle));
    group.tech.forEach((tech,i)=>{place('tech:'+tech.id,900+i*230,middle);nodes.get('tech:'+tech.id)!.data.rotation=-Math.PI/4;});
-   group.items.forEach((item,i)=>{const row=Math.floor(i/columns),side=row%2?-1:1,band=Math.floor(row/2);place('ref:'+item.id,900+i%columns*148,middle+side*(280+band*144));});
-   top=middle+half*144+500;
+   group.items.forEach((item,i)=>{const row=Math.floor(i/columns),side=row%2?-1:1,band=Math.floor(row/2);place('ref:'+item.id,900+i%columns*148*S,middle+side*(280*S+band*144*S));});
+   top=middle+half*144*S+500;
   });
  }else if(view==='circuit'){
   const columns=Math.max(4,Math.ceil(Math.sqrt(refs.length*1.25))),rows=Math.max(1,Math.ceil(refs.length/columns));
-  const width=(columns-1)*144,height=Math.max(1500,(rows-1)*144);
-  ordered.forEach((item,i)=>place('ref:'+item.id,i%columns*144,Math.floor(i/columns)*144));
+  const step=144*S,width=(columns-1)*step,height=Math.max(1500,(rows-1)*step);
+  ordered.forEach((item,i)=>place('ref:'+item.id,i%columns*step,Math.floor(i/columns)*step));
   ops.forEach((op,i)=>{
    const right=i%2===1,band=Math.floor(i/2),bands=Math.ceil(ops.length/2),middle=(band+.5)*height/bands;
    place('op:'+op.id,right?width+1100:-1100,middle);
@@ -51,8 +52,8 @@ export function arrangeAlternate({graph,nodes,ops,techniques,primary,place}:Cont
   });
  }else if(view==='garden'){
   const trees=groups.map(group=>{
-   const radius=Math.max(330,Math.sqrt(group.items.length*144*144/(Math.PI*1.25*.85))+180),rx=radius*1.25,ry=radius*.85,points:{x:number;y:number}[]=[];
-   for(let x=-Math.ceil(rx/144);x<=Math.ceil(rx/144);x++)for(let y=-Math.ceil(ry/144);y<=Math.ceil(ry/144);y++)if((x*144/rx)**2+(y*144/ry)**2<=1)points.push({x:x*144,y:y*144});
+   const step=144*S,radius=Math.max(330,Math.sqrt(group.items.length*step*step/(Math.PI*1.25*.85))+180),rx=radius*1.25,ry=radius*.85,points:{x:number;y:number}[]=[];
+   for(let x=-Math.ceil(rx/step);x<=Math.ceil(rx/step);x++)for(let y=-Math.ceil(ry/step);y<=Math.ceil(ry/step);y++)if((x*step/rx)**2+(y*step/ry)**2<=1)points.push({x:x*step,y:y*step});
    points.sort((a,b)=>Math.hypot(a.x/rx,a.y/ry)-Math.hypot(b.x/rx,b.y/ry)||a.y-b.y||a.x-b.x);
    return {...group,rx,ry,points:points.slice(0,group.items.length).sort((a,b)=>a.y-b.y||a.x-b.x)};
   });
@@ -68,18 +69,18 @@ export function arrangeAlternate({graph,nodes,ops,techniques,primary,place}:Cont
  }else if(view==='editorial'){
   let left=0;
   groups.forEach(group=>{
-   const columns=Math.max(3,Math.min(14,Math.ceil(Math.sqrt(group.items.length*1.1)))),width=Math.max(640,columns*148);
+   const columns=Math.max(3,Math.min(14,Math.ceil(Math.sqrt(group.items.length*1.1)))),width=Math.max(640,columns*148*S);
    place('op:'+group.id,left+width/2,0);
    cues(group.id).forEach((cue,j)=>place(cue.data.id!,left+160+j*210,260));
    group.tech.forEach((tech,j)=>place('tech:'+tech.id,left+130,420+j*68));
    const start=650+group.tech.length*68;
-   group.items.forEach((item,j)=>place('ref:'+item.id,left+90+j%columns*148,start+Math.floor(j/columns)*144));
+   group.items.forEach((item,j)=>place('ref:'+item.id,left+90*S+j%columns*148*S,start+Math.floor(j/columns)*144*S));
    left+=width+440;
   });
  }else if(view==='prism'){
   const columns=Math.max(3,Math.ceil(Math.sqrt(refs.length))),rows=Math.max(1,Math.ceil(refs.length/columns));
-  ordered.forEach((item,i)=>{const col=i%columns,row=Math.floor(i/columns);place('ref:'+item.id,(col-row)*124,(col+row)*96);});
-  const x=(columns-rows)*62,y=(columns+rows-2)*48,rx=(columns+rows)*62+380,ry=(columns+rows)*48+380;
+  ordered.forEach((item,i)=>{const col=i%columns,row=Math.floor(i/columns);place('ref:'+item.id,(col-row)*124*S,(col+row)*96*S);});
+  const x=(columns-rows)*62*S,y=(columns+rows-2)*48*S,rx=(columns+rows)*62*S+380,ry=(columns+rows)*48*S+380;
   ops.forEach((op,i)=>{const a=-Math.PI/2+i*2*Math.PI/Math.max(1,ops.length);place('op:'+op.id,x+Math.cos(a)*rx*1.3,y+Math.sin(a)*ry*1.3);});
   groups.forEach((group,index)=>{
    const center=-Math.PI/2+index*2*Math.PI/Math.max(1,groups.length),span=2*Math.PI/Math.max(1,groups.length);

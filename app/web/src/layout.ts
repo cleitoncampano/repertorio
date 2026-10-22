@@ -5,6 +5,11 @@ import type {GraphView} from './graphViewOptions';
 import {isExperimental} from './graphSkins';
 import {arrangeAlternate} from './alternateLayouts';
 
+// Capas de vídeo aparecem com o dobro do tamanho. Espaços com vídeo afastam as capas na mesma
+// proporção, em todas as visualizações; espaços só com imagens ficam exatamente como antes.
+export const MOTION_SCALE=2;
+export const referenceScale=(graph:GraphData)=>graph.items.some(item=>item.motion?.loop)?MOTION_SCALE:1;
+
 // The prototype's radial grammar: operation → cue → technique → reference.
 // Seeded placement feels organic without moving the library on every refresh.
 function freeLayout(graph:GraphData):ElementDefinition[]{
@@ -44,7 +49,7 @@ function freeLayout(graph:GraphData):ElementDefinition[]{
   const difference=Math.atan2(Math.sin(spread-p.target),Math.cos(spread-p.target));
   p.angle=p.target+.7*difference;
  });
- const occupied=new Set<string>(),cell=108;
+ const S=referenceScale(graph),occupied=new Set<string>(),cell=108*S;
  const bands:Record<number,[number,number]>={5:[1080,1300],4:[1160,1780],3:[1450,2260],2:[2000,2420],1:[2150,2550]};
  placements.sort((a,b)=>(b.item.strength||3)-(a.item.strength||3));
  for(const {item,angle} of placements){
@@ -57,10 +62,10 @@ function freeLayout(graph:GraphData):ElementDefinition[]{
     if(Math.max(Math.abs(dx),Math.abs(dy))!==ring)continue;
     const gx=gx0+dx,gy=gy0+dy,key=gx+':'+gy;
     if(occupied.has(key)||Math.hypot(gx*cell,gy*cell)<1040)continue;
-    occupied.add(key);point={x:gx*cell+(random()-.5)*16,y:gy*cell+(random()-.5)*16};
+    occupied.add(key);point={x:gx*cell+(random()-.5)*16*S,y:gy*cell+(random()-.5)*16*S};
    }
   }
-  const size=({5:90,4:74,3:62,2:50,1:42}[strength]||62);
+  const size=({5:90,4:74,3:62,2:50,1:42}[strength]||62)*(item.motion?.loop?MOTION_SCALE:1);
   nodes.push({data:{id:'ref:'+item.id,entity:item.id,type:'reference',operation:tech.find(t=>t.id===item.techniques[0])?.operacao||'',label:item.title,image:'none',preview:item.thumbnail||'',color:item.techniques.length?colorFor(item.techniques[0]):'#8f8a82',size,width:size,height:size*9/16,external:item.origin==='externa'},position:point});
   for(const tid of item.techniques){
    const target=positions.get(tid);if(!target)continue;
@@ -94,10 +99,11 @@ export function layoutGraph(graph:GraphData,view:GraphView='free'):ElementDefini
   const first=item.techniques.filter(id=>byId.get(id)?.operacao===op.id).sort((a,b)=>order.get(a)!-order.get(b)!)[0];
   if(first)primary.set(item.id,first);
  }
+ const S=referenceScale(graph);
  const place=(id:string,x:number,y:number)=>{const node=nodes.get(id);if(node){node.position={x,y};if(node.data.type==='technique'){node.data.rotation=0;node.data.labelSide='right';}}};
  if(isExperimental(view)){
   graph.items.forEach(item=>{nodes.get('ref:'+item.id)!.data.operation=byId.get(primary.get(item.id)||'')?.operacao||'';});
-  arrangeAlternate({graph,nodes,ops,techniques:validTechniques,primary,place},view);
+  arrangeAlternate({graph,nodes,ops,techniques:validTechniques,primary,place,scale:S},view);
  }else if(view==='grouped'){
   const groups=[...ops.map(op=>({id:op.id,items:graph.items.filter(item=>byId.get(primary.get(item.id)||'')?.operacao===op.id)}))];
   const unclassified=graph.items.filter(item=>!primary.has(item.id));
@@ -105,7 +111,7 @@ export function layoutGraph(graph:GraphData,view:GraphView='free'):ElementDefini
   const layouts=groups.map(group=>{
    const tech=validTechniques.filter(tech=>tech.operacao===group.id),points:{x:number;y:number}[]=[];
    // Une os anéis internos às referências sem sobrepor suas miniaturas.
-   const inner=Math.max(500,tech.length*26),cell=116;
+   const inner=Math.max(500,tech.length*26),cell=116*S;
    for(let ring=0;points.length<group.items.length;ring++){
     for(let x=-ring;x<=ring;x++)for(let y=-ring;y<=ring;y++){
      if(Math.max(Math.abs(x),Math.abs(y))!==ring||Math.hypot(x*cell,y*cell)<inner)continue;
@@ -114,7 +120,7 @@ export function layoutGraph(graph:GraphData,view:GraphView='free'):ElementDefini
    }
    points.sort((a,b)=>Math.hypot(a.x,a.y)-Math.hypot(b.x,b.y)||a.x-b.x||a.y-b.y);
    const chosen=points.slice(0,group.items.length).sort((a,b)=>Math.atan2(a.y,a.x)-Math.atan2(b.y,b.x));
-   return {...group,tech,points:chosen,radius:Math.max(inner+80,...chosen.map(point=>Math.hypot(point.x,point.y)+70))};
+   return {...group,tech,points:chosen,radius:Math.max(inner+80,...chosen.map(point=>Math.hypot(point.x,point.y)+70*S))};
   });
   const columns=Math.max(1,Math.ceil(Math.sqrt(layouts.length))),widths:number[]=[],heights:number[]=[];
   layouts.forEach((group,index)=>{const col=index%columns,row=Math.floor(index/columns);widths[col]=Math.max(widths[col]||0,group.radius*2);heights[row]=Math.max(heights[row]||0,group.radius*2);});
@@ -129,7 +135,7 @@ export function layoutGraph(graph:GraphData,view:GraphView='free'):ElementDefini
   });
  }else{
   let top=0;
-  const gap=108,columns=Math.max(2,Math.min(36,Math.ceil(Math.sqrt(graph.items.length)*1.2)));
+  const gap=108*S,columns=Math.max(2,Math.min(36,Math.ceil(Math.sqrt(graph.items.length)*1.2)));
   for(const op of ops){
    const start=top;
    const cuePositions=new Map<string,number[]>();
@@ -138,7 +144,7 @@ export function layoutGraph(graph:GraphData,view:GraphView='free'):ElementDefini
     const height=items.length?Math.ceil(items.length/columns)*gap+16:52,middle=top+height/2;
     place('tech:'+tech.id,1200,middle);
     if(tech.pista)cuePositions.set(tech.pista,[...(cuePositions.get(tech.pista)||[]),middle]);
-    items.forEach((item,i)=>place('ref:'+item.id,2400+i%columns*124,top+height/2-(Math.ceil(items.length/columns)-1)*gap/2+Math.floor(i/columns)*gap));
+    items.forEach((item,i)=>place('ref:'+item.id,2400+i%columns*124*S,top+height/2-(Math.ceil(items.length/columns)-1)*gap/2+Math.floor(i/columns)*gap));
     top+=height;
    }
    top=Math.max(top,start+200);
@@ -146,7 +152,7 @@ export function layoutGraph(graph:GraphData,view:GraphView='free'):ElementDefini
    cuePositions.forEach((ys,cue)=>place('cue:'+op.id+':'+cue,600,ys.reduce((sum,y)=>sum+y,0)/ys.length));
    top+=120;
   }
-  graph.items.filter(item=>!primary.has(item.id)).sort((a,b)=>a.id.localeCompare(b.id)).forEach((item,i)=>place('ref:'+item.id,2400+i%columns*124,top+Math.floor(i/columns)*gap));
+  graph.items.filter(item=>!primary.has(item.id)).sort((a,b)=>a.id.localeCompare(b.id)).forEach((item,i)=>place('ref:'+item.id,2400+i%columns*124*S,top+Math.floor(i/columns)*gap));
  }
  // Mantém os mesmos nós e relações; apenas reposiciona e simplifica as curvas.
  elements.filter(element=>!element.position).forEach(edge=>{

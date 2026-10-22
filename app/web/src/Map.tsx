@@ -143,7 +143,8 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
   instance.on('mouseover','node',e=>{
    e.target.addClass('hovered');if(container.current)container.current.style.cursor='pointer';
    const item=items.get(e.target.data('entity'));
-   if(item&&window.matchMedia('(hover: hover)').matches){const p=e.target.renderedPosition();setHover({item,x:Math.max(12,Math.min(p.x+22,instance.width()-260)),y:Math.max(64,Math.min(p.y+18,instance.height()-270))});}
+   // A prévia de vídeo tem o dobro do tamanho da prévia de imagem.
+   if(item&&window.matchMedia('(hover: hover)').matches){const p=e.target.renderedPosition(),w=item.motion?.loop?508:260,h=item.motion?.loop?420:270;setHover({item,x:Math.max(12,Math.min(p.x+22,instance.width()-w)),y:Math.max(64,Math.min(p.y+18,instance.height()-h))});}
   });
   instance.on('mouseout','node',e=>{setHover(null);e.target.removeClass('hovered');if(container.current)container.current.style.cursor='grab';});
   instance.on('viewport',()=>{
@@ -227,7 +228,7 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
  const adjust=(factor:number)=>{const c=cy.current;if(c)c.zoom({level:c.zoom()*factor,renderedPosition:{x:c.width()/2,y:c.height()/2}});};
  return <div className={'map-stage'+(skin?' graph-skin graph-skin-'+view:'')} data-view={view} style={skin?{'--graph-background':skin.background,'--graph-ink':skin.ink,'--graph-surface':skin.surface,'--graph-accent':skin.palette[0]} as CSSProperties:undefined}><div className="map-surface" ref={container} role="img" aria-label="Mapa de referências conectadas às técnicas. Use a busca ou a lista para navegar com teclado."/>
   <div className="map-motion" ref={motionRoot} aria-hidden="true"/>
-  {hover&&<div className="map-hover" style={{left:hover.x,top:hover.y}}>{hover.item.motion?.loop?<video src={hover.item.motion.loop} poster={sized(hover.item.thumbnail,512)} autoPlay muted loop playsInline/>:hover.item.thumbnail&&<img src={sized(hover.item.thumbnail,512)} alt=""/>}<div><small>{hover.item.motion?'Vídeo':kindName[hover.item.kind]||'Referência'} · Clique para explorar</small><strong>{hover.item.title}</strong></div></div>}
+  {hover&&<div className={'map-hover'+(hover.item.motion?.loop?' motion':'')} style={{left:hover.x,top:hover.y}}>{hover.item.motion?.loop?<video src={hover.item.motion.loop} poster={sized(hover.item.thumbnail,512)} autoPlay muted loop playsInline/>:hover.item.thumbnail&&<img src={sized(hover.item.thumbnail,512)} alt=""/>}<div><small>{hover.item.motion?'Vídeo':kindName[hover.item.kind]||'Referência'} · Clique para explorar</small><strong>{hover.item.title}</strong></div></div>}
   <span className="map-help">Arraste para explorar · Role para aproximar</span>
   <div className="map-controls"><button title="Aproximar" aria-label="Aproximar" onClick={()=>adjust(1.25)}><Plus size={17}/></button><span>{Math.round(zoom*100)}%</span><button title="Afastar" aria-label="Afastar" onClick={()=>adjust(.8)}><Minus size={17}/></button><i/><button title="Ver todo o mapa" aria-label="Ver todo o mapa" onClick={()=>{const c=cy.current;if(c){c.fit(undefined,c.width()<760?30:72);c.panBy({x:-panelInset.current,y:0});}}}><Maximize size={16}/></button>{selected&&<button title="Localizar seleção" aria-label="Localizar seleção" onClick={()=>{const c=cy.current;if(c){c.fit(c.getElementById('ref:'+selected),200);c.zoom(Math.min(c.zoom(),1.3));}}}><LocateFixed size={17}/></button>}</div>
  </div>;

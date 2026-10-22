@@ -33,7 +33,7 @@ export class MotionLayer{
    if(!video){
     video=document.createElement('video');
     Object.assign(video,{muted:true,loop:true,playsInline:true,autoplay:true,preload:'auto'});
-    video.setAttribute('aria-hidden','true');video.tabIndex=-1;
+    video.setAttribute('aria-hidden','true');video.tabIndex=-1;video.dataset.ref=b.id;
     if(b.poster)video.poster=b.poster;
     // Aparece só quando já está tocando, sem piscar sobre a capa.
     video.addEventListener('playing',()=>video!.classList.add('playing'),{once:true});

@@ -27,6 +27,10 @@ with tempfile.TemporaryDirectory(prefix='repertorio-e2e-') as temp:
     if shutil.which('ffmpeg'):
         for name in ('loop.mp4','video.mp4'):
             subprocess.run(['ffmpeg','-nostdin','-v','error','-y','-f','lavfi','-i','testsrc=size=320x180:rate=24:duration=2','-pix_fmt','yuv420p',str(lib.settings.root/'_originais/motion/giro'/name)],check=True)
+    # Um segundo vídeo para passar de um a outro no player.
+    import json
+    fichas=lib.settings.root/'dados/motion/teste.jsonl';first=json.loads(fichas.read_text())
+    fichas.write_text(fichas.read_text()+json.dumps({**first,'id':'motion-onda','slug':'onda','title':'Onda de partículas que vira logo','strength':3},ensure_ascii=False)+'\n')
     import_motion(lib.db,motion)
     web=lib.settings.root/'app/web';web.mkdir(parents=True)
     (web/'dist').symlink_to(BASE/'web/dist',target_is_directory=True)

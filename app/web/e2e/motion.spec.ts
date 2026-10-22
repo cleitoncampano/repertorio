@@ -9,7 +9,7 @@ test('vídeos de motion tocam no mapa e na ficha, com prompt e quadros',async({p
  await page.evaluate(()=>(document.querySelector('.map-surface') as any)._cyreg.cy.zoom(.1));
  await expect(page.locator('.map-motion video')).toHaveCount(0);
  await page.evaluate(()=>{const c=(document.querySelector('.map-surface') as any)._cyreg.cy;c.zoom(2.2);c.center(c.getElementById('ref:motion-giro'));});
- const layer=page.locator('.map-motion video');
+ const layer=page.locator('.map-motion video[data-ref="ref:motion-giro"]');
  await expect(layer).toHaveCount(1);
  await expect(layer).toHaveAttribute('src',/\/api\/assets\//);
  await expect(layer).toHaveClass(/playing/);
@@ -38,6 +38,21 @@ test('vídeos de motion tocam no mapa e na ficha, com prompt e quadros',async({p
  await expect.poll(()=>page.evaluate(()=>!!document.fullscreenElement||!!document.querySelector('.cinema.filled'))).toBe(true);
  await page.keyboard.press('f');
  await expect.poll(()=>page.evaluate(()=>!!document.fullscreenElement||!!document.querySelector('.cinema.filled'))).toBe(false);
+ // Como no Prompt Motion: setas da tela, setas do teclado e deslize para o lado trocam de vídeo.
+ await expect(cinema.locator('.cinema-count')).toHaveText('1 de 2');
+ await expect(cinema.getByRole('button',{name:'Vídeo anterior',exact:true})).toHaveCount(0);
+ await cinema.getByRole('button',{name:'Próximo vídeo',exact:true}).click();
+ await expect(cinema.getByRole('heading',{name:'Onda de partículas que vira logo'}).first()).toBeVisible();
+ await expect(cinema.locator('.cinema-count')).toHaveText('2 de 2');
+ await expect.poll(()=>player.evaluate(v=>!(v as HTMLVideoElement).paused)).toBe(true);
+ await page.keyboard.press('ArrowLeft');
+ await expect(cinema.locator('.cinema-count')).toHaveText('1 de 2');
+ await page.locator('.cinema-stage').hover();
+ await page.mouse.wheel(140,0);
+ await expect(cinema.locator('.cinema-count')).toHaveText('2 de 2');
+ await page.waitForTimeout(300);
+ await page.mouse.wheel(-140,0);
+ await expect(cinema.locator('.cinema-count')).toHaveText('1 de 2');
  // A ficha completa continua disponível.
  await cinema.getByRole('button',{name:'Ficha completa'}).click();
  await expect(cinema).toHaveCount(0);

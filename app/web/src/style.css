@@ -485,6 +485,21 @@ button.product-primary { background: var(--accent); color: var(--accent-ink); bo
  .cinema-body,.cinema.theater .cinema-body{display:block;overflow:auto}
  .cinema-stage,.cinema.theater .cinema-stage{height:56.25vw;min-height:200px}
  .cinema-info{border-left:0;padding:18px 16px 28px}
- .cinema-theater,.cinema-volume input{display:none}
+ .cinema-row .cinema-theater,.cinema-volume input{display:none}
  .cinema-next button{grid-template-columns:130px minmax(0,1fr)}
 }
+
+/* Passar de um vídeo a outro: setas nas laterais do vídeo, paginação na coluna e deslize. */
+.cinema-count{font-size:11px;color:var(--muted);white-space:nowrap;margin-right:auto;font-variant-numeric:tabular-nums}
+.cinema-side{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#0008;color:#fff;transition:opacity .25s,background .15s}
+.cinema-side:hover{background:#000c}.cinema-side.previous{left:16px}.cinema-side.next{right:16px}
+.cinema-stage.idle .cinema-side{opacity:0;pointer-events:none}
+.cinema-row button:disabled{opacity:.35;cursor:default}.cinema-row button:disabled:hover{background:none}
+.cinema-pager{position:sticky;bottom:-32px;display:flex;align-items:center;justify-content:flex-end;gap:8px;margin:24px -24px -32px;padding:12px 20px;background:var(--surface);border-top:1px solid var(--line)}
+.cinema-pager span{margin-right:auto;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.cinema-pager button{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line)}.cinema-pager button:hover:not(:disabled){background:var(--surface-hover)}.cinema-pager button:disabled{opacity:.35}
+.cinema.theater .cinema-pager{position:static;margin:24px 0 0;background:none;border-top:1px solid var(--line);padding:12px 0}
+.cinema-stage video.from-right{animation:cinemaSlide .28s ease-out both;--from:48px}.cinema-stage video.from-left{animation:cinemaSlide .28s ease-out both;--from:-48px}
+@keyframes cinemaSlide{from{transform:translateX(var(--from));opacity:0}to{transform:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){.cinema-stage video.from-right,.cinema-stage video.from-left{animation:none}}
+@media(max-width:760px){.cinema-side{width:40px;height:40px}.cinema-side.previous{left:8px}.cinema-side.next{right:8px}.cinema-count{display:none}.cinema-pager{margin:24px -16px -28px;bottom:-28px;padding:10px 16px}}

@@ -1,19 +1,21 @@
 import {useEffect,useRef,useState} from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import {Copy,ExternalLink,Maximize,Minimize,PanelRight,Pause,Play,RectangleHorizontal,SkipForward,Volume2,VolumeX,X} from 'lucide-react';
+import {ChevronLeft,ChevronRight,Copy,ExternalLink,Maximize,Minimize,PanelRight,Pause,Play,RectangleHorizontal,SkipBack,SkipForward,Volume2,VolumeX,X} from 'lucide-react';
 import {sized} from './api';
 import {motionSummary} from './MotionParts';
 import type {Detail,Reference} from './types';
 
-// Assistir um vídeo de motion como no YouTube: modo padrão (vídeo grande, detalhes e próximos ao lado),
-// modo teatro (vídeo na largura toda, detalhes abaixo) e tela cheia. Atalhos: espaço ou K, F, T, M, setas, J e L.
+// Assistir um vídeo de motion como no YouTube: modo padrão (vídeo grande, detalhes e parecidos ao lado),
+// modo teatro (vídeo na largura toda, detalhes abaixo) e tela cheia. Como no Prompt Motion, passa-se de um
+// vídeo a outro pelas setas da tela, pelas setas do teclado ou deslizando para o lado (dedo ou trackpad).
+// Atalhos: espaço ou K, F, T, M, ← →, Shift + ← → (5 s), J e L (10 s), N e P.
 type Mode='default'|'theater';
 const MODE_KEY='repertorio-cinema-mode';
 const clock=(s:number)=>!Number.isFinite(s)?'0:00':`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
 type FullscreenDocument=Document&{webkitFullscreenElement?:Element;webkitExitFullscreen?:()=>void};
 type FullscreenElement=HTMLElement&{webkitRequestFullscreen?:()=>void};
 
-export function MotionCinema({item,detail,onClose,onOpen,onDetails,copy}:{item:Reference;detail?:Detail;onClose:()=>void;onOpen:(id:string,workspace?:string)=>void;onDetails:()=>void;copy:(text:string)=>void}){
+export function MotionCinema({item,detail,sequence,onClose,onOpen,onDetails,copy}:{item:Reference;detail?:Detail;sequence:Reference[];onClose:()=>void;onOpen:(id:string,workspace?:string)=>void;onDetails:()=>void;copy:(text:string)=>void}){
  const [mode,setMode]=useState<Mode>(()=>{try{return localStorage.getItem(MODE_KEY)==='theater'?'theater':'default';}catch{return 'default';}});
  const [playing,setPlaying]=useState(false),[time,setTime]=useState(0),[duration,setDuration]=useState(item.motion?.duration||0);
  const [muted,setMuted]=useState(false),[volume,setVolume]=useState(1),[full,setFull]=useState(false),[filled,setFilled]=useState(false),[idle,setIdle]=useState(false);
@@ -21,7 +23,11 @@ export function MotionCinema({item,detail,onClose,onOpen,onDetails,copy}:{item:R
  // O diálogo monta o conteúdo depois do primeiro desenho: o vídeo começa quando o elemento existe.
  const [node,setNode]=useState<HTMLVideoElement|null>(null);
  const d=detail?.id===item.id?detail:undefined;
- const next=(d?.related||[]).filter(r=>r.motion?.video);
+ const related=(d?.related||[]).filter(r=>r.motion?.video);
+ // Vizinhos na ordem em que o espaço está sendo visto (busca, lista ou o espaço inteiro).
+ const index=sequence.findIndex(r=>r.id===item.id),previous=index>0?sequence[index-1]:undefined,following=index>=0?sequence[index+1]:sequence[0];
+ const [direction,setDirection]=useState(0);
+ const swipe=useRef<{x:number;y:number}|null>(null),swiped=useRef(false);
  useEffect(()=>{try{localStorage.setItem(MODE_KEY,mode);}catch{/* O modo volta ao padrão sem armazenamento. */}},[mode]);
 
  // Abrir é um clique do usuário: tenta tocar com som e, se o navegador recusar, toca sem som.
@@ -52,42 +58,69 @@ export function MotionCinema({item,detail,onClose,onOpen,onDetails,copy}:{item:R
  };
  const wake=()=>{setIdle(false);clearTimeout(idleTimer.current);idleTimer.current=window.setTimeout(()=>setIdle(true),2500);};
  // No toque, como no YouTube: o primeiro toque mostra os controles; com eles à vista, toca ou pausa.
- const tap=()=>{if(pointer.current==='touch'&&idle&&playing){wake();return;}toggle();};
- const playNext=()=>{if(next[0])onOpen(next[0].id,next[0].workspace_id);};
+ const tap=()=>{if(swiped.current){swiped.current=false;return;}if(pointer.current==='touch'&&idle&&playing){wake();return;}toggle();};
+ const go=(step:number)=>{const target=step<0?previous:following;if(!target)return;setDirection(step);onOpen(target.id,target.workspace_id);};
+ const goRef=useRef(go);goRef.current=go;
+ // Dois dedos para o lado no trackpad: um gesto troca um vídeo só, mesmo com a inércia do movimento.
+ const [content,setContent]=useState<HTMLDivElement|null>(null);
+ useEffect(()=>{
+  if(!content)return;
+  let sum=0,locked=false,quiet=0;
+  const wheel=(e:WheelEvent)=>{
+   if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)||(e.target as HTMLElement).closest('pre'))return;
+   e.preventDefault();clearTimeout(quiet);quiet=window.setTimeout(()=>{locked=false;sum=0;},220);
+   if(locked)return;
+   sum+=e.deltaX;
+   if(Math.abs(sum)>90){locked=true;goRef.current(sum>0?1:-1);sum=0;}
+  };
+  content.addEventListener('wheel',wheel,{passive:false});
+  return()=>{content.removeEventListener('wheel',wheel);clearTimeout(quiet);};
+ },[content]);
 
- const onKey=(e:React.KeyboardEvent)=>{
-  e.stopPropagation(); // atalhos do mapa ficam parados enquanto o vídeo está aberto
+ // Os atalhos valem na página inteira enquanto o player está aberto, inclusive em tela cheia;
+ // os do mapa ficam parados. Esc segue com o diálogo.
+ const onKey=(e:KeyboardEvent)=>{
+  if(e.key==='Escape')return;
+  e.stopPropagation();
   const target=e.target as HTMLElement;
   if(target.tagName==='INPUT'&&e.key.startsWith('Arrow'))return; // a barra de tempo e o volume tratam as setas
   if(target.tagName==='BUTTON'&&(e.key===' '||e.key==='Enter'))return;
   const v=video.current,key=e.key.toLowerCase();
   const actions:Record<string,()=>void>={' ':toggle,k:toggle,f:fullscreen,t:()=>setMode(m=>m==='theater'?'default':'theater'),m:mute,
-   arrowleft:()=>seek((v?.currentTime||0)-5),arrowright:()=>seek((v?.currentTime||0)+5),j:()=>seek((v?.currentTime||0)-10),l:()=>seek((v?.currentTime||0)+10),
-   arrowup:()=>changeVolume(Math.min(1,(v?.volume||0)+.1)),arrowdown:()=>changeVolume(Math.max(0,(v?.volume||0)-.1)),n:playNext};
+   arrowleft:()=>e.shiftKey?seek((v?.currentTime||0)-5):go(-1),arrowright:()=>e.shiftKey?seek((v?.currentTime||0)+5):go(1),
+   j:()=>seek((v?.currentTime||0)-10),l:()=>seek((v?.currentTime||0)+10),n:()=>go(1),p:()=>go(-1),
+   arrowup:()=>changeVolume(Math.min(1,(v?.volume||0)+.1)),arrowdown:()=>changeVolume(Math.max(0,(v?.volume||0)-.1))};
   if(/^[0-9]$/.test(key)&&v){seek(v.duration*Number(key)/10);e.preventDefault();return;}
   if(actions[key]&&!e.metaKey&&!e.ctrlKey&&!e.altKey){actions[key]();wake();e.preventDefault();}
  };
+ const keyRef=useRef(onKey);keyRef.current=onKey;
+ useEffect(()=>{const listen=(e:KeyboardEvent)=>keyRef.current(e);document.addEventListener('keydown',listen);return()=>document.removeEventListener('keydown',listen);},[]);
 
  const source=d?.source;
  const progress=duration?time/duration*100:0;
  return <Dialog.Root open onOpenChange={open=>{if(!open)onClose();}}><Dialog.Portal><Dialog.Overlay className="cinema-overlay"/>
-  <Dialog.Content className={'cinema '+mode+(filled?' filled':'')} aria-describedby={undefined} onKeyDown={onKey}
+  <Dialog.Content ref={setContent} className={'cinema '+mode+(filled?' filled':'')} aria-describedby={undefined}
    onEscapeKeyDown={e=>{e.stopPropagation();const doc=document as FullscreenDocument;if(doc.fullscreenElement||doc.webkitFullscreenElement){e.preventDefault();return;}if(filled){e.preventDefault();setFilled(false);}}}>
-   <header className="cinema-bar"><Dialog.Title>{item.title}</Dialog.Title>
+   <header className="cinema-bar"><Dialog.Title>{item.title}</Dialog.Title>{index>=0&&sequence.length>1&&<span className="cinema-count">{index+1} de {sequence.length}</span>}
     <Dialog.Close aria-label="Fechar vídeo" title="Fechar (Esc)"><X size={21}/></Dialog.Close></header>
    <div className="cinema-body">
-    <div ref={stage} className={'cinema-stage'+(idle&&playing?' idle':'')} onPointerDown={e=>{pointer.current=e.pointerType;}} onPointerMove={wake} onPointerLeave={()=>playing&&setIdle(true)}>
-     <video ref={el=>{video.current=el;setNode(el);}} key={item.motion?.video} src={item.motion?.video} poster={sized(item.thumbnail,2048)} playsInline loop
+    <div ref={stage} className={'cinema-stage'+(idle&&playing?' idle':'')} onPointerDown={e=>{pointer.current=e.pointerType;swipe.current=e.pointerType==='touch'?{x:e.clientX,y:e.clientY}:null;}}
+     onPointerUp={e=>{const start=swipe.current;swipe.current=null;if(!start)return;const dx=e.clientX-start.x,dy=e.clientY-start.y;if(Math.abs(dx)>60&&Math.abs(dx)>1.5*Math.abs(dy)){swiped.current=true;go(dx<0?1:-1);}}}
+     onPointerMove={wake} onPointerLeave={()=>playing&&setIdle(true)}>
+     <video ref={el=>{video.current=el;setNode(el);}} key={item.motion?.video} className={direction>0?'from-right':direction<0?'from-left':''} src={item.motion?.video} poster={sized(item.thumbnail,2048)} playsInline loop
       onClick={tap} onDoubleClick={fullscreen} onPlay={()=>{setPlaying(true);wake();}} onPause={()=>{setPlaying(false);setIdle(false);}}
       onTimeUpdate={e=>setTime(e.currentTarget.currentTime)} onLoadedMetadata={e=>setDuration(e.currentTarget.duration)}
       onVolumeChange={e=>{setMuted(e.currentTarget.muted);setVolume(e.currentTarget.volume);}} aria-label={'Vídeo: '+item.title}/>
      {!playing&&<button className="cinema-big-play" onClick={toggle} aria-label="Reproduzir"><Play size={34} fill="currentColor"/></button>}
+     {previous&&<button className="cinema-side previous" onClick={()=>go(-1)} aria-label="Vídeo anterior" title="Anterior (←)"><ChevronLeft size={30}/></button>}
+     {following&&<button className="cinema-side next" onClick={()=>go(1)} aria-label="Próximo vídeo" title="Próximo (→)"><ChevronRight size={30}/></button>}
      <div className="cinema-controls">
       <input className="cinema-progress" type="range" min={0} max={duration||0} step={.01} value={time} aria-label="Posição do vídeo"
        style={{'--progress':progress+'%'} as React.CSSProperties} onChange={e=>seek(Number(e.target.value))}/>
       <div className="cinema-row">
        <button onClick={toggle} aria-label={playing?'Pausar':'Reproduzir'} title={playing?'Pausar (K)':'Reproduzir (K)'}>{playing?<Pause size={20} fill="currentColor"/>:<Play size={20} fill="currentColor"/>}</button>
-       {!!next.length&&<button onClick={playNext} aria-label="Próximo vídeo" title="Próximo (N)"><SkipForward size={19} fill="currentColor"/></button>}
+       <button onClick={()=>go(-1)} disabled={!previous} aria-label="Voltar ao vídeo anterior" title="Anterior (P)"><SkipBack size={19} fill="currentColor"/></button>
+       <button onClick={()=>go(1)} disabled={!following} aria-label="Avançar para o próximo vídeo" title="Próximo (N)"><SkipForward size={19} fill="currentColor"/></button>
        <div className="cinema-volume"><button onClick={mute} aria-label={muted?'Ativar som':'Desativar som'} title={muted?'Ativar som (M)':'Desativar som (M)'}>{muted||volume===0?<VolumeX size={20}/>:<Volume2 size={20}/>}</button>
         <input type="range" min={0} max={1} step={.05} value={muted?0:volume} onChange={e=>changeVolume(Number(e.target.value))} aria-label="Volume"/></div>
        <span className="cinema-time">{clock(time)} / {clock(duration)}</span>
@@ -109,9 +142,12 @@ export function MotionCinema({item,detail,onClose,onOpen,onDetails,copy}:{item:R
      {item.idea&&<section><h3>Ideia transferível</h3><p>{item.idea}</p></section>}
      {d?.how&&<section><h3>Decupagem</h3><p>{d.how}</p></section>}
      {d?.prompt&&<section><h3>{d.template?'Prompt do modelo':'Prompt original'}</h3><pre>{d.prompt}</pre></section>}
-     {!!next.length&&<section className="cinema-next"><h3>A seguir</h3>{next.map(r=><button key={r.id} onClick={()=>onOpen(r.id,r.workspace_id)}>
+     {!!related.length&&<section className="cinema-next"><h3>Parecidos com este</h3>{related.map(r=><button key={r.id} onClick={()=>{setDirection(1);onOpen(r.id,r.workspace_id);}}>
       <span className="cinema-thumb">{r.thumbnail&&<img src={sized(r.thumbnail,512)} alt="" loading="lazy"/>}{r.motion?.duration&&<small>{clock(r.motion.duration)}</small>}</span>
       <span><strong>{r.title}</strong><em>{r.idea||r.description}</em></span></button>)}</section>}
+     {sequence.length>1&&<nav className="cinema-pager" aria-label="Trocar de vídeo"><span>{index>=0?`${index+1} de ${sequence.length}`:''}</span>
+      <button onClick={()=>go(-1)} disabled={!previous} aria-label="Anterior" title="Anterior (←)"><ChevronLeft size={18}/></button>
+      <button onClick={()=>go(1)} disabled={!following} aria-label="Próximo" title="Próximo (→)"><ChevronRight size={18}/></button></nav>}
     </aside>
    </div>
   </Dialog.Content></Dialog.Portal></Dialog.Root>;

@@ -70,6 +70,9 @@ class Library(Workspaces):
         aid=row.get('thumbnail')
         if aid:
             out['thumbnail']=f'/api/assets/{aid}'
+        if d.get('motion'):
+            # Vídeo de motion: o mapa toca o loop curto e a ficha, o vídeo completo.
+            out['motion']={**{k:f'/api/assets/{v}' for k,v in d['motion'].items()},**(d.get('video') or {})}
         out['url']=self.settings.url+'/?ref='+__import__('urllib.parse',fromlist=['quote']).quote(row['id'],safe='')
         return out
 

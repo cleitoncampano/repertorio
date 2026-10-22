@@ -1,5 +1,16 @@
 # Validação da primeira versão
 
+## Vídeos de motion no espaço Motion em 22/10/2026
+
+- Galeria completa do Prompt Motion importada no novo espaço **Motion** (`81287ed7-121b-4249-88f2-bff35d60e1cb`): 234 vídeos e 2 modelos de prompt reescritos pelo site, 236 referências externas com `reusable=false`. Mídia baixada para `_originais/prompt-motion/` (704 arquivos, 2,5 GB, sem falhas), fora do Git e do backup, como os demais originais. A fonte permite uso como referência (`Content-Signal: use=reference`, sem treino).
+- Cada ficha foi escrita em português por seis agentes a partir de uma prancha com oito momentos do vídeo: descrição, ideia transferível, decupagem com tempos, como recriar em código, técnicas, intenções, movimentos, estéticas, tons, usos e cuidados. Força: 22 com 5, 135 com 4, 75 com 3 e 4 com 2. Vídeos com dados aparentemente inventados, marca de terceiros ou trilha de terceiros têm o alerta nos cuidados.
+- Agente: `search_references` aceita `format="mp4"` e mostra a duração na prancha; `get_reference(include_image=true)` devolve prompt original, decupagem, procedência e a prancha de quadros no lugar da capa. Novas frases comuns de movimento (tipografia cinética, push in, pull back, morphing, órbita, gráfico animado, explainer).
+- Interface: o mapa toca até 12 vídeos visíveis com pelo menos 72 px, por cima das capas, recortados no formato de cada visualização; espaços sem vídeo não criam a camada e "reduzir movimento" desliga a reprodução. Passar o mouse mostra o loop, a lista toca os cartões visíveis e a ficha tem player com som, decupagem, prompt para copiar, créditos e **Ver quadros**.
+- Medição na cópia do acervo, Chromium sem limite de quadros, 3 rodadas arrastando o mapa: 1.066 a 1.099 quadros/s sem vídeos e 450 a 490 com 12 vídeos, cerca de 1,2 ms a mais por quadro; pior quadro igual nos dois casos (21 a 24 ms). Grafo do Motion em 57 ms; PP Treta inalterado (1.021 referências, sem vídeos).
+- Corrigido defeito anterior da lista em todos os espaços: com muitos cartões, a grade espremia as linhas na altura da tela (56 px) e os cartões se sobrepunham, no Chromium e no WebKit. A versão anterior compilada à parte mostrou o mesmo defeito. `grid-auto-rows:max-content` restaura a rolagem; conferido em Motion e PP Treta.
+- Importação ensaiada numa cópia do banco (236 em 0,7 s; reimportação preserva tudo em 0,03 s; integridade e chaves estrangeiras válidas) antes do acervo real, com backup prévio no iCloud (`repertorio-2026-10-22-201440`). Acervo real: 15.898 referências e 27.173 arquivos, nenhum ausente, integridade `ok`.
+- 45 testes do servidor, 37 da interface e 28 de navegador aprovados, incluindo os novos de importação, curadoria preservada, vídeo por partes (Range), imagem do agente e reprodução no mapa, ficha e lista. Capturas em 1440 e 390 px sem erros JavaScript nem transbordamento. Evidências em `app/.runtime/qa/motion/`.
+
 ## Produto, demonstração e instalação local em 19/10/2026
 
 - Nova entrada **Conheça o Repertório**, em `/?view=guide`: proposta do produto, fluxo, papéis, exemplo de pedido e ações funcionais para copiar, explorar, abrir Skills e conectar um agente. Navegador local em Mac e Windows, aplicativo opcional no Mac. Visual do mapa e nove visualizações preservados.

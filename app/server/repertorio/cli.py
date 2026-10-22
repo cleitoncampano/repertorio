@@ -29,6 +29,7 @@ def main():
     sub.add_parser('serve');sub.add_parser('doctor');sub.add_parser('backup-now');sub.add_parser('init')
     demo=sub.add_parser('demo');demo.add_argument('--home',required=True);demo.add_argument('--port',type=int,default=8768);demo.add_argument('--serve',action='store_true')
     imp=sub.add_parser('import');imp.add_argument('--workspace',required=True)
+    motion=sub.add_parser('import-motion',help='importa os vídeos de dados/motion para um espaço');motion.add_argument('--workspace',required=True);motion.add_argument('--folder')
     sub.add_parser('workspaces')
     space=sub.add_parser('create-workspace');space.add_argument('name')
     rename=sub.add_parser('rename-workspace');rename.add_argument('id');rename.add_argument('name');rename.add_argument('--revision',type=int,required=True)
@@ -67,6 +68,9 @@ def main():
         return
     if args.cmd=='import':
         db=Database(settings);db.migrate();output(import_library(db,args.workspace));return
+    if args.cmd=='import-motion':
+        from .motion import import_motion
+        db=Database(settings);db.migrate();output(import_motion(db,args.workspace,args.folder));return
     if args.cmd=='relocate':
         from .relocate import relocate
         output(relocate(settings,args.previous_root,args.backup));return

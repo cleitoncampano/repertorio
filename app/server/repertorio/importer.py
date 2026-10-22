@@ -15,7 +15,7 @@ def read_jsonl(path):
 
 
 def index_text(data):
-    fields = ('title', 'description', 'idea', 'techniques', 'intentions', 'movements', 'aesthetics', 'text', 'usage_notes')
+    fields = ('title', 'description', 'idea', 'techniques', 'intentions', 'movements', 'aesthetics', 'text', 'usage_notes', 'keywords')
     return ' '.join(' '.join(map(str, data[k])) if isinstance(data.get(k), list) else str(data.get(k) or '') for k in fields)
 
 

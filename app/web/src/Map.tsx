@@ -7,6 +7,7 @@ import {graphFocus} from './focus';
 import {api,sized} from './api';
 import {cameraKey,type GraphView} from './graphViewOptions';
 import {graphColors,graphSkin,readableInk} from './graphSkins';
+import {MotionLayer,motionClip,pickMotion,type MotionBox} from './motionLayer';
 
 // Resoluções do mapa: cada miniatura usa a menor que cobre o tamanho real na tela e melhora ao aproximar.
 const LEVELS=[128,256,512,1024];
@@ -14,6 +15,7 @@ const LEVELS=[128,256,512,1024];
 type Props={workspaceId:string;view:GraphView;data:GraphData;selected:string|null;matches:string[]|null;technique:string;operation:string;theme:'dark'|'light';onSelect:(id:string)=>void;onTerm:(type:string,id:string)=>void;onClear:()=>void};
 export function Map({workspaceId,view,data,selected,matches,technique,operation,theme,onSelect,onTerm,onClear}:Props){
  const container=useRef<HTMLDivElement>(null),cy=useRef<Core|null>(null);
+ const motionRoot=useRef<HTMLDivElement>(null),motionSync=useRef<(()=>void)|null>(null);
  const viewRef=useRef(view);viewRef.current=view;
  const skin=graphSkin(view,theme),skinRef=useRef(skin);skinRef.current=skin;
  const paletteRef=useRef(graphColors(view,theme));paletteRef.current=graphColors(view,theme);
@@ -78,6 +80,25 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
   const images=new globalThis.Map<string,HTMLImageElement>(),requested=new globalThis.Map<string,number>(),shown=new globalThis.Map<string,number>();
   const referenceNodes=instance.nodes('[type="reference"]'),techniqueNodes=instance.nodes('[type="technique"]');
   let bundled=false; // até o pacote inicial chegar, nenhuma miniatura é pedida sozinha
+  // Vídeos de motion tocam sobre as capas visíveis. Espaços sem vídeo não criam a camada.
+  const motionItems=new globalThis.Map(data.items.filter(item=>item.motion?.loop).map(item=>[item.id,item]));
+  const motionNodes=referenceNodes.filter(node=>motionItems.has(node.data('entity')));
+  const layer=motionNodes.length&&!reduced&&motionRoot.current?new MotionLayer(motionRoot.current):null;
+  let motionFrame=0;
+  const syncMotion=()=>{
+   if(!layer||instance.destroyed())return;
+   const boxes:MotionBox[]=[],extent=instance.extent(),shape=skinRef.current?.referenceShape,border=(skinRef.current?5:3)*instance.zoom();
+   motionNodes.forEach(node=>{
+    const p=node.position();
+    if(node.hasClass('dim')||p.x<extent.x1-150||p.x>extent.x2+150||p.y<extent.y1-150||p.y>extent.y2+150)return;
+    // A borda da capa continua visível em volta do vídeo.
+    const r=node.renderedPosition(),w=Math.max(0,node.renderedWidth()-border),h=Math.max(0,node.renderedHeight()-border),item=motionItems.get(node.data('entity'))!;
+    boxes.push({id:node.id(),src:item.motion!.loop!,poster:sized(item.thumbnail,512),x:r.x,y:r.y,w,h,clip:motionClip(shape,w,h)});
+   });
+   layer.sync(pickMotion(boxes,instance.width(),instance.height()));
+  };
+  const scheduleMotion=()=>{if(layer&&!motionFrame)motionFrame=requestAnimationFrame(()=>{motionFrame=0;syncMotion();});};
+  motionSync.current=layer?scheduleMotion:null;
   const updateViewport=()=>{
    const z=instance.zoom(),extent=instance.extent(),density=window.devicePixelRatio||1;
    if(Math.abs(z-lastZoom)>.0001){
@@ -100,6 +121,7 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
      shown.set(id,level);
      const ratio=img.naturalWidth/img.naturalHeight,size=node.data('size');
      node.data({image:url,width:ratio>=1?size:size*ratio,height:ratio>=1?size/ratio:size});
+     scheduleMotion();
     };
     img.src=url;
    });
@@ -114,7 +136,7 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
     const ratio=preview.width/preview.height,size=node.data('size');
     node.data({image:preview.src,width:ratio>=1?size:size*ratio,height:ratio>=1?size/ratio:size});
    }));
-  }).catch(()=>{/* sem o pacote, cada miniatura é pedida sozinha */}).finally(()=>{bundled=true;if(!instance.destroyed())updateViewport();});
+  }).catch(()=>{/* sem o pacote, cada miniatura é pedida sozinha */}).finally(()=>{bundled=true;if(!instance.destroyed()){updateViewport();scheduleMotion();}});
   instance.on('tap','node',e=>{setHover(null);const d=e.target.data();if(d.type==='reference')callbacks.current.onSelect(d.entity);else callbacks.current.onTerm(d.type==='cue'?'operation':d.type,d.entity);});
   instance.on('tap',e=>{if(e.target===instance)callbacks.current.onClear();});
   const items=new globalThis.Map(data.items.map(item=>[item.id,item]));
@@ -127,10 +149,10 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
   instance.on('viewport',()=>{
    clearTimeout(cameraTimer);cameraTimer=window.setTimeout(saveCamera,160);
    if(frame)return;
-   frame=requestAnimationFrame(()=>{frame=0;setHover(null);setZoom(instance.zoom());updateViewport();});
+   frame=requestAnimationFrame(()=>{frame=0;setHover(null);setZoom(instance.zoom());updateViewport();syncMotion();});
   });
   window.addEventListener('pagehide',saveCamera);
-  const resize=new ResizeObserver(()=>instance.resize());resize.observe(container.current);
+  const resize=new ResizeObserver(()=>{instance.resize();scheduleMotion();});resize.observe(container.current);
   applyView.current=next=>{
    if(currentView===next)return;
    saveCamera();currentView=next;lastZoom=0;setHover(null);framedMatches.current='';
@@ -149,10 +171,10 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
    }else if(!restoreCamera()){
     instance.fit(undefined,instance.width()<760?30:72);instance.panBy({x:-panelInset.current,y:0});
    }
-   rescale();updateViewport();
+   rescale();updateViewport();scheduleMotion();
   };
   if(!reduced)container.current.animate([{opacity:.5},{opacity:1}],{duration:400});
-  return()=>{saveCamera();window.removeEventListener('pagehide',saveCamera);applyView.current=null;cancelAnimationFrame(frame);clearTimeout(settle);resize.disconnect();for(const img of images.values())img.onload=null;instance.destroy();cy.current=null;};
+  return()=>{saveCamera();window.removeEventListener('pagehide',saveCamera);applyView.current=null;cancelAnimationFrame(frame);cancelAnimationFrame(motionFrame);layer?.clear();motionSync.current=null;clearTimeout(settle);resize.disconnect();for(const img of images.values())img.onload=null;instance.destroy();cy.current=null;};
  },[data,workspaceId]);
  useEffect(()=>{applyView.current?.(view);},[view,data,workspaceId]);
  const panelOpen=!!(selected||technique||operation||matches);
@@ -178,6 +200,7 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
    instance.edges().forEach(edge=>{if(edge.source().hasClass('lit')&&edge.target().hasClass('lit'))edge.removeClass('dim').addClass('lit');});
    if(selected)instance.getElementById('ref:'+selected).addClass('active');
   });
+  motionSync.current?.(); // vídeos de capas apagadas pelo foco param de tocar
  },[selected,matches,technique,operation,data]);
  useEffect(()=>{
   const c=cy.current;
@@ -203,7 +226,8 @@ export function Map({workspaceId,view,data,selected,matches,technique,operation,
  },[matches,selected,data,view]);
  const adjust=(factor:number)=>{const c=cy.current;if(c)c.zoom({level:c.zoom()*factor,renderedPosition:{x:c.width()/2,y:c.height()/2}});};
  return <div className={'map-stage'+(skin?' graph-skin graph-skin-'+view:'')} data-view={view} style={skin?{'--graph-background':skin.background,'--graph-ink':skin.ink,'--graph-surface':skin.surface,'--graph-accent':skin.palette[0]} as CSSProperties:undefined}><div className="map-surface" ref={container} role="img" aria-label="Mapa de referências conectadas às técnicas. Use a busca ou a lista para navegar com teclado."/>
-  {hover&&<div className="map-hover" style={{left:hover.x,top:hover.y}}>{hover.item.thumbnail&&<img src={sized(hover.item.thumbnail,512)} alt=""/>}<div><small>{kindName[hover.item.kind]||'Referência'} · Clique para explorar</small><strong>{hover.item.title}</strong></div></div>}
+  <div className="map-motion" ref={motionRoot} aria-hidden="true"/>
+  {hover&&<div className="map-hover" style={{left:hover.x,top:hover.y}}>{hover.item.motion?.loop?<video src={hover.item.motion.loop} poster={sized(hover.item.thumbnail,512)} autoPlay muted loop playsInline/>:hover.item.thumbnail&&<img src={sized(hover.item.thumbnail,512)} alt=""/>}<div><small>{hover.item.motion?'Vídeo':kindName[hover.item.kind]||'Referência'} · Clique para explorar</small><strong>{hover.item.title}</strong></div></div>}
   <span className="map-help">Arraste para explorar · Role para aproximar</span>
   <div className="map-controls"><button title="Aproximar" aria-label="Aproximar" onClick={()=>adjust(1.25)}><Plus size={17}/></button><span>{Math.round(zoom*100)}%</span><button title="Afastar" aria-label="Afastar" onClick={()=>adjust(.8)}><Minus size={17}/></button><i/><button title="Ver todo o mapa" aria-label="Ver todo o mapa" onClick={()=>{const c=cy.current;if(c){c.fit(undefined,c.width()<760?30:72);c.panBy({x:-panelInset.current,y:0});}}}><Maximize size={16}/></button>{selected&&<button title="Localizar seleção" aria-label="Localizar seleção" onClick={()=>{const c=cy.current;if(c){c.fit(c.getElementById('ref:'+selected),200);c.zoom(Math.min(c.zoom(),1.3));}}}><LocateFixed size={17}/></button>}</div>
  </div>;

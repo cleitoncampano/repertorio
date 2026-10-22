@@ -45,7 +45,7 @@ def create_mcp(lib,worker):
 
     @mcp.tool()
     def search_references(request:schemas.AgentSearch):
-        """Busca referências. Escreva o pedido em português comum (ex.: "abertura com impacto", "números grandes em fundo escuro", "linha do tempo"): frases conhecidas viram intenção, técnica, movimento ou estética, e understood mostra essa leitura; o resto é buscado no texto das fichas. Itens que combinam mais critérios e têm mais força vêm primeiro. Sem kind, mídias soltas ficam de fora (use kind="midia" para buscá-las). per_group limita quantas peças da mesma apresentação aparecem. contact_sheet devolve uma prancha com as prévias numeradas na mesma ordem dos itens (campo n). Informe context_id para registrar a demanda."""
+        """Busca referências. Escreva o pedido em português comum (ex.: "abertura com impacto", "números grandes em fundo escuro", "linha do tempo"): frases conhecidas viram intenção, técnica, movimento ou estética, e understood mostra essa leitura; o resto é buscado no texto das fichas. Itens que combinam mais critérios e têm mais força vêm primeiro. Sem kind, mídias soltas ficam de fora (use kind="midia" para buscá-las). format="mp4" traz só vídeos de motion, cada um com o prompt que o gerou. per_group limita quantas peças da mesma apresentação aparecem. contact_sheet devolve uma prancha com as prévias numeradas na mesma ordem dos itens (campo n). Informe context_id para registrar a demanda."""
         from .db import dumps
         result=smart_search(lib,request)
         sheet=contact_sheet(lib,result['items']) if request.contact_sheet else None
@@ -53,7 +53,9 @@ def create_mcp(lib,worker):
 
     @mcp.tool()
     def get_reference(reference_id:str,include_image:bool=False,context_id:str|None=None,workspace_ids:list[str]|None=None):
-        """Retorna ficha, relações e prévias. include_image inclui uma imagem raster visível ao modelo."""
+        """Retorna ficha, relações e prévias. include_image inclui uma imagem raster visível ao modelo.
+        Vídeos de motion (format="mp4") trazem o prompt original em prompt, a decupagem em how, duração e formato em video,
+        procedência em source, e a imagem é uma prancha com oito momentos do vídeo."""
         ref=lib.get(reference_id,workspace_ids=workspace_ids,context_id=context_id)
         ref['children_total']=len(ref.get('children',[]))
         ref['children']=ref.get('children',[])[:12]
@@ -63,7 +65,8 @@ def create_mcp(lib,worker):
         if not include_image:return ref
         from .db import dumps
         contents=[dumps(ref)]
-        a=lib.db.one("SELECT path FROM assets WHERE ref_id=:id AND role='preview' AND missing=0 ORDER BY path,id LIMIT 1",id=reference_id)
+        # Vídeo: a prancha de quadros mostra o movimento ao longo do tempo; os demais usam a prévia.
+        a=lib.db.one("SELECT path FROM assets WHERE ref_id=:id AND role IN ('storyboard','preview') AND missing=0 ORDER BY CASE role WHEN 'storyboard' THEN 0 ELSE 1 END,path,id LIMIT 1",id=reference_id)
         if a and Path(a['path']).suffix.lower() in {'.jpg','.jpeg','.png','.webp','.gif'}:
             with PILImage.open(a['path']) as im:
                 im=im.convert('RGB');im.thumbnail((1200,1200));buf=io.BytesIO();im.save(buf,format='JPEG',quality=85)

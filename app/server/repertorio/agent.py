@@ -25,12 +25,12 @@ EXTRA={
   'DESTACAR':['destaque','enfase','frase de efeito','palavra chave','mensagem principal','ideia central'],
   'CITAR':['citacao','depoimento','manifesto','aspas','pergunta retorica','testemunho'],
   'APRESENTAR':['equipe','time','palestrante','quem somos','sobre nos','sobre a empresa','bio','perfil','fundador','socio'],
-  'EXPLICAR':['explicacao','conceito','esquema','diagrama','como funciona','metodo','metodologia','framework'],
+  'EXPLICAR':['explicacao','conceito','esquema','diagrama','como funciona','metodo','metodologia','framework','explainer','video explicativo'],
   'SEQUENCIAR':['processo','passo','passo a passo','etapa','linha do tempo','timeline','jornada','cronologia','evolucao','trajetoria','roadmap','historia da empresa'],
   'AGRUPAR':['lista','card','categoria','pilar','grade','servico','topico','beneficio','funcionalidade'],
   'COMPARAR':['comparacao','comparativo','antes e depois','versus','vs','pros e contras','diferenca','tabela comparativa','concorrente'],
   'PROVAR':['numero','numero grande','dado','grafico','resultado','kpi','metrica','indicador','pesquisa','prova social','estatistica','percentual','porcentagem','crescimento','case'],
-  'MOSTRAR':['produto','tela','mockup','galeria','portfolio','demonstracao','demo','aplicativo','app','site','interface','celular'],
+  'MOSTRAR':['produto','tela','mockup','galeria','portfolio','demonstracao','demo','aplicativo','app','site','interface','celular','lancamento','video de produto'],
   'LOCALIZAR':['mapa','lugar','cidade','pais','regiao','geografia','presenca','unidade','localizacao','endereco'],
   'FECHAR':['fechamento','conclusao','encerramento','final','cta','chamada para acao','contato','obrigado','agradecimento','proximo passo'],
  },
@@ -81,20 +81,20 @@ EXTRA={
   'objeto-como-suporte':['escrito em','embalagem'],
  },
  'movements':{
-  'zoom-mergulho':['zoom','mergulho','aproximar','aproximacao','zoom in'],
-  'zoom-recuo':['recuo','afastar','afastamento','zoom out'],
+  'zoom-mergulho':['zoom','mergulho','aproximar','aproximacao','zoom in','push in','dolly in','camera entrando'],
+  'zoom-recuo':['recuo','afastar','afastamento','zoom out','pull back','dolly out','camera recuando'],
   'panorama':['deslizar','rolagem','travelling'],
   'voo':['voar','entrar voando'],
   'reorganizar':['rearranjar','trocar de lugar'],
-  'transformacao':['transformar','morph','metamorfose'],
-  'texto':['texto animado','texto em movimento','palavra mudando'],
-  'giro':['girar','rotacao','rodar'],
-  'revelacao':['revelar','cortina','wipe'],
-  'troca':['corte seco','fade','esmaecer'],
-  'escalonado':['cascata','um apos o outro','um por um'],
+  'transformacao':['transformar','morph','morphing','metamorfose'],
+  'texto':['texto animado','texto em movimento','palavra mudando','tipografia cinetica','kinetic type','kinetic typography','letreiro animado'],
+  'giro':['girar','rotacao','rodar','orbita','camera orbitando'],
+  'revelacao':['revelar','cortina','wipe','mascara animada'],
+  'troca':['corte seco','fade','esmaecer','transicao'],
+  'escalonado':['cascata','um apos o outro','um por um','stagger'],
   'foco':['holofote'],
   'loop':['continuo','video de fundo','fundo animado'],
-  'contagem':['contador','numero subindo','grafico crescendo'],
+  'contagem':['contador','numero subindo','grafico crescendo','grafico animado','numeros animados'],
   'estatico':['sem animacao','parado'],
  },
  'aesthetics':{
@@ -105,7 +105,7 @@ EXTRA={
   'ludico':['brincalhao','divertido'],
   'luxo':['luxuoso','premium','sofisticado','elegante'],
   'vidro':['glass','glassmorphism','vidro fosco'],
-  '3d':['tridimensional'],
+  '3d':['tridimensional','three js','threejs','webgl'],
   'fotografico':['foto','fotografia'],
   'preto-e-branco':['pb'],
   'ilustrado':['ilustracao'],
@@ -284,7 +284,9 @@ def contact_sheet(lib,items,cell=380,gap=12):
         label=str(item.get('n',k+1));w=draw.textlength(label,font=badge)+16
         draw.rectangle([x,y,x+w,y+28],fill=(255,90,60));draw.text((x+8,y+3),label,font=badge,fill=(255,255,255))
         draw.text((x,y+ih+6),fit(draw,item.get('title'),title,cell),font=title,fill=(236,232,225))
-        details=[KIND_NAMES.get(item.get('kind'),item.get('kind')),f"força {item.get('strength') or 3}"]+(item.get('intentions') or [])[:2]
+        video=item.get('motion') or {}
+        kind=f"vídeo {round(video['duration'])}s" if video.get('duration') else KIND_NAMES.get(item.get('kind'),item.get('kind'))
+        details=[kind,f"força {item.get('strength') or 3}"]+(item.get('intentions') or [])[:2]
         if item.get('reusable') is False:details.append('mídia de terceiros')
         draw.text((x,y+ih+31),fit(draw,' · '.join(details),meta,cell),font=meta,fill=(160,155,147))
     buf=io.BytesIO();sheet.save(buf,format='JPEG',quality=82);return buf.getvalue()

@@ -57,6 +57,7 @@ Os agentes precisam receber os espaços explicitamente. Exemplo: “Use os espa�
 - **Escolhas** mostra as referências que o agente separou para cada pedido. Aprove, corte e comente: o agente lê a revisão com `get_pack` antes de criar.
 - Quando há sugestões espontâneas, **Escolhas** também oferece **Sugestões para o acervo**. Abra a ficha e use **Publicar no espaço** ou **Excluir deste espaço**. Pedidos explícitos de incorporação continuam publicados depois do processamento.
 - **Atividade** registra alterações e consultas por demanda. Trabalhos interrompidos podem ser tentados novamente.
+- **Vídeos de motion** (espaço Motion): as capas tocam o vídeo no próprio mapa ao aproximar, até 12 por vez, só as visíveis e grandes o bastante; com "reduzir movimento" ligado no sistema, ficam paradas. Passar o mouse mostra o loop; a lista toca os cartões visíveis. A ficha traz o player com som, a decupagem cena a cena, o prompt original para copiar, a ferramenta usada, os créditos do autor e **Ver quadros**, a prancha com oito momentos do vídeo, que é a imagem que o agente recebe.
 
 ## Conectar projetos e agentes
 
@@ -183,12 +184,14 @@ O histórico (git) guarda código, textos e dados do acervo. As produções são
 
 ```sh
 ./app/run.sh import --workspace pp-treta
+./app/run.sh import-motion --workspace ID_DO_ESPACO   # vídeos de dados/motion/*.jsonl
 ./app/run.sh backup /caminho/backup-repertorio.zip
 # Encerre o serviço antes de restaurar:
 ./app/run.sh restore /caminho/backup-repertorio.zip
 ```
 
 - O importador migra os dados existentes, incluindo mídias sem classificação, e preserva IDs, curadoria e exclusões em reimportações.
+- `import-motion` cria uma referência externa por vídeo, ligada às técnicas do vocabulário, com capa, prancha de quadros, loop curto e vídeo completo. Também preserva a curadoria feita no app. As fichas são montadas por `ferramentas/incorporar_prompt_motion.py`; os vídeos ficam em `_originais/prompt-motion/`, fora do Git e do backup, como os demais originais.
 - O banco é a fonte de verdade da aplicação. Os scripts antigos continuam independentes e não refletem as exclusões feitas no Repertório.
 - O backup contém o banco e as criações gerenciadas, com checksums. Os originais de 11 GB não são duplicados: um manifesto registra suas dependências. Para migrar de computador, copie também o acervo original.
 - A restauração verifica integridade, ajusta caminhos gerenciados e preserva a pasta anterior com sufixo `before-restore`. Não pode ocorrer enquanto o serviço está ativo.

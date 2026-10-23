@@ -122,13 +122,23 @@ SOAP_FILES = {
     'Analise_de_viabilidade_do_projeto': ('planilha-viabilidade-de-projeto', 'Planilha · Viabilidade de projeto'),
 }
 
+# Termos encontrados na leitura dos templates; entram nas observações de uso das fichas (todas seguem reusable=false).
+GIFT = ('A SOAP distribuiu este template como presente e libera copiar os elementos para as próprias apresentações '
+        '("É só copiar e colar na sua apresentação"), sem licença formal nem permissão de redistribuição; as fotos vêm de '
+        'bancos de imagens cujas licenças não acompanham o arquivo. Recrie a ideia em vez de reaproveitar as imagens.')
+SOAP_CAUTIONS = {
+    **{f'presente-{year}': GIFT for year in (2014, 2015, 2016, 2017)},
+    'template-graficos': 'Template editável da SOAP ("fique à vontade para alterar cores, textos e fotos"), sem licença formal; '
+                         'usa imagens de terceiros sem crédito (personagem de videogame, efígie de cédula). Recrie a ideia do gráfico.',
+}
+
 COLLECTIONS = {
     'perestroika': dict(label='Perestroika', source='perestroika', extra=(), what='PDF da Perestroika',
                         slugs={}, titles=PERESTROIKA_TITLES, video='perestroika'),
     # Templates em PowerPoint e o kit do zip são exportados para PDF em soap/_trabalho/pdf-templates/ e seguem como PDF.
     'soap': dict(label='SOAP', source='soap', extra=('soap/_trabalho/pdf-templates',), what='PDF da SOAP',
                  what_converted='Template da SOAP, exportado para PDF,', slugs={k: v[0] for k, v in SOAP_FILES.items()},
-                 titles={v[0]: v[1] for v in SOAP_FILES.values()}, video=None),
+                 titles={v[0]: v[1] for v in SOAP_FILES.values()}, cautions=SOAP_CAUTIONS, video=None),
 }
 
 
@@ -293,6 +303,8 @@ def montar(c):
         rel = lambda n: str((dest / f'p{n:03d}.jpg').relative_to(ROOT))
         pdf, origin = pdfs[slug]
         base = dict(collection=c.name, file=str(origin))
+        if slug in c.cfg.get('cautions', {}):
+            base['cautions'] = c.cfg['cautions'][slug]
         deck = dict(base, doc='arquivo', id=deck_id, preview=rel(cover), original=str(pdf), pages=len(pages),
                     concepts=concepts(x for p in pages for x in p.get('conceitos') or []),
                     keywords=f'{c.name} {slug.replace("-", " ")}', **card(meta, vocab, problems, slug))

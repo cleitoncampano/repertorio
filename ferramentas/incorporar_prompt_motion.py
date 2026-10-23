@@ -6,6 +6,7 @@ Baixar capas e vídeos:      app/.venv/bin/python ferramentas/incorporar_prompt_
 Gerar quadros e medidas:    app/.venv/bin/python ferramentas/incorporar_prompt_motion.py quadros
 Separar lotes para fichas:  app/.venv/bin/python ferramentas/incorporar_prompt_motion.py lotes
 Montar as fichas:           app/.venv/bin/python ferramentas/incorporar_prompt_motion.py montar
+Dados para os guias:        app/.venv/bin/python ferramentas/incorporar_prompt_motion.py guias --workspace ID_DO_ESPACO
 Importar no app:            ./app/run.sh import-motion --workspace ID_DO_ESPACO
 
 Vídeos, capas e páginas ficam em _originais/prompt-motion/, fora do Git. A classificação criativa
@@ -300,6 +301,37 @@ def montar(args):
     print(len(rows), 'fichas em', OUT.relative_to(ROOT), '| avisos:', problems)
 
 
+GUIDE_GROUPS = {'lancamento': ['lancamento'], 'showreel-vinheta': ['showreel', 'vinheta'], 'explicativo-dados': ['explicativo', 'dados'],
+                'tipografia-historia-abstrato': ['tipografia', 'historia', 'abstrato']}
+
+
+def guias(args):
+    """Separa as fichas por tipo para escrever os guias de biblioteca/motion/guias/ (instruções em dados/motion/_trabalho/guias/)."""
+    rows = [json.loads(line) for line in OUT.read_text().splitlines() if line.strip()]
+    cautions = {}
+    for f in sorted(WORK.glob('fichas-*.jsonl')):
+        for line in f.read_text().splitlines():
+            if line.strip():
+                d = json.loads(line)
+                cautions[d['slug']] = d.get('cautions', '')
+    space = args.workspace
+
+    def pack(r):
+        board = r['media'].get('storyboard') or r['media']['poster']
+        return {'id': r['id'], 'link': f'http://127.0.0.1:8766/?workspace={space}&ref={r["id"]}', 'title': r['title'],
+                'title_original': r.get('title_original'), 'tipos': r['genres'], 'formato': r['aspect'], 'duracao_s': r.get('duration'),
+                'som': r.get('audio'), 'forca': r['strength'], 'description': r['description'], 'idea': r['idea'], 'how': r.get('how'),
+                'html': r.get('html'), 'cautions': cautions.get(r['slug'], ''), 'techniques': r['techniques'], 'movements': r['movements'],
+                'aesthetics': r['aesthetics'], 'tone': r.get('tone'), 'good_for': r.get('good_for'), 'stack': r.get('stack'),
+                'iterations': r.get('iterations'), 'prompt': (r.get('prompt') or '')[:1500], 'quadros': str((ROOT / board).resolve())}
+    folder = WORK / 'guias'
+    folder.mkdir(parents=True, exist_ok=True)
+    for name, types in GUIDE_GROUPS.items():
+        (folder / f'{name}.json').write_text(json.dumps({t: [pack(r) for r in rows if t in r['genres']] for t in types}, ensure_ascii=False, indent=1))
+    (folder / 'formatos-prompts.json').write_text(json.dumps({'videos': [pack(r) for r in rows]}, ensure_ascii=False, indent=1))
+    print('dados dos guias em', folder.relative_to(ROOT))
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest='cmd', required=True)
@@ -313,8 +345,10 @@ def main():
     lt = sub.add_parser('lotes')
     lt.add_argument('--lotes', type=int, default=6)
     sub.add_parser('montar')
+    g = sub.add_parser('guias')
+    g.add_argument('--workspace', required=True, help='ID do espaço Motion, para os links dos guias')
     args = p.parse_args()
-    {'coletar': coletar, 'baixar': baixar, 'quadros': quadros, 'lotes': lotes, 'montar': montar}[args.cmd](args)
+    {'coletar': coletar, 'baixar': baixar, 'quadros': quadros, 'lotes': lotes, 'montar': montar, 'guias': guias}[args.cmd](args)
 
 
 if __name__ == '__main__':

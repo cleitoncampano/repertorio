@@ -29,3 +29,9 @@ _catalogo/mapa/r/
 # Trabalho intermediário das fichas: só as instruções
 dados/_trabalho/**
 !dados/_trabalho/*.md
+
+# Kit de motion: verificações e renders do HyperFrames são gerados a cada uso
+kit/motion/**/.hyperframes/
+kit/motion/**/renders/
+# Dados intermediários dos guias de motion: refeitos com `incorporar_prompt_motion.py guias`
+dados/motion/_trabalho/guias/*.json

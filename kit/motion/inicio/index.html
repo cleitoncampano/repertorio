@@ -1,0 +1,103 @@
+<!doctype html>
+<!--
+  Projeto inicial do kit de motion do Repertório (13,2 s, 1920x1080, 30 fps).
+  Quatro blocos do registro do HyperFrames, já testados juntos:
+    1. 0 a 3,5 s   per-word-rise       gancho: o título sobe palavra por palavra
+    2. 3,5 a 8 s   grid-card-assemble  o que o produto faz: cartões em cascata
+    3. 8 a 11 s    count-up            a prova: um número que conta
+    4. 11 a 13,2 s logo-sting          a marca entra e fica parada
+  Troque textos e números no data-variable-values de cada bloco e a identidade nas variáveis de :root.
+  Para trocar um bloco, veja o mapa em kit/motion/LEIA-ME.md e instale com npx hyperframes add <nome>.
+-->
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      /* Identidade do vídeo: os blocos leem estas variáveis. */
+      :root {
+        --bg: #0e0f12;
+        --fg: #f3f1ec;
+        --brand: #ff5a3c;
+        --accent: #ff5a3c;
+        --accent-2: #f5b400;
+        --font-display: Inter, system-ui, sans-serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: var(--bg);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        font-family: var(--font-display);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="13.2" data-width="1920" data-height="1080">
+      <div
+        id="per-word-rise"
+        data-composition-id="per-word-rise"
+        data-composition-src="compositions/components/per-word-rise.html"
+        data-start="0"
+        data-duration="3.5"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+        data-variable-values='{"text":"Seu cliente não espera","accent":"green","exit":"up"}'
+      ></div>
+      <div
+        id="grid-card-assemble"
+        data-composition-id="grid-card-assemble"
+        data-composition-src="compositions/components/grid-card-assemble.html"
+        data-start="3.5"
+        data-duration="4.5"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+        data-variable-values='{"items":"Atende: em segundos,Organiza: cada conversa,Mede: o que importa,Aprende: com cada caso","accent":"green"}'
+      ></div>
+      <div
+        id="count-up"
+        data-composition-id="count-up"
+        data-composition-src="compositions/components/count-up.html"
+        data-start="8"
+        data-duration="3"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+        data-variable-values='{"start":0,"end":87,"suffix":"%","accent":"green"}'
+      ></div>
+      <div
+        id="logo-sting"
+        data-composition-id="logo-sting"
+        data-composition-src="compositions/components/logo-sting.html"
+        data-start="11"
+        data-duration="2.2"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+        data-variable-values='{"wordmark":"SUA MARCA","accent":"green"}'
+      ></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

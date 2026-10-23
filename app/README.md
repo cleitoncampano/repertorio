@@ -99,7 +99,8 @@ Depois, abra uma nova sessão e peça: **“Busque no Repertório referências p
 |---|---|
 | `start_context` | Recebe `project_id`, `demand` e `workspace_ids`; retorna um `id` de contexto independente |
 | `search_references` | Recebe `request` com `query` em português comum, `context_id` e filtros opcionais. Frases conhecidas viram intenção, técnica, movimento ou estética (`understood`); o resto é buscado no texto. Sem `kind`, deixa mídias soltas de fora. `per_group` (padrão 1) limita peças da mesma apresentação. Devolve também uma prancha numerada (`contact_sheet`, padrão ligado) |
-| `get_reference` | Recebe `reference_id` e `context_id` ou `workspace_ids`; `include_image: true` inclui imagem raster no resultado MCP |
+| `get_reference` | Recebe `reference_id` e `context_id` ou `workspace_ids`; `include_image: true` inclui imagem raster no resultado MCP (em vídeos, a prancha de oito quadros) |
+| `get_guide` | Guias de criação de vídeo: sem `name`, lista os disponíveis; com `name` (`lancamento`, `formatos`, `prompt`, `kit`...), devolve o texto |
 | `build_inspiration_pack` | Recebe `request` com contexto, título, IDs e justificativa; guarda versões selecionadas e devolve `review_url` para a tela Escolhas |
 | `get_pack` | Recebe `pack_id`; devolve a seleção com a revisão do usuário em cada referência (`approved`, `cut` ou sem resposta, e comentário) |
 | `register_reference` | Recebe `request` com arquivos, ficha, `target_workspace_ids` e intenção de publicação; retorna uma operação |

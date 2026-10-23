@@ -45,7 +45,7 @@ def create_mcp(lib,worker):
 
     @mcp.tool()
     def search_references(request:schemas.AgentSearch):
-        """Busca referências. Escreva o pedido em português comum (ex.: "abertura com impacto", "números grandes em fundo escuro", "linha do tempo"): frases conhecidas viram intenção, técnica, movimento ou estética, e understood mostra essa leitura; o resto é buscado no texto das fichas. Itens que combinam mais critérios e têm mais força vêm primeiro. Sem kind, mídias soltas ficam de fora (use kind="midia" para buscá-las). format="mp4" traz só vídeos de motion, cada um com o prompt que o gerou. per_group limita quantas peças da mesma apresentação aparecem. contact_sheet devolve uma prancha com as prévias numeradas na mesma ordem dos itens (campo n). Informe context_id para registrar a demanda."""
+        """Busca referências. Escreva o pedido em português comum (ex.: "abertura com impacto", "números grandes em fundo escuro", "linha do tempo"): frases conhecidas viram intenção, técnica, movimento ou estética, e understood mostra essa leitura; o resto é buscado no texto das fichas. Itens que combinam mais critérios e têm mais força vêm primeiro. Sem kind, mídias soltas ficam de fora (use kind="midia" para buscá-las). format="mp4" traz só vídeos de motion, cada um com o prompt que o gerou; para criar um vídeo, leia antes get_guide do tipo. per_group limita quantas peças da mesma apresentação aparecem. contact_sheet devolve uma prancha com as prévias numeradas na mesma ordem dos itens (campo n). Informe context_id para registrar a demanda."""
         from .db import dumps
         result=smart_search(lib,request)
         sheet=contact_sheet(lib,result['items']) if request.contact_sheet else None
@@ -73,6 +73,17 @@ def create_mcp(lib,worker):
                 im=im.convert('RGB');im.thumbnail((1200,1200));buf=io.BytesIO();im.save(buf,format='JPEG',quality=85)
             contents.append(Image(data=buf.getvalue(),format='jpeg'))
         return contents
+
+    @mcp.tool()
+    def get_guide(name:str='')->str:
+        """Guias para criar vídeos de motion, tirados da galeria do espaço Motion. Sem nome, lista os disponíveis.
+        Um guia por tipo de vídeo (lancamento, showreel, explicativo, dados, tipografia, historia, abstrato, vinheta), com estrutura
+        cena a cena, duração, ritmo, erros e prompt base; formatos (horizontal, vertical, quadrado); prompt (como pedir o vídeo);
+        kit (blocos do HyperFrames para cada movimento e um projeto inicial testado). Leia o do tipo antes de criar."""
+        if not name:
+            from .db import dumps
+            return dumps(lib.guides())
+        return lib.guide(name)
 
     @mcp.tool()
     def build_inspiration_pack(request:schemas.Pack)->dict:

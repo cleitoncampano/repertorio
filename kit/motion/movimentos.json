@@ -1,0 +1,465 @@
+{
+ "sobre": "Movimentos mais frequentes na galeria do espaço Motion e os blocos do registro do HyperFrames que os fazem. Versão do registro conferida: CLI 0.8.186.",
+ "movimentos": [
+  {
+   "movimento": "texto",
+   "nome": "Texto em movimento (tipografia cinética)",
+   "nota": "O movimento mais comum da galeria (156 vídeos).",
+   "blocos": [
+    {
+     "nome": "per-word-rise",
+     "uso": "padrão de chegada: palavras sobem do desfoque, uma a uma, e param",
+     "tipo": "component",
+     "instalar": "npx hyperframes add per-word-rise"
+    },
+    {
+     "nome": "kinetic-type-swap",
+     "uso": "uma palavra da frase gira entre opções, como caça-níquel",
+     "tipo": "component",
+     "instalar": "npx hyperframes add kinetic-type-swap"
+    },
+    {
+     "nome": "headline-slam",
+     "uso": "título pesado que cai e trava com impacto",
+     "tipo": "component",
+     "instalar": "npx hyperframes add headline-slam"
+    },
+    {
+     "nome": "text-match-cut",
+     "uso": "uma frase vira outra no meio do movimento",
+     "tipo": "component",
+     "instalar": "npx hyperframes add text-match-cut"
+    },
+    {
+     "nome": "focus-blur-resolve",
+     "uso": "frase que entra do desfoque para nítida, calma",
+     "tipo": "component",
+     "instalar": "npx hyperframes add focus-blur-resolve"
+    }
+   ]
+  },
+  {
+   "movimento": "troca",
+   "nome": "Troca de cena com motivo",
+   "nota": "114 vídeos. Use de 3 a 5 tipos por filme, cada um causado por algo na tela.",
+   "blocos": [
+    {
+     "nome": "whip-pan-cut",
+     "uso": "chicote lateral com desfoque de movimento",
+     "tipo": "component",
+     "instalar": "npx hyperframes add whip-pan-cut"
+    },
+    {
+     "nome": "match-cut",
+     "uso": "um círculo acelera e casa com o da cena seguinte",
+     "tipo": "component",
+     "instalar": "npx hyperframes add match-cut"
+    },
+    {
+     "nome": "iris-reveal",
+     "uso": "círculo que abre do ponto clicado para a próxima cena",
+     "tipo": "component",
+     "instalar": "npx hyperframes add iris-reveal"
+    },
+    {
+     "nome": "cut-the-curve",
+     "uso": "corte seco no pico de velocidade, mesma direção dos dois lados",
+     "tipo": "component",
+     "instalar": "npx hyperframes add cut-the-curve"
+    },
+    {
+     "nome": "fade-through",
+     "uso": "passagem calma por uma cor, para momentos de pausa",
+     "tipo": "component",
+     "instalar": "npx hyperframes add fade-through"
+    }
+   ]
+  },
+  {
+   "movimento": "escalonado",
+   "nome": "Entrada em cascata",
+   "nota": "109 vídeos. Itens de lista entram de 40 a 80 ms um do outro.",
+   "blocos": [
+    {
+     "nome": "grid-card-assemble",
+     "uso": "cartões de recurso montam uma grade ou lista",
+     "tipo": "component",
+     "instalar": "npx hyperframes add grid-card-assemble"
+    },
+    {
+     "nome": "notification-stack",
+     "uso": "notificações empilham, a mais nova em cima",
+     "tipo": "component",
+     "instalar": "npx hyperframes add notification-stack"
+    },
+    {
+     "nome": "logo-wall",
+     "uso": "parede de logos de clientes (prova social)",
+     "tipo": "component",
+     "instalar": "npx hyperframes add logo-wall"
+    },
+    {
+     "nome": "per-word-rise",
+     "uso": "também serve para frases em cascata",
+     "tipo": "component",
+     "instalar": "npx hyperframes add per-word-rise"
+    }
+   ]
+  },
+  {
+   "movimento": "transformacao",
+   "nome": "Transformação (uma forma vira outra)",
+   "nota": "89 vídeos. É o que separa os de força 5: um objeto que muda de forma de cena em cena.",
+   "blocos": [
+    {
+     "nome": "morph-swap",
+     "uso": "A se condensa e vira B no mesmo centro",
+     "tipo": "component",
+     "instalar": "npx hyperframes add morph-swap"
+    },
+    {
+     "nome": "card-resize",
+     "uso": "cartão pequeno se abre em painel de detalhe",
+     "tipo": "component",
+     "instalar": "npx hyperframes add card-resize"
+    },
+    {
+     "nome": "icon-morph-beat",
+     "uso": "ícone muda de estado e marca a conclusão",
+     "tipo": "component",
+     "instalar": "npx hyperframes add icon-morph-beat"
+    },
+    {
+     "nome": "modal-morph",
+     "uso": "cartão se expande em tela cheia, elemento compartilhado",
+     "tipo": "component",
+     "instalar": "npx hyperframes add modal-morph"
+    },
+    {
+     "nome": "facet-morph",
+     "uso": "massa de triângulos que vira outra silhueta",
+     "tipo": "component",
+     "instalar": "npx hyperframes add facet-morph"
+    }
+   ]
+  },
+  {
+   "movimento": "contagem",
+   "nome": "Número que conta e gráfico que cresce",
+   "nota": "69 vídeos.",
+   "blocos": [
+    {
+     "nome": "count-up",
+     "uso": "número que acelera, desacelera e trava no valor exato",
+     "tipo": "component",
+     "instalar": "npx hyperframes add count-up"
+    },
+    {
+     "nome": "number-wheel",
+     "uso": "dígitos que rolam, como placar",
+     "tipo": "component",
+     "instalar": "npx hyperframes add number-wheel"
+    },
+    {
+     "nome": "chart-story",
+     "uso": "gráfico que se constrói na ordem de leitura e mostra os valores",
+     "tipo": "component",
+     "instalar": "npx hyperframes add chart-story"
+    },
+    {
+     "nome": "conic-progress-ring",
+     "uso": "anel de progresso com o número no centro",
+     "tipo": "component",
+     "instalar": "npx hyperframes add conic-progress-ring"
+    },
+    {
+     "nome": "data-chart",
+     "uso": "bloco de barras e linha com legendas (cena inteira)",
+     "tipo": "block",
+     "instalar": "npx hyperframes add data-chart",
+     "previa": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/data-chart.mp4"
+    }
+   ]
+  },
+  {
+   "movimento": "zoom-mergulho",
+   "nome": "Câmera que entra (zoom mergulho)",
+   "nota": "47 vídeos. A câmera vai até um elemento e ele vira a próxima cena.",
+   "blocos": [
+    {
+     "nome": "zoom-through-transition",
+     "uso": "atravessa um cartão até a cena seguinte",
+     "tipo": "component",
+     "instalar": "npx hyperframes add zoom-through-transition"
+    },
+    {
+     "nome": "parallax-zoom",
+     "uso": "cartão central cresce até a tela, vizinhos se afastam",
+     "tipo": "component",
+     "instalar": "npx hyperframes add parallax-zoom"
+    },
+    {
+     "nome": "parallax-device-dive",
+     "uso": "celular sobe e a câmera mergulha na tela do app",
+     "tipo": "component",
+     "instalar": "npx hyperframes add parallax-device-dive"
+    },
+    {
+     "nome": "ui-focus-zoom",
+     "uso": "a câmera aproxima e passeia pela região da interface",
+     "tipo": "component",
+     "instalar": "npx hyperframes add ui-focus-zoom"
+    },
+    {
+     "nome": "cursor-zoom-follow",
+     "uso": "gravação de tela que aproxima a cada clique",
+     "tipo": "component",
+     "instalar": "npx hyperframes add cursor-zoom-follow"
+    }
+   ]
+  },
+  {
+   "movimento": "zoom-recuo",
+   "nome": "Câmera que recua (revela o todo)",
+   "nota": "30 vídeos. Bom para fechar mostrando o conjunto.",
+   "blocos": [
+    {
+     "nome": "pull-back-reveal",
+     "uso": "de um detalhe para o título e os cartões em volta",
+     "tipo": "component",
+     "instalar": "npx hyperframes add pull-back-reveal"
+    },
+    {
+     "nome": "parallax-unzoom",
+     "uso": "cartão em tela cheia encolhe e forma uma grade",
+     "tipo": "component",
+     "instalar": "npx hyperframes add parallax-unzoom"
+    }
+   ]
+  },
+  {
+   "movimento": "panorama",
+   "nome": "Câmera que passeia",
+   "nota": "43 vídeos.",
+   "blocos": [
+    {
+     "nome": "pan-stations",
+     "uso": "travelling lateral por estações de recurso, com parada em cada uma",
+     "tipo": "component",
+     "instalar": "npx hyperframes add pan-stations"
+    },
+    {
+     "nome": "scroll-camera-story",
+     "uso": "rolagem cinematográfica por seções",
+     "tipo": "component",
+     "instalar": "npx hyperframes add scroll-camera-story"
+    },
+    {
+     "nome": "swipe-rail",
+     "uso": "trilho de cartões arrastado com impulso",
+     "tipo": "component",
+     "instalar": "npx hyperframes add swipe-rail"
+    }
+   ]
+  },
+  {
+   "movimento": "giro",
+   "nome": "Giro e órbita",
+   "nota": "65 vídeos.",
+   "blocos": [
+    {
+     "nome": "locked-nucleus-orbit",
+     "uso": "satélites orbitam um centro e formam a marca",
+     "tipo": "component",
+     "instalar": "npx hyperframes add locked-nucleus-orbit"
+    },
+    {
+     "nome": "split-tilt-cards",
+     "uso": "dois cartões abrem como livro, em perspectiva",
+     "tipo": "component",
+     "instalar": "npx hyperframes add split-tilt-cards"
+    },
+    {
+     "nome": "extruded-logo",
+     "uso": "letras 3D viram uma a uma (cena inteira, three.js)",
+     "tipo": "block",
+     "instalar": "npx hyperframes add extruded-logo"
+    }
+   ]
+  },
+  {
+   "movimento": "revelacao",
+   "nome": "Revelação por máscara ou traço",
+   "nota": "39 vídeos.",
+   "blocos": [
+    {
+     "nome": "svg-mask-reveal",
+     "uso": "imagem aparece só dentro das letras da marca",
+     "tipo": "component",
+     "instalar": "npx hyperframes add svg-mask-reveal"
+    },
+    {
+     "nome": "svg-stroke-trace",
+     "uso": "desenho de linha que se traça e preenche",
+     "tipo": "component",
+     "instalar": "npx hyperframes add svg-stroke-trace"
+    },
+    {
+     "nome": "whiteboard-ink",
+     "uso": "esboço de quadro branco com a caneta seguindo o traço",
+     "tipo": "component",
+     "instalar": "npx hyperframes add whiteboard-ink"
+    },
+    {
+     "nome": "colorama-wipe",
+     "uso": "título revelado por uma frente colorida e desfocada",
+     "tipo": "component",
+     "instalar": "npx hyperframes add colorama-wipe"
+    }
+   ]
+  },
+  {
+   "movimento": "voo",
+   "nome": "Voo de elementos",
+   "nota": "32 vídeos.",
+   "blocos": [
+    {
+     "nome": "offset-path-traveler",
+     "uso": "elemento que percorre um caminho e gira na curva",
+     "tipo": "component",
+     "instalar": "npx hyperframes add offset-path-traveler"
+    },
+    {
+     "nome": "physical-exit",
+     "uso": "saída com impulso: arremesso, queda ou deslize",
+     "tipo": "component",
+     "instalar": "npx hyperframes add physical-exit"
+    }
+   ]
+  },
+  {
+   "movimento": "foco",
+   "nome": "Foco e destaque",
+   "nota": "17 vídeos.",
+   "blocos": [
+    {
+     "nome": "focus-rack",
+     "uso": "foco passa de um cartão para outro",
+     "tipo": "component",
+     "instalar": "npx hyperframes add focus-rack"
+    },
+    {
+     "nome": "vox-annotate",
+     "uso": "palavra recebe marca-texto à mão, com seta",
+     "tipo": "component",
+     "instalar": "npx hyperframes add vox-annotate"
+    },
+    {
+     "nome": "marker-highlight",
+     "uso": "traço de marcador sublinha ou circula",
+     "tipo": "component",
+     "instalar": "npx hyperframes add marker-highlight"
+    },
+    {
+     "nome": "tracing-beam",
+     "uso": "luz percorre um caminho e acende cada elemento",
+     "tipo": "component",
+     "instalar": "npx hyperframes add tracing-beam"
+    }
+   ]
+  },
+  {
+   "movimento": "interface",
+   "nome": "Interface de produto viva",
+   "nota": "Lançamentos com tela real (103 vídeos com interface).",
+   "blocos": [
+    {
+     "nome": "typed-prompt",
+     "uso": "pedido sendo digitado com cursor piscando",
+     "tipo": "component",
+     "instalar": "npx hyperframes add typed-prompt"
+    },
+    {
+     "nome": "oversized-cursor",
+     "uso": "cursor grande que aponta e clica",
+     "tipo": "component",
+     "instalar": "npx hyperframes add oversized-cursor"
+    },
+    {
+     "nome": "press-ripple",
+     "uso": "cursor chega, aperta o botão e dispara a ação",
+     "tipo": "component",
+     "instalar": "npx hyperframes add press-ripple"
+    },
+    {
+     "nome": "agent-cursor",
+     "uso": "agente de IA operando a interface passo a passo",
+     "tipo": "component",
+     "instalar": "npx hyperframes add agent-cursor"
+    },
+    {
+     "nome": "code-terminal-run",
+     "uso": "terminal rodando um comando",
+     "tipo": "component",
+     "instalar": "npx hyperframes add code-terminal-run"
+    },
+    {
+     "nome": "native-notification-pop",
+     "uso": "notificação do sistema que cai na tela",
+     "tipo": "component",
+     "instalar": "npx hyperframes add native-notification-pop"
+    }
+   ]
+  },
+  {
+   "movimento": "marca",
+   "nome": "Marca, vinheta e fechamento",
+   "nota": "Abertura e assinatura.",
+   "blocos": [
+    {
+     "nome": "logo-sting",
+     "uso": "a marca entra com impacto e fica parada",
+     "tipo": "component",
+     "instalar": "npx hyperframes add logo-sting"
+    },
+    {
+     "nome": "logo-brand-close",
+     "uso": "nome entra letra a letra e trava no centro",
+     "tipo": "component",
+     "instalar": "npx hyperframes add logo-brand-close"
+    },
+    {
+     "nome": "cta-close",
+     "uso": "frase de chamada com botão no fim",
+     "tipo": "component",
+     "instalar": "npx hyperframes add cta-close"
+    },
+    {
+     "nome": "titlecard-lockup",
+     "uso": "cartão de título calmo para respiro",
+     "tipo": "component",
+     "instalar": "npx hyperframes add titlecard-lockup"
+    }
+   ]
+  },
+  {
+   "movimento": "ritmo",
+   "nome": "Ritmo e batida",
+   "nota": "Corte na batida, mude o layout no compasso.",
+   "blocos": [
+    {
+     "nome": "beat-accent",
+     "uso": "um impacto na batida: clarão e pulso no elemento",
+     "tipo": "component",
+     "instalar": "npx hyperframes add beat-accent"
+    },
+    {
+     "nome": "beat-freeze-cut",
+     "uso": "rampa de velocidade, congelamento e corte (cena inteira)",
+     "tipo": "block",
+     "instalar": "npx hyperframes add beat-freeze-cut"
+    }
+   ]
+  }
+ ]
+}

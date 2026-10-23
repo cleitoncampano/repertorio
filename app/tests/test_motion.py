@@ -115,3 +115,21 @@ def test_created_video_enters_like_the_motion_gallery(library,context):
         data=s.ReferenceData(title='Reel revisado',description='Vídeo vertical do app',idea='Abra com a dor',techniques=['contraste'])))
     after=library.get(ref['id'],workspace_ids=['pp-treta'])
     assert after['title']=='Reel revisado' and after['genres']==['lancamento'] and after['prompt'].startswith('Make a 6 second')
+
+
+def test_video_guides_reach_the_agent(library,context):
+    root=library.settings.root
+    (root/'biblioteca/motion/guias').mkdir(parents=True)
+    (root/'biblioteca/motion/guias/lancamento.md').write_text('# Lançamento de produto\n\nCurto ganha.')
+    (root/'kit/motion').mkdir(parents=True);(root/'kit/motion/LEIA-ME.md').write_text('# Kit de motion')
+    assert library.guides()==['lancamento','kit']
+    with TestClient(create_app(library.settings,run_worker=False),base_url='http://127.0.0.1:8767') as client:
+        headers={'Accept':'application/json, text/event-stream','MCP-Protocol-Version':'2025-11-25'}
+        call=lambda method,params:client.post('/mcp',headers=headers,json={'jsonrpc':'2.0','id':1,'method':method,'params':params}).json()
+        call('initialize',{'protocolVersion':'2025-11-25','capabilities':{},'clientInfo':{'name':'t','version':'1'}})
+        listed=call('tools/call',{'name':'get_guide','arguments':{}})['result']
+        assert json.loads(listed['content'][0]['text'])==['lancamento','kit']
+        text=call('tools/call',{'name':'get_guide','arguments':{'name':'lancamento'}})['result']['content'][0]['text']
+        assert 'Curto ganha' in text
+        assert call('tools/call',{'name':'get_guide','arguments':{'name':'../segredo'}})['result'].get('isError')
+    assert library.start(s.StartContext(project_id=context['project_id'],demand='Vídeo',workspace_ids=['pp-treta']))['video_guides_available']==['lancamento','kit']

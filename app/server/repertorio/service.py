@@ -61,7 +61,19 @@ class Library(Workspaces):
                 conn.execute(text('INSERT INTO context_workspaces VALUES(:c,:w)'),dict(c=row['id'],w=wid))
             self.db.log(conn,'context_started',context_id=row['id'],demand=data.demand)
         return {**self.context(row['id']),'instructions':'História primeiro. Consulte somente os espaços desta demanda. Na incorporação, informe os espaços de destino. Examine imagens e adapte a ideia à identidade do projeto. Não copie. Publique apenas quando o usuário solicitar; sugestões ficam pendentes.',
-                'vocabulary':self.meta('vocabulary',{}),'principles_available':['narrativa','direcao-de-arte']}
+                'vocabulary':self.meta('vocabulary',{}),'principles_available':['narrativa','direcao-de-arte'],'video_guides_available':self.guides()}
+
+    def guides(self):
+        """Guias de criação de vídeo: um por tipo, mais formatos de tela, como pedir (prompt) e o kit de movimentos."""
+        folder=self.settings.root/'biblioteca/motion/guias'
+        names=sorted(p.stem for p in folder.glob('*.md')) if folder.is_dir() else []
+        return names+(['kit'] if (self.settings.root/'kit/motion/LEIA-ME.md').is_file() else [])
+
+    def guide(self,name):
+        if name not in self.guides():
+            raise Problem(404,'Guia não encontrado. Disponíveis: '+', '.join(self.guides()))
+        path=self.settings.root/('kit/motion/LEIA-ME.md' if name=='kit' else f'biblioteca/motion/guias/{name}.md')
+        return path.read_text()
 
     def summary(self, row):
         d=json.loads(row['payload'])

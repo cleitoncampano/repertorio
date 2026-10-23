@@ -10,7 +10,7 @@ describe('descoberta de skills',()=>{
   expect(searchSkills('visual','Vídeo').map(skill=>skill.id)).toEqual(['hyperframes-creative']);
   expect(searchSkills('impeccable','Imagens')).toEqual([]);
   expect(searchSkills('workshop','Método').map(skill=>skill.id)).toEqual(['perestroika-experiencia']);
-  expect(searchSkills('   ','Design')).toHaveLength(8);
+  expect(searchSkills('   ','Design')).toHaveLength(9);
   expect(searchSkills('travando','Animação').map(skill=>skill.id)).toEqual(['animation-performance']);
  });
  it('abre com o comando as skills que só rodam quando chamadas',()=>{

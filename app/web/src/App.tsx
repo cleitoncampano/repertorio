@@ -1,7 +1,7 @@
 import {useEffect,useLayoutEffect,useMemo,useRef,useState} from 'react';
 import {useQuery,useQueryClient} from '@tanstack/react-query';
 import * as Dialog from '@radix-ui/react-dialog';
-import {Sun,Moon,Search,Network,Activity,Trash2,ArrowUpRight,ChevronRight,ArrowLeft,X,Plug,Check,Copy,Download,RotateCcw,LayoutGrid,Sparkles,SlidersHorizontal,LoaderCircle,ExternalLink,BookOpen,Maximize2,Layers,CircleHelp,Inbox} from 'lucide-react';
+import {Sun,Moon,Search,Network,Activity,Trash2,ArrowUpRight,ChevronRight,ArrowLeft,X,Plug,Check,Copy,Download,RotateCcw,LayoutGrid,Sparkles,SlidersHorizontal,LoaderCircle,ExternalLink,BookOpen,Maximize2,Layers,CircleHelp,Inbox,FolderGit2} from 'lucide-react';
 import {api,sized} from './api';
 import {WorkspaceMenu,ReferenceSpaces} from './Workspaces';
 import {Map} from './Map';
@@ -11,6 +11,7 @@ import {MotionInfo,MotionThumb,motionSummary} from './MotionParts';
 import {MotionCinema} from './MotionCinema';
 import {ORGANIZATIONS,defaultOrganization,organizationLabels,organizeMap,savedOrganization,type Organization} from './motionMap';
 import {Skills} from './Skills';
+import {Repositories} from './Repositories';
 import {ProductGuide} from './ProductGuide';
 import {GraphViews} from './GraphViews';
 import {graphView,type GraphView} from './graphViewOptions';
@@ -18,10 +19,10 @@ import {graphColors} from './graphSkins';
 import {graphFocus} from './focus';
 import {colors,kindName,terms,type Reference,type Detail,type GraphData,type Vocabulary,type Workspace} from './types';
 
-type View='map'|'pending'|'skills'|'activity'|'trashed'|'guide';
+type View='map'|'pending'|'skills'|'repos'|'activity'|'trashed'|'guide';
 function viewFromParams(params:URLSearchParams):View{
  const value=params.get('view');
- return value==='skills'||value==='pending'||value==='activity'||value==='trashed'||value==='guide'?value:'map';
+ return value==='skills'||value==='repos'||value==='pending'||value==='activity'||value==='trashed'||value==='guide'?value:'map';
 }
 type Stats={counts:Record<string,number>;pending:number;projects:number;report:{total?:number;missing_assets?:number}};
 type Event={id:number;action:string;ref_id?:string;project_name?:string;created:string;payload:Record<string,unknown>};
@@ -54,7 +55,7 @@ export default function App(){
  const [notice,setNotice]=useState(''),[error,setError]=useState(''),[undo,setUndo]=useState<{id:string;membership_revision:number;workspace_id:string;state:string}|null>(null),[offset,setOffset]=useState(0),[busy,setBusy]=useState(false),[online,setOnline]=useState(true);
  const environment=useQuery({queryKey:['health'],queryFn:()=>api<{platform?:string;demo?:boolean}>('/health'),enabled:connect,staleTime:Infinity});
  const connectionCommand=environment.data?.platform==='win32'?'powershell -NoProfile -ExecutionPolicy Bypass -File .\\app\\run.ps1 connect C:\\caminho\\do\\projeto --write-instructions':'./app/run.sh connect /caminho/do/projeto --write-instructions';
- const graph=useQuery({queryKey:['graph',workspace],queryFn:()=>api<GraphData>(scoped('/graph')),staleTime:Infinity,enabled:active&&view!=='skills'&&view!=='guide'});
+ const graph=useQuery({queryKey:['graph',workspace],queryFn:()=>api<GraphData>(scoped('/graph')),staleTime:Infinity,enabled:active&&view!=='skills'&&view!=='repos'&&view!=='guide'});
  // Organização do mapa por espaço: história, recurso visual ou formato de tela. Vídeo começa por formato; imagem, pela história.
  const [organizations,setOrganizations]=useState<Record<string,Organization>>(()=>{try{return JSON.parse(localStorage.getItem('repertorio-organizacao')||'{}');}catch{return {};}});
  const organization:Organization=savedOrganization(organizations[workspace])||(graph.data?defaultOrganization(graph.data):'historia');
@@ -96,7 +97,7 @@ export default function App(){
  },[graph.data,results.data,hasContentFilter,list,selected]);
  const select=(id:string|null,sourceWorkspace?:string)=>{setSelected(id);setReferenceWorkspace(sourceWorkspace||'');const url=new URL(location.href);if(id)url.searchParams.set('ref',id);else url.searchParams.delete('ref');if(sourceWorkspace&&sourceWorkspace!==workspace)url.searchParams.set('reference_workspace',sourceWorkspace);else url.searchParams.delete('reference_workspace');history.pushState({},'',url);};
  const reset=()=>{setDraft('');setQuery('');setTechnique('');setOperation('');setIntention('');setKind('');setAesthetic('');setMovement('');setOrigin('');setFileFormat('');setMinStrength(0);setReusable(false);setOffset(0);};
- const changeWorkspace=(id:string)=>{setWorkspace(id);setSelected(null);setReferenceWorkspace('');setView(view==='skills'||view==='guide'?view:'map');setFilters(false);setUndo(null);setNotice('');reset();try{localStorage.setItem('repertorio-workspace',id);}catch{/* Storage is optional. */}const url=new URL(location.href);url.search='';if(id)url.searchParams.set('workspace',id);if(view==='skills'||view==='guide')url.searchParams.set('view',view);history.pushState({},'',url);};
+ const changeWorkspace=(id:string)=>{setWorkspace(id);setSelected(null);setReferenceWorkspace('');setView(view==='skills'||view==='repos'||view==='guide'?view:'map');setFilters(false);setUndo(null);setNotice('');reset();try{localStorage.setItem('repertorio-workspace',id);}catch{/* Storage is optional. */}const url=new URL(location.href);url.search='';if(id)url.searchParams.set('workspace',id);if(view==='skills'||view==='repos'||view==='guide')url.searchParams.set('view',view);history.pushState({},'',url);};
  const navigate=(next:View)=>{setView(next);setSelected(null);setReferenceWorkspace('');setFilters(false);reset();const url=new URL(location.href);url.searchParams.delete('ref');url.searchParams.delete('reference_workspace');url.searchParams.delete('q');url.searchParams.delete('escolha');if(next==='map')url.searchParams.delete('view');else url.searchParams.set('view',next);history.pushState({},'',url);};
  useEffect(()=>{setPicked(new Set());setAllPicked(false);setPurgeAsk(false);},[workspace,view]);
  const invalidate=()=>{for(const key of ['graph','stats','search','reference','activity','workspaces'])client.invalidateQueries({queryKey:[key]});};
@@ -128,7 +129,7 @@ export default function App(){
  return <div className="app-shell">
   <nav className="rail" aria-label="Navegação principal">
    <button className="nav-item spaces-button" onClick={()=>setSpaceMenu(true)} aria-label="Espaços" title={currentSpace?.name||'Espaços'}><Layers size={20}/><span className="nav-tooltip">Espaços</span></button>
-   <div className="nav-items">{([{id:'map',label:'Mapa',icon:Network},...(stats.data?.pending||view==='pending'?[{id:'pending',label:'Sugestões',icon:Inbox}]:[]),{id:'skills',label:'Skills',icon:Sparkles},{id:'activity',label:'Atividade',icon:Activity},{id:'trashed',label:'Lixeira',icon:Trash2}] as {id:View;label:string;icon:typeof Network}[]).map(n=>{const isCurrent=view===n.id;return <button key={n.id} className={isCurrent?'nav-item active':'nav-item'} onClick={()=>navigate(n.id)} aria-label={n.label} aria-current={isCurrent?'page':undefined}><n.icon size={18}/><span className="nav-tooltip">{n.label}</span>{n.id==='pending'&&!!stats.data?.pending&&<b className="badge">{stats.data.pending}</b>}</button>;})}</div>
+   <div className="nav-items">{([{id:'map',label:'Mapa',icon:Network},...(stats.data?.pending||view==='pending'?[{id:'pending',label:'Sugestões',icon:Inbox}]:[]),{id:'skills',label:'Skills',icon:Sparkles},{id:'repos',label:'Repositórios',icon:FolderGit2},{id:'activity',label:'Atividade',icon:Activity},{id:'trashed',label:'Lixeira',icon:Trash2}] as {id:View;label:string;icon:typeof Network}[]).map(n=>{const isCurrent=view===n.id;return <button key={n.id} className={isCurrent?'nav-item active':'nav-item'} onClick={()=>navigate(n.id)} aria-label={n.label} aria-current={isCurrent?'page':undefined}><n.icon size={18}/><span className="nav-tooltip">{n.label}</span>{n.id==='pending'&&!!stats.data?.pending&&<b className="badge">{stats.data.pending}</b>}</button>;})}</div>
    <button className="nav-item connect-button" onClick={()=>setConnect(true)} aria-label="Conectar agentes"><Plug size={18}/><span className="nav-tooltip">Conectar agentes</span></button>
   </nav>
   <button className="theme-toggle" aria-label={theme==='dark'?'Ativar modo claro':'Ativar modo escuro'} title={theme==='dark'?'Ativar modo claro':'Ativar modo escuro'} onClick={()=>setTheme(theme==='dark'?'light':'dark')}>{theme==='dark'?<Sun size={18}/>:<Moon size={18}/>}</button>
@@ -142,12 +143,13 @@ export default function App(){
       {draft?<><button type="button" aria-label="Limpar busca" onClick={()=>{setDraft('');setQuery('');searchInput.current?.focus();}}><X size={14}/></button><button className="search-submit" type="submit" aria-label="Explorar" title="Explorar"><ChevronRight size={17}/></button></>:<kbd aria-hidden="true">/</kbd>}
      </form>
      <div className="toolbar-actions"><button className={filters||hasFilter?'filter-button selected':'filter-button'} onClick={()=>setFilters(!filters)} aria-label="Filtros" aria-expanded={filters} aria-controls="map-filters" title="Filtros"><SlidersHorizontal size={17}/>{hasFilter&&<i/>}</button><button className={list?'icon-button selected':'icon-button'} onClick={()=>{setList(!list);setFilters(false);}} aria-label={list?'Ver mapa':'Ver lista'} title={list?'Ver mapa':'Ver lista'}>{list?<Network size={17}/>:<LayoutGrid size={17}/>}</button></div>
-    </>:<span className="workspace-location">{view==='pending'?'Sugestões':view==='skills'?'Skills':view==='activity'?'Atividade':view==='guide'?'Conheça':'Lixeira'}</span>}
+    </>:<span className="workspace-location">{view==='pending'?'Sugestões':view==='skills'?'Skills':view==='repos'?'Repositórios':view==='activity'?'Atividade':view==='guide'?'Conheça':'Lixeira'}</span>}
     <button className={'icon-button product-help'+(view==='guide'?' selected':'')} aria-label="Conheça o Repertório" title="Conheça o Repertório" aria-current={view==='guide'?'page':undefined} onClick={()=>navigate('guide')}><CircleHelp size={18}/></button>
    </header>
-   {!active&&view!=='skills'&&view!=='guide'&&<div className="empty spaces-home"><Layers/><h2>Seu repertório, em espaços.</h2><p>{spaces.isError?'Não foi possível carregar os espaços.':spaces.isPending?'Carregando espaços…':'Crie ou escolha um espaço para começar.'}</p><button onClick={()=>spaces.isError?spaces.refetch():setSpaceMenu(true)}>{spaces.isError?'Tentar novamente':'Ver espaços'}</button><button onClick={()=>navigate('guide')}>Conheça o Repertório</button></div>}
+   {!active&&view!=='skills'&&view!=='repos'&&view!=='guide'&&<div className="empty spaces-home"><Layers/><h2>Seu repertório, em espaços.</h2><p>{spaces.isError?'Não foi possível carregar os espaços.':spaces.isPending?'Carregando espaços…':'Crie ou escolha um espaço para começar.'}</p><button onClick={()=>spaces.isError?spaces.refetch():setSpaceMenu(true)}>{spaces.isError?'Tentar novamente':'Ver espaços'}</button><button onClick={()=>navigate('guide')}>Conheça o Repertório</button></div>}
    {view==='guide'&&<ProductGuide workspace={currentSpace} onExplore={()=>active?navigate('map'):setSpaceMenu(true)} onSearch={text=>{if(!active){setSpaceMenu(true);return;}navigate('map');setDraft(text);setQuery(text);}} onSkills={()=>navigate('skills')} onConnect={()=>setConnect(true)} onCopy={text=>void copy(text)}/>}
    {view==='skills'&&<Skills workspace={currentSpace}/>}
+   {view==='repos'&&<Repositories/>}
    {active&&view==='map'&&<>
     {filters&&<section id="map-filters" className="filters" aria-label="Filtros do mapa"><div className="filter-heading"><h2>Refinar o mapa</h2><button aria-label="Fechar filtros" onClick={()=>setFilters(false)}><X size={17}/></button></div><select aria-label="Intenção" value={intention} onChange={e=>setIntention(e.target.value)}><option value="">Toda intenção</option>{terms(vocab,'intencoes').map(t=><option key={t.id}>{t.id}</option>)}</select><select aria-label="Formato de conteúdo" value={kind} onChange={e=>setKind(e.target.value)}><option value="">Todo conteúdo</option>{Object.entries(kindName).map(([id,label])=><option key={id} value={id}>{label}</option>)}</select><select aria-label="Estética" value={aesthetic} onChange={e=>setAesthetic(e.target.value)}><option value="">Toda estética</option>{vocab?.esteticas?.itens.map(x=><option key={String(x)}>{String(x)}</option>)}</select><select aria-label="Movimento" value={movement} onChange={e=>setMovement(e.target.value)}><option value="">Todo movimento</option>{terms(vocab,'movimentos').map(t=><option key={t.id} value={t.id}>{t.nome||t.id}</option>)}</select><select aria-label="Origem" value={origin} onChange={e=>setOrigin(e.target.value)}><option value="">Toda origem</option><option value="acervo">Acervo</option><option value="externa">Referências externas</option><option value="criacao">Nossas criações</option></select><select aria-label="Tipo de arquivo" value={fileFormat} onChange={e=>setFileFormat(e.target.value)}><option value="">Todo arquivo</option>{['pptx','pdf','html','png','jpg','mp4'].map(x=><option key={x}>{x}</option>)}</select><select aria-label="Força mínima" value={minStrength} onChange={e=>setMinStrength(+e.target.value)}><option value={0}>Toda força</option><option value={4}>Força 4 ou 5</option><option value={5}>Força 5</option></select><label><input type="checkbox" checked={reusable} onChange={e=>setReusable(e.target.checked)}/> Reutilização indicada</label><div className="filter-actions"><button onClick={reset}>Limpar filtros</button><button onClick={()=>setFilters(false)}>Ver resultados <ChevronRight size={14}/></button></div></section>}
     {hasFilter&&<div className="filter-summary" role="status"><span>{(operation||technique)&&!hasContentFilter?`${format(termFocus?.references.size||0)} referências no mapa`:results.isFetching?'Buscando…':`${format(results.data?.total||0)} resultados`}{activeTechnique&&` · ${activeTechnique.nome||activeTechnique.id}`}</span><button onClick={reset}>Limpar filtros <X size={12}/></button></div>}

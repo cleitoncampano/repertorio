@@ -126,7 +126,7 @@ export const skills:readonly Skill[]=[
   example:'Revise este código Swift do aplicativo e corrija travamentos e problemas de desempenho.'},
 ];
 
-const normalize=(text:string)=>text.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR');
+export const normalize=(text:string)=>text.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR');
 export function searchSkills(query:string,category:SkillCategory|'Todas'='Todas'){
  const words=normalize(query).trim().split(/\s+/).filter(Boolean);
  return skills.filter(skill=>(category==='Todas'||skill.category===category)&&words.every(word=>normalize([skill.id,skill.name,skill.category,skill.description,skill.when,skill.example].join(' ')).includes(word)));

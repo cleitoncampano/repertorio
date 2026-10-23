@@ -1,5 +1,9 @@
 # Retomada do projeto
 
+## Aba Repositórios em 23/10/2026
+
+A pedido do Cleiton, a barra lateral do app ganhou **Repositórios**, logo abaixo de Skills (`?view=repos`). Cartões no formato das skills, com o link do GitHub, para ferramentas usadas junto com o Repertório: Engram (memória dos agentes), RTK (economia de contexto no terminal) e HyperFrames (vídeos do kit de motion). Curadoria em `app/web/src/repoCatalog.ts`; repositório que traz só uma skill fica no catálogo de Skills. Em celulares de até 360 px os ícones da barra ficam um pouco mais estreitos para caber com Sugestões. Testes: 63 da interface e 32 de navegador aprovados; interface compilada, atualizar com ⌘R.
+
 ## SOAP acionável para modelos em 23/10/2026
 
 A pedido do Cleiton, o material de `soap/` (55 e-books e guias, 3 checklists e 17 templates de PowerPoint, 1.755 páginas) foi lido página por página e virou três portas para os agentes, como a Perestroika. (1) Método: 62 fichas e modelos em `biblioteca/metodos/soap/`, servidos por `get_guide`: índice `metodo-soap`, guias `apresentar-ao-vivo`, `pitch-e-proposta`, `comunicacao-na-empresa` e fichas como `soap/<ficha>`; o checklist SOAP é camada extra do guia `revisao-apresentacao`. (2) Skills `soap-fala` (Apresentar ao vivo) e `soap-pitch` (Pitch e proposta) em `~/.agents/skills/` (ligadas em `~/.claude/skills`), no catálogo de Skills do app; a `perestroika-revisao` passou a usar o checklist SOAP. (3) Espaço SOAP no app (`7f53adaa-6bc5-496c-815e-f6159e2baec9`): 75 apresentações e 507 slides, `reusable=false`. Plano, resultado e pendências em `docs/SOAP-PLANO.md`; manutenção em `biblioteca/metodos/soap/LEIA-ME.md`.

@@ -78,6 +78,10 @@ Aplicação no Repertório: o modelo preenchido para o tema que o pedido indicou
 Bloco pronto para o modelo copiar e preencher.
 ```
 
+## Slides do espaço SOAP
+
+As páginas escolhidas na leitura estão no app, no espaço SOAP. Na seção "Exemplo do SOAP", ligue até 3 slides que mostram o conceito aplicado, no formato `[título curto](http://127.0.0.1:8766/?workspace=7f53adaa-6bc5-496c-815e-f6159e2baec9&ref=soap-<slug>%23<página>)`. Escreva `%23`, nunca `#` (com `#` o app abre a apresentação, não o slide). Só existem os slides com `"selecionar": true` na leitura; a lista completa de ids está em `dados/soap/decks.jsonl` (campo `id`, com `#`). O `validar` confere.
+
 ## Quando o assunto já está na Perestroika
 
 Tese, tagline, início, meio e fim, planejamento da apresentação, design de slide, ensaio e finalização, objeção na voz do público, formatos de encontro, checklist de apresentação e avaliação de reação já têm ficha `perestroika/<id>`. Nesses assuntos:

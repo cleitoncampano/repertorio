@@ -1,5 +1,9 @@
 # Retomada do projeto
 
+## Pasta perestroika enxuta em 23/10/2026
+
+A pedido do Cleiton, `perestroika/` ficou só com os 23 PDFs que as fichas do espaço abrem como original. Os outros 905 arquivos (168 MB: páginas renderizadas e leitura em `_trabalho/`, índice antigo, pranchetas, o Mood SP repetido e o vídeo do Chora PPT, que já estava na lixeira) foram para o Lixo do Mac, em `perestroika-excluidos-2026-10-23`. Mapa, busca, imagens dos slides, métodos e skills não dependiam deles (as imagens ficam em `_originais/perestroika/`). Refazer a importação exige rodar `paginas` e a leitura de novo.
+
 ## Espaço Apresentações em 23/10/2026
 
 A pedido do Cleiton, o novo espaço **Apresentações** (`987eafcf-f987-4de9-8308-a120d5b18b9d`) reúne Referências, Perestroika e SOAP: 798 apresentações (700 + 23 + 75) e 16.129 fichas com slides e mídias, ligadas por vínculo, sem copiar arquivos. O mapa abre no mesmo tempo de Referências (cerca de 0,14 s) e a busca mistura os três. Novo comando `join-workspaces` (`Library.join_workspaces`): liga ao espaço o que está publicado nos de origem, pode rodar de novo, traz só o novo e não ressuscita o que Apresentações mandou para a lixeira; na Atividade aparece como "Espaços reunidos". Para atualizar: `./app/run.sh join-workspaces 987eafcf-f987-4de9-8308-a120d5b18b9d --from-workspace referencias --from-workspace 0cbf5669-0d0a-4745-844e-0745357c0419 --from-workspace 7f53adaa-6bc5-496c-815e-f6159e2baec9`. Os três espaços originais continuam como estavam. Backup antes: `repertorio-2026-10-23-074326`. Testes: 54 do servidor aprovados; interface compilada (atualizar com ⌘R).

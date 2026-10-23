@@ -14,7 +14,7 @@ O serviço lê `guias/` como guias e `conceitos/` e `modelos/` como fichas (`app
 
 ## Como foi feito e como refazer
 
-1. Páginas renderizadas e lidas uma a uma (texto e imagem) por agentes, com `dados/_trabalho/INSTRUCOES-PERESTROIKA-LEITURA.md`. Saída em `perestroika/_trabalho/leitura/` (fora do Git); o resumo de cada PDF fica também em `_referencias/perestroika/<slug>.md`.
+1. Páginas renderizadas e lidas uma a uma (texto e imagem) por agentes, com `dados/_trabalho/INSTRUCOES-PERESTROIKA-LEITURA.md`. A saída ficava em `perestroika/_trabalho/` (fora do Git) e foi excluída a pedido do Cleiton em 23/10/2026, junto com o índice antigo, as pranchetas e o vídeo do Chora PPT: a pasta guarda só os 23 PDFs que as fichas abrem. O resultado da leitura continua em `dados/perestroika/decks.jsonl` (Git) e no resumo de cada PDF em `_referencias/perestroika/<slug>.md`. Para rodar `montar` de novo, refaça antes `paginas` e a leitura.
 2. Fichas e modelos escritos a partir da leitura com `dados/_trabalho/INSTRUCOES-PERESTROIKA-METODOS.md`. Os guias de entrada foram escritos à mão sobre as fichas.
 3. Espaço visual: `app/.venv/bin/python -I ferramentas/incorporar_perestroika.py montar` (grava `dados/perestroika/`, copia as páginas para `_originais/perestroika/`), `... pranchas` para conferir, depois `./app/run.sh import-decks --workspace ID --folder dados/perestroika`.
 
@@ -22,4 +22,4 @@ O serviço lê `guias/` como guias e `conceitos/` e `modelos/` como fichas (`app
 
 - Material de terceiros: as fichas explicam o método com palavras próprias e citam a página; as referências entram com `reusable=false`. Não incluir em pacotes de demonstração ou venda.
 - O que é aplicação do Repertório (e não da fonte) vem marcado com "Aplicação no Repertório".
-- O Mood SP é cópia do Mood RIO e ficou fora do espaço; o "Swag" é um curso de skate e o "Tetris" é de pesquisa e comportamento, ao contrário do que diz o `perestroika/INDICE_MATERIAIS.md` antigo.
+- O Mood SP é cópia do Mood RIO e ficou fora do espaço; o "Swag" é um curso de skate e o "Tetris" é de pesquisa e comportamento, ao contrário do que dizia o índice antigo da pasta (excluído).

@@ -10,7 +10,8 @@ numa pasta e o caminho sai na resposta: abra com a ferramenta de leitura de arqu
   app/.venv/bin/python -I ferramentas/mcp_leitura.py search_references '{"query":"abertura com impacto","workspace_ids":["ID"]}'
   app/.venv/bin/python -I ferramentas/mcp_leitura.py get_reference '{"reference_id":"ID","include_image":true,"workspace_ids":["ID"]}'
 
-Opções: --imagens PASTA (padrão: pasta temporária do sistema) e --url (padrão: http://127.0.0.1:8766/mcp).
+Opções: --imagens PASTA (padrão: pasta temporária do sistema), --resumo (na busca, só n, id, tipo, título, ideia e url de cada item,
+mais o que foi entendido) e --url (padrão: http://127.0.0.1:8766/mcp).
 """
 import argparse
 import asyncio
@@ -38,6 +39,7 @@ def main():
     parser.add_argument('tool', choices=TOOLS)
     parser.add_argument('args', nargs='?', default='{}')
     parser.add_argument('--imagens', default=str(Path(tempfile.gettempdir()) / 'repertorio-mcp-leitura'))
+    parser.add_argument('--resumo', action='store_true')
     parser.add_argument('--url', default='http://127.0.0.1:8766/mcp')
     opts = parser.parse_args()
     args = json.loads(opts.args)
@@ -49,7 +51,8 @@ def main():
         args = {'request': request}
     result = asyncio.run(call(opts.url, opts.tool, args))
     folder = Path(opts.imagens)
-    stamp = time.strftime('%H%M%S')
+    # Nome único por chamada: duas consultas no mesmo segundo não podem sobrescrever a imagem uma da outra.
+    stamp = time.strftime('%H%M%S') + f'-{time.time_ns() % 10**9:09d}'
     texts = []
     for item in result.content:
         if item.type == 'text':
@@ -57,6 +60,10 @@ def main():
                 texts.append(json.loads(item.text))
             except json.JSONDecodeError:
                 texts.append(item.text)
+    if opts.resumo and opts.tool == 'search_references' and texts and isinstance(texts[0], dict):
+        found = texts[0]
+        texts = [dict(understood=found.get('understood'), total=found.get('total'),
+                      items=[{k: i.get(k) for k in ('n', 'id', 'kind', 'title', 'idea', 'url')} for i in found.get('items', [])])]
     # Uma lista chega como um texto por item: junta de volta.
     for text in ([texts] if len(texts) > 1 else texts):
         print(text if isinstance(text, str) else json.dumps(text, ensure_ascii=False, indent=1))

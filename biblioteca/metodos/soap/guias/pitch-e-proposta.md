@@ -20,14 +20,16 @@ Base: e-books e templates da agência SOAP (pitch feito com a Endeavor Brasil, e
 ## O que vale para todas
 
 1. **Comece pelo interesse de quem decide**, não por "quem somos": "para o que você me serve?" (`soap/objetivo-e-audiencia`). Escreva o que essa pessoa deve pensar, sentir e fazer ao fim.
-2. **Planeje com a matriz TOSW** (`soap/matriz-tosw`): as dores da audiência, a solução, os diferenciais e o benefício, e as fraquezas com o plano para elas. A ordem de preenchimento já é a ordem do discurso.
+2. **Planeje com a matriz TOSW** (`soap/matriz-tosw`): as dores da audiência, a solução, os diferenciais e o benefício, e as fraquezas com o plano para elas. A TOSW organiza o conteúdo; a ordem de apresentação é a do modelo da situação. No pitch para investidor, a promessa vem primeiro e a dor entra logo depois, como a razão da promessa; numa venda ou num anúncio, a dor pode abrir.
 3. **Três atos** (`soap/tres-atos`): promessa ou alerta no começo, prova no meio, a mesma ideia de volta no fim como chamada. Com investidor, a abertura é a promessa do ganho, sem suspense; num lançamento, o produto aparece só depois do problema. Escolha pelo público.
 4. **Prova com o número que importa** (`soap/informacao-saliente`): um dado por slide, com fonte. Marque os números que faltam e peça ao usuário; nunca invente.
 5. **Mostre uma fraqueza e o plano contra ela**: transforma a plateia em torcida.
 6. **Feche com o próximo passo**, nunca com um slide "Obrigado": data, decisão, reunião, algo que o decisor ajuda a completar.
-7. **Tempo curto**: de 15 minutos, use 5; numa reunião, apresentar ocupa até 40% do tempo, e um terço diante do board (`soap/pedir-recursos`).
+7. **Tempo curto**: quando o tempo inclui conversa, de 15 minutos use 5; numa reunião, apresentar ocupa até 40% do tempo, e um terço diante do board (`soap/pedir-recursos`). Quando as perguntas têm bloco próprio (banca de pitch), o tempo dado é da fala; Aplicação no Repertório: deixe cerca de 10% de folga e tenha uma versão mais curta ensaiada.
 8. **Duas versões**: a de apresentar (pouco texto, apoio à fala) e a de enviar (a peça se explica sozinha, 5 a 10 slides) (`soap/apresentacao-institucional`, `soap/do-roteiro-ao-slide`).
 9. **Números na ponta da língua** e as objeções preparadas: guia `apresentar-ao-vivo`, `soap/perguntas-dificeis`.
+
+Referências visuais: o espaço SOAP tem páginas de e-book que ensinam e templates, não pitches reais de clientes. Para a composição dos slides, combine com outros espaços quando o usuário permitir, e use só as referências dos espaços que ele escolheu (os guias por momento citam vários).
 
 ## Formato da entrega
 

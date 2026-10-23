@@ -17,6 +17,8 @@ Monta a apresentação para aprovar um projeto em sete passos, com a análise fi
 | 6. Análise financeira (ou Budget) | um gráfico (colunas empilhadas, linhas) ou uma tabela de 4 colunas, com os indicadores ao lado (p8-10; Copa p8) | 1 gráfico e 4 números |
 | 7. Próximos passos | o que precisa acontecer depois da reunião, com dono e data (p11) | 3 passos lado a lado |
 
+Cada slide continua com uma mensagem só (`soap/do-roteiro-ao-slide`): os tópicos sustentam essa mensagem, e "até 6" é o limite que cabe no template, não uma meta.
+
 **A planilha de viabilidade** (projeção de 5 anos, mês a mês, do mês 0 ao 60).
 
 | aba | o que preencher |

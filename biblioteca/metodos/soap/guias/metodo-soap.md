@@ -78,9 +78,9 @@ As fichas registram cada diferença; estas são as que mais aparecem:
 | assunto | Perestroika | SOAP | escolha |
 |---|---|---|---|
 | Abertura | uma "bomba" nos primeiros 30 segundos | o Ato I pelo mundo da audiência, nos primeiros minutos | palco, vídeo e carrossel prendem em 30 segundos; reunião de decisão aceita um Ato I mais longo; com investidor, a bomba é a promessa do ganho; num anúncio que gera resistência, comece pelo contexto da audiência |
-| Final | a tese de volta | aceita também o final aberto | ação com prazo pede final fechado |
-| Tempo de fala | abertura e fim somam até um terço da fala | apresentar ocupa 40% de uma reunião, um terço diante do board | o resto da reunião é conversa e decisão |
-| Ritmo de voz | 130 a 150 palavras por minuto (aplicação do Repertório) | cerca de 160, ritmo de conversa | use o número do SOAP, com pausas entre as frases |
+| Final | a tese de volta | aceita também o final aberto; em peça de decisão, termina no próximo passo, nunca num slide "Obrigado" | ação com prazo pede final fechado. O guia `fechamento` mostra composições de agradecimento: numa peça de decisão, o obrigado é a saída depois do próximo passo, não o último conteúdo |
+| Tempo de fala | abertura e fim somam até um terço da fala | quando o tempo inclui conversa: fala até a metade (10 minutos com interação, 5 de discurso), 40% de uma reunião, um terço diante do board | valem as duas regras. Quando as perguntas têm bloco próprio (banca de pitch, palco com perguntas depois), o tempo dado é da fala; Aplicação no Repertório: deixe cerca de 10% de folga |
+| Ritmo de voz | 130 a 150 palavras por minuto, estimativa da ficha `perestroika/ensaio-e-finalizacao` (aplicação do Repertório) | cerca de 160, ritmo de conversa | para cronometrar o roteiro, conte 160 palavras por minuto de fala, com pausas entre as frases |
 | Cores | paleta curta | várias cores no informal, uma cor em tons no formal | decida pelo tom do encontro |
 | Feedback | rápido e constante, na rotina | conversa marcada para a correção | elogio curto e frequente; correção com hora marcada, perto do fato |
 | Ponto de partida de um treinamento | a tese de quem conduz | o levantamento de necessidades de quem aprende | o levantamento decide o que entra; a tese decide o ponto de vista |
@@ -88,10 +88,10 @@ As fichas registram cada diferença; estas são as que mais aparecem:
 ## Como se liga ao resto do Repertório
 
 1. Planejamento e história primeiro: objetivo, audiência e três atos antes de `biblioteca/processo.md` e dos guias por momento (`abertura`, `provar-com-dados`, `fechamento`...). A frase-resumo e o momento-surpresa vêm de `metodo-perestroika`.
-2. Visual depois: referências dos espaços escolhidos pelo usuário. No espaço SOAP, busque pelo nome do recurso ("gráfico ilustrado", "número gigante", "metáfora visual", "três atos") para ver como a agência desenhou a ideia; `per_group` maior traz mais slides do mesmo PDF.
+2. Visual depois: referências dos espaços escolhidos pelo usuário. Os guias por momento e o de revisão citam referências de vários espaços: use só as dos espaços que o usuário escolheu. No espaço SOAP, busque pelo nome do recurso ("gráfico ilustrado", "número gigante", "metáfora visual", "três atos") para ver como a agência desenhou a ideia; as capas dos e-books aparecem como apresentações, então use `kind: "slide"` para ver só slides, e `per_group` maior traz mais slides do mesmo PDF. O espaço tem páginas que ensinam e templates, não apresentações reais de clientes.
 3. Fala e ensaio: guia `apresentar-ao-vivo` quando a pessoa vai apresentar a peça.
 4. Antes de entregar: guia `revisao-apresentacao`, com o `soap/checklist-soap`.
 
-Os exemplos marcados como "Aplicação no Repertório" nas fichas são ilustrações, cada um com um tema diferente: não reaproveite nomes, números, frases ou metáforas deles; crie os do tema do usuário.
+Os exemplos marcados como "Aplicação no Repertório" nas fichas são ilustrações, cada um com um tema diferente: não reaproveite nomes, números, frases, benefícios, metáforas ou o fechamento deles; crie os do tema do usuário a partir dos fatos que ele deu. Se o tema de um exemplo for parecido com o seu, desconfie em dobro: benefício que o usuário não comprovou fica [pendente].
 
 Diga ao usuário quais fichas e referências usou e por quê. O método é de terceiros: aplique as ideias com o tema e a identidade do projeto, sem copiar textos, slides ou templates.

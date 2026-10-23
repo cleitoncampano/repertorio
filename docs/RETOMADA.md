@@ -1,5 +1,11 @@
 # Retomada do projeto
 
+## Preparação para compartilhar: fase 2 do plano de QA em 23/10/2026
+
+Primeira experiência de quem não é técnico. Mac: `app/Abrir Repertório.command` prepara na primeira vez, liga o serviço e abre o navegador (`serve --abrir`); Windows: `Instalar Repertorio.cmd` e `Iniciar Repertorio.cmd` (CRLF por `.gitattributes`). No app: botão **Adicionar arquivos** (`/api/workspaces/{id}/upload`, `repertorio/uploads.py`), em que cada arquivo vira referência publicada com a ideia "Ainda sem explicação" para o agente completar; tela de espaço vazio com Adicionar arquivos, Conectar meu agente e Conheça; guia aberto uma vez na primeira visita com biblioteca vazia; Conectar agentes com caminho completo e abas para Claude Code, Codex, Cursor, Claude Desktop e OpenCode (`connect` também liga o CLAUDE.md ao AGENTS.md); aviso de serviço fora do ar, mensagens em português, falhas de processamento avisadas na hora e em linguagem simples, tela de recuperação em vez de página branca, estados de carregando e erro em lista, lixeira e atividade. Biblioteca iniciada pelo serve recebe o vocabulário. App do Mac lê a porta gravada no build (não recompilado na máquina do Cleiton). Nova página `docs/produto/PROBLEMAS.md`; capturas de demonstração refeitas; menções à tela Escolhas removidas.
+
+Testes: 69 do servidor, 67 da interface e 36 de navegador aprovados; pacote novo testado como pessoa nova (instala, abre o navegador, envia arquivo, `stop`). Serviço religado. Próximo passo: Fase 3 (robustez e segurança).
+
 ## Landing page comercial em 23/10/2026
 
 A pedido do Cleiton, criada e publicada uma prévia privada da landing page: https://repertorio-para-criar.loyalmoon67.chatgpt.site. Produção no Growmate Marketing, `produtos/repertorio/landing-page/` (continuidade em `project.md`). Nova oferta: aplicativo + biblioteca de referências, apresentações, materiais de estudo e vídeos de motion, sem citar nomes de cursos na página. Preço provisório R$ 97 em `dist/config.js`; falta informar o checkout. O botão mostra a disponibilidade futura enquanto o destino não estiver definido.

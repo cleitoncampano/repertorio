@@ -16,9 +16,9 @@ Abra **http://127.0.0.1:8766**. Deixe o processo em execução enquanto os agent
 
 ### App no Dock e sempre ligado
 
-Neste computador o Repertório é um aplicativo: **Repertório**, com o ícone psicodélico do olho, fixado no Dock. Clicar abre o acervo numa janela própria (sem navegador). Fechar a janela não desliga nada; ⌘Q encerra só o app, e o serviço continua no ar para os agentes.
+Neste computador o Repertório é um aplicativo: **Repertório**, com o ícone de um R branco em três fragmentos sobre fundo preto, fixado no Dock. Clicar abre o acervo numa janela própria (sem navegador). Fechar a janela não desliga nada; ⌘Q encerra só o app, e o serviço continua no ar para os agentes.
 
-- `~/Applications/Repertório.app` é nativo (Swift + WebKit). O código está em `app/mac/main.swift`; o ícone em `app/mac/icone.png` (desenhado por `icone.py`). Para gerar de novo: `./app/mac/build.sh /caminho/Repertório.app`, depois encerre o app e troque o arquivo.
+- `~/Applications/Repertório.app` é nativo (Swift + WebKit). O código está em `app/mac/main.swift`; o ícone em `app/mac/icone.png` (conceito e procedência em `app/mac/ICONE.md`). Para gerar de novo: `./app/mac/build.sh /caminho/Repertório.app`, depois encerre o app e troque o arquivo.
 - O app confere o serviço a cada 30 segundos e o religa se cair. Downloads perguntam onde salvar; links externos abrem no navegador.
 - `~/Library/LaunchAgents/local.repertorio.plist` abre o app sem janela ao entrar no Mac e confere a cada 5 minutos se ele está aberto.
 - O macOS impede que serviços em segundo plano leiam a pasta Documentos; por isso quem liga o serviço é o app, que recebeu essa permissão. Se o app for recompilado, o Mac pede a permissão de novo.

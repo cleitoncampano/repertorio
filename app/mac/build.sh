@@ -1,7 +1,7 @@
 #!/bin/sh
-# Gera o Repertório.app nativo (janela própria, ícone psicodélico) no caminho indicado.
+# Gera o Repertório.app nativo (janela própria, R branco em fundo preto) no caminho indicado.
 # Uso: ./app/mac/build.sh /caminho/Repertório.app
-# O ícone vem de icone.png; para redesenhar: python3 -I app/mac/icone.py app/mac/icone.png (precisa de numpy).
+# O ícone aprovado vem de icone.png; conceito e procedência em ICONE.md.
 set -eu
 AQUI=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
 RAIZ=$(CDPATH= cd -- "$AQUI/../.." && pwd -P)

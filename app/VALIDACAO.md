@@ -1,5 +1,11 @@
 # Validação da primeira versão
 
+## Ícone do aplicativo do Mac em 23/10/2026
+
+- Escolha do usuário: R branco em três fragmentos sobre fundo preto, na versão pequena do canto inferior direito da segunda proposta. Fonte de 1024 × 1024 pixels em `mac/icone.png`, com transparência externa; conceito e prompt em `mac/ICONE.md`. Removido o gerador do olho antigo e atualizadas as instruções de compilação.
+- Conferidas as prévias de 16, 32, 64, 128 e 256 pixels nos fundos claro e escuro. A imagem preserva três fragmentos brancos; os cantos externos são transparentes. O ICNS contém os dez tamanhos e sua imagem de 1024 pixels é idêntica à fonte.
+- Compilação nativa, `plutil -lint` e `codesign --verify --deep --strict` aprovados. A geração do ICNS precisou rodar fora do sandbox, após conferir os PNGs intermediários. App anterior guardado, nova versão instalada e reaberta no caminho correto; ícone obtido pelo `NSWorkspace` conferido visualmente. Serviço respondeu `status=ok` depois da troca. Evidências e cópia anterior em `.runtime/qa/icone-mac-20261023/`.
+
 ## Busca dos agentes para pedidos descritivos em 23/10/2026
 
 - A pedido: `search_references` passou a contar quantas partes do pedido cada ficha atende, a tratar palavra solta e comum do vocabulário como sinal fraco que também vale como texto e a buscar no "como funciona" e no "serve para" (migração `0005`, só nas fichas com o texto de busca padrão).

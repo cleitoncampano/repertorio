@@ -1,5 +1,9 @@
 # Retomada do projeto
 
+## Ícone do Mac em 23/10/2026
+
+A pedido do Cleiton, o olho psicodélico foi substituído pelo R branco em três fragmentos sobre fundo preto, escolhido na versão pequena do canto inferior direito da segunda proposta. Fonte em `app/mac/icone.png` (1024 × 1024, com transparência externa), conceito e prompt em `app/mac/ICONE.md`; o gerador antigo `icone.py` foi removido. `build.sh` mantém os dez tamanhos do macOS. O app foi compilado, instalado em `~/Applications/Repertório.app` e reaberto; assinatura e ícone lido pelo macOS conferidos, serviço respondendo normalmente. Cópia do app anterior e evidências em `app/.runtime/qa/icone-mac-20261023/`. O usuário foi avisado sobre a possível nova permissão de Documentos. Alterações de outras tarefas foram preservadas.
+
 ## Busca dos agentes em 23/10/2026
 
 A pedido do Cleiton, a busca dos agentes (`search_references`, `run.sh search`) foi ajustada para pedidos descritivos, com medição antes e depois. Três mudanças: (1) o texto de busca de cada ficha passou a incluir o "como funciona" e o "serve para" (migração `0005`, aplicada ao reiniciar o serviço); (2) palavra solta e comum do vocabulário ("tela", "ligação", "abertura") vale pouco como item e também é buscada no texto; (3) a pontuação conta quantas partes do pedido a ficha atende, e a força da ficha só desempata. Pesos em `app/server/repertorio/agent.py` (`COVER_WEIGHT` e vizinhos). O mapa do app não usa essa busca e não mudou.

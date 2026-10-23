@@ -6,7 +6,7 @@ originais para qualquer cliente e qualquer tema**. A base é o curso de apresent
 estudos de storytelling e de direção de arte).
 
 O acervo é consultado pelo **Repertório**, um app local feito para você usar: mapa, busca e conexão MCP em
-http://127.0.0.1:8766. Ele fica sempre ligado no Mac do dono do projeto (ícone psicodélico de olho no Dock).
+http://127.0.0.1:8766. Ele fica sempre ligado no Mac do dono do projeto (ícone de um R branco em três fragmentos sobre fundo preto no Dock).
 
 ## Regras de ouro
 

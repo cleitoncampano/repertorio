@@ -91,3 +91,9 @@ Resultado esperado: (1) fichas de método do SOAP em `biblioteca/metodos/soap/`,
 - Pelo MCP: `get_guide()` lista `metodo-soap` sem perder nenhum guia anterior; `get_guide("soap/<ficha>")` abre; `search_references` no espaço SOAP devolve prancha.
 - Capturas do mapa e da tela grande do espaço SOAP; um link de slide de guia abrindo o slide certo.
 - Os dois testes às cegas entregam peças que aplicam o método sem copiar exemplos.
+
+## Andamento (atualizado em 23/10/2026, 1h35)
+
+- Fase 0 concluída: `ferramentas/incorporar_colecao.py` (Perestroika idêntica, comandos `paginas`, `conferir`, `montar`, `pranchas`, `validar`), `ferramentas/mcp_leitura.py`, instruções `dados/_trabalho/INSTRUCOES-SOAP-*.md`. Templates em PDF em `soap/_trabalho/pdf-templates/` (PowerPoint; o de gráficos pelo Keynote, com textos sobrepostos em algumas páginas). Planilha do kit em texto: `soap/_trabalho/kit-express/Analise_de_viabilidade_do_projeto.md`. Páginas renderizadas: 75 PDFs, 1.755 páginas.
+- Fase 1 em andamento: 10 lotes de leitura, descritos em `soap/_trabalho/relatorios/lotes.md`; conclusões de cada lote em `soap/_trabalho/relatorios/resultados.md`. Concluídos A, C, D, E, F, H e I; faltavam B, G e J.
+- Para retomar: rodar `app/.venv/bin/python -I ferramentas/incorporar_colecao.py soap conferir` (todos os slugs). Lote com slug sem leitura ou com problema: relançar o leitor só com esses slugs, pelo pedido descrito em `lotes.md`. Com zero problemas, seguir para a Fase 2.

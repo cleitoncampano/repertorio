@@ -17,6 +17,7 @@ Material de terceiros: entra com reusable=false, só como referência; a pasta p
 """
 import json
 import re
+from urllib.parse import unquote
 import shutil
 import sys
 from pathlib import Path
@@ -211,5 +212,28 @@ def pranchas():
     print(out)
 
 
+def validar():
+    """Fichas e guias do método: sem travessão, sem nome repetido entre conceitos e modelos,
+    toda ficha citada existe e todo slide citado num link está no espaço."""
+    method = ROOT / 'biblioteca/metodos/perestroika'
+    files = sorted(method.rglob('*.md'))
+    names = {}
+    for p in [*method.glob('conceitos/*.md'), *method.glob('modelos/*.md')]:
+        names.setdefault(p.stem, []).append(p.parent.name)
+    refs = {json.loads(line)['id'] for f in OUT.rglob('*.jsonl') for line in f.read_text().splitlines()}
+    problems = [f'nome repetido: {n} em {", ".join(d)}' for n, d in names.items() if len(d) > 1]
+    for p in files:
+        text, where = p.read_text(), p.relative_to(ROOT)
+        problems += [f'{where}: travessão ou meia-risca' for dash in DASHES if dash in text]
+        problems += [f'{where}: ficha inexistente perestroika/{n}' for n in re.findall(r'`perestroika/([a-z0-9-]+)`', text) if n not in names]
+        problems += [f'{where}: caminho de arquivo em vez de perestroika/{n}' for n in re.findall(r'`(?:conceitos|modelos)/([a-z0-9-]+)\.md`', text)]
+        problems += [f'{where}: slide inexistente {r}' for r in re.findall(r'[?&]ref=([^)\s]+)\)', text) if unquote(r) not in refs]
+    print(json.dumps(dict(fichas=len(names), arquivos=len(files), problemas=len(problems)), ensure_ascii=False))
+    for line in problems:
+        print('problema:', line)
+    return not problems
+
+
 if __name__ == '__main__':
-    {'montar': montar, 'pranchas': pranchas}[sys.argv[1]]()
+    result = {'montar': montar, 'pranchas': pranchas, 'validar': validar}[sys.argv[1]]()
+    sys.exit(1 if result is False else 0)

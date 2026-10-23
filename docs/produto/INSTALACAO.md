@@ -57,8 +57,33 @@ O catálogo de Skills ajuda a preparar pedidos. As habilidades e contas dos serv
 
 ## Dados e cópias
 
-O banco e os arquivos gerenciados ficam em `app/.runtime/`, a menos que você configure outro `REPERTORIO_HOME`. Originais externos continuam nos respectivos caminhos: mantenha também uma cópia desses arquivos. As criações ficam nos projetos de destino.
+A biblioteca fica numa pasta do seu usuário, separada da pasta do programa:
 
-O serviço faz backup semanal no iCloud Drive quando essa pasta existe; nos demais casos, usa uma pasta `backups` ao lado dos dados. O destino pode ser configurado por `REPERTORIO_BACKUP_DIR`. No Windows, o destino padrão é local, portanto configure outra unidade ou seu serviço de cópias se quiser preservar o backup fora do computador.
+- Mac: `~/Library/Application Support/Repertorio`
+- Windows: `%LOCALAPPDATA%\Repertorio`
 
-Use `doctor` para conferir o serviço. Para backup e restauração, consulte o [guia de operação](OPERACAO.md). Encerre o serviço antes de restaurar um backup ou mudar os caminhos.
+Assim, atualizar ou apagar a pasta do programa não apaga suas referências. Para usar outra pasta, configure `REPERTORIO_HOME`. Instalações anteriores, com os dados em `app/.runtime/`, continuam usando essa pasta. Originais externos continuam nos respectivos caminhos: mantenha também uma cópia desses arquivos. As criações ficam nos projetos de destino.
+
+O serviço faz uma cópia semanal da biblioteca na pasta `Repertorio Backups`, ao lado da pasta de dados, e outra sempre que uma versão nova precisa atualizar o banco. Nada vai para a nuvem sem você escolher: para guardar as cópias em outro disco, no iCloud Drive ou no OneDrive, configure `REPERTORIO_BACKUP_DIR`. Quem já tinha cópias no iCloud Drive continua com elas lá.
+
+Use `doctor` para ver onde estão os dados e as cópias. Para backup e restauração, consulte o [guia de operação](OPERACAO.md).
+
+## Encerrar o serviço
+
+No terminal em que o serviço está aberto, use Ctrl+C. De qualquer outro terminal, na pasta do produto, use `./app/run.sh stop` (Mac) ou `powershell -NoProfile -ExecutionPolicy Bypass -File .\app\run.ps1 stop` (Windows). Se usa o aplicativo do Mac, feche o aplicativo antes: ele religa o serviço enquanto estiver aberto.
+
+## Atualizar para uma versão nova
+
+1. Encerre o serviço, como acima.
+2. Descompacte a versão nova numa pasta nova, ou substitua a pasta do programa. Sua biblioteca não fica nessa pasta.
+3. Rode a preparação de novo (`./app/setup.sh` no Mac ou `setup.ps1` no Windows) e inicie o serviço. Se o banco precisar de atualização, o serviço faz uma cópia antes, em `Repertorio Backups`.
+4. Se usa o aplicativo do Mac, gere-o de novo a partir da pasta nova, com `./app/mac/build.sh "$HOME/Applications/Repertório.app"`.
+
+Se a sua biblioteca ainda está em `app/.runtime/`, dentro da pasta do programa, faça um backup antes de trocar a pasta (`backup /caminho/repertorio.zip`). Na versão nova, use `restore /caminho/repertorio.zip`: a biblioteca passa para a pasta de dados do usuário.
+
+## Desinstalar
+
+1. Encerre o serviço e feche o aplicativo do Mac.
+2. Apague a pasta do programa e, no Mac, `Repertório.app` em Aplicativos.
+3. A biblioteca e as cópias continuam guardadas para uma instalação futura. Para apagar também, use `doctor` antes de apagar a pasta do programa para ver os caminhos, e apague a pasta de dados e a pasta `Repertorio Backups`.
+4. No Mac, o registro do aplicativo fica em `~/Library/Logs/repertorio.log` e também pode ser apagado.

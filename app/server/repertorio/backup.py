@@ -37,6 +37,16 @@ def backup(settings,destination):
     return {'backup':str(destination),'managed_files':len(files)-1,'external_originals':len(external)}
 
 
+def known_versions(db):
+    """Recusa backup de uma versão mais nova do app: o banco teria estrutura que esta versão não conhece."""
+    from alembic.config import Config
+    from alembic.script import ScriptDirectory
+    script=ScriptDirectory.from_config(Config(str(Path(__file__).resolve().parents[1]/'alembic.ini')))
+    row=db.execute('SELECT version_num FROM alembic_version').fetchone()
+    if row and row[0] not in {r.revision for r in script.walk_revisions()}:
+        raise ValueError('Este backup é de uma versão mais nova do Repertório. Atualize o app antes de restaurar.')
+
+
 def restore(settings,source):
     lockpath=settings.home.parent/(settings.home.name+'.lock')
     lockpath.parent.mkdir(parents=True,exist_ok=True)
@@ -60,6 +70,7 @@ def restore(settings,source):
                     if h.hexdigest()!=digest:raise ValueError('Checksum inválido: '+name)
             with closing(sqlite3.connect(stage/'library.sqlite3')) as db,db:
                 if db.execute('PRAGMA integrity_check').fetchone()[0]!='ok':raise ValueError('Banco corrompido.')
+                known_versions(db)
                 for aid,value in db.execute('SELECT id,path FROM assets').fetchall():
                     p=Path(value)
                     if p.is_relative_to(Path(manifest['home'])):p=settings.home/p.relative_to(Path(manifest['home']))
@@ -79,10 +90,29 @@ def restore(settings,source):
 
 
 def backup_dir(settings):
-    """Pasta das cópias semanais: REPERTORIO_BACKUP_DIR, ou o iCloud Drive (fora do Mac), ou ao lado dos dados."""
+    """Pasta das cópias semanais. REPERTORIO_BACKUP_DIR escolhe o lugar (outro disco, iCloud, OneDrive).
+    Sem ela, as cópias ficam ao lado da pasta de dados, no próprio computador; quem já guardava no iCloud Drive continua lá.
+    Nada vai para a nuvem sem a pessoa escolher."""
     if os.getenv('REPERTORIO_BACKUP_DIR'):return Path(os.environ['REPERTORIO_BACKUP_DIR']).expanduser()
-    icloud=Path.home()/'Library/Mobile Documents/com~apple~CloudDocs'
-    return icloud/'Backups'/'Repertório' if icloud.is_dir() else settings.home.parent/'backups'
+    icloud=Path.home()/'Library/Mobile Documents/com~apple~CloudDocs/Backups/Repertório'
+    if any(icloud.glob('repertorio-*.zip')):return icloud
+    # Instalação antiga (dados em app/.runtime) usa app/backups; as novas, "Repertorio Backups" ao lado dos dados.
+    return settings.home.parent/('backups' if settings.home.name=='.runtime' else settings.home.name+' Backups')
+
+
+def before_upgrade(settings):
+    """Cópia automática antes de atualizar o banco para uma versão nova do app. Devolve o caminho ou None."""
+    from datetime import datetime
+    if not settings.db.exists():return None
+    from alembic.config import Config
+    from alembic.script import ScriptDirectory
+    head=ScriptDirectory.from_config(Config(str(Path(__file__).resolve().parents[1]/'alembic.ini'))).get_current_head()
+    with closing(sqlite3.connect(settings.db)) as db:
+        try:current=db.execute('SELECT version_num FROM alembic_version').fetchone()
+        except sqlite3.OperationalError:return None
+    if not current or current[0]==head:return None
+    target=backup_dir(settings)/f"repertorio-antes-da-atualizacao-{datetime.now().strftime('%Y-%m-%d-%H%M%S')}.zip"
+    return backup(settings,target)['backup']
 
 
 def backup_now(lib,target,keep=6):

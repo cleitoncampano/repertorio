@@ -33,7 +33,7 @@ Primeira instalação em outro ambiente, com Python 3.12, uv, Node.js >=22.12 e 
 ./app/setup.sh
 ```
 
-O frontend compilado é servido pelo FastAPI. Os originais e o protótipo continuam nos locais anteriores. O banco e as novas criações ficam em `app/.runtime/`, fora do versionamento.
+O frontend compilado é servido pelo FastAPI. Os originais e o protótipo continuam nos locais anteriores. Nesta cópia de desenvolvimento, o banco e as novas criações ficam em `app/.runtime/`, fora do versionamento; instalações novas usam a pasta de dados do usuário (`~/Library/Application Support/Repertorio` ou `%LOCALAPPDATA%\Repertorio`), definida em `config.py`.
 
 ## Espaços de trabalho
 

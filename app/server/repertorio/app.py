@@ -23,19 +23,28 @@ from .mcp_server import create_mcp
 from . import schemas
 
 
-def create_app(settings=None,run_worker=True):
+def open_lock(settings):
+    """Trava exclusiva da biblioteca: um serviço por vez. Levanta RuntimeError se outro já estiver usando."""
+    settings.home.parent.mkdir(parents=True,exist_ok=True)
+    lock=(settings.home.parent/(settings.home.name+'.lock')).open('a+b')
+    try:
+        lock_file(lock)
+    except BlockingIOError:
+        lock.close()
+        raise RuntimeError('Já existe um serviço usando esta biblioteca.')
+    return lock
+
+
+def create_app(settings=None,run_worker=True,lock=None):
+    """lock: trava já obtida por quem chama (o comando serve trava antes de atualizar o banco)."""
     settings=settings or Settings.load()
     db=Database(settings);db.migrate();lib=Library(db);worker=Worker(lib)
     mcp=create_mcp(lib,worker);mcp_app=mcp.streamable_http_app()
 
     @asynccontextmanager
     async def lifespan(app):
-        lock=(settings.home.parent/(settings.home.name+'.lock')).open('a+b')
-        try:
-            lock_file(lock)
-        except BlockingIOError:
-            lock.close()
-            raise RuntimeError('Já existe um serviço usando esta biblioteca.')
+        nonlocal lock
+        lock=lock or open_lock(settings)
         stop_warm=threading.Event()
         try:
             if run_worker:

@@ -106,3 +106,108 @@ def test_agent_instructions_cite_only_installed_guides(library):
     assert 'abertura' in library.guide_summary() and 'Método escola: metodo-escola é o índice' in library.guide_summary()
     tools={t.name:t for t in create_mcp(library,None)._tool_manager.list_tools()}
     assert 'abertura' in tools['get_guide'].description
+
+
+def test_library_lives_outside_the_program_folder(tmp_path, monkeypatch):
+    from repertorio import config
+    monkeypatch.setattr(config.Path, 'home', classmethod(lambda cls: tmp_path / 'usuario'))
+    monkeypatch.delenv('REPERTORIO_HOME', raising=False)
+    monkeypatch.setattr(config.sys, 'platform', 'darwin')
+    program = tmp_path / 'programa'
+    assert config.default_home(program) == tmp_path / 'usuario/Library/Application Support/Repertorio'
+    monkeypatch.setattr(config.sys, 'platform', 'win32')
+    monkeypatch.setenv('LOCALAPPDATA', str(tmp_path / 'local'))
+    assert config.default_home(program) == tmp_path / 'local/Repertorio'
+    # Instalação anterior continua com a biblioteca onde estava.
+    (program / 'app/.runtime').mkdir(parents=True)
+    (program / 'app/.runtime/library.sqlite3').write_bytes(b'')
+    assert config.default_home(program) == program / 'app/.runtime'
+
+
+def test_backups_stay_local_unless_chosen(tmp_path, monkeypatch):
+    from repertorio import backup
+    from repertorio.config import Settings
+    monkeypatch.setattr(backup.Path, 'home', classmethod(lambda cls: tmp_path / 'usuario'))
+    monkeypatch.delenv('REPERTORIO_BACKUP_DIR', raising=False)
+    (tmp_path / 'usuario/Library/Mobile Documents/com~apple~CloudDocs').mkdir(parents=True)
+    fresh = Settings(tmp_path, tmp_path / 'dados/Repertorio')
+    assert backup.backup_dir(fresh) == tmp_path / 'dados/Repertorio Backups'
+    assert backup.backup_dir(Settings(tmp_path, tmp_path / 'app/.runtime')) == tmp_path / 'app/backups'
+    icloud = tmp_path / 'usuario/Library/Mobile Documents/com~apple~CloudDocs/Backups/Repertório'
+    icloud.mkdir(parents=True);(icloud / 'repertorio-2026-01-01-000000.zip').write_bytes(b'')
+    assert backup.backup_dir(fresh) == icloud
+    monkeypatch.setenv('REPERTORIO_BACKUP_DIR', str(tmp_path / 'escolhida'))
+    assert backup.backup_dir(fresh) == tmp_path / 'escolhida'
+
+
+def test_upgrade_makes_a_copy_first_and_restore_refuses_newer_backups(tmp_path, monkeypatch):
+    import sqlite3, zipfile, json
+    from contextlib import closing
+    from alembic import command
+    from alembic.config import Config
+    from repertorio import backup
+    from repertorio.config import Settings
+    from repertorio.db import Database
+    monkeypatch.setenv('REPERTORIO_BACKUP_DIR', str(tmp_path / 'copias'))
+    settings = Settings(tmp_path / 'raiz', tmp_path / 'dados')
+    db = Database(settings)
+    config = Config(str(Path(backup.__file__).resolve().parents[1] / 'alembic.ini'))
+    with db.engine.connect() as conn:
+        config.attributes['connection'] = conn
+        command.upgrade(config, '0004')
+    db.engine.dispose()
+    copy = backup.before_upgrade(settings)
+    assert copy and Path(copy).exists() and 'antes-da-atualizacao' in copy
+    db = Database(settings);db.migrate();db.engine.dispose()
+    assert backup.before_upgrade(settings) is None
+    newer = tmp_path / 'nova.zip'
+    backup.backup(settings, newer)
+    with zipfile.ZipFile(newer) as z:
+        data = z.read('library.sqlite3');manifest = json.loads(z.read('manifest.json'))
+    stage = tmp_path / 'banco.sqlite3';stage.write_bytes(data)
+    with closing(sqlite3.connect(stage)) as con:
+        con.execute('PRAGMA journal_mode=DELETE');con.execute("UPDATE alembic_version SET version_num='9999_futuro'");con.commit()
+    import hashlib
+    manifest['checksums']['library.sqlite3'] = hashlib.sha256(stage.read_bytes()).hexdigest()
+    with zipfile.ZipFile(tmp_path / 'futuro.zip', 'w') as z:
+        z.write(stage, 'library.sqlite3');z.writestr('manifest.json', json.dumps(manifest))
+    with pytest.raises(ValueError, match='versão mais nova'):
+        backup.restore(settings, tmp_path / 'futuro.zip')
+    assert settings.db.exists()
+
+
+def test_second_service_gets_a_clear_message(tmp_path):
+    from repertorio.app import open_lock
+    from repertorio.config import Settings
+    settings = Settings(tmp_path, tmp_path / 'dados')
+    first = open_lock(settings)
+    try:
+        with pytest.raises(RuntimeError, match='Já existe um serviço'):
+            open_lock(settings)
+    finally:
+        first.close()
+
+
+def test_stop_ends_the_service_and_releases_the_library(tmp_path):
+    import os, socket, subprocess, sys, time
+    import httpx
+    with socket.socket() as probe:
+        probe.bind(('127.0.0.1', 0));port = probe.getsockname()[1]
+    root = tmp_path / 'raiz';root.mkdir()
+    env = {**os.environ, 'PYTHONPATH': str(Path(__file__).resolve().parents[1] / 'server'), 'REPERTORIO_ROOT': str(root),
+           'REPERTORIO_HOME': str(tmp_path / 'dados'), 'REPERTORIO_PORT': str(port), 'REPERTORIO_BACKUP_DIR': str(tmp_path / 'copias')}
+    cli = [sys.executable, '-m', 'repertorio.cli']
+    service = subprocess.Popen(cli + ['serve'], env=env, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
+    try:
+        for _ in range(80):
+            try:
+                if httpx.get(f'http://127.0.0.1:{port}/api/health', timeout=.5).status_code == 200:break
+            except httpx.HTTPError:time.sleep(.25)
+        again = subprocess.run(cli + ['serve'], env=env, capture_output=True, text=True, timeout=30)
+        assert again.returncode == 1 and 'já está ligado' in again.stderr
+        stopped = subprocess.run(cli + ['stop'], env=env, capture_output=True, text=True, timeout=30)
+        assert stopped.returncode == 0 and 'Serviço encerrado' in stopped.stdout, stopped.stderr
+        service.wait(timeout=15)
+        assert subprocess.run(cli + ['stop'], env=env, capture_output=True, text=True, timeout=30).stdout.strip() == 'O serviço não está ligado.'
+    finally:
+        if service.poll() is None:service.kill()

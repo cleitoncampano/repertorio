@@ -23,6 +23,10 @@ def print_search(data):
     if data.get('contact_sheet'):print('Prancha: '+data['contact_sheet'])
 
 
+def pid_file(settings):
+    return settings.home.parent/(settings.home.name+'.pid')
+
+
 def agent_instructions(settings,url,project_id,runner):
     """Bloco do Repertório para o AGENTS.md do projeto. Cita só o que esta biblioteca tem: guias de slides, de vídeo e
     métodos instalados. Instalações novas não citam guias."""
@@ -53,7 +57,7 @@ def main():
     p=argparse.ArgumentParser(description='Repertório: serviço e cliente da biblioteca criativa local')
     p.add_argument('--url',help='Endereço do serviço local')
     sub=p.add_subparsers(dest='cmd',required=True)
-    sub.add_parser('serve');sub.add_parser('doctor');sub.add_parser('backup-now');sub.add_parser('init')
+    sub.add_parser('serve');sub.add_parser('stop',help='encerra o serviço ligado para esta biblioteca');sub.add_parser('doctor');sub.add_parser('backup-now');sub.add_parser('init')
     demo=sub.add_parser('demo');demo.add_argument('--home',required=True);demo.add_argument('--port',type=int,default=8768);demo.add_argument('--serve',action='store_true')
     imp=sub.add_parser('import');imp.add_argument('--workspace',required=True)
     motion=sub.add_parser('import-motion',help='importa os vídeos de dados/motion para um espaço');motion.add_argument('--workspace',required=True);motion.add_argument('--folder')
@@ -90,10 +94,39 @@ def main():
             uvicorn.run(create_app(settings,run_worker=False),host='127.0.0.1',port=settings.port)
         return
     if args.cmd=='serve':
+        import socket
         import uvicorn
-        from .app import create_app
-        uvicorn.run(create_app(settings),host='127.0.0.1',port=settings.port,timeout_graceful_shutdown=5)
+        from .app import create_app,open_lock
+        from .backup import before_upgrade
+        # Trava antes de mexer no banco: dois serviços nunca atualizam a mesma biblioteca ao mesmo tempo.
+        try:lock=open_lock(settings)
+        except RuntimeError:
+            print(f'O Repertório já está ligado para esta biblioteca. Abra {settings.url} no navegador.',file=sys.stderr);sys.exit(1)
+        with socket.socket() as probe:
+            if sys.platform!='win32':probe.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+            try:probe.bind(('127.0.0.1',settings.port))
+            except OSError:
+                print(f'A porta {settings.port} está ocupada por outro programa. Feche-o ou escolha outra porta com REPERTORIO_PORT.',file=sys.stderr);sys.exit(1)
+        copy=before_upgrade(settings)
+        if copy:print('Cópia da biblioteca antes da atualização: '+copy,file=sys.stderr)
+        pid=pid_file(settings);pid.write_text(str(__import__('os').getpid()))
+        try:uvicorn.run(create_app(settings,lock=lock),host='127.0.0.1',port=settings.port,timeout_graceful_shutdown=5)
+        finally:pid.unlink(missing_ok=True)
         return
+    if args.cmd=='stop':
+        import os,signal,time
+        from .app import open_lock
+        pid=pid_file(settings)
+        # Só envia o sinal se a biblioteca estiver mesmo em uso: um número de processo antigo nunca encerra outro programa.
+        try:open_lock(settings).close();pid.unlink(missing_ok=True);print('O serviço não está ligado.');return
+        except RuntimeError:pass
+        if not pid.exists():print('A biblioteca está em uso por outro processo do Repertório. Feche o aplicativo do Mac ou o terminal do serviço.',file=sys.stderr);sys.exit(1)
+        os.kill(int(pid.read_text()),signal.SIGTERM)
+        # Espera a biblioteca ser liberada: depois disso dá para restaurar, mover ou atualizar com segurança.
+        for _ in range(40):
+            try:open_lock(settings).close();print('Serviço encerrado.');return
+            except RuntimeError:time.sleep(.25)
+        print('O serviço ainda está encerrando. Confira de novo em alguns segundos.',file=sys.stderr);sys.exit(1)
     if args.cmd=='import':
         db=Database(settings);db.migrate();output(import_library(db,args.workspace));return
     if args.cmd=='import-motion':

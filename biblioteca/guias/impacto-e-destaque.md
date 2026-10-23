@@ -23,7 +23,7 @@ recorte: o nome continua legível sem cobrir o rosto. Texto de apoio só quando 
 
 **3. A frase ocupa a tela.** Grito: fundo de uma cor forte, frase de 5 a 8 palavras em grotesca preta pesada ocupando 80% da
 altura, entrelinha 0,9 e as últimas palavras em itálico, como a ênfase da voz. Sussurro: fundo preto, frase serifada de 2 linhas
-(cerca de 100 px) no centro, com uma palavra em itálico. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-19-decade10-businessweek-spying) (grito), [Tucano - Efeito Raio-X](http://127.0.0.1:8766/?workspace=referencias&ref=132-reel-17-09#7) (sussurro).
+(cerca de 100 px) no centro, com uma palavra em itálico. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-19-decade10-businessweek-spying) (grito), [Tucano - Efeito Raio-X](http://127.0.0.1:8766/?workspace=referencias&ref=132-reel-17-09%237) (sussurro).
 
 **4. Virada de estado.** A mesma cena em dois estados com enquadramento idêntico: escura e acesa, desenho e foto, normal e
 raio-X, muitos e um. O primeiro estado traz a primeira metade da frase, pequena e em suspenso; o segundo, a conclusão. Um
@@ -82,7 +82,7 @@ onde a interface do app cobre, e use o vídeo dentro das letras como capa em loo
 - Recorte sujo ou camadas desalinhadas: cabelo serrilhado, contorno que não casa com as letras de trás, lente fora do lugar. A ilusão quebra na hora. [Monalisa boca aberta](http://127.0.0.1:8766/?workspace=referencias&ref=034-reel-02-09), [Canva: Steph Curry](http://127.0.0.1:8766/?workspace=referencias&ref=canva-18).
 - Texto de apoio miúdo sobre a imagem: cartões de vidro e fatos de 3 linhas ao lado da palavra gigante disputam a atenção e não se leem. [Força de Trabalho](http://127.0.0.1:8766/?workspace=referencias&ref=172-reel-24-05), [Peixe impactante](http://127.0.0.1:8766/?workspace=referencias&ref=199-reel-27-09).
 - Frase longa ou letra demais: 4 linhas ainda é muito, quatro estilos num título cansam, sílabas sobrepostas cobram leitura. [A Moda e o Lixo](http://127.0.0.1:8766/?workspace=referencias&ref=178-reel-25-04), [Arara](http://127.0.0.1:8766/?workspace=referencias&ref=207-reel-28-08).
-- Citação de modelo: aspas grandes e frase em caixa alta sobre uma foto escura qualquer, sem rosto nem gesto. [Neon Company](http://127.0.0.1:8766/?workspace=referencias&ref=003-26-0103-neon-company#19), [Rock Festival](http://127.0.0.1:8766/?workspace=referencias&ref=006-26-0201-rock-festival#17).
+- Citação de modelo: aspas grandes e frase em caixa alta sobre uma foto escura qualquer, sem rosto nem gesto. [Neon Company](http://127.0.0.1:8766/?workspace=referencias&ref=003-26-0103-neon-company%2319), [Rock Festival](http://127.0.0.1:8766/?workspace=referencias&ref=006-26-0201-rock-festival%2317).
 
 ## Prompt base
 

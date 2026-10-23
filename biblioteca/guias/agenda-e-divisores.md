@@ -28,7 +28,7 @@ e uma pílula na cor do capítulo marca a aba ativa em cada slide de conteúdo. 
 
 **4. Palavra gigante cortada pela base.** Divisor com uma palavra do capítulo em serifada pesada de cerca de 420 px, partida em
 duas linhas, a segunda cortada pela borda inferior. Uma frase de ligação em caixa alta espaçada (24 a 28 px) acima da palavra e
-outra entre as linhas. O fundo alterna branco, preto e grafite a cada capítulo. [Table top com zoom](http://127.0.0.1:8766/?workspace=referencias&ref=129-reel-17-06#2), [Tokyo](http://127.0.0.1:8766/?workspace=referencias&ref=163-reel-22-08a).
+outra entre as linhas. O fundo alterna branco, preto e grafite a cada capítulo. [Table top com zoom](http://127.0.0.1:8766/?workspace=referencias&ref=129-reel-17-06%232), [Tokyo](http://127.0.0.1:8766/?workspace=referencias&ref=163-reel-22-08a).
 
 **5. Aba que cobre a tela.** Na capa, até 4 linguetas coloridas na borda esquerda, uma por capítulo, nas mesmas cores das letras
 do título. Em cada capítulo a aba da vez desliza e cobre a tela com sua cor; dentro, foto quadrada à esquerda e título serifado

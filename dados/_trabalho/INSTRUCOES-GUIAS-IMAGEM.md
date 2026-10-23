@@ -59,5 +59,5 @@ quanto texto, hierarquia, técnica, movimento, o que é proibido e como conferir
 - Português do Brasil. NUNCA use travessão nem meia-risca (os traços longos); um hook recusa a gravação se aparecerem.
   Use vírgula, dois-pontos, parênteses ou ponto. Para intervalos, "2 a 4 itens".
 - Entre 80 e 160 linhas por guia. Frases curtas. Nada de generalidade que serviria para qualquer slide.
-- Use os links exatamente como vêm no campo `link`.
+- Use os links exatamente como vêm no campo `link`. Link de slide leva o número como `%23` (`ref=deck%233`): com `#` o app abre a apresentação inteira.
 - Grave cada arquivo numa única escrita e confira que não há traço longo.

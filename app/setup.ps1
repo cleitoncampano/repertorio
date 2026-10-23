@@ -1,5 +1,10 @@
 $ErrorActionPreference = 'Stop'
-Get-Command uv -ErrorAction Stop | Out-Null
+if (-not (Get-Command uv -ErrorAction SilentlyContinue)) {
+    Write-Host 'Falta o uv, que prepara o Python do Repertorio.'
+    Write-Host 'Instale pelo guia oficial: https://docs.astral.sh/uv/getting-started/installation/'
+    Write-Host 'Depois, feche esta janela e abra de novo.'
+    exit 1
+}
 $repertorioPython = Join-Path $PSScriptRoot '.venv\Scripts\python.exe'
 Push-Location $PSScriptRoot
 try {
@@ -28,5 +33,5 @@ try {
     }
     & (Join-Path $PSScriptRoot 'run.ps1') init
     if ($LASTEXITCODE -ne 0) { throw 'Nao foi possivel preparar a biblioteca.' }
-    Write-Host 'Pronto. Execute app\run.ps1 serve e abra http://127.0.0.1:8766.'
+    Write-Host 'Pronto. Para abrir, de dois cliques em app\Iniciar Repertorio.cmd.'
 } finally { Pop-Location }

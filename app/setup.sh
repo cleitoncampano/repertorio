@@ -2,7 +2,7 @@
 set -eu
 REPERTORIO_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 cd "$REPERTORIO_DIR"
-command -v uv >/dev/null 2>&1 || { echo 'Instale uv antes de continuar: https://docs.astral.sh/uv/'; exit 1; }
+command -v uv >/dev/null 2>&1 || { echo 'Falta o uv, que prepara o Python do Repertório.'; echo 'Instale pelo guia oficial: https://docs.astral.sh/uv/getting-started/installation/'; echo 'Depois, feche o terminal e abra de novo.'; exit 1; }
 if [ ! -x .venv/bin/python ]; then uv venv .venv --python 3.12; fi
 # Na cópia de desenvolvimento (com Git) entram também testes e ferramentas; o pacote do cliente leva só o necessário.
 LOCK=requirements.lock
@@ -13,4 +13,4 @@ if [ ! -f web/dist/index.html ]; then
   (cd web && CI=true pnpm install --frozen-lockfile && pnpm build)
 fi
 ./run.sh init
-echo 'Repertório pronto. Execute ./app/run.sh serve a partir da raiz e abra http://127.0.0.1:8766.'
+echo 'Repertório pronto. Para abrir, dê dois cliques em app/Abrir Repertório.command ou rode ./app/run.sh serve --abrir.'

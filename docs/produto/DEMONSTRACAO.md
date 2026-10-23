@@ -14,7 +14,7 @@ No Windows:
 powershell -NoProfile -ExecutionPolicy Bypass -File .\app\run.ps1 demo --home app\.demo --serve
 ```
 
-Abra **http://127.0.0.1:8768/?view=guide**. O guia identifica a demonstração. Há dois espaços fictícios, seis referências originais e uma seleção com três itens, sendo um já aprovado. O modo usa outra pasta e outra porta, preserva o acervo real e não executa backups automáticos ou processamento de novos materiais.
+Abra **http://127.0.0.1:8768/?view=guide**. O guia identifica a demonstração. Há dois espaços fictícios, seis referências originais e um projeto com uma demanda iniciada, como se um agente já estivesse trabalhando. O modo usa outra pasta e outra porta, preserva o acervo real e não executa backups automáticos ou processamento de novos materiais.
 
 Repetir o comando reabre a mesma demonstração. Para começar outra do zero, informe uma pasta nova. A preparação recusa a pasta da biblioteca real e diretórios existentes que não sejam demonstrações reconhecidas.
 

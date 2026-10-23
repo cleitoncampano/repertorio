@@ -39,7 +39,7 @@ Forma de contratação, preço, suporte, atualizações e acesso ao código-font
 
 - README orientado ao usuário, definição do produto e respostas às dúvidas básicas.
 - Guia **Conheça o Repertório** dentro do aplicativo, com um exemplo de pedido, explicação do fluxo e ações reais para explorar e conectar um agente.
-- Demonstração isolada com seis referências originais, dois espaços fictícios e uma seleção para revisão.
+- Demonstração isolada com seis referências originais, dois espaços fictícios e uma demanda iniciada.
 - Instalação local por scripts de Mac e Windows, com inicialização limpa e preservação de bibliotecas existentes.
 - Empacotador que seleciona somente os arquivos do software e da documentação de produto.
 

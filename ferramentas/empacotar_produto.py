@@ -10,11 +10,11 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXED = [
-    'app/run.sh', 'app/run.ps1', 'app/setup.sh', 'app/setup.ps1', 'app/Iniciar Repertorio.cmd', 'app/Abrir Repertório.command',
+    'app/run.sh', 'app/run.ps1', 'app/setup.sh', 'app/setup.ps1', 'app/Iniciar Repertorio.cmd', 'app/Instalar Repertorio.cmd', 'app/Abrir Repertório.command',
     'app/requirements.lock', 'app/pyproject.toml',
     'app/mac/main.swift', 'app/mac/build.sh', 'app/mac/icone.png',
 ]
-CLIENT_DOCS = ['PRODUTO.md', 'INSTALACAO.md', 'DEMONSTRACAO.md', 'OPERACAO.md', 'AVISOS-DE-TERCEIROS.md']
+CLIENT_DOCS = ['PRODUTO.md', 'INSTALACAO.md', 'PROBLEMAS.md', 'DEMONSTRACAO.md', 'OPERACAO.md', 'AVISOS-DE-TERCEIROS.md']
 # Só as imagens citadas pelos documentos do pacote.
 DEMO_IMAGES = ['mapa-demo.png', 'guia-demo.png']
 # Nada pessoal, de cursos de terceiros ou de caminhos do computador de desenvolvimento pode ir no pacote.

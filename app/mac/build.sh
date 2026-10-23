@@ -7,6 +7,7 @@ AQUI=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
 RAIZ=$(CDPATH= cd -- "$AQUI/../.." && pwd -P)
 APP=${1:?informe o caminho do .app}
 OBRA=$(mktemp -d)
+trap 'rm -rf "$OBRA"' EXIT
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources" "$OBRA/Repertorio.iconset"
 ARQUITETURA=$(uname -m)
 VERSAO=$(sed -n "s/^__version__ = '\(.*\)'$/\1/p" "$RAIZ/app/server/repertorio/__init__.py")
@@ -37,7 +38,9 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
 </dict>
 </plist>
 PLIST
-/usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSAO" "$APP/Contents/Info.plist"
-/usr/libexec/PlistBuddy -c "Add :RepertorioProjectRoot string $RAIZ" "$APP/Contents/Info.plist"
+# plutil grava os valores inteiros, mesmo com espaços ou acentos no caminho.
+plutil -replace CFBundleShortVersionString -string "$VERSAO" "$APP/Contents/Info.plist"
+plutil -replace RepertorioProjectRoot -string "$RAIZ" "$APP/Contents/Info.plist"
+plutil -replace RepertorioPort -string "${REPERTORIO_PORT:-8766}" "$APP/Contents/Info.plist"
 codesign --force -s - "$APP"
 echo "$APP"

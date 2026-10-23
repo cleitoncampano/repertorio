@@ -196,15 +196,25 @@ def test_stop_ends_the_service_and_releases_the_library(tmp_path):
     root = tmp_path / 'raiz';root.mkdir()
     env = {**os.environ, 'PYTHONPATH': str(Path(__file__).resolve().parents[1] / 'server'), 'REPERTORIO_ROOT': str(root),
            'REPERTORIO_HOME': str(tmp_path / 'dados'), 'REPERTORIO_PORT': str(port), 'REPERTORIO_BACKUP_DIR': str(tmp_path / 'copias')}
+    # Navegador falso: grava o endereço que o iniciador mandaria abrir.
+    opened = tmp_path / 'aberto.txt'
+    env['BROWSER'] = f'{sys.executable} -c "import sys,pathlib;pathlib.Path(sys.argv[1]).write_text(sys.argv[2])" {opened} %s'
     cli = [sys.executable, '-m', 'repertorio.cli']
-    service = subprocess.Popen(cli + ['serve'], env=env, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
+    service = subprocess.Popen(cli + ['serve', '--abrir'], env=env, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
     try:
         for _ in range(80):
             try:
                 if httpx.get(f'http://127.0.0.1:{port}/api/health', timeout=.5).status_code == 200:break
             except httpx.HTTPError:time.sleep(.25)
+        for _ in range(40):
+            if opened.exists():break
+            time.sleep(.25)
+        assert opened.read_text() == f'http://127.0.0.1:{port}'
+        opened.unlink()
         again = subprocess.run(cli + ['serve'], env=env, capture_output=True, text=True, timeout=30)
         assert again.returncode == 1 and 'já está ligado' in again.stderr
+        reopen = subprocess.run(cli + ['serve', '--abrir'], env=env, capture_output=True, text=True, timeout=30)
+        assert reopen.returncode == 0 and opened.read_text() == f'http://127.0.0.1:{port}'
         stopped = subprocess.run(cli + ['stop'], env=env, capture_output=True, text=True, timeout=30)
         assert stopped.returncode == 0 and 'Serviço encerrado' in stopped.stdout, stopped.stderr
         service.wait(timeout=15)

@@ -3,8 +3,10 @@
 import Cocoa
 import WebKit
 
-let endereco = URL(string: "http://127.0.0.1:8766/")!
-let saude = URL(string: "http://127.0.0.1:8766/api/health")!
+// Porta gravada pelo build.sh (REPERTORIO_PORT na hora do build); sem ela, a padrão 8766.
+let porta = (Bundle.main.object(forInfoDictionaryKey: "RepertorioPort") as? String).flatMap(Int.init) ?? 8766
+let endereco = URL(string: "http://127.0.0.1:\(porta)/")!
+let saude = URL(string: "http://127.0.0.1:\(porta)/api/health")!
 let acervo: String = {
     let caminho = Bundle.main.object(forInfoDictionaryKey: "RepertorioProjectRoot") as? String
     let origem = caminho.map { URL(fileURLWithPath: $0) }
@@ -57,6 +59,7 @@ final class App: NSObject, NSApplicationDelegate, WKNavigationDelegate, WKUIDele
                 let processo = Process()
                 processo.executableURL = URL(fileURLWithPath: "/bin/sh")
                 processo.currentDirectoryURL = URL(fileURLWithPath: acervo)
+                processo.environment = ProcessInfo.processInfo.environment.merging(["REPERTORIO_PORT": String(porta)]) { _, nova in nova }
                 processo.arguments = ["-c", "/usr/bin/nohup /bin/sh app/run.sh serve >> \"$HOME/Library/Logs/repertorio.log\" 2>&1 &"]
                 try? processo.run()
             }

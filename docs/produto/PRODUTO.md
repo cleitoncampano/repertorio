@@ -51,6 +51,6 @@ O app do Mac e o navegador são duas formas de acessar a mesma instalação loca
 
 ## Capacidade atual e decisões abertas
 
-O produto tem serviço local, interface web, aplicativo do Mac, espaços, revisão de seleções, catálogo de Skills e conexão com agentes. A inicialização limpa começa com uma biblioteca vazia e vocabulário próprio. A demonstração contém seis referências originais, dois espaços e uma seleção para revisão.
+O produto tem serviço local, interface web, aplicativo do Mac, espaços, envio de arquivos pelo app, catálogo de Skills e conexão com agentes. A inicialização limpa começa com uma biblioteca vazia e vocabulário próprio. A demonstração contém seis referências originais, dois espaços e uma demanda iniciada.
 
 Preço, modelo de licença, suporte, atualizações e eventual acesso ao código-fonte ainda são decisões comerciais do proprietário. A validação de cada sistema e as pendências de distribuição são registradas em [COMERCIALIZACAO.md](COMERCIALIZACAO.md).

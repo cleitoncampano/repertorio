@@ -10,7 +10,7 @@ Repertório é uma biblioteca visual que você e seu agente de IA podem consulta
 
 **Funciona localmente no navegador, em Mac e Windows. No Mac, você também pode usar o aplicativo em uma janela própria.** As duas formas de acesso usam a mesma biblioteca do computador.
 
-[Conheça o produto](docs/produto/PRODUTO.md) · [Instale e comece](docs/produto/INSTALACAO.md) · [Veja a demonstração](docs/produto/DEMONSTRACAO.md)
+[Conheça o produto](docs/produto/PRODUTO.md) · [Instale e comece](docs/produto/INSTALACAO.md) · [Veja a demonstração](docs/produto/DEMONSTRACAO.md) · [Quando algo não funciona](docs/produto/PROBLEMAS.md)
 
 ## O que ele resolve
 
@@ -68,7 +68,7 @@ Abra `http://127.0.0.1:8768/?view=guide`. A demonstração tem dados próprios, 
 
 ## Instalação e operação
 
-O [guia de instalação](docs/produto/INSTALACAO.md) mostra o caminho para Mac, Windows e o aplicativo opcional do Mac. A preparação pelo código-fonte usa Python 3.12, uv e, para compilar a interface, Node.js 22.12 ou superior e pnpm 11. Pacotes de avaliação podem levar a interface já compilada.
+O [guia de instalação](docs/produto/INSTALACAO.md) mostra o caminho para Mac, Windows e o aplicativo opcional do Mac. Para instalar e abrir com dois cliques, use `app/Abrir Repertório.command` no Mac; no Windows, `app\Instalar Repertorio.cmd` e depois `app\Iniciar Repertorio.cmd`. A preparação pelo código-fonte usa Python 3.12, uv e, para compilar a interface, Node.js 22.12 ou superior e pnpm 11. Pacotes de avaliação podem levar a interface já compilada.
 
 [LEIA-ME.md](LEIA-ME.md) orienta o uso. [app/README.md](app/README.md) documenta a manutenção. [AGENTS.md](AGENTS.md) contém as instruções de desenvolvimento e curadoria.
 

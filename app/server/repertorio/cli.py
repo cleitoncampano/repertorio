@@ -71,7 +71,7 @@ def main():
     p=argparse.ArgumentParser(description='Repertório: serviço e cliente da biblioteca criativa local')
     p.add_argument('--url',help='Endereço do serviço local')
     sub=p.add_subparsers(dest='cmd',required=True)
-    sub.add_parser('serve');sub.add_parser('stop',help='encerra o serviço ligado para esta biblioteca');sub.add_parser('doctor');sub.add_parser('backup-now');sub.add_parser('init')
+    serve=sub.add_parser('serve');serve.add_argument('--abrir',action='store_true',help='abre o navegador quando o serviço responder');sub.add_parser('stop',help='encerra o serviço ligado para esta biblioteca');sub.add_parser('doctor');sub.add_parser('backup-now');sub.add_parser('init')
     demo=sub.add_parser('demo');demo.add_argument('--home',required=True);demo.add_argument('--port',type=int,default=8768);demo.add_argument('--serve',action='store_true')
     imp=sub.add_parser('import');imp.add_argument('--workspace',required=True)
     motion=sub.add_parser('import-motion',help='importa os vídeos de dados/motion para um espaço');motion.add_argument('--workspace',required=True);motion.add_argument('--folder')
@@ -113,8 +113,11 @@ def main():
         from .app import create_app,open_lock
         from .backup import before_upgrade
         # Trava antes de mexer no banco: dois serviços nunca atualizam a mesma biblioteca ao mesmo tempo.
+        import webbrowser
         try:lock=open_lock(settings)
         except RuntimeError:
+            # Já ligado: os iniciadores de dois cliques só abrem a página.
+            if args.abrir:print(f'O Repertório já está ligado. Abrindo {settings.url}');webbrowser.open(settings.url);return
             print(f'O Repertório já está ligado para esta biblioteca. Abra {settings.url} no navegador.',file=sys.stderr);sys.exit(1)
         with socket.socket() as probe:
             if sys.platform!='win32':probe.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
@@ -126,6 +129,16 @@ def main():
         from .starter import initialize
         initialize(settings)
         pid=pid_file(settings);pid.write_text(str(__import__('os').getpid()))
+        if args.abrir:
+            def open_when_ready():
+                import time
+                for _ in range(120):
+                    try:
+                        if httpx.get(settings.url+'/api/health',timeout=1).status_code==200:webbrowser.open(settings.url);return
+                    except httpx.HTTPError:pass
+                    time.sleep(.5)
+            __import__('threading').Thread(target=open_when_ready,daemon=True).start()
+            print(f'Repertório ligado em {settings.url}. Mantenha esta janela aberta; feche-a para desligar.',file=sys.stderr)
         try:uvicorn.run(create_app(settings,lock=lock),host='127.0.0.1',port=settings.port,timeout_graceful_shutdown=5)
         finally:pid.unlink(missing_ok=True)
         return

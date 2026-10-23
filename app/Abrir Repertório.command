@@ -1,9 +1,10 @@
 #!/bin/sh
+# Dois cliques no Finder: na primeira vez, prepara o Repertório; depois liga o serviço e abre o navegador.
+# Se o serviço já estiver ligado, só abre a página.
 set -eu
 REPERTORIO_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-if curl --silent --fail http://127.0.0.1:8766/api/health >/dev/null; then
-  open http://127.0.0.1:8766
-  exit 0
+if [ ! -x "$REPERTORIO_DIR/.venv/bin/python" ]; then
+  echo 'Primeira vez: preparando o Repertório. Leva alguns minutos e precisa de internet.'
+  "$REPERTORIO_DIR/setup.sh"
 fi
-(sleep 2; open http://127.0.0.1:8766) &
-exec "$REPERTORIO_DIR/run.sh" serve
+exec "$REPERTORIO_DIR/run.sh" serve --abrir

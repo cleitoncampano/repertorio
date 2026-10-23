@@ -2,7 +2,7 @@
 
 Conferir uma peça pronta (deck, carrossel, roteiro de vídeo ou de aula) antes de entregar ou apresentar. Escolha este guia quando já existe material e a pergunta é "o que melhorar?". A revisão devolve correções em ordem de prioridade, não uma nota.
 
-Base: Checklist Apresentações Poderosas e o curso Chora PPT (escola Perestroika), mais tese e tagline do Experience Learning. Fichas em `get_guide("perestroika/<ficha>")`.
+Base: Checklist Apresentações Poderosas e o curso Chora PPT (escola Perestroika), mais tese e tagline do Experience Learning. Fichas em `get_guide("perestroika/<ficha>")`. Camada extra: o checklist da agência SOAP (`soap/<ficha>`, índice `metodo-soap`).
 
 ## Como revisar
 
@@ -27,6 +27,18 @@ Olhe a peça como a plateia vai ver: capturas de cada slide em tamanho real, tod
 
 Use `perestroika/checklist-apresentacao` como lista completa.
 
+## Camada SOAP
+
+Depois das quatro camadas, passe o checklist da agência SOAP (`soap/checklist-soap`) e acrescente só o que ele pegar de novo, citando a ficha:
+- **Mensagem:** o objetivo está claro (o que a plateia deve pensar, sentir e fazer)? A peça responde "o que eu ganho com isso?" (`soap/objetivo-e-audiencia`)
+- **Estrutura:** três atos com função; abre pelo mundo da audiência, não por "quem somos" (`soap/tres-atos`).
+- **Slides:** uma mensagem por slide, âncoras em vez de frases, links entre slides; existe a versão para enviar quando a peça vai circular sem apresentador (`soap/do-roteiro-ao-slide`).
+- **Números e fotos:** um dado que importa por slide, com foco nele (`soap/informacao-saliente`); fotos de pessoas escolhidas pela direção do olhar (`soap/demanda-e-oferta-visual`).
+- **Erros, mitos e sinais** de apresentação chata, com o que fazer no lugar (`soap/erros-mitos-e-sinais`).
+- **Peça de decisão** (pitch, proposta, orçamento): termina num próximo passo concreto (guia `pitch-e-proposta`).
+
+Se a pessoa vai apresentar a peça ao vivo, ofereça no fim o guia `apresentar-ao-vivo`.
+
 Só há roteiro, sem slides? Revise história e estrutura por inteiro. Em design e acabamento, comente o que a descrição de cada slide já permite (número de elementos, onde está o protagonista, se o gráfico tem um só dado) e liste o que precisa ser conferido nas capturas quando os slides existirem.
 
 ## Formato da entrega
@@ -47,7 +59,7 @@ Cada item aponta o slide, o problema visto, a regra do checklist e a correção 
 
 - Revisar só o visual quando a tese não existe: polir um deck sem história.
 - Lista genérica ("melhore o contraste") sem slide, motivo e correção.
-- Pedir mais coisas: a revisão da Perestroika quase sempre corta.
+- Pedir mais coisas: a revisão da Perestroika quase sempre corta, e a do SOAP também.
 - Julgar pela miniatura: abra em tamanho real e veja os passos.
 
 ## Prompt base
@@ -60,3 +72,4 @@ Cada item aponta o slide, o problema visto, a regra do checklist e a correção 
 - [Sem contraste e com contraste em grade](http://127.0.0.1:8766/?workspace=0cbf5669-0d0a-4745-844e-0745357c0419&ref=perestroika-checklist-completo-apresentacoes-poderosas%2318): um protagonista por slide.
 - [Três iniciais gigantes: início, meio, fim](http://127.0.0.1:8766/?workspace=0cbf5669-0d0a-4745-844e-0745357c0419&ref=perestroika-checklist-completo-apresentacoes-poderosas%237).
 - [Mapa do Storytelling em 8 cartas](http://127.0.0.1:8766/?workspace=0cbf5669-0d0a-4745-844e-0745357c0419&ref=perestroika-mapa-do-storytelling).
+- [Checklist SOAP em três grupos](http://127.0.0.1:8766/?workspace=7f53adaa-6bc5-496c-815e-f6159e2baec9&ref=soap-checklist-apresentacao-impactante%232): roteiro, visual e performance.

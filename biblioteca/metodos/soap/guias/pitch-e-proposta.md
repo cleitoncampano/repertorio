@@ -1,0 +1,66 @@
+# Pitch e proposta
+
+Apresentações que existem para levar alguém a decidir: investir, comprar, contratar, aprovar verba ou aprovar um projeto. Escolha este guia quando há um decisor do outro lado e a peça precisa terminar num próximo passo. O resultado é a ordem dos slides com o que vai em cada um, os números que vão ser perguntados e o fechamento, não um deck genérico de "quem somos".
+
+Base: e-books e templates da agência SOAP (pitch feito com a Endeavor Brasil, elevator pitch, concorrência, venda, institucional, orçamento, templates por demanda, eventos). Fichas em `get_guide("soap/<ficha>")`.
+
+## Escolha pela situação
+
+| situação | abra | modelo |
+|---|---|---|
+| Captar dinheiro com fundo, anjo, aceleradora, banca de pitch | `soap/pitch-para-investidores` | `soap/roteiro-de-pitch` |
+| Um a três minutos, em qualquer lugar, para ganhar a próxima reunião | `soap/elevator-pitch` | |
+| Disputa entre fornecedores diante de uma empresa | `soap/apresentacao-de-concorrencia` | |
+| Reunião de venda com um cliente | `soap/venda-consultiva` | `soap/plano-de-negociacao` |
+| Apresentar a empresa (cartão de visitas, vários públicos) | `soap/apresentacao-institucional` | |
+| Pedir orçamento, recursos ou aprovação de projeto à diretoria | `soap/pedir-recursos` | `soap/roteiro-de-aprovacao-de-projeto` |
+| Lançar produto, vender uma solução, integrar funcionários, currículo, pautas de RH | `soap/roteiros-por-tipo-de-demanda` | |
+| Convenção, kickoff, evento corporativo inteiro | `soap/producao-de-evento` (e o guia `encontro-e-evento` para a experiência) | `soap/checklist-de-evento` |
+
+## O que vale para todas
+
+1. **Comece pelo interesse de quem decide**, não por "quem somos": "para o que você me serve?" (`soap/objetivo-e-audiencia`). Escreva o que essa pessoa deve pensar, sentir e fazer ao fim.
+2. **Planeje com a matriz TOSW** (`soap/matriz-tosw`): as dores da audiência, a solução, os diferenciais e o benefício, e as fraquezas com o plano para elas. A ordem de preenchimento já é a ordem do discurso.
+3. **Três atos** (`soap/tres-atos`): promessa ou alerta no começo, prova no meio, a mesma ideia de volta no fim como chamada. Com investidor, a abertura é a promessa do ganho, sem suspense; num lançamento, o produto aparece só depois do problema. Escolha pelo público.
+4. **Prova com o número que importa** (`soap/informacao-saliente`): um dado por slide, com fonte. Marque os números que faltam e peça ao usuário; nunca invente.
+5. **Mostre uma fraqueza e o plano contra ela**: transforma a plateia em torcida.
+6. **Feche com o próximo passo**, nunca com um slide "Obrigado": data, decisão, reunião, algo que o decisor ajuda a completar.
+7. **Tempo curto**: de 15 minutos, use 5; numa reunião, apresentar ocupa até 40% do tempo, e um terço diante do board (`soap/pedir-recursos`).
+8. **Duas versões**: a de apresentar (pouco texto, apoio à fala) e a de enviar (a peça se explica sozinha, 5 a 10 slides) (`soap/apresentacao-institucional`, `soap/do-roteiro-ao-slide`).
+9. **Números na ponta da língua** e as objeções preparadas: guia `apresentar-ao-vivo`, `soap/perguntas-dificeis`.
+
+## Formato da entrega
+
+```markdown
+# <peça> para <quem decide>
+**O que precisa ser decidido:** ...   **Mensagem central:** ...
+## Ordem dos slides
+| n | função | conteúdo | dado e fonte |
+## Números que vão perguntar
+| pergunta | resposta | fonte (ou: falta) |
+## Fechamento
+Próximo passo pedido: ...
+## Versão para enviar
+O que muda: ...
+```
+
+## Erros comuns
+
+- Abrir com missão, visão, valores, histórico e organograma: deixe para o fim, se couber.
+- Contar tudo: o pitch curto joga 98% fora para ganhar a próxima conversa.
+- Citar o concorrente numa concorrência (no pitch para investidor, os concorrentes aparecem no quadro de competição; numa disputa entre fornecedores, não).
+- Número sem fonte, número redondo para cima, gráfico com o período inteiro em vez do valor que decide.
+- Terminar sem pedir nada.
+
+## Prompt base
+
+> Monte <peça> para <quem decide>, que precisa decidir <o quê>, em <tempo>, seguindo o guia `pitch-e-proposta` do Repertório. Abra a ficha da situação, preencha a `soap/matriz-tosw`, escreva a mensagem central e a ordem dos slides com função, conteúdo e dado de cada um. Liste os números que vão ser perguntados (marque os que faltam) e feche com um próximo passo concreto. Depois, a versão para enviar.
+
+## Referências para abrir primeiro
+
+- [Capa com anzol no meio do cardume](http://127.0.0.1:8766/?workspace=7f53adaa-6bc5-496c-815e-f6159e2baec9&ref=soap-investidores%231): o pitch que fisga pelo interesse.
+- [Fileira de sapatos com um par diferente](http://127.0.0.1:8766/?workspace=7f53adaa-6bc5-496c-815e-f6159e2baec9&ref=soap-investidores%2318): o diferencial em uma imagem.
+- [Matriz de quebra-cabeça com ordem invertida](http://127.0.0.1:8766/?workspace=7f53adaa-6bc5-496c-815e-f6159e2baec9&ref=soap-swot-tosw%235): a TOSW.
+- [E por isso, lançamos o... com pôster pendurado](http://127.0.0.1:8766/?workspace=7f53adaa-6bc5-496c-815e-f6159e2baec9&ref=soap-template-lancamento-de-produto%237): a revelação depois do problema.
+- [ROI: balão colorido entre balões de cifrão](http://127.0.0.1:8766/?workspace=7f53adaa-6bc5-496c-815e-f6159e2baec9&ref=soap-template-conquistar-recursos%235): o retorno como a peça diferente.
+- [Próximos passos sobre escada de vidro](http://127.0.0.1:8766/?workspace=7f53adaa-6bc5-496c-815e-f6159e2baec9&ref=soap-template-aprovacao-de-projeto%2311): o fechamento com próximo passo.

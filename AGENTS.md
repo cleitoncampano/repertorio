@@ -12,7 +12,7 @@ Projeto e biblioteca local de referências para criar apresentações, sites e v
 ## Comece pelo trabalho atual
 
 - O produto é local em Mac e Windows, com navegador nos dois sistemas e aplicativo opcional no Mac. Definição e preparação comercial em `docs/produto/PRODUTO.md` e `docs/produto/COMERCIALIZACAO.md`. Não apresentar como SaaS ou como gerador autônomo de peças.
-- O material da Perestroika virou o espaço Perestroika e o método em `biblioteca/metodos/perestroika/`; SOAP permanece para documentação futura. Não apagar as pastas `perestroika/` e `soap/` nem incluir esses materiais (originais, fichas ou espaço) em pacotes de demonstração ou distribuição: são de terceiros.
+- Os materiais da Perestroika e da SOAP viraram os espaços Perestroika e SOAP e os métodos em `biblioteca/metodos/perestroika/` e `biblioteca/metodos/soap/`. Não apagar as pastas `perestroika/` e `soap/` nem incluir esses materiais (originais, fichas ou espaços) em pacotes de demonstração ou distribuição: são de terceiros.
 - Demonstrações usam `demo --home PASTA_SEPARADA --serve`, com exemplos originais e outra porta. Instalações novas usam `init`, sem importar automaticamente o acervo de desenvolvimento.
 
 - Ao retomar uma demanda, leia `docs/RETOMADA.md`, confira o Git e os arquivos envolvidos. Não releia todos os manuais por rotina.
@@ -25,6 +25,7 @@ Projeto e biblioteca local de referências para criar apresentações, sites e v
 - O usuário aprovou o visual e o comportamento atuais. Revisões de performance devem preservá-los e comparar medições antes e depois, usando cópia temporária para testes com escrita. Referência da revisão atual: `docs/REPERTORIO-DESEMPENHO.md`.
 - Espaço Motion: 234 vídeos do Prompt Motion e 2 prompts-modelo, cada um como referência externa com prompt original, decupagem, formato de tela (`aspect`), tipo de vídeo (`genres`) e prancha de oito quadros. A mídia é de terceiros: recrie a ideia, não incorpore o vídeo. Coleta, fichas e importação em `biblioteca/manual-agentes.md`.
 - Espaço Perestroika: 23 apresentações em PDF com 191 slides fichados e o vídeo do Chora PPT, importados por `import-decks` e `import-motion`. O método da escola (Experience Learning, Chora PPT, Mapa do Storytelling, checklist) está em 53 fichas e modelos, servidos por `get_guide` (`metodo-perestroika` é o índice; fichas como `perestroika/<ficha>`), e em três skills: `perestroika-tese`, `perestroika-experiencia` e `perestroika-revisao`. Manutenção em `biblioteca/metodos/perestroika/LEIA-ME.md`.
+- Espaço SOAP: 75 apresentações (e-books, checklists e templates de PowerPoint exportados para PDF) com 507 slides fichados, importados por `import-decks`. O método da agência (objetivo e audiência, três atos, recursos de narrativa, informação saliente, fala ao vivo, pitch, venda, eventos, comunicação na empresa, RH e treinamento) está em 62 fichas e modelos, servidos por `get_guide` (`metodo-soap` é o índice; fichas como `soap/<ficha>`), e nas skills `soap-fala` e `soap-pitch`; a `perestroika-revisao` usa o checklist SOAP como camada extra. Ferramenta das coleções: `ferramentas/incorporar_colecao.py`. Manutenção em `biblioteca/metodos/soap/LEIA-ME.md`.
 - Contratos do mapa: grafo e busca carregam os vínculos em lote com `scoped_summaries`, sem consulta por referência; o formato de tela fica na própria ficha. A câmera é agrupada por quadro e gravada ao fim do gesto, na troca de visualização, na saída da página e ao desmontar o mapa. Até 12 vídeos tocam por cima das capas (`motionLayer.ts`) e espaços sem vídeo não criam a camada. Capas com o dobro do tamanho e espaçamento proporcional (`COVER_SCALE` em `layout.ts`). Preserve esses contratos e os testes de regressão.
 
 ## Regras essenciais
@@ -50,6 +51,7 @@ Projeto e biblioteca local de referências para criar apresentações, sites e v
 | Slides e carrosséis: guias por papel na história | `biblioteca/guias/` (MCP `get_guide`) |
 | Vídeo de motion: guias por tipo e kit de movimentos | `biblioteca/motion/guias/`, `kit/motion/LEIA-ME.md` (MCP `get_guide`) |
 | Tese, revisão de apresentação, aulas, workshops, cursos e eventos | `biblioteca/metodos/perestroika/` (MCP `get_guide`: `metodo-perestroika`, `aula-e-workshop`, `curso-e-programa`, `encontro-e-evento`, `revisao-apresentacao`) |
+| Objetivo e audiência, três atos, destaque visual, fala ao vivo, pitch, venda, eventos e comunicação na empresa | `biblioteca/metodos/soap/` (MCP `get_guide`: `metodo-soap`, `apresentar-ao-vivo`, `pitch-e-proposta`, `comunicacao-na-empresa`) |
 | Desenvolvimento, serviço e manutenção do app | `app/README.md`, `biblioteca/manual-agentes.md` |
 | Validações anteriores do app | `app/VALIDACAO.md` |
 

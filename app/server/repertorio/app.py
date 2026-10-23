@@ -1,18 +1,16 @@
 import asyncio
-import json
-import mimetypes
 import subprocess
 import sys
 import threading
 import zipfile
 from contextlib import asynccontextmanager
 from pathlib import Path
-from urllib.parse import urlparse
 
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, JSONResponse, Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.trustedhost import TrustedHostMiddleware
+from . import __version__
 from .config import Settings
 from .db import Database, dumps
 from .service import Library, Problem
@@ -51,7 +49,7 @@ def create_app(settings=None,run_worker=True):
             db.engine.dispose()
             lock.close()
 
-    app=FastAPI(title='Repertório',version='0.2.1',lifespan=lifespan)
+    app=FastAPI(title='Repertório',version=__version__,lifespan=lifespan)
     app.state.library=lib;app.state.worker=worker
     app.add_middleware(TrustedHostMiddleware,allowed_hosts=['localhost','127.0.0.1','testserver'])
 
@@ -73,7 +71,9 @@ def create_app(settings=None,run_worker=True):
         return JSONResponse({'detail':exc.message},status_code=exc.status)
 
     @app.get('/api/health')
-    def health():return dict(status='ok',version='0.2.1',database='ready',schema='0004',platform=sys.platform,demo=bool(lib.meta('demo',False)))
+    def health():
+        schema=db.one('SELECT version_num FROM alembic_version')
+        return dict(status='ok',version=__version__,database='ready' if schema else 'sem migração',schema=schema['version_num'] if schema else None,platform=sys.platform,demo=bool(lib.meta('demo',False)))
 
     @app.get('/api/stats')
     def stats(workspace_id:str):return lib.stats(workspace_id)

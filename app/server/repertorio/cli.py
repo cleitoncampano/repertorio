@@ -3,6 +3,7 @@ import json
 import sys
 from pathlib import Path
 import httpx
+from . import __version__
 from .config import Settings
 from .db import Database
 from .importer import import_library
@@ -90,7 +91,7 @@ def main():
         output(backup(settings,args.destination) if args.cmd=='backup' else restore(settings,args.source));return
     if args.cmd=='doctor':
         from importlib.metadata import version
-        info=dict(root=str(settings.root),database_exists=settings.db.exists(),web_built=(settings.root/'app/web/dist/index.html').exists(),dependencies={n:version(n) for n in ['fastapi','sqlalchemy','mcp']})
+        info=dict(version=__version__,root=str(settings.root),home=str(settings.home),database_exists=settings.db.exists(),web_built=(settings.root/'app/web/dist/index.html').exists(),dependencies={n:version(n) for n in ['fastapi','sqlalchemy','mcp']})
         try:info['service']=httpx.get(url+'/api/health',timeout=2).json()
         except httpx.HTTPError:info['service']='offline'
         if settings.db.exists():

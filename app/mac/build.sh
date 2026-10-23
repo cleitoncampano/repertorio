@@ -9,6 +9,7 @@ APP=${1:?informe o caminho do .app}
 OBRA=$(mktemp -d)
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources" "$OBRA/Repertorio.iconset"
 ARQUITETURA=$(uname -m)
+VERSAO=$(sed -n "s/^__version__ = '\(.*\)'$/\1/p" "$RAIZ/app/server/repertorio/__init__.py")
 swiftc -O -target "$ARQUITETURA-apple-macos13" -o "$APP/Contents/MacOS/Repertorio" "$AQUI/main.swift" -framework Cocoa -framework WebKit
 for s in 16 32 128 256 512; do
   sips -z $s $s "$AQUI/icone.png" --out "$OBRA/Repertorio.iconset/icon_${s}x${s}.png" >/dev/null
@@ -36,6 +37,7 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
 </dict>
 </plist>
 PLIST
+/usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSAO" "$APP/Contents/Info.plist"
 /usr/libexec/PlistBuddy -c "Add :RepertorioProjectRoot string $RAIZ" "$APP/Contents/Info.plist"
 codesign --force -s - "$APP"
 echo "$APP"

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "repertorio"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Biblioteca visual local para pessoas e agentes"
 requires-python = ">=3.12"
 dependencies = ["fastapi>=0.115,<1", "uvicorn[standard]>=0.30,<1", "sqlalchemy>=2,<3", "alembic>=1.14,<2", "mcp>=1.12,<2", "httpx>=0.27,<1", "pillow>=11", "pymupdf>=1.25"]
@@ -14,6 +14,9 @@ test = ["pytest>=8", "playwright>=1.50"]
 
 [project.scripts]
 repertorio = "repertorio.cli:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "repertorio.__version__"}
 
 [tool.setuptools.packages.find]
 where = ["server"]

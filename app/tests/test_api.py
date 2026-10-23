@@ -1,5 +1,9 @@
 import json
+from pathlib import Path
+from alembic.config import Config
+from alembic.script import ScriptDirectory
 from fastapi.testclient import TestClient
+import repertorio
 from repertorio.app import create_app
 from repertorio.schemas import Search
 
@@ -10,6 +14,9 @@ def test_api_search_matches_service_and_origins(library):
         response=client.post('/api/search',json=query)
         assert response.status_code==200
         assert response.json()==library.search(Search(**query))
+        health=client.get('/api/health').json()
+        script=ScriptDirectory.from_config(Config(str(Path(repertorio.__file__).parents[1]/'alembic.ini')))
+        assert health['version']==repertorio.__version__ and health['schema']==script.get_current_head() and health['database']=='ready'
         assert client.get('/api/health',headers={'Origin':'https://attacker.test'}).status_code==403
         assert client.get('/api/health',headers={'Host':'attacker.test'}).status_code==400
         assert client.get('/api/assets/missing').status_code==404

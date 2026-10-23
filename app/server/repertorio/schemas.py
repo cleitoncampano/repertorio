@@ -99,13 +99,15 @@ class WorkspaceUpdate(Workspace):
 
 class WorkspaceState(Model):
     expected_revision: int = Field(ge=1)
-    deleted: Literal[True]
+    deleted: bool
 
 
 class TrashPurge(Model):
     ids: list[str] = Field(default_factory=list, max_length=20000)
     all: bool = False
     keep: list[str] = Field(default_factory=list, max_length=20000)
+    # Com all=true, quantas a pessoa viu marcadas: se a lixeira mudou desde então, nada é excluído.
+    expected: int | None = Field(default=None, ge=1)
 
 
 class ReferenceWorkspaces(Model):

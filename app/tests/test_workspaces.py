@@ -167,7 +167,9 @@ def test_workspace_lifecycle_names_and_conflicts(library,context):
     with pytest.raises(Problem):library.workspace_state(a,s.WorkspaceState(deleted=True,expected_revision=1))
     library.workspace_state(a,s.WorkspaceState(deleted=True,expected_revision=2))
     assert a not in {w['id'] for w in library.workspaces()}
-    assert library.db.one('SELECT COUNT(*) AS n FROM workspace_references WHERE workspace_id=:id',id=a)['n']==0
+    # Os vínculos ficam guardados para restaurar; o espaço some da lista, da busca e do mapa.
+    assert library.db.one('SELECT COUNT(*) AS n FROM workspace_references WHERE workspace_id=:id',id=a)['n']>0
+    assert [w['id'] for w in library.deleted_workspaces()]==[a]
     assert library.db.query('SELECT * FROM assets ORDER BY id')==assets
     assert library.get('deck',workspace_ids=[PP])['state']=='published'
     with pytest.raises(Problem):library.graph(a)
@@ -175,8 +177,17 @@ def test_workspace_lifecycle_names_and_conflicts(library,context):
     replacement=space(library,'GrowMate novo')
     assert replacement!=a and library.graph(replacement)['items']==[]
     with TestClient(create_app(library.settings,run_worker=False)) as client:
-        assert client.post('/api/workspaces/'+a+'/state',json={'deleted':False,'expected_revision':3}).status_code==422
         assert client.get('/api/workspaces?deleted=true').json()==library.workspaces()
+        assert client.get('/api/workspaces/deleted').json()[0]['id']==a
+        # Outro espaço ativo com o mesmo nome impede restaurar até ser renomeado.
+        assert client.post('/api/workspaces/'+a+'/state',json={'deleted':False,'expected_revision':3}).status_code==409
+        library.save_workspace(s.WorkspaceUpdate(name='Outro nome',expected_revision=1),replacement)
+        assert client.post('/api/workspaces/'+a+'/state',json={'deleted':False,'expected_revision':2}).status_code==409
+        restored=client.post('/api/workspaces/'+a+'/state',json={'deleted':False,'expected_revision':3})
+        assert restored.status_code==200 and restored.json()['revision']==4
+    assert a in {w['id'] for w in library.workspaces()} and library.deleted_workspaces()==[]
+    assert library.graph(a)['items'] and library.context(source['id'])['workspace_ids']==[a]
+    assert library.events(workspace_id=a)[0]['action']=='workspace_restored'
 
 
 def test_explicit_destinations_one_processing_deleted_destination(library,context):
@@ -289,7 +300,10 @@ def test_purge_all_respects_kept_items_and_removes_app_copies(library,context):
     assert copies and all(p.exists() for p in copies)
     state(library,PP,op['ref_id']);state(library,PP,'free')
     with TestClient(create_app(library.settings,run_worker=False)) as client:
-        out=client.post(f'/api/workspaces/{PP}/trash/purge',json={'all':True,'keep':['free']}).json()
+        # A pessoa marcou tudo vendo 2 itens; se a lixeira mudou (aqui ficou 1 a excluir), nada sai.
+        assert client.post(f'/api/workspaces/{PP}/trash/purge',json={'all':True,'keep':['free'],'expected':2}).status_code==409
+        assert all(p.exists() for p in copies)
+        out=client.post(f'/api/workspaces/{PP}/trash/purge',json={'all':True,'keep':['free'],'expected':1}).json()
     assert out['purged']==1 and out['files_removed']>=1
     assert not any(p.exists() for p in copies)
     assert library.get('free',workspace_ids=[PP])['state']=='trashed'

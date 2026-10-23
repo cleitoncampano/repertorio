@@ -81,6 +81,9 @@ def create_app(settings=None,run_worker=True):
     @app.get('/api/workspaces')
     def workspaces():return lib.workspaces()
 
+    @app.get('/api/workspaces/deleted')
+    def deleted_workspaces():return lib.deleted_workspaces()
+
     @app.post('/api/workspaces')
     def create_workspace(req:schemas.Workspace):return lib.save_workspace(req)
 

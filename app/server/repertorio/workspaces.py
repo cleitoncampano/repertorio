@@ -49,22 +49,29 @@ class Workspaces:
             raise Problem(409, 'Já existe um espaço ativo com esse nome.')
         return self.workspace(wid)
 
+    def deleted_workspaces(self):
+        """Espaços excluídos, do mais recente ao mais antigo, com quantas referências voltam ao restaurar."""
+        return self.db.query("""SELECT w.*,(SELECT COUNT(*) FROM workspace_references m JOIN refs r ON r.id=m.ref_id
+            WHERE m.workspace_id=w.id AND m.detached=0 AND m.state='published' AND r.ready=1 AND r.hidden=0
+            AND r.kind IN ('arquivo','referencia','criacao')) AS references_count
+            FROM workspaces w WHERE w.deleted IS NOT NULL ORDER BY w.deleted DESC,w.id LIMIT 20""")
+
     def workspace_state(self, wid, req):
-        if req.deleted is not True:
-            raise Problem(422, 'A exclusão de espaços é definitiva.')
-        with self.db.engine.begin() as conn:
-            row = conn.execute(text('SELECT * FROM workspaces WHERE id=:id AND deleted IS NULL'), dict(id=wid)).mappings().first()
-            if not row:
-                raise Problem(404, 'Espaço não encontrado.')
-            changed = conn.execute(text('UPDATE workspaces SET deleted=:t,revision=revision+1,updated=:t WHERE id=:id AND revision=:v AND deleted IS NULL'),
-                                   dict(t=now(),id=wid,v=req.expected_revision))
-            if changed.rowcount != 1:
-                raise Problem(409, 'O espaço mudou. Atualize antes de tentar novamente.')
-            # O registro do espaço continua somente para procedência de demandas e operações.
-            # Seus vínculos são removidos; referências e arquivos compartilhados permanecem intactos.
-            conn.execute(text('DELETE FROM workspace_references WHERE workspace_id=:id'),dict(id=wid))
-            self.db.log(conn,'workspace_deleted',workspace_ids=[wid],title=row['name'])
-        return dict(id=wid,deleted=True)
+        """Excluir tira o espaço da lista e da busca, mas guarda os vínculos: restaurar traz tudo de volta.
+        Referências e arquivos compartilhados com outros espaços nunca são afetados."""
+        try:
+            with self.db.engine.begin() as conn:
+                row = conn.execute(text('SELECT * FROM workspaces WHERE id=:id AND deleted IS '+('NULL' if req.deleted else 'NOT NULL')), dict(id=wid)).mappings().first()
+                if not row:
+                    raise Problem(404, 'Espaço não encontrado.' if req.deleted else 'Espaço excluído não encontrado.')
+                changed = conn.execute(text('UPDATE workspaces SET deleted=:d,revision=revision+1,updated=:t WHERE id=:id AND revision=:v'),
+                                       dict(d=now() if req.deleted else None,t=now(),id=wid,v=req.expected_revision))
+                if changed.rowcount != 1:
+                    raise Problem(409, 'O espaço mudou. Atualize antes de tentar novamente.')
+                self.db.log(conn,'workspace_deleted' if req.deleted else 'workspace_restored',workspace_ids=[wid],title=row['name'])
+        except IntegrityError:
+            raise Problem(409, 'Já existe um espaço ativo com esse nome. Renomeie o outro antes de restaurar.')
+        return dict(id=wid,deleted=req.deleted,revision=req.expected_revision+1)
 
     def scope(self, workspace_ids=None, context_id=None, active=True):
         ids = list(dict.fromkeys(workspace_ids or []))
@@ -208,6 +215,8 @@ class Workspaces:
                 raise Problem(422, 'Escolha ao menos uma referência da lixeira.')
             if targets - trashed:
                 raise Problem(409, 'Algumas referências não estão mais na lixeira. Atualize a página.')
+            if req.all and req.expected is not None and len(targets) != req.expected:
+                raise Problem(409, 'A lixeira mudou desde que você marcou. Confira as referências e tente de novo.')
             family = sorted(set(conn.execute(text('SELECT id FROM refs WHERE id IN (SELECT value FROM json_each(:ids)) OR parent_id IN (SELECT value FROM json_each(:ids))'),
                                              dict(ids=dumps(sorted(targets)))).scalars().all()))
             stamp = now()

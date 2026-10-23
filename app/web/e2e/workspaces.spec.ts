@@ -2,7 +2,7 @@ import {test,expect} from '@playwright/test';
 
 const evidence='/tmp/repertorio-workspaces-qa';
 
-test('cria, renomeia, compartilha e exclui espaços diretamente sem restauração',async({page,request})=>{
+test('cria, renomeia, compartilha, exclui com confirmação e restaura espaços',async({page,request})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('/?workspace=referencias');
  await page.getByRole('button',{name:'Espaços',exact:true}).click();
@@ -32,10 +32,29 @@ test('cria, renomeia, compartilha e exclui espaços diretamente sem restauraçã
   await page.getByRole('button',{name:'Lixeira',exact:true}).click();
   await expect(page.locator('.reference-card').filter({hasText:'Abertura criativa'})).toBeVisible();
  await page.getByRole('button',{name:'Espaços',exact:true}).click();
+ const active=page.locator('.space-list').first().locator('.space-enter').filter({hasText:'GrowMate QA novo'});
+ // Excluir pede confirmação; Cancelar mantém o espaço.
  await page.getByRole('button',{name:'Excluir espaço GrowMate QA novo',exact:true}).click();
- await expect(page.locator('.space-enter').filter({hasText:'GrowMate QA novo'})).toHaveCount(0);
-  await expect(page.getByRole('button',{name:'Restaurar',exact:true})).toHaveCount(0);
-  expect((await request.post('/api/workspaces/'+grow+'/state',{data:{deleted:false,expected_revision:3}})).status()).toBe(422);
+ await expect(page.getByRole('group',{name:'Confirmar exclusão de GrowMate QA novo'})).toContainText('Excluir o espaço GrowMate QA novo? O que também está em outros espaços continua lá');
+ await page.screenshot({path:evidence+'/confirmar-exclusao.png'});
+ await page.getByRole('group',{name:'Confirmar exclusão de GrowMate QA novo'}).getByRole('button',{name:'Cancelar',exact:true}).click();
+ await expect(active).toHaveCount(1);
+ // Desfazer logo depois traz o espaço de volta, com a referência.
+ await page.getByRole('button',{name:'Excluir espaço GrowMate QA novo',exact:true}).click();
+ await page.getByRole('button',{name:'Excluir espaço',exact:true}).click();
+ await expect(active).toHaveCount(0);
+ await page.getByRole('status').getByRole('button',{name:'Desfazer',exact:true}).click();
+ await expect(active).toHaveCount(1);
+ expect((await (await request.get('/api/references/deck?workspace_id='+grow)).json()).state).toBe('trashed');
+ // Mesmo sem usar o Desfazer, o espaço fica em Excluídos para restaurar.
+ await page.getByRole('button',{name:'Excluir espaço GrowMate QA novo',exact:true}).click();
+ await page.getByRole('button',{name:'Excluir espaço',exact:true}).click();
+ await expect(active).toHaveCount(0);
+ await expect(page.getByRole('region',{name:'Espaços excluídos'})).toContainText('GrowMate QA novo');
+ await page.screenshot({path:evidence+'/espacos-excluidos.png'});
+ await page.getByRole('button',{name:'Restaurar GrowMate QA novo',exact:true}).click();
+ await expect(active).toHaveCount(1);
+ await expect(page.getByRole('region',{name:'Espaços excluídos'})).toHaveCount(0);
   await page.locator('.space-enter').filter({hasText:/^Referências/}).click();
  await page.reload();
   expect(new URL(page.url()).searchParams.get('workspace')).toBe('referencias');

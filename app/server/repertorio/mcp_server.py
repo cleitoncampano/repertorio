@@ -41,7 +41,7 @@ def create_mcp(lib,worker):
 
     @tool
     def delete_workspace(workspace_id:str,expected_revision:int,user_requested:bool=False)->dict:
-        """Exclui definitivamente um espaço e seus vínculos, preservando os demais espaços e os arquivos compartilhados. Exige pedido explícito."""
+        """Exclui um espaço a pedido explícito do usuário. Ele sai da lista e da busca; o usuário pode restaurá-lo pelo app, com os vínculos. Outros espaços e arquivos compartilhados não mudam."""
         from .service import Problem
         if not user_requested:raise Problem(422,'Excluir um espaço exige pedido explícito do usuário.')
         return lib.workspace_state(workspace_id,schemas.WorkspaceState(deleted=True,expected_revision=expected_revision))

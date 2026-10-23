@@ -1,5 +1,9 @@
 # Retomada do projeto
 
+## Inspiração sem carrosséis Growmate em 22/10/2026
+
+A pedido do Cleiton, os carrosséis e o kit da Growmate saíram do espaço Inspiração: as 33 criações foram para a lixeira de Inspiração (recuperáveis pela lixeira do espaço) e seguem publicadas no espaço Growmate. Inspiração ficou só com as 277 referências externas. Nada saiu do acervo nem de Growmate; cópia do banco antes da alteração. `ferramentas/incorporar_growmate_livros.py` agora usa só Growmate. Detalhes em `app/VALIDACAO.md`.
+
 ## Nome antigo do acervo removido em 22/10/2026
 
 O espaço Referências tem o ID `referencias` e a origem das apresentações se chama `acervo`. Não reintroduza o nome antigo em textos, código ou dados. Detalhes em `app/VALIDACAO.md`.

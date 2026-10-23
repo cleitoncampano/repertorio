@@ -6,7 +6,7 @@ Implementado em 18/10/2026. Servidor 0.2.1, migração Alembic 0004.
 
 - Abrir o seletor Espaços no topo da navegação esquerda. Criar um espaço sempre começa vazio.
 - Todo o acervo anterior permanece em Referências (`referencias`), inclusive os carrosséis Growmate já incorporados. Nenhum espaço de marca é criado ou abastecido automaticamente.
-- Em 22/10/2026, a pedido, o espaço `referencias` (hoje chamado Referências) ficou só com as apresentações e o material do acervo. As 277 referências externas e as 33 criações foram movidas para **Inspiração** (`62224bbe-f662-4bb4-88af-fcf44b1c1e98`); as criações seguem também em Growmate.
+- Em 22/10/2026, a pedido, o espaço `referencias` (hoje chamado Referências) ficou só com as apresentações e o material do acervo. As 277 referências externas e as 33 criações foram movidas para **Inspiração** (`62224bbe-f662-4bb4-88af-fcf44b1c1e98`); as criações seguem também em Growmate. Ainda em 22/10/2026, a pedido, as 33 criações (32 carrosséis e o kit) foram para a lixeira de Inspiração, que ficou só com as 277 referências externas; seguem publicadas em Growmate.
 - Uma ficha e seus arquivos podem aparecer em vários espaços. Edições editoriais se propagam; publicação, lixeira e presença são locais.
 - Adicionar ao espaço cria vínculos. Mover retira apenas da origem. Apresentações incluem seus slides.
 - Excluir um espaço é imediato e definitivo no app, sem restauração. Os vínculos do espaço são apagados; referências e arquivos dos demais espaços permanecem disponíveis. O registro interno do espaço é mantido apenas para a procedência histórica de demandas e operações.

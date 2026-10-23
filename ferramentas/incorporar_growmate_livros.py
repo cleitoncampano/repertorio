@@ -24,8 +24,8 @@ STUDIES = ROOT / '_referencias/growmate-livros'
 MANIFEST = ROOT / 'docs/REPERTORIO-GROWMATE-LIVROS.json'
 PROJECT = 'repert-rio-87e17c'
 URL = 'http://127.0.0.1:8766'
-# Os carrosséis ficam no espaço Growmate e em Inspiração; Referências guarda só o material do acervo.
-WORKSPACES = ['ff1be998-6589-4e3d-a1f2-e7682406e853', '62224bbe-f662-4bb4-88af-fcf44b1c1e98']
+# Os carrosséis ficam só no espaço Growmate; Inspiração guarda apenas referências externas.
+WORKSPACES = ['ff1be998-6589-4e3d-a1f2-e7682406e853']
 COLORS = {
     'base': '#0A0A0A', 'papel': '#F5F2EB', 'texto-claro': '#EFEDE6',
     'coral': '#FF4D2E', 'coral-sobre-claro': '#C8321C', 'amarelo-gradiente': '#FFE66B',

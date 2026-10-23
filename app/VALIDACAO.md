@@ -1,5 +1,10 @@
 # Validação da primeira versão
 
+## Inspiração sem carrosséis Growmate em 22/10/2026
+
+- A pedido: as 33 criações (32 carrosséis #Livros e o kit) saíram de Inspiração pela mesma regra do botão **Excluir deste espaço** (lixeira do espaço, reversível). Nenhuma era exclusiva de Inspiração: as 33 seguem publicadas em Growmate. As 277 referências externas de Inspiração não mencionam carrossel nem Growmate e foram mantidas.
+- Conferido no banco: Growmate com 33 criações publicadas; Inspiração com 277 referências publicadas e 33 criações na lixeira. Links dos guias de imagem apontam só para referências externas, sem ajuste. Script de incorporação dos carrosséis passa a usar só Growmate.
+
 ## Nome antigo do acervo removido em 22/10/2026
 
 - A pedido: o nome da origem das apresentações saiu de todo o projeto. O espaço Referências passou a ter o ID `referencias`; a origem das 15.352 peças virou `acervo` (rótulo **Acervo** na ficha e no filtro de origem); uma apresentação que levava o nome no ID virou `591-reels-template-netflix-1`, com seus slides, arquivos, prancha e miniaturas renomeados. Banco atualizado numa transação, com backup antes, chaves conferidas e arquivo compactado.

@@ -80,3 +80,64 @@ def import_motion(db, workspace_id, folder=None):
         report['missing_assets']=conn.execute(text("SELECT COUNT(*) FROM assets WHERE missing=1 AND ref_id IN (SELECT value FROM json_each(:ids))"),dict(ids=dumps([d['id'] for d in records]))).scalar()
         db.log(conn,'library_imported',workspace_ids=[workspace_id],collection='motion',**report)
     return report
+
+
+# Mídia de vídeo: as mesmas peças para a galeria importada e para os vídeos criados e incorporados ao acervo.
+VIDEO_SUFFIXES={'.mp4','.mov','.webm'}
+
+
+def aspect(width,height):
+    """Formato de tela: horizontal (16:9, YouTube e sites), vertical (9:16, Reels e TikTok) ou quadrado (1:1 e 4:5, feed)."""
+    if not width or not height:
+        return ''
+    ratio=width/height
+    return 'horizontal' if ratio>1.2 else 'vertical' if ratio<.85 else 'quadrado'
+
+
+def probe(path):
+    import json,subprocess
+    r=subprocess.run(['ffprobe','-v','error','-show_entries','format=duration:stream=codec_type,width,height,r_frame_rate','-of','json',str(path)],capture_output=True,text=True,check=True,timeout=60)
+    info=json.loads(r.stdout)
+    video=next(s for s in info['streams'] if s['codec_type']=='video')
+    num,den=(video.get('r_frame_rate') or '30/1').split('/')
+    return {'duration':round(float(info['format']['duration']),2),'width':video['width'],'height':video['height'],
+            'fps':round(int(num)/max(1,int(den)),2),'audio':any(s['codec_type']=='audio' for s in info['streams'])}
+
+
+def frame(video,at,size=480):
+    import io,subprocess
+    from PIL import Image
+    r=subprocess.run(['ffmpeg','-nostdin','-v','error','-ss',f'{at:.2f}','-i',str(video),'-frames:v','1',
+                      '-vf',f'scale={size}:{size}:force_original_aspect_ratio=decrease','-f','image2pipe','-vcodec','png','-'],capture_output=True,check=True,timeout=120)
+    return Image.open(io.BytesIO(r.stdout)).convert('RGB')
+
+
+def storyboard(video,out,duration,frames=8):
+    """Oito momentos do vídeo numa prancha 4x2, com o tempo de cada um. É o que o agente vê do movimento."""
+    from PIL import Image,ImageDraw,ImageFont
+    times=[duration*(i+.5)/frames for i in range(frames)]
+    shots=[frame(video,t) for t in times]
+    w=max(s.width for s in shots);h=max(s.height for s in shots);gap,label=8,26
+    sheet=Image.new('RGB',(gap+4*(w+gap),gap+2*(h+label+gap)),(16,16,16))
+    draw=ImageDraw.Draw(sheet)
+    try:face=ImageFont.truetype('/System/Library/Fonts/Supplemental/Arial Bold.ttf',17)
+    except OSError:face=ImageFont.load_default()
+    for i,(shot,t) in enumerate(zip(shots,times)):
+        x=gap+(i%4)*(w+gap);y=gap+(i//4)*(h+label+gap)
+        sheet.paste(shot,(x+(w-shot.width)//2,y+label+(h-shot.height)//2))
+        draw.text((x,y+3),f'{i+1} · {t:.1f}s',font=face,fill=(255,140,110))
+    sheet.save(out,quality=86)
+
+
+def loop_clip(video,out,duration,seconds=4):
+    """Trecho curto, leve e sem som para o mapa e as listas tocarem sem pesar."""
+    import subprocess
+    start=0 if duration<=seconds+1 else min(duration*.1,duration-seconds)
+    subprocess.run(['ffmpeg','-nostdin','-v','error','-y','-ss',f'{start:.2f}','-t',str(seconds),'-i',str(video),'-an',
+                    '-vf','scale=720:-2','-c:v','libx264','-crf','28','-preset','veryfast','-pix_fmt','yuv420p','-movflags','+faststart',str(out)],
+                   check=True,capture_output=True,timeout=300)
+
+
+def search_words(data):
+    """Palavras de busca de um vídeo: formato, plataformas e tipos, além do texto da ficha."""
+    return ' '.join(['motion','vídeo','animação',ASPECTS.get(data.get('aspect') or '','')]+[GENRES.get(g,g) for g in data.get('genres') or []])

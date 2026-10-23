@@ -60,6 +60,9 @@ class ReferenceData(Model):
     reusable: bool | None = None
     source_reference_ids: list[str] = Field(default_factory=list, max_length=40)
     usage_notes: str = Field(default='', max_length=3000)
+    # Vídeos: tipos (lancamento, showreel, explicativo, dados, tipografia, historia, abstrato, vinheta) e o prompt que gerou a peça.
+    genres: list[str] = Field(default_factory=list, max_length=3)
+    prompt: str = Field(default='', max_length=20000)
 
 
 class Register(Model):

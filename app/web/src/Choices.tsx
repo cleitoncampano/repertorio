@@ -2,19 +2,20 @@ import {useEffect,useState} from 'react';
 import {useQuery,useQueryClient} from '@tanstack/react-query';
 import {BookOpen,Check,ListChecks,X} from 'lucide-react';
 import {api,sized} from './api';
-import {kindName} from './types';
+import {kindName,type Reference} from './types';
+import {MotionThumb} from './MotionParts';
 
 type PackSummary={id:string;title:string;created:string;total:number;approved:number;cut:number};
 export type Demand={id:string;demand:string;created:string;project_name:string;workspaces:{id:string;name:string}[];packs:PackSummary[]};
 type Verdict='approved'|'cut';
-type PackReference={workspace_ids:string[];id:string;title:string;idea?:string;description?:string;intentions?:string[];thumbnail:string|null;available:boolean;review:{verdict:Verdict;note:string}|null;kind?:string};
+type PackReference={workspace_ids:string[];id:string;title:string;idea?:string;description?:string;intentions?:string[];thumbnail:string|null;available:boolean;review:{verdict:Verdict;note:string}|null;kind?:string;motion?:Reference['motion']};
 type PackDetail={id:string;demand:string;project_name:string;title:string;created:string;rationale:string;workspaces:{id:string;name:string}[];references:PackReference[]};
 
 const when=(iso:string)=>new Date(iso).toLocaleString('pt-BR',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
 
 // Escolhas: as referências que o agente separou para cada pedido. O usuário aprova ou corta antes da criação;
 // o agente lê a revisão com get_pack.
-export function Choices({demands,pack,onPack,onOpen,onError}:{demands:Demand[];pack:string|null;onPack:(id:string)=>void;onOpen:(id:string,workspaceId?:string)=>void;onError:(message:string)=>void}){
+export function Choices({demands,pack,onPack,onOpen,onError}:{demands:Demand[];pack:string|null;onPack:(id:string)=>void;onOpen:(id:string,workspaceId?:string,video?:boolean)=>void;onError:(message:string)=>void}){
  const client=useQueryClient();
  const current=(pack&&demands.some(d=>d.packs.some(k=>k.id===pack))?pack:null)||demands[0]?.packs[0]?.id||null;
  const detail=useQuery({queryKey:['pack',current],queryFn:()=>api<PackDetail>('/packs/'+current),enabled:!!current});
@@ -39,7 +40,7 @@ export function Choices({demands,pack,onPack,onOpen,onError}:{demands:Demand[];p
    <header className="choice-head"><small>{d.project_name} · {d.workspaces.map(w=>w.name).join(" + ")} · {when(d.created)}</small><h2>{d.title}</h2><p>{d.demand}</p>{d.rationale&&<p className="choice-rationale">{d.rationale}</p>}</header>
    <div className="choice-counts" role="status"><span><Check size={13}/> {approved} {approved===1?'aprovada':'aprovadas'}</span><span><X size={13}/> {cut} {cut===1?'cortada':'cortadas'}</span><span>{refs.length-approved-cut} sem resposta</span></div>
    <div className="choice-grid">{refs.map(ref=>{const verdict=ref.review?.verdict;return <article key={ref.id} className={'choice-card'+(verdict?' '+verdict:'')}>
-    <button className="choice-image" onClick={()=>onOpen(ref.id,ref.workspace_ids[0])} aria-label={'Ver detalhes de '+ref.title}>{ref.thumbnail?<img src={sized(ref.thumbnail,512)} alt="" loading="lazy"/>:<BookOpen size={28}/>}{ref.kind&&<span>{kindName[ref.kind]||ref.kind}</span>}</button>
+    <button className="choice-image" onClick={()=>onOpen(ref.id,ref.workspace_ids[0],!!ref.motion?.video)} aria-label={(ref.motion?.video?'Assistir ':'Ver detalhes de ')+ref.title}>{ref.motion?.loop?<MotionThumb item={{...ref,thumbnail:ref.thumbnail||undefined} as unknown as Reference}/>:ref.thumbnail?<img src={sized(ref.thumbnail,512)} alt="" loading="lazy"/>:<BookOpen size={28}/>}{ref.kind&&<span>{ref.motion?.video?'Vídeo':kindName[ref.kind]||ref.kind}</span>}</button>
     <div className="card-text"><h3>{ref.title}</h3><p>{ref.idea||ref.description}</p>{!ref.available&&<p className="status-note">Saiu da biblioteca depois da escolha.</p>}</div>
     <div className="verdicts">
      <button className={verdict==='approved'?'approve on':'approve'} aria-pressed={verdict==='approved'} onClick={()=>decide(ref,verdict==='approved'?null:'approved')}><Check size={14}/> Aprovar</button>

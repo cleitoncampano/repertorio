@@ -15,7 +15,6 @@ Os vídeos pertencem aos autores: entram como referência de terceiros, sem reut
 import argparse
 import json
 import re
-import subprocess
 import sys
 import time
 import urllib.request
@@ -23,6 +22,8 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'app/server'))
+from repertorio.motion import aspect, probe, storyboard  # noqa: E402  mesmas peças do app para galeria e criações
 SITE = 'https://prompt-motion.com'
 DEST = ROOT / '_originais/prompt-motion'
 PAGES = DEST / '_paginas'
@@ -193,44 +194,6 @@ def baixar(args):
         sys.exit(1)
 
 
-def probe(path):
-    r = subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration:stream=codec_type,width,height,r_frame_rate',
-                        '-of', 'json', str(path)], capture_output=True, text=True, check=True)
-    info = json.loads(r.stdout)
-    video = next(s for s in info['streams'] if s['codec_type'] == 'video')
-    num, den = (video.get('r_frame_rate') or '30/1').split('/')
-    return {'duration': round(float(info['format']['duration']), 2), 'width': video['width'], 'height': video['height'],
-            'fps': round(int(num) / max(1, int(den)), 2), 'audio': any(s['codec_type'] == 'audio' for s in info['streams'])}
-
-
-def storyboard(video, out, duration, frames=8):
-    """Oito momentos do vídeo numa prancha 4x2, com o tempo de cada um. É o que o agente vê do movimento."""
-    from PIL import Image, ImageDraw, ImageFont
-    times = [duration * (i + .5) / frames for i in range(frames)]
-    shots = []
-    for t in times:
-        r = subprocess.run(['ffmpeg', '-nostdin', '-v', 'error', '-ss', f'{t:.2f}', '-i', str(video), '-frames:v', '1',
-                            '-vf', 'scale=480:480:force_original_aspect_ratio=decrease', '-f', 'image2pipe', '-vcodec', 'png', '-'],
-                           capture_output=True, check=True, timeout=120)
-        import io
-        shots.append(Image.open(io.BytesIO(r.stdout)).convert('RGB'))
-    w = max(s.width for s in shots)
-    h = max(s.height for s in shots)
-    gap, label = 8, 26
-    sheet = Image.new('RGB', (gap + 4 * (w + gap), gap + 2 * (h + label + gap)), (16, 16, 16))
-    draw = ImageDraw.Draw(sheet)
-    try:
-        face = ImageFont.truetype('/System/Library/Fonts/Supplemental/Arial Bold.ttf', 17)
-    except OSError:
-        face = ImageFont.load_default()
-    for i, (shot, t) in enumerate(zip(shots, times)):
-        x = gap + (i % 4) * (w + gap)
-        y = gap + (i // 4) * (h + label + gap)
-        sheet.paste(shot, (x + (w - shot.width) // 2, y + label + (h - shot.height) // 2))
-        draw.text((x, y + 3), f'{i + 1} · {t:.1f}s', font=face, fill=(255, 140, 110))
-    sheet.save(out, quality=86)
-
-
 def quadros(args):
     data = json.loads(CATALOG.read_text())
 
@@ -278,14 +241,6 @@ def lotes(args):
         chunk = entries[n * size:(n + 1) * size]
         (WORK / 'lotes' / f'lote-{n + 1:02d}.json').write_text(json.dumps(chunk, ensure_ascii=False, indent=1))
         print(f'lote-{n + 1:02d}', len(chunk))
-
-
-def aspect(width, height):
-    """Formato de tela: horizontal (16:9, YouTube e sites), vertical (9:16, Reels e TikTok) ou quadrado (1:1 e 4:5, feed)."""
-    if not width or not height:
-        return ''
-    ratio = width / height
-    return 'horizontal' if ratio > 1.2 else 'vertical' if ratio < .85 else 'quadrado'
 
 
 def montar(args):

@@ -168,6 +168,9 @@ class Library(Workspaces):
             allowed={i['id'] if isinstance(i,dict) else i for i in vocab.get(key,{}).get('itens',[])}
             bad=set(getattr(data,field))-allowed
             if bad: raise Problem(422,f'Valores fora do vocabulário em {field}: {sorted(bad)}')
+        from .motion import GENRES
+        bad=set(data.genres)-set(GENRES)
+        if bad: raise Problem(422,f'Tipos de vídeo desconhecidos: {sorted(bad)}. Use {sorted(GENRES)}.')
         for rid in data.source_reference_ids:
             self.get(rid,False,workspace_ids=workspace_ids)
 
@@ -178,7 +181,9 @@ class Library(Workspaces):
         with self.db.engine.begin() as conn:
             row=conn.execute(text('SELECT * FROM refs WHERE id=:id'),dict(id=rid)).mappings().first()
             if not row: raise Problem(404,'Referência não encontrada.')
-            d={**json.loads(row['payload']),**req.data.model_dump()}
+            # Tipos e prompt só mudam quando a atualização os informa: o resto da ficha segue como antes.
+            changes={k:v for k,v in req.data.model_dump().items() if k not in ('genres','prompt') or k in req.data.model_fields_set}
+            d={**json.loads(row['payload']),**changes}
             changed=conn.execute(text('UPDATE refs SET title=:title,payload=:p,search_text=:s,curated=1,revision=revision+1,updated=:t WHERE id=:id AND revision=:rev'),
                                  dict(title=d['title'],p=dumps(d),s=index_text(d),t=now(),id=rid,rev=req.expected_revision))
             if changed.rowcount!=1: raise Problem(409,'A referência mudou. Leia a revisão atual antes de atualizar.')
@@ -247,7 +252,7 @@ class Library(Workspaces):
                 except Problem:pass
             references.append({**snap,'kind':now['kind'] if now else None,'thumbnail':f"/api/assets/{now['thumbnail']}" if now and now['thumbnail'] else None,
                                'available':bool(current and current['state']=='published' and current['ready'] and not current['hidden'] and not current.get('unavailable_by_parent')),
-                               'workspace_ids':current['workspace_ids'] if current else [],'review':reviews.get(snap['id'])})
+                               'workspace_ids':current['workspace_ids'] if current else [],'review':reviews.get(snap['id']),'motion':current.get('motion') if current else None})
         return dict(id=pid,context_id=row['context_id'],demand=row['demand'],project_name=row['project_name'],title=row['title'],created=row['created'],
                     workspaces=spaces,workspace_ids=[w['id'] for w in spaces],rationale=payload.get('rationale',''),references=references,payload=payload)
 

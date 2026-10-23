@@ -83,3 +83,35 @@ def test_videos_play_inline_with_partial_requests_and_agent_sees_frames(library)
         import base64,io
         with Image.open(io.BytesIO(base64.b64decode(image['data']))) as im:
             assert im.size[0]/im.size[1]>2  # a prancha de quadros, não a capa
+
+
+import shutil
+import subprocess
+import pytest
+
+
+@pytest.mark.skipif(not (shutil.which('ffmpeg') and shutil.which('ffprobe')),reason='precisa do ffmpeg')
+def test_created_video_enters_like_the_motion_gallery(library,context):
+    from pathlib import Path
+    from repertorio.jobs import Worker,register
+    root=Path(library.context(context['id'])['root'])
+    subprocess.run(['ffmpeg','-nostdin','-v','error','-y','-f','lavfi','-i','testsrc=size=360x640:rate=24:duration=6','-pix_fmt','yuv420p',str(root/'reel.mp4')],check=True)
+    data=s.ReferenceData(title='Reel de lançamento',description='Vídeo vertical do app',idea='Abra com a dor e mostre a tela real',techniques=['contraste'],
+                         genres=['lancamento'],prompt='Make a 6 second vertical launch reel')
+    op=register(library,s.Register(context_id=context['id'],request_key='reel-v1',data=data,files=['reel.mp4'],user_requested=True,target_workspace_ids=['pp-treta']))
+    Worker(library).process(op['id'])
+    assert library.operation(op['id'])['state']=='completed'
+    ref=library.get(op['ref_id'],workspace_ids=['pp-treta'])
+    assert {'original','preview','thumbnail','storyboard','motion'}<={a['role'] for a in ref['assets']}
+    assert ref['motion']['video'] and ref['motion']['loop'] and ref['motion']['aspect']=='vertical' and ref['motion']['genres']==['lancamento']
+    assert ref['video']['duration']>5 and ref['prompt'].startswith('Make a 6 second')
+    # O prompt e o formato entram na busca; o tipo desconhecido é recusado.
+    assert smart_search(library,s.AgentSearch(query='launch reel',workspace_ids=['pp-treta'],kind='criacao'))['items'][0]['id']==ref['id']
+    assert smart_search(library,s.AgentSearch(query='tiktok',workspace_ids=['pp-treta'],kind='criacao'))['items'][0]['id']==ref['id']
+    from repertorio.service import Problem
+    with pytest.raises(Problem):library.validate_data(data.model_copy(update={'genres':['novela']}))
+    # Atualizar a ficha sem informar tipos e prompt preserva os dois.
+    library.update(ref['id'],s.Update(context_id=context['id'],expected_revision=ref['revision'],
+        data=s.ReferenceData(title='Reel revisado',description='Vídeo vertical do app',idea='Abra com a dor',techniques=['contraste'])))
+    after=library.get(ref['id'],workspace_ids=['pp-treta'])
+    assert after['title']=='Reel revisado' and after['genres']==['lancamento'] and after['prompt'].startswith('Make a 6 second')

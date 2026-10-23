@@ -86,7 +86,9 @@ def create_mcp(lib,worker):
 
     @mcp.tool()
     def register_reference(request:schemas.Register)->dict:
-        """Copia apenas os arquivos indicados do projeto cadastrado. user_requested publica; sugestões ficam pendentes. Retorna operation_id em id."""
+        """Copia apenas os arquivos indicados do projeto cadastrado. user_requested publica; sugestões ficam pendentes. Retorna operation_id em id.
+        Vídeos (mp4, mov, webm) ganham player, loop curto, prancha de quadros e formato de tela, como os do espaço Motion:
+        informe em data.genres o tipo de vídeo e em data.prompt o pedido que gerou a peça."""
         return register(lib,request)
 
     @mcp.tool()

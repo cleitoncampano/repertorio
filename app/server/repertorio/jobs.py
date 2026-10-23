@@ -1,7 +1,6 @@
 import hashlib
 import json
 import shutil
-import subprocess
 import threading
 import uuid
 import zipfile
@@ -11,6 +10,7 @@ from sqlalchemy import text
 from .db import dumps, now
 from .importer import asset, index_text
 from .service import Problem
+from .motion import VIDEO_SUFFIXES, aspect, frame, loop_clip, probe, search_words, storyboard
 
 ALLOWED={'.png','.jpg','.jpeg','.webp','.gif','.pdf','.pptx','.html','.mp4','.mov','.webm'}
 PREVIEWS={'.png','.jpg','.jpeg','.webp'}
@@ -139,9 +139,10 @@ class Worker:
                         match=next((n for n in z.namelist() if n.lower() in ('docprops/thumbnail.jpeg','docprops/thumbnail.png')),None)
                         if match and z.getinfo(match).file_size<10_000_000:
                             p=dest/('cover'+Path(match).suffix);p.write_bytes(z.read(match));generated.append(p)
-                elif first.suffix in {'.mp4','.mov','.webm'} and shutil.which('ffmpeg'):
+                elif first.suffix in VIDEO_SUFFIXES and shutil.which('ffmpeg'):
                     p=dest/'frame.jpg'
-                    subprocess.run(['ffmpeg','-nostdin','-y','-i',str(first),'-frames:v','1','-vf','scale=1000:-1',str(p)],capture_output=True,check=True,timeout=60)
+                    duration=probe(first)['duration'] if shutil.which('ffprobe') else 0
+                    frame(first,duration*.1,1000).save(p,quality=90)
                     generated.append(p)
             if not generated:
                 raise ValueError('Prévia necessária. Envie imagens em previews junto com o material; HTML nunca é executado para gerar a prévia.')
@@ -155,11 +156,24 @@ class Worker:
             thumb=dest/'thumbnail.jpg'
             with Image.open(normalized[0]) as image:
                 image.thumbnail((320,320));image.save(thumb,quality=80)
+            # Vídeo criado entra como os da galeria de motion: prancha de quadros, loop curto, formato e player.
+            video=next((p for p,role in records if role=='original' and p.suffix in VIDEO_SUFFIXES),None)
+            motion=None
+            if video and shutil.which('ffmpeg') and shutil.which('ffprobe'):
+                meta=probe(video);board=dest/'quadros.jpg';clip=dest/'loop.mp4'
+                storyboard(video,board,meta['duration']);loop_clip(video,clip,meta['duration'])
+                motion=(video,board,clip,meta)
             with self.lib.db.engine.begin() as conn:
-                for p,role in records:
-                    if role=='original':asset(conn,self.lib.settings,rid,p,role)
+                originals={p:asset(conn,self.lib.settings,rid,p,role) for p,role in records if role=='original'}
                 for p in normalized:asset(conn,self.lib.settings,rid,p,'preview')
                 asset(conn,self.lib.settings,rid,thumb,'thumbnail')
+                if motion:
+                    video,board,clip,meta=motion
+                    payload=json.loads(conn.execute(text('SELECT payload FROM refs WHERE id=:id'),dict(id=rid)).scalar())
+                    payload.update(motion={'video':originals[video],'storyboard':asset(conn,self.lib.settings,rid,board,'storyboard'),'loop':asset(conn,self.lib.settings,rid,clip,'motion')},
+                                   video={k:meta[k] for k in ('duration','width','height','fps','audio')},aspect=aspect(meta['width'],meta['height']),text=payload.get('prompt') or '')
+                    payload['keywords']=search_words(payload)
+                    conn.execute(text('UPDATE refs SET payload=:p,search_text=:s WHERE id=:id'),dict(p=dumps(payload),s=index_text(payload),id=rid))
                 conn.execute(text('UPDATE refs SET ready=1,updated=:t WHERE id=:id'),dict(t=now(),id=rid))
                 conn.execute(text("UPDATE operations SET state='completed',progress=100,updated=:t WHERE id=:id"),dict(t=now(),id=oid))
                 self.lib.db.log(conn,'reference_ready',rid,row['context_id'],workspace_ids=self.lib.operation(oid)['target_workspace_ids'],operation_id=oid)

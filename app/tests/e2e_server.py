@@ -32,6 +32,10 @@ with tempfile.TemporaryDirectory(prefix='repertorio-e2e-') as temp:
     fichas=lib.settings.root/'dados/motion/teste.jsonl';first=json.loads(fichas.read_text())
     fichas.write_text(fichas.read_text()+json.dumps({**first,'id':'motion-onda','slug':'onda','title':'Onda de partículas que vira logo','strength':3},ensure_ascii=False)+'\n')
     import_motion(lib.db,motion)
+    from repertorio.schemas import Pack,StartContext
+    projects=lib.db.query("SELECT id FROM projects WHERE name='Comercial'")
+    video_context=lib.start(StartContext(project_id=projects[0]['id'],demand='Vídeo de lançamento vertical',workspace_ids=[motion]))
+    lib.pack(Pack(context_id=video_context['id'],title='Vídeos para o lançamento',reference_ids=['motion-giro','motion-onda']))
     web=lib.settings.root/'app/web';web.mkdir(parents=True)
     (web/'dist').symlink_to(BASE/'web/dist',target_is_directory=True)
     try:uvicorn.run(create_app(lib.settings),host='127.0.0.1',port=8767,log_level='warning')

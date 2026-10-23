@@ -1,5 +1,11 @@
 # Preparação comercial do Repertório
 
+## Oferta da landing page em 23/10/2026
+
+Nova decisão do Cleiton: a compra deve incluir o aplicativo e a biblioteca de referências que ele usa para criar, com apresentações, materiais de estudo e vídeos de motion. A comunicação deve usar os nomes dessas categorias, sem citar os cursos ou seus fornecedores. O valor de R$ 97 é provisório e fica editável; link de checkout e condições comerciais ainda não foram definidos.
+
+A landing page está no Growmate Marketing, em `produtos/repertorio/landing-page/`, com prévia privada em https://repertorio-para-criar.loyalmoon67.chatgpt.site. Fonte, direção e continuidade ficam naquela produção. A página demonstra o aplicativo com exemplos originais; a criação do pacote para entregar ao comprador é outra tarefa. O pacote de avaliação descrito abaixo continua sendo o candidato de software preparado em 19/10, sem o acervo particular.
+
 ## O produto a apresentar
 
 Uma biblioteca visual local para pessoas e agentes de IA: referências com contexto, busca, mapa e revisão da direção antes da criação. [Definição do produto](PRODUTO.md).
@@ -39,7 +45,7 @@ Forma de contratação, preço, suporte, atualizações e acesso ao código-font
 
 Evidências e resultados de validação ficam em [app/VALIDACAO.md](../../app/VALIDACAO.md). A presença de um script ou de um workflow não equivale a uma execução aprovada no sistema de destino.
 
-## O que faz parte do pacote
+## O que faz parte do pacote de avaliação de 19/10/2026
 
 O pacote de avaliação leva o software, a interface compilada, scripts de preparação e documentação de produto. A demonstração é gerada localmente com exemplos originais. Uma instalação nova começa vazia, com um vocabulário próprio de técnicas e intenções.
 

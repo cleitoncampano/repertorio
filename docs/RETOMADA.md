@@ -1,5 +1,11 @@
 # Retomada do projeto
 
+## Landing page comercial em 23/10/2026
+
+A pedido do Cleiton, criada e publicada uma prévia privada da landing page: https://repertorio-para-criar.loyalmoon67.chatgpt.site. Produção no Growmate Marketing, `produtos/repertorio/landing-page/` (continuidade em `project.md`). Nova oferta: aplicativo + biblioteca de referências, apresentações, materiais de estudo e vídeos de motion, sem citar nomes de cursos na página. Preço provisório R$ 97 em `dist/config.js`; falta informar o checkout. O botão mostra a disponibilidade futura enquanto o destino não estiver definido.
+
+Repertório consultado pelo MCP, contexto `fb7e8300-fd7c-4863-a9ac-ff1cb23980c9`, espaços Referências e Inspiração. Usadas as ideias de Manifesto Writing, Eyecannndy e Photography, os guias de tese e objetivo/audiência e as skills de copywriting, landing page, direção de arte e Sites. Página estática com o R aprovado, estudos originais, capturas de demonstração isolada, exploração de referências e pedidos copiáveis. Conferidos desktop, tablet, celular e 320 pixels, menu, referências, cópia, FAQ, preço, vídeo pausável e movimento reduzido. Sem mudanças no acervo nem no pacote do comprador. Próxima ação: Cleiton revisar a página, decidir o preço final e informar o link de compra.
+
 ## Preparação para compartilhar: fases 0 e 1 do plano de QA em 23/10/2026
 
 A pedido do Cleiton, uma auditoria de QA (servidor, interface, instalação) gerou um plano em seis fases para deixar o Repertório pronto para outras pessoas. Decisões aceitas: pypdfium2 no lugar do PyMuPDF; botão "Adicionar arquivos" no app (Fase 2); backup local por padrão; catálogo neutro no pacote; app do Mac assinado depois do piloto; repositório separado só se abrir o código. Plano completo: `~/.claude-accounts/cvortex/plans/quero-que-vc-atue-playful-hare.md`.

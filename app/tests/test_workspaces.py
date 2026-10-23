@@ -17,7 +17,7 @@ from repertorio.service import Library, Problem
 from repertorio.thumbs import bundle
 
 
-PP='pp-treta'
+PP='referencias'
 
 
 def space(lib,name='GrowMate'):
@@ -219,7 +219,7 @@ def test_migrate_legacy_ids_and_history(tmp_path):
         config.attributes['connection']=conn;command.upgrade(config,'0003')
     with db.engine.begin() as conn:
         for sql in [
-            "INSERT INTO refs(id,kind,title,origin,state,payload,search_text,created,updated) VALUES('original','arquivo','Original','pptreta','trashed','{}','','t','t')",
+            "INSERT INTO refs(id,kind,title,origin,state,payload,search_text,created,updated) VALUES('original','arquivo','Original','acervo','trashed','{}','','t','t')",
             "INSERT INTO projects VALUES('project','Projeto','/tmp','t')",
             "INSERT INTO contexts VALUES('context','project','Demanda antiga','t')",
             "INSERT INTO packs VALUES('pack','context','Seleção','{\"references\":[]}','t')",

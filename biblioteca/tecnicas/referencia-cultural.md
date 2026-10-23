@@ -8,7 +8,7 @@ Homenagem ou paródia de um ícone que a plateia reconhece.
 
 **Combina com:** `isolamento`, `emprestimo-de-codigo`, `contraste-de-escala`, `profundidade-em-camadas`, `metafora-visual`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **034-reel-02-09** (Monalisa boca aberta, força 4): Faça uma imagem conhecida e parada reagir: sobreponha só o recorte editado da parte que muda, alinhado com a original, e revele com esmaecimento ou Morph enquanto a câmera se aproxima.  
   `_catalogo/pranchas/034-reel-02-09.jpg`
@@ -27,7 +27,7 @@ Homenagem ou paródia de um ícone que a plateia reconhece.
 - **492-reel-series-netflix** (Netflix, força 4): Amplie o símbolo da capa até ele virar a moldura lateral dos slides seguintes e use essa faixa como placar do ranking, acendendo uma posição por vez enquanto o conteúdo ao lado troca.  
   `_catalogo/pranchas/492-reel-series-netflix.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **034-reel-02-09#1** (Monalisa boca aberta, força 4): obra inteira; recorte do rosto com boca aberta entra por esmaecimento  
   `_catalogo/miniaturas/034-reel-02-09/01.jpg`

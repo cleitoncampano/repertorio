@@ -16,39 +16,39 @@ Escolha quando a ordem não muda o sentido; se muda, use o guia Explicar e seque
 - 3 ou 4 faixas verticais iguais, uma cor ou foto por item, número gigante atrás do objeto.
 - No foco, a faixa da vez ocupa metade a dois terços da largura; o objeto cresce 1,3 a 1,6 vez com um giro; o número sobe cortado pela borda na cor de acento; as outras viram tiras estreitas em cinza ou em preto e branco.
 - Texto só na faixa aberta: nome em duas linhas de fonte larga, um parágrafo de três linhas e o logo.
-- [New Balance - Retângulos](http://127.0.0.1:8766/?workspace=pp-treta&ref=028-reel-01-07), [Atacantes](http://127.0.0.1:8766/?workspace=pp-treta&ref=237-reel-atacantes-morph), [Jogadores](http://127.0.0.1:8766/?workspace=pp-treta&ref=171-reel-24-04). Em grade 2x2: [Top Tênis](http://127.0.0.1:8766/?workspace=pp-treta&ref=047-reel-03-12), em que o card da vez dobra de largura e os outros ficam cinza-escuro.
+- [New Balance - Retângulos](http://127.0.0.1:8766/?workspace=referencias&ref=028-reel-01-07), [Atacantes](http://127.0.0.1:8766/?workspace=referencias&ref=237-reel-atacantes-morph), [Jogadores](http://127.0.0.1:8766/?workspace=referencias&ref=171-reel-24-04). Em grade 2x2: [Top Tênis](http://127.0.0.1:8766/?workspace=referencias&ref=047-reel-03-12), em que o card da vez dobra de largura e os outros ficam cinza-escuro.
 
 **2. Câmera que visita a grade**
 - Objeto no centro e 4 caixas ao redor. A visão geral é só o mapa (ilegível de propósito); a câmera amplia cerca de 2,6 vezes, enquadra uma caixa por slide com a marca de seleção e recua no fim com tudo marcado.
 - Cada caixa: título em caixa alta e até 4 linhas, que se leem no close.
-- [Cartão de Crédito com Zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=107-reel-14-05). Com foto de grupo: o holofote anda de rosto em rosto em [Equipe com Foco](http://127.0.0.1:8766/?workspace=pp-treta&ref=327-reel-equipe-transformar); a câmera recorta cada integrante em [Tartarugas Ninja](http://127.0.0.1:8766/?workspace=pp-treta&ref=433-reel-ninja-turtles).
+- [Cartão de Crédito com Zoom](http://127.0.0.1:8766/?workspace=referencias&ref=107-reel-14-05). Com foto de grupo: o holofote anda de rosto em rosto em [Equipe com Foco](http://127.0.0.1:8766/?workspace=referencias&ref=327-reel-equipe-transformar); a câmera recorta cada integrante em [Tartarugas Ninja](http://127.0.0.1:8766/?workspace=referencias&ref=433-reel-ninja-turtles).
 
 **3. Duas metades e ficha (versus)**
 - Tela dividida 50/50, uma cor por lado, um objeto centralizado em cada.
 - No foco, um lado vai para cerca de 85% e abre a ficha (título e 3 a 5 linhas de dados em faixas arredondadas); o outro vira tira de 15% na borda, sem sair de cena. No slide seguinte, inverte.
-- [Ferrero Rocher](http://127.0.0.1:8766/?workspace=pp-treta&ref=340-reel-ferrero-comparacao), [Whey Bold Comparação](http://127.0.0.1:8766/?workspace=pp-treta&ref=254-reel-bold), [LeBron e Curry](http://127.0.0.1:8766/?workspace=pp-treta&ref=400-reel-lebron-curry-mouseover). Rivais com rosto: fotos nas bordas e o nome trocando no centro em [Hamilton x Verstappen](http://127.0.0.1:8766/?workspace=pp-treta&ref=057-reel-05-05); cartão espelhado com os dados na mesma ordem em [F1](http://127.0.0.1:8766/?workspace=pp-treta&ref=334-reel-f1-circulos).
+- [Ferrero Rocher](http://127.0.0.1:8766/?workspace=referencias&ref=340-reel-ferrero-comparacao), [Whey Bold Comparação](http://127.0.0.1:8766/?workspace=referencias&ref=254-reel-bold), [LeBron e Curry](http://127.0.0.1:8766/?workspace=referencias&ref=400-reel-lebron-curry-mouseover). Rivais com rosto: fotos nas bordas e o nome trocando no centro em [Hamilton x Verstappen](http://127.0.0.1:8766/?workspace=referencias&ref=057-reel-05-05); cartão espelhado com os dados na mesma ordem em [F1](http://127.0.0.1:8766/?workspace=referencias&ref=334-reel-f1-circulos).
 
 **4. Divisória que corre (antes e depois)**
 - Duas fotos do mesmo ponto de vista sobrepostas; linha vertical branca com alça no meio; rótulos ANTES e DEPOIS nas laterais.
 - Slide 2: a divisória corre e o antes ocupa quase tudo, com o rótulo aceso; slide 3: o mesmo para o depois. Serve também para desenho técnico contra foto real.
-- [Antes x Depois](http://127.0.0.1:8766/?workspace=pp-treta&ref=233-reel-antes-depois-obra), [Antes e Depois](http://127.0.0.1:8766/?workspace=pp-treta&ref=573-reels-comparacao). Para abrir o tema: o presente rasgando a foto do passado em [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-11-award-new-york-times-magaz).
+- [Antes x Depois](http://127.0.0.1:8766/?workspace=referencias&ref=233-reel-antes-depois-obra), [Antes e Depois](http://127.0.0.1:8766/?workspace=referencias&ref=573-reels-comparacao). Para abrir o tema: o presente rasgando a foto do passado em [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-11-award-new-york-times-magaz).
 
 **5. Luz que troca de lado (prós e contras)**
 - Duas colunas de texto; uma camada escura gigante com uma fatia aberta ilumina só o lado em discussão; um giro de meia volta passa a luz para o outro.
 - Uma coluna por vez, título colorido e 4 a 6 linhas.
-- [Prós e Contras (Lanterna)](http://127.0.0.1:8766/?workspace=pp-treta&ref=125-reel-16-11), [Eleições 2026](http://127.0.0.1:8766/?workspace=pp-treta&ref=061-reel-05-10) (a fatia abre sobre um rosto e gira para o outro), [BYD](http://127.0.0.1:8766/?workspace=pp-treta&ref=038-reel-03-01) (quatro quadrantes, um quarto de volta por item).
+- [Prós e Contras (Lanterna)](http://127.0.0.1:8766/?workspace=referencias&ref=125-reel-16-11), [Eleições 2026](http://127.0.0.1:8766/?workspace=referencias&ref=061-reel-05-10) (a fatia abre sobre um rosto e gira para o outro), [BYD](http://127.0.0.1:8766/?workspace=referencias&ref=038-reel-03-01) (quatro quadrantes, um quarto de volta por item).
 
 **6. O item vira a barra (tabela curta)**
 - Até 5 números. O próprio produto no topo de cada coluna, na cor da embalagem, com o valor dentro; depois cada coluna se abre num card da mesma cor com dois números, e as já vistas viram tiras coloridas enquanto as próximas ficam cinza.
-- [Páscoa Nestlé](http://127.0.0.1:8766/?workspace=pp-treta&ref=585-reels-nestle-grafico), [RedBull](http://127.0.0.1:8766/?workspace=pp-treta&ref=149-reel-20-08-graficos-e-esquemas-redbull) (embalagem em traço que se enche de cor até a altura do valor), [Tabela de Medalhas](http://127.0.0.1:8766/?workspace=pp-treta&ref=418-reel-medalhas-bra) (cada número numa etiqueta pendurada no item).
+- [Páscoa Nestlé](http://127.0.0.1:8766/?workspace=referencias&ref=585-reels-nestle-grafico), [RedBull](http://127.0.0.1:8766/?workspace=referencias&ref=149-reel-20-08-graficos-e-esquemas-redbull) (embalagem em traço que se enche de cor até a altura do valor), [Tabela de Medalhas](http://127.0.0.1:8766/?workspace=referencias&ref=418-reel-medalhas-bra) (cada número numa etiqueta pendurada no item).
 
 ## Movimento
 
-- Agrupar alterna visão geral e foco. Voltar ao todo entre um item e outro dobra o número de slides: vale com 3 itens ([Coca-Cola](http://127.0.0.1:8766/?workspace=pp-treta&ref=226-reel-31-08-produto-coca-cola)); com 4 ou mais, passe de um foco ao próximo e só volte ao todo no fim, com todos acesos ([Jogadores Copa](http://127.0.0.1:8766/?workspace=pp-treta&ref=195-reel-27-05)).
-- O fechamento soma: todas as faixas iguais e coloridas, a fileira do começo de volta (slide 8 de [Páscoa Nestlé](http://127.0.0.1:8766/?workspace=pp-treta&ref=585-reels-nestle-grafico)) ou a lista completa diante da plateia ([MSC Foundation](http://127.0.0.1:8766/?workspace=pp-treta&ref=425-reel-msc)).
-- Roda para catálogos de 4 a 6 itens: tudo preso num círculo com o centro fora da tela, girando 90 graus por slide ([BIS](http://127.0.0.1:8766/?workspace=pp-treta&ref=251-reel-bis), [Destinos rotatórios](http://127.0.0.1:8766/?workspace=pp-treta&ref=068-reel-06-09)) ou cerca de 30 graus com elenco grande ([PSG Rotatório](http://127.0.0.1:8766/?workspace=pp-treta&ref=079-reel-08-06)).
-- Comparar pede um gesto lento e único: a forma gira em 900 ms em [Eleições 2026](http://127.0.0.1:8766/?workspace=pp-treta&ref=061-reel-05-10) e em 2 s na [Prós e Contras (Lanterna)](http://127.0.0.1:8766/?workspace=pp-treta&ref=125-reel-16-11); os dígitos correm como odômetro em 800 ms em [Gráfico Dinâmico](http://127.0.0.1:8766/?workspace=pp-treta&ref=365-reel-grafico-dinamico).
-- Tópicos de uma lista entram de baixo, escalonados, depois que a foto recolhe para uma faixa no topo ([Coliseu](http://127.0.0.1:8766/?workspace=pp-treta&ref=289-reel-coliseu-bullets), [Astecas](http://127.0.0.1:8766/?workspace=pp-treta&ref=236-reel-astecas-itens)).
+- Agrupar alterna visão geral e foco. Voltar ao todo entre um item e outro dobra o número de slides: vale com 3 itens ([Coca-Cola](http://127.0.0.1:8766/?workspace=referencias&ref=226-reel-31-08-produto-coca-cola)); com 4 ou mais, passe de um foco ao próximo e só volte ao todo no fim, com todos acesos ([Jogadores Copa](http://127.0.0.1:8766/?workspace=referencias&ref=195-reel-27-05)).
+- O fechamento soma: todas as faixas iguais e coloridas, a fileira do começo de volta (slide 8 de [Páscoa Nestlé](http://127.0.0.1:8766/?workspace=referencias&ref=585-reels-nestle-grafico)) ou a lista completa diante da plateia ([MSC Foundation](http://127.0.0.1:8766/?workspace=referencias&ref=425-reel-msc)).
+- Roda para catálogos de 4 a 6 itens: tudo preso num círculo com o centro fora da tela, girando 90 graus por slide ([BIS](http://127.0.0.1:8766/?workspace=referencias&ref=251-reel-bis), [Destinos rotatórios](http://127.0.0.1:8766/?workspace=referencias&ref=068-reel-06-09)) ou cerca de 30 graus com elenco grande ([PSG Rotatório](http://127.0.0.1:8766/?workspace=referencias&ref=079-reel-08-06)).
+- Comparar pede um gesto lento e único: a forma gira em 900 ms em [Eleições 2026](http://127.0.0.1:8766/?workspace=referencias&ref=061-reel-05-10) e em 2 s na [Prós e Contras (Lanterna)](http://127.0.0.1:8766/?workspace=referencias&ref=125-reel-16-11); os dígitos correm como odômetro em 800 ms em [Gráfico Dinâmico](http://127.0.0.1:8766/?workspace=referencias&ref=365-reel-grafico-dinamico).
+- Tópicos de uma lista entram de baixo, escalonados, depois que a foto recolhe para uma faixa no topo ([Coliseu](http://127.0.0.1:8766/?workspace=referencias&ref=289-reel-coliseu-bullets), [Astecas](http://127.0.0.1:8766/?workspace=referencias&ref=236-reel-astecas-itens)).
 
 ## Como fazer no motor HTML
 
@@ -66,22 +66,22 @@ Escolha quando a ordem não muda o sentido; se muda, use o guia Explicar e seque
 
 ## O que os melhores fazem
 
-- O grupo nunca sai de cena: quem não está em foco encolhe para tira ou satélite, mas continua visível ([Atacantes](http://127.0.0.1:8766/?workspace=pp-treta&ref=237-reel-atacantes-morph), [A Team With Six Experts](http://127.0.0.1:8766/?workspace=pp-treta&ref=517-reel-team-psic)).
-- A cor é o holofote: só o item da vez tem cor, os outros ficam em preto e branco, e no fim todos acendem juntos ([Jogadores Copa](http://127.0.0.1:8766/?workspace=pp-treta&ref=195-reel-27-05), [Jogadores](http://127.0.0.1:8766/?workspace=pp-treta&ref=171-reel-24-04)).
-- Um molde idêntico, uma variável. Em [Canva: Formula 1 - Transição](http://127.0.0.1:8766/?workspace=pp-treta&ref=canva-21) só a cor, o nome e o carro trocam; em [Refrigerantes](http://127.0.0.1:8766/?workspace=pp-treta&ref=288-reel-coca-morph2) o fundo assume a cor do produto da vez.
-- O próprio item é o dado: produto no topo da coluna, embalagem que se enche até o valor ([Páscoa Nestlé](http://127.0.0.1:8766/?workspace=pp-treta&ref=585-reels-nestle-grafico), [RedBull](http://127.0.0.1:8766/?workspace=pp-treta&ref=149-reel-20-08-graficos-e-esquemas-redbull)).
-- Comparam no mesmo lugar, não lado a lado: duas versões sobrepostas e uma divisória ([Antes x Depois](http://127.0.0.1:8766/?workspace=pp-treta&ref=233-reel-antes-depois-obra)), a foto atual aparecendo pelo rasgo da antiga ([Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-11-award-new-york-times-magaz)).
-- O separador é a imagem: as letras VS ultracondensadas, da altura da página, viram a parede entre os rivais ([Dave Dye (anúncios)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-05-15-nike-wk-02)); um X gigante abre uma janela para cada lado ([Pilotos - X](http://127.0.0.1:8766/?workspace=pp-treta&ref=123-reel-16-08)).
-- Foco de lente no lugar de caixa: a variação da vez nítida e as outras desfocadas ([Pringles Desfoque](http://127.0.0.1:8766/?workspace=pp-treta&ref=112-reel-15-05)); o barulhento borrado na frente e o calmo nítido atrás dizem quem manda ([Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-26-decade20-economist)).
+- O grupo nunca sai de cena: quem não está em foco encolhe para tira ou satélite, mas continua visível ([Atacantes](http://127.0.0.1:8766/?workspace=referencias&ref=237-reel-atacantes-morph), [A Team With Six Experts](http://127.0.0.1:8766/?workspace=referencias&ref=517-reel-team-psic)).
+- A cor é o holofote: só o item da vez tem cor, os outros ficam em preto e branco, e no fim todos acendem juntos ([Jogadores Copa](http://127.0.0.1:8766/?workspace=referencias&ref=195-reel-27-05), [Jogadores](http://127.0.0.1:8766/?workspace=referencias&ref=171-reel-24-04)).
+- Um molde idêntico, uma variável. Em [Canva: Formula 1 - Transição](http://127.0.0.1:8766/?workspace=referencias&ref=canva-21) só a cor, o nome e o carro trocam; em [Refrigerantes](http://127.0.0.1:8766/?workspace=referencias&ref=288-reel-coca-morph2) o fundo assume a cor do produto da vez.
+- O próprio item é o dado: produto no topo da coluna, embalagem que se enche até o valor ([Páscoa Nestlé](http://127.0.0.1:8766/?workspace=referencias&ref=585-reels-nestle-grafico), [RedBull](http://127.0.0.1:8766/?workspace=referencias&ref=149-reel-20-08-graficos-e-esquemas-redbull)).
+- Comparam no mesmo lugar, não lado a lado: duas versões sobrepostas e uma divisória ([Antes x Depois](http://127.0.0.1:8766/?workspace=referencias&ref=233-reel-antes-depois-obra)), a foto atual aparecendo pelo rasgo da antiga ([Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-11-award-new-york-times-magaz)).
+- O separador é a imagem: as letras VS ultracondensadas, da altura da página, viram a parede entre os rivais ([Dave Dye (anúncios)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-05-15-nike-wk-02)); um X gigante abre uma janela para cada lado ([Pilotos - X](http://127.0.0.1:8766/?workspace=referencias&ref=123-reel-16-08)).
+- Foco de lente no lugar de caixa: a variação da vez nítida e as outras desfocadas ([Pringles Desfoque](http://127.0.0.1:8766/?workspace=referencias&ref=112-reel-15-05)); o barulhento borrado na frente e o calmo nítido atrás dizem quem manda ([Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-26-decade20-economist)).
 
 ## Erros que derrubam
 
-- Card de ícone com parágrafo cinza miúdo, repetido em todos os slides: é o retrato dos fracos ([Cyber Security](http://127.0.0.1:8766/?workspace=pp-treta&ref=004-26-0104-cyber-security), [Neon Company](http://127.0.0.1:8766/?workspace=pp-treta&ref=003-26-0103-neon-company)). Palavra fantasma e eco tipográfico em tom sobre tom somem no projetor.
-- Tabela longa em corpo pequeno. A de dez linhas de [F1](http://127.0.0.1:8766/?workspace=pp-treta&ref=334-reel-f1-circulos) pede 3 ou 4 números grandes; a [Tabela de Medalhas](http://127.0.0.1:8766/?workspace=pp-treta&ref=418-reel-medalhas-bra) funciona até 5 números e acima disso volta a ser tabela ou gráfico.
-- Faixas demais: acima de 4 a sanfona aperta e o título em pé não cabe ([Lego players](http://127.0.0.1:8766/?workspace=pp-treta&ref=055-reel-04-10), [MSC Foundation](http://127.0.0.1:8766/?workspace=pp-treta&ref=425-reel-msc)); as duas metades só funcionam com 2 itens ([Ferrero Rocher](http://127.0.0.1:8766/?workspace=pp-treta&ref=340-reel-ferrero-comparacao)).
-- Apagar o que a plateia precisa comparar. Em [Itens com movimento](http://127.0.0.1:8766/?workspace=pp-treta&ref=072-reel-07-05) só a faixa da vez se lê; na lanterna, o lado escuro fica ilegível e só serve se o apresentador falar de um lado por vez.
+- Card de ícone com parágrafo cinza miúdo, repetido em todos os slides: é o retrato dos fracos ([Cyber Security](http://127.0.0.1:8766/?workspace=referencias&ref=004-26-0104-cyber-security), [Neon Company](http://127.0.0.1:8766/?workspace=referencias&ref=003-26-0103-neon-company)). Palavra fantasma e eco tipográfico em tom sobre tom somem no projetor.
+- Tabela longa em corpo pequeno. A de dez linhas de [F1](http://127.0.0.1:8766/?workspace=referencias&ref=334-reel-f1-circulos) pede 3 ou 4 números grandes; a [Tabela de Medalhas](http://127.0.0.1:8766/?workspace=referencias&ref=418-reel-medalhas-bra) funciona até 5 números e acima disso volta a ser tabela ou gráfico.
+- Faixas demais: acima de 4 a sanfona aperta e o título em pé não cabe ([Lego players](http://127.0.0.1:8766/?workspace=referencias&ref=055-reel-04-10), [MSC Foundation](http://127.0.0.1:8766/?workspace=referencias&ref=425-reel-msc)); as duas metades só funcionam com 2 itens ([Ferrero Rocher](http://127.0.0.1:8766/?workspace=referencias&ref=340-reel-ferrero-comparacao)).
+- Apagar o que a plateia precisa comparar. Em [Itens com movimento](http://127.0.0.1:8766/?workspace=referencias&ref=072-reel-07-05) só a faixa da vez se lê; na lanterna, o lado escuro fica ilegível e só serve se o apresentador falar de um lado por vez.
 - Fotos desiguais: recortes com luz, escala ou enquadramento diferentes quebram a sanfona, a roda e o antes e depois. Os dois quadros do antes e depois têm de coincidir exatamente.
-- Metáfora gasta sem a mecânica: as engrenagens de [Engrenagens com Movimento](http://127.0.0.1:8766/?workspace=pp-treta&ref=043-reel-03-08) só valem se o giro sincronizado for mostrado de verdade.
+- Metáfora gasta sem a mecânica: as engrenagens de [Engrenagens com Movimento](http://127.0.0.1:8766/?workspace=referencias&ref=043-reel-03-08) só valem se o giro sincronizado for mostrado de verdade.
 
 ## Prompt base
 
@@ -97,11 +97,11 @@ Antes de entregar: rode python3 -I ferramentas/ver.py, confira cada estado (vis�
 
 ## Abra primeiro
 
-- [New Balance - Retângulos](http://127.0.0.1:8766/?workspace=pp-treta&ref=028-reel-01-07): sanfona com visão geral e foco, número que sobe em vermelho.
-- [Atacantes](http://127.0.0.1:8766/?workspace=pp-treta&ref=237-reel-atacantes-morph): cor só para quem está falando, os outros em tiras preto e branco.
-- [Cartão de Crédito com Zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=107-reel-14-05): grade como mapa e câmera que lê caixa por caixa.
-- [Ferrero Rocher](http://127.0.0.1:8766/?workspace=pp-treta&ref=340-reel-ferrero-comparacao): duas metades que se revezam no palco.
-- [Antes x Depois](http://127.0.0.1:8766/?workspace=pp-treta&ref=233-reel-antes-depois-obra): divisória de aplicativo sobre o mesmo enquadramento.
-- [Prós e Contras (Lanterna)](http://127.0.0.1:8766/?workspace=pp-treta&ref=125-reel-16-11): só o lado em discussão iluminado; a prancha não mostra a camada escura, leia a ficha.
-- [Páscoa Nestlé](http://127.0.0.1:8766/?workspace=pp-treta&ref=585-reels-nestle-grafico): produto como barra do gráfico e coluna que vira card.
-- [Cyber Security](http://127.0.0.1:8766/?workspace=pp-treta&ref=004-26-0104-cyber-security): o contraexemplo, para reconhecer o modelo genérico e não repeti-lo.
+- [New Balance - Retângulos](http://127.0.0.1:8766/?workspace=referencias&ref=028-reel-01-07): sanfona com visão geral e foco, número que sobe em vermelho.
+- [Atacantes](http://127.0.0.1:8766/?workspace=referencias&ref=237-reel-atacantes-morph): cor só para quem está falando, os outros em tiras preto e branco.
+- [Cartão de Crédito com Zoom](http://127.0.0.1:8766/?workspace=referencias&ref=107-reel-14-05): grade como mapa e câmera que lê caixa por caixa.
+- [Ferrero Rocher](http://127.0.0.1:8766/?workspace=referencias&ref=340-reel-ferrero-comparacao): duas metades que se revezam no palco.
+- [Antes x Depois](http://127.0.0.1:8766/?workspace=referencias&ref=233-reel-antes-depois-obra): divisória de aplicativo sobre o mesmo enquadramento.
+- [Prós e Contras (Lanterna)](http://127.0.0.1:8766/?workspace=referencias&ref=125-reel-16-11): só o lado em discussão iluminado; a prancha não mostra a camada escura, leia a ficha.
+- [Páscoa Nestlé](http://127.0.0.1:8766/?workspace=referencias&ref=585-reels-nestle-grafico): produto como barra do gráfico e coluna que vira card.
+- [Cyber Security](http://127.0.0.1:8766/?workspace=referencias&ref=004-26-0104-cyber-security): o contraexemplo, para reconhecer o modelo genérico e não repeti-lo.

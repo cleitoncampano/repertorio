@@ -4,7 +4,7 @@ const evidence='/tmp/repertorio-workspaces-qa';
 
 test('cria, renomeia, compartilha e exclui espaços diretamente sem restauração',async({page,request})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
- await page.goto('/?workspace=pp-treta');
+ await page.goto('/?workspace=referencias');
  await page.getByRole('button',{name:'Espaços',exact:true}).click();
  await page.getByRole('textbox',{name:'Nome do novo espaço'}).fill('GrowMate QA');
  await page.getByRole('button',{name:'Criar espaço',exact:true}).click();
@@ -18,8 +18,8 @@ test('cria, renomeia, compartilha e exclui espaços diretamente sem restauraçã
  await page.getByRole('button',{name:'Salvar nome',exact:true}).click();
  await expect(page.getByRole('button',{name:'Renomear GrowMate QA novo',exact:true})).toBeVisible();
  await page.screenshot({path:evidence+'/seletor-escuro.png'});
- await page.locator('.space-enter').filter({hasText:'PP Treta'}).click();
- await page.goto('/?workspace=pp-treta&ref=deck');
+ await page.locator('.space-enter').filter({hasText:/^Referências/}).click();
+ await page.goto('/?workspace=referencias&ref=deck');
  await expect(page.locator('.detail-body h2')).toHaveText('Abertura criativa');
  await page.getByRole('combobox',{name:'Espaço de destino'}).selectOption(grow);
  await page.getByRole('button',{name:'Adicionar ao espaço',exact:true}).click();
@@ -28,7 +28,7 @@ test('cria, renomeia, compartilha e exclui espaços diretamente sem restauraçã
  await expect(page.locator('.detail-body h2')).toHaveText('Abertura criativa');
  await page.screenshot({path:evidence+'/referencia-compartilhada.png'});
  await page.getByRole('button',{name:'Excluir deste espaço',exact:true}).click();
- expect((await (await request.get('/api/references/deck?workspace_id=pp-treta')).json()).state).toBe('published');
+ expect((await (await request.get('/api/references/deck?workspace_id=referencias')).json()).state).toBe('published');
   await page.getByRole('button',{name:'Lixeira',exact:true}).click();
   await expect(page.locator('.reference-card').filter({hasText:'Abertura criativa'})).toBeVisible();
  await page.getByRole('button',{name:'Espaços',exact:true}).click();
@@ -36,9 +36,9 @@ test('cria, renomeia, compartilha e exclui espaços diretamente sem restauraçã
  await expect(page.locator('.space-enter').filter({hasText:'GrowMate QA novo'})).toHaveCount(0);
   await expect(page.getByRole('button',{name:'Restaurar',exact:true})).toHaveCount(0);
   expect((await request.post('/api/workspaces/'+grow+'/state',{data:{deleted:false,expected_revision:3}})).status()).toBe(422);
-  await page.locator('.space-enter').filter({hasText:'PP Treta'}).click();
+  await page.locator('.space-enter').filter({hasText:/^Referências/}).click();
  await page.reload();
-  expect(new URL(page.url()).searchParams.get('workspace')).toBe('pp-treta');
+  expect(new URL(page.url()).searchParams.get('workspace')).toBe('referencias');
  await page.setViewportSize({width:390,height:844});
  await page.getByRole('button',{name:'Ativar modo claro',exact:true}).click();
  await page.getByRole('button',{name:'Espaços',exact:true}).click();
@@ -50,10 +50,10 @@ test('cria, renomeia, compartilha e exclui espaços diretamente sem restauraçã
 test('link da referência abre no espaço dela e mantém destino explícito',async({page,request})=>{
  const destination=await (await request.post('/api/workspaces',{data:{name:'cVortex QA'}})).json();
  const projects=await (await request.get('/api/projects')).json();
- const context=await (await request.post('/api/contexts',{data:{project_id:projects.find((p:any)=>p.name==='Marketing').id,demand:'Inspiração combinada',workspace_ids:['pp-treta',destination.id]}})).json();
+ const context=await (await request.post('/api/contexts',{data:{project_id:projects.find((p:any)=>p.name==='Marketing').id,demand:'Inspiração combinada',workspace_ids:['referencias',destination.id]}})).json();
  const op=await (await request.post('/api/references',{data:{context_id:context.id,target_workspace_ids:[destination.id],request_key:'combined-spaces-e2e',user_requested:true,files:['carrossel.png'],data:{title:'Exclusiva cVortex QA',description:'Só no destino',idea:'Referência exclusiva'}}})).json();
  await expect.poll(async()=>(await (await request.get('/api/operations/'+op.id)).json()).state).toBe('completed');
- expect((await request.get('/api/references/'+op.ref_id+'?workspace_id=pp-treta')).status()).toBe(404);
+ expect((await request.get('/api/references/'+op.ref_id+'?workspace_id=referencias')).status()).toBe(404);
  // O link que o agente passa ao usuário leva o espaço da referência, mesmo numa demanda com dois espaços.
  const found=await (await request.post('/api/search',{data:{context_id:context.id,query:'Exclusiva cVortex QA'}})).json();
  const link=new URL(found.items.find((r:any)=>r.id===op.ref_id).url);
@@ -73,8 +73,8 @@ test('link da referência abre no espaço dela e mantém destino explícito',asy
 test('move pela interface preservando outros vínculos',async({page,request})=>{
  const source=await (await request.post('/api/workspaces',{data:{name:'Origem movimento QA'}})).json();
  const target=await (await request.post('/api/workspaces',{data:{name:'Destino movimento QA'}})).json();
- const deck=await (await request.get('/api/references/deck?workspace_id=pp-treta')).json();
- expect((await request.post('/api/references/deck/workspaces',{data:{source_workspace_id:'pp-treta',target_workspace_ids:[source.id],expected_membership_revision:deck.membership_revision}})).ok()).toBeTruthy();
+ const deck=await (await request.get('/api/references/deck?workspace_id=referencias')).json();
+ expect((await request.post('/api/references/deck/workspaces',{data:{source_workspace_id:'referencias',target_workspace_ids:[source.id],expected_membership_revision:deck.membership_revision}})).ok()).toBeTruthy();
  await page.goto('/?workspace='+source.id+'&ref=deck');
  await expect(page.locator('.detail-body h2')).toHaveText('Abertura criativa');
  await page.getByRole('combobox',{name:'Espaço de destino'}).selectOption(target.id);
@@ -83,7 +83,7 @@ test('move pela interface preservando outros vínculos',async({page,request})=>{
  await expect(page.getByRole('heading',{name:'O repertório começa aqui.'})).toBeVisible();
  expect((await request.get('/api/references/deck?workspace_id='+source.id)).status()).toBe(404);
  expect((await (await request.get('/api/references/deck?workspace_id='+target.id)).json()).state).toBe('published');
- expect((await (await request.get('/api/references/deck?workspace_id=pp-treta')).json()).state).toBe('published');
+ expect((await (await request.get('/api/references/deck?workspace_id=referencias')).json()).state).toBe('published');
 });
 
 test('excluir todos os espaços permite criar e voltar a trabalhar',async({page,request})=>{

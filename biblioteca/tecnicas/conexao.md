@@ -8,7 +8,7 @@ Linhas, setas e conectores ligando partes.
 
 **Combina com:** `hierarquia-de-leitura`, `simetria-e-eixo`, `dado-como-heroi`, `contraste-de-cor`, `similaridade`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **096-reel-12-06** (Gráfico diferente, força 4): Tire do gráfico tudo que é padrão: barras num tom só um pouco mais claro que o fundo, nenhuma grade, rótulos pequenos na vertical e uma única linha em cor de contraste ligando as duas barras que importam, com a variação escrita sobre ela; o número principal fica grande, fora do gráfico.  
   `_catalogo/pranchas/096-reel-12-06.jpg`
@@ -27,7 +27,7 @@ Linhas, setas e conectores ligando partes.
 - **361-reel-grafico** (Gráfico Circular Animado, força 3): Esconda metade de um gráfico de anéis atrás de uma faixa e gire os anéis para que os arcos coloridos subam de trás dela, como um medidor que se enche; ligue cada arco ao seu número com uma linha fina.  
   `_catalogo/pranchas/361-reel-grafico.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **096-reel-12-06#2** (Gráfico diferente, força 4): barras tom sobre tom sobem, número grande à direita, traço laranja com a queda entre duas barras  
   `_catalogo/miniaturas/096-reel-12-06/02.jpg`

@@ -16,35 +16,35 @@ plateia precisa de um respiro antes de seguir.
 **1. Lista em tambor com marcador fixo.** 5 a 7 itens de uma ou duas palavras, grotesca extralarga ou pesada de 120 a 140 px,
 entrelinha 1, alinhada à esquerda. Um triângulo ou seta e dois fios finos ficam parados numa faixa no meio da tela; a cada
 capítulo a lista sobe uma linha e o item da vez encaixa no marcador. Os itens que saem ficam cortados pela borda. Fundo chapado
-(preto ou amarelo) e uma cor só de texto. [Agenda Dinâmica](http://127.0.0.1:8766/?workspace=pp-treta&ref=126-reel-17-02), [Agenda](http://127.0.0.1:8766/?workspace=pp-treta&ref=137-reel-18-09).
+(preto ou amarelo) e uma cor só de texto. [Agenda Dinâmica](http://127.0.0.1:8766/?workspace=referencias&ref=126-reel-17-02), [Agenda](http://127.0.0.1:8766/?workspace=referencias&ref=137-reel-18-09).
 
 **2. Cena-mapa com portas.** Foto vista de cima (mesa, mural, mapa) em sangria total, com 4 a 6 miniaturas dos capítulos
 pousadas sobre objetos que combinam com cada etapa e giradas no ângulo do objeto. Nada precisa ser legível no mapa: ele é menu.
-Cada porta abre um capítulo que se sustenta sozinho (uma palavra, um número ou uma foto). [Table top com zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=129-reel-17-06), [Resultados Trimestrais](http://127.0.0.1:8766/?workspace=pp-treta&ref=565-reel-zoom-numeros).
+Cada porta abre um capítulo que se sustenta sozinho (uma palavra, um número ou uma foto). [Table top com zoom](http://127.0.0.1:8766/?workspace=referencias&ref=129-reel-17-06), [Resultados Trimestrais](http://127.0.0.1:8766/?workspace=referencias&ref=565-reel-zoom-numeros).
 
 **3. Marcador que viaja e vira aba.** 3 ou 4 itens em blocos sobre fundo escuro. Um card colorido passa de item em item e assume
 a cor do capítulo; os outros ficam em cinza-escuro. Depois a agenda encolhe para uma barra de abas no topo (rótulos de 32 a 40 px)
-e uma pílula na cor do capítulo marca a aba ativa em cada slide de conteúdo. [Agenda Cores](http://127.0.0.1:8766/?workspace=pp-treta&ref=188-reel-26-07), [Spotify](http://127.0.0.1:8766/?workspace=pp-treta&ref=504-reel-spotify).
+e uma pílula na cor do capítulo marca a aba ativa em cada slide de conteúdo. [Agenda Cores](http://127.0.0.1:8766/?workspace=referencias&ref=188-reel-26-07), [Spotify](http://127.0.0.1:8766/?workspace=referencias&ref=504-reel-spotify).
 
 **4. Palavra gigante cortada pela base.** Divisor com uma palavra do capítulo em serifada pesada de cerca de 420 px, partida em
 duas linhas, a segunda cortada pela borda inferior. Uma frase de ligação em caixa alta espaçada (24 a 28 px) acima da palavra e
-outra entre as linhas. O fundo alterna branco, preto e grafite a cada capítulo. [Table top com zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=129-reel-17-06#2), [Tokyo](http://127.0.0.1:8766/?workspace=pp-treta&ref=163-reel-22-08a).
+outra entre as linhas. O fundo alterna branco, preto e grafite a cada capítulo. [Table top com zoom](http://127.0.0.1:8766/?workspace=referencias&ref=129-reel-17-06#2), [Tokyo](http://127.0.0.1:8766/?workspace=referencias&ref=163-reel-22-08a).
 
 **5. Aba que cobre a tela.** Na capa, até 4 linguetas coloridas na borda esquerda, uma por capítulo, nas mesmas cores das letras
 do título. Em cada capítulo a aba da vez desliza e cobre a tela com sua cor; dentro, foto quadrada à esquerda e título serifado
-branco em 2 linhas à direita. As abas restantes continuam à vista e contam quanto falta. [Avent](http://127.0.0.1:8766/?workspace=pp-treta&ref=341-reel-fichario-avent).
+branco em 2 linhas à direita. As abas restantes continuam à vista e contam quanto falta. [Avent](http://127.0.0.1:8766/?workspace=referencias&ref=341-reel-fichario-avent).
 
 **6. Respiro de uma cor.** Depois de um bloco pesado ou antes de um assunto delicado: a tela inteira numa cor só ou num degradê de
 céu, uma palavra pequena no topo e 2 ou 3 linhas curtas na base, com o meio vazio. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-06-classic-vogue) (capa roxa), [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-01-classic-vogue) (céu).
 
 ## Movimento
 
-- A agenda aparece inteira uma vez e volta entre capítulos como "onde estamos", sempre no mesmo lugar: câmera parada, só a lista ou o marcador anda. Morph de 700 ms por linha. [Agenda Dinâmica](http://127.0.0.1:8766/?workspace=pp-treta&ref=126-reel-17-02).
-- Mapa: zoom de mergulho na porta até ela virar a tela (900 a 1200 ms) e zoom de recuo no fim do capítulo, de volta ao mapa. Sem outras transições; o movimento vem todo dos zooms. [Table Top Zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=562-reel-zoom).
-- Divisor que vira etiqueta: a palavra gigante encolhe para cerca de 14% e vai para o canto como rótulo do primeiro slide do capítulo; no divisor seguinte volta a crescer. [Onboarding](http://127.0.0.1:8766/?workspace=pp-treta&ref=659-template-onboarding).
-- Moldura que cresce: a foto pequena do último slide do capítulo cresce até virar o fundo do divisor; entre capítulos, passagem de empurrar. [Magic Masks](http://127.0.0.1:8766/?workspace=pp-treta&ref=647-template-magic-masks-v1).
-- Ponto que vira fundo: o ponto final da palavra cresce até cobrir a tela e vira o fundo do slide seguinte. [Ponto final](http://127.0.0.1:8766/?workspace=pp-treta&ref=461-reel-ponto-final).
-- Fresta: dois painéis da cor do fundo se afastam e revelam a lista numerada, ou a foto se abre ao meio e o título aparece na fenda. [Agenda Impactante](http://127.0.0.1:8766/?workspace=pp-treta&ref=192-reel-26-11), [Spiderman - Imagens](http://127.0.0.1:8766/?workspace=pp-treta&ref=156-reel-21-08).
+- A agenda aparece inteira uma vez e volta entre capítulos como "onde estamos", sempre no mesmo lugar: câmera parada, só a lista ou o marcador anda. Morph de 700 ms por linha. [Agenda Dinâmica](http://127.0.0.1:8766/?workspace=referencias&ref=126-reel-17-02).
+- Mapa: zoom de mergulho na porta até ela virar a tela (900 a 1200 ms) e zoom de recuo no fim do capítulo, de volta ao mapa. Sem outras transições; o movimento vem todo dos zooms. [Table Top Zoom](http://127.0.0.1:8766/?workspace=referencias&ref=562-reel-zoom).
+- Divisor que vira etiqueta: a palavra gigante encolhe para cerca de 14% e vai para o canto como rótulo do primeiro slide do capítulo; no divisor seguinte volta a crescer. [Onboarding](http://127.0.0.1:8766/?workspace=referencias&ref=659-template-onboarding).
+- Moldura que cresce: a foto pequena do último slide do capítulo cresce até virar o fundo do divisor; entre capítulos, passagem de empurrar. [Magic Masks](http://127.0.0.1:8766/?workspace=referencias&ref=647-template-magic-masks-v1).
+- Ponto que vira fundo: o ponto final da palavra cresce até cobrir a tela e vira o fundo do slide seguinte. [Ponto final](http://127.0.0.1:8766/?workspace=referencias&ref=461-reel-ponto-final).
+- Fresta: dois painéis da cor do fundo se afastam e revelam a lista numerada, ou a foto se abre ao meio e o título aparece na fenda. [Agenda Impactante](http://127.0.0.1:8766/?workspace=referencias&ref=192-reel-26-11), [Spiderman - Imagens](http://127.0.0.1:8766/?workspace=referencias&ref=156-reel-21-08).
 - Giro, vento e balanço em loop servem a uma vinheta curta, nunca à passagem entre slides de conteúdo.
 
 ## Como fazer no motor HTML
@@ -65,23 +65,23 @@ linhas): mantenha o marcador no terço central.
 
 ## O que os melhores fazem
 
-- Repetem a mesma agenda e mudam só o marcador, em vez de redesenhar a lista a cada capítulo. [Agenda Dinâmica](http://127.0.0.1:8766/?workspace=pp-treta&ref=126-reel-17-02), [Agenda](http://127.0.0.1:8766/?workspace=pp-treta&ref=137-reel-18-09).
-- Dão a cada capítulo uma cor própria e acendem só o ativo; o resto fica cinza. [Agenda Cores](http://127.0.0.1:8766/?workspace=pp-treta&ref=188-reel-26-07), [Neon](http://127.0.0.1:8766/?workspace=pp-treta&ref=656-template-neon-v1a).
-- Fazem do sumário um lugar (objetos de uma mesa, países num mapa, peças num mural) e voltam a ele entre capítulos. [Seleções da Copa com Zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=186-reel-26-05), [Resultados Trimestrais](http://127.0.0.1:8766/?workspace=pp-treta&ref=565-reel-zoom-numeros).
-- Mostram o todo primeiro, passeiam em close na ordem da fala e terminam no todo. [Infográfico com Movimentos](http://127.0.0.1:8766/?workspace=pp-treta&ref=383-reel-infografico-morph), [Starbucks](http://127.0.0.1:8766/?workspace=pp-treta&ref=506-reel-starbucks-zoom).
-- Tratam o divisor como tipografia: uma palavra enorme, cortada pela borda, com a frase de ligação pequena e espaçada. [Table top com zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=129-reel-17-06), [Tokyo](http://127.0.0.1:8766/?workspace=pp-treta&ref=163-reel-22-08a).
-- Ligam o divisor ao capítulo: a forma, a foto ou a palavra do divisor continua no slide seguinte. [Magic Masks](http://127.0.0.1:8766/?workspace=pp-treta&ref=647-template-magic-masks-v1), [Onboarding](http://127.0.0.1:8766/?workspace=pp-treta&ref=659-template-onboarding).
-- Abrem os itens um a um e deixam abertos os já vistos, para a lista se completar diante da plateia. [MSC Foundation](http://127.0.0.1:8766/?workspace=pp-treta&ref=425-reel-msc).
+- Repetem a mesma agenda e mudam só o marcador, em vez de redesenhar a lista a cada capítulo. [Agenda Dinâmica](http://127.0.0.1:8766/?workspace=referencias&ref=126-reel-17-02), [Agenda](http://127.0.0.1:8766/?workspace=referencias&ref=137-reel-18-09).
+- Dão a cada capítulo uma cor própria e acendem só o ativo; o resto fica cinza. [Agenda Cores](http://127.0.0.1:8766/?workspace=referencias&ref=188-reel-26-07), [Neon](http://127.0.0.1:8766/?workspace=referencias&ref=656-template-neon-v1a).
+- Fazem do sumário um lugar (objetos de uma mesa, países num mapa, peças num mural) e voltam a ele entre capítulos. [Seleções da Copa com Zoom](http://127.0.0.1:8766/?workspace=referencias&ref=186-reel-26-05), [Resultados Trimestrais](http://127.0.0.1:8766/?workspace=referencias&ref=565-reel-zoom-numeros).
+- Mostram o todo primeiro, passeiam em close na ordem da fala e terminam no todo. [Infográfico com Movimentos](http://127.0.0.1:8766/?workspace=referencias&ref=383-reel-infografico-morph), [Starbucks](http://127.0.0.1:8766/?workspace=referencias&ref=506-reel-starbucks-zoom).
+- Tratam o divisor como tipografia: uma palavra enorme, cortada pela borda, com a frase de ligação pequena e espaçada. [Table top com zoom](http://127.0.0.1:8766/?workspace=referencias&ref=129-reel-17-06), [Tokyo](http://127.0.0.1:8766/?workspace=referencias&ref=163-reel-22-08a).
+- Ligam o divisor ao capítulo: a forma, a foto ou a palavra do divisor continua no slide seguinte. [Magic Masks](http://127.0.0.1:8766/?workspace=referencias&ref=647-template-magic-masks-v1), [Onboarding](http://127.0.0.1:8766/?workspace=referencias&ref=659-template-onboarding).
+- Abrem os itens um a um e deixam abertos os já vistos, para a lista se completar diante da plateia. [MSC Foundation](http://127.0.0.1:8766/?workspace=referencias&ref=425-reel-msc).
 - Usam o vazio como mudança de tom: uma cor e quase nada escrito. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-06-classic-vogue).
 
 ## Erros que derrubam
 
-- Texto miúdo: abas, rótulos de régua e parágrafos dentro do sumário não se leem no telão. Rótulo abaixo de 28 px ou parágrafo no sumário derrubam o slide. [Bitcoin](http://127.0.0.1:8766/?workspace=pp-treta&ref=090-reel-11-02), [Sumário Executivo](http://127.0.0.1:8766/?workspace=pp-treta&ref=224-reel-31-07).
-- Itens apagados quase da cor do fundo: o "onde estamos" some no projetor e ninguém sabe qual é o item atual. [Compliance](http://127.0.0.1:8766/?workspace=pp-treta&ref=291-reel-compliance), [Fichário](http://127.0.0.1:8766/?workspace=pp-treta&ref=164-reel-22-09).
-- Divisor genérico de modelo: foto de banco em sangria com título branco, igual em todos os capítulos, ou título fantasma no tom do fundo, que desaparece. [Space](http://127.0.0.1:8766/?workspace=pp-treta&ref=671-template-space-v1), [Electricity](http://127.0.0.1:8766/?workspace=pp-treta&ref=017-26-0403-electricity).
-- Mapa de zoom que promete mais do que entrega: destino vazio, só número e parágrafo, ou gráfico padrão sem tratamento. [Zoom Caderno](http://127.0.0.1:8766/?workspace=pp-treta&ref=181-reel-25-07), [Zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=535-reel-timeline-zoom).
+- Texto miúdo: abas, rótulos de régua e parágrafos dentro do sumário não se leem no telão. Rótulo abaixo de 28 px ou parágrafo no sumário derrubam o slide. [Bitcoin](http://127.0.0.1:8766/?workspace=referencias&ref=090-reel-11-02), [Sumário Executivo](http://127.0.0.1:8766/?workspace=referencias&ref=224-reel-31-07).
+- Itens apagados quase da cor do fundo: o "onde estamos" some no projetor e ninguém sabe qual é o item atual. [Compliance](http://127.0.0.1:8766/?workspace=referencias&ref=291-reel-compliance), [Fichário](http://127.0.0.1:8766/?workspace=referencias&ref=164-reel-22-09).
+- Divisor genérico de modelo: foto de banco em sangria com título branco, igual em todos os capítulos, ou título fantasma no tom do fundo, que desaparece. [Space](http://127.0.0.1:8766/?workspace=referencias&ref=671-template-space-v1), [Electricity](http://127.0.0.1:8766/?workspace=referencias&ref=017-26-0403-electricity).
+- Mapa de zoom que promete mais do que entrega: destino vazio, só número e parágrafo, ou gráfico padrão sem tratamento. [Zoom Caderno](http://127.0.0.1:8766/?workspace=referencias&ref=181-reel-25-07), [Zoom](http://127.0.0.1:8766/?workspace=referencias&ref=535-reel-timeline-zoom).
 - Itens demais: mais de 7 linhas quebram o tambor, mais de 4 abas poluem a borda, quatro neons acesos juntos cansam.
-- Efeito chamativo repetido: vento, giro ou balanço em todo divisor vira ruído. [Transição Bandeiras](http://127.0.0.1:8766/?workspace=pp-treta&ref=243-reel-bandeiras), [Pizza](http://127.0.0.1:8766/?workspace=pp-treta&ref=663-template-pizza).
+- Efeito chamativo repetido: vento, giro ou balanço em todo divisor vira ruído. [Transição Bandeiras](http://127.0.0.1:8766/?workspace=referencias&ref=243-reel-bandeiras), [Pizza](http://127.0.0.1:8766/?workspace=referencias&ref=663-template-pizza).
 
 ## Prompt base
 
@@ -111,11 +111,11 @@ Marque com class="provisorio" fotos, nomes e números que o usuário precisa tro
 
 ## Abra primeiro
 
-- [Agenda Dinâmica](http://127.0.0.1:8766/?workspace=pp-treta&ref=126-reel-17-02): o tambor com marcador fixo, a forma mais simples e reaproveitável de "onde estamos".
-- [Table top com zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=129-reel-17-06): mapa de objetos com zoom e divisores de palavra gigante cortada.
-- [Agenda Cores](http://127.0.0.1:8766/?workspace=pp-treta&ref=188-reel-26-07): marcador que viaja na cor do capítulo e depois vira barra de abas.
-- [Onboarding](http://127.0.0.1:8766/?workspace=pp-treta&ref=659-template-onboarding): palavra do divisor que encolhe para etiqueta e volta no capítulo seguinte.
-- [Magic Masks](http://127.0.0.1:8766/?workspace=pp-treta&ref=647-template-magic-masks-v1): moldura que cresce até virar o divisor e empurrar entre capítulos.
-- [Avent](http://127.0.0.1:8766/?workspace=pp-treta&ref=341-reel-fichario-avent): capítulos como abas de fichário na borda da capa.
+- [Agenda Dinâmica](http://127.0.0.1:8766/?workspace=referencias&ref=126-reel-17-02): o tambor com marcador fixo, a forma mais simples e reaproveitável de "onde estamos".
+- [Table top com zoom](http://127.0.0.1:8766/?workspace=referencias&ref=129-reel-17-06): mapa de objetos com zoom e divisores de palavra gigante cortada.
+- [Agenda Cores](http://127.0.0.1:8766/?workspace=referencias&ref=188-reel-26-07): marcador que viaja na cor do capítulo e depois vira barra de abas.
+- [Onboarding](http://127.0.0.1:8766/?workspace=referencias&ref=659-template-onboarding): palavra do divisor que encolhe para etiqueta e volta no capítulo seguinte.
+- [Magic Masks](http://127.0.0.1:8766/?workspace=referencias&ref=647-template-magic-masks-v1): moldura que cresce até virar o divisor e empurrar entre capítulos.
+- [Avent](http://127.0.0.1:8766/?workspace=referencias&ref=341-reel-fichario-avent): capítulos como abas de fichário na borda da capa.
 - [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-06-classic-vogue): divisor de respiro, uma cor e quase nada.
-- [Ponto final](http://127.0.0.1:8766/?workspace=pp-treta&ref=461-reel-ponto-final): o ponto do título vira portal para o capítulo.
+- [Ponto final](http://127.0.0.1:8766/?workspace=referencias&ref=461-reel-ponto-final): o ponto do título vira portal para o capítulo.

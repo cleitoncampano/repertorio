@@ -16,7 +16,7 @@ Conceito, esquema, diagrama, como algo funciona.
 
 `texto` (94), `transformacao` (87), `voo` (58), `reorganizar` (32), `panorama` (22), `zoom-mergulho` (18)
 
-## Melhores slides do PPTRETA (224 no total)
+## Melhores slides do acervo (224 no total)
 
 - **132-reel-17-09#2** (Tucano - Efeito Raio-X, força 5): quadrado de raio-X desce sobre a asa, alinhado com a foto  
   `_catalogo/miniaturas/132-reel-17-09/02.jpg`

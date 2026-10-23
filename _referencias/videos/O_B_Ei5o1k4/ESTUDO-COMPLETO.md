@@ -220,7 +220,7 @@ Jason analisa duas campanhas completas criadas dentro do bootcamp *NEXT Art Dire
 
 ---
 
-## 8. Como LLMs Devem Usar Este Estudo no Projeto `pptreta`
+## 8. Como LLMs Devem Usar Este Estudo no Repertório
 
 1. **Antes de desenhar qualquer slide, capa ou campanha**, suba na **Pirâmide da Grande Ideia**: defina explicitamente (a) o *Insight*, (b) a *Idea* e só então (c) a *Execução*.
 2. **Use o Menu de 11 Categorias (Seção 3)** como checklist obrigatório de Direção de Arte. Escolha deliberadamente 3 a 4 ingredientes para liderar a peça (ex.: *Tipografia como imagem + Espaço negativo extremo + Textura de papel cru*, ou *Objeto do cotidiano subvertido como container de informação*).

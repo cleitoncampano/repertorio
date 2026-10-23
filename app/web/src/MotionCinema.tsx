@@ -119,7 +119,7 @@ export function MotionCinema({item,detail,sequence,vocab,busy,notices,onClose,on
  const progress=duration?time/duration*100:0;
  const noun=isVideo?'vídeo':'referência';
  const techniques=terms(vocab,'tecnicas');
- const meta=isVideo?motionSummary(item):[kindName[item.kind]||'Referência',ASPECT_NAMES[item.aspect||''],item.origin==='pptreta'?'PPTRETA':item.origin==='externa'?'Externa':''].filter(Boolean).join(' · ');
+ const meta=isVideo?motionSummary(item):[kindName[item.kind]||'Referência',ASPECT_NAMES[item.aspect||''],item.origin==='acervo'?'Acervo':item.origin==='externa'?'Externa':''].filter(Boolean).join(' · ');
  return <Dialog.Root open onOpenChange={open=>{if(!open)onClose();}}><Dialog.Portal><Dialog.Overlay className="cinema-overlay"/>
   <Dialog.Content ref={setContent} className={'cinema '+mode+(filled?' filled':'')} aria-describedby={undefined}
    onEscapeKeyDown={e=>{e.stopPropagation();const doc=document as FullscreenDocument;if(doc.fullscreenElement||doc.webkitFullscreenElement){e.preventDefault();return;}if(filled){e.preventDefault();setFilled(false);}}}>

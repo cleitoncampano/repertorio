@@ -1,7 +1,7 @@
 # Como escrever as fichas das referências externas
 
 As imagens da pasta `_referencias` são peças de nível mundial (capas de revista, anúncios, ativações, aberturas de filmes,
-campanhas, frames de vídeos sobre criação). Elas entram na mesma biblioteca do PPTRETA e se ligam pelas mesmas técnicas.
+campanhas, frames de vídeos sobre criação). Elas entram na mesma biblioteca do acervo e se ligam pelas mesmas técnicas.
 Quem vai ler as fichas é um modelo de IA criando apresentações, sites e vídeos para qualquer tema. Então a pergunta é:
 **qual é o princípio desta peça que eu posso levar para um slide?**
 

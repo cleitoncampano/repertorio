@@ -67,7 +67,7 @@ def main():
     ap.add_argument('roteiro')
     ap.add_argument('--saida', required=True, help='pasta de referências da produção no projeto de destino')
     ap.add_argument('--forca', type=int, default=4)
-    ap.add_argument('-n', type=int, default=4, help='slides do PPTRETA por linha (mais 2 referências externas)')
+    ap.add_argument('-n', type=int, default=4, help='slides do acervo por linha (mais 2 referências externas)')
     a = ap.parse_args()
     linhas = ler_roteiro(a.roteiro)
     if not linhas:

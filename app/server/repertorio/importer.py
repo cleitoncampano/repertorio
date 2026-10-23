@@ -39,7 +39,7 @@ def image_aspect(path):
     return read(path) or None
 
 
-def import_library(db, workspace_id='pp-treta'):
+def import_library(db, workspace_id='referencias'):
     from .workspaces import Workspaces
     manager=Workspaces();manager.db=db
     manager.workspace(workspace_id)
@@ -82,7 +82,7 @@ def import_library(db, workspace_id='pp-treta'):
                 aspect=image_aspect(root / d['imagem']) if d.get('imagem') and kind!='slide' else None,
                 unclassified=d.get('unclassified',False), legacy=d,
             )
-            origin = 'externa' if kind == 'referencia' else 'pptreta'
+            origin = 'externa' if kind == 'referencia' else 'acervo'
             params = dict(id=rid,kind=kind,title=payload['title'],parent=d.get('deck'),origin=origin,
                           hidden=int(kind=='slide' and bool(d.get('antes') or d.get('oculto'))),hash=digest,payload=dumps(payload),search=index_text(payload),t=stamp)
             if old:

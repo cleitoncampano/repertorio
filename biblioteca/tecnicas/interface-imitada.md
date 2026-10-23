@@ -8,7 +8,7 @@ O slide imita uma tela conhecida (app de streaming, mensagens, busca, notificaç
 
 **Combina com:** `emprestimo-de-codigo`, `contraste-de-cor`, `camera-continua`, `transformacao`, `similaridade`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **130-reel-17-07** (Luz com botão, força 4): Desenhe um controle de interface (interruptor, botão, controle deslizante) na tela e faça o avanço parecer que a plateia acionou o controle: a imagem muda de estado junto e a frase se completa com a palavra-chave.  
   `_catalogo/pranchas/130-reel-17-07.jpg`
@@ -27,7 +27,7 @@ O slide imita uma tela conhecida (app de streaming, mensagens, busca, notificaç
 - **452-reel-pessoa-celular** (Pessoa saindo do celular, força 4): Faça o sujeito sair de dentro do objeto: a parte de baixo fica presa na tela do aparelho e a de cima escapa para fora da moldura, como se o conteúdo ganhasse vida.  
   `_catalogo/pranchas/452-reel-pessoa-celular.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **434-reel-nomad#3** (Nomad, força 4): a forma encolhe para uma barra de busca com texto e cursor no preto  
   `_catalogo/miniaturas/434-reel-nomad/03.jpg`

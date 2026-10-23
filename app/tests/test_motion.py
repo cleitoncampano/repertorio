@@ -42,7 +42,7 @@ def test_motion_import_links_videos_to_the_map_and_preserves_curation(library):
     assert video['aspect']=='vertical' and video['genres']==['vinheta']
     assert smart_search(library,s.AgentSearch(query='reels',workspace_ids=[wid]))['items'][0]['id']=='motion-giro'
     # O espaço anterior continua igual, sem vídeos.
-    assert all('motion' not in i for i in library.graph('pp-treta')['items'])
+    assert all('motion' not in i for i in library.graph('referencias')['items'])
     ref=library.get('motion-giro',workspace_ids=[wid])
     assert ref['prompt'].startswith('Make a 4 second') and ref['source']['stack']=='HyperFrames' and ref['format']=='mp4'
     assert {a['role'] for a in ref['assets']}=={'preview','storyboard','motion','original'}
@@ -98,22 +98,22 @@ def test_created_video_enters_like_the_motion_gallery(library,context):
     subprocess.run(['ffmpeg','-nostdin','-v','error','-y','-f','lavfi','-i','testsrc=size=360x640:rate=24:duration=6','-pix_fmt','yuv420p',str(root/'reel.mp4')],check=True)
     data=s.ReferenceData(title='Reel de lançamento',description='Vídeo vertical do app',idea='Abra com a dor e mostre a tela real',techniques=['contraste'],
                          genres=['lancamento'],prompt='Make a 6 second vertical launch reel')
-    op=register(library,s.Register(context_id=context['id'],request_key='reel-v1',data=data,files=['reel.mp4'],user_requested=True,target_workspace_ids=['pp-treta']))
+    op=register(library,s.Register(context_id=context['id'],request_key='reel-v1',data=data,files=['reel.mp4'],user_requested=True,target_workspace_ids=['referencias']))
     Worker(library).process(op['id'])
     assert library.operation(op['id'])['state']=='completed'
-    ref=library.get(op['ref_id'],workspace_ids=['pp-treta'])
+    ref=library.get(op['ref_id'],workspace_ids=['referencias'])
     assert {'original','preview','thumbnail','storyboard','motion'}<={a['role'] for a in ref['assets']}
     assert ref['motion']['video'] and ref['motion']['loop'] and ref['motion']['aspect']=='vertical' and ref['motion']['genres']==['lancamento']
     assert ref['video']['duration']>5 and ref['prompt'].startswith('Make a 6 second')
     # O prompt e o formato entram na busca; o tipo desconhecido é recusado.
-    assert smart_search(library,s.AgentSearch(query='launch reel',workspace_ids=['pp-treta'],kind='criacao'))['items'][0]['id']==ref['id']
-    assert smart_search(library,s.AgentSearch(query='tiktok',workspace_ids=['pp-treta'],kind='criacao'))['items'][0]['id']==ref['id']
+    assert smart_search(library,s.AgentSearch(query='launch reel',workspace_ids=['referencias'],kind='criacao'))['items'][0]['id']==ref['id']
+    assert smart_search(library,s.AgentSearch(query='tiktok',workspace_ids=['referencias'],kind='criacao'))['items'][0]['id']==ref['id']
     from repertorio.service import Problem
     with pytest.raises(Problem):library.validate_data(data.model_copy(update={'genres':['novela']}))
     # Atualizar a ficha sem informar tipos e prompt preserva os dois.
     library.update(ref['id'],s.Update(context_id=context['id'],expected_revision=ref['revision'],
         data=s.ReferenceData(title='Reel revisado',description='Vídeo vertical do app',idea='Abra com a dor',techniques=['contraste'])))
-    after=library.get(ref['id'],workspace_ids=['pp-treta'])
+    after=library.get(ref['id'],workspace_ids=['referencias'])
     assert after['title']=='Reel revisado' and after['genres']==['lancamento'] and after['prompt'].startswith('Make a 6 second')
 
 
@@ -133,4 +133,4 @@ def test_video_guides_reach_the_agent(library,context):
         text=call('tools/call',{'name':'get_guide','arguments':{'name':'lancamento'}})['result']['content'][0]['text']
         assert 'Curto ganha' in text
         assert call('tools/call',{'name':'get_guide','arguments':{'name':'../segredo'}})['result'].get('isError')
-    assert library.start(s.StartContext(project_id=context['project_id'],demand='Vídeo',workspace_ids=['pp-treta']))['guides_available']==['abertura','lancamento','kit']
+    assert library.start(s.StartContext(project_id=context['project_id'],demand='Vídeo',workspace_ids=['referencias']))['guides_available']==['abertura','lancamento','kit']

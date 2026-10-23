@@ -16,7 +16,7 @@ Mapa, lugar, geografia, presença regional.
 
 `texto` (36), `transformacao` (25), `voo` (18), `troca` (8), `zoom-recuo` (7), `panorama` (7)
 
-## Melhores slides do PPTRETA (87 no total)
+## Melhores slides do acervo (87 no total)
 
 - **062-reel-05-10-mapas-mapa-com-pontos#1** (Mapa com Pontos, força 4): mapa de pontinhos cinza com seis marcadores laranja  
   `_catalogo/miniaturas/062-reel-05-10-mapas-mapa-com-pontos/01.jpg`

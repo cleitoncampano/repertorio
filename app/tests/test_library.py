@@ -17,39 +17,39 @@ def data(**kwargs):
 
 def test_import_is_idempotent_and_keeps_curation(library,context):
     updated=library.update('deck',Update(context_id=context['id'],expected_revision=1,data=data()))
-    library.state('deck',StateChange(expected_membership_revision=updated['membership_revision'],state='trashed',workspace_id='pp-treta'),from_ui=True)
+    library.state('deck',StateChange(expected_membership_revision=updated['membership_revision'],state='trashed',workspace_id='referencias'),from_ui=True)
     report=import_library(library.db)
     assert report['inserted']==report['updated']==0
-    assert library.get('deck',workspace_ids=['pp-treta'])['title']=='Carrossel aprovado'
-    assert library.get('deck',workspace_ids=['pp-treta'])['state']=='trashed'
-    assert library.search(Search(kind='slide',workspace_ids=['pp-treta']))['total']==0
-    assert library.search(Search(kind='midia',workspace_ids=['pp-treta']))['total']==2
+    assert library.get('deck',workspace_ids=['referencias'])['title']=='Carrossel aprovado'
+    assert library.get('deck',workspace_ids=['referencias'])['state']=='trashed'
+    assert library.search(Search(kind='slide',workspace_ids=['referencias']))['total']==0
+    assert library.search(Search(kind='midia',workspace_ids=['referencias']))['total']==2
     assert (library.settings.root/'assets/demo.pptx').read_bytes()==b'original'
 
 
 def test_strict_filters_and_operations(library):
-    assert library.search(Search(reusable=True,query='verde',workspace_ids=['pp-treta']))['items'][0]['id']=='free'
-    assert library.search(Search(reusable=True,query='Marca',workspace_ids=['pp-treta']))['total']==0
-    assert library.search(Search(reusable=True,query='inexistente',workspace_ids=['pp-treta']))['total']==0
-    assert library.search(Search(operation='diferenciacao',workspace_ids=['pp-treta']))['total']==2
-    assert library.search(Search(query='\" OR *',workspace_ids=['pp-treta']))['total']==0
-    assert library.search(Search(kind='slide',workspace_ids=['pp-treta']))['total']==1
+    assert library.search(Search(reusable=True,query='verde',workspace_ids=['referencias']))['items'][0]['id']=='free'
+    assert library.search(Search(reusable=True,query='Marca',workspace_ids=['referencias']))['total']==0
+    assert library.search(Search(reusable=True,query='inexistente',workspace_ids=['referencias']))['total']==0
+    assert library.search(Search(operation='diferenciacao',workspace_ids=['referencias']))['total']==2
+    assert library.search(Search(query='\" OR *',workspace_ids=['referencias']))['total']==0
+    assert library.search(Search(kind='slide',workspace_ids=['referencias']))['total']==1
 
 
 def test_delete_restore_and_revision_conflict(library):
-    deleted=library.state('deck',StateChange(expected_membership_revision=1,state='trashed',workspace_id='pp-treta'),from_ui=True)
-    with pytest.raises(Problem) as error:library.state('deck',StateChange(expected_membership_revision=1,state='published',workspace_id='pp-treta'),from_ui=True)
+    deleted=library.state('deck',StateChange(expected_membership_revision=1,state='trashed',workspace_id='referencias'),from_ui=True)
+    with pytest.raises(Problem) as error:library.state('deck',StateChange(expected_membership_revision=1,state='published',workspace_id='referencias'),from_ui=True)
     assert error.value.status==409
-    library.state('deck',StateChange(expected_membership_revision=deleted['membership_revision'],state='published',workspace_id='pp-treta'),from_ui=True)
-    assert library.search(Search(kind='slide',workspace_ids=['pp-treta']))['total']==1
+    library.state('deck',StateChange(expected_membership_revision=deleted['membership_revision'],state='published',workspace_id='referencias'),from_ui=True)
+    assert library.search(Search(kind='slide',workspace_ids=['referencias']))['total']==1
 
 
 def test_parallel_contexts_do_not_mix(library,context,tmp_path):
     other=tmp_path/'sales';other.mkdir()
     p=library.project(Project(name='Comercial',root=str(other)))
-    c=library.start(StartContext(project_id=p['id'],demand='Apresentação comercial',workspace_ids=['pp-treta']))
+    c=library.start(StartContext(project_id=p['id'],demand='Apresentação comercial',workspace_ids=['referencias']))
     def work(cid):
-        return library.search(Search(query='Abertura',context_id=cid,workspace_ids=['pp-treta']))
+        return library.search(Search(query='Abertura',context_id=cid,workspace_ids=['referencias']))
     with ThreadPoolExecutor(2) as pool:a,b=list(pool.map(work,[context['id'],c['id']]))
     assert a['total']==b['total']>0
     assert {e['context_id'] for e in library.events() if e['action']=='references_searched'}=={context['id'],c['id']}
@@ -65,41 +65,41 @@ def test_parallel_updates_have_one_winner(library,context):
 
 
 def test_explicit_creation_cycle_and_idempotency(library,context):
-    req=Register(context_id=context['id'],request_key='carrossel-v1',data=data(source_reference_ids=['deck']),files=['carrossel.png'],user_requested=True,target_workspace_ids=['pp-treta'])
+    req=Register(context_id=context['id'],request_key='carrossel-v1',data=data(source_reference_ids=['deck']),files=['carrossel.png'],user_requested=True,target_workspace_ids=['referencias'])
     op=register(library,req)
     assert register(library,req)['id']==op['id']
     Worker(library).process(op['id'])
     assert library.operation(op['id'])['state']=='completed'
-    ref=library.get(op['ref_id'],workspace_ids=['pp-treta'])
+    ref=library.get(op['ref_id'],workspace_ids=['referencias'])
     assert ref['ready']==1 and ref['state']=='published'
     assert len(ref['assets'])==3
     # Managed copy survives removal of the project artifact.
     Path(library.context(context['id'])['root'],'carrossel.png').unlink()
     assert all(Path(r['path']).is_file() for r in library.db.query('SELECT path FROM assets WHERE ref_id=:id',id=ref['id']))
-    assert library.search(Search(query='Carrossel',kind='criacao',workspace_ids=['pp-treta']))['total']==1
+    assert library.search(Search(query='Carrossel',kind='criacao',workspace_ids=['referencias']))['total']==1
 
 
 def test_spontaneous_creation_stays_pending(library,context):
-    op=register(library,Register(context_id=context['id'],request_key='suggestion',data=data(),files=['carrossel.png'],target_workspace_ids=['pp-treta']))
+    op=register(library,Register(context_id=context['id'],request_key='suggestion',data=data(),files=['carrossel.png'],target_workspace_ids=['referencias']))
     Worker(library).process(op['id'])
-    assert library.search(Search(kind='criacao',workspace_ids=['pp-treta']))['total']==0
-    assert library.search(Search(kind='criacao',state='pending',workspace_ids=['pp-treta']))['total']==1
-    with pytest.raises(Problem):library.state(op['ref_id'],StateChange(context_id=context['id'],expected_membership_revision=1,state='published',workspace_id='pp-treta'))
-    library.state(op['ref_id'],StateChange(context_id=context['id'],expected_membership_revision=1,state='published',user_requested=True,workspace_id='pp-treta'))
-    assert library.search(Search(kind='criacao',workspace_ids=['pp-treta']))['total']==1
+    assert library.search(Search(kind='criacao',workspace_ids=['referencias']))['total']==0
+    assert library.search(Search(kind='criacao',state='pending',workspace_ids=['referencias']))['total']==1
+    with pytest.raises(Problem):library.state(op['ref_id'],StateChange(context_id=context['id'],expected_membership_revision=1,state='published',workspace_id='referencias'))
+    library.state(op['ref_id'],StateChange(context_id=context['id'],expected_membership_revision=1,state='published',user_requested=True,workspace_id='referencias'))
+    assert library.search(Search(kind='criacao',workspace_ids=['referencias']))['total']==1
 
 
 def test_paths_and_vocabulary_are_validated(library,context,tmp_path):
-    with pytest.raises(Problem):register(library,Register(context_id=context['id'],request_key='outside',data=data(),files=['../private.png'],target_workspace_ids=['pp-treta']))
+    with pytest.raises(Problem):register(library,Register(context_id=context['id'],request_key='outside',data=data(),files=['../private.png'],target_workspace_ids=['referencias']))
     req=data();req.techniques=['inventada']
     with pytest.raises(Problem):library.update('deck',Update(context_id=context['id'],expected_revision=1,data=req))
     root=Path(library.context(context['id'])['root'])
     (root/'link.png').symlink_to(library.settings.root/'assets/cover.png')
-    with pytest.raises(Problem):register(library,Register(context_id=context['id'],request_key='symlink',data=data(),files=['link.png'],target_workspace_ids=['pp-treta']))
+    with pytest.raises(Problem):register(library,Register(context_id=context['id'],request_key='symlink',data=data(),files=['link.png'],target_workspace_ids=['referencias']))
 
 
 def test_backup_restore_managed_assets(library,context,tmp_path):
-    op=register(library,Register(context_id=context['id'],request_key='backup-test',data=data(),files=['carrossel.png'],user_requested=True,target_workspace_ids=['pp-treta']))
+    op=register(library,Register(context_id=context['id'],request_key='backup-test',data=data(),files=['carrossel.png'],user_requested=True,target_workspace_ids=['referencias']))
     Worker(library).process(op['id'])
     archive=tmp_path/'snapshot.zip';report=backup(library.settings,archive)
     assert report['managed_files']==3
@@ -116,7 +116,7 @@ def test_backup_restore_managed_assets(library,context,tmp_path):
 
 def test_worker_restart_recovers_running_jobs(library,context):
     from sqlalchemy import text
-    op=register(library,Register(context_id=context['id'],request_key='restart-test',data=data(),files=['carrossel.png'],user_requested=True,target_workspace_ids=['pp-treta']))
+    op=register(library,Register(context_id=context['id'],request_key='restart-test',data=data(),files=['carrossel.png'],user_requested=True,target_workspace_ids=['referencias']))
     with library.db.engine.begin() as conn:conn.execute(text("UPDATE operations SET state='running' WHERE id=:id"),dict(id=op['id']))
     worker=Worker(library);worker.start()
     import time
@@ -131,7 +131,7 @@ def test_worker_restart_recovers_running_jobs(library,context):
 def test_html_requires_preview_and_is_not_executed(library,context):
     root=Path(library.context(context['id'])['root'])
     (root/'demo.html').write_text('<script>fetch("http://external.test")</script>')
-    req=Register(context_id=context['id'],request_key='html-no-preview',data=data(),files=['demo.html'],target_workspace_ids=['pp-treta'])
+    req=Register(context_id=context['id'],request_key='html-no-preview',data=data(),files=['demo.html'],target_workspace_ids=['referencias'])
     op=register(library,req);Worker(library).process(op['id'])
     assert library.operation(op['id'])['state']=='failed'
     req.request_key='html-preview';req.previews=['carrossel.png']

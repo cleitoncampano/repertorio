@@ -8,7 +8,7 @@ A mesma palavra repetida em pilha ou em linhas, às vezes vazada ou cortada pela
 
 **Combina com:** `tipografia-como-imagem`, `padrao-e-quebra`, `palavra-fantasma`, `contraste-de-cor`, `camera-continua`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **284-reel-cerebro-3d** (Cérebro, força 5): Transforme o objeto central do tema num personagem 3D que gira e se aproxima a cada slide, e use o nome do tema como textura tipográfica gigante atrás dele.  
   `_catalogo/pranchas/284-reel-cerebro-3d.jpg`
@@ -27,7 +27,7 @@ A mesma palavra repetida em pilha ou em linhas, às vezes vazada ou cortada pela
 - **168-reel-23-06** (Vozinha, força 4): Comece com o nome pequeno e sozinho; no avanço, faça-o crescer e se repetir em pilha atrás da pessoa recortada, e depois empurre a pilha para fora para abrir espaço para os números.  
   `_catalogo/pranchas/168-reel-23-06.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **284-reel-cerebro-3d#3** (Cérebro, força 5): palavra repetida em pilha vazando a borda; objeto em corte à direita  
   `_catalogo/miniaturas/284-reel-cerebro-3d/03.jpg`

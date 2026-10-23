@@ -8,7 +8,7 @@ Os slides são partes de um mesmo espaço; a câmera viaja entre eles.
 
 **Combina com:** `contraste-de-cor`, `regiao-comum`, `tipografia-como-imagem`, `similaridade`, `contraste-de-escala`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **129-reel-17-06** (Table top com zoom, força 5): Transforme a agenda numa cena real em que cada objeto representa uma etapa, e use cada objeto como porta: o zoom entra nele e abre o capítulo correspondente.  
   `_catalogo/pranchas/129-reel-17-06.jpg`
@@ -27,7 +27,7 @@ Os slides são partes de um mesmo espaço; a câmera viaja entre eles.
 - **581-reels-iceberg** (Iceberg, força 5): Divida uma ideia em duas camadas usando uma imagem que tenha parte visível e parte escondida: mostre a superfície com o título atrás do objeto e empurre a tela para baixo para revelar o que está por baixo, com o mesmo título agora borrado.  
   `_catalogo/pranchas/581-reels-iceberg.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **129-reel-17-06#1** (Table top com zoom, força 5): mesa vista de cima com cinco zooms escondidos sobre os objetos  
   `_catalogo/miniaturas/129-reel-17-06/01.jpg`

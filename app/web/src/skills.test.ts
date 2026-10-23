@@ -19,7 +19,7 @@ describe('descoberta de skills',()=>{
   expect(request).toContain('apenas as referências do espaço "GrowMate"');
   expect(request).toContain('workspace_id: growmate-id');
   expect(request).toContain('quais referências vai usar e por quê, com os links');
-  expect(request).not.toContain('PP Treta');
+  expect(request).not.toContain('Referências');
  });
  it('pede o espaço quando nenhum foi escolhido',()=>{
   const request=buildSkillRequest(skills[0],'Melhore a interface.');

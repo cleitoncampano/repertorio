@@ -43,7 +43,7 @@ Quando um LLM gera uma apresentação, um manifesto, um carrossel ou um vídeo s
 
 Isso gera tédio imediato porque **não há causalidade nem atrito**.
 
-### Como Aplicar o Teste `BUT / THEREFORE` em Apresentações e Roteiros no `pptreta`:
+### Como Aplicar o Teste `BUT / THEREFORE` em Apresentações e Roteiros no Repertório:
 Toda vez que você (LLM) desenhar o outline de uma apresentação de $N$ slides ou um roteiro de $N$ cenas, escreva explicitamente o conector lógico entre cada par de slides:
 
 1. **Slide 1 (Situação / Crença Atual)**: As empresas investem milhões em pesquisas de satisfação e dashboards de NPS.

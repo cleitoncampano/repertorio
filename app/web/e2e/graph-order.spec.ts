@@ -8,7 +8,7 @@ const order=(page:Page)=>menu(page).getByRole('menuitemradio').evaluateAll(eleme
 
 test('arrastar reordena sem trocar o grafo e salva a ordem entre visitas e espaços',async({page,request})=>{
  const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
- await page.goto('/?workspace=pp-treta&ref=deck');
+ await page.goto('/?workspace=referencias&ref=deck');
  await expect(page.locator('.detail-body h2')).toHaveText('Abertura criativa');
  await toggle(page).click();
  const source=(await row(page,'free').boundingBox())!,destination=(await row(page,'cosmos').boundingBox())!;
@@ -35,7 +35,7 @@ test('arrastar reordena sem trocar o grafo e salva a ordem entre visitas e espa�
 });
 
 test('teclado reordena e o arraste pode ser cancelado por Escape ou fora do menu',async({page})=>{
- await page.goto('/?workspace=pp-treta&ref=deck');await toggle(page).click();
+ await page.goto('/?workspace=referencias&ref=deck');await toggle(page).click();
  await page.keyboard.press('Alt+ArrowUp');await expect.poll(()=>order(page)).toEqual(initial);
  await page.keyboard.press('Alt+ArrowDown');
  const expected=['grouped','free',...initial.slice(2)];
@@ -59,7 +59,7 @@ test('teclado reordena e o arraste pode ser cancelado por Escape ou fora do menu
 test.describe('arraste por toque',()=>{
  test.use({hasTouch:true,isMobile:true,viewport:{width:390,height:740}});
  test('permite rolar os cards e arrastar pela alça até o fim com rolagem automática',async({page,context})=>{
-  await page.goto('/?workspace=pp-treta');await toggle(page).tap();
+  await page.goto('/?workspace=referencias');await toggle(page).tap();
   const session=await context.newCDPSession(page);
   const touch=async(type:'touchStart'|'touchMove'|'touchEnd',x=0,y=0)=>session.send('Input.dispatchTouchEvent',{type,touchPoints:type==='touchEnd'?[]:[{x,y}]});
   const first=(await row(page,'free').boundingBox())!;

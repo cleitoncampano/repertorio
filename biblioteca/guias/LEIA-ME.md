@@ -19,5 +19,5 @@ o que os melhores fazem, erros que derrubam, um prompt base e as referências pa
 
 Fluxo: história primeiro (`biblioteca/processo.md`), depois o guia de cada momento, as referências no Repertório (diga ao usuário quais vai usar e por quê),
 e a construção no motor HTML (`kit/LEIA-ME.md`, pelo MCP `get_guide` com `kit-apresentacao`). Para vídeos, os guias estão em `biblioteca/motion/`.
-As peças citadas ficam em dois espaços: Referências (apresentações e slides do PPT Treta) e Inspiração (referências externas e carrosséis Growmate). Inclua os dois em `workspace_ids` para abrir todas.
+As peças citadas ficam em dois espaços: Referências (apresentações e slides do acervo) e Inspiração (referências externas e carrosséis Growmate). Inclua os dois em `workspace_ids` para abrir todas.
 Para refazer os guias com o acervo atualizado, as instruções estão em `dados/_trabalho/INSTRUCOES-GUIAS-IMAGEM.md`.

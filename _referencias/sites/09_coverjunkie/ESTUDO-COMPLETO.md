@@ -326,7 +326,7 @@ Todas as imagens abaixo estão salvas localmente em `/Users/cleiton/Documents/De
 
 ---
 
-## 5. Guia Prático de Tradução: Como Aplicar o Método Coverjunkie no Nosso Projeto (`pptreta`)
+## 5. Guia Prático de Tradução: Como Aplicar o Método Coverjunkie no Nosso Projeto (Repertório)
 
 Sempre que formos projetar um **Slide de Capa (Slide 1)**, um **Slide Divisor de Seção**, uma **Capa de Carrossel** ou um **Pôster Conceitual**, devemos substituir o layout corporativo padrão por um dos **6 Arquétipos Coverjunkie**:
 

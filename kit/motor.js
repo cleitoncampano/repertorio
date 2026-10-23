@@ -1,4 +1,4 @@
-/* Motor de apresentação PPTRETA.
+/* Motor de apresentação do Repertório.
    Estrutura: <div class="palco"> com várias <section class="slide">.
    - data-m="nome": elementos com o mesmo nome em slides seguidos se transformam um no outro (Morph).
    - data-trans no slide de destino: morph (padrão), corte, esmaecer, empurrar, subir, zoom, cortina, circulo.

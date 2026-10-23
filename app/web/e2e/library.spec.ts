@@ -2,7 +2,7 @@ import {test,expect} from '@playwright/test';
 
 test('link de busca enquadra as capas, preserva a navegação e permite explorar o mapa',async({page})=>{
  // Uma câmera anterior pode estar distante do conjunto que a busca vai encontrar.
- await page.addInitScript(()=>sessionStorage.setItem('repertorio-camera-v3:pp-treta',JSON.stringify({zoom:.1,pan:{x:5000,y:5000}})));
+ await page.addInitScript(()=>sessionStorage.setItem('repertorio-camera-v3:referencias',JSON.stringify({zoom:.1,pan:{x:5000,y:5000}})));
  await page.goto('/?q=Abertura');
  const input=page.getByRole('textbox',{name:'Buscar inspiração'});
  await expect(input).toHaveValue('Abertura');
@@ -65,12 +65,12 @@ test('explora, exclui e restaura sem editar arquivos',async({page})=>{
 
 test('agentes paralelos consultam e incorporam uma criação',async({request,page})=>{
  const projects=await (await request.get('/api/projects')).json();
- const sessions=await Promise.all(projects.map(async(p:any)=>(await (await request.post('/api/contexts',{data:{workspace_ids:['pp-treta'],project_id:p.id,demand:'Demanda de '+p.name}})).json())));
+ const sessions=await Promise.all(projects.map(async(p:any)=>(await (await request.post('/api/contexts',{data:{workspace_ids:['referencias'],project_id:p.id,demand:'Demanda de '+p.name}})).json())));
  expect(sessions[0].id).not.toBe(sessions[1].id);
  const searches=await Promise.all(sessions.map(async(c:any)=>(await (await request.post('/api/search',{data:{query:'Abertura',context_id:c.id}})).json())));
  expect(searches.every(x=>x.total>0)).toBeTruthy();
  const marketing=sessions.find((c:any)=>projects.find((p:any)=>p.id===c.project_id)?.name==='Marketing');
- const op=await (await request.post('/api/references',{data:{context_id:marketing.id,target_workspace_ids:['pp-treta'],request_key:'approved-e2e',user_requested:true,files:['carrossel.png'],data:{title:'Criação aprovada E2E',description:'Um novo carrossel',idea:'Conectar contraste e narrativa',techniques:['contraste'],intentions:['ABRIR'],source_reference_ids:['deck']}}})).json();
+ const op=await (await request.post('/api/references',{data:{context_id:marketing.id,target_workspace_ids:['referencias'],request_key:'approved-e2e',user_requested:true,files:['carrossel.png'],data:{title:'Criação aprovada E2E',description:'Um novo carrossel',idea:'Conectar contraste e narrativa',techniques:['contraste'],intentions:['ABRIR'],source_reference_ids:['deck']}}})).json();
  await expect.poll(async()=>(await (await request.get('/api/operations/'+op.id)).json()).state).toBe('completed');
  await page.goto('/?ref='+op.ref_id);
  await expect(page.locator('.detail-body h2')).toHaveText('Criação aprovada E2E');
@@ -79,8 +79,8 @@ test('agentes paralelos consultam e incorporam uma criação',async({request,pag
 
 test('sugestão aguarda revisão e configuração é acessível por teclado',async({request,page})=>{
  const project=(await (await request.get('/api/projects')).json()).find((p:any)=>p.name==='Marketing');
- const context=await (await request.post('/api/contexts',{data:{workspace_ids:['pp-treta'],project_id:project.id,demand:'Sugerir nova referência'}})).json();
- const op=await (await request.post('/api/references',{data:{context_id:context.id,target_workspace_ids:['pp-treta'],request_key:'pending-e2e',files:['carrossel.png'],data:{title:'Sugestão para revisar',description:'Uma ideia possível',idea:'Explorar outra leitura'}}})).json();
+ const context=await (await request.post('/api/contexts',{data:{workspace_ids:['referencias'],project_id:project.id,demand:'Sugerir nova referência'}})).json();
+ const op=await (await request.post('/api/references',{data:{context_id:context.id,target_workspace_ids:['referencias'],request_key:'pending-e2e',files:['carrossel.png'],data:{title:'Sugestão para revisar',description:'Uma ideia possível',idea:'Explorar outra leitura'}}})).json();
  await expect.poll(async()=>(await (await request.get('/api/operations/'+op.id)).json()).state).toBe('completed');
  await page.goto('/');
  await page.getByRole('button',{name:'Sugestões',exact:true}).click();
@@ -123,7 +123,7 @@ test('controles compactos preservam o mapa e a busca por teclado',async({page})=
  await page.getByRole('button',{name:'Filtros',exact:true}).click();
  await expect(page.getByRole('region',{name:'Filtros do mapa'})).toBeVisible();
  expect(await page.locator('.map-stage').boundingBox()).toEqual(before);
- await page.getByLabel('Origem',{exact:true}).selectOption('pptreta');
+ await page.getByLabel('Origem',{exact:true}).selectOption('acervo');
  await page.getByRole('button',{name:'Ver resultados'}).click();
  await expect(page.getByRole('region',{name:'Filtros do mapa'})).not.toBeVisible();
  await expect(page.locator('.filter-summary')).toBeVisible();

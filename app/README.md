@@ -37,13 +37,13 @@ O frontend compilado é servido pelo FastAPI. Os originais e o protótipo contin
 
 ## Espaços de trabalho
 
-O seletor **Espaços**, no canto esquerdo, permite criar, entrar, renomear e excluir espaços. O nome atual aparece no cabeçalho. Novos espaços começam vazios; todo o acervo anterior ficou em **PP Treta**, cujo ID é `pp-treta`.
+O seletor **Espaços**, no canto esquerdo, permite criar, entrar, renomear e excluir espaços. O nome atual aparece no cabeçalho. Novos espaços começam vazios; todo o acervo anterior ficou em **Referências**, cujo ID é `referencias`.
 
 Uma referência pode aparecer em vários espaços sem duplicar a ficha nem os arquivos. Alterar título, descrição ou classificação atualiza todos os espaços. Publicação e lixeira são independentes: excluir de A preserva a referência em B. Pelo painel da referência, use **Adicionar ao espaço** ou **Mover para o espaço**. Mover retira apenas do espaço de origem. Apresentações levam seus slides.
 
 Excluir um espaço remove-o imediatamente, sem opção de restauração. Seus vínculos são removidos; os arquivos e as referências dos demais espaços são preservados. Vocabulário, princípios criativos e fontes continuam compartilhados.
 
-Os agentes precisam receber os espaços explicitamente. Exemplo: “Use os espaços GrowMate e PP Treta como inspiração”. Se você não indicar, o agente deve perguntar. O espaço aberto no app não muda o contexto do agente. Ao incorporar o resultado, indique também os espaços de destino.
+Os agentes precisam receber os espaços explicitamente. Exemplo: “Use os espaços GrowMate e Referências como inspiração”. Se você não indicar, o agente deve perguntar. O espaço aberto no app não muda o contexto do agente. Ao incorporar o resultado, indique também os espaços de destino.
 
 ## Como usar
 
@@ -119,7 +119,7 @@ O agente inicia um contexto e envia uma ficha como esta (os valores de classific
 ```json
 {
   "context_id": "ID_RETORNADO_POR_START_CONTEXT",
-  "target_workspace_ids": ["pp-treta"],
+  "target_workspace_ids": ["referencias"],
   "request_key": "carrossel-christensen-v1",
   "user_requested": true,
   "files": ["saida/carrossel.pdf"],
@@ -154,26 +154,26 @@ HTML e demais originais são entregues como download, não executados no domíni
 ./app/run.sh workspaces
 ./app/run.sh create-workspace "GrowMate"
 ./app/run.sh delete-workspace ID_DO_ESPACO --revision REVISAO_ATUAL
-./app/run.sh search "abertura com impacto" --workspace pp-treta --prancha
-./app/run.sh get '284-reel-cerebro-3d' --workspace pp-treta
-./app/run.sh context PROJECT_ID "Apresentação comercial" --workspace pp-treta
+./app/run.sh search "abertura com impacto" --workspace referencias --prancha
+./app/run.sh get '284-reel-cerebro-3d' --workspace referencias
+./app/run.sh context PROJECT_ID "Apresentação comercial" --workspace referencias
 ./app/run.sh register /tmp/envio.json
 ./app/run.sh operation OPERATION_ID
 ./app/run.sh doctor
 ```
 
-A API está documentada em **http://127.0.0.1:8766/docs**. Browser, CLI e MCP usam a mesma camada de serviço. Grafo, contadores, demandas, operações, atividade e prévias recebem `workspace_id`; buscas recebem `workspace_ids` ou `context_id`. A ficha mantém `revision` editorial e o vínculo mantém `membership_revision`. A alteração de estado exige `workspace_id` e `expected_membership_revision`. Chamadas sem repertório explícito retornam 422; links antigos da interface continuam usando PP Treta. Não há busca vetorial nem API de IA paga embutida; o agente do harness interpreta o pedido e escolhe consultas complementares.
+A API está documentada em **http://127.0.0.1:8766/docs**. Browser, CLI e MCP usam a mesma camada de serviço. Grafo, contadores, demandas, operações, atividade e prévias recebem `workspace_id`; buscas recebem `workspace_ids` ou `context_id`. A ficha mantém `revision` editorial e o vínculo mantém `membership_revision`. A alteração de estado exige `workspace_id` e `expected_membership_revision`. Chamadas sem repertório explícito retornam 422; links antigos da interface continuam abrindo Referências. Não há busca vetorial nem API de IA paga embutida; o agente do harness interpreta o pedido e escolhe consultas complementares.
 
 ## Persistência, importação e recuperação
 
 ### Cópia de segurança automática
 
-O serviço faz sozinho, uma vez por semana, uma cópia em **iCloud Drive › Backups › Repertório** (fora do Mac): `repertorio-DATA.zip` com a curadoria (banco e criações) e `pptreta-DATA.bundle` com o histórico do projeto. Guarda as 6 mais recentes e registra "Cópia de segurança salva" em Atividade. `REPERTORIO_BACKUP_DIR` troca a pasta.
+O serviço faz sozinho, uma vez por semana, uma cópia em **iCloud Drive › Backups › Repertório** (fora do Mac): `repertorio-DATA.zip` com a curadoria (banco e criações) e `repertorio-DATA.bundle` com o histórico do projeto. Guarda as 6 mais recentes e registra "Cópia de segurança salva" em Atividade. `REPERTORIO_BACKUP_DIR` troca a pasta.
 
 ```sh
 ./app/run.sh backup-now     # faz uma cópia agora (com o serviço parado ou rodando)
 ./app/run.sh doctor         # mostra a última cópia
-git clone "…/Backups/Repertório/pptreta-DATA.bundle" pptreta   # recupera o projeto
+git clone "…/Backups/Repertório/repertorio-DATA.bundle" repertorio   # recupera o projeto
 ./app/run.sh restore "…/Backups/Repertório/repertorio-DATA.zip"  # recupera a curadoria (serviço parado)
 ```
 
@@ -182,7 +182,7 @@ O histórico (git) guarda código, textos e dados do acervo. As produções são
 ### Importação e restauração manual
 
 ```sh
-./app/run.sh import --workspace pp-treta
+./app/run.sh import --workspace referencias
 ./app/run.sh import-motion --workspace ID_DO_ESPACO   # vídeos de dados/motion/*.jsonl
 ./app/run.sh backup /caminho/backup-repertorio.zip
 # Encerre o serviço antes de restaurar:

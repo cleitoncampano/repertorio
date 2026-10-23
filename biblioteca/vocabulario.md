@@ -106,7 +106,7 @@ Jogar com a expectativa: criar uma regra e quebrar, deixar o cérebro completar,
 
 ## Movimentos
 
-Famílias de movimento entre slides (de onde vêm as transições do PPTRETA). A análise automática do Morph usa estes mesmos ids.
+Famílias de movimento entre slides (de onde vêm as transições do acervo). A análise automática do Morph usa estes mesmos ids.
 
 | id | o que é |
 |---|---|

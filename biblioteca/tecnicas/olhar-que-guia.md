@@ -8,7 +8,7 @@ A pessoa da foto olha ou aponta para o texto; a plateia segue o olhar.
 
 **Combina com:** `sangria-total`, `profundidade-em-camadas`, `contraste-de-cor`, `hierarquia-de-leitura`, `revelacao-progressiva`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **048-reel-04-01** (Double Exposure, força 4): Recorte uma paisagem ou cena do tema na silhueta de uma pessoa de perfil e sobreponha ao retrato, para dizer que aquele lugar ou ideia mora na cabeça dela; deixe um campo liso ao lado para o título.  
   `_catalogo/pranchas/048-reel-04-01.jpg`
@@ -27,7 +27,7 @@ A pessoa da foto olha ou aponta para o texto; a plateia segue o olhar.
 - **521-reel-texto-haaland** (Haaland, força 3): Antes de pôr texto sobre uma foto, reposicione ou espelhe a imagem para o sujeito ficar num terço e o texto morar no espaço escuro que sobra; nunca escreva por cima do corpo da pessoa.  
   `_catalogo/pranchas/521-reel-texto-haaland.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **048-reel-04-01#2** (Double Exposure, força 4): floresta dentro da cabeça do retrato que olha para o título; metade final do título em verde  
   `_catalogo/miniaturas/048-reel-04-01/02.jpg`

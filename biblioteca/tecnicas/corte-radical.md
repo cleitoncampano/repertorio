@@ -8,7 +8,7 @@ Enquadramento que corta o sujeito de forma inesperada; o que fica de fora també
 
 **Combina com:** `contraste-de-escala`, `camera-continua`, `tipografia-como-imagem`, `contraste-de-cor`, `sangria-total`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **129-reel-17-06** (Table top com zoom, força 5): Transforme a agenda numa cena real em que cada objeto representa uma etapa, e use cada objeto como porta: o zoom entra nele e abre o capítulo correspondente.  
   `_catalogo/pranchas/129-reel-17-06.jpg`
@@ -27,7 +27,7 @@ Enquadramento que corta o sujeito de forma inesperada; o que fica de fora també
 - **097-reel-12-08** (Frase - Einstein, força 4): Para uma citação, coloque a foto do autor dentro do próprio sinal gráfico da citação: comece com o retrato em tela cheia e, no avanço, faça-o se recolher para dentro de uma vírgula ou aspa gigante cortada pela borda.  
   `_catalogo/pranchas/097-reel-12-08.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **129-reel-17-06#2** (Table top com zoom, força 5): palavra serifada gigante partida e cortada na base, fundo branco  
   `_catalogo/miniaturas/129-reel-17-06/02.jpg`

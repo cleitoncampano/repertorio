@@ -16,7 +16,7 @@ Frase de alguém, depoimento, manifesto, pergunta retórica.
 
 `transformacao` (16), `texto` (13), `voo` (7), `reorganizar` (6), `troca` (5), `giro` (4)
 
-## Melhores slides do PPTRETA (41 no total)
+## Melhores slides do acervo (41 no total)
 
 - **060-reel-05-09#2** (Gusttavo Lima, força 4): busto de pedra sobre o nome fantasma, aspas grandes e citação em serifa à direita  
   `_catalogo/miniaturas/060-reel-05-09/02.jpg`

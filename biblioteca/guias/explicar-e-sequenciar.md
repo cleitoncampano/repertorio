@@ -15,44 +15,44 @@ Escolha quando as partes estão ligadas por causa, por camada ou por tempo; se f
 **1. Janela que enxerga por dentro**
 - Foto em tela cheia, parada. Por cima, um recorte de cerca de 1/3 da largura com a versão interna da mesma cena (raio-X, anatomia, planta, esboço), alinhada pixel a pixel.
 - A janela pousa numa parte por slide. Título fixo num canto, no máximo uma linha por parte; fecha com a versão interna em tela cheia.
-- [Tucano - Efeito Raio-X](http://127.0.0.1:8766/?workspace=pp-treta&ref=132-reel-17-09), [Anatomia Humana](http://127.0.0.1:8766/?workspace=pp-treta&ref=138-reel-18-09-efeito-wow-anatomia-humana), [Zebras](http://127.0.0.1:8766/?workspace=pp-treta&ref=561-reel-zebras).
+- [Tucano - Efeito Raio-X](http://127.0.0.1:8766/?workspace=referencias&ref=132-reel-17-09), [Anatomia Humana](http://127.0.0.1:8766/?workspace=referencias&ref=138-reel-18-09-efeito-wow-anatomia-humana), [Zebras](http://127.0.0.1:8766/?workspace=referencias&ref=561-reel-zebras).
 
 **2. O todo vira cenário**
 - Slide 1: o objeto ou a sigla inteira, pequena e centralizada. Nos seguintes, a câmera aproxima 3 a 7 vezes e anda de parte em parte; cada parte fica gigante e cortada pela borda.
 - Sobre a parte, um card translúcido com nome e 2 a 3 linhas, ou uma linha de 1 px até um rótulo espaçado. Último slide recua para o todo. Cabem 3 a 5 partes.
-- [SWOT](http://127.0.0.1:8766/?workspace=pp-treta&ref=219-reel-30-07) (sigla em escala 7x), [Célula](http://127.0.0.1:8766/?workspace=pp-treta&ref=283-reel-celula-3d) (modelo em corte e rótulos), [Buerger King](http://127.0.0.1:8766/?workspace=pp-treta&ref=252-reel-bk) (desce camada por camada e fecha na vista explodida).
+- [SWOT](http://127.0.0.1:8766/?workspace=referencias&ref=219-reel-30-07) (sigla em escala 7x), [Célula](http://127.0.0.1:8766/?workspace=referencias&ref=283-reel-celula-3d) (modelo em corte e rótulos), [Buerger King](http://127.0.0.1:8766/?workspace=referencias&ref=252-reel-bk) (desce camada por camada e fecha na vista explodida).
 
 **3. Cursor do tema numa linha fixa**
 - Linha horizontal fina na mesma altura em todos os slides. Um recorte que simboliza o tema (avião visto de cima, navio) é o cursor e anda para a direita a cada marco.
 - Ano atual em torno de 200 px sob o cursor; os anteriores encolhem para cerca de 45% e ficam marcados na linha; cartão de três linhas junto do cursor. De 4 a 6 marcos.
-- [Azul](http://127.0.0.1:8766/?workspace=pp-treta&ref=086-reel-10-02), [Canal do Panama](http://127.0.0.1:8766/?workspace=pp-treta&ref=071-reel-07-01).
+- [Azul](http://127.0.0.1:8766/?workspace=referencias&ref=086-reel-10-02), [Canal do Panama](http://127.0.0.1:8766/?workspace=referencias&ref=071-reel-07-01).
 
 **4. Tambor com marcador parado**
 - A lista inteira (anos, etapas, capítulos) numa coluna que rola; um marcador fixo (triângulo, seta, dois fios) segura a faixa central.
 - O item da vez fica grande, os vizinhos pequenos e cortados pelas bordas; à direita, uma frase. Até 7 itens curtos.
-- [Timeline Azul](http://127.0.0.1:8766/?workspace=pp-treta&ref=527-reel-timeline-timeline-timeline-azul), [Agenda Dinâmica](http://127.0.0.1:8766/?workspace=pp-treta&ref=126-reel-17-02), [Mercedes McLaren](http://127.0.0.1:8766/?workspace=pp-treta&ref=583-reels-mercedes) (o ano cresce da barra do rodapé até virar título).
+- [Timeline Azul](http://127.0.0.1:8766/?workspace=referencias&ref=527-reel-timeline-timeline-timeline-azul), [Agenda Dinâmica](http://127.0.0.1:8766/?workspace=referencias&ref=126-reel-17-02), [Mercedes McLaren](http://127.0.0.1:8766/?workspace=referencias&ref=583-reels-mercedes) (o ano cresce da barra do rodapé até virar título).
 
 **5. Facho ou barra que acompanha o passo**
-- Todos os passos à vista desde o início. Um facho de luz desce sobre o passo atual e os já ditos ficam na penumbra: [Ovni](http://127.0.0.1:8766/?workspace=pp-treta&ref=444-reel-ovni), até 3 passos.
+- Todos os passos à vista desde o início. Um facho de luz desce sobre o passo atual e os já ditos ficam na penumbra: [Ovni](http://127.0.0.1:8766/?workspace=referencias&ref=444-reel-ovni), até 3 passos.
 - Em tom corporativo: menu lateral de fases com a da vez em branco e uma barra de progresso que cresce e passa do vermelho ao verde. No palco, só objetivo, prazo e progresso.
-- [Gol](http://127.0.0.1:8766/?workspace=pp-treta&ref=468-reel-projeto-4step), [Próximos Passos](http://127.0.0.1:8766/?workspace=pp-treta&ref=472-reel-proximos-passos).
+- [Gol](http://127.0.0.1:8766/?workspace=referencias&ref=468-reel-projeto-4step), [Próximos Passos](http://127.0.0.1:8766/?workspace=referencias&ref=472-reel-proximos-passos).
 
 **6. Porta para o capítulo**
 - Uma cena vista de cima (mesa com cadernos, papéis, celular) em que cada objeto é a miniatura de um passo, girada no ângulo do objeto e com a cor do slide de destino.
 - O clique mergulha no objeto e abre um slide tipográfico: número de dois dígitos, título em 2 a 3 linhas de fonte larga, texto curto. Ao fim, volta à cena.
-- [Table Top Zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=562-reel-zoom), [Table top com zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=129-reel-17-06), [Etapas](http://127.0.0.1:8766/?workspace=pp-treta&ref=329-reel-etapas-mac) (a tela do notebook é o slide).
+- [Table Top Zoom](http://127.0.0.1:8766/?workspace=referencias&ref=562-reel-zoom), [Table top com zoom](http://127.0.0.1:8766/?workspace=referencias&ref=129-reel-17-06), [Etapas](http://127.0.0.1:8766/?workspace=referencias&ref=329-reel-etapas-mac) (a tela do notebook é o slide).
 
 ## Movimento
 
 - Explicar segue todo, parte, todo: mergulho no primeiro detalhe, panorama entre as partes com o mesmo elemento (só mudam posição e escala) e recuo final. O recuo fixa o modelo; não termine no último detalhe.
 - Sequenciar anda na direção da leitura: da esquerda para a direita na linha do tempo, de baixo para cima no tambor. O que passou continua visível, menor ou apagado; o que vem pode aparecer cortado na borda.
 - Um elemento se move por passagem (câmera, cursor, janela ou marcador). O resto fica parado para a plateia não procurar onde olhar.
-- Tempos: o motor usa 900 ms por padrão. Câmera e cursor pedem 1000 a 1400 ms (`data-dur`); a rolagem da [Agenda Dinâmica](http://127.0.0.1:8766/?workspace=pp-treta&ref=126-reel-17-02) usa 700 ms; a barra de progresso cresce em 1,4 vez a duração.
-- Costura entre slides vale mais que transição: em [Processo Industrial](http://127.0.0.1:8766/?workspace=pp-treta&ref=320-reel-empurrao-completa) fotos e linhas que saem por uma borda continuam no slide seguinte na mesma coordenada, e o empurrão vira rolagem de uma página só. Em [Iceberg](http://127.0.0.1:8766/?workspace=pp-treta&ref=581-reels-iceberg) o empurrão para baixo leva a câmera para debaixo d'água.
+- Tempos: o motor usa 900 ms por padrão. Câmera e cursor pedem 1000 a 1400 ms (`data-dur`); a rolagem da [Agenda Dinâmica](http://127.0.0.1:8766/?workspace=referencias&ref=126-reel-17-02) usa 700 ms; a barra de progresso cresce em 1,4 vez a duração.
+- Costura entre slides vale mais que transição: em [Processo Industrial](http://127.0.0.1:8766/?workspace=referencias&ref=320-reel-empurrao-completa) fotos e linhas que saem por uma borda continuam no slide seguinte na mesma coordenada, e o empurrão vira rolagem de uma página só. Em [Iceberg](http://127.0.0.1:8766/?workspace=referencias&ref=581-reels-iceberg) o empurrão para baixo leva a câmera para debaixo d'água.
 
 ## Como fazer no motor HTML
 
-- Câmera: ponha o desenho inteiro num contêiner de 1920 x 1080 com `data-m="mundo"` em todos os slides e mude só `transform: translate(...) scale(...)` em px. Use imagens grandes: o mergulho de [Implantação Imobiliária](http://127.0.0.1:8766/?workspace=pp-treta&ref=381-reel-implantacao) amplia 3,5 vezes.
+- Câmera: ponha o desenho inteiro num contêiner de 1920 x 1080 com `data-m="mundo"` em todos os slides e mude só `transform: translate(...) scale(...)` em px. Use imagens grandes: o mergulho de [Implantação Imobiliária](http://127.0.0.1:8766/?workspace=referencias&ref=381-reel-implantacao) amplia 3,5 vezes.
 - Janela alinhada: `div` com `data-m="janela"`, `background-image` da versão interna, `background-size: 1920px 1080px` e `background-position` igual a menos o `left` e menos o `top` do div. Recalcule em cada slide. Na passagem o motor funde as duas capturas, então mantenha a janela do mesmo tamanho e o salto curto.
 - Cursor e anos: cursor com `data-m` mudando só `left`; cada ano num `span` com `data-m` próprio, 200 px quando ativo e 64 px quando passado; a linha é um `div` de 1 px de altura com `data-m` que estica a `width`.
 - Tambor: lista num contêiner com `overflow:hidden` e `mask-image: linear-gradient(transparent, #000 25%, #000 75%, transparent)`; a lista tem `data-m` e muda `translateY` por slide; o marcador fica fora do contêiner, sem `data-m`.
@@ -71,22 +71,22 @@ Escolha quando as partes estão ligadas por causa, por camada ou por tempo; se f
 
 ## O que os melhores fazem
 
-- Mostram o todo antes e depois das partes. [SWOT](http://127.0.0.1:8766/?workspace=pp-treta&ref=219-reel-30-07) vai da sigla às letras e volta à sigla; [Infográfico com Movimentos](http://127.0.0.1:8766/?workspace=pp-treta&ref=383-reel-infografico-morph) dá o mapa, visita cada parte na ordem da fala e termina no todo.
-- Explicam dentro da imagem, não ao lado dela. A janela de [Tucano - Efeito Raio-X](http://127.0.0.1:8766/?workspace=pp-treta&ref=132-reel-17-09) e a de [Ácido Hialurônico](http://127.0.0.1:8766/?workspace=pp-treta&ref=569-reels-allergan) mostram o mecanismo no lugar exato em que ele existe.
-- Escolhem um cursor que pertence ao tema. O avião de [Azul](http://127.0.0.1:8766/?workspace=pp-treta&ref=086-reel-10-02) e o navio de [Canal do Panama](http://127.0.0.1:8766/?workspace=pp-treta&ref=071-reel-07-01) carregam o assunto; as fichas avisam que um objeto aleatório vira enfeite.
-- Deixam o marcador parado e movem o conteúdo. Em [Timeline Azul](http://127.0.0.1:8766/?workspace=pp-treta&ref=527-reel-timeline-timeline-timeline-azul) e [Agenda](http://127.0.0.1:8766/?workspace=pp-treta&ref=137-reel-18-09) a seta fica no mesmo ponto e a lista sobe uma linha por slide.
-- Fazem a hierarquia com escala, não só com cor. Em [Números vazados](http://127.0.0.1:8766/?workspace=pp-treta&ref=103-reel-13-08) o numeral do passo é recortado da foto, gigante e cortado pela borda, e vira a imagem do slide.
-- Fundem navegação e conteúdo. Em [Mercedes McLaren](http://127.0.0.1:8766/?workspace=pp-treta&ref=583-reels-mercedes) o ano da barra cresce até virar o título; em [Agenda Cores](http://127.0.0.1:8766/?workspace=pp-treta&ref=188-reel-26-07) o marcador que percorre a agenda vira a pílula das abas, na cor do capítulo.
-- Tornam a metáfora literal. [Iceberg](http://127.0.0.1:8766/?workspace=pp-treta&ref=581-reels-iceberg) separa superfície e fundo pela linha d'água; [Célula](http://127.0.0.1:8766/?workspace=pp-treta&ref=283-reel-celula-3d) gira o modelo para a vista em corte. Metáfora visual tem a maior força média do grupo.
+- Mostram o todo antes e depois das partes. [SWOT](http://127.0.0.1:8766/?workspace=referencias&ref=219-reel-30-07) vai da sigla às letras e volta à sigla; [Infográfico com Movimentos](http://127.0.0.1:8766/?workspace=referencias&ref=383-reel-infografico-morph) dá o mapa, visita cada parte na ordem da fala e termina no todo.
+- Explicam dentro da imagem, não ao lado dela. A janela de [Tucano - Efeito Raio-X](http://127.0.0.1:8766/?workspace=referencias&ref=132-reel-17-09) e a de [Ácido Hialurônico](http://127.0.0.1:8766/?workspace=referencias&ref=569-reels-allergan) mostram o mecanismo no lugar exato em que ele existe.
+- Escolhem um cursor que pertence ao tema. O avião de [Azul](http://127.0.0.1:8766/?workspace=referencias&ref=086-reel-10-02) e o navio de [Canal do Panama](http://127.0.0.1:8766/?workspace=referencias&ref=071-reel-07-01) carregam o assunto; as fichas avisam que um objeto aleatório vira enfeite.
+- Deixam o marcador parado e movem o conteúdo. Em [Timeline Azul](http://127.0.0.1:8766/?workspace=referencias&ref=527-reel-timeline-timeline-timeline-azul) e [Agenda](http://127.0.0.1:8766/?workspace=referencias&ref=137-reel-18-09) a seta fica no mesmo ponto e a lista sobe uma linha por slide.
+- Fazem a hierarquia com escala, não só com cor. Em [Números vazados](http://127.0.0.1:8766/?workspace=referencias&ref=103-reel-13-08) o numeral do passo é recortado da foto, gigante e cortado pela borda, e vira a imagem do slide.
+- Fundem navegação e conteúdo. Em [Mercedes McLaren](http://127.0.0.1:8766/?workspace=referencias&ref=583-reels-mercedes) o ano da barra cresce até virar o título; em [Agenda Cores](http://127.0.0.1:8766/?workspace=referencias&ref=188-reel-26-07) o marcador que percorre a agenda vira a pílula das abas, na cor do capítulo.
+- Tornam a metáfora literal. [Iceberg](http://127.0.0.1:8766/?workspace=referencias&ref=581-reels-iceberg) separa superfície e fundo pela linha d'água; [Célula](http://127.0.0.1:8766/?workspace=referencias&ref=283-reel-celula-3d) gira o modelo para a vista em corte. Metáfora visual tem a maior força média do grupo.
 
 ## Erros que derrubam
 
-- Parágrafo dentro de card, cartão ou etiqueta. É o cuidado mais repetido nas fichas: uma frase por etapa e o resto falado ([Timeline Azul](http://127.0.0.1:8766/?workspace=pp-treta&ref=527-reel-timeline-timeline-timeline-azul), [Gol](http://127.0.0.1:8766/?workspace=pp-treta&ref=468-reel-projeto-4step)). [Calendar 2026](http://127.0.0.1:8766/?workspace=pp-treta&ref=001-26-0101-calendar-2026) serve melhor como documento do que projetado.
-- Grade de cards iguais em que só a cor marca o item da vez. É o padrão dos fracos ([Template Morph](http://127.0.0.1:8766/?workspace=pp-treta&ref=031-reel-02-05), [Retângulos Arredondados](http://127.0.0.1:8766/?workspace=pp-treta&ref=053-reel-04-08), [Artemis II](http://127.0.0.1:8766/?workspace=pp-treta&ref=111-reel-15-04)); com mais de 4 itens vira repetição.
-- Apagar o que a plateia precisa comparar. O texto apagado fica ilegível de propósito em [Itens com movimento](http://127.0.0.1:8766/?workspace=pp-treta&ref=072-reel-07-05) e [Carros elétricos - linha com movimento](http://127.0.0.1:8766/?workspace=pp-treta&ref=189-reel-26-08).
-- Janela ou zoom com imagem desalinhada ou pequena: a ilusão quebra e o close pixela. [Apple](http://127.0.0.1:8766/?workspace=pp-treta&ref=023-apple-reels) exige foto em altíssima resolução sobre fundo idêntico ao do slide.
-- Câmera sem roteiro. O percurso tem de seguir a fala, senão vira passeio sem rumo ([Infográfico com Movimentos](http://127.0.0.1:8766/?workspace=pp-treta&ref=383-reel-infografico-morph)).
-- Itens demais para o recurso: 6 marcos já apertam a linha do tempo ([Linha Rápida](http://127.0.0.1:8766/?workspace=pp-treta&ref=033-reel-02-08)), o facho cabe 3 ([Ovni](http://127.0.0.1:8766/?workspace=pp-treta&ref=444-reel-ovni)), barra de abas acima de 5 seções fica ilegível ([Bitcoin](http://127.0.0.1:8766/?workspace=pp-treta&ref=090-reel-11-02)).
+- Parágrafo dentro de card, cartão ou etiqueta. É o cuidado mais repetido nas fichas: uma frase por etapa e o resto falado ([Timeline Azul](http://127.0.0.1:8766/?workspace=referencias&ref=527-reel-timeline-timeline-timeline-azul), [Gol](http://127.0.0.1:8766/?workspace=referencias&ref=468-reel-projeto-4step)). [Calendar 2026](http://127.0.0.1:8766/?workspace=referencias&ref=001-26-0101-calendar-2026) serve melhor como documento do que projetado.
+- Grade de cards iguais em que só a cor marca o item da vez. É o padrão dos fracos ([Template Morph](http://127.0.0.1:8766/?workspace=referencias&ref=031-reel-02-05), [Retângulos Arredondados](http://127.0.0.1:8766/?workspace=referencias&ref=053-reel-04-08), [Artemis II](http://127.0.0.1:8766/?workspace=referencias&ref=111-reel-15-04)); com mais de 4 itens vira repetição.
+- Apagar o que a plateia precisa comparar. O texto apagado fica ilegível de propósito em [Itens com movimento](http://127.0.0.1:8766/?workspace=referencias&ref=072-reel-07-05) e [Carros elétricos - linha com movimento](http://127.0.0.1:8766/?workspace=referencias&ref=189-reel-26-08).
+- Janela ou zoom com imagem desalinhada ou pequena: a ilusão quebra e o close pixela. [Apple](http://127.0.0.1:8766/?workspace=referencias&ref=023-apple-reels) exige foto em altíssima resolução sobre fundo idêntico ao do slide.
+- Câmera sem roteiro. O percurso tem de seguir a fala, senão vira passeio sem rumo ([Infográfico com Movimentos](http://127.0.0.1:8766/?workspace=referencias&ref=383-reel-infografico-morph)).
+- Itens demais para o recurso: 6 marcos já apertam a linha do tempo ([Linha Rápida](http://127.0.0.1:8766/?workspace=referencias&ref=033-reel-02-08)), o facho cabe 3 ([Ovni](http://127.0.0.1:8766/?workspace=referencias&ref=444-reel-ovni)), barra de abas acima de 5 seções fica ilegível ([Bitcoin](http://127.0.0.1:8766/?workspace=referencias&ref=090-reel-11-02)).
 
 ## Prompt base
 
@@ -102,11 +102,11 @@ Antes de entregar: rode python3 -I ferramentas/ver.py, confira cada passo e cada
 
 ## Abra primeiro
 
-- [SWOT](http://127.0.0.1:8766/?workspace=pp-treta&ref=219-reel-30-07): câmera dentro da sigla, uma parte por slide e volta ao todo.
-- [Tucano - Efeito Raio-X](http://127.0.0.1:8766/?workspace=pp-treta&ref=132-reel-17-09): janela alinhada que mostra o que há por dentro.
-- [Célula](http://127.0.0.1:8766/?workspace=pp-treta&ref=283-reel-celula-3d): modelo em corte com linha fina e rótulo espaçado para nomear partes.
-- [Azul](http://127.0.0.1:8766/?workspace=pp-treta&ref=086-reel-10-02): cursor do tema sobre a linha do tempo, anos passados encolhendo.
-- [Timeline Azul](http://127.0.0.1:8766/?workspace=pp-treta&ref=527-reel-timeline-timeline-timeline-azul): tambor com seta fixa, a versão mais simples de montar.
-- [Gol](http://127.0.0.1:8766/?workspace=pp-treta&ref=468-reel-projeto-4step): processo corporativo com menu de fases e barra que muda de cor.
-- [Table Top Zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=562-reel-zoom): cena com uma porta para cada passo e volta ao mapa.
+- [SWOT](http://127.0.0.1:8766/?workspace=referencias&ref=219-reel-30-07): câmera dentro da sigla, uma parte por slide e volta ao todo.
+- [Tucano - Efeito Raio-X](http://127.0.0.1:8766/?workspace=referencias&ref=132-reel-17-09): janela alinhada que mostra o que há por dentro.
+- [Célula](http://127.0.0.1:8766/?workspace=referencias&ref=283-reel-celula-3d): modelo em corte com linha fina e rótulo espaçado para nomear partes.
+- [Azul](http://127.0.0.1:8766/?workspace=referencias&ref=086-reel-10-02): cursor do tema sobre a linha do tempo, anos passados encolhendo.
+- [Timeline Azul](http://127.0.0.1:8766/?workspace=referencias&ref=527-reel-timeline-timeline-timeline-azul): tambor com seta fixa, a versão mais simples de montar.
+- [Gol](http://127.0.0.1:8766/?workspace=referencias&ref=468-reel-projeto-4step): processo corporativo com menu de fases e barra que muda de cor.
+- [Table Top Zoom](http://127.0.0.1:8766/?workspace=referencias&ref=562-reel-zoom): cena com uma porta para cada passo e volta ao mapa.
 - [Growmate #Livros 30 · Gestão do Relacionamento e Customer Experience · As camadas](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-4e796812-49cc-4fbb-8543-273613c814ce): carrossel 4:5 em que o fio contínuo é o próprio modelo.

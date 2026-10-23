@@ -1,7 +1,7 @@
 Gerador do catálogo (uso técnico; o catálogo em si abre pelo "Abrir catálogo.command").
 
 Refazer tudo, a partir da pasta dos materiais:
-  python3 -I _catalogo/gerador/thumbs.py _originais/pptx _catalogo/miniaturas /tmp/pptreta-tmp
+  python3 -I _catalogo/gerador/thumbs.py _originais/pptx _catalogo/miniaturas /tmp/repertorio-tmp
   python3 -I _catalogo/gerador/build_data.py .
   (REFAZER=1 na frente do primeiro comando refaz até as miniaturas que já existem)
 

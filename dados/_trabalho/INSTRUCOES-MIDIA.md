@@ -1,6 +1,6 @@
 # Como etiquetar a mídia do acervo
 
-São imagens e vídeos tirados de dentro dos arquivos do PPTRETA. A etiqueta serve para um modelo de IA achar a peça
+São imagens e vídeos tirados de dentro dos arquivos do acervo. A etiqueta serve para um modelo de IA achar a peça
 certa pela busca ("recorte de pessoa sorrindo", "textura de papel", "celular na mão") e saber se pode usar.
 
 ## Por lote

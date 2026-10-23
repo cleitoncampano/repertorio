@@ -1,7 +1,7 @@
 # Repertório: biblioteca de referências para criar apresentações
 
 Esta pasta é um ecossistema de referências visuais, narrativas e de movimento para você **criar apresentações, sites e vídeos
-originais para qualquer cliente e qualquer tema**. A base é o curso PPTRETA (688 arquivos de PowerPoint, 4.709 slides,
+originais para qualquer cliente e qualquer tema**. A base é o curso de apresentações (688 arquivos de PowerPoint, 4.709 slides,
 24 PDFs do Canva) somado a referências de nível mundial (capas de revista, anúncios, ativações, aberturas de filmes,
 estudos de storytelling e de direção de arte).
 
@@ -115,9 +115,9 @@ No app, o banco (`app/.runtime/library.sqlite3`) é a fonte de verdade: importa 
 
 ## Manutenção do acervo
 
-Se os arquivos de `_originais/` mudarem, refaça na ordem: `ferramentas/construir/extrair.py`, `pranchas.py`, `pacotes.py`, fichas novas (instruções em `dados/_trabalho/INSTRUCOES-FICHAS.md`), `montar.py`. Depois rode `./app/run.sh import --workspace pp-treta`: ele preserva a curadoria do app.
+Se os arquivos de `_originais/` mudarem, refaça na ordem: `ferramentas/construir/extrair.py`, `pranchas.py`, `pacotes.py`, fichas novas (instruções em `dados/_trabalho/INSTRUCOES-FICHAS.md`), `montar.py`. Depois rode `./app/run.sh import --workspace referencias`: ele preserva a curadoria do app.
 O catálogo visual se refaz com `_catalogo/gerador/` (ver `LEIA-ME.txt` lá dentro).
-Espaços do acervo: **Referências** guarda as apresentações, slides e mídias do PPT Treta; **Inspiração** guarda as referências externas (sites, portfólios, estudos) e as criações, como os carrosséis Growmate, que também ficam em **Growmate**. Para slides e carrosséis, busque nos dois primeiros juntos.
+Espaços do acervo: **Referências** guarda as apresentações, slides e mídias do acervo; **Inspiração** guarda as referências externas (sites, portfólios, estudos) e as criações, como os carrosséis Growmate, que também ficam em **Growmate**. Para slides e carrosséis, busque nos dois primeiros juntos.
 
 Vídeos de motion (espaço Motion, galeria do Prompt Motion): `ferramentas/incorporar_prompt_motion.py` coleta páginas e prompts, baixa capas e vídeos para `_originais/prompt-motion/`, gera a prancha de quadros, separa lotes e monta `dados/motion/prompt-motion.jsonl` a partir das fichas de `dados/motion/_trabalho/` (instruções no mesmo lugar) e do tipo de cada vídeo em `dados/motion/generos.json`; o formato de tela sai das medidas do vídeo. Depois: `./app/run.sh import-motion --workspace ID_DO_ESPACO`. Os vídeos são de terceiros: servem de referência de movimento, ritmo e prompt, nunca como mídia de entrega.
 O bloco abaixo é gerado por `./app/run.sh connect --write-instructions`; se mudar o texto, mude também o modelo em `app/server/repertorio/cli.py`.

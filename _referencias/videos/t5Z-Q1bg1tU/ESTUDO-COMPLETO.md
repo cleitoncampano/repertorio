@@ -90,7 +90,7 @@ Quando você coloca exatamente a mesma informação nas mãos de um contador de 
 
 ---
 
-## 3. Como LLMs Devem Usar Este Estudo no Projeto `pptreta`
+## 3. Como LLMs Devem Usar Este Estudo no Repertório
 
 1. **Em Apresentações (PPTX)**: Estruture a transição entre slides usando **MAS / PORTANTO** (nunca faça uma sequência de slides tipo "Tópico 1... e depois Tópico 2... e depois Tópico 3"). Cada slide deve resolver a tensão do slide anterior ou abrir um novo conflito que exige o próximo slide.
 2. **No Copywriting de Slides, Manifestos e Reels**: Aplique a **música de Gary Provost** (`frames_curados/05_rhythm_gary_provost_sentence_length_music.jpg`). Misture frases de 2 palavras com construções rítmicas em crescendo.

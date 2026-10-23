@@ -1,6 +1,6 @@
 # Plano: Perestroika como repertório acionável para modelos
 
-Criado em 22/10/2026, a pedido do Cleiton. Objetivo: transformar a pasta `perestroika/` em material que agentes de IA consultam e aplicam ao criar, como foi feito com o PPT Treta, indo além do visual. Funciona junto com os outros espaços e também sozinho.
+Criado em 22/10/2026, a pedido do Cleiton. Objetivo: transformar a pasta `perestroika/` em material que agentes de IA consultam e aplicam ao criar, como foi feito com o acervo de apresentações, indo além do visual. Funciona junto com os outros espaços e também sozinho.
 
 ## O que tem na pasta
 
@@ -11,13 +11,13 @@ Criado em 22/10/2026, a pedido do Cleiton. Objetivo: transformar a pasta `perest
    - **Mapa do Storytelling**: 8 cartas para montar uma narrativa (Catraca, Tenho dados, Didatismo na veia, Sou foda, Poder de escuta, Quebra-gelo, Vulnerabilidade, Fator surpresa), cada uma com a pergunta que o autor responde sobre o próprio tema. É um modelo pronto para preencher.
    - **Checklist Apresentações Poderosas**: planejamento (formato, tempo, público, tese), estrutura em início, meio e fim ("se não prender em 30 segundos, esquece") e design (menos é mais, cor com função, um protagonista por slide, alinhamento, fontes, imagens, animações discretas), com exemplos de antes e depois.
    - **Cursos** (Tetris, Swag, Liga os Pontos, Mood, Branding, Print Me, Yakuza, Sputnik, Scholé e o catálogo in company): métodos de criatividade, inovação, pesquisa de tendências, marca e educação corporativa.
-2. **Visual**: os próprios slides têm estética editorial forte (cor chapada, títulos condensados, palavra grande sobre foto, numeração "#8"). Servem de referência visual como os do PPT Treta.
+2. **Visual**: os próprios slides têm estética editorial forte (cor chapada, títulos condensados, palavra grande sobre foto, numeração "#8"). Servem de referência visual como os de Referências.
 
 Limites encontrados:
 - Cerca de metade das páginas tem o texto só dentro da imagem: a extração precisa de leitura visual, não só de texto.
 - `ChoraPPT_Curso_Completo_SP.pdf` é o folheto de venda do curso (programa, datas, preço), com pouco conteúdo de método.
 - As "pranchetas" são retratos de professores, não pranchas de tipografia como diz o índice. Ficam fora do espaço visual.
-- Os links do `INDICE_MATERIAIS.md` apontam para a pasta antiga `pptreta/`.
+- Os links do `INDICE_MATERIAIS.md` apontam para a pasta do projeto.
 - É material de terceiros: a pasta continua no `.gitignore`, fora de pacotes e demonstrações. O acervo guarda as ideias reescritas com a fonte (arquivo e página), nunca cópias de slides ou textos longos.
 
 ## Recomendação: uma fonte, três portas
@@ -58,7 +58,7 @@ Pronto quando: toda ficha com fonte; sem travessão; links válidos; um teste à
 Pronto quando: `get_guide` lista os novos guias; as skills disparam com pedidos naturais ("quero montar um workshop", "revisa esse deck"); testes do servidor e da interface passam.
 
 ### Fase 4: espaço visual Perestroika
-- Cada PDF vira um deck pai e cada página escolhida vira slide filho, como no PPT Treta. Saem folhetos de preço, logos de clientes, retratos e páginas só de texto corrido; estimativa de 250 a 350 slides.
+- Cada PDF vira um deck pai e cada página escolhida vira slide filho, como nas apresentações de Referências. Saem folhetos de preço, logos de clientes, retratos e páginas só de texto corrido; estimativa de 250 a 350 slides.
 - Fichas com o vocabulário atual (intenções, técnicas, movimento, estética, tom), `ideia` e `como_funciona`, em lotes com prancha para conferência, mais um campo ligando o slide à ficha de método que ele ilustra.
 - Importação num espaço novo **Perestroika**, com `reusable=false`. O vídeo do Chora PPT entra com prancha de quadros, como os do Motion.
 Pronto quando: contagem conferida, pranchas revisadas, busca como "palavra grande sobre foto" traz slides da Perestroika ao lado de Referências e Inspiração, mapa abre com o visual e o desempenho atuais.
@@ -72,4 +72,4 @@ Uma criação de verdade usando o espaço sozinho (ex.: um workshop Growmate) e 
 
 ## Ordem e custo
 
-Fases 1 a 3 entregam o que é mais acionável (método, modelos, skills) e não mexem no mapa. A fase 1 é a mais cara, pela leitura visual de 760 páginas. A fase 4 repete o trabalho do PPT Treta e pode vir depois sem prejuízo das anteriores.
+Fases 1 a 3 entregam o que é mais acionável (método, modelos, skills) e não mexem no mapa. A fase 1 é a mais cara, pela leitura visual de 760 páginas. A fase 4 repete o trabalho de Referências e pode vir depois sem prejuízo das anteriores.

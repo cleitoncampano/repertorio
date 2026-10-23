@@ -8,7 +8,7 @@ Um diferente no meio de vários iguais.
 
 **Combina com:** `grade-modular`, `regiao-comum`, `numeracao`, `similaridade`, `revelacao-progressiva`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **450-reel-pedro-pedro** (Pedro Pedro Pedro, força 3): Estabeleça um padrão sério com os primeiros itens e quebre no último com um intruso em movimento contínuo, girando e pulsando em loop: o riso vem da regra que a plateia acabou de aprender.  
   `_catalogo/pranchas/450-reel-pedro-pedro.jpg`
@@ -17,7 +17,7 @@ Um diferente no meio de vários iguais.
 - **110-reel-14-11** (Organograma Padrão, força 2): Pinte cada nível da hierarquia com uma cor própria e use uma cor diferente só nas caixas que pedem atenção: a plateia lê os níveis pela cor e acha o destaque sem precisar de legenda.  
   `_catalogo/pranchas/110-reel-14-11.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **064-reel-06-05#3** (Álbum da Copa, força 4): página de outro time com uma única figurinha colada no canto  
   `_catalogo/miniaturas/064-reel-06-05/03.jpg`

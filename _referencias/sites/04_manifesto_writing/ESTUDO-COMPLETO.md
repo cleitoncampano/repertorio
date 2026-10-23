@@ -343,7 +343,7 @@ O site organiza os melhores manifestos da história em **15 listas Top 10 temát
 
 ## Parte 6: Playbook de Engenharia para LLMs — Como Escrever Manifestos e Pitches de Elite
 
-Quando este repositório (`pptreta`) ou qualquer agente/LLM for acionado para **escrever um manifesto de marca, um roteiro de vídeo-manifesto ou a narrativa de abertura de um *pitch deck***, siga rigorosamente este protocolo de 5 passos baseado no método de Lonnie Elliott:
+Quando este repositório (Repertório) ou qualquer agente/LLM for acionado para **escrever um manifesto de marca, um roteiro de vídeo-manifesto ou a narrativa de abertura de um *pitch deck***, siga rigorosamente este protocolo de 5 passos baseado no método de Lonnie Elliott:
 
 ### Passo 1: Diagnóstico e Seleção da Geometria (*Shape Selection*)
 Nunca comece escrevendo frases soltas. Primeiro, defina na ficha técnica:

@@ -16,7 +16,7 @@ Divisor de capítulo ou seção. Respiro e mudança de assunto.
 
 `panorama` (178), `transformacao` (70), `texto` (36), `voo` (33), `zoom-mergulho` (30), `giro` (23)
 
-## Melhores slides do PPTRETA (304 no total)
+## Melhores slides do acervo (304 no total)
 
 - **129-reel-17-06#2** (Table top com zoom, força 5): palavra serifada gigante partida e cortada na base, fundo branco  
   `_catalogo/miniaturas/129-reel-17-06/02.jpg`

@@ -326,7 +326,7 @@ Abaixo está o inventário completo das imagens salvas localmente em `/Users/cle
 
 ---
 
-## 4. Regras Práticas da Escola Dave Dye para LLMs Geradores de Apresentações (`pptreta`)
+## 4. Regras Práticas da Escola Dave Dye para LLMs Geradores de Apresentações (Repertório)
 
 1. **Nunca decore a página; estruture o argumento:** Nas peças do acervo de Dave Dye, não existem "formas abstratas decorativas nos cantos" nem "gradientes suaves sem função". Cada linha, seta, recorte ou espaço branco existe para conduzir o olho do título até a prova visual.
 2. **Dê ao espaço em branco o status de elemento ativo:** Em [`13_vw_ddb_05.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/05_dave_dye_pinterest/imagens/13_vw_ddb_05.jpg), [`14_nike_wk_01.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/05_dave_dye_pinterest/imagens/14_nike_wk_01.jpg) e [`17_kenneth_cole_02.jpg`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/05_dave_dye_pinterest/imagens/17_kenneth_cole_02.jpg), o branco ocupa de 40% a 65% da área total, criando o silêncio acústico necessário para que o título ressoe.

@@ -16,7 +16,7 @@ Agenda, sumário, contexto, onde estamos na jornada.
 
 `texto` (42), `voo` (31), `transformacao` (29), `reorganizar` (22), `giro` (12), `panorama` (10)
 
-## Melhores slides do PPTRETA (105 no total)
+## Melhores slides do acervo (105 no total)
 
 - **129-reel-17-06#1** (Table top com zoom, força 5): mesa vista de cima com cinco zooms escondidos sobre os objetos  
   `_catalogo/miniaturas/129-reel-17-06/01.jpg`

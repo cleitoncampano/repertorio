@@ -8,7 +8,7 @@ Elementos aparecem um a um no ritmo da fala.
 
 **Combina com:** `foco-seletivo`, `contraste-de-cor`, `numeracao`, `linha-guia`, `profundidade-em-camadas`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **132-reel-17-09** (Tucano - Efeito Raio-X, força 5): Tenha duas versões da mesma imagem, a normal e a de dentro, e passe um quadrado que mostra a de dentro exatamente alinhado: parece uma lente que enxerga através do assunto.  
   `_catalogo/pranchas/132-reel-17-09.jpg`
@@ -27,7 +27,7 @@ Elementos aparecem um a um no ritmo da fala.
 - **075-reel-07-08** (Formula Indy - Pilotos, força 4): Dê a cada item uma cor própria e um objeto que entra em cena antes dele: primeiro só o objeto aparecendo na borda, depois ele atravessa e abre espaço para a pessoa e o texto, e a próxima cor cobre a anterior.  
   `_catalogo/pranchas/075-reel-07-08.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **canva-18#2** (Canva: Steph Curry, força 5): linhas do nome deslizam em sentidos opostos; pergunta e parágrafos entram nos lados  
   `_catalogo/miniaturas/canva-18/02.jpg`

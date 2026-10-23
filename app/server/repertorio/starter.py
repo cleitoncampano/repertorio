@@ -35,7 +35,7 @@ def initialize(settings):
         db.migrate()
         if fresh:
             with db.engine.begin() as conn:
-                conn.execute(text("UPDATE workspaces SET name='Meu repertório',name_key='meu repertório' WHERE id='pp-treta'"))
+                conn.execute(text("UPDATE workspaces SET name='Meu repertório',name_key='meu repertório' WHERE id='referencias'"))
                 conn.execute(text('INSERT INTO meta(key,value) VALUES(:key,:value)'),
                              {'key': 'vocabulary', 'value': dumps(VOCABULARY)})
         return {'initialized': fresh, 'preserved_existing_library': not fresh, 'home': str(settings.home)}

@@ -8,7 +8,7 @@ Dois conceitos fundidos numa imagem só; a imagem é o argumento.
 
 **Combina com:** `contraste-de-cor`, `foco-seletivo`, `isolamento`, `profundidade-em-camadas`, `camera-continua`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **129-reel-17-06** (Table top com zoom, força 5): Transforme a agenda numa cena real em que cada objeto representa uma etapa, e use cada objeto como porta: o zoom entra nele e abre o capítulo correspondente.  
   `_catalogo/pranchas/129-reel-17-06.jpg`
@@ -27,7 +27,7 @@ Dois conceitos fundidos numa imagem só; a imagem é o argumento.
 - **044-reel-03-09** (Taylor violão, força 4): Recorte a silhueta do objeto que simboliza o tema numa placa da cor do fundo e deixe uma foto deslizar lentamente por trás dela, como se a cena acontecesse dentro do objeto; use um vazio da própria silhueta para ancorar o texto.  
   `_catalogo/pranchas/044-reel-03-09.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **129-reel-17-06#1** (Table top com zoom, força 5): mesa vista de cima com cinco zooms escondidos sobre os objetos  
   `_catalogo/miniaturas/129-reel-17-06/01.jpg`

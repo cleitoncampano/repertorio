@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test';
 
 test('imagens abrem em tela grande, trocam de referência e o mapa se organiza por história, recurso ou formato',async({page})=>{
- await page.goto('/?workspace=pp-treta');
+ await page.goto('/?workspace=referencias');
  await expect(page.locator('.map-surface')).toBeVisible();
  await page.evaluate(()=>(document.querySelector('.map-surface') as any)._cyreg.cy.getElementById('ref:deck').emit('tap'));
  const cinema=page.locator('.cinema');

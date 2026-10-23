@@ -256,7 +256,7 @@ Abaixo está o catálogo integral das **136 técnicas oficiais** extraídas do E
 
 ## 4. Playbook Mestre: Como Traduzir Técnicas do Eyecannndy para Apresentações (PowerPoint Morph) e Reels
 
-Para aplicar o repertório do Eyecannndy na criação de apresentações de alto impacto (`pptreta`) e vídeos curtos (`Reels`), utilize estas **7 Receitas Práticas de Direção Visual**:
+Para aplicar o repertório do Eyecannndy na criação de apresentações de alto impacto (Repertório) e vídeos curtos (`Reels`), utilize estas **7 Receitas Práticas de Direção Visual**:
 
 ### Receita 1: O "Dolly Zoom (Vertigo)" em 2 Slides com PowerPoint Morph
 - **Referência Visual:** [`13_prancha_dolly_zoom.png`](file:///Users/cleiton/Documents/Desenvolvimento/repertorio/_referencias/sites/06_eyecannndy/imagens/13_prancha_dolly_zoom.png)

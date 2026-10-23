@@ -8,7 +8,7 @@ Caminho, trilha ou linha do tempo que o olho segue.
 
 **Combina com:** `contraste-de-cor`, `camera-continua`, `revelacao-progressiva`, `numeracao`, `foco-seletivo`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **283-reel-celula-3d** (Célula, força 5): Faça um tour guiado pelo interior do objeto do tema: gire o modelo para a vista em corte e, a cada slide, aproxime e desloque a câmera até uma parte diferente, nomeada por uma linha fina e um rótulo discreto.  
   `_catalogo/pranchas/283-reel-celula-3d.jpg`
@@ -27,7 +27,7 @@ Caminho, trilha ou linha do tempo que o olho segue.
 - **201-reel-27-12** (Fanta, força 4): Divida o período em blocos de três itens e faça de cada bloco um mapa clicável: rótulos grandes sobre uma linha com fotos esfumadas, cada foto abrindo o seu slide com o rótulo gigante e a foto ocupando quase a tela.  
   `_catalogo/pranchas/201-reel-27-12.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **283-reel-celula-3d#2** (Célula, força 5): modelo gira para a vista em corte; linha horizontal aponta a primeira parte  
   `_catalogo/miniaturas/283-reel-celula-3d/02.jpg`

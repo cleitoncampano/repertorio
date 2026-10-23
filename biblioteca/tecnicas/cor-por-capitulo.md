@@ -8,7 +8,7 @@ Cada parte da apresentação tem a sua cor de fundo; a plateia sente a mudança 
 
 **Combina com:** `foco-seletivo`, `contraste-de-escala`, `transformacao`, `regiao-comum`, `similaridade`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **226-reel-31-08-produto-coca-cola** (Coca-Cola, força 4): Divida a tela em faixas verticais de cor, uma por item, e alterne visão geral e foco: no foco a faixa da vez se alarga, o objeto cresce com um giro e o texto aparece; depois tudo volta ao equilíbrio antes do próximo.  
   `_catalogo/pranchas/226-reel-31-08-produto-coca-cola.jpg`
@@ -21,7 +21,7 @@ Cada parte da apresentação tem a sua cor de fundo; a plateia sente a mudança 
 - **567-reels-agenda** (Samsung, força 3): Troque a lista da agenda por uma fileira de imagens dos itens e, a cada capítulo, pinte com uma cor própria só o card da vez, apagando a legenda dos outros: a plateia vê o todo e sabe onde está.  
   `_catalogo/pranchas/567-reels-agenda.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **226-reel-31-08-produto-coca-cola#2** (Coca-Cola, força 4): faixa magenta se alarga, a lata cresce girando e entra o texto do primeiro item  
   `_catalogo/miniaturas/226-reel-31-08-produto-coca-cola/02.jpg`

@@ -8,7 +8,7 @@ O cérebro completa a forma que falta.
 
 **Combina com:** `mascara-de-forma`, `grade-modular`, `metafora-visual`, `contraste-de-cor`, `hierarquia-de-leitura`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **077-reel-07-11** (Lançamento, força 4): Para pôr uma foto na frente do título sem perder a leitura, deixe o título sólido atrás da foto e repita só o contorno das letras, translúcido, por cima dela; o olho completa a palavra.  
   `_catalogo/pranchas/077-reel-07-11.jpg`
@@ -27,7 +27,7 @@ O cérebro completa a forma que falta.
 - **196-reel-27-06** (Oceano Azul - Hexágonos, força 3): Cubra o vídeo do tema com um painel de cor da marca e vaze nele um pequeno favo de formas geométricas; o movimento aparece só pelas janelas e o resto do painel recebe o título.  
   `_catalogo/pranchas/196-reel-27-06.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **077-reel-07-11#2** (Lançamento, força 4): foto na frente da palavra; contorno translúcido das letras continua sobre a foto  
   `_catalogo/miniaturas/077-reel-07-11/02.jpg`

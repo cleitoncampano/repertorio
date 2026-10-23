@@ -8,7 +8,7 @@ Uma palavra marcada por cor, marca-texto, peso, sublinhado ou caixa dentro da fr
 
 **Combina com:** `contraste-de-cor`, `emprestimo-de-codigo`, `sangria-total`, `camera-continua`, `hierarquia-de-leitura`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **091-reel-11-06** (Plásticos no Mar, força 4): Mostre o problema disfarçado no cenário: refaça os elementos naturais da cena com o material que é o problema, abra com a imagem ampliada e recue a câmera para o título entrar só depois que a plateia percebeu.  
   `_catalogo/pranchas/091-reel-11-06.jpg`
@@ -27,7 +27,7 @@ Uma palavra marcada por cor, marca-texto, peso, sublinhado ou caixa dentro da fr
 - **318-reel-einstein** (Einstein, força 4): Numa citação, deixe o autor encarar a plateia em close e transforme as aspas em grandes manchas de cor desfocadas que enquadram a frase; termine com a assinatura sendo escrita, como se o autor assinasse ao vivo.  
   `_catalogo/pranchas/318-reel-einstein.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **132-reel-17-09#7** (Tucano - Efeito Raio-X, força 5): fundo preto, frase serifada com uma palavra em itálico  
   `_catalogo/miniaturas/132-reel-17-09/07.jpg`

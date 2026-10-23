@@ -12,19 +12,19 @@ Escolha quando a tarefa é deixar uma frase na memória e dizer à plateia o que
 
 ## Composições que funcionam
 
-1. **Volta à capa, pelo movimento.** O último slide é a capa de novo, mas a câmera chega lá: recua do conteúdo, a palavra gigante encolhe até caber, o holofote se abre e devolve a foto inteira. A repetição vira conclusão porque a plateia vê o caminho. [Portfolio](http://127.0.0.1:8766/?workspace=pp-treta&ref=462-reel-portfolio), [Tremembé, slide 6](http://127.0.0.1:8766/?workspace=pp-treta&ref=105-reel-13-11#6), [Mapa Mundi - Escolaridade, slide 8](http://127.0.0.1:8766/?workspace=pp-treta&ref=212-reel-29-06#8).
-2. **A forma da marca cobre a tela.** A forma que viajou pela apresentação (cartão, retângulo, cor) cresce até 100% da tela e deixa só o logo branco no centro e uma chamada de até 5 palavras embaixo. [Nubank](http://127.0.0.1:8766/?workspace=pp-treta&ref=435-reel-nu), [Nomad, slide 5](http://127.0.0.1:8766/?workspace=pp-treta&ref=434-reel-nomad#5), [iFood, slide 4](http://127.0.0.1:8766/?workspace=pp-treta&ref=379-reel-ifood#4).
-3. **Convite curto e assinatura.** Dois slides. No primeiro, uma frase-convite de 3 a 6 palavras em letra larga pesada (120 a 160 px), alinhada à esquerda, sobre fundo escuro. No segundo, o nome em letra larga e o contato pequeno (24 a 28 px) no canto inferior direito, sobre cor clara. [Table Top Zoom, slide 6](http://127.0.0.1:8766/?workspace=pp-treta&ref=562-reel-zoom#6), [Table Top Zoom, slide 7](http://127.0.0.1:8766/?workspace=pp-treta&ref=562-reel-zoom#7).
-4. **Obrigado com um acento.** Uma palavra gigante centralizada (200 a 260 px), o ponto final na cor de destaque, um fio curto e, embaixo, nome, e-mail e telefone em 3 linhas com o QR code ao lado. Sem ícones de rede espalhados. [Processo Industrial, slide 8](http://127.0.0.1:8766/?workspace=pp-treta&ref=320-reel-empurrao-completa#8), [Resultados Trimestrais, slide 7](http://127.0.0.1:8766/?workspace=pp-treta&ref=565-reel-zoom-numeros#7).
-5. **Próximos passos com prazo.** De 3 a 4 colunas com número gigante, título de até 3 palavras e prazo escrito numa barra na base; a barra cresce um trecho por passo e muda de vermelho para laranja, amarelo e verde. Termina com todos à vista e a barra completa. [Próximos Passos](http://127.0.0.1:8766/?workspace=pp-treta&ref=472-reel-proximos-passos).
-6. **Pergunta que fica.** Depois dos dados, volte ao símbolo do problema (mapa, objeto, rosto) e deixe uma pergunta curta sem resposta, sozinha na tela. [Uber, slide 10](http://127.0.0.1:8766/?workspace=pp-treta&ref=544-reel-uber#10).
+1. **Volta à capa, pelo movimento.** O último slide é a capa de novo, mas a câmera chega lá: recua do conteúdo, a palavra gigante encolhe até caber, o holofote se abre e devolve a foto inteira. A repetição vira conclusão porque a plateia vê o caminho. [Portfolio](http://127.0.0.1:8766/?workspace=referencias&ref=462-reel-portfolio), [Tremembé, slide 6](http://127.0.0.1:8766/?workspace=referencias&ref=105-reel-13-11#6), [Mapa Mundi - Escolaridade, slide 8](http://127.0.0.1:8766/?workspace=referencias&ref=212-reel-29-06#8).
+2. **A forma da marca cobre a tela.** A forma que viajou pela apresentação (cartão, retângulo, cor) cresce até 100% da tela e deixa só o logo branco no centro e uma chamada de até 5 palavras embaixo. [Nubank](http://127.0.0.1:8766/?workspace=referencias&ref=435-reel-nu), [Nomad, slide 5](http://127.0.0.1:8766/?workspace=referencias&ref=434-reel-nomad#5), [iFood, slide 4](http://127.0.0.1:8766/?workspace=referencias&ref=379-reel-ifood#4).
+3. **Convite curto e assinatura.** Dois slides. No primeiro, uma frase-convite de 3 a 6 palavras em letra larga pesada (120 a 160 px), alinhada à esquerda, sobre fundo escuro. No segundo, o nome em letra larga e o contato pequeno (24 a 28 px) no canto inferior direito, sobre cor clara. [Table Top Zoom, slide 6](http://127.0.0.1:8766/?workspace=referencias&ref=562-reel-zoom#6), [Table Top Zoom, slide 7](http://127.0.0.1:8766/?workspace=referencias&ref=562-reel-zoom#7).
+4. **Obrigado com um acento.** Uma palavra gigante centralizada (200 a 260 px), o ponto final na cor de destaque, um fio curto e, embaixo, nome, e-mail e telefone em 3 linhas com o QR code ao lado. Sem ícones de rede espalhados. [Processo Industrial, slide 8](http://127.0.0.1:8766/?workspace=referencias&ref=320-reel-empurrao-completa#8), [Resultados Trimestrais, slide 7](http://127.0.0.1:8766/?workspace=referencias&ref=565-reel-zoom-numeros#7).
+5. **Próximos passos com prazo.** De 3 a 4 colunas com número gigante, título de até 3 palavras e prazo escrito numa barra na base; a barra cresce um trecho por passo e muda de vermelho para laranja, amarelo e verde. Termina com todos à vista e a barra completa. [Próximos Passos](http://127.0.0.1:8766/?workspace=referencias&ref=472-reel-proximos-passos).
+6. **Pergunta que fica.** Depois dos dados, volte ao símbolo do problema (mapa, objeto, rosto) e deixe uma pergunta curta sem resposta, sozinha na tela. [Uber, slide 10](http://127.0.0.1:8766/?workspace=referencias&ref=544-reel-uber#10).
 
 ## Movimento
 
 - Feche o ciclo: o elemento-assinatura da capa reaparece no último slide, no mesmo lugar e tamanho, e o Morph o traz de onde ele estava (gigante, girado, fora da tela). Recuo de 1200 a 1500 ms depois do último conteúdo.
-- Esvazie a tela: os elementos saem pelas bordas e sobra uma coisa só, a frase, o logo ou a pergunta com data e hora. [Convite Chá Revelação, slide 3](http://127.0.0.1:8766/?workspace=pp-treta&ref=292-reel-convite-bee#3), [Namorados 2025, slide 9](http://127.0.0.1:8766/?workspace=pp-treta&ref=025-cartao-namorados#9).
-- Mergulho de volta: se a fala morou dentro de um objeto (tela de notebook, mesa, quadro), o fim entra de novo nele para o agradecimento. [Etapas](http://127.0.0.1:8766/?workspace=pp-treta&ref=329-reel-etapas-mac).
-- Subida em paradas: numa imagem vertical alta, a câmera sobe uma parada por slide e a mensagem final ocupa o vazio do topo. [Mensagem Natal](http://127.0.0.1:8766/?workspace=pp-treta&ref=177-reel-24-12).
+- Esvazie a tela: os elementos saem pelas bordas e sobra uma coisa só, a frase, o logo ou a pergunta com data e hora. [Convite Chá Revelação, slide 3](http://127.0.0.1:8766/?workspace=referencias&ref=292-reel-convite-bee#3), [Namorados 2025, slide 9](http://127.0.0.1:8766/?workspace=referencias&ref=025-cartao-namorados#9).
+- Mergulho de volta: se a fala morou dentro de um objeto (tela de notebook, mesa, quadro), o fim entra de novo nele para o agradecimento. [Etapas](http://127.0.0.1:8766/?workspace=referencias&ref=329-reel-etapas-mac).
+- Subida em paradas: numa imagem vertical alta, a câmera sobe uma parada por slide e a mensagem final ocupa o vazio do topo. [Mensagem Natal](http://127.0.0.1:8766/?workspace=referencias&ref=177-reel-24-12).
 - A chamada entra no clique, não junto com o slide; o contato entra por último. Rolagem de créditos ou de texto longo só com poucas linhas e duração medida pela leitura.
 
 ## Como fazer no motor HTML
@@ -33,7 +33,7 @@ Escolha quando a tarefa é deixar uma frase na memória e dizer à plateia o que
 2. Forma que cobre a tela: um `div` com `data-m="marca"` em `width:640px; height:400px; border-radius:32px` no penúltimo e `inset:0; width:100%; height:100%; border-radius:0` no último; o logo branco com `data-passo="0"`. Sem forma viajante, use `data-trans="circulo"` a partir do botão ou do logo.
 3. Chamada e contato no ritmo da fala: frase com `data-passo="1" data-entra="mascara"`, contatos com `data-passo="2" data-entra="sobe"`. E-mail, telefone, QR e endereço reais ou com `class="provisorio"`.
 4. Barra de prazo: um slide por passo com a mesma barra (`data-m="prazo"`) mais longa e de outra cor; o Morph anima largura e cor juntas. As colunas novas entram com `data-passo="1" data-entra="sobe"`.
-5. Mesa ou mapa como menu: na capa, um cartão por capítulo com `<a href="#N">`, girado como papel sobre a mesa; no último slide, o mesmo mapa com tudo marcado antes do agradecimento. [Table Top Zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=562-reel-zoom).
+5. Mesa ou mapa como menu: na capa, um cartão por capítulo com `<a href="#N">`, girado como papel sobre a mesa; no último slide, o mesmo mapa com tudo marcado antes do agradecimento. [Table Top Zoom](http://127.0.0.1:8766/?workspace=referencias&ref=562-reel-zoom).
 6. Confira o fim com `python3 -I ferramentas/ver.py` e no PDF (que revela todos os passos): chamada, nome e contato legíveis, nenhum texto tapado por logo ou forma, `<body data-final>` só na versão de entrega.
 
 ## Em carrossel e story
@@ -41,26 +41,26 @@ Escolha quando a tarefa é deixar uma frase na memória e dizer à plateia o que
 - Nos 32 carrosséis Growmate (4:5, 2160 x 2700 px; no kit, `data-formato="4:5"`), a última lâmina repete o tom da capa (mesma cor de fundo, a pessoa recortada de novo) com: conclusão em sans muito pesada terminando em serifa itálica; chamada com ícone de marcador e destinatário ("Salve e envie para quem aprova políticas e contratos com você."); o próximo post anunciado; numeração 12 / 12. [Growmate #Livros 23 · Would You Do That to Your Mother? · Você faria isso com a sua mãe?](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-a8c67c5d-406d-4a89-adff-06c25cac835d).
 - O fio sai da última lâmina na mesma altura em px em que entra na capa, e às vezes um objeto da capa volta (o canhoto de protocolo, o anel centrado na divisa, a mão-francesa que se completa). [Growmate #Livros 08 · The Effortless Experience (2/3) · Uma cliente, três protocolos](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-fab8a88d-57de-4515-b76c-562828f60c64), [Growmate #Livros 32 · A biblioteca do gerente de CX · A estante (v2)](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-3cd5f79e-1776-4c3f-882c-31f131b7806a).
 - A entrega prática (caderno, ata, formulário para preencher) vem uma ou duas lâminas antes; a última fica só para conclusão e chamada. [Growmate #Livros 16 · Muito Além da Sorte · A história do milk-shake (v2)](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-050831e5-06a1-4c56-adb0-1fd784f13210).
-- Em 9:16, a cena sobe e sai pelo alto e fica a marca com o site no terço do meio, em corpo que se leia no celular. [Nike KD14](http://127.0.0.1:8766/?workspace=pp-treta&ref=593-story-reel), [Feliz 2025](http://127.0.0.1:8766/?workspace=pp-treta&ref=154-reel-2025-insta).
+- Em 9:16, a cena sobe e sai pelo alto e fica a marca com o site no terço do meio, em corpo que se leia no celular. [Nike KD14](http://127.0.0.1:8766/?workspace=referencias&ref=593-story-reel), [Feliz 2025](http://127.0.0.1:8766/?workspace=referencias&ref=154-reel-2025-insta).
 
 ## O que os melhores fazem
 
-1. Terminam onde começaram, por um caminho visível: o último quadro responde ao primeiro. [Portfolio](http://127.0.0.1:8766/?workspace=pp-treta&ref=462-reel-portfolio), [Nubank](http://127.0.0.1:8766/?workspace=pp-treta&ref=435-reel-nu)
-2. Uma coisa só na última tela: a frase, o logo ou a pergunta, com muito vazio. [Namorados 2025, slide 9](http://127.0.0.1:8766/?workspace=pp-treta&ref=025-cartao-namorados#9)
-3. A assinatura é um gesto da própria apresentação, não um slide novo: chaves que se fecham em volta do logo, avião que sobe e devolve o logo ao branco. [XP](http://127.0.0.1:8766/?workspace=pp-treta&ref=560-reel-xp-palavras), [Azul](http://127.0.0.1:8766/?workspace=pp-treta&ref=086-reel-10-02)
-4. A chamada tem verbo e destino: "Te espero pra um café", "Salve e envie para quem aprova". [Table Top Zoom, slide 6](http://127.0.0.1:8766/?workspace=pp-treta&ref=562-reel-zoom#6)
-5. Os próximos passos têm prazo e estado, e a cor diz o quanto falta. [Próximos Passos](http://127.0.0.1:8766/?workspace=pp-treta&ref=472-reel-proximos-passos)
-6. A mensagem sai de dentro de um objeto do tema, que vira a porta para o último slide. [Instax Natal](http://127.0.0.1:8766/?workspace=pp-treta&ref=185-reel-25-12), [Etapas](http://127.0.0.1:8766/?workspace=pp-treta&ref=329-reel-etapas-mac)
+1. Terminam onde começaram, por um caminho visível: o último quadro responde ao primeiro. [Portfolio](http://127.0.0.1:8766/?workspace=referencias&ref=462-reel-portfolio), [Nubank](http://127.0.0.1:8766/?workspace=referencias&ref=435-reel-nu)
+2. Uma coisa só na última tela: a frase, o logo ou a pergunta, com muito vazio. [Namorados 2025, slide 9](http://127.0.0.1:8766/?workspace=referencias&ref=025-cartao-namorados#9)
+3. A assinatura é um gesto da própria apresentação, não um slide novo: chaves que se fecham em volta do logo, avião que sobe e devolve o logo ao branco. [XP](http://127.0.0.1:8766/?workspace=referencias&ref=560-reel-xp-palavras), [Azul](http://127.0.0.1:8766/?workspace=referencias&ref=086-reel-10-02)
+4. A chamada tem verbo e destino: "Te espero pra um café", "Salve e envie para quem aprova". [Table Top Zoom, slide 6](http://127.0.0.1:8766/?workspace=referencias&ref=562-reel-zoom#6)
+5. Os próximos passos têm prazo e estado, e a cor diz o quanto falta. [Próximos Passos](http://127.0.0.1:8766/?workspace=referencias&ref=472-reel-proximos-passos)
+6. A mensagem sai de dentro de um objeto do tema, que vira a porta para o último slide. [Instax Natal](http://127.0.0.1:8766/?workspace=referencias&ref=185-reel-25-12), [Etapas](http://127.0.0.1:8766/?workspace=referencias&ref=329-reel-etapas-mac)
 7. A pessoa encara e aponta para a lente: o retrato vira chamado. [Dave Dye (anúncios)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-05-18-howard-gossage-01)
 
 ## Erros que derrubam
 
-1. Capa repetida com quadrados de redes sociais: 56 slides fracos fazem isso; ninguém lê os ícones e o fim não diz nada novo. [Neon Company, slide 20](http://127.0.0.1:8766/?workspace=pp-treta&ref=003-26-0103-neon-company#20), [Healthy Food, slide 20](http://127.0.0.1:8766/?workspace=pp-treta&ref=016-26-0402-healthy-food#20)
-2. Clichê no lugar do resultado: aperto de mãos recortado sobre foto desfocada. [Negócio Fechado](http://127.0.0.1:8766/?workspace=pp-treta&ref=377-reel-handshake)
-3. Chamada ou passos ilegíveis: nomes miúdos em laranja escuro sobre preto, título branco sobre amarelo, QR pequeno demais para escanear da plateia. [3 próximos passos](http://127.0.0.1:8766/?workspace=pp-treta&ref=228-reel-3steps), [Mulheres](http://127.0.0.1:8766/?workspace=pp-treta&ref=322-reel-empurrao-mulheres)
+1. Capa repetida com quadrados de redes sociais: 56 slides fracos fazem isso; ninguém lê os ícones e o fim não diz nada novo. [Neon Company, slide 20](http://127.0.0.1:8766/?workspace=referencias&ref=003-26-0103-neon-company#20), [Healthy Food, slide 20](http://127.0.0.1:8766/?workspace=referencias&ref=016-26-0402-healthy-food#20)
+2. Clichê no lugar do resultado: aperto de mãos recortado sobre foto desfocada. [Negócio Fechado](http://127.0.0.1:8766/?workspace=referencias&ref=377-reel-handshake)
+3. Chamada ou passos ilegíveis: nomes miúdos em laranja escuro sobre preto, título branco sobre amarelo, QR pequeno demais para escanear da plateia. [3 próximos passos](http://127.0.0.1:8766/?workspace=referencias&ref=228-reel-3steps), [Mulheres](http://127.0.0.1:8766/?workspace=referencias&ref=322-reel-empurrao-mulheres)
 4. Lista no lugar da conclusão: sete formas de terminar em duas colunas, fileira de links recomendados; o fim vira índice. [Manifesto Writing](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-04-cheatsheet-7-ways-to-end), [Eyecannndy (técnicas de câmera e edição)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-06-08-eyecannndy-page-resources)
-5. Créditos ou texto longo rolando mais rápido do que se lê. [Letra de Música](http://127.0.0.1:8766/?workspace=pp-treta&ref=401-reel-letra), [Créditos Filme](http://127.0.0.1:8766/?workspace=pp-treta&ref=223-reel-30-12)
-6. Loop que volta a uma capa quase vazia: o ciclo fecha, mas a última tela fica muda, com uma palavra miúda no centro. [Time Brasil](http://127.0.0.1:8766/?workspace=pp-treta&ref=525-reel-timebrasil)
+5. Créditos ou texto longo rolando mais rápido do que se lê. [Letra de Música](http://127.0.0.1:8766/?workspace=referencias&ref=401-reel-letra), [Créditos Filme](http://127.0.0.1:8766/?workspace=referencias&ref=223-reel-30-12)
+6. Loop que volta a uma capa quase vazia: o ciclo fecha, mas a última tela fica muda, com uma palavra miúda no centro. [Time Brasil](http://127.0.0.1:8766/?workspace=referencias&ref=525-reel-timebrasil)
 
 ## Prompt base
 
@@ -104,11 +104,11 @@ Conferir antes de entregar
 
 ## Abra primeiro
 
-- [Portfolio](http://127.0.0.1:8766/?workspace=pp-treta&ref=462-reel-portfolio): passeio por dentro das letras e recuo até a palavra caber de novo, igual à capa.
-- [Table Top Zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=562-reel-zoom): mesa como menu, convite curto em fundo escuro e cartão final com nome e contato.
-- [Nubank](http://127.0.0.1:8766/?workspace=pp-treta&ref=435-reel-nu): a forma da marca que encolhe no começo e cresce até virar a tela no fim.
-- [XP](http://127.0.0.1:8766/?workspace=pp-treta&ref=560-reel-xp-palavras): delimitadores que se abrem para a palavra e se fecham em volta do logo.
-- [Próximos Passos](http://127.0.0.1:8766/?workspace=pp-treta&ref=472-reel-proximos-passos): colunas com prazo e barra que vai do vermelho ao verde.
-- [Uber](http://127.0.0.1:8766/?workspace=pp-treta&ref=544-reel-uber): dados construídos com o objeto do tema e pergunta final sem resposta sobre o mapa.
-- [Etapas](http://127.0.0.1:8766/?workspace=pp-treta&ref=329-reel-etapas-mac): conteúdo dentro de uma tela de notebook e mergulho de volta para o agradecimento.
+- [Portfolio](http://127.0.0.1:8766/?workspace=referencias&ref=462-reel-portfolio): passeio por dentro das letras e recuo até a palavra caber de novo, igual à capa.
+- [Table Top Zoom](http://127.0.0.1:8766/?workspace=referencias&ref=562-reel-zoom): mesa como menu, convite curto em fundo escuro e cartão final com nome e contato.
+- [Nubank](http://127.0.0.1:8766/?workspace=referencias&ref=435-reel-nu): a forma da marca que encolhe no começo e cresce até virar a tela no fim.
+- [XP](http://127.0.0.1:8766/?workspace=referencias&ref=560-reel-xp-palavras): delimitadores que se abrem para a palavra e se fecham em volta do logo.
+- [Próximos Passos](http://127.0.0.1:8766/?workspace=referencias&ref=472-reel-proximos-passos): colunas com prazo e barra que vai do vermelho ao verde.
+- [Uber](http://127.0.0.1:8766/?workspace=referencias&ref=544-reel-uber): dados construídos com o objeto do tema e pergunta final sem resposta sobre o mapa.
+- [Etapas](http://127.0.0.1:8766/?workspace=referencias&ref=329-reel-etapas-mac): conteúdo dentro de uma tela de notebook e mergulho de volta para o agradecimento.
 - [Growmate #Livros 23 · Would You Do That to Your Mother? · Você faria isso com a sua mãe?](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-a8c67c5d-406d-4a89-adff-06c25cac835d): última lâmina 4:5 com conclusão, chamada para salvar e enviar e fio que emenda na capa.

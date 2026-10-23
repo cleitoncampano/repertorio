@@ -12,7 +12,7 @@ const graph=async(page:any)=>page.evaluate(()=>{
 
 test('troca a organização sem recriar o grafo ou perder seleção, busca e filtros',async({page})=>{
  const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
- await page.goto('/?workspace=pp-treta&ref=deck');
+ await page.goto('/?workspace=referencias&ref=deck');
  await expect(page.locator('.detail-body h2')).toHaveText('Abertura criativa');
  await expect(page.locator('.map-stage')).toHaveAttribute('data-view','free');
  await expect.poll(async()=>(await graph(page)).images.some((image:string)=>image&&image!=='none')).toBe(true);
@@ -55,7 +55,7 @@ test('troca a organização sem recriar o grafo ou perder seleção, busca e fil
 });
 
 test('lembra o modo e uma câmera independente por organização e permite escolher com teclado',async({page,request})=>{
- await page.goto('/?workspace=pp-treta');
+ await page.goto('/?workspace=referencias');
  await expect(page.locator('canvas').first()).toBeVisible();
  const camera=async(zoom:number,x:number)=>page.evaluate(({zoom,x})=>{(document.querySelector('.map-surface') as any)._cyreg.cy.viewport({zoom,pan:{x,y:300}});},{zoom,x});
  await camera(.4,500);
@@ -83,7 +83,7 @@ test('lembra o modo e uma câmera independente por organização e permite escol
  await page.getByRole('button',{name:'Visualização do grafo',exact:true}).click();
  await expect(page.getByRole('menuitemradio',{name:'Por grupos',exact:true})).toHaveAttribute('aria-checked','true');
  await page.keyboard.press('Escape');
- await page.goto('/?workspace=pp-treta');
+ await page.goto('/?workspace=referencias');
  await expect(page.locator('canvas').first()).toBeVisible();
  expect((await graph(page)).pan.x).toBeCloseTo(700);
 });
@@ -91,7 +91,7 @@ test('lembra o modo e uma câmera independente por organização e permite escol
 test('menu cabe no celular, mantém o canvas e funciona com tema claro e movimento reduzido',async({page})=>{
  await page.setViewportSize({width:390,height:844});
  await page.emulateMedia({reducedMotion:'reduce'});
- await page.goto('/?workspace=pp-treta');
+ await page.goto('/?workspace=referencias');
  await expect(page.locator('canvas').first()).toBeVisible();
  const bounds=await page.locator('.map-stage').boundingBox();
  await page.getByRole('button',{name:'Ativar modo claro',exact:true}).click();

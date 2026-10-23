@@ -1,6 +1,6 @@
 # Tipografia
 
-Fontes usadas nos 688 arquivos do PPTRETA. Para HTML publicado, prefira as do Google Fonts (livres e carregam por link).
+Fontes usadas nos 688 arquivos do acervo. Para HTML publicado, prefira as do Google Fonts (livres e carregam por link).
 As comerciais servem de referência de estilo: troque por uma livre parecida.
 
 ## Como usar no HTML
@@ -18,7 +18,7 @@ Arquivo local (só para uso interno; confira a licença antes de publicar):
 @font-face { font-family: "Minha Fonte"; src: url("../_originais/fontes/arquivos/Fontes/Arquivo.otf"); font-weight: 700; }
 ```
 
-## Uma família só, com pesos bem contrastantes (o mais comum no PPTRETA)
+## Uma família só, com pesos bem contrastantes (o mais comum no acervo)
 
 Título em peso extremo (Black, ExtraBold) e texto em peso leve da mesma família. É o jeito mais seguro de ter contraste sem brigar.
 

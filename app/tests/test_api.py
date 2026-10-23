@@ -5,7 +5,7 @@ from repertorio.schemas import Search
 
 def test_api_search_matches_service_and_origins(library):
     with TestClient(create_app(library.settings,run_worker=False),base_url='http://127.0.0.1:8767') as client:
-        query={'query':'abertura','kind':'slide','workspace_ids':['pp-treta']}
+        query={'query':'abertura','kind':'slide','workspace_ids':['referencias']}
         response=client.post('/api/search',json=query)
         assert response.status_code==200
         assert response.json()==library.search(Search(**query))
@@ -13,11 +13,11 @@ def test_api_search_matches_service_and_origins(library):
         assert client.get('/api/health',headers={'Host':'attacker.test'}).status_code==400
         assert client.get('/api/assets/missing').status_code==404
         assert client.post('/api/search',json={'limit':50000}).status_code==422
-        smart=client.post('/api/agent/search',json={'query':'abertura com fundo escuro','workspace_ids':['pp-treta']}).json()
+        smart=client.post('/api/agent/search',json={'query':'abertura com fundo escuro','workspace_ids':['referencias']}).json()
         assert smart['items'][0]['id']=='deck' and smart['understood']
-        sheet=client.post('/api/sheet',json={'workspace_ids':['pp-treta'],'ids':['deck','deck#1']})
+        sheet=client.post('/api/sheet',json={'workspace_ids':['referencias'],'ids':['deck','deck#1']})
         assert sheet.status_code==200 and sheet.headers['content-type']=='image/jpeg'
-        assert client.post('/api/sheet',json={'workspace_ids':['pp-treta'],'ids':['nada']}).status_code==404
+        assert client.post('/api/sheet',json={'workspace_ids':['referencias'],'ids':['nada']}).status_code==404
 
 
 def test_mcp_protocol_tools_and_image(library,context):
@@ -35,7 +35,7 @@ def test_mcp_protocol_tools_and_image(library,context):
         assert not result.get('isError'),result
         assert any(c['type']=='image' for c in result['content'])
         assert '"understood"' in result['content'][0]['text']
-        result=rpc('tools/call',{'name':'get_reference','arguments':{'reference_id':'deck','include_image':True,'workspace_ids':['pp-treta']}})['result']
+        result=rpc('tools/call',{'name':'get_reference','arguments':{'reference_id':'deck','include_image':True,'workspace_ids':['referencias']}})['result']
         assert not result.get('isError'),result
         assert any(c['type']=='image' for c in result['content'])
         resources=rpc('resources/read',{'uri':'repertorio://projects'})['result']
@@ -56,6 +56,6 @@ def test_resized_previews_keep_originals(library,tmp_path):
         assert client.get(f'/api/assets/{aid}?w=999').status_code==422
         response=client.get(f'/api/assets/{aid}?w=128')
         assert response.status_code==200 and response.headers['content-type']=='image/png'
-        bundle=client.get('/api/previews?workspace_id=pp-treta&w=128').json()
+        bundle=client.get('/api/previews?workspace_id=referencias&w=128').json()
         assert bundle and all(v['src'].startswith('data:image/') and v['width']>0 for v in bundle.values())
-        assert client.get('/api/previews?workspace_id=pp-treta&w=100').status_code==422
+        assert client.get('/api/previews?workspace_id=referencias&w=100').status_code==422

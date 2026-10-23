@@ -8,7 +8,7 @@ Rosto olhando para a lente, em close; cria conexão imediata.
 
 **Combina com:** `sangria-total`, `profundidade-em-camadas`, `contraste-de-cor`, `tipografia-como-imagem`, `hierarquia-de-leitura`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **388-reel-instax** (Instax, força 5): Faça o produto produzir o próprio conteúdo: o objeto age (dispara, imprime, entrega), a câmera mergulha no resultado em tela cheia e depois recua para mostrar vários resultados lado a lado.  
   `_catalogo/pranchas/388-reel-instax.jpg`
@@ -27,7 +27,7 @@ Rosto olhando para a lente, em close; cria conexão imediata.
 - **172-reel-24-05** (Força de Trabalho, força 4): Abra com o rosto encarando a plateia sem nada escrito e, no avanço, recue a foto para dar lugar à palavra-tema partida em sílabas gigantes de um lado e ao texto em cartões de vidro do outro.  
   `_catalogo/pranchas/172-reel-24-05.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **388-reel-instax#4** (Instax, força 5): zoom na foto: rosto sorrindo em tela cheia  
   `_catalogo/miniaturas/388-reel-instax/04.jpg`

@@ -8,7 +8,7 @@ Uma imagem aparece dentro de outra (paisagem dentro da silhueta de uma pessoa, c
 
 **Combina com:** `mascara-de-forma`, `metafora-visual`, `tipografia-como-imagem`, `contraste-de-cor`, `eco-tipografico`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **044-reel-03-09** (Taylor violão, força 4): Recorte a silhueta do objeto que simboliza o tema numa placa da cor do fundo e deixe uma foto deslizar lentamente por trás dela, como se a cena acontecesse dentro do objeto; use um vazio da própria silhueta para ancorar o texto.  
   `_catalogo/pranchas/044-reel-03-09.jpg`
@@ -21,7 +21,7 @@ Uma imagem aparece dentro de outra (paisagem dentro da silhueta de uma pessoa, c
 - **572-reels-coca** (Coca Cola, força 4): Recorte a silhueta do objeto do tema num fundo liso e ponha atrás camadas de cor com topo ondulado; o objeto vira o recipiente do gráfico e cada camada é uma parte do todo.  
   `_catalogo/pranchas/572-reels-coca.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **048-reel-04-01#1** (Double Exposure, força 4): cidade P&B dentro da silhueta da cabeça; palavra azul gigante em sílabas empilhadas à esquerda  
   `_catalogo/miniaturas/048-reel-04-01/01.jpg`

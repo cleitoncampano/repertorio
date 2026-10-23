@@ -16,7 +16,7 @@ Dar peso a uma palavra, frase ou ideia única. Tipografia protagonista.
 
 `transformacao` (31), `texto` (22), `voo` (14), `giro` (10), `reorganizar` (9), `panorama` (9)
 
-## Melhores slides do PPTRETA (107 no total)
+## Melhores slides do acervo (107 no total)
 
 - **284-reel-cerebro-3d#3** (Cérebro, força 5): palavra repetida em pilha vazando a borda; objeto em corte à direita  
   `_catalogo/miniaturas/284-reel-cerebro-3d/03.jpg`

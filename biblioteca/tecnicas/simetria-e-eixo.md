@@ -8,7 +8,7 @@ Composição espelhada ou centrada; ordem e calma.
 
 **Combina com:** `contraste-de-cor`, `isolamento`, `similaridade`, `hierarquia-de-leitura`, `dado-como-heroi`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **057-reel-05-05** (Hamilton x Verstappen, força 4): Para um duelo, ponha os dois rivais de frente um para o outro nas bordas e mantenha o centro como palco do nome: a cada slide só o texto troca de dono e as fotos se acomodam de leve.  
   `_catalogo/pranchas/057-reel-05-05.jpg`
@@ -27,7 +27,7 @@ Composição espelhada ou centrada; ordem e calma.
 - **340-reel-ferrero-comparacao** (Ferrero Rocher, força 4): Apresente duas versões lado a lado em metades iguais e depois dê o palco a uma de cada vez: a escolhida cresce e abre a ficha completa, a outra encolhe para a beirada sem sair de cena.  
   `_catalogo/pranchas/340-reel-ferrero-comparacao.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **252-reel-bk#7** (Buerger King, força 5): zoom recuo: todas as peças empilhadas e separadas em vista explodida  
   `_catalogo/miniaturas/252-reel-bk/07.jpg`

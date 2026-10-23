@@ -1,4 +1,4 @@
-# Fontes do curso PPTRETA instaladas em ~/Library/Fonts em 16/10/2026
+# Fontes do curso de apresentações instaladas em ~/Library/Fonts em 16/10/2026
 # Para remover, apague estes arquivos dessa pasta.
 1609469688276023.ttf
 18628564760.ttf

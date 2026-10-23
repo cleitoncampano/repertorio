@@ -8,7 +8,7 @@ Cada etapa diz o que ler, o que rodar e o que entregar. A produção fica no pro
 Anote antes de abrir qualquer referência:
 - tema, público, duração ou número de slides, onde vai ser apresentado (palco, reunião, tela, celular; tem internet no local?);
 - a estrutura ou o texto que o usuário trouxe e o objetivo: com o que a plateia sai;
-- a identidade visual do usuário: cores, fontes, logo, tom. **A identidade é sempre a do usuário.** O PPTRETA dá linguagem, ritmo e efeitos, nunca a marca.
+- a identidade visual do usuário: cores, fontes, logo, tom. **A identidade é sempre a do usuário.** O acervo dá linguagem, ritmo e efeitos, nunca a marca.
   Se o usuário der liberdade criativa, crie um sistema próprio (passo 2) e diga qual é.
 Se faltar identidade e não houver liberdade, pergunte. Se faltar o resto, assuma o sensato e diga o que assumiu.
 
@@ -39,7 +39,7 @@ Passe o checklist da seção 9 antes de seguir.
 ```
 python3 -I ferramentas/roteiro.py roteiro.md --saida <pasta>/referencias
 ```
-Gera uma prancha por slide (4 slides do PPTRETA + 2 referências externas) e um `referencias.md` com notas e ideias.
+Gera uma prancha por slide (4 slides do acervo + 2 referências externas) e um `referencias.md` com notas e ideias.
 Para aprofundar um slide: `python3 -I ferramentas/buscar.py "<o que precisa>" -i <INTENÇÃO> --doc slide --forca 4 --prancha`
 e a página da intenção (`biblioteca/intencoes/<INTENÇÃO>.md`).
 Escolha **a ideia**, não o layout, e anote qual técnica cada slide usa (`biblioteca/tecnicas/<id>.md`).

@@ -8,7 +8,7 @@ Um elemento sozinho cercado de vazio. O silêncio em volta dá importância.
 
 **Combina com:** `contraste-de-cor`, `contraste-de-escala`, `tipografia-como-imagem`, `camera-continua`, `metafora-visual`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **252-reel-bk** (Buerger King, força 5): Desmonte o produto diante da plateia: mostre o todo, depois desça por cada peça em close, uma de cada vez, e termine recuando para a vista explodida com tudo separado e alinhado.  
   `_catalogo/pranchas/252-reel-bk.jpg`
@@ -27,7 +27,7 @@ Um elemento sozinho cercado de vazio. O silêncio em volta dá importância.
 - **119-reel-16-04** (Artemis II, força 4): Apresente cada integrante acendendo só o rosto dele numa foto de grupo escurecida, com cantoneiras de visor de câmera; no último avanço, abra a janela até a tela inteira para devolver o grupo completo.  
   `_catalogo/pranchas/119-reel-16-04.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **562-reel-zoom#2** (Table Top Zoom, força 5): fundo menta, sobretítulo espaçado e palavra-título gigante em letra larga  
   `_catalogo/miniaturas/562-reel-zoom/02.jpg`

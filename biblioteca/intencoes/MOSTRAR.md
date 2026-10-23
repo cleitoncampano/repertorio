@@ -16,7 +16,7 @@ Produto, tela, mockup, galeria, portfólio, demonstração visual.
 
 `transformacao` (242), `voo` (186), `texto` (184), `reorganizar` (99), `giro` (83), `panorama` (53)
 
-## Melhores slides do PPTRETA (546 no total)
+## Melhores slides do acervo (546 no total)
 
 - **252-reel-bk#5** (Buerger King, força 5): a peça principal em close, com leve giro  
   `_catalogo/miniaturas/252-reel-bk/05.jpg`

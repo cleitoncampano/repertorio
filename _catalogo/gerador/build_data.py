@@ -30,7 +30,7 @@ for d in ['/System/Library/Fonts', '/Library/Fonts', os.path.expanduser('~/Libra
                     for k in (1, 4, 6, 16):
                         if nm.get(k): avail.add(nm[k].strip().lower())
             except Exception: pass
-cat = json.load(open(os.path.join(ROOT, '_originais', 'curso', 'catalogo-pptreta.json')))
+cat = json.load(open(os.path.join(ROOT, '_originais', 'curso', 'catalogo-curso.json')))
 PPTX = os.path.join(ROOT, '_originais', 'pptx')
 files = sorted(unicodedata.normalize('NFC', f) for f in os.listdir(PPTX) if f.lower().endswith('.pptx'))
 ids = {unicodedata.normalize('NFC', k): v for k, v in json.load(open(os.path.join(CAT, 'miniaturas', 'ids.json'))).items()}

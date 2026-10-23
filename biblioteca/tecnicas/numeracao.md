@@ -8,7 +8,7 @@ Números grandes conduzem a ordem dos itens.
 
 **Combina com:** `regiao-comum`, `grade-modular`, `contraste-de-cor`, `sangria-total`, `similaridade`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **562-reel-zoom** (Table Top Zoom, força 5): Monte uma mesa vista de cima e faça de cada papel, caderno ou cartão a miniatura de um slide; clique num objeto para mergulhar no conteúdo e volte à mesa entre um capítulo e outro.  
   `_catalogo/pranchas/562-reel-zoom.jpg`
@@ -27,7 +27,7 @@ Números grandes conduzem a ordem dos itens.
 - **192-reel-26-11** (Agenda Impactante, força 4): Revele a lista abrindo uma fresta: dois painéis da cor do fundo se afastam pouco e mostram só uma coluna estreita com a numeração, como uma porta entreaberta, e os itens aparecem ao lado.  
   `_catalogo/pranchas/192-reel-26-11.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **562-reel-zoom#4** (Table Top Zoom, força 5): fundo grafite, 02 e título branco em três linhas, texto miúdo à direita  
   `_catalogo/miniaturas/562-reel-zoom/04.jpg`

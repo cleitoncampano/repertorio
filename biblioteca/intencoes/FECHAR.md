@@ -7,7 +7,7 @@ Conclusão, chamada para ação, contato, obrigado, próxima pergunta.
 - Feche o laço da abertura: o objeto, a frase ou a pergunta do começo voltam com novo sentido.
 - Uma chamada para ação clara e única; contato pequeno.
 - Termine na frase, não no 'obrigado'. Se precisar do agradecimento, ele vem depois do último impacto.
-- O acervo do PPTRETA tem poucos fechamentos fortes (muitos são cartões sazonais). Para o final, apoie-se nestas dicas, em `principios/narrativa.md` (seção 7) e nas referências externas.
+- O acervo do acervo tem poucos fechamentos fortes (muitos são cartões sazonais). Para o final, apoie-se nestas dicas, em `principios/narrativa.md` (seção 7) e nas referências externas.
 
 ## Técnicas que mais aparecem
 
@@ -17,7 +17,7 @@ Conclusão, chamada para ação, contato, obrigado, próxima pergunta.
 
 `panorama` (71), `voo` (54), `texto` (52), `transformacao` (45), `reorganizar` (23), `giro` (19)
 
-## Melhores slides do PPTRETA (208 no total)
+## Melhores slides do acervo (208 no total)
 
 - **129-reel-17-06#6** (Table top com zoom, força 5): fundo grafite, palavra branca com contatos sobrepostos  
   `_catalogo/miniaturas/129-reel-17-06/06.jpg`

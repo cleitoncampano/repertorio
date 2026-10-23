@@ -8,7 +8,7 @@ Uma cor (ou a falta dela) quebra o conjunto e marca o que importa.
 
 **Combina com:** `regiao-comum`, `similaridade`, `camera-continua`, `tipografia-como-imagem`, `dado-como-heroi`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **585-reels-nestle-grafico** (Páscoa Nestlé, força 5): Use o próprio produto como topo de cada coluna do gráfico, com a coluna na cor da embalagem; depois abra cada coluna num card da mesma cor para contar a história de um item por vez.  
   `_catalogo/pranchas/585-reels-nestle-grafico.jpg`
@@ -27,7 +27,7 @@ Uma cor (ou a falta dela) quebra o conjunto e marca o que importa.
 - **057-reel-05-05** (Hamilton x Verstappen, força 4): Para um duelo, ponha os dois rivais de frente um para o outro nas bordas e mantenha o centro como palco do nome: a cada slide só o texto troca de dono e as fotos se acomodam de leve.  
   `_catalogo/pranchas/057-reel-05-05.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **129-reel-17-06#3** (Table top com zoom, força 5): mesma estrutura em fundo preto com letras brancas  
   `_catalogo/miniaturas/129-reel-17-06/03.jpg`

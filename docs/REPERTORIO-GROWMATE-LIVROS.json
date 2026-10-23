@@ -8187,7 +8187,7 @@
     "operation_id": "b38c3419-b836-4859-8d55-31914750c775",
     "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-b6d2ab25-b054-43d6-a592-833fb2fca647",
     "workspace_ids": [
-      "pp-treta",
+      "referencias",
       "ff1be998-6589-4e3d-a1f2-e7682406e853"
     ],
     "growmate_url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-b6d2ab25-b054-43d6-a592-833fb2fca647"
@@ -8461,7 +8461,7 @@
       "name": "Growmate",
       "context_id": "55be2440-518d-49d6-a55f-b24b4fae5460",
       "reference_count": 32,
-      "source_workspace_id": "pp-treta",
+      "source_workspace_id": "referencias",
       "shared": true,
       "verified": true,
       "assets_unchanged": true,

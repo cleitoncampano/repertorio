@@ -8,7 +8,7 @@ Objeto gigante no mundo real, perspectiva forçada, miniatura.
 
 **Combina com:** `metafora-visual`, `contraste-de-cor`, `camera-continua`, `textura-e-materia`, `isolamento`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **564-reel-zoom-monalisa-cv** (Monalisa, força 4): Esconda o próximo slide num detalhe minúsculo e plausível da foto (uma etiqueta, uma placa, um bilhete) e use-o como porta: a câmera mergulha no detalhe e ele se abre como o slide de conteúdo.  
   `_catalogo/pranchas/564-reel-zoom-monalisa-cv.jpg`

@@ -8,7 +8,7 @@ Um slide-mapa mostra todas as partes em miniatura; cada parte se abre a partir d
 
 **Combina com:** `hierarquia-de-leitura`, `camera-continua`, `objeto-como-suporte`, `linha-guia`, `similaridade`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **562-reel-zoom** (Table Top Zoom, força 5): Monte uma mesa vista de cima e faça de cada papel, caderno ou cartão a miniatura de um slide; clique num objeto para mergulhar no conteúdo e volte à mesa entre um capítulo e outro.  
   `_catalogo/pranchas/562-reel-zoom.jpg`
@@ -27,7 +27,7 @@ Um slide-mapa mostra todas as partes em miniatura; cada parte se abre a partir d
 - **430-reel-neymar-zoom** (Neymar com Zoom, força 4): Monte um slide-mapa com a pergunta central e os argumentos espalhados em volta, cada argumento sendo um zoom que abre o próprio slide e volta ao mapa, para a plateia ver onde está no raciocínio.  
   `_catalogo/pranchas/430-reel-neymar-zoom.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **562-reel-zoom#1** (Table Top Zoom, força 5): mesa vista de cima; papéis girados são zooms para os slides seguintes  
   `_catalogo/miniaturas/562-reel-zoom/01.jpg`

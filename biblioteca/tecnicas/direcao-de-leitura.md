@@ -8,7 +8,7 @@ Composição em Z, F ou diagonal que leva do primeiro ao último ponto.
 
 **Combina com:** `similaridade`, `contraste-de-cor`, `camera-continua`, `numeracao`, `mascara-de-forma`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **177-reel-24-12** (Mensagem Natal, força 4): Use uma imagem vertical bem alta como trilho e suba a câmera por ela em paradas sucessivas, uma frase curta por parada; a mensagem final fica no espaço vazio acima do objeto, onde a viagem termina.  
   `_catalogo/pranchas/177-reel-24-12.jpg`
@@ -27,7 +27,7 @@ Composição em Z, F ou diagonal que leva do primeiro ao último ponto.
 - **652-template-minimalist-v1** (Minimalist, força 4): Escolha uma forma geométrica simples e faça dela o fio da apresentação: ela vira seta apontando para a foto, painel lateral, tela inteira e até ícone de play, mudando de tamanho e lugar a cada slide.  
   `_catalogo/pranchas/652-template-minimalist-v1.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **177-reel-24-12#3** (Mensagem Natal, força 4): câmera sobe para o meio; duas frases em lados opostos  
   `_catalogo/miniaturas/177-reel-24-12/03.jpg`

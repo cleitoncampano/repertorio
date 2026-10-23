@@ -8,7 +8,7 @@ Um número ou gráfico sozinho vira a imagem principal.
 
 **Combina com:** `regiao-comum`, `contraste-de-cor`, `similaridade`, `camera-continua`, `grade-modular`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **585-reels-nestle-grafico** (Páscoa Nestlé, força 5): Use o próprio produto como topo de cada coluna do gráfico, com a coluna na cor da embalagem; depois abra cada coluna num card da mesma cor para contar a história de um item por vez.  
   `_catalogo/pranchas/585-reels-nestle-grafico.jpg`
@@ -27,7 +27,7 @@ Um número ou gráfico sozinho vira a imagem principal.
 - **148-reel-20-08** (Números giratórios, força 4): Mostre cada resultado como um contador mecânico: colunas de 0 a 9 que rolam até parar no valor, com o rótulo e a unidade fixos ao lado; o giro dá peso ao número antes de ele ser lido.  
   `_catalogo/pranchas/148-reel-20-08.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **585-reels-nestle-grafico#3** (Páscoa Nestlé, força 5): pílulas viram colunas com alturas do valor; produto no topo e porcentagem dentro  
   `_catalogo/miniaturas/585-reels-nestle-grafico/03.jpg`

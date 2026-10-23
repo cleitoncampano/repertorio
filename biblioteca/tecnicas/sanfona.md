@@ -8,7 +8,7 @@ Faixas ou cards lado a lado; o da vez se alarga e mostra o conteúdo, os outros 
 
 **Combina com:** `foco-seletivo`, `contraste-de-cor`, `similaridade`, `revelacao-progressiva`, `contraste-de-escala`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **047-reel-03-12** (Top Tênis, força 4): Mostre os itens numa grade 2x2 de cards coloridos e, a cada slide, alargue um card que ganha cor, texto e logo, enquanto os outros encolhem e escurecem: a grade vira um carrossel de foco sem sair do lugar.  
   `_catalogo/pranchas/047-reel-03-12.jpg`
@@ -27,7 +27,7 @@ Faixas ou cards lado a lado; o da vez se alarga e mostra o conteúdo, os outros 
 - **400-reel-lebron-curry-mouseover** (LeBron e Curry, força 4): Mostre duas opções como painéis iguais e, a cada slide, alargue uma em cor enquanto a outra encolhe e perde a cor, imitando o efeito de passar o mouse sobre um card.  
   `_catalogo/pranchas/400-reel-lebron-curry-mouseover.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **047-reel-03-12#2** (Top Tênis, força 4): o primeiro card se alarga com texto e logo; os outros ficam cinza escuro  
   `_catalogo/miniaturas/047-reel-03-12/02.jpg`

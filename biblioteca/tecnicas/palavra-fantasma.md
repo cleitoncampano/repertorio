@@ -8,7 +8,7 @@ Parte do título fica no tom do fundo e quase some; a palavra visível ganha for
 
 **Combina com:** `tipografia-como-imagem`, `eco-tipografico`, `contraste-de-cor`, `sangria-total`, `camera-continua`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **060-reel-05-09** (Gusttavo Lima, força 4): Comece com o fundo vazio só com letras gigantes quase da cor dele e, no avanço, faça o retrato subir de baixo enquanto o nome se reorganiza atrás em letras fantasmas, assentando a citação em serifa grande ao lado.  
   `_catalogo/pranchas/060-reel-05-09.jpg`
@@ -27,7 +27,7 @@ Parte do título fica no tom do fundo e quase some; a palavra visível ganha for
 - **311-reel-dia-mulher** (Dia da Mulher, força 4): Monte uma capa comemorativa em camadas: número gigante clarinho ao fundo, a pessoa na frente, a palavra principal enorme por cima dela e elementos desfocados nas bordas para dar profundidade; parta de um fundo vazio para tudo entrar junto.  
   `_catalogo/pranchas/311-reel-dia-mulher.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **060-reel-05-09#2** (Gusttavo Lima, força 4): busto de pedra sobre o nome fantasma, aspas grandes e citação em serifa à direita  
   `_catalogo/miniaturas/060-reel-05-09/02.jpg`

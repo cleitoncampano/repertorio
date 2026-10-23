@@ -8,7 +8,7 @@ O texto ou dado aparece escrito em um objeto do cotidiano.
 
 **Combina com:** `camera-continua`, `contraste-de-cor`, `emprestimo-de-codigo`, `dado-como-heroi`, `numeracao`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **129-reel-17-06** (Table top com zoom, força 5): Transforme a agenda numa cena real em que cada objeto representa uma etapa, e use cada objeto como porta: o zoom entra nele e abre o capítulo correspondente.  
   `_catalogo/pranchas/129-reel-17-06.jpg`
@@ -27,7 +27,7 @@ O texto ou dado aparece escrito em um objeto do cotidiano.
 - **329-reel-etapas-mac** (Etapas, força 4): Comece com a câmera dentro da tela de um aparelho, cujo fundo é igual ao do slide, e recue para revelar o aparelho; mostre cada etapa como um cartão dentro dessa tela e, no final, mergulhe de volta nela para fechar.  
   `_catalogo/pranchas/329-reel-etapas-mac.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **129-reel-17-06#1** (Table top com zoom, força 5): mesa vista de cima com cinco zooms escondidos sobre os objetos  
   `_catalogo/miniaturas/129-reel-17-06/01.jpg`

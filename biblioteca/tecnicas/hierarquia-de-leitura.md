@@ -8,7 +8,7 @@ Sobretítulo, título, apoio: a ordem de leitura é óbvia.
 
 **Combina com:** `contraste-de-cor`, `regiao-comum`, `camera-continua`, `sangria-total`, `grade-modular`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **138-reel-18-09-efeito-wow-anatomia-humana** (Anatomia Humana, força 5): Sobreponha à foto uma janela que mostra a camada interna exatamente alinhada com a pessoa, e mova a janela a cada slide para um ponto diferente: cada avanço é um novo corte do mesmo assunto.  
   `_catalogo/pranchas/138-reel-18-09-efeito-wow-anatomia-humana.jpg`
@@ -27,7 +27,7 @@ Sobretítulo, título, apoio: a ordem de leitura é óbvia.
 - **140-reel-19-05** (Convocação Seleção, força 4): Sobreponha uma grade de quadrados ao fundo e use a transição em quadriculado, para a troca parecer as próprias células virando; cada pessoa entra recortada na frente de um card branco com categoria, nome e origem.  
   `_catalogo/pranchas/140-reel-19-05.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **canva-18#2** (Canva: Steph Curry, força 5): linhas do nome deslizam em sentidos opostos; pergunta e parágrafos entram nos lados  
   `_catalogo/miniaturas/canva-18/02.jpg`

@@ -16,7 +16,7 @@ Lista, cards, categorias, pilares, grade de itens ou serviços.
 
 `transformacao` (391), `texto` (285), `voo` (175), `reorganizar` (114), `giro` (112), `zoom-recuo` (43)
 
-## Melhores slides do PPTRETA (672 no total)
+## Melhores slides do acervo (672 no total)
 
 - **219-reel-30-07#6** (SWOT, força 5): recuo para a sigla inteira  
   `_catalogo/miniaturas/219-reel-30-07/06.jpg`

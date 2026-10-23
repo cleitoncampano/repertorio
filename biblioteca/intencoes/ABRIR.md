@@ -17,7 +17,7 @@ Capa, título da palestra, primeiro impacto. Promete o que vem.
 
 `troca` (36), `voo` (20), `texto` (17), `reorganizar` (14), `transformacao` (4), `zoom-recuo` (3)
 
-## Melhores slides do PPTRETA (426 no total)
+## Melhores slides do acervo (426 no total)
 
 - **138-reel-18-09-efeito-wow-anatomia-humana#1** (Anatomia Humana, força 5): janela anatômica sobre a mandíbula, título serifado no canto  
   `_catalogo/miniaturas/138-reel-18-09-efeito-wow-anatomia-humana/01.jpg`

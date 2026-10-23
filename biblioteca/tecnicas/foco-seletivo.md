@@ -8,7 +8,7 @@ O resto escurece, desfoca ou perde cor; um item fica aceso como holofote.
 
 **Combina com:** `contraste-de-cor`, `revelacao-progressiva`, `camera-continua`, `contraste-de-escala`, `profundidade-em-camadas`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **132-reel-17-09** (Tucano - Efeito Raio-X, força 5): Tenha duas versões da mesma imagem, a normal e a de dentro, e passe um quadrado que mostra a de dentro exatamente alinhado: parece uma lente que enxerga através do assunto.  
   `_catalogo/pranchas/132-reel-17-09.jpg`
@@ -27,7 +27,7 @@ O resto escurece, desfoca ou perde cor; um item fica aceso como holofote.
 - **062-reel-05-10-mapas-mapa-com-pontos** (Mapa com Pontos, força 4): Faça o próprio marcador do mapa virar o balão de conteúdo: o ponto cresce até um círculo com o texto do local e, ao terminar, encolhe de volta ao lugar, então a plateia nunca perde a referência geográfica.  
   `_catalogo/pranchas/062-reel-05-10-mapas-mapa-com-pontos.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **132-reel-17-09#2** (Tucano - Efeito Raio-X, força 5): quadrado de raio-X desce sobre a asa, alinhado com a foto  
   `_catalogo/miniaturas/132-reel-17-09/02.jpg`

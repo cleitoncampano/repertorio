@@ -17,7 +17,7 @@ Momento de virada ou de uau: imagem, efeito ou revelação que para a sala.
 
 `troca` (56), `texto` (26), `voo` (19), `reorganizar` (17), `zoom-mergulho` (14), `transformacao` (12)
 
-## Melhores slides do PPTRETA (167 no total)
+## Melhores slides do acervo (167 no total)
 
 - **132-reel-17-09#4** (Tucano - Efeito Raio-X, força 5): o quadrado mostra o crânio e o bico  
   `_catalogo/miniaturas/132-reel-17-09/04.jpg`

@@ -3,11 +3,11 @@ import {test,expect} from '@playwright/test';
 test('guia explica o fluxo, copia o pedido e abre os recursos reais',async({page,context})=>{
  await context.grantPermissions(['clipboard-read','clipboard-write']);
  const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
- await page.goto('/?workspace=pp-treta&view=guide');
+ await page.goto('/?workspace=referencias&view=guide');
  await expect(page.getByRole('heading',{name:'Suas referências, prontas para orientar a criação.'})).toBeVisible();
  await page.getByRole('button',{name:'Copiar exemplo de pedido',exact:true}).click();
  const copied=await page.evaluate(()=>navigator.clipboard.readText());
- expect(copied).toContain('workspace_id: pp-treta');
+ expect(copied).toContain('workspace_id: referencias');
  expect(copied).toContain('quais referências vai usar e por quê, com os links');
  expect(copied).toContain('no projeto desta produção');
  await page.getByRole('button',{name:'Conectar meu agente',exact:true}).click();

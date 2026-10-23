@@ -177,8 +177,8 @@ Para provar capacidade de Direção de Arte de elite, a tabela de Jason estabele
 
 ---
 
-## 7. Como LLMs Devem Usar Este Estudo no Projeto `pptreta`
+## 7. Como LLMs Devem Usar Este Estudo no Repertório
 
-1. **Aplique a Regra Hegarty (`t=383s`)**: Em toda apresentação ou peça visual criada no `pptreta`, combine o **Anarquista Criativo** (uma abertura/capa que quebra a expectativa, provoca tensão e explode a conversa) com o **Arquiteto da Clareza** (grids rigorosos, hierarquia tipográfica cristalina e leitura sem ruído nos slides de desenvolvimento).
+1. **Aplique a Regra Hegarty (`t=383s`)**: Em toda apresentação ou peça visual criada no Repertório, combine o **Anarquista Criativo** (uma abertura/capa que quebra a expectativa, provoca tensão e explode a conversa) com o **Arquiteto da Clareza** (grids rigorosos, hierarquia tipográfica cristalina e leitura sem ruído nos slides de desenvolvimento).
 2. **Dimensione a Ideia (`Idea Sizing Chart`)**: Quando o usuário pedir uma campanha, pitch ou apresentação estratégica, não entregue apenas uma "tática solta" (*One-off*). Estruture como uma **Plataforma / Campanha** fundamentada em um **Insight humano contraintuitivo**.
 3. **Pense de Forma Multilíngue**: Ao sugerir direções visuais, especifique simultaneamente Fotografia, Tipografia, Cor, Cenografia/Props e Ritmo/Movimento.

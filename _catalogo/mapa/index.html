@@ -98,7 +98,7 @@
   D.voc.intencoes.forEach((i) => $('fi').insertAdjacentHTML('beforeend', `<option value="${i.id}">${i.id}</option>`));
   D.esteticas.forEach((e) => $('fe').insertAdjacentHTML('beforeend', `<option value="${e}">${e}</option>`));
   const nA = D.itens.filter((i) => i.k === 'a').length, nR = D.itens.length - nA;
-  $('contagem').textContent = `${nA} arquivos do PPTRETA · ${nR} referências externas · ${D.voc.tecnicas.length} técnicas · 4 operações do olhar`;
+  $('contagem').textContent = `${nA} arquivos do acervo · ${nR} referências externas · ${D.voc.tecnicas.length} técnicas · 4 operações do olhar`;
 
   // ---------- geometria ----------
   const nos = { op: {}, pista: {}, tec: {} };
@@ -360,7 +360,7 @@
       <p><b>4 operações do olhar</b> no centro: diferenciação, agrupamento, sequência, previsão.</p>
       <p><b>Pistas</b> (as etiquetas pequenas): de onde vem o sinal (cor e forma, espaço, social, significado, cultura).</p>
       <p><b>${D.voc.tecnicas.length} técnicas</b> no anel colorido, cada uma pertence a uma operação.</p>
-      <p><b>Peças em volta</b>: arquivos do PPTRETA (miniatura do melhor slide) e referências externas (com borda branca). As mais fortes ficam mais perto do centro.</p>
+      <p><b>Peças em volta</b>: arquivos do acervo (miniatura do melhor slide) e referências externas (com borda branca). As mais fortes ficam mais perto do centro.</p>
       <p><b>Linhas</b>: a peça usa aquela técnica. É a mesma ligação que o modelo usa quando busca por técnica.</p>
       <h3>Experimente</h3>
       <p>Clique numa <b>peça</b> para ver o que o modelo lê dela. Clique numa <b>técnica</b> ou numa <b>operação</b> para ver tudo que se liga a ela.
@@ -512,7 +512,7 @@
 
   // legenda
   $('legenda').innerHTML = OPS.map((o) => `<div data-op="${o.id}" title="${esc(o.def)}"><i style="background:${COR[o.id]}"></i>${esc(o.nome)}</div>`).join('') +
-    '<div style="margin-top:6px;cursor:default"><span class="sub">sem borda: PPTRETA · borda branca: referência externa</span></div>';
+    '<div style="margin-top:6px;cursor:default"><span class="sub">sem borda: acervo · borda branca: referência externa</span></div>';
   $('legenda').addEventListener('click', (e) => { const d = e.target.closest('[data-op]'); if (d) selecionar({ tipo: 'op', id: d.dataset.op }); });
 
   painelInicio();

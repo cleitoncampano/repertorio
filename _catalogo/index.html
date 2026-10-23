@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Catálogo PPTRETA</title>
+<title>Catálogo do acervo</title>
 <style>
 :root {
   --bg: #f4f4f1; --surface: #ffffff; --surface-2: #ecece8; --ink: #16171a; --muted: #686c73;
@@ -136,7 +136,7 @@ main { max-width: 1680px; margin: 0 auto; padding: 20px 28px 80px; }
   <div class="top-inner">
     <div class="row1">
       <div class="brand">
-        <h1>Catálogo PPTRETA</h1>
+        <h1>Catálogo do acervo</h1>
         <span id="resumo"></span>
       </div>
       <label class="search">
@@ -219,7 +219,7 @@ main { max-width: 1680px; margin: 0 auto; padding: 20px 28px 80px; }
     { k: 'vertical', label: 'Vertical 9:16', test: (d) => d.vertical },
   ];
   const st = { q: '', grupo: null, flags: new Set(), ordem: 'categoria' };
-  try { const s = JSON.parse(localStorage.getItem('pptreta-filtros') || '{}'); if (s.ordem) st.ordem = s.ordem; } catch (e) {}
+  try { const s = JSON.parse(localStorage.getItem('catalogo-filtros') || '{}'); if (s.ordem) st.ordem = s.ordem; } catch (e) {}
 
   const totSlides = C.decks.reduce((a, d) => a + d.slides, 0);
   $('resumo').textContent = `${C.decks.length} apresentações, ${totSlides.toLocaleString('pt-BR')} slides e ${C.canva.length} PDFs do Canva`;
@@ -278,7 +278,7 @@ main { max-width: 1680px; margin: 0 auto; padding: 20px 28px 80px; }
       return `<button class="card" data-i="${i}"><div class="shot">${capa}<span class="n">${d.slides}</span>${dots}</div>
         <div class="meta"><h3>${esc(d.titulo)}</h3><p>${sub}</p><div class="tags">${tags(d)}</div></div></button>`;
     }).join('');
-    try { localStorage.setItem('pptreta-filtros', JSON.stringify({ ordem: st.ordem })); } catch (e) {}
+    try { localStorage.setItem('catalogo-filtros', JSON.stringify({ ordem: st.ordem })); } catch (e) {}
   }
 
   // passa os slides ao parar o mouse em cima do card

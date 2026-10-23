@@ -1,4 +1,4 @@
-# Como escrever as fichas do acervo PPTRETA
+# Como escrever as fichas do acervo acervo
 
 Você vai olhar arquivos de apresentação (miniaturas numeradas numa prancha) e escrever uma ficha JSON para cada um.
 A ficha é lida depois por modelos de IA que vão CRIAR apresentações novas, para qualquer tema e qualquer marca.

@@ -9,7 +9,7 @@ const state=async(page:any)=>page.evaluate(()=>{
 
 test('seis linguagens visuais preservam o grafo, as imagens e a seleção nos dois temas',async({page})=>{
  const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
- await page.goto('/?workspace=pp-treta&ref=deck');
+ await page.goto('/?workspace=referencias&ref=deck');
  await expect(page.locator('.detail-body h2')).toHaveText('Abertura criativa');
  await expect.poll(async()=>(await state(page)).image).not.toBe('none');
  await page.evaluate(()=>{(document.querySelector('.map-surface') as any)._cyreg.cy.scratch('qa-style','same-instance');});
@@ -53,7 +53,7 @@ test('seis linguagens visuais preservam o grafo, as imagens e a seleção nos do
 
 test('as nove prévias cabem no menu e o último estilo é acessível no celular e no teclado',async({page})=>{
  await page.setViewportSize({width:320,height:740});await page.emulateMedia({reducedMotion:'reduce'});
- await page.goto('/?workspace=pp-treta');await expect(page.locator('canvas').first()).toBeVisible();
+ await page.goto('/?workspace=referencias');await expect(page.locator('canvas').first()).toBeVisible();
  const button=page.getByRole('button',{name:'Visualização do grafo',exact:true});await button.click();
  const menu=page.getByRole('menu',{name:'Visualização do grafo'});
  await expect(menu.getByRole('menuitemradio')).toHaveCount(9);

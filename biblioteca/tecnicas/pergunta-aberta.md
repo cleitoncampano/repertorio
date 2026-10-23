@@ -8,7 +8,7 @@ Título-pergunta ou lacuna que pede resposta e segura a atenção até o próxim
 
 **Combina com:** `metafora-visual`, `isolamento`, `tipografia-como-imagem`, `emprestimo-de-codigo`, `hierarquia-de-leitura`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **042-reel-03-07** (Carrossel - Kia Carnival, força 4): Deixe o produto ou objeto grande demais para caber num slide e faça-o atravessar a emenda entre dois; a própria divisão vira o argumento, e o texto alonga uma palavra repetindo a vogal para reforçar.  
   `_catalogo/pranchas/042-reel-03-07.jpg`
@@ -27,7 +27,7 @@ Título-pergunta ou lacuna que pede resposta e segura a atenção até o próxim
 - **295-reel-cortinas-abrindo** (Cortinas Abrindo, força 4): Encene a revelação como no palco: um slide de suspense com a cortina fechada e o anúncio curto, e a cortina se abre para mostrar o nome ou o resultado sobre um fundo vivo.  
   `_catalogo/pranchas/295-reel-cortinas-abrindo.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **042-reel-03-07#1** (Carrossel - Kia Carnival, força 4): pergunta no canto e frente do carro saindo pela borda direita  
   `_catalogo/miniaturas/042-reel-03-07/01.jpg`

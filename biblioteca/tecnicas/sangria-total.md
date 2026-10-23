@@ -8,7 +8,7 @@ Imagem ocupando a tela inteira, sem margem, com texto por cima.
 
 **Combina com:** `contraste-de-cor`, `contraste-de-escala`, `camera-continua`, `tipografia-como-imagem`, `hierarquia-de-leitura`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **157-reel-21-08-efeito-wow-rio-de-janeiro** (Rio de Janeiro, força 5): Vaze o nome do lugar numa tela branca para a foto aparecer só dentro das letras, e no avanço mergulhe numa das letras até a foto ocupar tudo: o nome vira a porta de entrada.  
   `_catalogo/pranchas/157-reel-21-08-efeito-wow-rio-de-janeiro.jpg`
@@ -27,7 +27,7 @@ Imagem ocupando a tela inteira, sem margem, com texto por cima.
 - **067-reel-06-08** (Machu Picchu, força 4): Emoldure a foto do lugar com elementos desfocados em primeiro plano para dar profundidade, e quando entrar o texto, abra um painel com a própria foto desfocada em vez de um bloco de cor: a informação fica dentro da paisagem.  
   `_catalogo/pranchas/067-reel-06-08.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **157-reel-21-08-efeito-wow-rio-de-janeiro#2** (Rio de Janeiro, força 5): mergulho por dentro de uma letra; paisagem inteira e frase no centro  
   `_catalogo/miniaturas/157-reel-21-08-efeito-wow-rio-de-janeiro/02.jpg`

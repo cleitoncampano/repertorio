@@ -8,7 +8,7 @@ Tamanhos crescentes ou decrescentes indicam ordem ou intensidade.
 
 **Combina com:** `linha-guia`, `similaridade`, `grade-modular`, `dado-como-heroi`, `revelacao-progressiva`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **086-reel-10-02** (Azul, força 4): Use um objeto do tema visto de cima como cursor da linha do tempo: ele fica parado na mesma altura e avança a cada slide, o ano atual aparece grande sob ele e os anteriores encolhem e ficam marcados na linha atrás.  
   `_catalogo/pranchas/086-reel-10-02.jpg`
@@ -27,7 +27,7 @@ Tamanhos crescentes ou decrescentes indicam ordem ou intensidade.
 - **386-reel-inspira-neoquimica** (Neo Química, força 3): Mostre um único item grande e, no avanço, encolha-o enquanto as outras versões, escondidas atrás dele, se abrem para os lados em leque: o item vira o centro de uma família.  
   `_catalogo/pranchas/386-reel-inspira-neoquimica.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **071-reel-07-01#7** (Canal do Panama, força 4): navio avança, ano anterior encolhe à esquerda e o novo cresce  
   `_catalogo/miniaturas/071-reel-07-01/07.jpg`

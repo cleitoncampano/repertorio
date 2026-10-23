@@ -8,7 +8,7 @@ Repetição cria uma regra; um elemento quebra a regra e vira a mensagem.
 
 **Combina com:** `eco-tipografico`, `tipografia-como-imagem`, `similaridade`, `grade-modular`, `contraste-de-cor`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **284-reel-cerebro-3d** (Cérebro, força 5): Transforme o objeto central do tema num personagem 3D que gira e se aproxima a cada slide, e use o nome do tema como textura tipográfica gigante atrás dele.  
   `_catalogo/pranchas/284-reel-cerebro-3d.jpg`
@@ -27,7 +27,7 @@ Repetição cria uma regra; um elemento quebra a regra e vira a mensagem.
 - **221-reel-30-09** (Círculos em movimento, força 4): Mostre a ideia de simplificar com o próprio movimento: muitos elementos iguais preenchem a tela e, no avanço, todos convergem para o mesmo lugar e viram um único elemento ao lado da frase que conclui.  
   `_catalogo/pranchas/221-reel-30-09.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **284-reel-cerebro-3d#3** (Cérebro, força 5): palavra repetida em pilha vazando a borda; objeto em corte à direita  
   `_catalogo/miniaturas/284-reel-cerebro-3d/03.jpg`

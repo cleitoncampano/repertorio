@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Monta a biblioteca a partir das fichas e dos dados extraídos:
 
-  dados/fichas.jsonl     fichas dos arquivos (uma por arquivo do PPTRETA)
+  dados/fichas.jsonl     fichas dos arquivos (uma por arquivo do acervo)
   dados/indice.jsonl     índice único que a busca lê (arquivos, slides, referências externas, mídia)
   dados/grafo.json       nós e ligações (itens -> técnicas -> operações; itens -> intenções e movimentos)
   biblioteca/...         páginas por intenção, técnica, movimento e os índices de modelos, efeitos e componentes
@@ -283,7 +283,7 @@ def paginas(indice, fichas):
             p += [open(dica).read().strip(), '']
         p += ['## Técnicas que mais aparecem', '', ', '.join('`%s` (%d)' % (t, n) for t, n in tc.most_common(10)) or 'ainda sem dados', '',
               '## Movimentos que mais aparecem', '', ', '.join('`%s` (%d)' % (t, n) for t, n in mv.most_common(6)) or 'ainda sem dados', '',
-              '## Melhores slides do PPTRETA (%d no total)' % len(sl), '']
+              '## Melhores slides do acervo (%d no total)' % len(sl), '']
         p += [linha_exemplo(d) for d in melhores(sl, 14)]
         if refs:
             p += ['', '## Referências externas', ''] + [linha_exemplo(d) for d in melhores(refs, 8)]
@@ -303,7 +303,7 @@ def paginas(indice, fichas):
              '**Em HTML:** ' + it['html'], '']
         if co[it['id']]:
             p += ['**Combina com:** ' + ', '.join('`%s`' % t for t, _ in co[it['id']].most_common(5)), '']
-        for rot, tipo in (('Arquivos do PPTRETA', 'arquivo'), ('Slides do PPTRETA', 'slide'), ('Referências externas', 'referencia')):
+        for rot, tipo in (('Arquivos do acervo', 'arquivo'), ('Slides do acervo', 'slide'), ('Referências externas', 'referencia')):
             sel = melhores([d for d in docs if d['doc'] == tipo], 8)
             if sel:
                 p += ['## %s' % rot, ''] + [linha_exemplo(d) for d in sel] + ['']

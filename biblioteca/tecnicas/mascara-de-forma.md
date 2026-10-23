@@ -8,7 +8,7 @@ Foto dentro de uma forma, letra ou silhueta.
 
 **Combina com:** `tipografia-como-imagem`, `contraste-de-cor`, `camera-continua`, `hierarquia-de-leitura`, `dado-como-heroi`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **157-reel-21-08-efeito-wow-rio-de-janeiro** (Rio de Janeiro, força 5): Vaze o nome do lugar numa tela branca para a foto aparecer só dentro das letras, e no avanço mergulhe numa das letras até a foto ocupar tudo: o nome vira a porta de entrada.  
   `_catalogo/pranchas/157-reel-21-08-efeito-wow-rio-de-janeiro.jpg`
@@ -27,7 +27,7 @@ Foto dentro de uma forma, letra ou silhueta.
 - **069-reel-06-10** (Porcentagem Impactante, força 4): Comece com a câmera dentro de um número gigante recortado numa placa escura, vendo só a foto; recue até o número inteiro aparecer como janela para a foto e complete o dado com o sinal de percentual entrando pela borda.  
   `_catalogo/pranchas/069-reel-06-10.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **157-reel-21-08-efeito-wow-rio-de-janeiro#1** (Rio de Janeiro, força 5): tela branca com o nome vazado e a paisagem por dentro das letras  
   `_catalogo/miniaturas/157-reel-21-08-efeito-wow-rio-de-janeiro/01.jpg`

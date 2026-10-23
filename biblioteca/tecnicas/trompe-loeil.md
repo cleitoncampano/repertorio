@@ -8,7 +8,7 @@ A tela vira objeto físico: rasgo, fita, dobra, etiqueta, papel.
 
 **Combina com:** `emprestimo-de-codigo`, `contraste-de-cor`, `profundidade-em-camadas`, `similaridade`, `objeto-como-suporte`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **562-reel-zoom** (Table Top Zoom, força 5): Monte uma mesa vista de cima e faça de cada papel, caderno ou cartão a miniatura de um slide; clique num objeto para mergulhar no conteúdo e volte à mesa entre um capítulo e outro.  
   `_catalogo/pranchas/562-reel-zoom.jpg`
@@ -27,7 +27,7 @@ A tela vira objeto físico: rasgo, fita, dobra, etiqueta, papel.
 - **205-reel-28-07-copy** (Zoom Pin, força 3): Espalhe os itens como bilhetes presos por alfinete em volta do título central e faça cada bilhete abrir o seu próprio slide; a plateia vê o quadro inteiro antes e cada parte depois, sempre com a mesma moldura.  
   `_catalogo/pranchas/205-reel-28-07-copy.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **562-reel-zoom#1** (Table Top Zoom, força 5): mesa vista de cima; papéis girados são zooms para os slides seguintes  
   `_catalogo/miniaturas/562-reel-zoom/01.jpg`

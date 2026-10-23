@@ -8,7 +8,7 @@ O que era figura vira fundo e vice-versa: letras cheias de um lado e vazadas do 
 
 **Combina com:** `tipografia-como-imagem`, `mascara-de-forma`, `contraste-de-cor`, `eco-tipografico`, `palavra-fantasma`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **046-reel-03-10** (Mistérios da Vida Marinha, força 4): Atravesse o título gigante com uma divisória de borda orgânica e inverta figura e fundo dos dois lados: de um lado letras brancas sobre o vídeo, do outro um painel branco com as letras vazadas deixando o vídeo aparecer.  
   `_catalogo/pranchas/046-reel-03-10.jpg`
@@ -27,7 +27,7 @@ O que era figura vira fundo e vice-versa: letras cheias de um lado e vazadas do 
 - **273-reel-capa-oceano-azul** (Oceano Azul (video), força 4): Cubra o vídeo com um painel liso e recorte nele a palavra-chave: o movimento só aparece por dentro das letras, e um sobretítulo pequeno completa a frase.  
   `_catalogo/pranchas/273-reel-capa-oceano-azul.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **103-reel-13-08#3** (Números vazados, força 4): o 3 vazado em volta do monumento, céu azul preenche as curvas  
   `_catalogo/miniaturas/103-reel-13-08/03.jpg`

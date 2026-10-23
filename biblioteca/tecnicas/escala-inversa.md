@@ -8,7 +8,7 @@ Dois elementos trocam de importância ao mesmo tempo: um encolhe enquanto o outr
 
 **Combina com:** `contraste-de-escala`, `camera-continua`, `hierarquia-de-leitura`, `foco-seletivo`, `sanfona`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **108-reel-14-08** (Círculos Pop, força 4): Mostre todos os itens pequenos numa constelação solta e, a cada slide, traga um deles para a frente em tamanho grande com nome e data, enquanto os outros recuam para as bordas; feche voltando à constelação.  
   `_catalogo/pranchas/108-reel-14-08.jpg`
@@ -21,7 +21,7 @@ Dois elementos trocam de importância ao mesmo tempo: um encolhe enquanto o outr
 - **517-reel-team-psic** (A Team With Six Experts, força 4): Para apresentar várias pessoas ou itens do mesmo peso, mantenha todos sempre na tela e passe o holofote: a cada slide um cresce para o centro com o nome em destaque e os outros recuam para pequenos satélites.  
   `_catalogo/pranchas/517-reel-team-psic.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **108-reel-14-08#4** (Círculos Pop, força 4): terceira foto cresce à direita, nome passa para a esquerda  
   `_catalogo/miniaturas/108-reel-14-08/04.jpg`

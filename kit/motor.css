@@ -1,4 +1,4 @@
-/* Motor de apresentação PPTRETA: palco 16:9 (ou 9:16), Morph por data-m, passos por data-passo, PDF pela impressão.
+/* Motor de apresentação do Repertório: palco 16:9 (ou 9:16), Morph por data-m, passos por data-passo, PDF pela impressão.
    Slides são desenhados em pixels de 1920x1080; o palco escala para caber na tela. */
 
 :root {

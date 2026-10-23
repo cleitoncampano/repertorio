@@ -8,7 +8,7 @@ O sujeito sai do quadro e invade o título ou a borda.
 
 **Combina com:** `profundidade-em-camadas`, `contraste-de-cor`, `hierarquia-de-leitura`, `contraste-de-escala`, `tipografia-como-imagem`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **canva-18** (Canva: Steph Curry, força 5): Coloque o nome da pessoa em duas linhas gigantes atrás do recorte e redesenhe em contorno, por cima do corpo, só a parte das letras que ele cobre, para o nome continuar legível sem esconder a pessoa. Na troca, deslize as duas linhas em sentidos opostos para abrir espaço para o texto, e volte ao nome inteiro para fechar o loop.  
   `_catalogo/pranchas/canva-18.jpg`
@@ -27,7 +27,7 @@ O sujeito sai do quadro e invade o título ou a borda.
 - **372-reel-graficos-coca** (Coca Cola Zoom, força 4): Monte um painel-resumo em que cada bloco é a miniatura viva de um slide de detalhe; a plateia vê o todo primeiro e você mergulha em cada parte e volta ao painel.  
   `_catalogo/pranchas/372-reel-graficos-coca.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **042-reel-03-07#1** (Carrossel - Kia Carnival, força 4): pergunta no canto e frente do carro saindo pela borda direita  
   `_catalogo/miniaturas/042-reel-03-07/01.jpg`

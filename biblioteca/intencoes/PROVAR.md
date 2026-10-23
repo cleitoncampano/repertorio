@@ -16,7 +16,7 @@ Número, gráfico, resultado, KPI, pesquisa, prova social.
 
 `transformacao` (301), `texto` (205), `voo` (129), `giro` (75), `reorganizar` (69), `zoom-recuo` (35)
 
-## Melhores slides do PPTRETA (486 no total)
+## Melhores slides do acervo (486 no total)
 
 - **585-reels-nestle-grafico#3** (Páscoa Nestlé, força 5): pílulas viram colunas com alturas do valor; produto no topo e porcentagem dentro  
   `_catalogo/miniaturas/585-reels-nestle-grafico/03.jpg`

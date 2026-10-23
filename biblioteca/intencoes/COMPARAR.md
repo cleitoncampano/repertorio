@@ -16,7 +16,7 @@ A contra B, antes e depois, prós e contras, tabela comparativa.
 
 `transformacao` (122), `texto` (66), `voo` (40), `reorganizar` (33), `giro` (17), `zoom-recuo` (12)
 
-## Melhores slides do PPTRETA (180 no total)
+## Melhores slides do acervo (180 no total)
 
 - **581-reels-iceberg#3** (Iceberg, força 5): empurra para baixo d'água: parte submersa e a mesma palavra desfocada  
   `_catalogo/miniaturas/581-reels-iceberg/03.jpg`

@@ -56,7 +56,7 @@ Para criar magnetismo imediato — mesmo falando do assunto mais árido ou cotid
 
 ---
 
-## 3. Como LLMs Devem Usar Este Estudo no Projeto `pptreta`
+## 3. Como LLMs Devem Usar Este Estudo no Repertório
 
 1. **Nunca abra uma apresentação ou manifesto com uma "Declaração de Tese Genérica"**:
    - Em vez de abrir um deck com *"A importância da Inteligência Artificial no atendimento"*, abra com uma **Anedota Concreta (Bloco 1)**: um momento específico no tempo, um cliente real às 23h42 de uma sexta-feira, um diálogo real ou um experimento específico que levante uma pergunta imediata (*Bait*).

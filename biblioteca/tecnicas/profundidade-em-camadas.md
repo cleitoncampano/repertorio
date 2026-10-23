@@ -8,7 +8,7 @@ Primeiro plano, meio e fundo sobrepostos; texto entre camadas da foto.
 
 **Combina com:** `tipografia-como-imagem`, `contraste-de-escala`, `contraste-de-cor`, `camera-continua`, `hierarquia-de-leitura`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **283-reel-celula-3d** (Célula, força 5): Faça um tour guiado pelo interior do objeto do tema: gire o modelo para a vista em corte e, a cada slide, aproxime e desloque a câmera até uma parte diferente, nomeada por uma linha fina e um rótulo discreto.  
   `_catalogo/pranchas/283-reel-celula-3d.jpg`
@@ -27,7 +27,7 @@ Primeiro plano, meio e fundo sobrepostos; texto entre camadas da foto.
 - **041-reel-03-06** (Figurinhas Jogadores, força 4): Apresente cada item como algo que sai de dentro de uma embalagem: os pacotes descem para a borda e o conteúdo sobe de trás deles, um de cada vez, com o texto ao lado do que acabou de sair.  
   `_catalogo/pranchas/041-reel-03-06.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **283-reel-celula-3d#1** (Célula, força 5): título serifado sobre a esfera 3D fechada, subtítulo em caixa alta espaçada  
   `_catalogo/miniaturas/283-reel-celula-3d/01.jpg`

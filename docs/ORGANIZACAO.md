@@ -1,6 +1,6 @@
 # Organização do Repertório
 
-O projeto se chama **Repertório**. **PPT Treta** é um espaço de referências dentro dele, assim como **Growmate**. O curso PPTRETA continua identificado como origem dos materiais correspondentes.
+O projeto se chama **Repertório**. **Referências** é um espaço de referências dentro dele, assim como **Growmate**. O curso de apresentações continua identificado como origem dos materiais correspondentes.
 
 A pasta principal é `/Users/cleiton/Documents/Desenvolvimento/repertorio`. Abra essa pasta no editor para trabalhar no projeto.
 
@@ -28,9 +28,9 @@ O projeto de destino é cadastrado pelo comando `connect --write-instructions`, 
 
 ## Mudança de 19/10/2026
 
-A raiz `pptreta/` passou a `repertorio/`. A subpasta que também se chamava `repertorio/` passou a `app/`, evitando a repetição `repertorio/repertorio`.
+A raiz antiga passou a `repertorio/`. A subpasta que também se chamava `repertorio/` passou a `app/`, evitando a repetição `repertorio/repertorio`.
 
-Os caminhos do banco foram atualizados em transação, com backup anterior e verificação dos arquivos. Os identificadores de referências, arquivos, projetos, espaços, contextos e escolhas foram preservados. Nenhum acervo foi reimportado. O backup anterior está em `_saida/repertorio-qa/organizacao/antes-da-organizacao.sqlite3`, junto das evidências locais de conferência. O projeto continua com o ID `repert-rio-87e17c`; o espaço PPT Treta continua com o ID `pp-treta`.
+Os caminhos do banco foram atualizados em transação, com backup anterior e verificação dos arquivos. Os identificadores de referências, arquivos, projetos, espaços, contextos e escolhas foram preservados. Nenhum acervo foi reimportado. O backup anterior está em `_saida/repertorio-qa/organizacao/antes-da-organizacao.sqlite3`, junto das evidências locais de conferência. O projeto continua com o ID `repert-rio-87e17c`; o espaço Referências continua com o ID `referencias`.
 
 Os comandos atuais são:
 
@@ -42,7 +42,7 @@ pnpm --dir app/web build
 
 O app instalado em `~/Applications/Repertório.app` usa a nova raiz. O endereço local continua http://127.0.0.1:8766. O início automático pelo Mac continua usando o mesmo aplicativo.
 
-Dois links locais de compatibilidade mantêm sessões e atalhos antigos funcionando: `pptreta` aponta para a nova raiz e `repertorio/repertorio` aponta para `app`. Eles ficam ocultos no Finder. O link interno não é versionado; os caminhos documentados e os comandos atuais usam apenas a nova organização.
+Um link local de compatibilidade mantém atalhos antigos funcionando: `repertorio/repertorio` aponta para `app`. Eles ficam ocultos no Finder. O link interno não é versionado; os caminhos documentados e os comandos atuais usam apenas a nova organização.
 
 ## Mover novamente
 

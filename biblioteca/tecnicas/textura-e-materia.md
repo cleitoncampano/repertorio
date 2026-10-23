@@ -8,7 +8,7 @@ Grão, papel, ruído, vidro, metal, 3D que dão corpo e clima.
 
 **Combina com:** `tipografia-como-imagem`, `contraste-de-cor`, `sangria-total`, `profundidade-em-camadas`, `camera-continua`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **074-reel-07-07** (Fumaça Preta, força 4): Escreva a palavra-chave na mesma cor do fundo e passe por trás dela um vídeo de algo escuro que entra e sai da tela; a palavra nasce e desaparece com o movimento, sem nenhuma animação de texto.  
   `_catalogo/pranchas/074-reel-07-07.jpg`
@@ -27,7 +27,7 @@ Grão, papel, ruído, vidro, metal, 3D que dão corpo e clima.
 - **359-reel-glass-effect** (Glass Effect, força 4): Use uma única placa de vidro fosco como etiqueta que passeia pela foto: ela começa grande com a frase de boas-vindas e depois encolhe e pousa em cada ponto que você quer mostrar.  
   `_catalogo/pranchas/359-reel-glass-effect.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **077-reel-07-11#1** (Lançamento, força 4): vídeo de bolha iridescente com a palavra branca gigante por cima  
   `_catalogo/miniaturas/077-reel-07-11/01.jpg`

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Índice de tipografia: famílias usadas nos arquivos do PPTRETA, onde está o arquivo da fonte, se existe no Google Fonts
+"""Índice de tipografia: famílias usadas nos arquivos do acervo, onde está o arquivo da fonte, se existe no Google Fonts
 e os pares de fonte (título + texto) mais comuns.
 Saída: dados/fontes.json e biblioteca/tipografia.md
 Uso, da raiz do projeto:  python3 -I ferramentas/construir/fontes.py [caminho do metadata do Google Fonts]
@@ -119,7 +119,7 @@ def main():
                'locais_sem_uso': sorted(set(locais) - set(familias))}, open(os.path.join(RAIZ, 'dados', 'fontes.json'), 'w'), ensure_ascii=False, indent=1)
 
     p = ['# Tipografia', '',
-         'Fontes usadas nos %d arquivos do PPTRETA. Para HTML publicado, prefira as do Google Fonts (livres e carregam por link).' % len(open(os.path.join(RAIZ, 'dados', 'decks.jsonl')).readlines()),
+         'Fontes usadas nos %d arquivos do acervo. Para HTML publicado, prefira as do Google Fonts (livres e carregam por link).' % len(open(os.path.join(RAIZ, 'dados', 'decks.jsonl')).readlines()),
          'As comerciais servem de referência de estilo: troque por uma livre parecida.', '',
          '## Como usar no HTML', '',
          'Google Fonts (funciona em qualquer lugar):', '',
@@ -127,7 +127,7 @@ def main():
          '<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">', '```', '',
          'Arquivo local (só para uso interno; confira a licença antes de publicar):', '',
          '```css', '@font-face { font-family: "Minha Fonte"; src: url("../_originais/fontes/arquivos/Fontes/Arquivo.otf"); font-weight: 700; }', '```', '',
-         '## Uma família só, com pesos bem contrastantes (o mais comum no PPTRETA)', '',
+         '## Uma família só, com pesos bem contrastantes (o mais comum no acervo)', '',
          'Título em peso extremo (Black, ExtraBold) e texto em peso leve da mesma família. É o jeito mais seguro de ter contraste sem brigar.', '']
     for a, n in mesma.most_common(12):
         g = ' (Google Fonts)' if chave(a) in google else ''

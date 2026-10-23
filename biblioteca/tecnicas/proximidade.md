@@ -8,14 +8,14 @@ Itens perto viram grupo; distância separa assuntos.
 
 **Combina com:** `hierarquia-de-leitura`, `similaridade`, `regiao-comum`, `grade-modular`, `isolamento`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **314-reel-dove-shampoos** (Dove, força 3): Enfileire os produtos numa prateleira e, a cada slide, abra espaço ao lado de um deles para um card de vidro fosco com nome e descrição: os outros deslizam para dar lugar, como se alguém afastasse os itens para apresentar um.  
   `_catalogo/pranchas/314-reel-dove-shampoos.jpg`
 - **516-reel-tabela-graficos-e-esquemas-tabela-com-movimentos** (Tabela com movimentos, força 3): Quebre a tabela em uma peça por linha: assim as linhas podem entrar uma a uma e, na hora de falar de uma, ela se afasta das vizinhas e cresce para fora do bloco.  
   `_catalogo/pranchas/516-reel-tabela-graficos-e-esquemas-tabela-com-movimentos.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **504-reel-spotify#2** (Spotify, força 4): logo sobe; três fotos quadradas com nomes entram por baixo  
   `_catalogo/miniaturas/504-reel-spotify/02.jpg`

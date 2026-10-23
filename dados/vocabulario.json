@@ -531,7 +531,7 @@
     ]
   },
   "movimentos": {
-    "sobre": "Famílias de movimento entre slides (de onde vêm as transições do PPTRETA). A análise automática do Morph usa estes mesmos ids.",
+    "sobre": "Famílias de movimento entre slides (de onde vêm as transições do acervo). A análise automática do Morph usa estes mesmos ids.",
     "itens": [
       {
         "id": "zoom-mergulho",

@@ -1,12 +1,16 @@
 # Retomada do projeto
 
+## Nome antigo do acervo removido em 22/10/2026
+
+O espaço Referências tem o ID `referencias` e a origem das apresentações se chama `acervo`. Não reintroduza o nome antigo em textos, código ou dados. Detalhes em `app/VALIDACAO.md`.
+
 ## Plano da Perestroika em 22/10/2026
 
 O Cleiton pediu para transformar `perestroika/` em material acionável para modelos, além do visual. Plano em `docs/PERESTROIKA-PLANO.md`: métodos em `.md` com modelos para preencher, entrada pelo MCP e por três skills, espaço visual próprio e revisor opcional. Nada executado ainda; próxima ação: o Cleiton escolher por onde começar.
 
 ## Espaço Inspiração em 22/10/2026
 
-Referências guarda só apresentações e material do PPT Treta. Referências externas e criações (carrosséis Growmate) estão em **Inspiração**; as criações seguem também em Growmate. Para slides e carrosséis, consulte Referências e Inspiração juntos. Detalhes em `app/VALIDACAO.md`.
+Referências guarda só apresentações e material do acervo. Referências externas e criações (carrosséis Growmate) estão em **Inspiração**; as criações seguem também em Growmate. Para slides e carrosséis, consulte Referências e Inspiração juntos. Detalhes em `app/VALIDACAO.md`.
 
 ## Sem Escolhas e momentos da história revistos em 22/10/2026
 
@@ -50,11 +54,11 @@ Validação: 37 testes Python aprovados, fluxo da CLI conferido em diretório te
 
 ## Projeto reorganizado como Repertório em 19/10/2026
 
-Raiz canônica: `/Users/cleiton/Documents/Desenvolvimento/repertorio`. O software saiu da subpasta `repertorio/` para `app/`. PPT Treta é um espaço do acervo, com o mesmo ID `pp-treta`; Growmate continua independente. O projeto mantém o ID `repert-rio-87e17c`. Links locais ocultos preservam os caminhos antigos, sem duplicar pastas ou arquivos.
+Raiz canônica: `/Users/cleiton/Documents/Desenvolvimento/repertorio`. O software saiu da subpasta `repertorio/` para `app/`. Referências é um espaço do acervo, com o mesmo ID `referencias`; Growmate continua independente. O projeto mantém o ID `repert-rio-87e17c`. Links locais ocultos preservam os caminhos antigos, sem duplicar pastas ou arquivos.
 
 Banco atualizado em transação, sem reimportação: 15.662 referências, 26.235 arquivos, IDs, vínculos, contextos e escolhas preservados. Todos os arquivos encontrados. Backup anterior e evidências em `_saida/repertorio-qa/organizacao/`. App do Mac recompilado, instalado e conferido: inicia o serviço pela nova raiz. Documentação e operação em `docs/ORGANIZACAO.md`.
 
-Validação: 37 testes Python, 34 testes unitários da interface, 25 testes de navegador e build aprovados. Dois espaços reais conferidos visualmente, 1.021 referências e 4.182 conexões em PPT Treta, 33 referências e 292 conexões em Growmate; miniaturas e downloads disponíveis, sem erros JavaScript. Próxima ação: abrir a nova pasta no editor e seguir usando o Repertório. Preservar as alterações anteriores da palestra e dos gateways.
+Validação: 37 testes Python, 34 testes unitários da interface, 25 testes de navegador e build aprovados. Dois espaços reais conferidos visualmente, 1.021 referências e 4.182 conexões em Referências, 33 referências e 292 conexões em Growmate; miniaturas e downloads disponíveis, sem erros JavaScript. Próxima ação: abrir a nova pasta no editor e seguir usando o Repertório. Preservar as alterações anteriores da palestra e dos gateways.
 
 ## Firefly autônomo e anúncio atualizado em 18/10/2026
 
@@ -62,7 +66,7 @@ Imagem do anúncio no celular do slide 15 gerada e baixada no Adobe Firefly, sem
 
 ## Revisão de desempenho concluída em 18/10/2026
 
-Visual e comportamento preservados. Grafo e busca resolvem vínculos em lote; o grafo PP Treta passou de 1.024 para quatro consultas e de 227,37 para 111,67 ms na comparação pareada da cópia do acervo. A câmera é atualizada por quadro e gravada após o gesto, com salvamento imediato ao sair, trocar de modo ou desmontar o mapa. Simulação de 480 eventos passou de 480 gravações para uma; capturas antes e depois com pixels idênticos. O ganho de tempo na busca foi menor.
+Visual e comportamento preservados. Grafo e busca resolvem vínculos em lote; o grafo de Referências passou de 1.024 para quatro consultas e de 227,37 para 111,67 ms na comparação pareada da cópia do acervo. A câmera é atualizada por quadro e gravada após o gesto, com salvamento imediato ao sair, trocar de modo ou desmontar o mapa. Simulação de 480 eventos passou de 480 gravações para uma; capturas antes e depois com pixels idênticos. O ganho de tempo na busca foi menor.
 
 Build, 34 testes Python, 34 testes unitários da interface e 25 testes de navegador aprovados. Respostas completas do servidor idênticas. Detalhes e limites em `docs/REPERTORIO-DESEMPENHO.md`; evidências em `_saida/repertorio-qa/performance/`. AGENTS.md, CLAUDE.md e GEMINI.md atualizados. Servidor atualizado ativado e conferido nos dois espaços reais. Interface compilada, atualizar com ⌘R. Próxima ação: experimentar a fluidez do mapa; uma revisão futura da busca deve medir os planos SQL. Preservar as alterações anteriores da palestra e do checkpoint.
 
@@ -76,13 +80,13 @@ Build, 34 testes unitários e oito testes de navegador das visualizações aprov
 
 Acrescentadas Cosmos, Metrô, Circuito, Jardim, Editorial e Prisma às três opções existentes. As seis novas têm geometria, paleta, formas, linhas e fundo próprios, com versões clara e escura. Menu com nove prévias em uma única coluna em todas as telas, com rolagem quando necessário. Paletas acompanham legenda e painel; selecionar eixo ou técnica enquadra as novas vistas ao lado da ficha. Preferência, busca, filtros, imagens e câmeras continuam preservados.
 
-Build, 31 testes unitários e 21 de navegador aprovados. Conferidas 24 combinações dos espaços reais Growmate e PP Treta nos dois temas, todas as miniaturas e contagens preservadas, sem erros JavaScript. Ajustados rótulos, contraste, títulos no afastamento e enquadramento com o painel aberto. Evidências em `_saida/repertorio-qa/estilos-grafo/`; detalhes em `app/VALIDACAO.md`. Interface compilada, atualizar com ⌘R; sem mudanças no banco ou no serviço. Próxima ação: o usuário experimentar as nove propostas. Preservar as alterações anteriores da palestra e do checkpoint.
+Build, 31 testes unitários e 21 de navegador aprovados. Conferidas 24 combinações dos espaços reais Growmate e Referências nos dois temas, todas as miniaturas e contagens preservadas, sem erros JavaScript. Ajustados rótulos, contraste, títulos no afastamento e enquadramento com o painel aberto. Evidências em `_saida/repertorio-qa/estilos-grafo/`; detalhes em `app/VALIDACAO.md`. Interface compilada, atualizar com ⌘R; sem mudanças no banco ou no serviço. Próxima ação: o usuário experimentar as nove propostas. Preservar as alterações anteriores da palestra e do checkpoint.
 
 ## Três visualizações do grafo implementadas em 18/10/2026
 
 Novo botão Visualização do grafo, ao lado do tema, com prévias de Mapa livre (arranjo original), Por grupos e Hierárquico. Mudar o modo reposiciona a mesma instância e preserva imagens, seleção, busca, filtros e ficha. Preferência global no navegador, câmeras independentes por espaço e modo. Novos controles também funcionam no celular; voltar ao Mapa livre pelo mesmo menu.
 
-Build, 18 testes unitários e 19 de navegador aprovados. Conferidos os três modos nos espaços reais Growmate (33 referências, 292 conexões) e PP Treta (1.021 referências no mapa, 4.182 conexões), sem erros JavaScript. Evidências em `_saida/repertorio-qa/grafos/`; detalhes em `app/VALIDACAO.md`. A hierarquia foi equilibrada após inspeção do acervo real. Interface compilada, atualizar com ⌘R; sem mudanças no banco ou no serviço. Próxima ação: o usuário experimentar as organizações e indicar os ajustes que desejar. Preservar as alterações anteriores da palestra.
+Build, 18 testes unitários e 19 de navegador aprovados. Conferidos os três modos nos espaços reais Growmate (33 referências, 292 conexões) e Referências (1.021 referências no mapa, 4.182 conexões), sem erros JavaScript. Evidências em `_saida/repertorio-qa/grafos/`; detalhes em `app/VALIDACAO.md`. A hierarquia foi equilibrada após inspeção do acervo real. Interface compilada, atualizar com ⌘R; sem mudanças no banco ou no serviço. Próxima ação: o usuário experimentar as organizações e indicar os ajustes que desejar. Preservar as alterações anteriores da palestra.
 
 ## Catálogo de Skills implementado em 18/10/2026
 
@@ -92,11 +96,11 @@ Sugestões espontâneas ficam em Escolhas > Sugestões para o acervo quando há 
 
 ## Espaços de trabalho implementados em 18/10/2026
 
-O Repertório agora tem espaços com criação, renomeação, exclusão direta e definitiva e troca pela navegação esquerda. O acervo anterior está em PP Treta; novos espaços começam vazios. Fichas e arquivos são compartilhados, com publicação e lixeira independentes por espaço. Agentes recebem os espaços de inspiração e os destinos de incorporação explicitamente.
+O Repertório agora tem espaços com criação, renomeação, exclusão direta e definitiva e troca pela navegação esquerda. O acervo anterior está em Referências; novos espaços começam vazios. Fichas e arquivos são compartilhados, com publicação e lixeira independentes por espaço. Agentes recebem os espaços de inspiração e os destinos de incorporação explicitamente.
 
 Validação: 32 testes do servidor, 7 da interface e 14 de navegador aprovados; build e migração numa cópia dos 15.662 registros aprovados. Backup anterior verificado em `_saida/repertorio-qa/espacos/antes-dos-espacos.zip`. Operação, contratos e recuperação: `docs/REPERTORIO-ESPACOS.md`.
 
-Growmate já reúne os 32 carrosséis #Livros incorporados ontem, das pastas 18 (Simon Sinek) a 49, mais a ficha de paleta e 73 ícones SVG (33 referências no total). As mesmas fichas continuam em PP Treta, sem duplicar arquivos. Grafo, busca dos agentes e publicação dos 32 itens verificados. Espaço: `ff1be998-6589-4e3d-a1f2-e7682406e853`; contexto da vinculação: `55be2440-518d-49d6-a55f-b24b4fae5460`. Detalhes em `docs/REPERTORIO-GROWMATE-LIVROS.json`. Próxima ação: usar o espaço Growmate como inspiração quando o usuário indicar. Preservar os trabalhos de palestra descritos abaixo.
+Growmate já reúne os 32 carrosséis #Livros incorporados ontem, das pastas 18 (Simon Sinek) a 49, mais a ficha de paleta e 73 ícones SVG (33 referências no total). As mesmas fichas continuam em Referências, sem duplicar arquivos. Grafo, busca dos agentes e publicação dos 32 itens verificados. Espaço: `ff1be998-6589-4e3d-a1f2-e7682406e853`; contexto da vinculação: `55be2440-518d-49d6-a55f-b24b4fae5460`. Detalhes em `docs/REPERTORIO-GROWMATE-LIVROS.json`. Próxima ação: usar o espaço Growmate como inspiração quando o usuário indicar. Preservar os trabalhos de palestra descritos abaixo.
 
 Atualizado em 18/10/2026 (America/Sao_Paulo).
 
@@ -128,7 +132,7 @@ A palestra “Você compraria de você mesmo?” está no Growmate Marketing, em
 
 ## Contexto útil
 
-Repertório é o projeto e o app de busca e curadoria de referências. PPT Treta e Growmate são espaços dentro dele. A criação segue roteiro, referências, revisão do usuário e conferência visual. A biblioteca real não recebe dados de demonstração.
+Repertório é o projeto e o app de busca e curadoria de referências. Referências e Growmate são espaços dentro dele. A criação segue roteiro, referências, revisão do usuário e conferência visual. A biblioteca real não recebe dados de demonstração.
 
 As duas versões da palestra mantidas pelo usuário foram transferidas para o Growmate Marketing, com imagens, fontes, histórico e evidências. As demais variantes foram excluídas pelo usuário antes desta organização e não devem ser restauradas. As duas pastas locais de gateway são alterações anteriores e não pertencem a esta transferência; preservá-las.
 

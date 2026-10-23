@@ -16,7 +16,7 @@ Pessoa, equipe, palestrante, empresa, quem somos.
 
 `texto` (189), `transformacao` (172), `voo` (122), `reorganizar` (107), `giro` (49), `panorama` (35)
 
-## Melhores slides do PPTRETA (454 no total)
+## Melhores slides do acervo (454 no total)
 
 - **canva-18#1** (Canva: Steph Curry, força 5): nome inteiro em duas cores atrás do atleta, contorno das letras sobre o corpo  
   `_catalogo/miniaturas/canva-18/01.jpg`

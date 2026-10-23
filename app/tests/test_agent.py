@@ -13,18 +13,18 @@ def test_interpret_reads_common_phrases(library):
 
 
 def test_smart_search_groups_decks_and_skips_loose_media(library,context):
-    result=smart_search(library,AgentSearch(query='abertura',context_id=context['id'],workspace_ids=['pp-treta']))
+    result=smart_search(library,AgentSearch(query='abertura',context_id=context['id'],workspace_ids=['referencias']))
     assert [(i['n'],i['id']) for i in result['items']]==[(1,'deck')]
     assert 'intenção: ABRIR' in result['items'][0]['matched_by']
-    assert [i['id'] for i in smart_search(library,AgentSearch(query='abertura',per_group=2,workspace_ids=['pp-treta']))['items']]==['deck','deck#1']
-    assert smart_search(library,AgentSearch(query='verde',workspace_ids=['pp-treta']))['total']==0
-    assert smart_search(library,AgentSearch(query='verde',kind='midia',workspace_ids=['pp-treta']))['total']==2
-    assert smart_search(library,AgentSearch(query='verde',kind='midia',reusable=True,workspace_ids=['pp-treta']))['items'][0]['id']=='free'
+    assert [i['id'] for i in smart_search(library,AgentSearch(query='abertura',per_group=2,workspace_ids=['referencias']))['items']]==['deck','deck#1']
+    assert smart_search(library,AgentSearch(query='verde',workspace_ids=['referencias']))['total']==0
+    assert smart_search(library,AgentSearch(query='verde',kind='midia',workspace_ids=['referencias']))['total']==2
+    assert smart_search(library,AgentSearch(query='verde',kind='midia',reusable=True,workspace_ids=['referencias']))['items'][0]['id']=='free'
     assert any(e['action']=='references_searched' and e['context_id']==context['id'] for e in library.events())
 
 
 def test_contact_sheet_is_a_numbered_image(library):
-    items=smart_search(library,AgentSearch(query='abertura',per_group=2,workspace_ids=['pp-treta']))['items']
+    items=smart_search(library,AgentSearch(query='abertura',per_group=2,workspace_ids=['referencias']))['items']
     image=Image.open(io.BytesIO(contact_sheet(library,items)))
     assert image.format=='JPEG' and image.width==2*380+3*12
     assert contact_sheet(library,[]) is None

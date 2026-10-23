@@ -8,7 +8,7 @@ Grid rígido, mosaico ou bento que organiza muitos itens.
 
 **Combina com:** `similaridade`, `regiao-comum`, `contraste-de-cor`, `camera-continua`, `numeracao`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **002-26-0102-cinema** (Cinema, força 4): Escolha um único acento de cor e aplique sempre na palavra-chave de cada título; todo o resto fica em preto, branco e fotos sem cor, e a repetição vira identidade.  
   `_catalogo/pranchas/002-26-0102-cinema.jpg`
@@ -27,7 +27,7 @@ Grid rígido, mosaico ou bento que organiza muitos itens.
 - **140-reel-19-05** (Convocação Seleção, força 4): Sobreponha uma grade de quadrados ao fundo e use a transição em quadriculado, para a troca parecer as próprias células virando; cada pessoa entra recortada na frente de um card branco com categoria, nome e origem.  
   `_catalogo/pranchas/140-reel-19-05.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **388-reel-instax#5** (Instax, força 5): recuo: a foto gira e vira parte de uma colagem diagonal de impressões  
   `_catalogo/miniaturas/388-reel-instax/05.jpg`

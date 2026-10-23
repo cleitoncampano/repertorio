@@ -8,7 +8,7 @@ Cards, caixas e fundos que contêm e unem.
 
 **Combina com:** `contraste-de-cor`, `similaridade`, `camera-continua`, `dado-como-heroi`, `grade-modular`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **219-reel-30-07** (SWOT, força 5): Quando o tema é uma sigla, use a própria palavra como mapa: mergulhe nela e visite uma letra por vez, deixando a letra gigante e cortada servir de fundo para a explicação daquele item.  
   `_catalogo/pranchas/219-reel-30-07.jpg`
@@ -27,7 +27,7 @@ Cards, caixas e fundos que contêm e unem.
 - **212-reel-29-06** (Mapa Mundi - Escolaridade, força 4): Use um único mapa gigante como cenário e mova a câmera de lugar em lugar: o mapa cresce e desliza até o ponto da vez, o nome do lugar e um cartão curto aparecem, e no fim a câmera recua para a visão de abertura.  
   `_catalogo/pranchas/212-reel-29-06.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **219-reel-30-07#2** (SWOT, força 5): mergulho na primeira letra gigante; card translúcido com o item  
   `_catalogo/miniaturas/219-reel-30-07/02.jpg`

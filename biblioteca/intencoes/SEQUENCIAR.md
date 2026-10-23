@@ -16,7 +16,7 @@ Processo, passos, linha do tempo, jornada, antes e depois no tempo.
 
 `transformacao` (156), `texto` (152), `panorama` (72), `voo` (61), `reorganizar` (49), `giro` (40)
 
-## Melhores slides do PPTRETA (397 no total)
+## Melhores slides do acervo (397 no total)
 
 - **562-reel-zoom#4** (Table Top Zoom, força 5): fundo grafite, 02 e título branco em três linhas, texto miúdo à direita  
   `_catalogo/miniaturas/562-reel-zoom/04.jpg`

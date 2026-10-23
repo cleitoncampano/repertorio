@@ -32,7 +32,7 @@ test('catálogo curado, busca por objetivo e pedido ligado ao espaço',async({pa
  await expect(preview).toHaveValue(/Crie um painel para líderes de CX\./);
  await expect(preview).toHaveValue(/GrowMate Skills QA/);
  expect(await preview.inputValue()).toContain(space.id);
- await expect(preview).not.toHaveValue(/PP Treta/);
+ await expect(preview).not.toHaveValue(/Referências/);
  await dialog.getByRole('button',{name:'Copiar pedido',exact:true}).click();
  await expect(dialog.getByRole('status')).toContainText('Pedido copiado');
  expect(await page.evaluate(()=>navigator.clipboard.readText())).toBe(await preview.inputValue());
@@ -43,10 +43,10 @@ test('catálogo curado, busca por objetivo e pedido ligado ao espaço',async({pa
  await expect(dialog).toBeHidden();
  await expect(page.getByRole('button',{name:'Montar pedido com Frontend Design',exact:true})).toBeFocused();
  await page.getByRole('button',{name:'Espaços',exact:true}).click();
- await page.locator('.space-enter').filter({hasText:'PP Treta'}).click();
+ await page.locator('.space-enter').filter({hasText:/^Referências/}).click();
  await expect(page.getByRole('heading',{name:'O que vamos criar?'})).toBeVisible();
  await page.getByRole('button',{name:'Montar pedido com Impeccable',exact:true}).click();
- await expect(page.getByRole('textbox',{name:'Seu pedido para o agente'})).toHaveValue(/PP Treta/);
+ await expect(page.getByRole('textbox',{name:'Seu pedido para o agente'})).toHaveValue(/Referências/);
  await expect(page.getByRole('textbox',{name:'Seu pedido para o agente'})).not.toHaveValue(/GrowMate Skills QA/);
  expect(errors).toEqual([]);
 });

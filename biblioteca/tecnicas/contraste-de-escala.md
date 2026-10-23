@@ -8,7 +8,7 @@ Um elemento gigante ao lado de outros minúsculos; a diferença de tamanho é a 
 
 **Combina com:** `tipografia-como-imagem`, `profundidade-em-camadas`, `sangria-total`, `camera-continua`, `contraste-de-cor`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **219-reel-30-07** (SWOT, força 5): Quando o tema é uma sigla, use a própria palavra como mapa: mergulhe nela e visite uma letra por vez, deixando a letra gigante e cortada servir de fundo para a explicação daquele item.  
   `_catalogo/pranchas/219-reel-30-07.jpg`
@@ -27,7 +27,7 @@ Um elemento gigante ao lado de outros minúsculos; a diferença de tamanho é a 
 - **022-3d-reels** (Nasa, força 4): Coloque o personagem 3D do tema na frente da palavra ou marca gigante, cobrindo parte das letras; nos slides seguintes empurre o personagem para um lado e use o espaço liberado como painel de texto, aproximando a câmera a cada passo.  
   `_catalogo/pranchas/022-3d-reels.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **219-reel-30-07#9** (SWOT, força 5): terceira letra cortada no canto superior direito, texto embaixo  
   `_catalogo/miniaturas/219-reel-30-07/09.jpg`

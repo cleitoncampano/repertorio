@@ -65,7 +65,7 @@ def prepare_demo(base, home, port=8768):
     db = Database(settings)
     lib = Library(db)
     try:
-        primary = lib.save_workspace(WorkspaceUpdate(name='Estúdio Aurora', expected_revision=1), 'pp-treta')
+        primary = lib.save_workspace(WorkspaceUpdate(name='Estúdio Aurora', expected_revision=1), 'referencias')
         secondary = lib.save_workspace(Workspace(name='Marca Horizonte'))
         project_root = home / 'projeto-exemplo'
         project_root.mkdir()

@@ -40,12 +40,12 @@ def test_demo_isolated_with_working_search_and_assets(library, tmp_path):
         assert client.get('/api/health').json()['demo'] is True
         spaces = client.get('/api/workspaces').json()
         assert {w['name'] for w in spaces} == {'Estúdio Aurora', 'Marca Horizonte'}
-        graph = client.get('/api/graph', params={'workspace_id': 'pp-treta'}).json()
+        graph = client.get('/api/graph', params={'workspace_id': 'referencias'}).json()
         assert {r['id'] for r in graph['items']} == {'demo-01', 'demo-02', 'demo-03'}
-        detail = client.get('/api/references/demo-01', params={'workspace_id': 'pp-treta'}).json()
+        detail = client.get('/api/references/demo-01', params={'workspace_id': 'referencias'}).json()
         assert detail['reusable'] is True and detail['how']
         assert client.get(detail['assets'][0]['url']).status_code == 200
-        found = client.post('/api/search', json={'workspace_ids': ['pp-treta'], 'query': 'escala'}).json()
+        found = client.post('/api/search', json={'workspace_ids': ['referencias'], 'query': 'escala'}).json()
         assert 'demo-01' in {r['id'] for r in found['items']}
     assert library.db.query('SELECT * FROM refs ORDER BY id') == before
 

@@ -1,6 +1,6 @@
 # Kit: motor de apresentação em HTML
 
-Reproduz no navegador o que faz o PPTRETA no PowerPoint: Morph entre slides, entradas no ritmo da fala, contagens, máscaras.
+Reproduz no navegador o que faz o acervo no PowerPoint: Morph entre slides, entradas no ritmo da fala, contagens, máscaras.
 Arquivos: `motor.css`, `motor.js`, `modelo.html` (ponto de partida em branco), `demo.html` (todos os recursos em 9 slides).
 
 ## Estrutura mínima

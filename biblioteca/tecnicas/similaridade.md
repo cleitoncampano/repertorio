@@ -8,7 +8,7 @@ Mesma cor, forma ou estilo diz que é da mesma família.
 
 **Combina com:** `grade-modular`, `contraste-de-cor`, `regiao-comum`, `camera-continua`, `dado-como-heroi`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **585-reels-nestle-grafico** (Páscoa Nestlé, força 5): Use o próprio produto como topo de cada coluna do gráfico, com a coluna na cor da embalagem; depois abra cada coluna num card da mesma cor para contar a história de um item por vez.  
   `_catalogo/pranchas/585-reels-nestle-grafico.jpg`
@@ -27,7 +27,7 @@ Mesma cor, forma ou estilo diz que é da mesma família.
 - **112-reel-15-05** (Pringles Desfoque, força 4): Alinhe as variações lado a lado e, a cada slide, deixe só uma nítida e à frente, com as outras desfocadas como fora de foco de câmera; o texto ao lado troca junto e a plateia sente a lente mudando de foco.  
   `_catalogo/pranchas/112-reel-15-05.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **585-reels-nestle-grafico#2** (Páscoa Nestlé, força 5): quatro produtos recortados diante de pílulas na cor de cada embalagem  
   `_catalogo/miniaturas/585-reels-nestle-grafico/02.jpg`

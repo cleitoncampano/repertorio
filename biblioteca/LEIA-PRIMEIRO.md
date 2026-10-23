@@ -9,7 +9,7 @@ Leia na ordem em que precisar. Nada aqui precisa ser lido inteiro de uma vez: a 
 | `principios/direcao-de-arte.md` | para decidir o visual (insight, ideia, execução; menu de ingredientes; capa; anúncio; 15 movimentos do comum ao memorável) |
 | `principios/fontes.md` | para saber o que cada referência externa ensina e onde estão os estudos completos |
 | `intencoes/<INTENÇÃO>.md` | o que um bom slide de cada tipo faz, técnicas e movimentos mais usados, melhores exemplos com caminho da imagem |
-| `tecnicas/<id>.md` | definição, como fazer em HTML, com o que combina, exemplos do PPTRETA e de referências externas |
+| `tecnicas/<id>.md` | definição, como fazer em HTML, com o que combina, exemplos do acervo e de referências externas |
 | `movimentos/<id>.md` | receita com o motor do kit e exemplos reais de Morph analisados objeto a objeto |
 | `estilos.md` | todos os modelos completos, do mais forte ao mais fraco, com estética, tom, ideia e prancha |
 | `efeitos.md` | todos os efeitos (os "reels" do curso) |
@@ -29,13 +29,13 @@ operação do olhar  (diferenciação · agrupamento · sequência · previsão)
         │
      técnica       (contraste-de-escala, metafora-visual, camera-continua...)
         │
-   referência      (arquivo do PPTRETA, slide, capa, anúncio, ativação, frame de vídeo)
+   referência      (arquivo do acervo, slide, capa, anúncio, ativação, frame de vídeo)
         │
  intenção · movimento · estética · tom
 ```
 
 Uma referência sempre aponta para técnicas; cada técnica pertence a uma operação do olhar. Assim, "quero que a plateia
-perceba a diferença" leva a técnicas de diferenciação, que levam a slides do PPTRETA e a capas e anúncios que usam essas técnicas.
+perceba a diferença" leva a técnicas de diferenciação, que levam a slides do acervo e a capas e anúncios que usam essas técnicas.
 
 ## Números
 

@@ -8,7 +8,7 @@ Usar a linguagem de outro gênero: passaporte, recibo, manchete, cartaz, interfa
 
 **Combina com:** `contraste-de-cor`, `camera-continua`, `regiao-comum`, `interface-imitada`, `sangria-total`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **025-cartao-namorados** (Namorados 2025, força 4): Monte uma mensagem como galeria de fotos em molduras de polaroide, cada uma com uma única palavra; o mural vira menu e cada foto se abre em tela cheia, terminando numa frase curta sozinha.  
   `_catalogo/pranchas/025-cartao-namorados.jpg`
@@ -27,7 +27,7 @@ Usar a linguagem de outro gênero: passaporte, recibo, manchete, cartaz, interfa
 - **165-reel-23-01** (Efeito Carrossel, força 4): Espalhe uma foto larga por dois ou mais slides e passe de um para o outro empurrando de lado, como um carrossel de rede social: a imagem continua sem emenda e o texto de cada parte completa o anterior.  
   `_catalogo/pranchas/165-reel-23-01.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **025-cartao-namorados#3** (Namorados 2025, força 4): foto em polaroide com ícones de rede social e palavra espaçada embaixo  
   `_catalogo/miniaturas/025-cartao-namorados/03.jpg`

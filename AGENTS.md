@@ -1,6 +1,6 @@
 # Repertório
 
-Projeto e biblioteca local de referências para criar apresentações, sites e vídeos originais. Referências (apresentações e material do PPT Treta), Inspiração (referências externas e criações, como os carrosséis Growmate), Growmate e Motion (vídeos de motion) são espaços independentes dentro do Repertório. Para slides e carrosséis, consulte Referências e Inspiração juntos. O aplicativo fica em `app/` e atende em http://127.0.0.1:8766, com busca, mapa, revisão e MCP. O manual detalhado está em `biblioteca/manual-agentes.md`; consulte apenas as seções pertinentes à tarefa.
+Projeto e biblioteca local de referências para criar apresentações, sites e vídeos originais. Referências (apresentações e material do acervo), Inspiração (referências externas e criações, como os carrosséis Growmate), Growmate e Motion (vídeos de motion) são espaços independentes dentro do Repertório. Para slides e carrosséis, consulte Referências e Inspiração juntos. O aplicativo fica em `app/` e atende em http://127.0.0.1:8766, com busca, mapa, revisão e MCP. O manual detalhado está em `biblioteca/manual-agentes.md`; consulte apenas as seções pertinentes à tarefa.
 
 ## Acervo e produção
 

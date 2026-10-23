@@ -23,7 +23,7 @@ APPLE_SCRIPT = '''on run argv
             set URL of t to (item 1 of argv)
             repeat 80 times
               delay 0.05
-              set responseText to execute t javascript "document.documentElement.getAttribute('data-pptreta-firefly-result') || ''"
+              set responseText to execute t javascript "document.documentElement.getAttribute('data-repertorio-firefly-result') || ''"
               if responseText contains (item 2 of argv) then return responseText
             end repeat
             error "O Firefly não respondeu ao controle da página."
@@ -61,9 +61,9 @@ const releaseClosedIntro = () => {
 def run_ui(body):
     request = uuid.uuid4().hex
     code = ("javascript:void((()=>{try{" + UI + "const result=(()=>{" + body +
-            "})();document.documentElement.setAttribute('data-pptreta-firefly-result',JSON.stringify({request:" +
+            "})();document.documentElement.setAttribute('data-repertorio-firefly-result',JSON.stringify({request:" +
             json.dumps(request) + ",ok:true,result}));}catch(e){document.documentElement.setAttribute(" +
-            "'data-pptreta-firefly-result',JSON.stringify({request:" + json.dumps(request) +
+            "'data-repertorio-firefly-result',JSON.stringify({request:" + json.dumps(request) +
             ",ok:false,error:String(e)}));}})())")
     response = subprocess.run(['/usr/bin/osascript', '-e', APPLE_SCRIPT, code, request],
                               capture_output=True, text=True, timeout=30)

@@ -8,7 +8,7 @@ Uma coisa vira outra diante da plateia: antes e depois, forma que muda.
 
 **Combina com:** `regiao-comum`, `metafora-visual`, `contraste-de-cor`, `camera-continua`, `emprestimo-de-codigo`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **132-reel-17-09** (Tucano - Efeito Raio-X, força 5): Tenha duas versões da mesma imagem, a normal e a de dentro, e passe um quadrado que mostra a de dentro exatamente alinhado: parece uma lente que enxerga através do assunto.  
   `_catalogo/pranchas/132-reel-17-09.jpg`
@@ -27,7 +27,7 @@ Uma coisa vira outra diante da plateia: antes e depois, forma que muda.
 - **097-reel-12-08** (Frase - Einstein, força 4): Para uma citação, coloque a foto do autor dentro do próprio sinal gráfico da citação: comece com o retrato em tela cheia e, no avanço, faça-o se recolher para dentro de uma vírgula ou aspa gigante cortada pela borda.  
   `_catalogo/pranchas/097-reel-12-08.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **132-reel-17-09#6** (Tucano - Efeito Raio-X, força 5): a cena inteira vira raio-X  
   `_catalogo/miniaturas/132-reel-17-09/06.jpg`

@@ -8,7 +8,7 @@ O texto é a própria imagem: gigante, recortado, preenchido por foto, contornad
 
 **Combina com:** `profundidade-em-camadas`, `contraste-de-escala`, `camera-continua`, `eco-tipografico`, `contraste-de-cor`
 
-## Arquivos do PPTRETA
+## Arquivos do acervo
 
 - **129-reel-17-06** (Table top com zoom, força 5): Transforme a agenda numa cena real em que cada objeto representa uma etapa, e use cada objeto como porta: o zoom entra nele e abre o capítulo correspondente.  
   `_catalogo/pranchas/129-reel-17-06.jpg`
@@ -27,7 +27,7 @@ O texto é a própria imagem: gigante, recortado, preenchido por foto, contornad
 - **002-26-0102-cinema** (Cinema, força 4): Escolha um único acento de cor e aplique sempre na palavra-chave de cada título; todo o resto fica em preto, branco e fotos sem cor, e a repetição vira identidade.  
   `_catalogo/pranchas/002-26-0102-cinema.jpg`
 
-## Slides do PPTRETA
+## Slides do acervo
 
 - **129-reel-17-06#2** (Table top com zoom, força 5): palavra serifada gigante partida e cortada na base, fundo branco  
   `_catalogo/miniaturas/129-reel-17-06/02.jpg`

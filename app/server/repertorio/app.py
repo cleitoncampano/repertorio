@@ -97,6 +97,9 @@ def create_app(settings=None,run_worker=True):
     @app.post('/api/workspaces/{wid}/trash/purge')
     def purge_trash(wid:str,req:schemas.TrashPurge):return lib.purge_trash(wid,req)
 
+    @app.get('/api/catalog')
+    def catalog():return lib.catalog()
+
     @app.get('/api/vocabulary')
     def vocab():return lib.meta('vocabulary',{})
 

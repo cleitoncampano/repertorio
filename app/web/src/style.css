@@ -330,6 +330,8 @@ h1 { font-size: 30px; letter-spacing: -.03em; line-height: 1.2; font-weight: 500
 .skill-dialog textarea { display: block; width: 100%; resize: vertical; border: 1px solid var(--line); border-radius: 7px; padding: 12px; font: inherit; font-size: 13px; line-height: 1.65; color: var(--text); background: var(--canvas); }
 .skill-dialog textarea:focus { outline: 1px solid var(--accent); }
 .skill-dialog .skill-request { color: var(--muted); font-size: 12px; }
+
+.skill-source a { color: var(--text); text-decoration: underline; display: inline-flex; align-items: center; gap: 3px; }
 .skill-request-space { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; margin: 14px 0 0; line-height: 1.6; }
 .skill-dialog-actions { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 22px; }.skill-dialog-actions>span { color: var(--muted); font-size: 11px; line-height: 1.6; }
 .skill-dialog-actions>button { display: inline-flex; align-items: center; gap: 8px; padding: 11px 15px; border-radius: 6px; background: var(--accent); color: var(--accent-ink); font-size: 12px; white-space: nowrap; }

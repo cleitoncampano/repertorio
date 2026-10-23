@@ -16,7 +16,7 @@ export function ProductGuide({workspace,onExplore,onSearch,onSkills,onConnect,on
  const example=[
   'Quero criar uma capa de LinkedIn para apresentar minha empresa.',
   workspace?`Busque referências no espaço ${JSON.stringify(workspace.name)} do Repertório (workspace_id: ${workspace.id}).`:'Liste os espaços do Repertório e me pergunte quais usar como inspiração.',
-  'Leia o guia do momento no Repertório e me diga quais referências vai usar e por quê, com os links.',
+  'Consulte o Repertório e me diga quais referências vai usar e por quê, com os links.',
   'Siga a identidade da minha empresa e salve os rascunhos, imagens e arquivos finais no projeto desta produção.',
  ].join('\n\n');
  return <section className="collection-page product-page" aria-labelledby="product-title">

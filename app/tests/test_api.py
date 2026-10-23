@@ -105,3 +105,16 @@ def test_slow_mcp_tool_does_not_freeze_the_service(library,monkeypatch):
     status,waited,tool=asyncio.run(scenario())
     assert status==200 and waited<.9,waited
     assert not tool['result'].get('isError'),tool
+
+
+def test_catalog_prefers_user_file_then_library_then_package(library):
+    import json
+    default=library.catalog()
+    assert not default['personal'] and default['skills'] and default['repos']
+    assert not any(s['id'].startswith(('perestroika','soap')) for s in default['skills'])
+    assert all(s.get('source','').startswith('https://github.com/') for s in default['skills'])
+    (library.settings.root/'dados/catalogo.json').write_text(json.dumps({'skills':[{'id':'a'}],'repos':[]}))
+    assert library.catalog()=={'skills':[{'id':'a'}],'repos':[],'personal':True}
+    (library.settings.home/'catalogo.json').write_text(json.dumps({'skills':[{'id':'b'}]}))
+    with TestClient(create_app(library.settings,run_worker=False),base_url='http://127.0.0.1:8767') as client:
+        assert client.get('/api/catalog').json()=={'skills':[{'id':'b'}],'repos':[],'personal':True}

@@ -85,3 +85,24 @@ def test_windows_lock_normalizes_busy_error(monkeypatch, tmp_path):
     with (tmp_path / 'windows.lock').open('a+b') as handle:
         with pytest.raises(BlockingIOError):
             lock_file(handle)
+
+
+def test_agent_instructions_cite_only_installed_guides(library):
+    from repertorio.cli import agent_instructions
+    from repertorio.mcp_server import create_mcp
+    settings=library.settings
+    fresh=agent_instructions(settings,settings.url,'projeto-1','run.sh')
+    assert 'get_guide' not in fresh and 'Perestroika' not in fresh and '\n5. Mantenha o `context_id`' in fresh
+    assert library.guide_summary()==''
+    mcp=create_mcp(library,None)
+    tools={t.name:t for t in mcp._tool_manager.list_tools()}
+    assert 'ainda não tem guias' in tools['get_guide'].description and 'get_guide' not in mcp.instructions
+    folder=settings.root/'biblioteca/guias';folder.mkdir(parents=True)
+    (folder/'abertura.md').write_text('# Abertura')
+    method=settings.root/'biblioteca/metodos/escola/guias';method.mkdir(parents=True)
+    (method/'metodo-escola.md').write_text('# Método')
+    full=agent_instructions(settings,settings.url,'projeto-1','run.sh')
+    assert '2. Leia com `get_guide`' in full and '`metodo-escola`' in full and 'para vídeos' not in full
+    assert 'abertura' in library.guide_summary() and 'Método escola: metodo-escola é o índice' in library.guide_summary()
+    tools={t.name:t for t in create_mcp(library,None)._tool_manager.list_tools()}
+    assert 'abertura' in tools['get_guide'].description

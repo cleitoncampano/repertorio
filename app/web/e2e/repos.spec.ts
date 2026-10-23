@@ -11,7 +11,8 @@ test('repositórios abaixo de Skills, com link do GitHub e busca',async({page})=
  await rail.getByRole('button',{name:'Repositórios',exact:true}).click();
  await expect(rail.getByRole('button',{name:'Repositórios',exact:true})).toHaveAttribute('aria-current','page');
  await expect(page).toHaveURL(/view=repos/);
- await expect(page.locator('.skill-card h2')).toHaveText(['Engram','RTK','HyperFrames']);
+ await expect(page.locator('.skill-card h2')).toHaveText(['HyperFrames','Engram','RTK']);
+ await expect(page.locator('.skills-curated')).toHaveText('3 repositórios sugeridos');
  await expect(page.getByRole('link',{name:/github\.com\/Gentleman-Programming\/engram/})).toHaveAttribute('href','https://github.com/Gentleman-Programming/engram');
  await expect(page.getByRole('link',{name:/github\.com\/Gentleman-Programming\/engram/})).toHaveAttribute('target','_blank');
  await page.screenshot({path:evidence+'/repositorios-escuro.png',animations:'disabled'});

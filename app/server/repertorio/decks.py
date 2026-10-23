@@ -1,4 +1,4 @@
-"""Coleções de apresentações em PDF de terceiros (ex.: Perestroika): cada PDF vira uma apresentação no mapa
+"""Coleções de apresentações em PDF de terceiros: cada PDF vira uma apresentação no mapa
 e cada página escolhida vira um slide dela, com a mesma ficha (técnicas, intenções, ideia) dos slides de Referências.
 
 As fichas ficam em dados/<coleção>/*.jsonl, uma por linha: `doc: arquivo` para o PDF (capa e original)

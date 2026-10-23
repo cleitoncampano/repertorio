@@ -1,125 +1,24 @@
-export type SkillCategory='Design'|'Animação'|'Imagens'|'Apresentações'|'Método'|'Código';
 export type Skill={
  id:string;
  name:string;
- category:SkillCategory;
+ category:string;
  description:string;
  when:string;
  example:string;
  // A skill só roda quando chamada pelo comando, não pelo pedido em texto.
  manual?:boolean;
+ // Repositório para instalar a skill no agente.
+ source?:string;
+ // Nome do ícone do Lucide no cartão.
+ icon?:string;
 };
 
-// Curadoria explícita do usuário. Instalar uma skill não a inclui no catálogo.
-export const skills:readonly Skill[]=[
- {id:'impeccable',name:'Impeccable',category:'Design',
-  description:'Revisa e refina interfaces: hierarquia, tipografia, cores, acessibilidade e acabamento.',
-  when:'Quero melhorar uma interface que já existe.',
-  example:'Revise esta interface e melhore a hierarquia visual, a legibilidade e o acabamento.'},
- {id:'frontend-design',name:'Frontend Design',category:'Design',
-  description:'Cria páginas e componentes em código, com identidade visual e atenção aos detalhes.',
-  when:'Quero construir uma interface com personalidade.',
-  example:'Crie uma página inicial responsiva, com uma direção visual própria e componentes funcionais.'},
- {id:'landing-page-design',name:'Landing Page Design',category:'Design',
-  description:'Organiza páginas de conversão com abertura clara, prova social e chamadas para ação.',
-  when:'Quero apresentar uma oferta e gerar conversões.',
-  example:'Desenhe uma landing page para apresentar nossa solução e incentivar o agendamento de uma conversa.'},
- {id:'emil-design-eng',name:'Detalhes que encantam',category:'Design',
-  description:'Aplica o olhar de Emil Kowalski (Vercel, Linear): acabamento, componentes, animações e os detalhes invisíveis que deixam uma interface agradável.',
-  when:'Quero que a interface pareça bem feita, não só funcional.',
-  example:'Revise esta interface com olhar de acabamento e me mostre, em uma tabela de antes e depois, o que mudar.'},
- {id:'apple-design',name:'Design no estilo Apple',category:'Design',
-  description:'Traz para a web os princípios de interface e movimento da Apple: gestos, transições naturais, profundidade e tipografia bem calibrada.',
-  when:'Quero uma interface fluida, com gestos e transições naturais.',
-  example:'Ajuste esta tela para ter a fluidez de um app da Apple: gestos, transições que podem ser interrompidas e tipografia bem calibrada.'},
- {id:'prototype',name:'Protótipo em variações',category:'Design',manual:true,
-  description:'Cria versões bem diferentes de um mesmo trecho de interface, com um seletor para alternar entre elas ao vivo e escolher a melhor.',
-  when:'Ainda não sei qual caminho visual seguir.',
-  example:'Crie três versões diferentes da seção de abertura desta página para eu comparar e escolher.'},
- {id:'break-ui',name:'Teste de limites',category:'Design',
-  description:'Testa uma tela com os piores dados possíveis (nomes enormes, listas vazias, números gigantes, emoji) e mostra o que quebrou, com a correção de cada caso.',
-  when:'Quero saber se a tela aguenta dados reais e bagunçados.',
-  example:'Teste este painel com os piores dados possíveis e me diga o que quebra e como corrigir.'},
- {id:'mobile-native',name:'Cara de app no celular',category:'Design',
-  description:'Faz um site parecer aplicativo no celular: toques sem atraso, tela inteira correta, campos que não dão zoom e rolagem natural.',
-  when:'O site funciona, mas no celular parece site, não aplicativo.',
-  example:'Revise esta página no celular e corrija o que a faz parecer site em vez de aplicativo.'},
- {id:'design-taste-frontend',name:'Direção de arte para sites',category:'Design',
-  description:'Dá direção de arte a sites e telas de sistema a partir de um estudo de 247 sites premiados: escolhe um caminho visual, usa fotos reais com crédito e confere a página no navegador até ficar boa.',
-  when:'Quero uma página que não pareça feita por IA.',
-  example:'Crie a página de apresentação da nossa solução com direção de arte própria, fotos reais e sem cara de modelo pronto.'},
- {id:'animate',name:'Criar animação',category:'Animação',
-  description:'Constrói uma animação do zero decidindo na ordem certa: se vale animar, com que propósito, qual curva, duração e saída.',
-  when:'Quero dar movimento a um elemento de site ou aplicativo.',
-  example:'Anime a abertura deste menu para parecer rápida e natural, sem exagero.'},
- {id:'animate-expo',name:'Animação em app de celular',category:'Animação',
-  description:'O mesmo padrão de qualidade para aplicativos feitos com React Native e Expo: gestos, painéis deslizantes, transições de tela e vibração ao toque.',
-  when:'Estou fazendo um aplicativo de celular e quero movimento fluido.',
-  example:'Crie um painel que sobe da parte de baixo da tela com arraste e uma vibração leve ao encaixar.'},
- {id:'review-animations',name:'Revisão de animações',category:'Animação',manual:true,
-  description:'Revisa animações com um padrão rigoroso: aponta curva, duração e comportamento errados e explica como corrigir.',
-  when:'Fiz uma animação e quero uma crítica exigente.',
-  example:'Revise as animações desta tela e aponte tudo que não está no nível de um produto de referência.'},
- {id:'improve-animations',name:'Plano de animações',category:'Animação',
-  description:'Analisa todas as animações de um projeto e entrega as melhorias em ordem de prioridade, com planos prontos para outro agente executar.',
-  when:'Quero melhorar o movimento do produto inteiro, por etapas.',
-  example:'Analise as animações deste projeto e me entregue as melhorias em ordem de prioridade.'},
- {id:'find-animation-opportunities',name:'Onde animar',category:'Animação',
-  description:'Procura os pontos da interface que ganhariam com movimento e diz também o que deve continuar parado. Só sugere, não altera.',
-  when:'Sinto a interface parada e não sei onde colocar movimento.',
-  example:'Mostre onde esta interface ganharia com animação e o que deve continuar parado.'},
- {id:'animation-performance',name:'Animação sem travar',category:'Animação',
-  description:'Encontra e corrige animações que engasgam ou pulam quadros, trocando o que pesa por alternativas leves.',
-  when:'A animação está travando ou pulando.',
-  example:'A transição entre as telas está engasgando. Descubra a causa e corrija.'},
- {id:'animation-vocabulary',name:'Nome do efeito',category:'Animação',
-  description:'Traduz a descrição de um efeito, como "aquele que quica quando abre", no nome exato, para pedir com precisão a uma IA ou a um designer.',
-  when:'Sei como o efeito é, mas não sei o nome.',
-  example:'Como se chama o efeito em que a lista estica e volta quando chega ao fim da rolagem?'},
- {id:'imagegen',name:'ImageGen',category:'Imagens',
-  description:'Gera e edita imagens, ilustrações e composições a partir de uma ideia ou referência.',
-  when:'Preciso de uma imagem original para uma peça.',
-  example:'Crie uma ilustração original para a abertura de uma apresentação sobre conexão com o cliente.'},
- {id:'presentations:Presentations',name:'Presentations',category:'Apresentações',
-  description:'Cria e edita apresentações em PowerPoint ou Google Slides, com narrativa e composição visual.',
-  when:'Quero transformar uma história em um deck de slides.',
-  example:'Crie uma apresentação em PowerPoint para contar a história da nossa solução, do problema à proposta.'},
- {id:'perestroika-tese',name:'Tese e roteiro',category:'Método',
-  description:'Fecha a tese, a frase-resumo, o momento-surpresa e o que a plateia leva no dia seguinte, antes de qualquer slide ou vídeo.',
-  when:'Tenho um tema e preciso saber o que a peça defende.',
-  example:'Antes de criar a apresentação, defina a tese, a frase-resumo, o momento-surpresa e o que a plateia vai saber fazer no dia seguinte.'},
- {id:'perestroika-experiencia',name:'Aula e workshop',category:'Método',
-  description:'Desenha aulas, workshops, treinamentos, cursos e eventos: jornada, blocos com horário, abertura, encerramento e dinâmicas.',
-  when:'Vou conduzir um encontro, não só apresentar slides.',
-  example:'Desenhe um workshop de 3 horas para gestores de atendimento, com blocos, horários, abertura, dinâmica prática e encerramento.'},
- {id:'perestroika-revisao',name:'Revisão de apresentação',category:'Método',
-  description:'Confere uma peça pronta: planejamento, tese, começo que prende, um protagonista por slide, cores, fontes e animações.',
-  when:'A apresentação está pronta e quero saber o que melhorar.',
-  example:'Revise esta apresentação pelo checklist e me diga, em ordem de prioridade, o que corrigir.'},
- {id:'soap-fala',name:'Apresentar ao vivo',category:'Método',
-  description:'Prepara quem vai falar: voz, ritmo, corpo, olhar, nervosismo, ensaio, perguntas difíceis e apresentação a distância.',
-  when:'Vou apresentar ao vivo ou em vídeo e quero chegar seguro.',
-  example:'Monte meu plano de ensaio e o checklist de voz, corpo e perguntas difíceis para a apresentação de quinta-feira à diretoria.'},
- {id:'soap-pitch',name:'Pitch e proposta',category:'Método',
-  description:'Monta pitch para investidores, elevator pitch, proposta de venda, concorrência, apresentação institucional e pedido de verba, com a ordem dos slides.',
-  when:'Preciso convencer alguém a decidir: investir, comprar ou aprovar.',
-  example:'Monte o roteiro de um pitch de 10 minutos para investidores, com as informações na ordem e os números que eles vão perguntar.'},
- {id:'pick-ui-library',name:'Escolher biblioteca',category:'Código',manual:true,
-  description:'Indica a biblioteca certa para cada tarefa da interface (gráficos, avisos, arrastar e soltar, números animados) a partir de uma lista curada.',
-  when:'Preciso de um componente pronto e confiável, não feito do zero.',
-  example:'Qual biblioteca devo usar para números que animam ao mudar neste painel?'},
- {id:'ask-sonner',name:'Avisos com Sonner',category:'Código',
-  description:'Guia da biblioteca Sonner de avisos na tela: instalação, estilos, tema escuro e solução dos problemas mais comuns.',
-  when:'Quero mostrar avisos rápidos de sucesso, erro ou carregamento.',
-  example:'Adicione avisos de sucesso e de erro ao salvar o formulário, seguindo o tema claro e o escuro.'},
- {id:'write-swift',name:'Swift moderno',category:'Código',
-  description:'Escreve e revisa código Swift atual, para aplicativos de Mac e iPhone: segurança, desempenho, testes e recursos novos da linguagem.',
-  when:'Vou mexer em um aplicativo nativo da Apple.',
-  example:'Revise este código Swift do aplicativo e corrija travamentos e problemas de desempenho.'},
-];
-
+// O catálogo vem do servidor (/api/catalog): o da pasta de dados do usuário, o da biblioteca ou o padrão do pacote.
 export const normalize=(text:string)=>text.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR');
-export function searchSkills(query:string,category:SkillCategory|'Todas'='Todas'){
+// Categorias na ordem em que aparecem no catálogo.
+export const skillCategories=(skills:readonly Skill[])=>['Todas',...new Set(skills.map(skill=>skill.category))];
+
+export function searchSkills(skills:readonly Skill[],query:string,category='Todas'){
  const words=normalize(query).trim().split(/\s+/).filter(Boolean);
  return skills.filter(skill=>(category==='Todas'||skill.category===category)&&words.every(word=>normalize([skill.id,skill.name,skill.category,skill.description,skill.when,skill.example].join(' ')).includes(word)));
 }
@@ -132,7 +31,7 @@ export function buildSkillRequest(skill:Skill,goal:string,workspace?:{id:string;
   workspace
    ?`Use como inspiração apenas as referências do espaço ${JSON.stringify(workspace.name)} no Repertório (workspace_id: ${workspace.id}).`
    :'Antes de buscar referências, me pergunte qual espaço do Repertório deve servir de inspiração.',
-  'Antes de criar, consulte o Repertório, leia o guia do momento ou do tipo de peça e me diga quais referências vai usar e por quê, com os links. Siga a identidade do projeto.',
+  'Antes de criar, consulte o Repertório (e o guia do momento ou do tipo de peça, se a biblioteca tiver) e me diga quais referências vai usar e por quê, com os links. Siga a identidade do projeto.',
   'Crie e salve rascunhos, imagens, prévias e arquivos finais no projeto desta produção, fora do Repertório.',
  ].join('\n\n');
 }

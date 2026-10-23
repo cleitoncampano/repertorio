@@ -61,7 +61,14 @@ class Library(Workspaces):
                 conn.execute(text('INSERT INTO context_workspaces VALUES(:c,:w)'),dict(c=row['id'],w=wid))
             self.db.log(conn,'context_started',context_id=row['id'],demand=data.demand)
         return {**self.context(row['id']),'instructions':'História primeiro. Consulte somente os espaços desta demanda. Na incorporação, informe os espaços de destino. Examine imagens e adapte a ideia à identidade do projeto. Não copie. Publique apenas quando o usuário solicitar; sugestões ficam pendentes.',
-                'vocabulary':self.meta('vocabulary',{}),'principles_available':['narrativa','direcao-de-arte'],'guides_available':self.guides()}
+                'vocabulary':self.meta('vocabulary',{}),'principles_available':list(self.meta('principles',{})),'guides_available':self.guides()}
+
+    def catalog(self):
+        """Catálogo de Skills e Repositórios: o da pasta de dados (do usuário), o da biblioteca de desenvolvimento ou o padrão do pacote."""
+        for path,personal in ((self.settings.home/'catalogo.json',True),(self.settings.root/'dados/catalogo.json',True),(Path(__file__).with_name('catalogo_padrao.json'),False)):
+            if path.is_file():
+                data=json.loads(path.read_text(encoding='utf-8'))
+                return {'skills':data.get('skills',[]),'repos':data.get('repos',[]),'personal':personal}
 
     def guide_files(self):
         """Guias de criação: por papel na história (slides, carrosséis e peças de imagem), por tipo de vídeo,
@@ -82,9 +89,24 @@ class Library(Workspaces):
     def guides(self):
         return list(self.guide_files())
 
+    def guide_summary(self):
+        """Descrição dos guias instalados para as instruções do agente; vazia numa instalação sem guias."""
+        root=self.settings.root;parts=[]
+        for folder,label in ((root/'biblioteca/guias','Slides, carrosséis e peças de imagem, por papel na história'),(root/'biblioteca/motion/guias','Vídeos, por tipo')):
+            names=[p.stem for p in sorted(folder.glob('*.md')) if p.stem!='LEIA-ME'] if folder.is_dir() else []
+            if names:parts.append(f"{label}: {', '.join(names)}.")
+        for folder in sorted((root/'biblioteca/metodos').glob('*/guias')):
+            names=[p.stem for p in sorted(folder.glob('*.md')) if p.stem!='LEIA-ME']
+            index=[n for n in names if n.startswith('metodo-')]
+            if index:parts.append(f"Método {folder.parent.name}: {index[0]} é o índice e cada ficha abre como {folder.parent.name}/<ficha>"+(f"; guias: {', '.join(n for n in names if n not in index)}." if len(names)>len(index) else '.'))
+        kits=[n for n in ('kit','kit-apresentacao') if n in self.guide_files()]
+        if kits:parts.append(f"Kits de construção: {', '.join(kits)}.")
+        return ' '.join(parts)
+
     def guide(self,name,workspace_ids=None,context_id=None):
         files={**self.method_files(),**self.guide_files()}
         if name not in files:
+            if not self.guide_files():raise Problem(404,'Esta biblioteca ainda não tem guias instalados. Siga o pedido do usuário e as fichas das referências.')
             raise Problem(404,'Guia não encontrado. Disponíveis: '+', '.join(self.guide_files())+'. Fichas de método: abra o guia metodo-<coleção>.')
         content=files[name].read_text()
         # Guias citam referências de vários espaços: diga de qual espaço é cada uma e marque as dos espaços não escolhidos.

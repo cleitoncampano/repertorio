@@ -1,5 +1,8 @@
 import {describe,it,expect} from 'vitest';
-import {repos,searchRepos} from './repoCatalog';
+import {searchRepos,type Repo} from './repoCatalog';
+import catalog from '../../server/repertorio/catalogo_padrao.json';
+
+const repos=catalog.repos as Repo[];
 
 describe('catálogo de repositórios',()=>{
  it('cada repositório aponta para o GitHub',()=>{
@@ -7,8 +10,8 @@ describe('catálogo de repositórios',()=>{
   expect(new Set(repos.map(repo=>repo.id)).size).toBe(repos.length);
  });
  it('encontra pelo objetivo sem depender de acentos',()=>{
-  expect(searchRepos('MEMORIA').map(repo=>repo.id)).toEqual(['engram']);
-  expect(searchRepos('video mp4').map(repo=>repo.id)).toEqual(['hyperframes']);
-  expect(searchRepos('   ')).toHaveLength(repos.length);
+  expect(searchRepos(repos,'MEMORIA').map(repo=>repo.id)).toEqual(['engram']);
+  expect(searchRepos(repos,'video mp4').map(repo=>repo.id)).toEqual(['hyperframes']);
+  expect(searchRepos(repos,'   ')).toHaveLength(repos.length);
  });
 });

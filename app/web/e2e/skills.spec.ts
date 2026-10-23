@@ -2,7 +2,7 @@ import {test,expect} from '@playwright/test';
 
 const evidence='/tmp/repertorio-skills-qa';
 
-test('catálogo curado, busca por objetivo e pedido ligado ao espaço',async({page,context,request})=>{
+test('catálogo sugerido do pacote, busca por objetivo e pedido ligado ao espaço',async({page,context,request})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
  await context.grantPermissions(['clipboard-read','clipboard-write']);
  const space=await (await request.post('/api/workspaces',{data:{name:'GrowMate Skills QA'}})).json();
@@ -10,7 +10,9 @@ test('catálogo curado, busca por objetivo e pedido ligado ao espaço',async({pa
  await page.getByRole('button',{name:'Skills',exact:true}).click();
  await expect(page.getByRole('button',{name:'Skills',exact:true})).toHaveAttribute('aria-current','page');
  await expect(page.getByRole('button',{name:'Entradas',exact:true})).toHaveCount(0);
- await expect(page.locator('.skill-card h2')).toHaveText(['Impeccable','Frontend Design','Landing Page Design','Detalhes que encantam','Design no estilo Apple','Protótipo em variações','Teste de limites','Cara de app no celular','Direção de arte para sites','Criar animação','Animação em app de celular','Revisão de animações','Plano de animações','Onde animar','Animação sem travar','Nome do efeito','ImageGen','Presentations','Tese e roteiro','Aula e workshop','Revisão de apresentação','Apresentar ao vivo','Pitch e proposta','Escolher biblioteca','Avisos com Sonner','Swift moderno']);
+ await expect(page.locator('.skill-card h2')).toHaveText(['Impeccable','Frontend Design','Detalhes que encantam','Design no estilo Apple','Protótipo em variações','Teste de limites','Cara de app no celular','Direção de arte para sites','Criar animação','Animação em app de celular','Revisão de animações','Plano de animações','Onde animar','Animação sem travar','Nome do efeito','Escolher biblioteca','Avisos com Sonner','Swift moderno']);
+ // Instalação nova: sugestões públicas, sem métodos de cursos nem skills particulares.
+ await expect(page.locator('.skills-curated')).toHaveText('18 skills sugeridas');
  await expect(page.locator('.skills-context')).toHaveCount(0);
  await page.screenshot({path:evidence+'/catalogo-escuro.png',animations:'disabled'});
  await page.locator('.skill-card').last().scrollIntoViewIfNeeded();
@@ -18,9 +20,9 @@ test('catálogo curado, busca por objetivo e pedido ligado ao espaço',async({pa
  await page.reload();
  await expect(page.getByRole('heading',{name:'O que vamos criar?'})).toBeVisible();
  await page.getByRole('group',{name:'Categorias de skills'}).getByRole('button',{name:'Design',exact:true}).click();
- await expect(page.locator('.skill-card')).toHaveCount(9);
- await page.getByRole('textbox',{name:'Buscar skills'}).fill('CONVERSOES');
- await expect(page.locator('.skill-card h2')).toHaveText(['Landing Page Design']);
+ await expect(page.locator('.skill-card')).toHaveCount(8);
+ await page.getByRole('textbox',{name:'Buscar skills'}).fill('CELULAR');
+ await expect(page.locator('.skill-card h2')).toHaveText(['Cara de app no celular']);
  await page.getByRole('textbox',{name:'Buscar skills'}).fill('termo inexistente');
  await expect(page.getByRole('heading',{name:'Nenhuma skill encontrada.'})).toBeVisible();
  await page.getByRole('button',{name:'Ver todas as skills',exact:true}).click();
@@ -33,6 +35,7 @@ test('catálogo curado, busca por objetivo e pedido ligado ao espaço',async({pa
  await expect(preview).toHaveValue(/GrowMate Skills QA/);
  expect(await preview.inputValue()).toContain(space.id);
  await expect(preview).not.toHaveValue(/Referências/);
+ await expect(dialog.getByRole('link',{name:/repositório da skill/})).toHaveAttribute('href','https://github.com/anthropics/skills');
  await dialog.getByRole('button',{name:'Copiar pedido',exact:true}).click();
  await expect(dialog.getByRole('status')).toContainText('Pedido copiado');
  expect(await page.evaluate(()=>navigator.clipboard.readText())).toBe(await preview.inputValue());
@@ -54,7 +57,7 @@ test('catálogo curado, busca por objetivo e pedido ligado ao espaço',async({pa
 test('skills globais, navegação e celular em tema claro sem transbordamento',async({page})=>{
  await page.setViewportSize({width:390,height:844});
  await page.goto('/?workspace=&view=skills');
- await expect(page.locator('.skill-card')).toHaveCount(26);
+ await expect(page.locator('.skill-card')).toHaveCount(18);
  await expect(page.locator('.spaces-home')).toHaveCount(0);
  await page.getByRole('button',{name:'Ativar modo claro',exact:true}).click();
  await expect(page.locator('.skills-context')).toHaveCount(0);

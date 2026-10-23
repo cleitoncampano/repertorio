@@ -104,7 +104,7 @@ def main():
             runner=f'powershell -NoProfile -ExecutionPolicy Bypass -File "{settings.root / "app/run.ps1"}"' if sys.platform=='win32' else str(settings.root/'app/run.sh')
             # Métodos instalados nesta biblioteca (ex.: Perestroika); instalações novas não têm e não citam.
             methods=[p.stem for p in sorted((settings.root/'biblioteca/metodos').glob('*/guias/metodo-*.md'))]
-            method_note=(' Para a tese e o roteiro de qualquer peça, e para aulas, workshops, treinamentos e eventos, leia também '+', '.join(f'`{m}`' for m in methods)+': o índice diz qual ficha abrir.') if methods else ''
+            method_note=(' Para a tese, o roteiro, a fala e a revisão de qualquer peça, para pitch e proposta, e para aulas, workshops, treinamentos e eventos, leia também '+', '.join(f'`{m}`' for m in methods)+': cada índice diz qual ficha abrir.') if methods else ''
             instructions=f'''<!-- repertorio:start -->
 ## Repertório: inspiração para demandas criativas
 

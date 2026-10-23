@@ -83,7 +83,10 @@ def create_mcp(lib,worker):
         dados, tipografia, historia, abstrato, vinheta; mais formatos, prompt e kit (blocos do HyperFrames e projeto inicial).
         Métodos da Perestroika: metodo-perestroika é o índice (tese, treco, 8 cartas do storytelling, checklist, arco, frameworks);
         cada ficha abre como perestroika/<ficha>. Experiências de aprendizagem: aula-e-workshop, curso-e-programa,
-        encontro-e-evento; revisao-apresentacao confere uma peça pronta."""
+        encontro-e-evento; revisao-apresentacao confere uma peça pronta.
+        Métodos do SOAP: metodo-soap é o índice (objetivo e audiência, três atos, recursos de narrativa, informação saliente,
+        fala ao vivo, pitch, venda, eventos, comunicação na empresa, checklist); cada ficha abre como soap/<ficha>.
+        Guias: apresentar-ao-vivo, pitch-e-proposta, comunicacao-na-empresa."""
         if not name:
             from .db import dumps
             return dumps(lib.guides())

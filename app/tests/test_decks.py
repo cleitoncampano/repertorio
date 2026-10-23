@@ -56,3 +56,15 @@ def test_method_cards_open_from_the_index_without_crowding_the_guide_list(librar
         try:library.guide(name);raise AssertionError(name)
         except Exception as error:assert 'metodo-' in str(error)
     assert library.start(s.StartContext(project_id=context['project_id'],demand='Workshop',workspace_ids=[wid]))['guides_available']==['aula-e-workshop','metodo-perestroika']
+
+
+def test_methods_from_two_collections_coexist_without_replacing_each_other(library):
+    root=library.settings.root
+    for coll,guides,cards in (('perestroika',('metodo-perestroika','revisao-apresentacao'),('tese',)),('soap',('metodo-soap','pitch-e-proposta'),('tres-atos','tese'))):
+        for folder,names in (('guias',guides),('conceitos',cards)):
+            (root/f'biblioteca/metodos/{coll}/{folder}').mkdir(parents=True,exist_ok=True)
+            for name in names:(root/f'biblioteca/metodos/{coll}/{folder}/{name}.md').write_text(f'# {coll} {name}')
+    assert library.guides()==['metodo-perestroika','revisao-apresentacao','metodo-soap','pitch-e-proposta']
+    # A mesma ficha em duas coleções abre cada uma pelo prefixo.
+    assert library.guide('soap/tese')=='# soap tese' and library.guide('perestroika/tese')=='# perestroika tese'
+    assert library.guide('soap/tres-atos')=='# soap tres-atos' and library.guide('metodo-soap')=='# soap metodo-soap'

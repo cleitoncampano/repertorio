@@ -10,7 +10,7 @@ test('catálogo curado, busca por objetivo e pedido ligado ao espaço',async({pa
  await page.getByRole('button',{name:'Skills',exact:true}).click();
  await expect(page.getByRole('button',{name:'Skills',exact:true})).toHaveAttribute('aria-current','page');
  await expect(page.getByRole('button',{name:'Entradas',exact:true})).toHaveCount(0);
- await expect(page.locator('.skill-card h2')).toHaveText(['Impeccable','Frontend Design','Landing Page Design','Detalhes que encantam','Design no estilo Apple','Protótipo em variações','Teste de limites','Cara de app no celular','Direção de arte para sites','Criar animação','Animação em app de celular','Revisão de animações','Plano de animações','Onde animar','Animação sem travar','Nome do efeito','ImageGen','Presentations','HyperFrames','HyperFrames Creative','Tese e roteiro','Aula e workshop','Revisão de apresentação','Escolher biblioteca','Avisos com Sonner','Swift moderno']);
+ await expect(page.locator('.skill-card h2')).toHaveText(['Impeccable','Frontend Design','Landing Page Design','Detalhes que encantam','Design no estilo Apple','Protótipo em variações','Teste de limites','Cara de app no celular','Direção de arte para sites','Criar animação','Animação em app de celular','Revisão de animações','Plano de animações','Onde animar','Animação sem travar','Nome do efeito','ImageGen','Presentations','HyperFrames','HyperFrames Creative','Tese e roteiro','Aula e workshop','Revisão de apresentação','Apresentar ao vivo','Pitch e proposta','Escolher biblioteca','Avisos com Sonner','Swift moderno']);
  await expect(page.locator('.skills-context')).toContainText('GrowMate Skills QA');
  await page.screenshot({path:evidence+'/catalogo-escuro.png',animations:'disabled'});
  await page.locator('.skill-card').last().scrollIntoViewIfNeeded();
@@ -54,7 +54,7 @@ test('catálogo curado, busca por objetivo e pedido ligado ao espaço',async({pa
 test('skills globais, navegação e celular em tema claro sem transbordamento',async({page})=>{
  await page.setViewportSize({width:390,height:844});
  await page.goto('/?workspace=&view=skills');
- await expect(page.locator('.skill-card')).toHaveCount(26);
+ await expect(page.locator('.skill-card')).toHaveCount(28);
  await expect(page.locator('.spaces-home')).toHaveCount(0);
  await page.getByRole('button',{name:'Ativar modo claro',exact:true}).click();
  await expect(page.locator('.skills-context')).toContainText('Escolha um espaço');

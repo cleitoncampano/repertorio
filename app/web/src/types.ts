@@ -10,6 +10,8 @@ export type Term={id:string;nome?:string;def:string;operacao?:string;pista?:stri
 export type Vocabulary=Record<string,{itens:(Term|string)[]}>;
 export type GraphData={items:Reference[];vocabulary:Vocabulary};
 export const terms=(v:Vocabulary|undefined,key:string):Term[]=>(v?.[key]?.itens||[]).filter((x):x is Term=>typeof x!=='string');
-// Os quatro primeiros são os eixos do olhar; os seguintes, os formatos de tela dos espaços de vídeo.
-export const colors:Record<string,string>={diferenciacao:'#FF5A3C',agrupamento:'#3E7BFF',sequencia:'#F5B400',previsao:'#B455FF',horizontal:'#FF5A3C',vertical:'#B455FF',quadrado:'#3E7BFF',modelo:'#F5B400'};
+// Cor de cada grupo do mapa: eixos do vocabulário, formatos de tela, momentos da história e famílias de recurso visual.
+export const colors:Record<string,string>={diferenciacao:'#FF5A3C',agrupamento:'#3E7BFF',sequencia:'#F5B400',previsao:'#B455FF',horizontal:'#FF5A3C',vertical:'#B455FF',quadrado:'#3E7BFF',modelo:'#F5B400',
+ abrir:'#FF5A3C',conduzir:'#F5B400',explicar:'#3E7BFF',provar:'#2BB673',marcar:'#B455FF',fechar:'#FF8FB1',outros:'#8F8A82',
+ cor:'#FF5A3C',tipografia:'#F5B400',imagem:'#2BB673',composicao:'#3E7BFF',percurso:'#00B8D9',ideia:'#B455FF',informacao:'#FF8FB1'};
 export const kindName:Record<string,string>={arquivo:'Apresentação',slide:'Slide',referencia:'Referência',midia:'Mídia',criacao:'Criação'};

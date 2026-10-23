@@ -105,10 +105,10 @@ kbd { font-size: 11px; font-family: inherit; border: 1px solid var(--line); bord
 .map-controls span { min-width: 34px; font-size: 10px; text-align: center; color: var(--muted); font-variant-numeric: tabular-nums; }
 .map-controls i { height: 16px; width: 1px; background: var(--line); margin: 0 3px; }
 .map-help { position: absolute; bottom: 63px; left: 17px; font-size: 10px; color: var(--muted); pointer-events: none; }
-.map-footer { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 3; height: 40px; display: flex; align-items: center; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.map-footer { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 3; height: 40px; max-width: calc(100% - 380px); display: flex; align-items: center; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
 .legend-toggle { display: none; }
-.legend { display: flex; align-items: center; gap: 16px; }
-.legend button { display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--muted); min-height: 30px; padding: 0; }
+.legend { display: flex; align-items: center; gap: 16px; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+.legend button { display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--muted); min-height: 30px; padding: 0; white-space: nowrap; }
 .legend button.active { color: var(--accent); text-decoration: underline; text-underline-offset: 5px; }
 .legend .organize { display: flex; gap: 2px; padding: 2px; margin-right: 4px; border: 1px solid var(--line); border-radius: 6px; }
 .legend .organize button { min-height: 24px; padding: 0 9px; border-radius: 4px; font-size: 10px; color: var(--muted); }
@@ -160,7 +160,7 @@ h1 { font-size: 30px; letter-spacing: -.03em; line-height: 1.2; font-weight: 500
 .connection-dialog h2 { letter-spacing: -.03em; }.connection-dialog { background: var(--surface); border-color: var(--line); border-radius: 12px; }.connection-dialog>p,.connection-step p { color: var(--muted); font-size: 12px; }.connection-step h3 { font-size: 13px; }
 .card-text p { color: var(--muted); }.toast { bottom: 72px; }
 @media(max-width:1100px) {
- .map-footer { left: auto; right: 12px; transform: none; }
+ .map-footer { left: auto; right: 12px; transform: none; max-width: calc(100% - 200px); }
  .map-page .detail-panel,.map-page .results-panel { bottom: 64px; width: 330px; }
  .library-status { font-size: 9px; right: 12px; }
  .list-view.has-detail .gallery { padding-right: 350px; }
@@ -177,7 +177,7 @@ h1 { font-size: 30px; letter-spacing: -.03em; line-height: 1.2; font-weight: 500
  .connect-button { margin: 0 0 0 4px; }.connect-button::before { top: 6px; bottom: 6px; left: -5px; right: auto; height: auto; width: 1px; }
  .nav-tooltip { left: 0; top: auto; bottom: calc(100% + 14px); transform: none; }
  .map-controls { left: auto; right: 12px; bottom: 68px; }.map-controls button { width: 32px; height: 32px; }
- .map-footer { bottom: 17px; right: 12px; height: 36px; padding: 0 8px; }.legend-toggle { display: block; font-size: 11px; padding: 0 6px; height: 34px; color: var(--text); }
+ .map-footer { bottom: 17px; right: 12px; height: 36px; padding: 0 8px; max-width: none; }.legend-toggle { display: block; font-size: 11px; padding: 0 6px; height: 34px; color: var(--text); }
  .legend { display: none; position: absolute; right: 0; bottom: 45px; flex-direction: column; align-items: stretch; gap: 6px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
  .legend[data-open="true"] { display: flex; }.legend button { font-size: 12px; min-height: 32px; }
  .map-help { bottom: 120px; left: auto; right: 16px; font-size: 9px; }

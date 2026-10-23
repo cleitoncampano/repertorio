@@ -112,7 +112,7 @@ test('mobile sem transbordamento e navegação por link',async({page})=>{
  await page.getByRole('button',{name:'Limpar filtros',exact:true}).click();
  await expect(page.locator('.results-panel')).not.toBeVisible();
  await page.getByRole('button',{name:'Legenda',exact:true}).click();
- await expect(page.getByRole('button',{name:'Diferenciação',exact:true})).toBeVisible();
+ await expect(page.locator('#map-legend').getByRole('button',{name:'Abrir',exact:true})).toBeVisible();
 });
 
 test('controles compactos preservam o mapa e a busca por teclado',async({page})=>{
@@ -137,11 +137,11 @@ test('controles compactos preservam o mapa e a busca por teclado',async({page})=
 
 test('eixo abre explicação, técnica e referências conectadas',async({page})=>{
  await page.goto('/');
- await page.getByRole('button',{name:'Diferenciação',exact:true}).click();
- const panel=page.getByRole('complementary',{name:'Detalhes do eixo'});
- await expect(panel.getByRole('heading',{name:'Diferenciação',exact:true})).toBeVisible();
+ await page.locator('#map-legend').getByRole('button',{name:'Abrir',exact:true}).click();
+ const panel=page.getByRole('complementary',{name:'Detalhes do momento'});
+ await expect(panel.getByRole('heading',{name:'Abrir',exact:true})).toBeVisible();
  await panel.locator('.technique-index button').first().click();
- const technique=page.getByRole('complementary',{name:'Detalhes da técnica'});
+ const technique=page.getByRole('complementary',{name:'Detalhes do papel'});
  await expect(technique).toBeVisible();
  await technique.locator('.result-row').filter({hasText:'Abertura criativa'}).click();
  // A referência abre em tela grande; a ficha completa fica a um clique.
@@ -160,7 +160,7 @@ test('tema claro e escuro persistem sem mudar a área do mapa',async({page})=>{
  expect(await page.locator('.map-stage').boundingBox()).toEqual(bounds);
  await page.reload();
  await expect(page.locator('html')).toHaveAttribute('data-theme','light');
- await page.getByRole('button',{name:'Diferenciação',exact:true}).click();
+ await page.locator('#map-legend').getByRole('button',{name:'Abrir',exact:true}).click();
  await expect(page.locator('.technique-index button').first()).toHaveCSS('color','rgb(40, 37, 32)');
  await page.setViewportSize({width:390,height:844});
  await page.getByRole('button',{name:'Ativar modo escuro',exact:true}).click();

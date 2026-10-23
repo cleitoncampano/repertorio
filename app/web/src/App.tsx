@@ -9,7 +9,7 @@ import {TermPanel} from './TermPanel';
 import {Viewer} from './Viewer';
 import {MotionInfo,MotionThumb,motionSummary} from './MotionParts';
 import {MotionCinema} from './MotionCinema';
-import {defaultOrganization,formatLabels,formatMap,type Organization} from './motionMap';
+import {ORGANIZATIONS,defaultOrganization,organizationLabels,organizeMap,savedOrganization,type Organization} from './motionMap';
 import {Choices,type Demand} from './Choices';
 import {Skills} from './Skills';
 import {ProductGuide} from './ProductGuide';
@@ -54,10 +54,11 @@ export default function App(){
  const environment=useQuery({queryKey:['health'],queryFn:()=>api<{platform?:string;demo?:boolean}>('/health'),enabled:connect,staleTime:Infinity});
  const connectionCommand=environment.data?.platform==='win32'?'powershell -NoProfile -ExecutionPolicy Bypass -File .\\app\\run.ps1 connect C:\\caminho\\do\\projeto --write-instructions':'./app/run.sh connect /caminho/do/projeto --write-instructions';
  const graph=useQuery({queryKey:['graph',workspace],queryFn:()=>api<GraphData>(scoped('/graph')),staleTime:Infinity,enabled:active&&view!=='skills'&&view!=='guide'});
- // Organização do mapa por espaço: eixos do olhar ou formato de tela. Vídeo começa por formato; imagem, pelos eixos.
+ // Organização do mapa por espaço: história, recurso visual ou formato de tela. Vídeo começa por formato; imagem, pela história.
  const [organizations,setOrganizations]=useState<Record<string,Organization>>(()=>{try{return JSON.parse(localStorage.getItem('repertorio-organizacao')||'{}');}catch{return {};}});
- const organization:Organization=organizations[workspace]||(graph.data?defaultOrganization(graph.data):'eixos');
- const byFormat=organization==='formato'&&!!graph.data;
+ const organization:Organization=savedOrganization(organizations[workspace])||(graph.data?defaultOrganization(graph.data):'historia');
+ // Os grupos do mapa só existem na tela; para a busca, um papel na história vira o filtro de intenção e uma técnica segue como técnica.
+ const storyRole=organization==='historia'&&technique.startsWith('papel:')&&technique!=='papel:outros'?technique.slice(6):'';
  const stats=useQuery({queryKey:['stats',workspace],queryFn:()=>api<Stats>(scoped('/stats')),enabled:active});
  const detail=useQuery({queryKey:['reference',workspace,referenceWorkspace,selected],queryFn:()=>api<Detail>('/references/'+encodeURIComponent(selected!)+'?workspace_id='+encodeURIComponent(referenceWorkspace||workspace)),enabled:active&&!!selected});
  // Escolhas: sempre consultada para o aviso de itens sem resposta na navegação
@@ -65,15 +66,15 @@ export default function App(){
  const unanswered=(demands.data||[]).reduce((sum,d)=>sum+d.packs.reduce((n,k)=>n+k.total-k.approved-k.cut,0),0);
  const events=useQuery({queryKey:['activity',workspace],queryFn:()=>api<Event[]>(scoped('/activity')),enabled:active&&view==='activity'});
  const operations=useQuery({queryKey:['operations',workspace],queryFn:()=>api<{id:string;ref_id:string;state:string;progress:number;error?:string}[]>(scoped('/operations')),enabled:active&&view==='activity',refetchInterval:view==='activity'?3000:false});
- const request={workspace_ids:[workspace],query,technique:byFormat?'':technique,operation:byFormat?'':operation,intention,kind,aesthetic,movement,origin,format:fileFormat,min_strength:minStrength,reusable,state:view==='pending'?'pending':view==='trashed'?'trashed':'published',offset,limit:48};
+ const request={workspace_ids:[workspace],query,technique:organization==='recurso'?technique:'',operation:'',intention:storyRole||intention,kind,aesthetic,movement,origin,format:fileFormat,min_strength:minStrength,reusable,state:view==='pending'?'pending':view==='trashed'?'trashed':'published',offset,limit:48};
  const hasFilter=!!(query||technique||operation||intention||kind||aesthetic||movement||origin||fileFormat||minStrength||reusable);
  const results=useQuery({queryKey:['search',request],queryFn:()=>api<{items:Reference[];total:number}>('/search',request),enabled:active&&(hasFilter||list||view==='pending'||view==='trashed')});
  const vocab=graph.data?.vocabulary;
  const hasContentFilter=!!(query||intention||kind||aesthetic||movement||origin||fileFormat||minStrength||reusable);
  const matches=useMemo(()=>hasContentFilter&&results.data?results.data.items.map(x=>x.parent_id||x.id):null,[hasContentFilter,results.data]);
- // Espaços de vídeo: o mapa, a legenda e o painel do eixo usam formato de tela e tipo de vídeo.
- const mapData=useMemo(()=>graph.data&&byFormat?formatMap(graph.data):graph.data,[graph.data,byFormat]);
- const mapLabels=byFormat&&graph.data?formatLabels(graph.data):undefined;
+ // O mapa, a legenda e o painel do grupo usam a organização escolhida.
+ const mapData=useMemo(()=>graph.data&&organizeMap(graph.data,organization),[graph.data,organization]);
+ const mapLabels=graph.data?organizationLabels(graph.data,organization):undefined;
  const organize=(next:Organization)=>{setTechnique('');setOperation('');setOrganizations(current=>{const updated={...current,[workspace]:next};try{localStorage.setItem('repertorio-organizacao',JSON.stringify(updated));}catch{/* A escolha vale só nesta sessão. */}return updated;});};
  const termFocus=useMemo(()=>mapData?graphFocus(mapData,{selected:null,technique,operation,matches}):null,[mapData,technique,operation,matches]);
 
@@ -149,7 +150,7 @@ export default function App(){
      {selected&&!cinemaItem&&<DetailPanel detail={detail.data} loading={detail.isPending} error={detail.error?.message} onClose={()=>select(null)} onSelect={open} onChange={change} busy={busy} copy={copy} vocab={vocab} onTechnique={id=>{select(null);setTechnique(id);setOperation('');}} onWatch={()=>setCinema(true)}/>}
     </div>
     {list&&<Pagination total={results.data?.total||0} offset={offset} setOffset={setOffset}/>}
-    {!list&&<footer className="map-footer"><button className="legend-toggle" onClick={()=>setLegendOpen(!legendOpen)} aria-expanded={legendOpen} aria-controls="map-legend">Legenda</button><div id="map-legend" data-open={legendOpen} className="legend" aria-label={mapLabels?mapLabels.legend:'Operações do olhar'}><div className="organize" role="group" aria-label="Organizar o mapa por">{(['eixos','formato'] as const).map(option=><button key={option} aria-pressed={organization===option} onClick={()=>organize(option)}>{option==='eixos'?'Eixos do olhar':'Formato'}</button>)}</div>{terms(mapData?.vocabulary,'operacoes').map(op=><button key={op.id} className={operation===op.id?'active':''} onClick={()=>{select(null);setTechnique('');setOperation(operation===op.id?'':op.id);}} aria-pressed={operation===op.id}><i style={{background:mapColors[op.id]}}/>{op.nome||op.id}</button>)}</div></footer>}
+    {!list&&<footer className="map-footer"><button className="legend-toggle" onClick={()=>setLegendOpen(!legendOpen)} aria-expanded={legendOpen} aria-controls="map-legend">Legenda</button><div id="map-legend" data-open={legendOpen} className="legend" aria-label={mapLabels?.legend||'Legenda do mapa'}><div className="organize" role="group" aria-label="Organizar o mapa por">{ORGANIZATIONS.map(option=><button key={option.id} aria-pressed={organization===option.id} onClick={()=>organize(option.id)}>{option.nome}</button>)}</div>{terms(mapData?.vocabulary,'operacoes').map(op=><button key={op.id} className={operation===op.id?'active':''} onClick={()=>{select(null);setTechnique('');setOperation(operation===op.id?'':op.id);}} aria-pressed={operation===op.id}><i style={{background:mapColors[op.id]}}/>{op.nome||op.id}</button>)}</div></footer>}
     <div className="library-status" title={`${format(total)} itens catalogados. ${online?'Serviço local conectado':'Reconectando ao serviço'}`}><i className={online?'':'offline'}/><span>{format(graph.data?.items.length||0)} referências</span></div>
 
    </>}

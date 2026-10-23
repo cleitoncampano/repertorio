@@ -20,11 +20,15 @@ function freeLayout(graph:GraphData):ElementDefinition[]{
  const colorFor=(id:string)=>colors[tech.find(t=>t.id===id)?.operacao||'']||'#8f8a82';
  ops.forEach((op,i)=>{
   const angle=angles[op.id]??(-Math.PI/2+i*2*Math.PI/Math.max(ops.length,1));
-  nodes.push({data:{id:'op:'+op.id,entity:op.id,type:'operation',operation:op.id,label:op.nome||op.id,color:colors[op.id]},position:{x:Math.cos(angle)*300,y:Math.sin(angle)*300}});
+  // Até quatro grupos ficam a 300 do centro; com mais, o anel abre para os círculos não se encostarem.
+  const hub=Math.max(300,170/Math.sin(Math.PI/Math.max(ops.length,2)));
+  nodes.push({data:{id:'op:'+op.id,entity:op.id,type:'operation',operation:op.id,label:op.nome||op.id,color:colors[op.id]},position:{x:Math.cos(angle)*hub,y:Math.sin(angle)*hub}});
   const ts=tech.filter(t=>t.operacao===op.id).sort((a,b)=>cues.findIndex(c=>c.id===a.pista)-cues.findIndex(c=>c.id===b.pista)||(a.nome||a.id).localeCompare(b.nome||b.id));
+  // Cada grupo ocupa um quarto do círculo; com mais de quatro grupos, a fatia encolhe para não invadir o vizinho.
+  const span=Math.min(Math.PI/2,2*Math.PI/Math.max(1,ops.length));
   const groups=new Map<string,number[]>();
   ts.forEach((t,j)=>{
-   const a=angle-Math.PI/4+.09+(j+.5)*(Math.PI/2-.18)/ts.length;
+   const a=angle-span/2+.09+(j+.5)*(span-.18)/ts.length;
    const p={x:Math.cos(a)*780,y:Math.sin(a)*780,a};positions.set(t.id,p);
    const cue=cues.find(c=>c.id===t.pista);
    if(cue)groups.set(cue.id,[...(groups.get(cue.id)||[]),a]);

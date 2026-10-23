@@ -47,9 +47,9 @@ test('troca a organização sem recriar o grafo ou perder seleção, busca e fil
  expect(hierarchy.positions).not.toEqual(grouped.positions);
  await page.screenshot({path:evidence+'/hierarquia-busca.png',animations:'disabled'});
  await page.getByRole('button',{name:'Limpar filtros',exact:true}).click();
- await page.getByRole('button',{name:'Diferenciação',exact:true}).click();
+ await page.locator('#map-legend').getByRole('button',{name:'Abrir',exact:true}).click();
  await switchTo(page,'Por grupos');
- await expect(page.getByRole('complementary',{name:'Detalhes do eixo'})).toBeVisible();
+ await expect(page.getByRole('complementary',{name:'Detalhes do momento'})).toBeVisible();
  expect((await graph(page)).ids).toEqual(original.ids);
  expect(errors).toEqual([]);
 });

@@ -2,7 +2,7 @@
 
 Para conhecer o produto e instalar em Mac ou Windows, comece pelo [guia do produto](../docs/produto/PRODUTO.md) e pela [instalação](../docs/produto/INSTALACAO.md). Este arquivo documenta a manutenção da instalação de desenvolvimento. Novas instalações usam `init`, sem importar o acervo particular; o modo `demo` cria exemplos originais em dados separados.
 
-Biblioteca visual local organizada em espaços e compartilhada entre seus projetos e agentes. O mapa mantém as operações do olhar, técnicas e referências do PPTRETA; o serviço central persiste curadoria, buscas, seleções e novas criações.
+Biblioteca visual local organizada em espaços e compartilhada entre seus projetos e agentes. O mapa liga as referências pelo momento da história, pelo recurso visual ou pelo formato de tela; o serviço central persiste curadoria, buscas, seleções e novas criações.
 
 ## Abrir
 
@@ -47,8 +47,8 @@ Os agentes precisam receber os espaços explicitamente. Exemplo: “Use os espa�
 
 ## Como usar
 
-- Explore o mapa com arraste e zoom. Clique nas operações ou técnicas para investigar suas relações. Clicar numa imagem ou vídeo abre a tela grande com a ficha ao lado: ← → (ou as setas na tela, dois dedos no trackpad, deslize no celular) passam à próxima referência, ↑ ↓ passam pelos slides de uma apresentação, T alterna o modo teatro e F a tela cheia. **Ficha completa** abre o painel lateral.
-- Na legenda, **Eixos do olhar / Formato** troca a organização do mapa: pelos eixos (técnicas visuais) ou pelo formato de tela, com o papel na história (imagens) ou o tipo de vídeo em volta. A escolha fica salva por espaço.
+- Explore o mapa com arraste e zoom. Clique nos grupos do centro e nos nomes em volta para investigar suas relações. Clicar numa imagem ou vídeo abre a tela grande com a ficha ao lado: ← → (ou as setas na tela, dois dedos no trackpad, deslize no celular) passam à próxima referência, ↑ ↓ passam pelos slides de uma apresentação, T alterna o modo teatro e F a tela cheia. **Ficha completa** abre o painel lateral.
+- Na legenda, **História / Recurso visual / Formato** troca a organização do mapa, e a escolha fica salva por espaço. **História** (padrão das imagens) mostra seis momentos de uma apresentação na ordem: Abrir, Conduzir, Explicar, Provar, Marcar e Fechar, com os papéis em volta. **Recurso visual** reúne as 48 técnicas em sete famílias: Cor e contraste, Tipografia, Imagem e foto, Composição e grade, Percurso e revelação, Ideia e surpresa, Dados e interface. **Formato** (padrão dos vídeos) mostra onde a peça vai passar, com o papel na história ou o tipo de vídeo em volta.
 - Ao lado do botão de tema, **Visualização do grafo** oferece nove opções com prévias. **Mapa livre**, **Por grupos** e **Hierárquico** mantêm a linguagem original; **Cosmos**, **Metrô**, **Circuito**, **Jardim**, **Editorial** e **Prisma** têm organizações, paletas e formatos próprios, adaptados aos temas claro e escuro. São as mesmas referências e conexões do espaço aberto. A preferência fica salva no navegador; a câmera de cada organização é independente por espaço. Busca, filtros e ficha aberta permanecem durante a troca. **Mapa livre** permite voltar à organização original.
 - Arraste as opções de visualização para mudar sua ordem, como cards de um kanban. No celular, use a alça de pontos à esquerda; o restante do card permite rolar a lista. Pelo teclado, use **Alt + ↑/↓** na opção focada. A ordem fica salva neste navegador e vale em todos os espaços. Reordenar preserva a visualização aberta; clique para trocar. **Escape** cancela o arraste.
 - Busque por palavras e refine por intenção, origem, movimento, formato e estética. A lista oferece navegação por teclado.

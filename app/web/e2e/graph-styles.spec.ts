@@ -3,7 +3,7 @@ import {test,expect} from '@playwright/test';
 const options=[['cosmos','Cosmos'],['metro','Metrô'],['circuit','Circuito'],['garden','Jardim'],['editorial','Editorial'],['prism','Prisma']];
 const choose=async(page:any,name:string)=>{await page.getByRole('button',{name:'Visualização do grafo',exact:true}).click();await page.getByRole('menuitemradio',{name,exact:true}).click();};
 const state=async(page:any)=>page.evaluate(()=>{
- const c=(document.querySelector('.map-surface') as any)._cyreg.cy,node=c.getElementById('ref:deck'),op=c.getElementById('op:diferenciacao');
+ const c=(document.querySelector('.map-surface') as any)._cyreg.cy,node=c.getElementById('ref:deck'),op=c.getElementById('op:abrir');
  return {ids:c.elements().map((item:any)=>item.id()).sort(),marker:c.scratch('qa-style'),shape:node.style('shape'),width:node.width(),height:node.height(),image:node.data('image'),opColor:op.style('border-color'),operationBounds:op.renderedBoundingBox(),active:node.hasClass('active'),background:getComputedStyle(document.querySelector('.map-stage')!).backgroundColor,texture:getComputedStyle(document.querySelector('.map-stage')!).backgroundImage};
 });
 
@@ -26,25 +26,26 @@ test('seis linguagens visuais preservam o grafo, as imagens e a seleção nos do
    backgrounds.add(next.background);opColors.add(next.opColor);shapes.add(next.shape);
    await expect(page.locator('.detail-body h2')).toHaveText('Abertura criativa');
    expect(await page.locator('.map-stage').boundingBox()).toEqual(bounds);
-   const legend=page.getByRole('button',{name:'Diferenciação',exact:true}).locator('i');
+   const legend=page.locator('#map-legend').getByRole('button',{name:'Abrir',exact:true}).locator('i');
    expect((await legend.evaluate(element=>getComputedStyle(element).backgroundColor)).replace(/\s/g,'')).toBe(next.opColor.replace(/\s/g,''));
   }
   expect(backgrounds.size).toBe(6);expect(opColors.size).toBe(6);expect(shapes.size).toBeGreaterThanOrEqual(4);
  }
  await page.evaluate(()=>{(document.querySelector('.map-surface') as any)._cyreg.cy.zoom(.09);});
- await expect.poll(()=>page.evaluate(()=>(document.querySelector('.map-surface') as any)._cyreg.cy.getElementById('op:diferenciacao').renderedWidth())).toBeGreaterThan(100);
+ // De longe, a forma do grupo continua do tamanho do nome (8 px por letra mais margem), para ele se ler.
+ await expect.poll(()=>page.evaluate(()=>{const op=(document.querySelector('.map-surface') as any)._cyreg.cy.getElementById('op:abrir');return op.renderedWidth()-(String(op.data('label')).length*8+36);})).toBeGreaterThan(-2);
  await choose(page,'Mapa livre');
  await expect(page.locator('.map-stage')).toHaveCSS('background-color','rgb(247, 245, 240)');
  const restored=await state(page);
  expect(restored.shape).toBe('rectangle');expect(restored.opColor.replace(/\s/g,'')).toBe('rgb(255,90,60)');expect(restored.texture).toBe('none');
  expect(restored.active).toBe(true);expect(restored.marker).toBe('same-instance');
  await page.getByRole('button',{name:'Fechar detalhes',exact:true}).click();
- await page.getByRole('button',{name:'Diferenciação',exact:true}).click();
+ await page.locator('#map-legend').getByRole('button',{name:'Abrir',exact:true}).click();
  for(const name of ['Circuito','Editorial','Jardim']){
   await choose(page,name);
   await expect.poll(async()=>(await state(page)).operationBounds.x1).toBeGreaterThan(72);
   await expect.poll(async()=>(await state(page)).operationBounds.y1).toBeGreaterThan(80);
-  const panel=(await page.getByRole('complementary',{name:'Detalhes do eixo'}).boundingBox())!;
+  const panel=(await page.getByRole('complementary',{name:'Detalhes do momento'}).boundingBox())!;
   expect((await state(page)).operationBounds.x2).toBeLessThan(panel.x);
  }
  expect(errors).toEqual([]);

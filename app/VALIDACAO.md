@@ -1,5 +1,14 @@
 # Validação da primeira versão
 
+## Nova organização do mapa das imagens em 22/10/2026
+
+- Os quatro eixos do olhar saíram da tela. A legenda passa a oferecer **História**, **Recurso visual** e **Formato**, salvos por espaço (escolhas antigas de eixos viram recurso visual).
+- **História**, padrão das imagens: seis momentos na ordem de uma apresentação, Abrir (abrir, situar, apresentar), Conduzir (dividir, sequenciar), Explicar (explicar, agrupar, comparar), Provar (provar, mostrar, localizar), Marcar (impactar, destacar, citar) e Fechar, com os papéis em volta. Os mesmos grupos dos guias. Peças sem papel ficam em "Sem papel". Selecionar um papel filtra a lista pela intenção correspondente.
+- **Recurso visual**: as 48 técnicas em sete famílias, cada técnica numa só, com as mesmas conexões de antes: Cor e contraste, Tipografia, Imagem e foto, Composição e grade, Percurso e revelação, Ideia e surpresa, Dados e interface.
+- **Formato** sem mudança; segue como padrão dos vídeos.
+- O vocabulário e a busca dos agentes não mudaram. Com mais de quatro grupos, o anel central abre e as fatias das técnicas encolhem para não invadir o vizinho; com até quatro, posições idênticas às de antes. Nomes de grupo com mais de uma palavra quebram dentro do círculo; a legenda fica numa linha e rola nas telas médias.
+- 47 testes do servidor, 60 da interface (incluindo uma técnica por família e o desenho dos momentos nas nove visualizações) e 30 de navegador aprovados; testes antigos dos eixos passaram para os momentos. Capturas em 1440, 1180 e 390 px, sem erros nem transbordamento, em `app/.runtime/qa/organizacao/`.
+
 ## Melhorias dos vídeos levadas às imagens em 22/10/2026
 
 - Tela grande para todas as referências: clicar numa imagem no mapa, na lista, no painel do eixo ou em Escolhas abre a peça grande com a ficha ao lado (ideia, como funciona, como fazer em HTML, conexões, papel na história e parecidos). Numa apresentação, a faixa de slides embaixo e ↑ ↓ passam pelos slides. ← →, N e P, as setas na tela, dois dedos no trackpad e o deslize no celular trocam de referência, na ordem da busca, da lista ou do espaço. Modo teatro (T) e tela cheia (F) como no player. **Ficha completa** abre o painel lateral, que continua com curadoria, espaços e o que o agente recebe. Links com `?ref=` seguem abrindo o painel.

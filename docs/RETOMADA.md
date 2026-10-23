@@ -2,7 +2,7 @@
 
 ## Imagens com tela grande, capas maiores e organização por formato em 22/10/2026
 
-As melhorias feitas para os vídeos valem também para as imagens: clicar em qualquer referência abre a tela grande com a ficha ao lado e troca lateral; capas com o dobro do tamanho em todos os espaços; botão **Eixos do olhar / Formato** na legenda de cada espaço. Guias por papel na história para slides e carrosséis em `biblioteca/guias/`, lidos pelo agente com `get_guide`. Detalhes em `app/VALIDACAO.md`. Interface compilada; atualizar com ⌘R.
+As melhorias feitas para os vídeos valem também para as imagens: clicar em qualquer referência abre a tela grande com a ficha ao lado e troca lateral; capas com o dobro do tamanho em todos os espaços; legenda com **História / Recurso visual / Formato** em cada espaço: história (seis momentos da apresentação com seus papéis) é o padrão das imagens, recurso visual reúne as 48 técnicas em sete famílias e formato segue como padrão dos vídeos. Os quatro eixos do olhar saíram da tela; o vocabulário dos agentes continua o mesmo. Guias por papel na história para slides e carrosséis em `biblioteca/guias/`, lidos pelo agente com `get_guide`. Detalhes em `app/VALIDACAO.md`. Interface compilada; atualizar com ⌘R.
 
 ## Vídeos de motion no espaço Motion em 22/10/2026
 

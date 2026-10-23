@@ -185,6 +185,9 @@ class Worker:
                 conn.execute(text('UPDATE refs SET ready=1,updated=:t WHERE id=:id'),dict(t=now(),id=rid))
                 conn.execute(text("UPDATE operations SET state='completed',progress=100,updated=:t WHERE id=:id"),dict(t=now(),id=oid))
                 self.lib.db.log(conn,'reference_ready',rid,row['context_id'],workspace_ids=self.lib.operation(oid)['target_workspace_ids'],operation_id=oid)
+            from .uploads import clean_up
+            try:clean_up(self.lib.settings,job['files']+job['previews'])
+            except OSError:pass
         except Exception as exc:
             with self.lib.db.engine.begin() as conn:
                 conn.execute(text("UPDATE operations SET state='failed',error=:e,updated=:t WHERE id=:id"),dict(e=str(exc)[:1500],t=now(),id=oid))

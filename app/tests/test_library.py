@@ -159,3 +159,27 @@ def test_backup_now_keeps_recent_copies(library,tmp_path):
     assert len(list(target.glob('repertorio-*.zip')))==2
     assert result['managed_files']==0 and 'history' not in result
     assert any(e['action']=='backup_created' for e in library.events())
+
+
+def test_files_added_in_the_app_become_published_references(library):
+    import io
+    from fastapi.testclient import TestClient
+    from PIL import Image
+    from repertorio.app import create_app
+    from repertorio.uploads import PENDING_IDEA
+    image=io.BytesIO();Image.new('RGB',(300,200),'#a35').save(image,format='PNG')
+    with TestClient(create_app(library.settings,run_worker=False),base_url='http://127.0.0.1:8767') as client:
+        refused=client.post('/api/workspaces/referencias/upload',files=[('files',('notas.txt',b'texto','text/plain'))])
+        assert refused.status_code==422 and 'notas.txt' in refused.json()['detail']
+        sent=client.post('/api/workspaces/referencias/upload',files=[('files',('../../Capa_da-campanha.png',image.getvalue(),'image/png'))])
+        assert sent.status_code==200,sent.text
+    op=sent.json()['operations'][0]
+    staged=list((library.settings.home/'envios').rglob('*.png'))
+    assert [p.name for p in staged]==['Capa_da-campanha.png']
+    Worker(library).process(op['id'])
+    done=library.operation(op['id'])
+    assert done['state']=='completed',done['error']
+    ref=library.get(done['ref_id'],workspace_ids=['referencias'])
+    assert ref['title']=='Capa da campanha' and ref['idea']==PENDING_IDEA and ref['state']=='published'
+    assert not list((library.settings.home/'envios').rglob('*.png'))
+    assert library.search(Search(workspace_ids=['referencias'],query='sem explicação'))['total']==1

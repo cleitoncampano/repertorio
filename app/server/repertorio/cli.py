@@ -27,6 +27,20 @@ def pid_file(settings):
     return settings.home.parent/(settings.home.name+'.pid')
 
 
+def write_instructions(root,instructions):
+    """Acrescenta ou atualiza o bloco do Repertório no AGENTS.md do projeto, preservando o resto do arquivo."""
+    import re
+    path=root/'AGENTS.md';old=path.read_text(encoding='utf-8') if path.exists() else ''
+    if '<!-- repertorio:start -->' in old:
+        new=re.sub(r'<!-- repertorio:start -->.*?<!-- repertorio:end -->',lambda _:instructions.strip(),old,flags=re.S)
+    else:new=(old.rstrip()+'\n\n' if old.strip() else '')+instructions
+    path.write_text(new,encoding='utf-8')
+    # Claude Code lê o CLAUDE.md: uma linha de importação leva as mesmas instruções, sem duplicar o texto.
+    claude=root/'CLAUDE.md';current=claude.read_text(encoding='utf-8') if claude.exists() else ''
+    if '@AGENTS.md' not in current and '<!-- repertorio:start -->' not in current:
+        claude.write_text((current.rstrip()+'\n\n' if current.strip() else '')+'@AGENTS.md\n',encoding='utf-8')
+
+
 def agent_instructions(settings,url,project_id,runner):
     """Bloco do Repertório para o AGENTS.md do projeto. Cita só o que esta biblioteca tem: guias de slides, de vídeo e
     métodos instalados. Instalações novas não citam guias."""
@@ -109,6 +123,8 @@ def main():
                 print(f'A porta {settings.port} está ocupada por outro programa. Feche-o ou escolha outra porta com REPERTORIO_PORT.',file=sys.stderr);sys.exit(1)
         copy=before_upgrade(settings)
         if copy:print('Cópia da biblioteca antes da atualização: '+copy,file=sys.stderr)
+        from .starter import initialize
+        initialize(settings)
         pid=pid_file(settings);pid.write_text(str(__import__('os').getpid()))
         try:uvicorn.run(create_app(settings,lock=lock),host='127.0.0.1',port=settings.port,timeout_graceful_shutdown=5)
         finally:pid.unlink(missing_ok=True)
@@ -167,15 +183,10 @@ def main():
             response=client.post('/api/projects',json={'name':args.name or root.name,'root':str(root)});response.raise_for_status();data=response.json()
             runner=f'powershell -NoProfile -ExecutionPolicy Bypass -File "{settings.root / "app/run.ps1"}"' if sys.platform=='win32' else str(settings.root/'app/run.sh')
             instructions=agent_instructions(settings,url,data['id'],runner)
-            if args.write_instructions:
-                path=root/'AGENTS.md';old=path.read_text() if path.exists() else ''
-                import re
-                if '<!-- repertorio:start -->' in old:
-                    new=re.sub(r'<!-- repertorio:start -->.*?<!-- repertorio:end -->',lambda _:instructions.strip(),old,flags=re.S)
-                else:new=old.rstrip()+'\n\n'+instructions
-                path.write_text(new)
+            if args.write_instructions:write_instructions(root,instructions)
             data['instructions']=instructions
             data['codex_command']=f'codex mcp add repertorio --url {url}/mcp'
+            data['claude_code_command']=f'claude mcp add --transport http -s user repertorio {url}/mcp'
             data['opencode_config']={'mcp':{'repertorio':{'type':'remote','url':url+'/mcp','oauth':False,'enabled':True}}}
             output(data);return
         if args.cmd=='search':
@@ -204,5 +215,7 @@ def main():
 
 if __name__=='__main__':
     try:main()
+    except httpx.ConnectError:
+        print('O serviço do Repertório não está ligado. Ligue com "serve" (ou abra o aplicativo do Mac) e rode o comando de novo.',file=sys.stderr);sys.exit(1)
     except (ValueError,httpx.HTTPError) as exc:
         print(str(exc),file=sys.stderr);sys.exit(1)

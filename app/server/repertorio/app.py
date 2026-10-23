@@ -6,7 +6,7 @@ import zipfile
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, File, Request, UploadFile
 from fastapi.responses import FileResponse, JSONResponse, Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.trustedhost import TrustedHostMiddleware
@@ -82,7 +82,8 @@ def create_app(settings=None,run_worker=True,lock=None):
     @app.get('/api/health')
     def health():
         schema=db.one('SELECT version_num FROM alembic_version')
-        return dict(status='ok',version=__version__,database='ready' if schema else 'sem migração',schema=schema['version_num'] if schema else None,platform=sys.platform,demo=bool(lib.meta('demo',False)))
+        # root: pasta do programa, para a interface montar os comandos de conexão com o caminho completo.
+        return dict(status='ok',version=__version__,database='ready' if schema else 'sem migração',schema=schema['version_num'] if schema else None,platform=sys.platform,demo=bool(lib.meta('demo',False)),root=str(settings.root))
 
     @app.get('/api/stats')
     def stats(workspace_id:str):return lib.stats(workspace_id)
@@ -108,6 +109,12 @@ def create_app(settings=None,run_worker=True,lock=None):
 
     @app.get('/api/catalog')
     def catalog():return lib.catalog()
+
+    # Envio de arquivos pela interface: cada um vira uma referência publicada, com a ficha para o agente completar.
+    @app.post('/api/workspaces/{wid}/upload')
+    def upload(wid:str,files:list[UploadFile]=File(...)):
+        from .uploads import receive
+        return receive(lib,wid,[(f.filename or 'arquivo',f.file) for f in files])
 
     @app.get('/api/vocabulary')
     def vocab():return lib.meta('vocabulary',{})

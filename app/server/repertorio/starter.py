@@ -29,15 +29,20 @@ VOCABULARY = {
 
 
 def initialize(settings):
+    """Prepara uma biblioteca nova e completa uma que começou sem vocabulário (por exemplo, quando o serviço ligou antes
+    do init). Bibliotecas com conteúdo nunca são alteradas."""
     fresh = not settings.db.exists()
     db = Database(settings)
     try:
         db.migrate()
-        if fresh:
-            with db.engine.begin() as conn:
-                conn.execute(text("UPDATE workspaces SET name='Meu repertório',name_key='meu repertório' WHERE id='referencias'"))
+        with db.engine.begin() as conn:
+            seeded = not conn.execute(text("SELECT 1 FROM meta WHERE key='vocabulary'")).first()
+            empty = not conn.execute(text('SELECT 1 FROM refs LIMIT 1')).first()
+            if seeded:
                 conn.execute(text('INSERT INTO meta(key,value) VALUES(:key,:value)'),
                              {'key': 'vocabulary', 'value': dumps(VOCABULARY)})
-        return {'initialized': fresh, 'preserved_existing_library': not fresh, 'home': str(settings.home)}
+            if fresh or (seeded and empty):
+                conn.execute(text("UPDATE workspaces SET name='Meu repertório',name_key='meu repertório' WHERE id='referencias' AND name='Referências'"))
+        return {'initialized': fresh or seeded, 'preserved_existing_library': not fresh, 'home': str(settings.home)}
     finally:
         db.engine.dispose()

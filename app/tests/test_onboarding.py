@@ -211,3 +211,31 @@ def test_stop_ends_the_service_and_releases_the_library(tmp_path):
         assert subprocess.run(cli + ['stop'], env=env, capture_output=True, text=True, timeout=30).stdout.strip() == 'O serviço não está ligado.'
     finally:
         if service.poll() is None:service.kill()
+
+
+def test_connect_writes_agents_and_claude_files_without_losing_content(tmp_path):
+    from repertorio.cli import write_instructions
+    block = '<!-- repertorio:start -->\nNovo\n<!-- repertorio:end -->\n'
+    write_instructions(tmp_path, block)
+    assert (tmp_path / 'AGENTS.md').read_text(encoding='utf-8') == block
+    assert (tmp_path / 'CLAUDE.md').read_text(encoding='utf-8') == '@AGENTS.md\n'
+    (tmp_path / 'AGENTS.md').write_text('# Projeto\n\nRegras próprias.\n\n' + block.replace('Novo', 'Antigo'), encoding='utf-8')
+    (tmp_path / 'CLAUDE.md').write_text('# Claude\n\n@AGENTS.md\n', encoding='utf-8')
+    write_instructions(tmp_path, block)
+    assert (tmp_path / 'AGENTS.md').read_text(encoding='utf-8') == '# Projeto\n\nRegras próprias.\n\n' + block
+    assert (tmp_path / 'CLAUDE.md').read_text(encoding='utf-8') == '# Claude\n\n@AGENTS.md\n'
+
+
+def test_service_started_before_init_still_gets_vocabulary(tmp_path):
+    from repertorio.starter import initialize
+    settings = Settings(tmp_path, tmp_path / 'dados')
+    db = Database(settings);db.migrate();db.engine.dispose()
+    out = initialize(settings)
+    assert out['initialized'] and out['preserved_existing_library']
+    db = Database(settings)
+    try:
+        assert db.one("SELECT value FROM meta WHERE key='vocabulary'")
+        assert db.one("SELECT name FROM workspaces WHERE id='referencias'")['name'] == 'Meu repertório'
+    finally:
+        db.engine.dispose()
+    assert not initialize(settings)['initialized']

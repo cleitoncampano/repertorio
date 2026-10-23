@@ -1,5 +1,9 @@
 # Retomada do projeto
 
+## Plano da Perestroika em 22/10/2026
+
+O Cleiton pediu para transformar `perestroika/` em material acionável para modelos, além do visual. Plano em `docs/PERESTROIKA-PLANO.md`: métodos em `.md` com modelos para preencher, entrada pelo MCP e por três skills, espaço visual próprio e revisor opcional. Nada executado ainda; próxima ação: o Cleiton escolher por onde começar.
+
 ## Espaço Inspiração em 22/10/2026
 
 Referências guarda só apresentações e material do PPT Treta. Referências externas e criações (carrosséis Growmate) estão em **Inspiração**; as criações seguem também em Growmate. Para slides e carrosséis, consulte Referências e Inspiração juntos. Detalhes em `app/VALIDACAO.md`.

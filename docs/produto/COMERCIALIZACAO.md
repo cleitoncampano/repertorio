@@ -2,7 +2,9 @@
 
 ## Oferta da landing page em 23/10/2026
 
-Nova decisão do Cleiton: a compra deve incluir o aplicativo e a biblioteca de referências que ele usa para criar, com apresentações, materiais de estudo e vídeos de motion. A comunicação deve usar os nomes dessas categorias, sem citar os cursos ou seus fornecedores. O valor de R$ 97 é provisório e fica editável; link de checkout e condições comerciais ainda não foram definidos.
+Decisão revista pelo Cleiton no mesmo dia: a compra leva só o aplicativo, com a biblioteca vazia. Cada pessoa monta a própria curadoria, enviando arquivos pelo app ou pedindo ao seu agente. A biblioteca de desenvolvimento não vai ao comprador: das cerca de 1.350 referências, só uma está marcada como livre para reutilizar, e parte delas vem de cursos pagos e de galerias de terceiros. A landing page precisa deixar de prometer biblioteca incluída. O valor de R$ 97 é provisório e fica editável; link de checkout e condições comerciais ainda não foram definidos.
+
+Registro anterior, substituído: a compra incluiria o aplicativo e a biblioteca de referências do Cleiton (apresentações, materiais de estudo e vídeos de motion).
 
 A landing page está no Growmate Marketing, em `produtos/repertorio/landing-page/`, com prévia privada em https://repertorio-para-criar.loyalmoon67.chatgpt.site. Fonte, direção e continuidade ficam naquela produção. A página demonstra o aplicativo com exemplos originais; a criação do pacote para entregar ao comprador é outra tarefa. O pacote de avaliação descrito abaixo continua sendo o candidato de software preparado em 19/10, sem o acervo particular.
 

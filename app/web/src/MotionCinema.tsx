@@ -8,7 +8,7 @@ import {kindName,terms,type Detail,type Reference,type Vocabulary} from './types
 // Ver uma referência em tela grande, como no YouTube: modo padrão (peça grande, ficha e parecidos ao lado),
 // modo teatro (peça na largura toda, ficha abaixo) e tela cheia. Como no Prompt Motion, passa-se de uma
 // referência a outra pelas setas da tela, pelas setas do teclado ou deslizando para o lado (dedo ou trackpad).
-// Imagem: as setas sobre a peça, ← → e o deslize passam pelas imagens do material; os botões do canto,
+// Imagem: as setas sobre a peça, ← → e o deslize passam pelas imagens do material, em roda; os botões do canto,
 // ↑ ↓, N e P trocam de material. Material de uma imagem só: ← → e o deslize já trocam de material.
 // Vídeo: as setas e ← → trocam de vídeo; espaço ou K, M, Shift + ← → (5 s), J e L (10 s). T alterna o teatro e F a tela cheia.
 type Mode='default'|'theater';
@@ -36,7 +36,8 @@ export function MotionCinema({item,detail,sequence,vocab,onClose,onOpen,onDetail
  const [frame,setFrame]=useState(0);
  useEffect(()=>setFrame(0),[item.id]);
  const shown=frames[Math.min(frame,frames.length-1)];
- const step=(delta:number)=>{const next=Math.max(0,Math.min(frames.length-1,frame+delta));if(next===frame)return;setDirection(delta);setFrame(next);};
+ // As imagens do material andam em roda: depois da última vem a primeira, e antes da primeira, a última.
+ const step=(delta:number)=>{if(frames.length<2)return;setDirection(delta);setFrame((frame+delta+frames.length)%frames.length);};
  const multi=!isVideo&&frames.length>1;
  // Vizinhos na ordem em que o espaço está sendo visto (busca, lista ou o espaço inteiro).
  const index=sequence.findIndex(r=>r.id===item.id),previous=index>0?sequence[index-1]:undefined,following=index>=0?sequence[index+1]:sequence[0];
@@ -138,8 +139,8 @@ export function MotionCinema({item,detail,sequence,vocab,onClose,onOpen,onDetail
       {previous&&<button className="cinema-side previous" onClick={()=>go(-1)} aria-label="Vídeo anterior" title="Anterior (←)"><ChevronLeft size={30}/></button>}
       {following&&<button className="cinema-side next" onClick={()=>go(1)} aria-label="Próximo vídeo" title="Próximo (→)"><ChevronRight size={30}/></button>}
      </>:multi&&<>
-      {frame>0&&<button className="cinema-side previous" onClick={()=>step(-1)} aria-label="Imagem anterior" title="Imagem anterior (←)"><ChevronLeft size={30}/></button>}
-      {frame<frames.length-1&&<button className="cinema-side next" onClick={()=>step(1)} aria-label="Próxima imagem" title="Próxima imagem (→)"><ChevronRight size={30}/></button>}
+      <button className="cinema-side previous" onClick={()=>step(-1)} aria-label="Imagem anterior" title="Imagem anterior (←)"><ChevronLeft size={30}/></button>
+      <button className="cinema-side next" onClick={()=>step(1)} aria-label="Próxima imagem" title="Próxima imagem (→)"><ChevronRight size={30}/></button>
      </>}
      {!isVideo&&<div className="cinema-tools">
       <button onClick={()=>setMode(mode==='theater'?'default':'theater')} aria-label={mode==='theater'?'Modo padrão':'Modo teatro'} title={mode==='theater'?'Modo padrão (T)':'Modo teatro (T)'} aria-pressed={mode==='theater'}><RectangleHorizontal size={18}/></button>

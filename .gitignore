@@ -9,8 +9,8 @@ __pycache__/
 
 _originais/
 acervo/
-perestroika/
-soap/
+/perestroika/
+/soap/
 
 # Estudos externos: só os textos; imagens e vídeos ficam fora
 _referencias/**

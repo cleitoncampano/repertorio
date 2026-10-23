@@ -1,5 +1,9 @@
 # Validação da primeira versão
 
+## Excluir pela tela grande em 22/10/2026
+
+- A pedido: **Excluir deste espaço** na tela grande, igual para imagens e vídeos, no fim da fileira de ações. Manda para a lixeira do espaço (mesma regra do painel), passa ao próximo material da sequência e mostra o aviso com **Desfazer**. Com a tela grande aberta, o aviso aparece dentro dela, porque o resto da página fica inativo enquanto ela está aberta. Teste de navegador com um vídeo: excluiu, passou ao seguinte, confirmou o estado na lixeira e restaurou pelo Desfazer. Nada foi excluído do acervo real; botão conferido num vídeo e numa imagem. 60 testes da interface e 31 de navegador aprovados.
+
 ## Troca de imagem e de material na tela grande em 22/10/2026
 
 - A pedido: com uma imagem aberta, as setas sobre a peça, ← →, dois dedos no trackpad e o deslize passam pelas imagens do material; os botões ‹ › do canto direito, ↑ ↓, N e P trocam de material. As imagens andam em roda: da última, avançar volta à primeira, e da primeira, voltar vai à última (ajuste pedido logo depois; as duas setas ficam sempre visíveis). Material de uma imagem só não mostra setas sobre a peça, e ← → e o deslize trocam de material. Vídeos seguem trocando de vídeo pelas setas. A faixa mostra "Imagem 2 de 4". Conferido na apresentação Cérebro (4 imagens): →, seta, trackpad, canto › e ↑ fizeram cada um o esperado, sem erros. 60 testes da interface e 30 de navegador aprovados.

@@ -92,3 +92,21 @@ test('Escolhas tocam os vídeos e abrem o player',async({page,request})=>{
  await expect(page.locator('.cinema')).toHaveCount(0);
  await expect(card.getByRole('button',{name:'Aprovar'})).toBeVisible();
 });
+
+test('vídeo sai do espaço pela tela grande, como a imagem, e volta com Desfazer',async({page,request})=>{
+ const spaces=await (await request.get('/api/workspaces')).json();
+ const motion=spaces.find((s:{name:string})=>s.name==='Motion');
+ await page.goto('/?workspace='+motion.id);
+ await expect(page.locator('.map-surface')).toBeVisible();
+ await page.evaluate(()=>(document.querySelector('.map-surface') as any)._cyreg.cy.getElementById('ref:motion-giro').emit('tap'));
+ const cinema=page.locator('.cinema');
+ await expect(cinema.locator('.cinema-info h2')).toHaveText('Logo que gira e se aproxima');
+ await cinema.getByRole('button',{name:'Excluir deste espaço'}).click();
+ // O aviso fica por cima da tela grande e a tela passa ao próximo vídeo.
+ const toast=page.getByRole('status',{name:'Notificação'});
+ await expect(toast).toContainText('Referência movida para a lixeira.');
+ await expect(cinema.locator('.cinema-info h2')).toHaveText('Onda de partículas que vira logo');
+ expect((await (await request.get('/api/references/motion-giro?workspace_id='+motion.id)).json()).state).toBe('trashed');
+ await toast.getByRole('button',{name:'Desfazer'}).click();
+ await expect.poll(async()=>(await (await request.get('/api/references/motion-giro?workspace_id='+motion.id)).json()).state).toBe('published');
+});

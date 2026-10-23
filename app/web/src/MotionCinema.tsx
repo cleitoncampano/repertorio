@@ -1,6 +1,6 @@
 import {useEffect,useRef,useState} from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import {ChevronLeft,ChevronRight,Copy,ExternalLink,Link,Maximize,Minimize,PanelRight,Pause,Play,RectangleHorizontal,SkipBack,SkipForward,Volume2,VolumeX,X} from 'lucide-react';
+import {ChevronLeft,ChevronRight,Copy,ExternalLink,Link,Maximize,Minimize,PanelRight,Pause,Play,RectangleHorizontal,SkipBack,SkipForward,Trash2,Volume2,VolumeX,X} from 'lucide-react';
 import {sized} from './api';
 import {motionSummary} from './MotionParts';
 import {kindName,terms,type Detail,type Reference,type Vocabulary} from './types';
@@ -19,7 +19,7 @@ type FullscreenElement=HTMLElement&{webkitRequestFullscreen?:()=>void};
 
 const ASPECT_NAMES:Record<string,string>={horizontal:'Horizontal',vertical:'Vertical',quadrado:'Quadrado ou 4:5'};
 
-export function MotionCinema({item,detail,sequence,vocab,onClose,onOpen,onDetails,copy}:{item:Reference;detail?:Detail;sequence:Reference[];vocab?:Vocabulary;onClose:()=>void;onOpen:(id:string,workspace?:string)=>void;onDetails:()=>void;copy:(text:string)=>void}){
+export function MotionCinema({item,detail,sequence,vocab,busy,notices,onClose,onOpen,onDetails,onRemove,copy}:{item:Reference;detail?:Detail;sequence:Reference[];vocab?:Vocabulary;busy?:boolean;notices?:React.ReactNode;onClose:()=>void;onOpen:(id:string,workspace?:string)=>void;onDetails:()=>void;onRemove?:()=>void;copy:(text:string)=>void}){
  const isVideo=!!item.motion?.video;
  const [mode,setMode]=useState<Mode>(()=>{try{return localStorage.getItem(MODE_KEY)==='theater'?'theater':'default';}catch{return 'default';}});
  const [playing,setPlaying]=useState(false),[time,setTime]=useState(0),[duration,setDuration]=useState(item.motion?.duration||0);
@@ -171,6 +171,7 @@ export function MotionCinema({item,detail,sequence,vocab,onClose,onOpen,onDetail
       {d?.prompt&&<button onClick={()=>copy(d.prompt!)}><Copy size={14}/> Copiar prompt</button>}
       {!isVideo&&<button onClick={()=>copy(item.url)}><Link size={14}/> Copiar link</button>}
       {source?.post&&<a href={source.post} target="_blank" rel="noreferrer"><ExternalLink size={14}/> Post do autor</a>}
+      {onRemove&&d?.state==='published'&&<button className="cinema-remove" disabled={busy} onClick={onRemove} title="Vai para a lixeira deste espaço; dá para desfazer"><Trash2 size={14}/> Excluir deste espaço</button>}
      </div>
      {item.idea&&<section><h3>Ideia transferível</h3><p>{item.idea}</p></section>}
      {d?.how&&<section><h3>{isVideo?'Decupagem':'Como funciona'}</h3><p>{d.how}</p></section>}
@@ -186,5 +187,6 @@ export function MotionCinema({item,detail,sequence,vocab,onClose,onOpen,onDetail
       <button onClick={()=>go(1)} disabled={!following} aria-label={isVideo?'Próximo':'Próximo material'} title={isVideo?'Próximo (→)':'Próximo material (↓)'}><ChevronRight size={18}/></button></nav>}
     </aside>
    </div>
+   {notices}
   </Dialog.Content></Dialog.Portal></Dialog.Root>;
 }

@@ -2,7 +2,7 @@ name: Repertorio local em Mac e Windows
 on:
   push:
     branches: [main]
-    paths: ['app/server/**', 'app/tests/**', 'app/requirements.lock', 'app/setup*', 'app/run*', 'ferramentas/empacotar_produto.py', '.github/workflows/local.yml']
+    paths: ['app/server/**', 'app/tests/**', 'app/requirements.lock', 'app/requirements-dev.lock', 'app/pyproject.toml', 'app/setup*', 'app/run*', 'ferramentas/empacotar_produto.py', '.github/workflows/local.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -24,7 +24,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: uv venv app/.venv --python 3.12
-      - run: uv pip sync --python ${{ matrix.python }} app/requirements.lock
+      - run: uv pip sync --python ${{ matrix.python }} app/requirements-dev.lock
       - run: ${{ matrix.python }} -m pytest app/tests -q
       - name: Preparar instalação pelo PowerShell do Windows
         if: runner.os == 'Windows'

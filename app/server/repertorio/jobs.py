@@ -129,11 +129,15 @@ class Worker:
             if not generated:
                 first=records[0][0]
                 if first.suffix=='.pdf':
-                    import pymupdf
-                    with pymupdf.open(first) as pdf:
+                    # pypdfium2 (Apache/BSD): licença compatível com a venda do produto.
+                    import pypdfium2
+                    pdf=pypdfium2.PdfDocument(first)
+                    try:
                         for n in range(min(len(pdf),30)):
-                            p=dest/f'page-{n+1:03d}.png'
-                            pdf[n].get_pixmap(matrix=pymupdf.Matrix(1,1)).save(p);generated.append(p)
+                            p=dest/f'page-{n+1:03d}.png';page=pdf[n]
+                            try:page.render(scale=1).to_pil().save(p);generated.append(p)
+                            finally:page.close()
+                    finally:pdf.close()
                 elif first.suffix=='.pptx':
                     with zipfile.ZipFile(first) as z:
                         match=next((n for n in z.namelist() if n.lower() in ('docprops/thumbnail.jpeg','docprops/thumbnail.png')),None)

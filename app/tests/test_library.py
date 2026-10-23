@@ -139,6 +139,17 @@ def test_html_requires_preview_and_is_not_executed(library,context):
     assert library.operation(op['id'])['state']=='completed'
 
 
+def test_pdf_pages_become_previews(library,context):
+    from PIL import Image
+    root=Path(library.context(context['id'])['root'])
+    Image.new('RGB',(400,300),'#ab3').save(root/'deck.pdf',save_all=True,append_images=[Image.new('RGB',(400,300),'#3ab')])
+    op=register(library,Register(context_id=context['id'],request_key='pdf-pages',data=data(),files=['deck.pdf'],target_workspace_ids=['referencias']))
+    Worker(library).process(op['id'])
+    done=library.operation(op['id'])
+    assert done['state']=='completed',done['error']
+    assert library.db.one("SELECT COUNT(*) AS n FROM assets WHERE ref_id=:r AND role='preview'",r=done['ref_id'])['n']==2
+
+
 def test_backup_now_keeps_recent_copies(library,tmp_path):
     from repertorio.backup import backup_now
     target=tmp_path/'copias'

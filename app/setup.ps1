@@ -7,7 +7,9 @@ try {
         & uv venv .venv --python 3.12
         if ($LASTEXITCODE -ne 0) { throw 'Nao foi possivel preparar o Python.' }
     }
-    & uv pip sync --python $repertorioPython requirements.lock
+    $repertorioLock = 'requirements.lock'
+    if (Test-Path (Join-Path $PSScriptRoot '..\.git')) { $repertorioLock = 'requirements-dev.lock' }
+    & uv pip sync --python $repertorioPython $repertorioLock
     if ($LASTEXITCODE -ne 0) { throw 'Nao foi possivel instalar as dependencias.' }
     if (-not (Test-Path 'web\dist\index.html')) {
         Get-Command pnpm.cmd -ErrorAction Stop | Out-Null

@@ -12,7 +12,7 @@ FIXED = [
     'app/requirements.lock', 'app/pyproject.toml',
     'app/mac/main.swift', 'app/mac/build.sh', 'app/mac/icone.png',
 ]
-CLIENT_DOCS = ['PRODUTO.md', 'INSTALACAO.md', 'DEMONSTRACAO.md', 'OPERACAO.md']
+CLIENT_DOCS = ['PRODUTO.md', 'INSTALACAO.md', 'DEMONSTRACAO.md', 'OPERACAO.md', 'AVISOS-DE-TERCEIROS.md']
 
 
 def package_product(root, destination):
@@ -50,9 +50,9 @@ def package_product(root, destination):
                          'Incorpore apenas materiais próprios ou autorizados, com os espaços indicados pelo usuário.\n').encode()
     files['AVALIACAO.md'] = ('# Candidato de avaliação interna\n\n'
                             'Este pacote prepara a demonstração e a avaliação local do software. '
-                            'Não define a licença de distribuição do Repertório. A dependência PyMuPDF oferece '
-                            'licenças AGPL e comercial: https://pymupdf.io/licensing. A decisão de licenciamento '
-                            'e os termos de oferta precisam ser tratados antes da distribuição comercial. '
+                            'Não define a licença de distribuição do Repertório. As licenças das dependências estão em '
+                            'docs/produto/AVISOS-DE-TERCEIROS.md. A decisão de licenciamento e os termos de oferta precisam ser '
+                            'tratados antes da distribuição comercial. '
                             'Não contém a biblioteca particular nem materiais de cursos.\n').encode()
     manifest = {'kind': 'repertorio-evaluation-candidate', 'includes_private_library': False,
                 'license_status': 'owner_decision_required',

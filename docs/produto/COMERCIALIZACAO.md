@@ -53,7 +53,7 @@ O destino é explícito e fica fora do repositório. O pacote contém um invent�
 
 ## Decisões reais antes da distribuição comercial
 
-1. **Licenciamento da biblioteca de PDF.** A dependência atual PyMuPDF informa opções AGPL e comercial. Escolher a forma de distribuição do produto e tratar essa dependência antes de oferecer um pacote comercial. Não foi aplicada uma licença MIT ou proprietária ao repositório. [Licenciamento oficial do PyMuPDF](https://pymupdf.io/licensing).
+1. **Licença do Repertório.** As prévias de PDF passaram a usar pypdfium2 (BSD e Apache) em 23/10/2026; o produto não depende mais de bibliotecas com licença AGPL. As licenças do que vai no pacote estão em [AVISOS-DE-TERCEIROS.md](AVISOS-DE-TERCEIROS.md), gerado por `ferramentas/avisos_terceiros.py`. Falta escolher a licença ou o termo de uso do próprio Repertório: não foi aplicada uma licença MIT ou proprietária ao repositório.
 2. **Entrega no computador do cliente.** Os testes do servidor e os iniciadores de instalação passaram em Mac e Windows hospedados, na [execução aprovada](https://github.com/cleitoncampano/repertorio/actions/runs/39272717798). Acompanhar também um piloto no computador de um cliente. Assinatura, notarização e um instalador completo do aplicativo do Mac são etapas diferentes do build local existente.
 3. **Oferta e atendimento.** Definir preço, o que a pessoa recebe, suporte e política de atualizações, incluindo o que depende de agentes e serviços externos.
 

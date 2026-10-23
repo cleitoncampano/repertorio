@@ -28,6 +28,9 @@ Base: e-books e templates da agência SOAP (pitch feito com a Endeavor Brasil, e
 7. **Tempo curto**: quando o tempo inclui conversa, de 15 minutos use 5; numa reunião, apresentar ocupa até 40% do tempo, e um terço diante do board (`soap/pedir-recursos`). Quando as perguntas têm bloco próprio (banca de pitch), o tempo dado é da fala; Aplicação no Repertório: deixe cerca de 10% de folga e tenha uma versão mais curta ensaiada.
 8. **Duas versões**: a de apresentar (pouco texto, apoio à fala) e a de enviar (a peça se explica sozinha, 5 a 10 slides) (`soap/apresentacao-institucional`, `soap/do-roteiro-ao-slide`).
 9. **Números na ponta da língua** e as objeções preparadas: guia `apresentar-ao-vivo`, `soap/perguntas-dificeis`.
+10. **Quem decide nem sempre é quem usa** (Aplicação no Repertório): numa parceria, escreva o pensar, sentir e fazer para os dois (quem assina e quem vai usar) e dê a cada um a sua prova.
+11. **Momento-surpresa numa reunião pequena** (Aplicação no Repertório, com `perestroika/treco`): grande no efeito, simples de produzir: um objeto na mesa, um dado do próprio cliente, uma demonstração de um minuto.
+12. **Setores regulados** (Aplicação no Repertório): em saúde, finanças, direito e educação, confira antes as regras de publicidade do conselho ou do órgão do setor, a proteção de dados e a autorização para usar casos, depoimentos e fotos de clientes ou pacientes. O método da SOAP não trata disso.
 
 Referências visuais: o espaço SOAP tem páginas de e-book que ensinam e templates, não pitches reais de clientes. Para a composição dos slides, combine com outros espaços quando o usuário permitir, e use só as referências dos espaços que ele escolheu (os guias por momento citam vários).
 

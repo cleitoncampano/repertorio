@@ -1,5 +1,11 @@
 # Validação da primeira versão
 
+## Espaço e método SOAP em 23/10/2026
+
+- A pedido: o material da SOAP virou o espaço SOAP (75 apresentações, 507 slides, `reusable=false`), 62 fichas e modelos em `biblioteca/metodos/soap/` servidos por `get_guide`, e as skills `soap-fala` e `soap-pitch` no catálogo (categoria Método).
+- `get_guide` descreve o índice `metodo-soap`; o bloco de instruções gerado por `connect` cita todos os índices de método. Teste novo: guias e fichas de duas coleções convivem (`soap/tese` e `perestroika/tese` abrem cada uma).
+- 48 testes do servidor, 61 de unidade e 29 de navegador aprovados; build feito, serviço reiniciado. Pelo MCP: `get_guide()` lista os 4 guias novos sem perder nenhum; busca no espaço SOAP devolve prancha; link de slide abre o slide certo. Capturas em `app/.runtime/qa/soap/app/`.
+
 ## Exclusão definitiva na Lixeira em 23/10/2026
 
 - A pedido: a Lixeira ganhou seleção. Cada cartão tem um quadrado para marcar, **Selecionar tudo** marca o espaço inteiro (inclusive as páginas seguintes, e dá para desmarcar algumas) e **Excluir definitivamente** pede confirmação antes. O vínculo com o espaço é desligado de vez, então reimportar não traz a peça de volta; se ela não estiver em nenhum outro espaço, a ficha vira um registro vazio, saem as revisões, as transições, os vínculos de arquivo e as miniaturas, e os arquivos copiados para a pasta do app são apagados. Originais externos ficam. A Atividade registra cada exclusão.

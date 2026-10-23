@@ -1,8 +1,10 @@
 # Retomada do projeto
 
-## SOAP acionável para modelos, em andamento desde 23/10/2026
+## SOAP acionável para modelos em 23/10/2026
 
-Execução do plano `docs/SOAP-PLANO.md` (mesmo caminho da Perestroika). O andamento, o que falta e como retomar estão na seção "Andamento" do plano.
+A pedido do Cleiton, o material de `soap/` (55 e-books e guias, 3 checklists e 17 templates de PowerPoint, 1.755 páginas) foi lido página por página e virou três portas para os agentes, como a Perestroika. (1) Método: 62 fichas e modelos em `biblioteca/metodos/soap/`, servidos por `get_guide`: índice `metodo-soap`, guias `apresentar-ao-vivo`, `pitch-e-proposta`, `comunicacao-na-empresa` e fichas como `soap/<ficha>`; o checklist SOAP é camada extra do guia `revisao-apresentacao`. (2) Skills `soap-fala` (Apresentar ao vivo) e `soap-pitch` (Pitch e proposta) em `~/.agents/skills/` (ligadas em `~/.claude/skills`), no catálogo de Skills do app; a `perestroika-revisao` passou a usar o checklist SOAP. (3) Espaço SOAP no app (`7f53adaa-6bc5-496c-815e-f6159e2baec9`): 75 apresentações e 507 slides, `reusable=false`. Plano, resultado e pendências em `docs/SOAP-PLANO.md`; manutenção em `biblioteca/metodos/soap/LEIA-ME.md`.
+
+Novos: `ferramentas/incorporar_colecao.py` (Perestroika e SOAP; `incorporar_perestroika.py` virou atalho) e `ferramentas/mcp_leitura.py` (MCP só leitura, para testes). Testes: 48 do servidor, 61 da interface e 29 de navegador aprovados; interface compilada (atualizar com ⌘R); serviço reiniciado. Backup antes da importação no iCloud (`repertorio-2026-10-23-013219`). Dois testes às cegas (pitch para investidores e institucional com revisão) guiaram as correções; materiais em `app/.runtime/qa/soap/testes/materiais-do-teste.html`. Próxima ação: o Cleiton usar `soap-pitch` e `soap-fala` numa demanda real.
 
 ## Skills do Emil Kowalski em 23/10/2026
 

@@ -99,4 +99,23 @@ Resultado esperado: (1) fichas de método do SOAP em `biblioteca/metodos/soap/`,
 - Fase 2 concluída (1h45): espaço SOAP `7f53adaa-6bc5-496c-815e-f6159e2baec9`, 75 apresentações e 507 slides importados, backup `repertorio-2026-10-23-013219`, capturas em `app/.runtime/qa/soap/app/`.
 - Fase 3 concluída (2h40): 62 fichas e modelos em `biblioteca/metodos/soap/`, guias `metodo-soap`, `apresentar-ao-vivo`, `pitch-e-proposta`, `comunicacao-na-empresa`, camada SOAP em `revisao-apresentacao`; `validar` com zero problemas nas duas coleções. Resultados dos redatores em `soap/_trabalho/relatorios/fichas.md`.
 - Fase 4 concluída: `get_guide` e bloco de instruções citam o SOAP, teste de duas coleções, skills `soap-fala` e `soap-pitch` (catálogo do app), camada SOAP na `perestroika-revisao`, AGENTS.md e manual; 48 testes do servidor, 61 da interface e 29 de navegador aprovados; serviço reiniciado.
-- Fase 5 em andamento: dois testes às cegas (pitch da Composta só com SOAP; institucional da Movi com Referências, Inspiração, Perestroika e SOAP), entregas em `app/.runtime/qa/soap/testes/`. Para retomar: se `pitch.md` ou `institucional.md` faltarem, relançar o teste; depois corrigir o que o relato apontar e montar `materiais-do-teste.html` como o da Perestroika. Teste 1 concluído; teste 2 interrompido pelo limite de uso (3h). Correções apontadas pelo teste 1 em `soap/_trabalho/relatorios/testes.md`.
+- Fase 5 concluída (4h40): dois testes às cegas, correções aplicadas, materiais em `app/.runtime/qa/soap/testes/materiais-do-teste.html`.
+
+## Resultado (23/10/2026)
+
+As seis fases foram executadas na ordem 0 a 5.
+
+- Ferramenta: `ferramentas/incorporar_colecao.py` serve a Perestroika (saída idêntica à da ferramenta antiga) e o SOAP, com `paginas`, `conferir`, `montar`, `pranchas` e `validar`; `ferramentas/mcp_leitura.py` consulta o MCP só para leitura.
+- Leitura: 75 PDFs (55 e-books e guias, 3 checklists e 17 templates exportados do PowerPoint), 1.755 páginas, todas lidas por 10 agentes; estudos por PDF em `_referencias/soap/`.
+- Espaço SOAP no app: 75 apresentações e 507 slides, `reusable=false`; templates de presente com a observação de uso.
+- Método: 62 fichas e modelos em `biblioteca/metodos/soap/`, índice `metodo-soap`, guias `apresentar-ao-vivo`, `pitch-e-proposta` e `comunicacao-na-empresa`, camada SOAP no guia `revisao-apresentacao`; diferenças com a Perestroika registradas nas fichas e resumidas no índice.
+- Skills: `soap-fala` (Apresentar ao vivo) e `soap-pitch` (Pitch e proposta), no catálogo do app; a `perestroika-revisao` usa o checklist SOAP.
+- Testes às cegas: pitch de 10 minutos para investidores (só SOAP) e institucional de 20 minutos com revisão (quatro espaços). Os dois aplicaram objetivo e audiência, TOSW, três atos, informação saliente e próximo passo, sem inventar números. As falhas encontradas foram corrigidas: imagens sobrescritas na leitura do MCP, resposta longa da busca, tempo de fala com e sem bloco de perguntas, ordem TOSW x promessa, slide de agradecimento em peça de decisão, só referências dos espaços escolhidos, quem decide x quem usa, momento-surpresa em reunião pequena, setores regulados, credencial e logo.
+
+## Pendências fora do escopo do método
+
+Para decisão do Cleiton:
+- A busca lê pedidos descritivos de forma genérica e, sem `kind: "slide"`, traz as capas dos e-books; mesma pendência apontada nos testes da Perestroika.
+- O template de gráficos saiu pelo Keynote com textos sobrepostos em algumas páginas (o PowerPoint o exporta incompleto).
+- O bloco de instruções de outros projetos conectados (por exemplo o Growmate Marketing) ainda cita só `metodo-perestroika`; atualiza com `connect --write-instructions` no projeto.
+

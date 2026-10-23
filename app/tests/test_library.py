@@ -2,7 +2,7 @@ import json
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 import pytest
-from repertorio.schemas import Search,StateChange,Update,ReferenceData,Register,Pack,Project,StartContext
+from repertorio.schemas import Search,StateChange,Update,ReferenceData,Register,Project,StartContext
 from repertorio.service import Problem
 from repertorio.importer import import_library
 from repertorio.jobs import Worker,register
@@ -49,11 +49,9 @@ def test_parallel_contexts_do_not_mix(library,context,tmp_path):
     p=library.project(Project(name='Comercial',root=str(other)))
     c=library.start(StartContext(project_id=p['id'],demand='Apresentação comercial',workspace_ids=['pp-treta']))
     def work(cid):
-        library.search(Search(query='Abertura',context_id=cid,workspace_ids=['pp-treta']))
-        return library.pack(Pack(context_id=cid,title='Seleção',reference_ids=['deck']))
+        return library.search(Search(query='Abertura',context_id=cid,workspace_ids=['pp-treta']))
     with ThreadPoolExecutor(2) as pool:a,b=list(pool.map(work,[context['id'],c['id']]))
-    assert a['context_id']!=b['context_id']
-    assert library.db.one('SELECT COUNT(*) AS n FROM packs')['n']==2
+    assert a['total']==b['total']>0
     assert {e['context_id'] for e in library.events() if e['action']=='references_searched'}=={context['id'],c['id']}
 
 
@@ -98,14 +96,6 @@ def test_paths_and_vocabulary_are_validated(library,context,tmp_path):
     root=Path(library.context(context['id'])['root'])
     (root/'link.png').symlink_to(library.settings.root/'assets/cover.png')
     with pytest.raises(Problem):register(library,Register(context_id=context['id'],request_key='symlink',data=data(),files=['link.png'],target_workspace_ids=['pp-treta']))
-
-
-def test_pack_keeps_snapshot(library,context):
-    p=library.pack(Pack(context_id=context['id'],title='Direção',reference_ids=['deck']))
-    library.update('deck',Update(context_id=context['id'],expected_revision=1,data=data()))
-    stored=json.loads(library.db.one('SELECT payload FROM packs WHERE id=:id',id=p['id'])['payload'])
-    assert stored['references'][0]['title']=='Abertura criativa'
-    with pytest.raises(Problem):library.pack(Pack(context_id=context['id'],title='Antes',reference_ids=['deck#2']))
 
 
 def test_backup_restore_managed_assets(library,context,tmp_path):
@@ -158,20 +148,3 @@ def test_backup_now_keeps_recent_copies(library,tmp_path):
     assert len(list(target.glob('repertorio-*.zip')))==2
     assert result['managed_files']==0 and 'history' not in result
     assert any(e['action']=='backup_created' for e in library.events())
-
-
-def test_user_reviews_agent_selection(library,context):
-    from repertorio.schemas import Review
-    p=library.pack(Pack(context_id=context['id'],title='Abertura',reference_ids=['deck','free'],rationale='Contraste forte'))
-    assert p['review_url'].endswith('&escolha='+p['id'])
-    demands=library.demands(workspace_id='pp-treta')
-    assert demands[0]['demand']=='Criar carrossel' and demands[0]['packs'][0]['total']==2
-    library.review(p['id'],Review(reference_id='deck',verdict='approved',note='Usar a tipografia'))
-    detail=library.review(p['id'],Review(reference_id='free',verdict='cut'))
-    reviews={r['id']:r['review'] for r in detail['references']}
-    assert reviews['deck']['verdict']=='approved' and reviews['deck']['note']=='Usar a tipografia'
-    assert reviews['free']['verdict']=='cut' and detail['references'][0]['thumbnail']
-    assert library.demands(workspace_id='pp-treta')[0]['packs'][0]['approved']==1 and library.demands(workspace_id='pp-treta')[0]['packs'][0]['cut']==1
-    assert library.review(p['id'],Review(reference_id='free'))['references'][1]['review'] is None
-    with pytest.raises(Problem):library.review(p['id'],Review(reference_id='deck#1',verdict='cut'))
-    assert any(e['action']=='pack_reviewed' for e in library.events())

@@ -41,10 +41,10 @@ describe('mapa dos espaços de vídeo',()=>{
   const images:GraphData={vocabulary:{...vocabulary,intencoes:{itens:[{id:'ABRIR',nome:'Abrir',def:'Capa'},{id:'FECHAR',nome:'Fechar',def:'Fim'},{id:'PROVAR',nome:'Provar',def:'Dados'}]}},
    items:[{id:'a',title:'A',techniques:['contraste'],intentions:['FECHAR','ABRIR'],strength:4},{id:'b',title:'B',techniques:[],intentions:['PROVAR'],strength:4},{id:'c',title:'C',techniques:[],intentions:[],strength:3}] as unknown as Reference[]};
   const map=storyMap(images);
-  expect((map.vocabulary.operacoes.itens as {id:string}[]).map(o=>o.id)).toEqual(['abrir','provar','fechar','outros']);
+  expect((map.vocabulary.operacoes.itens as {id:string}[]).map(o=>o.id)).toEqual(['abrir','provar','marcar','outros']);
   expect(map.items.find(i=>i.id==='a')!.techniques).toEqual(['papel:FECHAR','papel:ABRIR']);
   expect(map.items.find(i=>i.id==='c')!.techniques).toEqual(['papel:outros']);
-  for(const {id} of graphViews){const ids=new Set(layoutGraph(map,id).filter(e=>e.position).map(e=>e.data.id));expect(['op:abrir','op:fechar','tech:papel:PROVAR'].every(n=>ids.has(n))).toBe(true);}
+  for(const {id} of graphViews){const ids=new Set(layoutGraph(map,id).filter(e=>e.position).map(e=>e.data.id));expect(['op:abrir','op:marcar','tech:papel:PROVAR'].every(n=>ids.has(n))).toBe(true);}
  });
  it('recurso visual reúne as 48 técnicas em sete famílias, uma família por técnica, e mantém as conexões',()=>{
   const all=VISUAL_FAMILIES.flatMap(f=>f.tecnicas);

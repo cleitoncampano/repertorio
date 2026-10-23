@@ -87,16 +87,6 @@ def create_mcp(lib,worker):
         return lib.guide(name)
 
     @mcp.tool()
-    def build_inspiration_pack(request:schemas.Pack)->dict:
-        """Persiste a seleção com versões e justificativa. O usuário revisa na tela Escolhas (review_url): mostre o link e, antes de criar, leia get_pack."""
-        return lib.pack(request)
-
-    @mcp.tool()
-    def get_pack(pack_id:str)->dict:
-        """Seleção com a revisão do usuário: em cada referência, review.verdict é approved (usar), cut (descartar) ou vazio (sem resposta), e review.note traz o comentário. Use as aprovadas e respeite os cortes."""
-        out=lib.pack_detail(pack_id);out.pop('payload',None);return out
-
-    @mcp.tool()
     def register_reference(request:schemas.Register)->dict:
         """Copia apenas os arquivos indicados do projeto cadastrado. user_requested publica; sugestões ficam pendentes. Retorna operation_id em id.
         Vídeos (mp4, mov, webm) ganham player, loop curto, prancha de quadros e formato de tela, como os do espaço Motion:
@@ -142,14 +132,9 @@ def create_mcp(lib,worker):
         from .db import dumps
         return dumps(lib.meta('vocabulary',{}))
 
-    @mcp.resource('repertorio://packs/{pack_id}')
-    def pack(pack_id:str)->str:
-        from .db import dumps
-        out=lib.pack_detail(pack_id);out.pop('payload',None);return dumps(out)
-
     @mcp.resource('repertorio://contexts/{context_id}')
     def context(context_id:str)->str:
         from .db import dumps
-        return dumps(dict(context=lib.context(context_id),packs=lib.db.query('SELECT id,title,created FROM packs WHERE context_id=:id',id=context_id)))
+        return dumps(dict(context=lib.context(context_id)))
 
     return mcp

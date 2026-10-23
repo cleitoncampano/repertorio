@@ -218,7 +218,7 @@ def reference_data(entry):
                          'As prévias começam nas lâminas em ordem; depois mostram assets e pranchas. '
                          'HTML autocontido, PNGs e imagens-fonte estão anexados como originais. '
                          'Ícones, fontes locais e edição original também foram preservados no kit local. '
-                         'Em futuras criações, seguir a revisão de referências na tela Escolhas.'),
+                         'Em futuras criações, dizer ao usuário quais referências vai usar e por quê.'),
     )
 
 
@@ -357,7 +357,7 @@ def write_index(m):
               'margens x 72 a 1008, conteúdo y 150 a 1262, corpo mínimo de 26 px e rodapé em y 1290. '
               'Essas são especificações da produção de origem, não um molde obrigatório para novos materiais.', '',
               'Inspire-se na função da metáfora e na sequência, recriando-as para a nova história. '
-              'Antes de criar com o acervo, usar a seleção e revisão na tela Escolhas do Repertório.', '',
+              'Antes de criar com o acervo, dizer ao usuário quais referências vai usar e por quê.', '',
               '## Catálogo', '', '| Post | Carrossel e ficha no app | Construção | Estudo local |', '|---|---|---|---|']
     for e in m['entries']:
         lines.append(f'| {e["post"]:02d} | [{e["title"]}]({e["url"]}) | {e["motif"]} '

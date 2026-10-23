@@ -12,7 +12,7 @@ Decisões do Cleiton em 19/10/2026: uso local pelo navegador em Mac e Windows; a
 
 ## Explicação em um minuto
 
-“Quando a gente cria com IA, precisa dar uma direção. No Repertório, eu reúno referências em espaços por marca, cliente ou tema. Cada ficha traz o que funciona naquela peça e como aplicar a ideia em outro contexto. Posso explorar pelo mapa ou pedir ao agente que busque referências para um trabalho. Ele guarda a seleção em Escolhas, eu aprovo, corto e comento, e só depois ele cria no projeto da produção. O Repertório fica no meu computador e acumula referências e decisões para os próximos trabalhos.”
+“Quando a gente cria com IA, precisa dar uma direção. No Repertório, eu reúno referências em espaços por marca, cliente ou tema. Cada ficha traz o que funciona naquela peça e como aplicar a ideia em outro contexto. Posso explorar pelo mapa ou pedir ao agente que busque referências para um trabalho. Ele me diz quais referências vai usar e por quê, eu abro cada uma no app, ajusto a direção e só depois ele cria no projeto da produção. O Repertório fica no meu computador e acumula referências e decisões para os próximos trabalhos.”
 
 ## Outras chamadas para testar
 

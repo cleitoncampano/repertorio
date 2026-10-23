@@ -9,7 +9,7 @@ from sqlalchemy import text
 from .config import Settings
 from .db import Database, dumps, now
 from .importer import asset, index_text
-from .schemas import Pack, Project, Review, StartContext, Workspace, WorkspaceUpdate
+from .schemas import Project, StartContext, Workspace, WorkspaceUpdate
 from .service import Library
 from .starter import initialize
 
@@ -91,14 +91,10 @@ def prepare_demo(base, home, port=8768):
                     VALUES(:w,:r,'published',:t,:t)'''), dict(w=wid, r=rid, t=stamp))
                 asset(conn, settings, rid, image, 'preview')
                 asset(conn, settings, rid, image, 'original')
-        context = lib.start(StartContext(project_id=project['id'], workspace_ids=[primary['id']],
-                                        demand='Criar uma apresentação para explicar uma nova ideia com clareza.'))
-        pack = lib.pack(Pack(context_id=context['id'], title='Referências para uma apresentação',
-                             reference_ids=['demo-01', 'demo-02', 'demo-03'],
-                             rationale='Pergunta de abertura, percurso da explicação e comparação para sustentar a proposta.'))
-        lib.review(pack['id'], Review(reference_id='demo-01', verdict='approved', note='Usar a pergunta como abertura.'))
+        lib.start(StartContext(project_id=project['id'], workspace_ids=[primary['id']],
+                               demand='Criar uma apresentação para explicar uma nova ideia com clareza.'))
         marker.write_text(dumps({'kind': 'repertorio-demo-v1', 'workspace_ids': [primary['id'], secondary['id']],
-                                 'pack_id': pack['id'], 'references': len(EXAMPLES)}), encoding='utf-8')
+                                 'references': len(EXAMPLES)}), encoding='utf-8')
         return settings
     finally:
         db.engine.dispose()

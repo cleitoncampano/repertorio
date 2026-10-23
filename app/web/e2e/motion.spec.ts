@@ -78,21 +78,6 @@ test('vídeos de motion tocam no mapa e na ficha, com prompt e quadros',async({p
  await expect.poll(()=>card.locator('video').evaluate(v=>!(v as HTMLVideoElement).paused)).toBe(true);
 });
 
-test('Escolhas tocam os vídeos e abrem o player',async({page,request})=>{
- const spaces=await (await request.get('/api/workspaces')).json();
- const motion=spaces.find((s:{name:string})=>s.name==='Motion');
- await page.goto('/?workspace='+motion.id+'&view=choices');
- const card=page.locator('.choice-card').filter({hasText:'Logo que gira'});
- await expect(card.locator('.choice-image span')).toHaveText('Vídeo');
- await expect.poll(()=>card.locator('video').evaluate(v=>!(v as HTMLVideoElement).paused)).toBe(true);
- await card.getByRole('button',{name:'Assistir Logo que gira e se aproxima'}).click();
- await expect(page.locator('.cinema')).toBeVisible();
- await expect(page.locator('.cinema-info h2')).toHaveText('Logo que gira e se aproxima');
- await page.keyboard.press('Escape');
- await expect(page.locator('.cinema')).toHaveCount(0);
- await expect(card.getByRole('button',{name:'Aprovar'})).toBeVisible();
-});
-
 test('vídeo sai do espaço pela tela grande, como a imagem, e volta com Desfazer',async({page,request})=>{
  const spaces=await (await request.get('/api/workspaces')).json();
  const motion=spaces.find((s:{name:string})=>s.name==='Motion');

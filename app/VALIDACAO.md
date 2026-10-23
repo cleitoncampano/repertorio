@@ -1,5 +1,12 @@
 # Validação da primeira versão
 
+## Sem Escolhas e sem o momento Fechar em 22/10/2026
+
+- A pedido: a tela **Escolhas** saiu da navegação e do projeto. O agente passa a dizer na conversa quais referências vai usar e por quê, com o link de cada ficha, que abre no espaço certo. Saíram a tela (`Choices.tsx`), as rotas `/api/packs` e `/api/demands`, as ferramentas MCP `build_inspiration_pack` e `get_pack`, o recurso `repertorio://packs/{id}`, o comando `pack` e a seleção da demonstração. As tabelas antigas ficam no banco, sem migração. Sugestões espontâneas dos agentes ganharam item próprio na navegação, **Sugestões**, que só aparece quando há pendências.
+- O momento **Fechar** saiu da organização História: só 6 de 1.021 peças em Referências (e nenhuma no Motion) têm o fechamento como papel principal, e era o único momento com um papel só. O papel Fechar entrou em **Marcar** (virada, destaque, citação e encerramento). Agora são cinco momentos, todos com dois papéis ou mais. Contagens no singular quando há um só papel, técnica ou tipo.
+- As 32 fichas da Growmate que mandavam seguir a tela Escolhas foram atualizadas (com backup antes e revisão guardada). Instruções regeneradas no Repertório e no Growmate Marketing; manual dos agentes, guias, READMEs e documentos do produto atualizados.
+- 45 testes do servidor, 60 de unidade e 29 de navegador aprovados; build feito, serviço reiniciado, rotas antigas respondem 404. Captura real: legenda com Abrir, Conduzir, Explicar, Provar e Marcar; painel de Marcar com 4 papéis e 369 referências.
+
 ## Excluir pela tela grande em 22/10/2026
 
 - A pedido: **Excluir deste espaço** na tela grande, igual para imagens e vídeos, no fim da fileira de ações. Manda para a lixeira do espaço (mesma regra do painel), passa ao próximo material da sequência e mostra o aviso com **Desfazer**. Com a tela grande aberta, o aviso aparece dentro dela, porque o resto da página fica inativo enquanto ela está aberta. Teste de navegador com um vídeo: excluiu, passou ao seguinte, confirmou o estado na lixeira e restaurou pelo Desfazer. Nada foi excluído do acervo real; botão conferido num vídeo e numa imagem. 60 testes da interface e 31 de navegador aprovados.

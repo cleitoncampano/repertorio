@@ -47,26 +47,24 @@ test('cria, renomeia, compartilha e exclui espaços diretamente sem restauraçã
  expect(errors).toEqual([]);
 });
 
-test('seleção combinada abre referência do outro espaço e mantém destino explícito',async({page,request})=>{
+test('link da referência abre no espaço dela e mantém destino explícito',async({page,request})=>{
  const destination=await (await request.post('/api/workspaces',{data:{name:'cVortex QA'}})).json();
  const projects=await (await request.get('/api/projects')).json();
  const context=await (await request.post('/api/contexts',{data:{project_id:projects.find((p:any)=>p.name==='Marketing').id,demand:'Inspiração combinada',workspace_ids:['pp-treta',destination.id]}})).json();
  const op=await (await request.post('/api/references',{data:{context_id:context.id,target_workspace_ids:[destination.id],request_key:'combined-spaces-e2e',user_requested:true,files:['carrossel.png'],data:{title:'Exclusiva cVortex QA',description:'Só no destino',idea:'Referência exclusiva'}}})).json();
  await expect.poll(async()=>(await (await request.get('/api/operations/'+op.id)).json()).state).toBe('completed');
  expect((await request.get('/api/references/'+op.ref_id+'?workspace_id=pp-treta')).status()).toBe(404);
- const pack=await (await request.post('/api/packs',{data:{context_id:context.id,title:'Dois repertórios',reference_ids:['deck',op.ref_id]}})).json();
- await page.goto(pack.review_url);
- await expect(page.locator('.choice-head')).toContainText('cVortex QA');
- await expect(page.locator('.choice-head')).toContainText('PP Treta');
- await page.getByRole('button',{name:'Ver detalhes de Exclusiva cVortex QA'}).click();
- await expect(page.locator('.cinema-info h2')).toHaveText('Exclusiva cVortex QA');
- await page.getByRole('button',{name:'Ficha completa'}).click();
+ // O link que o agente passa ao usuário leva o espaço da referência, mesmo numa demanda com dois espaços.
+ const found=await (await request.post('/api/search',{data:{context_id:context.id,query:'Exclusiva cVortex QA'}})).json();
+ const link=new URL(found.items.find((r:any)=>r.id===op.ref_id).url);
+ expect(link.searchParams.get('workspace')).toBe(destination.id);
+ await page.goto('/'+link.search);
+ await expect(page.locator('.workspace-current')).toHaveText('cVortex QA');
  await expect(page.locator('.detail-body h2')).toHaveText('Exclusiva cVortex QA');
- await page.screenshot({path:evidence+'/escolhas-combinadas.png'});
+ await page.screenshot({path:evidence+'/link-outro-espaco.png'});
  await page.getByRole('button',{name:'Fechar detalhes',exact:true}).click();
  await page.getByRole('button',{name:'Espaços',exact:true}).click();
  await page.locator('.space-enter').filter({hasText:'cVortex QA'}).click();
- await expect(page.locator('.choice-head')).toHaveCount(0);
  await expect(page.getByRole('textbox',{name:'Buscar inspiração'})).toHaveValue('');
  await page.reload();
  await expect(page.locator('.workspace-current')).toHaveText('cVortex QA');

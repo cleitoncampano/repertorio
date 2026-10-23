@@ -18,7 +18,7 @@ Tudo o que o agente precisa para criar um vídeo de motion a partir do espaço M
 
 2. **Formato de tela.** `guias/formatos.md`: o que muda entre horizontal 16:9 (YouTube e sites), vertical 9:16 (Reels, TikTok e Shorts) e quadrado ou 4:5 (feed).
 3. **O pedido.** `guias/prompt.md`: como escrever o prompt do vídeo, o que proibir e como conferir os quadros antes de renderizar.
-4. **Referências.** `search_references` no espaço Motion (`format="mp4"` traz só vídeos) e `get_reference(include_image=true)` para ver a prancha de quadros. Mostre a seleção ao usuário em Escolhas antes de criar.
+4. **Referências.** `search_references` no espaço Motion (`format="mp4"` traz só vídeos) e `get_reference(include_image=true)` para ver a prancha de quadros. Diga ao usuário quais vídeos vai usar e por quê, com o link de cada ficha, antes de criar.
 5. **Construção.** `kit/motion/LEIA-ME.md`: blocos do HyperFrames para cada movimento e o projeto inicial testado em `kit/motion/inicio/`.
 6. **Acervo.** Se o usuário pedir para guardar o vídeo, `register_reference` com o MP4, `data.genres` e `data.prompt`.
 

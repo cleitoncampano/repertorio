@@ -17,6 +17,6 @@ o que os melhores fazem, erros que derrubam, um prompt base e as referências pa
 | Fechamento: conclusão, chamada, contato | `fechamento.md` |
 | Formatos e carrossel: slide 16:9, story 9:16, feed e carrossel | `formatos-e-carrossel.md` |
 
-Fluxo: história primeiro (`biblioteca/processo.md`), depois o guia de cada momento, as referências no Repertório com revisão do usuário em Escolhas,
+Fluxo: história primeiro (`biblioteca/processo.md`), depois o guia de cada momento, as referências no Repertório (diga ao usuário quais vai usar e por quê),
 e a construção no motor HTML (`kit/LEIA-ME.md`, pelo MCP `get_guide` com `kit-apresentacao`). Para vídeos, os guias estão em `biblioteca/motion/`.
 Para refazer os guias com o acervo atualizado, as instruções estão em `dados/_trabalho/INSTRUCOES-GUIAS-IMAGEM.md`.

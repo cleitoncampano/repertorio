@@ -40,7 +40,6 @@ def test_empty_spaces_and_explicit_scope(library,context):
     assert library.graph(grow)['items']==[]
     assert library.stats(grow)['counts']=={}
     assert library.search(s.Search(workspace_ids=[grow]))['total']==0
-    assert library.demands(grow)==[]
     assert library.operations(grow)==[]
     assert bundle(library,128,grow)=={}
     for action in [lambda:library.search(s.Search()),lambda:smart_search(library,s.AgentSearch()),lambda:library.get('deck')]:
@@ -69,26 +68,20 @@ def test_shared_file_and_editorial_update_local_trash(library,context):
     assert library.db.query('SELECT * FROM assets ORDER BY id')==before
 
 
-def test_combined_search_deduplicates_and_checks_selection(library,context):
+def test_combined_search_deduplicates_and_respects_scope(library,context):
     grow,other=space(library),space(library,'cVortex')
     link(library,grow)
     combined=library.start(s.StartContext(project_id=context['project_id'],demand='Combinar repertórios',workspace_ids=[PP,grow]))
     query=s.AgentSearch(context_id=combined['id'],query='abertura',per_group=2)
     assert [r['id'] for r in smart_search(library,query)['items']]==['deck','deck#1']
-    selected=library.pack(s.Pack(context_id=combined['id'],title='Conjunto',reference_ids=['deck','deck']))
-    assert len(selected['references'])==1
-    assert set(selected['references'][0]['workspace_ids'])=={PP,grow}
-    assert library.demands(grow)[0]['id']==combined['id']
-    assert library.demands(other)==[]
+    assert set(library.get('deck',context_id=combined['id'])['workspace_ids'])=={PP,grow}
     state(library,PP)
-    assert library.pack_detail(selected['id'])['references'][0]['available']
-    assert library.pack_detail(selected['id'])['references'][0]['workspace_ids']==[grow]
+    assert library.get('deck',context_id=combined['id'])['workspace_ids']==[grow]
     result=smart_search(library,query)['items']
     assert all(r['workspace_ids']==[grow] for r in result)
     state(library,grow)
-    assert not library.pack_detail(selected['id'])['references'][0]['available']
     exclusive=library.start(s.StartContext(project_id=context['project_id'],demand='Somente cVortex',workspace_ids=[other]))
-    with pytest.raises(Problem):library.pack(s.Pack(context_id=exclusive['id'],title='Fora do espaço',reference_ids=['deck']))
+    with pytest.raises(Problem):library.get('deck',context_id=exclusive['id'])
     with pytest.raises(Problem):sheet_items(library,['deck'],workspace_ids=[other])
 
 
@@ -148,7 +141,6 @@ def test_workspace_lifecycle_names_and_conflicts(library,context):
     with pytest.raises(Problem):space(library,'   ')
     link(library,a)
     source=library.start(s.StartContext(project_id=context['project_id'],workspace_ids=[a],demand='Histórico preservado'))
-    pack=library.pack(s.Pack(context_id=source['id'],title='Antes da exclusão',reference_ids=['deck']))
     assets=library.db.query('SELECT * FROM assets ORDER BY id')
     renamed=library.save_workspace(s.WorkspaceUpdate(name='GrowMate novo',expected_revision=1),a)
     assert renamed['id']==a and renamed['revision']==2
@@ -159,7 +151,6 @@ def test_workspace_lifecycle_names_and_conflicts(library,context):
     assert library.db.query('SELECT * FROM assets ORDER BY id')==assets
     assert library.get('deck',workspace_ids=[PP])['state']=='published'
     with pytest.raises(Problem):library.graph(a)
-    assert not library.pack_detail(pack['id'])['references'][0]['available']
     assert library.context(source['id'])['workspace_ids']==[a]
     replacement=space(library,'GrowMate novo')
     assert replacement!=a and library.graph(replacement)['items']==[]

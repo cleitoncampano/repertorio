@@ -8,7 +8,7 @@ test('guia explica o fluxo, copia o pedido e abre os recursos reais',async({page
  await page.getByRole('button',{name:'Copiar exemplo de pedido',exact:true}).click();
  const copied=await page.evaluate(()=>navigator.clipboard.readText());
  expect(copied).toContain('workspace_id: pp-treta');
- expect(copied).toContain('Espere minha revisão antes de criar.');
+ expect(copied).toContain('quais referências vai usar e por quê, com os links');
  expect(copied).toContain('no projeto desta produção');
  await page.getByRole('button',{name:'Conectar meu agente',exact:true}).click();
  await expect(page.getByRole('dialog')).toContainText('Cadastre a pasta do projeto');

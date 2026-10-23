@@ -16,7 +16,7 @@ O público inicial a validar são profissionais de marketing, designers, criador
 
 ## Exemplo concreto
 
-Uma pessoa quer uma capa de LinkedIn. No projeto da produção, pede ao agente que consulte os espaços escolhidos do Repertório. O agente busca referências, abre as fichas e registra uma seleção com a explicação do que pode ser aplicado. A pessoa revisa em Escolhas. O agente lê os comentários e cria a capa com a identidade da empresa. Os arquivos ficam no projeto daquela produção.
+Uma pessoa quer uma capa de LinkedIn. No projeto da produção, pede ao agente que consulte os espaços escolhidos do Repertório. O agente busca referências, abre as fichas e diz na conversa quais vai usar e o que pode ser aplicado, com links para cada uma. A pessoa confere no app, pede ajustes e o agente cria a capa com a identidade da empresa. Os arquivos ficam no projeto daquela produção.
 
 O mesmo fluxo se aplica a uma apresentação, uma página, um carrossel ou um vídeo. O tipo de entrega depende das ferramentas de criação disponíveis ao agente.
 
@@ -26,7 +26,7 @@ O mesmo fluxo se aplica a uma apresentação, uma página, um carrossel ou um v�
 
 | Parte | Responsabilidade |
 | --- | --- |
-| Repertório | Acervo, busca, mapa, fichas, escolhas e histórico da curadoria |
+| Repertório | Acervo, busca, mapa, fichas e histórico da curadoria |
 | Usuário | Contexto, seleção dos espaços, identidade e revisão da direção |
 | Agente de IA | Consulta do acervo, interpretação do pedido e produção com as ferramentas disponíveis |
 | Projeto da produção | Roteiro, rascunhos, imagens, prévias e arquivos finais |

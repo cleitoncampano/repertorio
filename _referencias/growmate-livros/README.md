@@ -27,7 +27,7 @@ O kit fixa a identidade. Cada história define uma estrutura e um objeto contín
 
 Nos posts da direção v2, a última divisa deve encaixar na primeira. O kit registra margens x 72 a 1008, conteúdo y 150 a 1262, corpo mínimo de 26 px e rodapé em y 1290. Essas são especificações da produção de origem, não um molde obrigatório para novos materiais.
 
-Inspire-se na função da metáfora e na sequência, recriando-as para a nova história. Antes de criar com o acervo, usar a seleção e revisão na tela Escolhas do Repertório.
+Inspire-se na função da metáfora e na sequência, recriando-as para a nova história. Antes de criar com o acervo, dizer ao usuário quais referências vai usar e por quê.
 
 ## Catálogo
 

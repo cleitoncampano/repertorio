@@ -11,14 +11,14 @@ describe('descoberta de skills',()=>{
   expect(searchSkills('impeccable','Imagens')).toEqual([]);
   expect(searchSkills('   ','Design')).toHaveLength(3);
  });
- it('inclui somente o espaço indicado no pedido e respeita a revisão',()=>{
+ it('inclui somente o espaço indicado no pedido e pede as referências com os links',()=>{
   const skill=skills.find(item=>item.id==='frontend-design')!;
   const request=buildSkillRequest(skill,'  Crie um painel de CX.  ',{id:'growmate-id',name:'GrowMate'});
   expect(request).toContain('skill frontend-design');
   expect(request).toContain('\n\nCrie um painel de CX.\n\n');
   expect(request).toContain('apenas as referências do espaço "GrowMate"');
   expect(request).toContain('workspace_id: growmate-id');
-  expect(request).toContain('referências aprovadas');
+  expect(request).toContain('quais referências vai usar e por quê, com os links');
   expect(request).not.toContain('PP Treta');
  });
  it('pede o espaço quando nenhum foi escolhido',()=>{

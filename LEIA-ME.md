@@ -16,7 +16,7 @@ Com o serviço em execução, acesse **http://127.0.0.1:8766/?view=guide** ou cl
 
 1. Organize as referências em espaços por marca, cliente ou tema.
 2. Abra o projeto em que vai produzir e peça ao agente referências dos espaços que você escolher.
-3. Revise a seleção em Escolhas, aprovando, cortando e comentando.
+3. Confira na conversa quais referências o agente escolheu e por quê; os links abrem cada uma em tela grande no app.
 4. Continue a criação no projeto de destino, com a identidade da sua marca. Rascunhos e entregas ficam naquele projeto.
 5. Se quiser incorporar um resultado ao acervo, peça explicitamente ao agente.
 

@@ -2,19 +2,19 @@ import type {GraphData,Term,Vocabulary} from './types';
 import {terms} from './types';
 
 // Três organizações do mesmo mapa, cada uma responde uma pergunta de quem está criando:
-// História: em que momento da apresentação a peça entra (seis momentos, com os papéis em volta).
+// História: em que momento da apresentação a peça entra (cinco momentos, cada um com dois ou mais papéis em volta).
 // Recurso visual: o que faz a peça prender o olho (sete famílias, com as técnicas em volta).
 // Formato: onde a peça vai passar (formatos de tela, com o papel na história ou o tipo de vídeo em volta).
 export type Organization='historia'|'recurso'|'formato';
 export const ORGANIZATIONS:{id:Organization;nome:string}[]=[{id:'historia',nome:'História'},{id:'recurso',nome:'Recurso visual'},{id:'formato',nome:'Formato'}];
 // Os papéis seguem a ordem de uma apresentação; o mapa os percorre no sentido do relógio.
+// Encerramento fica em Marcar: quase nenhuma peça tem fechar como papel principal, e um momento de um papel só fica vazio.
 export const STORY_PHASES:(Term&{papeis:string[]})[]=[
  {id:'abrir',nome:'Abrir',def:'Capa, contexto e quem fala: o começo que promete o que vem.',papeis:['ABRIR','SITUAR','APRESENTAR']},
  {id:'conduzir',nome:'Conduzir',def:'Agenda, capítulos e passos: o que leva a plateia de uma parte à outra.',papeis:['DIVIDIR','SEQUENCIAR']},
  {id:'explicar',nome:'Explicar',def:'Conceitos, grupos e comparações: onde a ideia fica clara.',papeis:['EXPLICAR','AGRUPAR','COMPARAR']},
  {id:'provar',nome:'Provar',def:'Dados, produto e lugares: o que mostra que é verdade.',papeis:['PROVAR','MOSTRAR','LOCALIZAR']},
- {id:'marcar',nome:'Marcar',def:'Virada, destaque e citação: o momento que fica na memória.',papeis:['IMPACTAR','DESTACAR','CITAR']},
- {id:'fechar',nome:'Fechar',def:'Conclusão, chamada para ação e contato.',papeis:['FECHAR']},
+ {id:'marcar',nome:'Marcar',def:'Virada, destaque, citação e encerramento: o que fica na memória e a chamada final.',papeis:['IMPACTAR','DESTACAR','CITAR','FECHAR']},
 ];
 // As 48 técnicas do vocabulário em famílias com nomes de ofício; cada técnica fica numa família só.
 export const VISUAL_FAMILIES:(Term&{tecnicas:string[]})[]=[
@@ -46,17 +46,17 @@ export const MOTION_TYPES:Record<string,{nome:string;def:string}>={
  modelo:{nome:'Prompt-modelo',def:'Prompt completo para copiar e adaptar ao seu tema.'},
 };
 type Labels={operation:string;technique:string;techniques:(n:number)=>string;references:string;count:string;legend:string;operationPanel:string;techniquePanel:string};
-export const STORY_LABELS:Labels={operation:'MOMENTO DA HISTÓRIA',technique:'PAPEL NA HISTÓRIA',techniques:n=>`${n} papéis neste momento`,references:'Peças com este papel',count:'referências no mapa',legend:'Momentos da história',operationPanel:'Detalhes do momento',techniquePanel:'Detalhes do papel'};
-export const CRAFT_LABELS:Labels={operation:'RECURSO VISUAL',technique:'TÉCNICA VISUAL',techniques:n=>`${n} técnicas nesta família`,references:'Referências que usam esta técnica',count:'referências no mapa',legend:'Recursos visuais',operationPanel:'Detalhes do recurso',techniquePanel:'Detalhes da técnica'};
+export const STORY_LABELS:Labels={operation:'MOMENTO DA HISTÓRIA',technique:'PAPEL NA HISTÓRIA',techniques:n=>n===1?'1 papel neste momento':`${n} papéis neste momento`,references:'Peças com este papel',count:'referências no mapa',legend:'Momentos da história',operationPanel:'Detalhes do momento',techniquePanel:'Detalhes do papel'};
+export const CRAFT_LABELS:Labels={operation:'RECURSO VISUAL',technique:'TÉCNICA VISUAL',techniques:n=>n===1?'1 técnica nesta família':`${n} técnicas nesta família`,references:'Referências que usam esta técnica',count:'referências no mapa',legend:'Recursos visuais',operationPanel:'Detalhes do recurso',techniquePanel:'Detalhes da técnica'};
 // Nomes do painel do mapa e da legenda na organização por formato.
-export const MOTION_LABELS:Labels={operation:'FORMATO DE TELA',technique:'TIPO DE VÍDEO',techniques:n=>`${n} tipos de vídeo neste formato`,references:'Vídeos deste tipo',count:'vídeos no mapa',legend:'Formatos de tela',operationPanel:'Detalhes do formato de tela',techniquePanel:'Detalhes do tipo de vídeo'};
-export const FORMAT_LABELS:Labels={operation:'FORMATO DE TELA',technique:'PAPEL NA HISTÓRIA',techniques:n=>`${n} papéis na história neste formato`,references:'Peças com este papel',count:'referências no mapa',legend:'Formatos de tela',operationPanel:'Detalhes do formato de tela',techniquePanel:'Detalhes do papel na história'};
+export const MOTION_LABELS:Labels={operation:'FORMATO DE TELA',technique:'TIPO DE VÍDEO',techniques:n=>n===1?'1 tipo de vídeo neste formato':`${n} tipos de vídeo neste formato`,references:'Vídeos deste tipo',count:'vídeos no mapa',legend:'Formatos de tela',operationPanel:'Detalhes do formato de tela',techniquePanel:'Detalhes do tipo de vídeo'};
+export const FORMAT_LABELS:Labels={operation:'FORMATO DE TELA',technique:'PAPEL NA HISTÓRIA',techniques:n=>n===1?'1 papel na história neste formato':`${n} papéis na história neste formato`,references:'Peças com este papel',count:'referências no mapa',legend:'Formatos de tela',operationPanel:'Detalhes do formato de tela',techniquePanel:'Detalhes do papel na história'};
 
 export const isMotionSpace=(graph:GraphData)=>graph.items.length>0&&graph.items.every(item=>item.motion);
 export const formatLabels=(graph:GraphData)=>isMotionSpace(graph)?MOTION_LABELS:FORMAT_LABELS;
 // Vídeo abre organizado por formato; imagem, pela história. A escolha fica salva por espaço.
 export const defaultOrganization=(graph:GraphData):Organization=>isMotionSpace(graph)?'formato':'historia';
-// Escolhas guardadas antes da mudança: os eixos do olhar viraram o recurso visual.
+// Organização guardada antes da mudança: os eixos do olhar viraram o recurso visual.
 export const savedOrganization=(value:unknown):Organization|undefined=>value==='eixos'?'recurso':value==='historia'||value==='recurso'||value==='formato'?value:undefined;
 export const organizationLabels=(graph:GraphData,organization:Organization)=>organization==='historia'?STORY_LABELS:organization==='recurso'?CRAFT_LABELS:formatLabels(graph);
 export function organizeMap(graph:GraphData,organization:Organization):GraphData{

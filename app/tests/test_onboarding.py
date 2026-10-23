@@ -31,7 +31,7 @@ def test_new_installation_starts_empty_and_existing_curation_is_preserved(librar
         db.engine.dispose()
 
 
-def test_demo_isolated_with_working_search_assets_and_review(library, tmp_path):
+def test_demo_isolated_with_working_search_and_assets(library, tmp_path):
     before = library.db.query('SELECT * FROM refs ORDER BY id')
     settings = prepare_demo(library.settings, tmp_path / 'demo')
     marker = json.loads((settings.home / 'demo.json').read_text())
@@ -47,8 +47,6 @@ def test_demo_isolated_with_working_search_assets_and_review(library, tmp_path):
         assert client.get(detail['assets'][0]['url']).status_code == 200
         found = client.post('/api/search', json={'workspace_ids': ['pp-treta'], 'query': 'escala'}).json()
         assert 'demo-01' in {r['id'] for r in found['items']}
-        pack = client.get('/api/packs/' + marker['pack_id']).json()
-        assert pack['references'][0]['review']['verdict'] == 'approved'
     assert library.db.query('SELECT * FROM refs ORDER BY id') == before
 
 

@@ -51,7 +51,7 @@ Os comandos usam a política de execução somente naquele processo do PowerShel
 1. Abra **Conheça o Repertório** para entender o fluxo e **Espaços** para organizar seus temas.
 2. Em **Conectar agentes**, cadastre a pasta do seu projeto e conecte um agente compatível com MCP. Os comandos aparecem no próprio app.
 3. No projeto da produção, peça ao agente que cadastre arquivos próprios ou autorizados no espaço escolhido, com uma explicação da ideia e de como aplicar o recurso.
-4. Para uma criação, peça referências, revise a seleção em **Escolhas** e continue no projeto de destino.
+4. Para uma criação, peça referências, confira as que o agente indicar e continue no projeto de destino.
 
 O catálogo de Skills ajuda a preparar pedidos. As habilidades e contas dos serviços de IA são instaladas ou configuradas separadamente.
 

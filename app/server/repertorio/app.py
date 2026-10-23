@@ -147,19 +147,7 @@ def create_app(settings=None,run_worker=True):
     def context(req:schemas.StartContext):return lib.start(req)
 
     @app.get('/api/contexts/{cid}')
-    def get_context(cid:str):return {'context':lib.context(cid),'packs':db.query('SELECT id,title,created FROM packs WHERE context_id=:id',id=cid)}
-
-    @app.post('/api/packs')
-    def pack(req:schemas.Pack):return lib.pack(req)
-
-    @app.get('/api/packs/{pid}')
-    def get_pack(pid:str):return lib.pack_detail(pid)
-
-    @app.post('/api/packs/{pid}/reviews')
-    def review_pack(pid:str,req:schemas.Review):return lib.review(pid,req)
-
-    @app.get('/api/demands')
-    def demands(workspace_id:str):return lib.demands(workspace_id)
+    def get_context(cid:str):return {'context':lib.context(cid)}
 
     @app.get('/api/operations')
     def operations(workspace_id:str):return lib.operations(workspace_id)

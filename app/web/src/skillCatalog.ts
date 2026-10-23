@@ -53,7 +53,7 @@ export function buildSkillRequest(skill:Skill,goal:string,workspace?:{id:string;
   workspace
    ?`Use como inspiração apenas as referências do espaço ${JSON.stringify(workspace.name)} no Repertório (workspace_id: ${workspace.id}).`
    :'Antes de buscar referências, me pergunte qual espaço do Repertório deve servir de inspiração.',
-  'Antes de criar, consulte o Repertório, registre a seleção de referências e me mostre a revisão em Escolhas. Use as referências aprovadas, respeite meus comentários e siga a identidade do projeto.',
+  'Antes de criar, consulte o Repertório, leia o guia do momento ou do tipo de peça e me diga quais referências vai usar e por quê, com os links. Siga a identidade do projeto.',
   'Crie e salve rascunhos, imagens, prévias e arquivos finais no projeto desta produção, fora do Repertório.',
  ].join('\n\n');
 }

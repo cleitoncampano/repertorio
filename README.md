@@ -14,13 +14,13 @@ Repertório é uma biblioteca visual que você e seu agente de IA podem consulta
 
 Você guarda uma referência porque ela chama atenção. Quando precisa criar, ainda precisa encontrá-la, entender o recurso que funcionou e explicar ao agente como isso se relaciona com o seu trabalho.
 
-O Repertório aproxima essas etapas. A referência ganha uma ficha com contexto, ideia transferível, técnica e explicação. Você encontra conexões pelo mapa e pela busca. O agente consulta o mesmo acervo e mostra uma seleção para você aprovar, cortar e comentar.
+O Repertório aproxima essas etapas. A referência ganha uma ficha com contexto, ideia transferível, técnica e explicação. Você encontra conexões pelo mapa e pela busca. O agente consulta o mesmo acervo e conta na conversa quais referências vai usar e por quê.
 
 ## Como funciona
 
 1. **Reúna suas referências.** Organize marcas, clientes ou temas em espaços independentes. O cadastro e a descrição dos materiais podem ser feitos pelo agente conectado.
 2. **Encontre uma direção.** Explore o mapa, busque uma ideia e abra a ficha para entender o recurso por trás da referência.
-3. **Revise a seleção.** Em Escolhas, aprove, corte e comente o que deve orientar o trabalho.
+3. **Combine a direção.** O agente diz quais referências vai usar e por quê, com links que abrem cada uma no app.
 4. **Crie no projeto de destino.** O agente aplica a direção aprovada com a sua identidade. Rascunhos e entregas ficam no projeto da produção.
 
 Se quiser guardar um resultado como referência, peça para incorporá-lo ao acervo.
@@ -40,7 +40,6 @@ Um profissional pode separar seus temas. Uma equipe pode manter espaços para ma
 | Espaços | Separam a curadoria de cada marca, cliente ou tema |
 | Mapa visual | Mostra relações entre referências, intenções e técnicas, com nove visualizações |
 | Busca e fichas | Ajudam a encontrar uma referência e entender sua aplicação |
-| Escolhas | Registram aprovações, cortes e comentários antes da criação |
 | Conexão com agentes | Permite consultar o acervo na conversa do seu projeto, pelo padrão MCP |
 | Catálogo de Skills | Ajuda a escolher uma habilidade e preparar o pedido para seu agente |
 | Histórico e backup | Preservam decisões e a curadoria local |

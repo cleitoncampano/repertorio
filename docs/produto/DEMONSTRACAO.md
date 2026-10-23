@@ -25,11 +25,11 @@ Repetir o comando reabre a mesma demonstração. Para começar outra do zero, in
 | 0:00 a 0:45 | Guia Conheça | “O Repertório é uma biblioteca que eu e meu agente de IA consultamos antes de criar.” |
 | 0:45 a 1:30 | Mapa de Estúdio Aurora | “Cada trabalho pode consultar o espaço que faz sentido. As referências se ligam a ideias e técnicas.” |
 | 1:30 a 2:30 | Buscar `escala` e abrir a ficha | “Aqui eu vejo a referência, o recurso que funciona nela e uma explicação de como aplicar a ideia.” |
-| 2:30 a 3:30 | Tela Escolhas | “O agente separa as referências. Eu aprovo, corto e comento a direção antes de produzir.” |
+| 2:30 a 3:30 | Tela grande de uma referência | “O agente me diz quais referências vai usar e por quê. Eu abro cada uma aqui e ajusto a direção antes de produzir.” |
 | 3:30 a 4:15 | Trocar para Marca Horizonte | “Outro espaço mantém outra curadoria. Posso separar marcas, clientes ou temas.” |
 | 4:15 a 5:00 | Skills e exemplo de pedido no guia | “Eu preparo o pedido e continuo no meu projeto. A criação usa minha identidade e fica junto dos meus arquivos de produção.” |
 
-O botão **Copiar exemplo de pedido** copia um pedido para a conversa de um agente. A demonstração não executa esse agente nem gera uma capa automaticamente. Mostre uma criação real somente quando houver um agente conectado, uma demanda e revisão de referências para essa produção.
+O botão **Copiar exemplo de pedido** copia um pedido para a conversa de um agente. A demonstração não executa esse agente nem gera uma capa automaticamente. Mostre uma criação real somente quando houver um agente conectado, uma demanda e referências combinadas para essa produção.
 
 ## Perguntas frequentes na conversa de venda
 

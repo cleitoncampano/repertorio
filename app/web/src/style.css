@@ -268,38 +268,6 @@ h1 { font-size: 30px; letter-spacing: -.03em; line-height: 1.2; font-weight: 500
 .viewer-strip span{position:absolute;left:3px;bottom:2px;padding:1px 4px;font-size:8px;border-radius:2px;background:#111d}
 @media (max-width:760px){.viewer-stage{padding:4px 8px 8px}.viewer-arrow{width:38px;height:38px}.viewer-arrow.previous{left:6px}.viewer-arrow.next{right:6px}}
 
-/* Escolhas: as referências que o agente separou, para o usuário aprovar ou cortar antes da criação. */
-.choices{display:grid;grid-template-columns:270px minmax(0,1fr);gap:28px;flex:1;min-width:0;padding:24px 32px;align-items:start}
-.has-detail .choices{padding-right:390px}
-.choice-list{display:flex;flex-direction:column;gap:8px;position:sticky;top:0}
-.choice-demand{padding:12px 12px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
-.choice-demand>small,.choice-head>small{display:block;font-size:10px;color:var(--muted);letter-spacing:.4px;text-transform:uppercase}
-.choice-demand>p{margin:6px 0 8px;font-size:12px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.choice-pack{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;padding:7px 8px;border-radius:6px;font-size:12px;text-align:left;color:var(--muted)}
-.choice-pack strong{font-weight:500;color:var(--text)}
-.choice-pack span{font-size:10px;white-space:nowrap}
-.choice-pack:hover,.choice-pack.current{background:var(--surface-hover)}
-.choice-head h2{margin:6px 0 8px;font-size:24px;letter-spacing:-.4px}
-.choice-head p{font-size:13px;line-height:1.6;color:var(--muted);max-width:720px}
-.choice-head .choice-rationale{margin-top:10px;padding-left:12px;border-left:2px solid var(--line);color:var(--text)}
-.choice-counts{display:flex;flex-wrap:wrap;gap:16px;margin:18px 0;font-size:11px;color:var(--muted)}
-.choice-counts span{display:flex;align-items:center;gap:5px}
-.choice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
-.choice-card{display:flex;flex-direction:column;border:1px solid var(--surface-hover);border-radius:8px;background:var(--surface);overflow:hidden;transition:opacity .2s,border-color .2s}
-.choice-card.approved{border-color:var(--online)}
-.choice-card.cut{opacity:.5}
-.choice-image{position:relative;display:grid;place-items:center;height:150px;overflow:hidden;background:var(--code);color:var(--muted)}
-.choice-image img,.choice-image video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-.choice-image>span{position:absolute;left:10px;bottom:9px;padding:5px 7px;font-size:8px;letter-spacing:.5px;color:var(--text);background:var(--image-label);border:1px solid var(--line);border-radius:4px}
-.choice-card .card-text{flex:1}
-.verdicts{display:flex;gap:6px;padding:0 12px 12px}
-.verdicts button{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;height:30px;font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:6px}
-.verdicts button:hover{color:var(--text);border-color:var(--muted)}
-.verdicts .approve.on{color:var(--accent-ink);background:var(--online);border-color:var(--online)}
-.verdicts .cut.on{color:var(--danger);background:var(--danger-bg);border-color:var(--danger)}
-.choice-note{margin:0 12px 12px;padding:8px 9px;font-size:11px;color:var(--text);background:var(--canvas);border:1px solid var(--line);border-radius:6px}
-.choice-note:focus{outline:none;border-color:var(--muted)}
-@media (max-width:900px){.choices{grid-template-columns:1fr;padding:16px}.choice-list{position:static}.has-detail .choices{padding-right:16px}}
 
 /* Catálogo escolhido pelo usuário e pedidos para a conversa com o agente. */
 .skills-page { width: 100%; padding-right: max(32px,calc((100vw - 1370px)/2)); padding-left: max(84px,calc((100vw - 1240px)/2)); }
@@ -343,10 +311,6 @@ h1 { font-size: 30px; letter-spacing: -.03em; line-height: 1.2; font-weight: 500
 .skill-request-space { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; margin: 14px 0 0; line-height: 1.6; }
 .skill-dialog-actions { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 22px; }.skill-dialog-actions>span { color: var(--muted); font-size: 11px; line-height: 1.6; }
 .skill-dialog-actions>button { display: inline-flex; align-items: center; gap: 8px; padding: 11px 15px; border-radius: 6px; background: var(--accent); color: var(--accent-ink); font-size: 12px; white-space: nowrap; }
-.choices-tabs { display: flex; flex-wrap: wrap; gap: 20px; border-bottom: 1px solid var(--line); margin-top: 24px; }
-.choices-tabs button { padding: 12px 0; font-size: 12px; color: var(--muted); border-bottom: 2px solid transparent; }
-.choices-tabs button[aria-current="page"] { color: var(--text); border-bottom-color: var(--accent); }
-.choices-tabs span { font-size: 10px; margin-left: 5px; }
 .graph-view-control { position: absolute; z-index: 16; top: 12px; right: 64px; }
 .graph-view-toggle { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 9px; color: var(--text); background: var(--surface); box-shadow: 0 3px 14px var(--shadow-soft); }
 .graph-view-toggle:hover,.graph-view-toggle[aria-expanded="true"] { background: var(--surface-hover); }
@@ -384,7 +348,6 @@ h1 { font-size: 30px; letter-spacing: -.03em; line-height: 1.2; font-weight: 500
  .skills-tools { margin-top: 24px; gap: 14px; }.skills-search { width: 100%; }.skill-categories { gap: 2px; }.skill-categories button { padding: 9px 10px; }
  .skills-grid { grid-template-columns: minmax(0,1fr); gap: 14px; }.skill-card { padding: 22px; }.skill-card-top { margin-bottom: 18px; }
  .skill-dialog { padding: 26px 20px; }.skill-dialog h2 { font-size: 24px; }.skill-dialog-actions { flex-direction: column-reverse; align-items: stretch; gap: 12px; }.skill-dialog-actions>button { justify-content: center; }
- .choices-tabs { gap: 18px; }.choices-tabs button { font-size: 11px; }
 }
 
 /* Guia do produto: mantém o mapa e os controles existentes. */

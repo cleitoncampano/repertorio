@@ -11,7 +11,7 @@ test('catálogo curado, busca por objetivo e pedido ligado ao espaço',async({pa
  await expect(page.getByRole('button',{name:'Skills',exact:true})).toHaveAttribute('aria-current','page');
  await expect(page.getByRole('button',{name:'Entradas',exact:true})).toHaveCount(0);
  await expect(page.locator('.skill-card h2')).toHaveText(['Impeccable','Frontend Design','Landing Page Design','Detalhes que encantam','Design no estilo Apple','Protótipo em variações','Teste de limites','Cara de app no celular','Direção de arte para sites','Criar animação','Animação em app de celular','Revisão de animações','Plano de animações','Onde animar','Animação sem travar','Nome do efeito','ImageGen','Presentations','Tese e roteiro','Aula e workshop','Revisão de apresentação','Apresentar ao vivo','Pitch e proposta','Escolher biblioteca','Avisos com Sonner','Swift moderno']);
- await expect(page.locator('.skills-context')).toContainText('GrowMate Skills QA');
+ await expect(page.locator('.skills-context')).toHaveCount(0);
  await page.screenshot({path:evidence+'/catalogo-escuro.png',animations:'disabled'});
  await page.locator('.skill-card').last().scrollIntoViewIfNeeded();
  await page.screenshot({path:evidence+'/catalogo-final-escuro.png',animations:'disabled'});
@@ -57,7 +57,7 @@ test('skills globais, navegação e celular em tema claro sem transbordamento',a
  await expect(page.locator('.skill-card')).toHaveCount(26);
  await expect(page.locator('.spaces-home')).toHaveCount(0);
  await page.getByRole('button',{name:'Ativar modo claro',exact:true}).click();
- await expect(page.locator('.skills-context')).toContainText('Escolha um espaço');
+ await expect(page.locator('.skills-context')).toHaveCount(0);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
  await page.screenshot({path:evidence+'/catalogo-mobile-claro.png',animations:'disabled'});
  await page.getByRole('button',{name:'Montar pedido com Impeccable',exact:true}).click();

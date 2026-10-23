@@ -32,6 +32,7 @@ def main():
     motion=sub.add_parser('import-motion',help='importa os vídeos de dados/motion para um espaço');motion.add_argument('--workspace',required=True);motion.add_argument('--folder')
     decks=sub.add_parser('import-decks',help='importa apresentações em PDF de dados/<coleção> para um espaço');decks.add_argument('--workspace',required=True);decks.add_argument('--folder',required=True)
     sub.add_parser('workspaces')
+    join=sub.add_parser('join-workspaces',help='liga a um espaço tudo o que está publicado em outros espaços (pode rodar de novo)');join.add_argument('id');join.add_argument('--from-workspace',action='append',required=True)
     space=sub.add_parser('create-workspace');space.add_argument('name')
     rename=sub.add_parser('rename-workspace');rename.add_argument('id');rename.add_argument('name');rename.add_argument('--revision',type=int,required=True)
     state=sub.add_parser('delete-workspace');state.add_argument('id');state.add_argument('--revision',type=int,required=True)
@@ -74,6 +75,9 @@ def main():
     if args.cmd=='import-decks':
         from .decks import import_decks
         db=Database(settings);db.migrate();output(import_decks(db,args.workspace,settings.root/args.folder));return
+    if args.cmd=='join-workspaces':
+        from .service import Library
+        db=Database(settings);db.migrate();output(Library(db).join_workspaces(args.id,args.from_workspace));return
     if args.cmd=='relocate':
         from .relocate import relocate
         output(relocate(settings,args.previous_root,args.backup));return

@@ -176,6 +176,23 @@ class Workspaces:
             self.db.log(conn,'reference_moved' if req.move else 'reference_linked',rid,req.context_id,workspace_ids=list(dict.fromkeys(ids+targets)),title=ref['title'])
         return dict(reference_id=root,workspace_ids=[m['workspace_id'] for m in self.memberships(root)])
 
+    def join_workspaces(self, target, sources):
+        """Liga ao espaço tudo o que está publicado nos espaços de origem, sem copiar arquivos. Pode rodar de novo: traz só
+        o que é novo e respeita o que o espaço reunido já mandou para a lixeira ou excluiu de vez."""
+        self.workspace(target)
+        sources = [w for w in dict.fromkeys(sources) if w != target]
+        if not sources:
+            raise Problem(422, 'Informe ao menos um espaço de origem diferente do destino.')
+        names = [self.workspace(w)['name'] for w in sources]
+        with self.db.engine.begin() as conn:
+            added = conn.execute(text('''INSERT OR IGNORE INTO workspace_references(workspace_id,ref_id,state,created,updated)
+                SELECT DISTINCT :w,m.ref_id,'published',:t,:t FROM workspace_references m
+                WHERE m.workspace_id IN (SELECT value FROM json_each(:sources)) AND m.detached=0 AND m.state='published' '''),
+                dict(w=target,t=now(),sources=dumps(sources))).rowcount
+            if added:
+                self.db.log(conn,'workspace_joined',workspace_ids=[target]+sources,title=', '.join(names),added=added)
+        return dict(workspace_id=target,sources=sources,added=added)
+
     def purge_trash(self, workspace_id, req):
         """Exclui de vez o que está na lixeira do espaço. O vínculo fica desligado (uma nova importação não traz a peça de
         volta); se nenhum outro espaço usa a peça, a ficha vira um registro vazio e saem os arquivos que o próprio app guardou.

@@ -99,6 +99,25 @@ def test_move_keeps_other_spaces_and_reimport_does_not_resurrect(library):
     assert library.get('deck',workspace_ids=[PP])['children']
 
 
+def test_join_brings_published_once_and_respects_local_trash(library):
+    a,b,joined=space(library),space(library,'cVortex'),space(library,'Apresentações')
+    link(library,a)
+    state(library,PP,'free')
+    first=library.join_workspaces(joined,[PP,a,joined])
+    assert first['sources']==[PP,a] and first['added']==4
+    assert library.get('deck',workspace_ids=[joined])['children']
+    assert {i['id'] for i in library.graph(joined)['items']}=={i['id'] for i in library.graph(PP)['items']}
+    with pytest.raises(Problem):library.get('free',workspace_ids=[joined])
+    state(library,joined,'thirdparty')
+    link(library,b,ref='free',source=PP)
+    state(library,b,'free','published')
+    again=library.join_workspaces(joined,[PP,b])
+    assert again['added']==1 and library.get('free',workspace_ids=[joined])['state']=='published'
+    assert library.get('thirdparty',False,workspace_ids=[joined])['state']=='trashed'
+    assert library.join_workspaces(joined,[PP,a,b])['added']==0
+    with pytest.raises(Problem):library.join_workspaces(joined,[joined])
+
+
 def test_new_slide_inherits_shared_and_detached_parent(library):
     a=space(library)
     link(library,a,move=True)

@@ -155,6 +155,7 @@ HTML e demais originais são entregues como download, não executados no domíni
 ./app/run.sh workspaces
 ./app/run.sh create-workspace "GrowMate"
 ./app/run.sh delete-workspace ID_DO_ESPACO --revision REVISAO_ATUAL
+./app/run.sh join-workspaces ID_DO_ESPACO --from-workspace referencias --from-workspace OUTRO_ESPACO
 ./app/run.sh search "abertura com impacto" --workspace referencias --prancha
 ./app/run.sh get '284-reel-cerebro-3d' --workspace referencias
 ./app/run.sh context PROJECT_ID "Apresentação comercial" --workspace referencias

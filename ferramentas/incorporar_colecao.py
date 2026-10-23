@@ -132,13 +132,17 @@ SOAP_CAUTIONS = {
                          'usa imagens de terceiros sem crédito (personagem de videogame, efígie de cédula). Recrie a ideia do gráfico.',
 }
 
+# Páginas que saíram com texto sobreposto na exportação pelo Keynote (o PowerPoint falha com erro -50 nesse arquivo).
+# Ficam fora do espaço; as já importadas foram para a lixeira do espaço SOAP em 23/10/2026, a pedido do Cleiton.
+SOAP_SKIP = {'template-graficos': {10, 16, 18, 22, 24, 40, 46}}
+
 COLLECTIONS = {
     'perestroika': dict(label='Perestroika', source='perestroika', extra=(), what='PDF da Perestroika',
                         slugs={}, titles=PERESTROIKA_TITLES, video='perestroika'),
     # Templates em PowerPoint e o kit do zip são exportados para PDF em soap/_trabalho/pdf-templates/ e seguem como PDF.
     'soap': dict(label='SOAP', source='soap', extra=('soap/_trabalho/pdf-templates',), what='PDF da SOAP',
                  what_converted='Template da SOAP, exportado para PDF,', slugs={k: v[0] for k, v in SOAP_FILES.items()},
-                 titles={v[0]: v[1] for v in SOAP_FILES.values()}, cautions=SOAP_CAUTIONS, video=None),
+                 titles={v[0]: v[1] for v in SOAP_FILES.values()}, cautions=SOAP_CAUTIONS, skip=SOAP_SKIP, video=None),
 }
 
 
@@ -287,7 +291,8 @@ def montar(c):
         c.studies.mkdir(parents=True, exist_ok=True)
         (c.studies / f'{slug}.md').write_text(md)
         deck_id = f'{c.name}-{slug}'
-        chosen = [p for p in pages if p.get('selecionar') and p.get('ficha')]
+        skip = c.cfg.get('skip', {}).get(slug, set())
+        chosen = [p for p in pages if p.get('selecionar') and p.get('ficha') and p['pagina'] not in skip]
         if not chosen:
             # Cópia de outro deck ou só divulgação: fica no estudo, fora do mapa.
             problems.append(f'{slug}: nenhuma página escolhida, fica fora do espaço')

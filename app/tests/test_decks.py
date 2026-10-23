@@ -68,3 +68,18 @@ def test_methods_from_two_collections_coexist_without_replacing_each_other(libra
     # A mesma ficha em duas coleções abre cada uma pelo prefixo.
     assert library.guide('soap/tese')=='# soap tese' and library.guide('perestroika/tese')=='# perestroika tese'
     assert library.guide('soap/tres-atos')=='# soap tres-atos' and library.guide('metodo-soap')=='# soap metodo-soap'
+
+
+def test_guide_says_which_space_each_reference_comes_from(library,context):
+    root=library.settings.root;grow=library.save_workspace(s.Workspace(name='Growmate'))['id']
+    (root/'biblioteca/guias').mkdir(parents=True,exist_ok=True)
+    body=(f'# Abertura\n\n- [Capa](http://127.0.0.1:8766/?workspace=referencias&ref=deck): forte.\n'
+          f'- [Carrossel](http://127.0.0.1:8766/?workspace={grow}&ref=c1): da marca.\n')
+    (root/'biblioteca/guias/abertura.md').write_text(body)
+    plain=library.guide('abertura')
+    assert plain.startswith(f'> Este guia cita referências de vários espaços: Referências (`referencias`), Growmate (`{grow}`).') and plain.endswith(body)
+    # Com a demanda (só Referências), a referência do Growmate fica marcada e a de Referências não.
+    marked=library.guide('abertura',context_id=context['id'])
+    assert f'[Carrossel](http://127.0.0.1:8766/?workspace={grow}&ref=c1) (espaço Growmate, não escolhido: não use): da marca.' in marked
+    assert '[Capa](http://127.0.0.1:8766/?workspace=referencias&ref=deck): forte.' in marked
+    assert library.guide('abertura',workspace_ids=['referencias',grow]).count('não use')==1

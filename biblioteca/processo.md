@@ -3,6 +3,8 @@
 Use este roteiro sempre que pedirem uma apresentação (palestra, pitch, aula, proposta), um site ou um vídeo com cara de apresentação.
 Cada etapa diz o que ler, o que rodar e o que entregar. A produção fica no projeto de destino, com roteiro, imagens, prévias, validações e arquivos finais. Os comandos abaixo são utilitários da raiz do Repertório: informe caminhos do projeto de destino ou invoque os utilitários pelo caminho absoluto. `<pasta>` sempre representa a pasta daquela produção, fora desta biblioteca.
 
+Referências vêm sempre do MCP do Repertório (`search_references`, `get_reference`, `get_guide`), nos espaços que o usuário escolheu: é a busca que reflete a curadoria do app. Sem o MCP, use `./app/run.sh search "pedido" --workspace ID_DO_ESPACO --prancha` e avise que o MCP estava fora. Os antigos `ferramentas/buscar.py` e `ferramentas/roteiro.py` leem o índice antigo: não use para escolher referências.
+
 ## 0. Entenda o pedido (2 minutos)
 
 Anote antes de abrir qualquer referência:
@@ -14,7 +16,7 @@ Se faltar identidade e não houver liberdade, pergunte. Se faltar o resto, assum
 
 ## 1. História primeiro
 
-Leia `biblioteca/principios/narrativa.md` (seções 1, 2 e 8). Escolha a estrutura e escreva o roteiro **no formato da seção 8**, uma linha por slide:
+Leia `biblioteca/principios/narrativa.md` (seções 1, 2 e 8). Para a tese, o objetivo e a audiência, leia também os índices de método com `get_guide` (`metodo-perestroika`, `metodo-soap`): cada um diz qual ficha abrir. Escolha a estrutura e escreva o roteiro **no formato da seção 8**, uma linha por slide:
 
 ```
 n | INTENÇÃO | batida (o que a plateia entende) | conector | fala em 1 frase | visual
@@ -28,20 +30,16 @@ Passe o checklist da seção 9 antes de seguir.
 ## 2. Escolha a linguagem visual
 
 1. Leia `biblioteca/principios/direcao-de-arte.md` (ordem de trabalho e seções 1 a 3): insight, ideia e onde a peça fica entre sensação visual e solução visual.
-2. Procure 2 ou 3 modelos de linguagem parecida:
-   `python3 -I ferramentas/buscar.py "<clima do tema>" --doc arquivo --tipo modelo -e <estética> --forca 4 --prancha`
-   Abra a prancha e leia a `ideia` de cada um. As ideias mais fortes viram regra da apresentação inteira.
+2. Procure 2 ou 3 modelos de linguagem parecida com `search_references`, descrevendo o clima e a estética (ex.: `"editorial em preto e branco com acento de cor"`), com `kind: "arquivo"` e `min_strength: 4`.
+   Olhe a prancha e leia a `ideia` de cada um. As ideias mais fortes viram regra da apresentação inteira.
 3. Escreva o sistema visual em 5 linhas: fundo (e se muda por capítulo), cor de acento e onde ela aparece, tipografia (título, texto, pesos), tratamento de imagem e **um elemento recorrente que viaja entre os slides** com `data-m` (uma forma, um ponto, uma faixa, um objeto). Esse elemento costura tudo.
 4. Fontes: `biblioteca/tipografia.md`. Prefira Google Fonts e baixe para a pasta da apresentação (passo 6), para funcionar sem internet.
 
 ## 3. Referências para cada slide (uma rodada só)
 
-```
-python3 -I ferramentas/roteiro.py roteiro.md --saida <pasta>/referencias
-```
-Gera uma prancha por slide (4 slides do acervo + 2 referências externas) e um `referencias.md` com notas e ideias.
-Para aprofundar um slide: `python3 -I ferramentas/buscar.py "<o que precisa>" -i <INTENÇÃO> --doc slide --forca 4 --prancha`
-e a página da intenção (`biblioteca/intencoes/<INTENÇÃO>.md`).
+1. Para cada momento, leia o guia do papel na história com `get_guide` (`abertura`, `provar-com-dados`, `fechamento`...): ele traz estrutura, erros e as referências para abrir primeiro. Use só as referências dos espaços escolhidos.
+2. Busque com `search_references` descrevendo o que o slide precisa mostrar, em português comum (ex.: "número gigante com uma linha de explicação", "mapa com vários pontos"). Vêm primeiro as fichas que atendem mais partes do pedido; `understood` mostra como ele foi lido. Para só slides, `kind: "slide"`; para filtrar pela intenção, `intention: "<INTENÇÃO>"` (página em `biblioteca/intencoes/<INTENÇÃO>.md`).
+3. Olhe a prancha e abra só as fichas escolhidas com `get_reference(include_image=true)`. Anote as escolhas num `referencias.md` da produção, com o link de cada ficha.
 Escolha **a ideia**, não o layout, e anote qual técnica cada slide usa (`biblioteca/tecnicas/<id>.md`).
 Inspirar não é copiar: mude pelo menos dois de composição, cor, tipografia, imagem e movimento em relação à referência.
 Observação: o acervo tem poucos fechamentos fortes (FECHAR); para o final, use as dicas da página FECHAR e as referências externas.
@@ -49,15 +47,14 @@ Observação: o acervo tem poucos fechamentos fortes (FECHAR); para o final, use
 ## 4. Decida o movimento entre slides
 
 Leia o roteiro em pares de slides e decida o que continua de um para o outro. O que continua ganha o mesmo `data-m`.
-Receitas prontas em `biblioteca/movimentos/<família>.md`. Exemplos reais: `python3 -I ferramentas/buscar.py -m <família> --doc arquivo --prancha`.
+Receitas prontas em `biblioteca/movimentos/<família>.md`. Exemplos reais: `search_references` com `movement: "<família>"` e `kind: "arquivo"`.
 Ritmo: Morph para continuidade, corte seco (`data-trans="corte"`) para virada, mergulho no máximo duas vezes, passos (`data-passo`) no ritmo da fala.
 
 ## 5. Imagens e mídia
 
-- Do usuário primeiro. Do acervo, só o que não é de terceiros:
-  `python3 -I ferramentas/buscar.py "<o que procura>" --doc midia --uso recorte --livre --prancha`
+- Do usuário primeiro. Do acervo, só o que não é de terceiros: `search_references` com `kind: "midia"` e `reusable: true` (ex.: "recorte de pessoa sem fundo"),
   e copie em alta: `python3 -I ferramentas/midia.py <id> <pasta>/img`.
-- Ícones SVG soltos em `acervo/svg/` (busque com `--doc midia --uso icone`).
+- Ícones SVG soltos em `acervo/svg/` (busque "ícone" com `kind: "midia"`).
 - Interfaces (busca, chat, post, notificação) ficam melhores feitas em HTML/CSS do que em imagem: são nítidas, editáveis e animáveis (técnica `interface-imitada`).
 
 ## 6. Construa com o kit

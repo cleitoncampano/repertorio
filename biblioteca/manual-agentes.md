@@ -39,11 +39,10 @@ http://127.0.0.1:8766. Ele fica sempre ligado no Mac do dono do projeto (ícone 
 |---|---|
 | ver o acervo com os olhos | o app Repertório no Dock, ou http://127.0.0.1:8766 |
 | achar referências (preferido) | MCP `search_references`, ou `./app/run.sh search "pedido" --workspace ID_DO_ESPACO --prancha` |
-| achar referências com filtros finos | `python3 -I ferramentas/buscar.py --help` |
+| achar referências com filtros finos | `search_references` com `kind`, `intention`, `technique`, `movement`, `aesthetic`, `min_strength` ou `reusable` |
 | criar uma apresentação | `biblioteca/processo.md` (o passo a passo inteiro) |
 | entender o que tem aqui | `biblioteca/LEIA-PRIMEIRO.md` |
 | ver o vocabulário (intenções, técnicas, movimentos) | `python3 -I ferramentas/buscar.py --vocab` |
-| referências para o roteiro inteiro de uma vez | `python3 -I ferramentas/roteiro.py roteiro.md --saida /projeto-de-destino/producao/referencias` |
 | usar o motor HTML | `kit/LEIA-ME.md` e `kit/demo.html` |
 | fontes sem depender de internet | `python3 -I ferramentas/fontes_google.py "Família" --pasta <pasta>/fontes` |
 | conferir o que eu fiz | `python3 -I ferramentas/ver.py arquivo.html --passos --transicoes` e abrir as pranchas geradas |
@@ -58,7 +57,7 @@ Para mudar a pontuação, meça antes e depois com `ferramentas/medir_busca.py` 
 Sem `kind`, mídias soltas ficam de fora (use `kind="midia"` para buscá-las); `per_group` evita repetir a mesma apresentação.
 A resposta traz uma prancha numerada com as prévias, na ordem da lista: olhe a prancha antes de abrir fichas.
 
-`ferramentas/buscar.py` continua útil para filtros finos, mas lê os arquivos de `dados/` e **não enxerga a curadoria feita no app** (exclusões, edições).
+`ferramentas/buscar.py` e `ferramentas/roteiro.py` leem os arquivos de `dados/` e **não enxergam a curadoria feita no app** (exclusões, edições, espaços) nem a leitura de pedidos descritivos: use só para consultas offline ou para ver o vocabulário, nunca para escolher referências de uma criação.
 
 ```
 python3 -I ferramentas/buscar.py "abertura com impacto" -i ABRIR --doc slide --forca 4 --prancha

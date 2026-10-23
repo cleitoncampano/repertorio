@@ -7,7 +7,7 @@ O material da agência SOAP (pasta `soap/`, fora do Git e dos pacotes: 55 e-book
 | Guias de entrada | `guias/` | `get_guide("metodo-soap")` (índice), `apresentar-ao-vivo`, `pitch-e-proposta`, `comunicacao-na-empresa`; camada SOAP no guia `revisao-apresentacao` da Perestroika |
 | Fichas de conceito | `conceitos/<ficha>.md` | `get_guide("soap/<ficha>")`, indicadas pelo índice |
 | Modelos para preencher | `modelos/<ficha>.md` | `get_guide("soap/<ficha>")` |
-| Slides como referência visual | espaço **SOAP** no app (75 apresentações, 507 slides) | `search_references` com o espaço SOAP |
+| Slides como referência visual | espaço **SOAP** no app (75 apresentações, 500 slides; 7 páginas do template de gráficos com texto sobreposto ficaram de fora, `SOAP_SKIP` na ferramenta) | `search_references` com o espaço SOAP |
 | Skills | `~/.agents/skills/soap-fala` e `soap-pitch` (ligadas em `~/.claude/skills`); a `perestroika-revisao` usa o checklist SOAP como camada extra | disparam sozinhas pelo pedido; aparecem no catálogo de Skills do app, categoria Método |
 
 O serviço lê `guias/` como guias e `conceitos/` e `modelos/` como fichas (`app/server/repertorio/service.py`, `guide_files` e `method_files`). Guias de coleções diferentes dividem o mesmo espaço de nomes: um guia novo não pode ter o nome de outro (`validar` confere).

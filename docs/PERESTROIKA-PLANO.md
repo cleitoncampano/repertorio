@@ -87,8 +87,8 @@ As cinco fases foram executadas na ordem 1, 4, 2, 3 e 5: o espaço visual entrou
 ## Pendências fora do escopo do método
 
 Apontadas pelos testes, envolvem a busca e os guias de todos os espaços; ficam para decisão do Cleiton:
-- Resolvido em 23/10/2026: a busca lia palavras comuns como filtro ("tela" virava MOSTRAR) e não achava "cronômetro" nem "chat" (ver `docs/RETOMADA.md`, Busca dos agentes). Continua pendente: `get_reference` traz uma lista longa de apresentações relacionadas só por técnica.
-- Algumas fichas de slide de Referências herdam a ideia da apresentação e vêm sem `como_funciona`.
-- Não há referências de interface de atendimento (chat, ticket, painel) fora do espaço Growmate, e os guias por momento citam o Growmate mesmo quando o usuário não escolheu esse espaço.
-- `biblioteca/processo.md` (passo 3) ainda manda usar `roteiro.py` e `buscar.py`, que o AGENTS.md diz não refletirem a curadoria.
-- Falta uma regra para dado público lembrado pelo agente (sugerir com fonte, ano e marca provisória).
+- Resolvido em 23/10/2026: a busca lia palavras comuns como filtro ("tela" virava MOSTRAR) e não achava "cronômetro" nem "chat" (ver `docs/RETOMADA.md`, Busca dos agentes). Também em 23/10/2026: `get_reference` passou a trazer slides e parecidos resumidos em uma linha, com as técnicas em comum.
+- Continua pendente: os 4.797 slides de Referências herdam a ideia da apresentação e não têm `como funciona` nem `serve para`; só a descrição curta é própria. Refichar slide por slide melhoraria a busca no espaço principal (decisão do Cleiton, trabalho grande).
+- Resolvido em 23/10/2026: os guias por momento citavam o Growmate mesmo sem esse espaço escolhido. Agora `get_guide` diz de qual espaço é cada referência e, com `context_id`, marca as dos espaços não escolhidos. Interfaces imitadas (como chat de WhatsApp) existem em Referências (29) e a busca nova as encontra; painel de atendimento específico não existe e só entra no acervo a pedido.
+- Resolvido em 23/10/2026: `biblioteca/processo.md`, `LEIA-PRIMEIRO.md` e o manual mandam usar o MCP; `buscar.py` e `roteiro.py` ficaram só para consulta offline e vocabulário.
+- Resolvido em 23/10/2026: regra para dado público lembrado pelo agente no guia `provar-com-dados` (erro 1) e no `pitch-e-proposta` (sugestão a conferir, com fonte, ano e marca `provisorio`).

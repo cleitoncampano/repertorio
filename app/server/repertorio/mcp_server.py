@@ -54,12 +54,15 @@ def create_mcp(lib,worker):
     @mcp.tool()
     def get_reference(reference_id:str,include_image:bool=False,context_id:str|None=None,workspace_ids:list[str]|None=None):
         """Retorna ficha, relações e prévias. include_image inclui uma imagem raster visível ao modelo.
+        children (slides da apresentação) e related (parecidos pela técnica, com as técnicas em comum) vêm resumidos.
         Vídeos de motion (format="mp4") trazem o prompt original em prompt, a decupagem em how, duração e formato em video,
         procedência em source, formato de tela em aspect (horizontal, vertical ou quadrado), tipo de vídeo em genres,
         e a imagem é uma prancha com oito momentos do vídeo."""
         ref=lib.get(reference_id,workspace_ids=workspace_ids,context_id=context_id)
+        # Slides e parecidos em uma linha cada: a ficha completa de cada um abre com get_reference.
         ref['children_total']=len(ref.get('children',[]))
-        ref['children']=ref.get('children',[])[:12]
+        ref['children']=[{k:c.get(k) for k in ('id','number','title','idea','url')} for c in ref.get('children',[])[:12]]
+        ref['related']=[{**{k:r.get(k) for k in ('id','kind','title','idea','url')},'shared_techniques':[t for t in r.get('techniques') or [] if t in (ref.get('techniques') or [])]} for r in ref.get('related',[])]
         ref['transitions_total']=len(ref.get('transitions',[]))
         ref['transitions']=[{k:v for k,v in t.items() if k!='objetos'} for t in ref.get('transitions',[])[:8]]
         ref.pop('text',None)
@@ -75,7 +78,7 @@ def create_mcp(lib,worker):
         return contents
 
     @mcp.tool()
-    def get_guide(name:str='')->str:
+    def get_guide(name:str='',context_id:str|None=None,workspace_ids:list[str]|None=None)->str:
         """Guias de criação tirados do acervo. Sem nome, lista os disponíveis. Leia o do momento ou do tipo antes de criar.
         Slides, carrosséis e peças de imagem, por papel na história: abertura, agenda-e-divisores, impacto-e-destaque,
         apresentar-pessoas, explicar-e-sequenciar, agrupar-e-comparar, provar-com-dados, mostrar-e-localizar, fechamento e
@@ -86,11 +89,12 @@ def create_mcp(lib,worker):
         encontro-e-evento; revisao-apresentacao confere uma peça pronta.
         Métodos do SOAP: metodo-soap é o índice (objetivo e audiência, três atos, recursos de narrativa, informação saliente,
         fala ao vivo, pitch, venda, eventos, comunicação na empresa, checklist); cada ficha abre como soap/<ficha>.
-        Guias: apresentar-ao-vivo, pitch-e-proposta, comunicacao-na-empresa."""
+        Guias: apresentar-ao-vivo, pitch-e-proposta, comunicacao-na-empresa.
+        Os guias citam referências de vários espaços: informe context_id (ou workspace_ids) para marcar as dos espaços não escolhidos."""
         if not name:
             from .db import dumps
             return dumps(lib.guides())
-        return lib.guide(name)
+        return lib.guide(name,workspace_ids=workspace_ids,context_id=context_id)
 
     @mcp.tool()
     def register_reference(request:schemas.Register)->dict:

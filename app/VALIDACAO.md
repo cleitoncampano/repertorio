@@ -1,5 +1,11 @@
 # Validação da primeira versão
 
+## Guias, fichas resumidas e limpeza do SOAP em 23/10/2026
+
+- A pedido: `get_guide` abre com a lista dos espaços citados no guia e, com `context_id` ou `workspace_ids`, marca as referências dos espaços não escolhidos com "não use"; `get_reference` (MCP) traz slides e parecidos em uma linha cada (`id`, título, ideia, `url` e, nos parecidos, as técnicas em comum). O painel do app não mudou.
+- 7 slides do template de gráficos do SOAP com texto sobreposto foram para a lixeira do espaço (recuperáveis por ela) e saíram de `dados/soap/decks.jsonl`; a reimportação mantém os 7 na lixeira e atualizou só a descrição do template. Espaço SOAP: 575 itens publicados.
+- Testes novos: espaço de cada referência no guia (com e sem demanda) e slides resumidos em `get_reference`. 53 testes do servidor aprovados; serviço reiniciado.
+
 ## Ícone do aplicativo do Mac em 23/10/2026
 
 - Escolha do usuário: R branco em três fragmentos sobre fundo preto, na versão pequena do canto inferior direito da segunda proposta. Fonte de 1024 × 1024 pixels em `mac/icone.png`, com transparência externa; conceito e prompt em `mac/ICONE.md`. Removido o gerador do olho antigo e atualizadas as instruções de compilação.

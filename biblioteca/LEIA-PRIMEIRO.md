@@ -1,6 +1,6 @@
 # Mapa da biblioteca
 
-Leia na ordem em que precisar. Nada aqui precisa ser lido inteiro de uma vez: a busca (`ferramentas/buscar.py`) leva direto ao exemplo certo.
+Leia na ordem em que precisar. Nada aqui precisa ser lido inteiro de uma vez: a busca do Repertório (MCP `search_references`) leva direto ao exemplo certo.
 
 | arquivo | quando ler |
 |---|---|

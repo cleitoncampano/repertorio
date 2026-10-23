@@ -82,11 +82,28 @@ class Library(Workspaces):
     def guides(self):
         return list(self.guide_files())
 
-    def guide(self,name):
+    def guide(self,name,workspace_ids=None,context_id=None):
         files={**self.method_files(),**self.guide_files()}
         if name not in files:
             raise Problem(404,'Guia não encontrado. Disponíveis: '+', '.join(self.guide_files())+'. Fichas de método: abra o guia metodo-<coleção>.')
-        return files[name].read_text()
+        content=files[name].read_text()
+        # Guias citam referências de vários espaços: diga de qual espaço é cada uma e marque as dos espaços não escolhidos.
+        cited=list(dict.fromkeys(re.findall(r'[?&]workspace=([\w-]+)',content)))
+        if not cited:
+            return content
+        names={w['id']:w['name'] for w in self.db.query('SELECT id,name FROM workspaces')}
+        if workspace_ids or context_id:
+            chosen=set(self.scope(workspace_ids,context_id))
+            def mark(m):
+                return m[0] if m[1] in chosen else f'{m[0]} (espaço {names.get(m[1],m[1])}, não escolhido: não use)'
+            content=re.sub(r'\[[^\]]+\]\(https?://[^)\s]*[?&]workspace=([\w-]+)[^)\s]*\)',mark,content)
+            note='As dos espaços que não foram escolhidos estão marcadas com "não use".'
+        else:
+            note='Use só as dos espaços que o usuário escolheu (o espaço está em `workspace=` em cada link), ou chame get_guide com context_id para marcá-las.'
+        if len(cited)<2:
+            return content
+        spaces=', '.join(f'{names.get(w,w)} (`{w}`)' for w in cited)
+        return f'> Este guia cita referências de vários espaços: {spaces}. {note}\n\n'+content
 
     def summary(self, row):
         d=json.loads(row['payload'])

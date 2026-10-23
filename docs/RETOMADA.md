@@ -1,5 +1,11 @@
 # Retomada do projeto
 
+## Pendências dos métodos resolvidas em 23/10/2026
+
+A pedido do Cleiton, depois do ajuste da busca: (1) `biblioteca/processo.md`, `LEIA-PRIMEIRO.md` e o manual mandam escolher referências pelo MCP; `buscar.py` e `roteiro.py` ficaram só para consulta offline e vocabulário. (2) O bloco do Repertório no `AGENTS.md` do Growmate Marketing foi regravado com `connect --write-instructions` e cita os dois métodos (o arquivo não é versionado lá). (3) Regra para dado público lembrado pelo agente no guia `provar-com-dados` e no `pitch-e-proposta`. (4) `get_reference` resume slides e parecidos em uma linha (a lista de parecidos era 80% da resposta). (5) `get_guide` diz de qual espaço é cada referência e, com `context_id` ou `workspace_ids`, marca as dos espaços não escolhidos. (6) Os 7 slides do template de gráficos do SOAP com texto sobreposto foram para a lixeira do espaço e saíram da importação (`SOAP_SKIP` em `ferramentas/incorporar_colecao.py`); o PowerPoint seguiu falhando com erro -50 nesse arquivo. Espaço SOAP: 75 apresentações e 500 slides.
+
+Continua pendente, decisão do Cleiton: os 4.797 slides de Referências não têm `como funciona` nem `serve para` próprios (herdam a ideia da apresentação). Próxima ação: usar as skills de pitch e de fala numa demanda real da Growmate.
+
 ## Ícone do Mac em 23/10/2026
 
 A pedido do Cleiton, o olho psicodélico foi substituído pelo R branco em três fragmentos sobre fundo preto, escolhido na versão pequena do canto inferior direito da segunda proposta. Fonte em `app/mac/icone.png` (1024 × 1024, com transparência externa), conceito e prompt em `app/mac/ICONE.md`; o gerador antigo `icone.py` foi removido. `build.sh` mantém os dez tamanhos do macOS. O app foi compilado, instalado em `~/Applications/Repertório.app` e reaberto; assinatura e ícone lido pelo macOS conferidos, serviço respondendo normalmente. Cópia do app anterior e evidências em `app/.runtime/qa/icone-mac-20261023/`. O usuário foi avisado sobre a possível nova permissão de Documentos. Alterações de outras tarefas foram preservadas.

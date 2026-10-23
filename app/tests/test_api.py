@@ -1,3 +1,4 @@
+import json
 from fastapi.testclient import TestClient
 from repertorio.app import create_app
 from repertorio.schemas import Search
@@ -38,6 +39,8 @@ def test_mcp_protocol_tools_and_image(library,context):
         result=rpc('tools/call',{'name':'get_reference','arguments':{'reference_id':'deck','include_image':True,'workspace_ids':['referencias']}})['result']
         assert not result.get('isError'),result
         assert any(c['type']=='image' for c in result['content'])
+        ref=json.loads(result['content'][0]['text'])
+        assert ref['children']==[{'id':'deck#1','number':1,'title':'Abertura','idea':ref['children'][0]['idea'],'url':ref['children'][0]['url']}]
         resources=rpc('resources/read',{'uri':'repertorio://projects'})['result']
         assert 'Marketing' in resources['contents'][0]['text']
 

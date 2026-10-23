@@ -107,7 +107,7 @@ As seis fases foram executadas na ordem 0 a 5.
 
 - Ferramenta: `ferramentas/incorporar_colecao.py` serve a Perestroika (saída idêntica à da ferramenta antiga) e o SOAP, com `paginas`, `conferir`, `montar`, `pranchas` e `validar`; `ferramentas/mcp_leitura.py` consulta o MCP só para leitura.
 - Leitura: 75 PDFs (55 e-books e guias, 3 checklists e 17 templates exportados do PowerPoint), 1.755 páginas, todas lidas por 10 agentes; estudos por PDF em `_referencias/soap/`.
-- Espaço SOAP no app: 75 apresentações e 507 slides, `reusable=false`; templates de presente com a observação de uso.
+- Espaço SOAP no app: 75 apresentações e 507 slides, `reusable=false`; templates de presente com a observação de uso. Em 23/10/2026 os 7 slides do template de gráficos com texto sobreposto foram para a lixeira do espaço: ficaram 500.
 - Método: 62 fichas e modelos em `biblioteca/metodos/soap/`, índice `metodo-soap`, guias `apresentar-ao-vivo`, `pitch-e-proposta` e `comunicacao-na-empresa`, camada SOAP no guia `revisao-apresentacao`; diferenças com a Perestroika registradas nas fichas e resumidas no índice.
 - Skills: `soap-fala` (Apresentar ao vivo) e `soap-pitch` (Pitch e proposta), no catálogo do app; a `perestroika-revisao` usa o checklist SOAP.
 - Testes às cegas: pitch de 10 minutos para investidores (só SOAP) e institucional de 20 minutos com revisão (quatro espaços). Os dois aplicaram objetivo e audiência, TOSW, três atos, informação saliente e próximo passo, sem inventar números. As falhas encontradas foram corrigidas: imagens sobrescritas na leitura do MCP, resposta longa da busca, tempo de fala com e sem bloco de perguntas, ordem TOSW x promessa, slide de agradecimento em peça de decisão, só referências dos espaços escolhidos, quem decide x quem usa, momento-surpresa em reunião pequena, setores regulados, credencial e logo.
@@ -116,6 +116,6 @@ As seis fases foram executadas na ordem 0 a 5.
 
 Para decisão do Cleiton:
 - Resolvido em 23/10/2026: a busca lia pedidos descritivos de forma genérica e, sem `kind: "slide"`, trazia as capas dos e-books. Ajuste medido em `docs/RETOMADA.md` (Busca dos agentes).
-- O template de gráficos saiu pelo Keynote com textos sobrepostos em algumas páginas (o PowerPoint o exporta incompleto).
-- O bloco de instruções de outros projetos conectados (por exemplo o Growmate Marketing) ainda cita só `metodo-perestroika`; atualiza com `connect --write-instructions` no projeto.
+- Resolvido em 23/10/2026: o template de gráficos saiu pelo Keynote com textos sobrepostos (o PowerPoint falha com erro -50 nesse arquivo, tentado de novo). A pedido do Cleiton, os 7 slides afetados (p10, 16, 18, 22, 24, 40, 46) foram para a lixeira do espaço e saíram da importação (`SOAP_SKIP`).
+- Resolvido em 23/10/2026: o bloco de instruções do Growmate Marketing foi regravado com `connect --write-instructions` e cita `metodo-perestroika` e `metodo-soap`. Outros projetos conectados no futuro: o mesmo comando.
 

@@ -166,13 +166,17 @@ def create_app(settings=None,run_worker=True):
     def activity(workspace_id:str):return lib.events(workspace_id=workspace_id)
 
     @app.get('/api/events')
-    async def events(request:Request,after:int=0,workspace_id:str|None=None):
+    async def events(request:Request,after:int|None=None,workspace_id:str|None=None):
         if workspace_id:lib.workspace(workspace_id)
+        # Começa no evento mais recente; ao reconectar, o navegador informa o último que recebeu (Last-Event-ID).
+        # Abrir o app não repete o histórico, e uma rajada de eventos chega inteira, em ordem.
+        last=request.headers.get('last-event-id','')
+        if after is None:after=int(last) if last.isdigit() else await asyncio.to_thread(lib.last_event)
         async def stream():
             cursor=after
             while not await request.is_disconnected():
-                items=await asyncio.to_thread(lib.events,cursor,workspace_id)
-                for item in reversed(items):
+                items=await asyncio.to_thread(lib.events,cursor,workspace_id,True)
+                for item in items:
                     cursor=max(cursor,item['id'])
                     yield f'id: {cursor}\ndata: {dumps(item)}\n\n'
                 if not items:yield ': heartbeat\n\n'

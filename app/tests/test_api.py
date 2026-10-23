@@ -69,3 +69,39 @@ def test_resized_previews_keep_originals(library,tmp_path):
         bundle=client.get('/api/previews?workspace_id=referencias&w=128').json()
         assert bundle and all(v['src'].startswith('data:image/') and v['width']>0 for v in bundle.values())
         assert client.get('/api/previews?workspace_id=referencias&w=100').status_code==422
+
+
+def test_live_events_start_at_latest_and_keep_bursts_in_order(library):
+    start=library.last_event()
+    with library.db.engine.begin() as conn:
+        for n in range(150):library.db.log(conn,'workspace_created',workspace_ids=['referencias'],title=f'espaço {n}')
+    first=library.events(start,'referencias',True)
+    assert [e['payload']['title'] for e in first]==[f'espaço {n}' for n in range(100)]
+    rest=library.events(first[-1]['id'],'referencias',True)
+    assert [e['payload']['title'] for e in rest]==[f'espaço {n}' for n in range(100,150)]
+    assert library.last_event()==rest[-1]['id']
+    assert library.events(library.last_event(),None,True)==[]
+    assert library.events(workspace_id='referencias')[0]['payload']['title']=='espaço 149'
+
+
+def test_slow_mcp_tool_does_not_freeze_the_service(library,monkeypatch):
+    import asyncio,time,httpx
+    app=create_app(library.settings,run_worker=False)
+    real=library.workspaces
+    def slow():
+        time.sleep(1.2);return real()
+    monkeypatch.setattr(app.state.library,'workspaces',slow)
+    async def scenario():
+        async with app.router.lifespan_context(app):
+            async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app),base_url='http://127.0.0.1:8767') as client:
+                headers={'Accept':'application/json, text/event-stream','MCP-Protocol-Version':'2025-11-25'}
+                # A ferramenta leva 1,2 s; com o serviço livre, a verificação de saúde volta bem antes disso.
+                started=time.monotonic()
+                call=asyncio.create_task(client.post('/mcp',headers=headers,json={'jsonrpc':'2.0','id':1,'method':'tools/call','params':{'name':'list_workspaces','arguments':{}}}))
+                await asyncio.sleep(.2)
+                health=await client.get('/api/health');waited=time.monotonic()-started
+                tool=await call
+                return health.status_code,waited,tool.json()
+    status,waited,tool=asyncio.run(scenario())
+    assert status==200 and waited<.9,waited
+    assert not tool['result'].get('isError'),tool

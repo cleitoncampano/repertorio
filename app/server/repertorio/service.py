@@ -247,13 +247,17 @@ class Library(Workspaces):
             self.db.log(conn,'reference_'+req.state,rid,req.context_id,workspace_ids=ids,previous_state=row['state'],user_requested=req.user_requested or from_ui)
         return self.get(rid,workspace_ids=ids)
 
-    def events(self,after=0,workspace_id=None):
+    def events(self,after=0,workspace_id=None,ascending=False):
+        """Atividade: os 100 mais recentes. ascending=True (fluxo ao vivo): os próximos 100 depois de after, em ordem."""
         if workspace_id:self.workspace(workspace_id)
-        rows=self.db.query('''SELECT e.*,p.name AS project_name FROM events e LEFT JOIN contexts c ON c.id=e.context_id LEFT JOIN projects p ON p.id=c.project_id
+        rows=self.db.query(f'''SELECT e.*,p.name AS project_name FROM events e LEFT JOIN contexts c ON c.id=e.context_id LEFT JOIN projects p ON p.id=c.project_id
             WHERE e.id>:after AND (:w IS NULL OR EXISTS(SELECT 1 FROM event_workspaces ew WHERE ew.event_id=e.id AND ew.workspace_id=:w)
-            OR NOT EXISTS(SELECT 1 FROM event_workspaces ew WHERE ew.event_id=e.id)) ORDER BY e.id DESC LIMIT 100''',after=after,w=workspace_id)
+            OR NOT EXISTS(SELECT 1 FROM event_workspaces ew WHERE ew.event_id=e.id)) ORDER BY e.id {'ASC' if ascending else 'DESC'} LIMIT 100''',after=after,w=workspace_id)
         for r in rows:r['payload']=json.loads(r['payload'])
         return rows
+
+    def last_event(self):
+        return self.db.one('SELECT COALESCE(MAX(id),0) AS id FROM events')['id']
 
     def operation(self,oid):
         row=self.db.one('SELECT * FROM operations WHERE id=:id',id=oid)

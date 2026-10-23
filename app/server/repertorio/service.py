@@ -68,7 +68,7 @@ class Library(Workspaces):
         formatos, como pedir o vídeo e os dois kits (movimentos do HyperFrames e motor de apresentação em HTML)."""
         root=self.settings.root;found={}
         for folder in (root/'biblioteca/guias',root/'biblioteca/motion/guias'):
-            if folder.is_dir():found.update({p.stem:p for p in sorted(folder.glob('*.md'))})
+            if folder.is_dir():found.update({p.stem:p for p in sorted(folder.glob('*.md')) if p.stem!='LEIA-ME'})
         for name,path in (('kit',root/'kit/motion/LEIA-ME.md'),('kit-apresentacao',root/'kit/LEIA-ME.md')):
             if path.is_file():found[name]=path
         return found

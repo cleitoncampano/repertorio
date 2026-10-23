@@ -122,7 +122,7 @@ def test_video_guides_reach_the_agent(library,context):
     (root/'biblioteca/motion/guias').mkdir(parents=True)
     (root/'biblioteca/motion/guias/lancamento.md').write_text('# Lançamento de produto\n\nCurto ganha.')
     (root/'kit/motion').mkdir(parents=True);(root/'kit/motion/LEIA-ME.md').write_text('# Kit de motion')
-    (root/'biblioteca/guias').mkdir(parents=True);(root/'biblioteca/guias/abertura.md').write_text('# Abertura')
+    (root/'biblioteca/guias').mkdir(parents=True);(root/'biblioteca/guias/abertura.md').write_text('# Abertura');(root/'biblioteca/guias/LEIA-ME.md').write_text('# Índice')
     assert library.guides()==['abertura','lancamento','kit']
     with TestClient(create_app(library.settings,run_worker=False),base_url='http://127.0.0.1:8767') as client:
         headers={'Accept':'application/json, text/event-stream','MCP-Protocol-Version':'2025-11-25'}

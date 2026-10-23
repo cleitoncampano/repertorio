@@ -2,7 +2,7 @@
 
 ## Aba Repositórios em 23/10/2026
 
-A pedido do Cleiton, a barra lateral do app ganhou **Repositórios**, logo abaixo de Skills (`?view=repos`). Cartões no formato das skills, com o link do GitHub, para ferramentas usadas junto com o Repertório: Engram (memória dos agentes), RTK (economia de contexto no terminal) e HyperFrames (vídeos do kit de motion). Curadoria em `app/web/src/repoCatalog.ts`; repositório que traz só uma skill fica no catálogo de Skills. Em celulares de até 360 px os ícones da barra ficam um pouco mais estreitos para caber com Sugestões. Testes: 63 da interface e 32 de navegador aprovados; interface compilada, atualizar com ⌘R.
+A pedido do Cleiton, a barra lateral do app ganhou **Repositórios**, logo abaixo de Skills (`?view=repos`). Cartões no formato das skills, com o link do GitHub, para ferramentas usadas junto com o Repertório: Engram (memória dos agentes), RTK (economia de contexto no terminal) e HyperFrames (vídeos do kit de motion). Curadoria em `app/web/src/repoCatalog.ts`; repositório que traz só uma skill fica no catálogo de Skills. Na sequência, a pedido do Cleiton, HyperFrames e HyperFrames Creative saíram da aba Skills (e com eles a categoria Vídeo), porque o HyperFrames é mais que uma skill e já está em Repositórios; as duas skills continuam instaladas e os agentes seguem usando nos vídeos. Em celulares de até 360 px os ícones da barra ficam um pouco mais estreitos para caber com Sugestões. Testes: 63 da interface e 32 de navegador aprovados; interface compilada, atualizar com ⌘R.
 
 ## SOAP acionável para modelos em 23/10/2026
 

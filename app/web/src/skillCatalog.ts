@@ -1,4 +1,4 @@
-export type SkillCategory='Design'|'Animação'|'Imagens'|'Apresentações'|'Vídeo'|'Método'|'Código';
+export type SkillCategory='Design'|'Animação'|'Imagens'|'Apresentações'|'Método'|'Código';
 export type Skill={
  id:string;
  name:string;
@@ -84,14 +84,6 @@ export const skills:readonly Skill[]=[
   description:'Cria e edita apresentações em PowerPoint ou Google Slides, com narrativa e composição visual.',
   when:'Quero transformar uma história em um deck de slides.',
   example:'Crie uma apresentação em PowerPoint para contar a história da nossa solução, do problema à proposta.'},
- {id:'hyperframes',name:'HyperFrames',category:'Vídeo',
-  description:'Conduz a criação de vídeos e animações, do briefing à prévia e à renderização final.',
-  when:'Quero produzir um vídeo ou uma animação.',
-  example:'Crie um vídeo de 30 segundos para apresentar nossa solução, com uma abertura forte e um fechamento claro.'},
- {id:'hyperframes-creative',name:'HyperFrames Creative',category:'Vídeo',
-  description:'Define a direção criativa de vídeos: estilo, paleta, tipografia, narração e sequência de cenas.',
-  when:'Preciso definir o conceito visual antes de produzir.',
-  example:'Defina a direção criativa de um vídeo institucional: conceito, paleta, tipografia e sequência de cenas.'},
  {id:'perestroika-tese',name:'Tese e roteiro',category:'Método',
   description:'Fecha a tese, a frase-resumo, o momento-surpresa e o que a plateia leva no dia seguinte, antes de qualquer slide ou vídeo.',
   when:'Tenho um tema e preciso saber o que a peça defende.',

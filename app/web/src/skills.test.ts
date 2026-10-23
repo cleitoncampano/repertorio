@@ -7,7 +7,7 @@ describe('descoberta de skills',()=>{
   expect(searchSkills('ilustracao original').map(skill=>skill.id)).toContain('imagegen');
  });
  it('combina as palavras da busca com a categoria escolhida',()=>{
-  expect(searchSkills('visual','Vídeo').map(skill=>skill.id)).toEqual(['hyperframes-creative']);
+  expect(searchSkills('hyperframes')).toEqual([]);
   expect(searchSkills('impeccable','Imagens')).toEqual([]);
   expect(searchSkills('workshop','Método').map(skill=>skill.id)).toEqual(['perestroika-experiencia']);
   expect(searchSkills('   ','Design')).toHaveLength(9);

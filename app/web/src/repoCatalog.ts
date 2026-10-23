@@ -21,7 +21,7 @@ export const repos:readonly Repo[]=[
   url:'https://github.com/rtk-ai/rtk'},
  {id:'hyperframes',name:'HyperFrames',category:'Vídeo',
   description:'Motor que transforma páginas HTML em vídeo MP4, com prévia, conferência dos quadros e renderização final.',
-  use:'Os vídeos criados com o kit de motion do Repertório são montados e renderizados com ele.',
+  use:'Os vídeos do kit de motion são montados e renderizados com ele. Traz as skills HyperFrames e HyperFrames Creative, que os agentes usam nos vídeos.',
   url:'https://github.com/heygen-com/hyperframes'},
 ];
 

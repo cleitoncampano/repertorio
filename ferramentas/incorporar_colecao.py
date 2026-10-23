@@ -12,7 +12,7 @@ Uso: app/.venv/bin/python -I ferramentas/incorporar_colecao.py <coleção> <coma
   pranchas  uma prancha por apresentação em app/.runtime/qa/<coleção>/, para conferir antes de importar.
   validar   fichas e guias do método em biblioteca/metodos/<coleção>/.
 
-Importar: ./app/run.sh import-decks --workspace ID --folder dados/<coleção> (e import-motion para o vídeo da Perestroika).
+Importar: ./app/run.sh import-decks --workspace ID --folder dados/<coleção>.
 Material de terceiros: entra com reusable=false, só como referência; as pastas de origem ficam fora do Git e dos pacotes.
 """
 import json
@@ -138,11 +138,11 @@ SOAP_SKIP = {'template-graficos': {10, 16, 18, 22, 24, 40, 46}}
 
 COLLECTIONS = {
     'perestroika': dict(label='Perestroika', source='perestroika', extra=(), what='PDF da Perestroika',
-                        slugs={}, titles=PERESTROIKA_TITLES, video='perestroika'),
+                        slugs={}, titles=PERESTROIKA_TITLES),
     # Templates em PowerPoint e o kit do zip são exportados para PDF em soap/_trabalho/pdf-templates/ e seguem como PDF.
     'soap': dict(label='SOAP', source='soap', extra=('soap/_trabalho/pdf-templates',), what='PDF da SOAP',
                  what_converted='Template da SOAP, exportado para PDF,', slugs={k: v[0] for k, v in SOAP_FILES.items()},
-                 titles={v[0]: v[1] for v in SOAP_FILES.values()}, cautions=SOAP_CAUTIONS, skip=SOAP_SKIP, video=None),
+                 titles={v[0]: v[1] for v in SOAP_FILES.values()}, cautions=SOAP_CAUTIONS, skip=SOAP_SKIP),
 }
 
 
@@ -324,46 +324,9 @@ def montar(c):
                                keywords=c.name, **card(p['ficha'], vocab, problems, f'{slug} p{n}')))
     c.out.mkdir(parents=True, exist_ok=True)
     (c.out / 'decks.jsonl').write_text(''.join(json.dumps(d, ensure_ascii=False) + '\n' for d in decks + slides))
-    if c.cfg['video'] == 'perestroika':
-        video_perestroika(c)
     print(json.dumps(dict(apresentacoes=len(decks), slides=len(slides), avisos=len(problems)), ensure_ascii=False))
     for line in problems:
         print('aviso:', line)
-
-
-def video_perestroika(c):
-    """O vídeo do curso Chora PPT entra como os do Motion: capa, prancha de oito quadros, loop curto e vídeo."""
-    sys.path.insert(0, str(ROOT / 'app/server'))
-    from repertorio.motion import frame, loop_clip, probe, storyboard
-    source = 'perestroika/chora_ppt_e_storytelling/ChoraPPT_Hero_Video_Slides.mp4'
-    dest = c.media / 'video'
-    dest.mkdir(parents=True, exist_ok=True)
-    info = probe(ROOT / source)
-    if not (dest / 'quadros.jpg').exists():
-        storyboard(ROOT / source, dest / 'quadros.jpg', info['duration'])
-        frame(ROOT / source, info['duration'] * .92, 1280).save(dest / 'capa.jpg', quality=88)
-        loop_clip(ROOT / source, dest / 'loop.mp4', info['duration'])
-    rel = lambda p: str(p.relative_to(ROOT))
-    record = dict(
-        id='perestroika-chora-ppt-video', slug='chora-ppt-video', collection='perestroika',
-        title='Chora PPT: apresentador e tipografia cinética',
-        description='Vídeo de abertura do curso Chora PPT, com 13,6 s. O professor fala em fundo branco enquanto corações, '
-                    'balões de conversa e um botão de play entram ao redor dele; a cena vira fundo grafite com rabiscos coral '
-                    'e fecha em tipografia condensada gigante: "Oceano de estímulos" e "batalha pela atenção".',
-        idea='Alterne a pessoa falando com cartelas de uma palavra gigante na mesma cor de acento, para a frase-chave ficar na memória.',
-        how='0 a 3 s: apresentador em fundo branco com grafismos coral que pipocam em volta (corações, balões, play). '
-            '5 a 8 s: fundo grafite, rabiscos animados e "OCEANO DE ESTÍMULOS" em caixa alta condensada. '
-            '9 a 11 s: volta ao apresentador. 12 a 13,6 s: "batalha pela ATENÇÃO" com a palavra final ocupando a tela.',
-        techniques=['tipografia-como-imagem', 'contraste-de-cor', 'contraste-de-escala', 'rosto-que-encara'],
-        intentions=['ABRIR', 'IMPACTAR', 'DESTACAR'], movements=['texto', 'troca'],
-        aesthetics=['editorial', 'alto-contraste', 'escuro', 'claro'], tone=['energetico', 'divertido'], strength=4,
-        cautions='Material de divulgação de curso da Perestroika. Use como referência de ritmo e linguagem, sem copiar.',
-        author='Perestroika', page='https://perestroika.com.br/cursos/chora-ppt/', stack='Vídeo editado', content_tags=['kinetic-type'],
-        good_for=['abertura de curso ou palestra em vídeo', 'vídeo de professor com cartelas de palavra-chave'],
-        media=dict(poster=rel(dest / 'capa.jpg'), storyboard=rel(dest / 'quadros.jpg'), loop=rel(dest / 'loop.mp4'), video=source),
-        genres=['tipografia', 'explicativo'], aspect='horizontal', **{k: info[k] for k in ('width', 'height', 'duration', 'fps', 'audio')})
-    (c.out / 'motion').mkdir(parents=True, exist_ok=True)
-    (c.out / 'motion/chora-ppt.jsonl').write_text(json.dumps(record, ensure_ascii=False) + '\n')
 
 
 def pranchas(c):

@@ -54,4 +54,3 @@ Depois: report de melhores momentos (quando e para quem), próximos encontros.
 - [Registro do treco em colagem de fotos](http://127.0.0.1:8766/?workspace=0cbf5669-0d0a-4745-844e-0745357c0419&ref=perestroika-04-forma%2344) e [sequência de fotos do clímax](http://127.0.0.1:8766/?workspace=0cbf5669-0d0a-4745-844e-0745357c0419&ref=perestroika-04-forma%2348): como mostrar depois que algo aconteceu.
 - [Divisor com roda-gigante nascendo da base](http://127.0.0.1:8766/?workspace=0cbf5669-0d0a-4745-844e-0745357c0419&ref=perestroika-04-forma%2317): a festa como imagem do método.
 - [Divisor com urso de boas-vindas](http://127.0.0.1:8766/?workspace=0cbf5669-0d0a-4745-844e-0745357c0419&ref=perestroika-05-emocional%2312): o tom do anfitrião.
-- [Chora PPT: apresentador e tipografia cinética](http://127.0.0.1:8766/?workspace=0cbf5669-0d0a-4745-844e-0745357c0419&ref=perestroika-chora-ppt-video): um convite em vídeo que alterna pessoa e palavra gigante.

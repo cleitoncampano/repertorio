@@ -34,6 +34,11 @@ def asset(conn, settings, rid, path, role, member=None):
     return aid
 
 
+def image_aspect(path):
+    from .thumbs import image_aspect as read
+    return read(path) or None
+
+
 def import_library(db, workspace_id='pp-treta'):
     from .workspaces import Workspaces
     manager=Workspaces();manager.db=db
@@ -74,6 +79,7 @@ def import_library(db, workspace_id='pp-treta'):
                 usage_notes=d.get('cuidados') or '', text=d.get('texto_slide') or d.get('texto') or '',
                 how=d.get('como_funciona') or d.get('como_levar_para_slide') or '', html=d.get('html') or '',
                 good_for=d.get('bom_para') or [], number=d.get('n'), format=Path(d.get('arquivo') or '').suffix.lstrip('.') or str(d.get('ext') or '').lstrip('.'),
+                aspect=image_aspect(root / d['imagem']) if d.get('imagem') and kind!='slide' else None,
                 unclassified=d.get('unclassified',False), legacy=d,
             )
             origin = 'externa' if kind == 'referencia' else 'pptreta'

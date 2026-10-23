@@ -1,5 +1,12 @@
 # Validação da primeira versão
 
+## Melhorias dos vídeos levadas às imagens em 22/10/2026
+
+- Tela grande para todas as referências: clicar numa imagem no mapa, na lista, no painel do eixo ou em Escolhas abre a peça grande com a ficha ao lado (ideia, como funciona, como fazer em HTML, conexões, papel na história e parecidos). Numa apresentação, a faixa de slides embaixo e ↑ ↓ passam pelos slides. ← →, N e P, as setas na tela, dois dedos no trackpad e o deslize no celular trocam de referência, na ordem da busca, da lista ou do espaço. Modo teatro (T) e tela cheia (F) como no player. **Ficha completa** abre o painel lateral, que continua com curadoria, espaços e o que o agente recebe. Links com `?ref=` seguem abrindo o painel.
+- Capas com o dobro do tamanho em todos os espaços e nas nove visualizações, com espaçamento dobrado; prévia ao passar o mouse com 496 px. Sem sobreposição nos testes das nove visualizações.
+- Organizar por formato: botão **Eixos do olhar / Formato** na legenda, guardado por espaço. No formato, o centro mostra Horizontal 16:9, Vertical 9:16, Quadrado e 4:5 (e Prompts-modelo); em volta, o papel na história (imagens) ou o tipo de vídeo. Vídeo começa por formato; imagem, pelos eixos. O formato de cada peça é gravado na ficha (importação, processamento e preenchimento na partida do serviço), sem consulta extra no mapa: grafo do PP Treta em 107 a 118 ms, como antes. Acervo real: 1.103 horizontais, 123 quadradas ou 4:5, 30 verticais. O 4:5 passou a contar como feed (dois vídeos do Motion mudaram de vertical para quadrado e 4:5).
+- 47 testes do servidor, 58 da interface e 30 de navegador aprovados, incluindo o novo das imagens; três testes antigos passaram a abrir a ficha pela tela grande. Capturas em `app/.runtime/qa/imagens/`.
+
 ## Vídeos de motion no espaço Motion em 22/10/2026
 
 - Galeria completa do Prompt Motion importada no novo espaço **Motion** (`81287ed7-121b-4249-88f2-bff35d60e1cb`): 234 vídeos e 2 modelos de prompt reescritos pelo site, 236 referências externas com `reusable=false`. Mídia baixada para `_originais/prompt-motion/` (704 arquivos, 2,5 GB, sem falhas), fora do Git e do backup, como os demais originais. A fonte permite uso como referência (`Content-Signal: use=reference`, sem treino).

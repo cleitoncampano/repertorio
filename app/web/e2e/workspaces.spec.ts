@@ -59,6 +59,8 @@ test('seleção combinada abre referência do outro espaço e mantém destino ex
  await expect(page.locator('.choice-head')).toContainText('cVortex QA');
  await expect(page.locator('.choice-head')).toContainText('PP Treta');
  await page.getByRole('button',{name:'Ver detalhes de Exclusiva cVortex QA'}).click();
+ await expect(page.locator('.cinema-info h2')).toHaveText('Exclusiva cVortex QA');
+ await page.getByRole('button',{name:'Ficha completa'}).click();
  await expect(page.locator('.detail-body h2')).toHaveText('Exclusiva cVortex QA');
  await page.screenshot({path:evidence+'/escolhas-combinadas.png'});
  await page.getByRole('button',{name:'Fechar detalhes',exact:true}).click();

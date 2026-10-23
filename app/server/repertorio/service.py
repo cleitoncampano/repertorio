@@ -61,24 +61,31 @@ class Library(Workspaces):
                 conn.execute(text('INSERT INTO context_workspaces VALUES(:c,:w)'),dict(c=row['id'],w=wid))
             self.db.log(conn,'context_started',context_id=row['id'],demand=data.demand)
         return {**self.context(row['id']),'instructions':'História primeiro. Consulte somente os espaços desta demanda. Na incorporação, informe os espaços de destino. Examine imagens e adapte a ideia à identidade do projeto. Não copie. Publique apenas quando o usuário solicitar; sugestões ficam pendentes.',
-                'vocabulary':self.meta('vocabulary',{}),'principles_available':['narrativa','direcao-de-arte'],'video_guides_available':self.guides()}
+                'vocabulary':self.meta('vocabulary',{}),'principles_available':['narrativa','direcao-de-arte'],'guides_available':self.guides()}
+
+    def guide_files(self):
+        """Guias de criação: por papel na história (slides, carrosséis e peças de imagem), por tipo de vídeo,
+        formatos, como pedir o vídeo e os dois kits (movimentos do HyperFrames e motor de apresentação em HTML)."""
+        root=self.settings.root;found={}
+        for folder in (root/'biblioteca/guias',root/'biblioteca/motion/guias'):
+            if folder.is_dir():found.update({p.stem:p for p in sorted(folder.glob('*.md'))})
+        for name,path in (('kit',root/'kit/motion/LEIA-ME.md'),('kit-apresentacao',root/'kit/LEIA-ME.md')):
+            if path.is_file():found[name]=path
+        return found
 
     def guides(self):
-        """Guias de criação de vídeo: um por tipo, mais formatos de tela, como pedir (prompt) e o kit de movimentos."""
-        folder=self.settings.root/'biblioteca/motion/guias'
-        names=sorted(p.stem for p in folder.glob('*.md')) if folder.is_dir() else []
-        return names+(['kit'] if (self.settings.root/'kit/motion/LEIA-ME.md').is_file() else [])
+        return list(self.guide_files())
 
     def guide(self,name):
-        if name not in self.guides():
-            raise Problem(404,'Guia não encontrado. Disponíveis: '+', '.join(self.guides()))
-        path=self.settings.root/('kit/motion/LEIA-ME.md' if name=='kit' else f'biblioteca/motion/guias/{name}.md')
-        return path.read_text()
+        files=self.guide_files()
+        if name not in files:
+            raise Problem(404,'Guia não encontrado. Disponíveis: '+', '.join(files))
+        return files[name].read_text()
 
     def summary(self, row):
         d=json.loads(row['payload'])
         out={k:row[k] for k in ['id','kind','title','origin','state','revision','ready','parent_id','updated','hidden']}
-        out.update({k:d.get(k) for k in ['description','idea','techniques','intentions','movements','aesthetics','strength','reusable','unclassified','format','number']})
+        out.update({k:d.get(k) for k in ['description','idea','techniques','intentions','movements','aesthetics','strength','reusable','unclassified','format','number','aspect']})
         aid=row.get('thumbnail')
         if aid:
             out['thumbnail']=f'/api/assets/{aid}'

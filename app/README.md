@@ -47,7 +47,8 @@ Os agentes precisam receber os espaços explicitamente. Exemplo: “Use os espa�
 
 ## Como usar
 
-- Explore o mapa com arraste e zoom. Clique nas operações, técnicas ou imagens para investigar suas relações.
+- Explore o mapa com arraste e zoom. Clique nas operações ou técnicas para investigar suas relações. Clicar numa imagem ou vídeo abre a tela grande com a ficha ao lado: ← → (ou as setas na tela, dois dedos no trackpad, deslize no celular) passam à próxima referência, ↑ ↓ passam pelos slides de uma apresentação, T alterna o modo teatro e F a tela cheia. **Ficha completa** abre o painel lateral.
+- Na legenda, **Eixos do olhar / Formato** troca a organização do mapa: pelos eixos (técnicas visuais) ou pelo formato de tela, com o papel na história (imagens) ou o tipo de vídeo em volta. A escolha fica salva por espaço.
 - Ao lado do botão de tema, **Visualização do grafo** oferece nove opções com prévias. **Mapa livre**, **Por grupos** e **Hierárquico** mantêm a linguagem original; **Cosmos**, **Metrô**, **Circuito**, **Jardim**, **Editorial** e **Prisma** têm organizações, paletas e formatos próprios, adaptados aos temas claro e escuro. São as mesmas referências e conexões do espaço aberto. A preferência fica salva no navegador; a câmera de cada organização é independente por espaço. Busca, filtros e ficha aberta permanecem durante a troca. **Mapa livre** permite voltar à organização original.
 - Arraste as opções de visualização para mudar sua ordem, como cards de um kanban. No celular, use a alça de pontos à esquerda; o restante do card permite rolar a lista. Pelo teclado, use **Alt + ↑/↓** na opção focada. A ordem fica salva neste navegador e vale em todos os espaços. Reordenar preserva a visualização aberta; clique para trocar. **Escape** cancela o arraste.
 - Busque por palavras e refine por intenção, origem, movimento, formato e estética. A lista oferece navegação por teclado.

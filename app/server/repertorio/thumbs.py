@@ -43,8 +43,32 @@ def graph_assets(lib,workspace_id=None):
     return [(r['aid'],Path(r['path'])) for r in rows if Path(r['path']).suffix.lower() in RASTER]
 
 
+def image_aspect(path):
+    """Formato de tela de uma imagem, pelo tamanho gravado no cabeçalho (não decodifica a imagem)."""
+    from .motion import aspect
+    try:
+        with Image.open(path) as im:return aspect(*im.size)
+    except (OSError,ValueError):return ''
+
+
+def backfill_aspects(lib,stop=None):
+    """Grava o formato de tela das peças do mapa que ainda não têm, para a organização por formato.
+    Fica na própria ficha: o mapa continua com as mesmas consultas."""
+    from sqlalchemy import text
+    rows=lib.db.query("""SELECT r.id,(SELECT a.path FROM assets a WHERE a.ref_id=r.id AND a.missing=0 AND a.role IN ('preview','thumbnail')
+        ORDER BY CASE a.role WHEN 'preview' THEN 0 ELSE 1 END,a.id LIMIT 1) AS path FROM refs r
+        WHERE r.kind IN ('arquivo','referencia','criacao') AND json_extract(r.payload,'$.aspect') IS NULL""")
+    found=[(r['id'],image_aspect(r['path'])) for r in rows if r['path'] and not (stop and stop.is_set())]
+    with lib.db.engine.begin() as conn:
+        for rid,value in found:
+            if value:conn.execute(text("UPDATE refs SET payload=json_set(payload,'$.aspect',:a) WHERE id=:id"),dict(a=value,id=rid))
+    return sum(1 for _,v in found if v)
+
+
 def warm(lib,stop,sizes=(128,256)):
     """Prepara as cópias que a primeira abertura do mapa pede, para ela não esperar por elas."""
+    try:backfill_aspects(lib,stop)
+    except Exception:logging.exception('Não foi possível gravar os formatos de tela')
     for aid,path in graph_assets(lib):
         if stop.is_set():return
         for width in sizes:

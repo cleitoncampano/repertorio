@@ -5,10 +5,9 @@ import type {GraphView} from './graphViewOptions';
 import {isExperimental} from './graphSkins';
 import {arrangeAlternate} from './alternateLayouts';
 
-// Capas de vídeo aparecem com o dobro do tamanho. Espaços com vídeo afastam as capas na mesma
-// proporção, em todas as visualizações; espaços só com imagens ficam exatamente como antes.
-export const MOTION_SCALE=2;
-export const referenceScale=(graph:GraphData)=>graph.items.some(item=>item.motion?.loop)?MOTION_SCALE:1;
+// Capas com o dobro do tamanho original, em imagens e vídeos. O espaçamento entre as capas cresce na mesma
+// proporção em todas as visualizações, para nada se sobrepor.
+export const COVER_SCALE=2;
 
 // The prototype's radial grammar: operation → cue → technique → reference.
 // Seeded placement feels organic without moving the library on every refresh.
@@ -49,7 +48,7 @@ function freeLayout(graph:GraphData):ElementDefinition[]{
   const difference=Math.atan2(Math.sin(spread-p.target),Math.cos(spread-p.target));
   p.angle=p.target+.7*difference;
  });
- const S=referenceScale(graph),occupied=new Set<string>(),cell=108*S;
+ const S=COVER_SCALE,occupied=new Set<string>(),cell=108*S;
  const bands:Record<number,[number,number]>={5:[1080,1300],4:[1160,1780],3:[1450,2260],2:[2000,2420],1:[2150,2550]};
  placements.sort((a,b)=>(b.item.strength||3)-(a.item.strength||3));
  for(const {item,angle} of placements){
@@ -65,7 +64,7 @@ function freeLayout(graph:GraphData):ElementDefinition[]{
     occupied.add(key);point={x:gx*cell+(random()-.5)*16*S,y:gy*cell+(random()-.5)*16*S};
    }
   }
-  const size=({5:90,4:74,3:62,2:50,1:42}[strength]||62)*(item.motion?.loop?MOTION_SCALE:1);
+  const size=({5:90,4:74,3:62,2:50,1:42}[strength]||62)*COVER_SCALE;
   nodes.push({data:{id:'ref:'+item.id,entity:item.id,type:'reference',operation:tech.find(t=>t.id===item.techniques[0])?.operacao||'',label:item.title,image:'none',preview:item.thumbnail||'',color:item.techniques.length?colorFor(item.techniques[0]):'#8f8a82',size,width:size,height:size*9/16,external:item.origin==='externa'},position:point});
   for(const tid of item.techniques){
    const target=positions.get(tid);if(!target)continue;
@@ -99,7 +98,7 @@ export function layoutGraph(graph:GraphData,view:GraphView='free'):ElementDefini
   const first=item.techniques.filter(id=>byId.get(id)?.operacao===op.id).sort((a,b)=>order.get(a)!-order.get(b)!)[0];
   if(first)primary.set(item.id,first);
  }
- const S=referenceScale(graph);
+ const S=COVER_SCALE;
  const place=(id:string,x:number,y:number)=>{const node=nodes.get(id);if(node){node.position={x,y};if(node.data.type==='technique'){node.data.rotation=0;node.data.labelSide='right';}}};
  if(isExperimental(view)){
   graph.items.forEach(item=>{nodes.get('ref:'+item.id)!.data.operation=byId.get(primary.get(item.id)||'')?.operacao||'';});

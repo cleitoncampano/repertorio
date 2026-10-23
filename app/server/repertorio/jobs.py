@@ -167,6 +167,10 @@ class Worker:
                 originals={p:asset(conn,self.lib.settings,rid,p,role) for p,role in records if role=='original'}
                 for p in normalized:asset(conn,self.lib.settings,rid,p,'preview')
                 asset(conn,self.lib.settings,rid,thumb,'thumbnail')
+                if not motion:
+                    # Imagem: o formato de tela vem da primeira prévia, para a organização por formato.
+                    with Image.open(normalized[0]) as image:shape=aspect(*image.size)
+                    conn.execute(text("UPDATE refs SET payload=json_set(payload,'$.aspect',:a) WHERE id=:id"),dict(a=shape,id=rid))
                 if motion:
                     video,board,clip,meta=motion
                     payload=json.loads(conn.execute(text('SELECT payload FROM refs WHERE id=:id'),dict(id=rid)).scalar())

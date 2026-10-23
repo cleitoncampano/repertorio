@@ -1,5 +1,9 @@
 # Retomada do projeto
 
+## Imagens com tela grande, capas maiores e organização por formato em 22/10/2026
+
+As melhorias feitas para os vídeos valem também para as imagens: clicar em qualquer referência abre a tela grande com a ficha ao lado e troca lateral; capas com o dobro do tamanho em todos os espaços; botão **Eixos do olhar / Formato** na legenda de cada espaço. Guias por papel na história para slides e carrosséis em `biblioteca/guias/`, lidos pelo agente com `get_guide`. Detalhes em `app/VALIDACAO.md`. Interface compilada; atualizar com ⌘R.
+
 ## Vídeos de motion no espaço Motion em 22/10/2026
 
 A pedido do Cleiton, o Repertório passou a conectar vídeos. Novo espaço **Motion** com toda a galeria do Prompt Motion (prompt-motion.com): 234 vídeos feitos com Claude e os 2 modelos de prompt reescritos pelo site. Cada vídeo é uma referência externa ligada às mesmas técnicas, intenções e movimentos do mapa, com prompt original, decupagem em português, ferramenta usada, créditos e prancha de oito quadros. O agente encontra pelo MCP (`format="mp4"` filtra vídeos) e vê o movimento pela prancha. Mídia de terceiros: só referência.

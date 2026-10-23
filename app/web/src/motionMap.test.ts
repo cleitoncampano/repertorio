@@ -1,5 +1,5 @@
 import {describe,expect,it} from 'vitest';
-import {isMotionSpace,motionMap} from './motionMap';
+import {defaultOrganization,formatLabels,formatMap,isMotionSpace,motionMap} from './motionMap';
 import {layoutGraph} from './layout';
 import {graphViews} from './graphViewOptions';
 import type {GraphData,Reference} from './types';
@@ -26,5 +26,15 @@ describe('mapa dos espaços de vídeo',()=>{
   const elements=layoutGraph(motionMap(graph),id),ids=new Set(elements.filter(e=>e.position).map(e=>e.data.id));
   expect(['op:horizontal','op:vertical','op:quadrado','op:modelo','tech:vertical:tipografia'].every(n=>ids.has(n))).toBe(true);
   for(const e of elements.filter(e=>e.data.source)){expect(ids.has(e.data.source)).toBe(true);expect(ids.has(e.data.target)).toBe(true);}
+ });
+ it('imagens se organizam por formato e papel na história; o espaço de imagem começa pelos eixos',()=>{
+  const images:GraphData={vocabulary:{...vocabulary,intencoes:{itens:[{id:'ABRIR',nome:'Abrir',def:'Capa'},{id:'PROVAR',nome:'Provar',def:'Dados'}]}},
+   items:[{id:'capa',title:'Capa',techniques:['contraste'],intentions:['ABRIR','PROVAR'],strength:4,aspect:'quadrado'} as Reference,{id:'slide',title:'Slide',techniques:['contraste'],intentions:[],strength:3} as Reference]};
+  const map=formatMap(images);
+  expect(map.items.find(i=>i.id==='capa')!.techniques).toEqual(['quadrado:ABRIR','quadrado:PROVAR']);
+  expect(map.items.find(i=>i.id==='slide')!.techniques).toEqual(['horizontal:outros']);
+  expect((map.vocabulary.tecnicas.itens as {id:string;nome:string}[]).find(t=>t.id==='quadrado:ABRIR')!.nome).toBe('Abrir');
+  expect(defaultOrganization(images)).toBe('eixos');expect(defaultOrganization(graph)).toBe('formato');
+  expect(formatLabels(images).technique).toBe('PAPEL NA HISTÓRIA');expect(formatLabels(graph).technique).toBe('TIPO DE VÍDEO');
  });
 });

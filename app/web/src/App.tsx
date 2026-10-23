@@ -9,7 +9,7 @@ import {TermPanel} from './TermPanel';
 import {Viewer} from './Viewer';
 import {MotionInfo,MotionThumb,motionSummary} from './MotionParts';
 import {MotionCinema} from './MotionCinema';
-import {MOTION_LABELS,isMotionSpace,motionMap} from './motionMap';
+import {defaultOrganization,formatLabels,formatMap,type Organization} from './motionMap';
 import {Choices,type Demand} from './Choices';
 import {Skills} from './Skills';
 import {ProductGuide} from './ProductGuide';
@@ -54,7 +54,10 @@ export default function App(){
  const environment=useQuery({queryKey:['health'],queryFn:()=>api<{platform?:string;demo?:boolean}>('/health'),enabled:connect,staleTime:Infinity});
  const connectionCommand=environment.data?.platform==='win32'?'powershell -NoProfile -ExecutionPolicy Bypass -File .\\app\\run.ps1 connect C:\\caminho\\do\\projeto --write-instructions':'./app/run.sh connect /caminho/do/projeto --write-instructions';
  const graph=useQuery({queryKey:['graph',workspace],queryFn:()=>api<GraphData>(scoped('/graph')),staleTime:Infinity,enabled:active&&view!=='skills'&&view!=='guide'});
- const motion=!!graph.data&&isMotionSpace(graph.data);
+ // Organização do mapa por espaço: eixos do olhar ou formato de tela. Vídeo começa por formato; imagem, pelos eixos.
+ const [organizations,setOrganizations]=useState<Record<string,Organization>>(()=>{try{return JSON.parse(localStorage.getItem('repertorio-organizacao')||'{}');}catch{return {};}});
+ const organization:Organization=organizations[workspace]||(graph.data?defaultOrganization(graph.data):'eixos');
+ const byFormat=organization==='formato'&&!!graph.data;
  const stats=useQuery({queryKey:['stats',workspace],queryFn:()=>api<Stats>(scoped('/stats')),enabled:active});
  const detail=useQuery({queryKey:['reference',workspace,referenceWorkspace,selected],queryFn:()=>api<Detail>('/references/'+encodeURIComponent(selected!)+'?workspace_id='+encodeURIComponent(referenceWorkspace||workspace)),enabled:active&&!!selected});
  // Escolhas: sempre consultada para o aviso de itens sem resposta na navegação
@@ -62,15 +65,16 @@ export default function App(){
  const unanswered=(demands.data||[]).reduce((sum,d)=>sum+d.packs.reduce((n,k)=>n+k.total-k.approved-k.cut,0),0);
  const events=useQuery({queryKey:['activity',workspace],queryFn:()=>api<Event[]>(scoped('/activity')),enabled:active&&view==='activity'});
  const operations=useQuery({queryKey:['operations',workspace],queryFn:()=>api<{id:string;ref_id:string;state:string;progress:number;error?:string}[]>(scoped('/operations')),enabled:active&&view==='activity',refetchInterval:view==='activity'?3000:false});
- const request={workspace_ids:[workspace],query,technique:motion?'':technique,operation:motion?'':operation,intention,kind,aesthetic,movement,origin,format:fileFormat,min_strength:minStrength,reusable,state:view==='pending'?'pending':view==='trashed'?'trashed':'published',offset,limit:48};
+ const request={workspace_ids:[workspace],query,technique:byFormat?'':technique,operation:byFormat?'':operation,intention,kind,aesthetic,movement,origin,format:fileFormat,min_strength:minStrength,reusable,state:view==='pending'?'pending':view==='trashed'?'trashed':'published',offset,limit:48};
  const hasFilter=!!(query||technique||operation||intention||kind||aesthetic||movement||origin||fileFormat||minStrength||reusable);
  const results=useQuery({queryKey:['search',request],queryFn:()=>api<{items:Reference[];total:number}>('/search',request),enabled:active&&(hasFilter||list||view==='pending'||view==='trashed')});
  const vocab=graph.data?.vocabulary;
  const hasContentFilter=!!(query||intention||kind||aesthetic||movement||origin||fileFormat||minStrength||reusable);
  const matches=useMemo(()=>hasContentFilter&&results.data?results.data.items.map(x=>x.parent_id||x.id):null,[hasContentFilter,results.data]);
  // Espaços de vídeo: o mapa, a legenda e o painel do eixo usam formato de tela e tipo de vídeo.
- const mapData=useMemo(()=>graph.data&&motion?motionMap(graph.data):graph.data,[graph.data,motion]);
- const motionSpace=motion;
+ const mapData=useMemo(()=>graph.data&&byFormat?formatMap(graph.data):graph.data,[graph.data,byFormat]);
+ const mapLabels=byFormat&&graph.data?formatLabels(graph.data):undefined;
+ const organize=(next:Organization)=>{setTechnique('');setOperation('');setOrganizations(current=>{const updated={...current,[workspace]:next};try{localStorage.setItem('repertorio-organizacao',JSON.stringify(updated));}catch{/* A escolha vale só nesta sessão. */}return updated;});};
  const termFocus=useMemo(()=>mapData?graphFocus(mapData,{selected:null,technique,operation,matches}):null,[mapData,technique,operation,matches]);
 
  useEffect(()=>{const s=new EventSource('/api/events');s.onopen=()=>setOnline(true);s.onerror=()=>setOnline(false);s.onmessage=e=>{const item=JSON.parse(e.data) as Event;client.invalidateQueries({queryKey:['activity']});client.invalidateQueries({queryKey:['operations']});if(item.action==='pack_created'||item.action==='pack_reviewed'){client.invalidateQueries({queryKey:['demands']});client.invalidateQueries({queryKey:['pack']});}if(item.action!=='references_searched'&&item.action!=='context_started'){client.invalidateQueries({queryKey:['stats']});client.invalidateQueries({queryKey:['search']});client.invalidateQueries({queryKey:['graph']});client.invalidateQueries({queryKey:['reference']});client.invalidateQueries({queryKey:['workspaces']});}};return()=>s.close();},[client]);
@@ -80,15 +84,15 @@ export default function App(){
  useEffect(()=>{if(!notice)return;const timer=setTimeout(()=>{setNotice('');setUndo(null);},9000);return()=>clearTimeout(timer);},[notice]);
  const [cinema,setCinema]=useState(false);
  useEffect(()=>{if(!selected)setCinema(false);},[selected]);
- // Vídeo abre no player em tela grande; as demais referências abrem a ficha ao lado.
+ // Toda referência abre em tela grande, com a ficha ao lado; a ficha completa fica a um clique.
  const findItem=(id:string)=>detail.data?.id===id?detail.data:graph.data?.items.find(item=>item.id===id)||results.data?.items.find(item=>item.id===id);
- const open=(id:string|null,sourceWorkspace?:string,video?:boolean)=>{select(id,sourceWorkspace);setCinema(!!id&&(video??!!findItem(id)?.motion?.video));};
+ const open=(id:string|null,sourceWorkspace?:string)=>{select(id,sourceWorkspace);setCinema(!!id);};
  const cinemaItem=cinema&&selected?findItem(selected):undefined;
- // Ordem para passar de um vídeo a outro: a da busca ou da lista quando houver; senão o espaço inteiro, dos mais fortes.
+ // Ordem para passar de uma referência a outra: a da busca ou da lista quando houver; senão o espaço inteiro, das mais fortes.
  const sequence=useMemo(()=>{
-  const videos=(items:Reference[]|undefined)=>(items||[]).filter(item=>item.motion?.video);
-  const space=videos(graph.data?.items).sort((a,b)=>(b.strength||3)-(a.strength||3)||a.id.localeCompare(b.id));
-  const shown=hasContentFilter||list?videos(results.data?.items):[];
+  const visible=(items:Reference[]|undefined)=>(items||[]).filter(item=>item.thumbnail||item.motion?.video);
+  const space=visible(graph.data?.items).sort((a,b)=>(b.strength||3)-(a.strength||3)||a.id.localeCompare(b.id));
+  const shown=hasContentFilter||list?visible(results.data?.items):[];
   return shown.some(item=>item.id===selected)?shown:space;
  },[graph.data,results.data,hasContentFilter,list,selected]);
  const select=(id:string|null,sourceWorkspace?:string)=>{setSelected(id);setReferenceWorkspace(sourceWorkspace||'');const url=new URL(location.href);if(id)url.searchParams.set('ref',id);else url.searchParams.delete('ref');if(sourceWorkspace&&sourceWorkspace!==workspace)url.searchParams.set('reference_workspace',sourceWorkspace);else url.searchParams.delete('reference_workspace');history.pushState({},'',url);};
@@ -141,11 +145,11 @@ export default function App(){
      {graph.isPending?<div className="loading"><LoaderCircle className="spin"/> Preparando seu universo de referências…</div>:graph.isError?<div className="empty"><h2>Não foi possível carregar o mapa.</h2><p>{graph.error.message}</p><button onClick={()=>graph.refetch()}>Tentar novamente</button></div>:!graph.data?.items.length?<div className="empty"><Sparkles/><h2>O repertório começa aqui.</h2><p>Este espaço ainda não tem referências. Peça ao seu agente para adicionar materiais ao espaço {currentSpace?.name} ou compartilhe referências de outro espaço.</p></div>:list?<div className="gallery">{(results.data?.items||[]).map(item=><Card key={item.id} item={item} onSelect={open}/>)}</div>:<Map key={workspace} workspaceId={workspace} view={mapView} data={mapData!} theme={theme} technique={technique} operation={operation} onClear={()=>{select(null);setTechnique('');setOperation('');}} selected={detail.data?.parent_id||selected} matches={matches} onSelect={open} onTerm={(type,id)=>{select(null);if(type==='technique'){setTechnique(id);setOperation('');}else{setOperation(id);setTechnique('');} }}/>
      }
      {hasFilter&&!selected&&!list&&!operation&&!technique&&<aside className="results-panel"><div className="panel-heading"><span>DESCOBERTAS</span><b>{format(results.data?.total||0)}</b></div>{results.isError?<p role="alert">{results.error.message}</p>:results.data?.items.length?results.data.items.map(item=><button className="result-row" key={item.id} onClick={()=>select(item.id)}>{item.thumbnail?<img src={sized(item.thumbnail,256)} alt="" loading="lazy"/>:<BookOpen/>}<span><strong>{item.title}</strong><small>{item.idea||item.description}</small></span><ChevronRight size={14}/></button>):<div className="empty small"><Search/><h3>Nenhuma referência por aqui.</h3><p>Tente outra palavra ou ajuste os filtros.</p></div>}<Pagination total={results.data?.total||0} offset={offset} setOffset={setOffset}/></aside>}
-     {!selected&&!list&&(operation||technique)&&mapData&&termFocus&&<TermPanel data={mapData} labels={motionSpace?MOTION_LABELS:undefined} palette={mapColors} operation={operation} technique={technique} referenceIds={termFocus.references} onTechnique={id=>{setTechnique(id);setOperation('');}} onOperation={id=>{setOperation(id);setTechnique('');}} onSelect={open} onClose={()=>{setOperation('');setTechnique('');}}/>}
+     {!selected&&!list&&(operation||technique)&&mapData&&termFocus&&<TermPanel data={mapData} labels={mapLabels} palette={mapColors} operation={operation} technique={technique} referenceIds={termFocus.references} onTechnique={id=>{setTechnique(id);setOperation('');}} onOperation={id=>{setOperation(id);setTechnique('');}} onSelect={open} onClose={()=>{setOperation('');setTechnique('');}}/>}
      {selected&&!cinemaItem&&<DetailPanel detail={detail.data} loading={detail.isPending} error={detail.error?.message} onClose={()=>select(null)} onSelect={open} onChange={change} busy={busy} copy={copy} vocab={vocab} onTechnique={id=>{select(null);setTechnique(id);setOperation('');}} onWatch={()=>setCinema(true)}/>}
     </div>
     {list&&<Pagination total={results.data?.total||0} offset={offset} setOffset={setOffset}/>}
-    {!list&&<footer className="map-footer"><button className="legend-toggle" onClick={()=>setLegendOpen(!legendOpen)} aria-expanded={legendOpen} aria-controls="map-legend">Legenda</button><div id="map-legend" data-open={legendOpen} className="legend" aria-label={motionSpace?MOTION_LABELS.legend:'Operações do olhar'}>{terms(mapData?.vocabulary,'operacoes').map(op=><button key={op.id} className={operation===op.id?'active':''} onClick={()=>{select(null);setTechnique('');setOperation(operation===op.id?'':op.id);}} aria-pressed={operation===op.id}><i style={{background:mapColors[op.id]}}/>{op.nome||op.id}</button>)}</div></footer>}
+    {!list&&<footer className="map-footer"><button className="legend-toggle" onClick={()=>setLegendOpen(!legendOpen)} aria-expanded={legendOpen} aria-controls="map-legend">Legenda</button><div id="map-legend" data-open={legendOpen} className="legend" aria-label={mapLabels?mapLabels.legend:'Operações do olhar'}><div className="organize" role="group" aria-label="Organizar o mapa por">{(['eixos','formato'] as const).map(option=><button key={option} aria-pressed={organization===option} onClick={()=>organize(option)}>{option==='eixos'?'Eixos do olhar':'Formato'}</button>)}</div>{terms(mapData?.vocabulary,'operacoes').map(op=><button key={op.id} className={operation===op.id?'active':''} onClick={()=>{select(null);setTechnique('');setOperation(operation===op.id?'':op.id);}} aria-pressed={operation===op.id}><i style={{background:mapColors[op.id]}}/>{op.nome||op.id}</button>)}</div></footer>}
     <div className="library-status" title={`${format(total)} itens catalogados. ${online?'Serviço local conectado':'Reconectando ao serviço'}`}><i className={online?'':'offline'}/><span>{format(graph.data?.items.length||0)} referências</span></div>
 
    </>}
@@ -156,7 +160,7 @@ export default function App(){
     {selected&&!cinemaItem&&<DetailPanel detail={detail.data} loading={detail.isPending} error={detail.error?.message} onClose={()=>select(null)} onSelect={open} onChange={change} busy={busy} copy={copy} vocab={vocab} onTechnique={id=>{navigate('map');setTechnique(id);}} onWatch={()=>setCinema(true)}/>}</div>{view==='pending'&&<Pagination total={results.data?.total||0} offset={offset} setOffset={setOffset}/>}</section>}
    {active&&view==='activity'&&<section className="collection-page activity-page"><h1>O repertório em movimento.</h1><p className="page-intro">Buscas, decisões e novas referências, com o contexto de cada projeto.</p>{operations.data?.filter(x=>x.state!=='completed').map(op=><div className="operation" key={op.id}><LoaderCircle className={op.state==='running'?'spin':''}/><div><strong>{op.state==='failed'?'Processamento interrompido':'Processando material'}</strong><p>{op.error||`${op.progress}% concluído`}</p></div>{op.state==='failed'&&<button onClick={async()=>{try{await api('/operations/'+op.id+'/retry',{});client.invalidateQueries({queryKey:['operations']});}catch(e){setError((e as Error).message);}}}>Tentar novamente</button>}</div>)}<div className="timeline">{events.data?.map(e=><div className="timeline-item" key={e.id}><span className="timeline-dot"/><div><span className="event-project">{e.project_name||'BIBLIOTECA'}</span><h3>{actionNames[e.action]||e.action}</h3><p>{String(e.payload.demand||e.payload.title||e.payload.query||e.payload.error||'')}</p>{e.ref_id&&<button onClick={()=>{navigate('map');select(e.ref_id!);}}>Ver referência <ArrowUpRight size={13}/></button>}</div><time>{new Date(e.created).toLocaleString('pt-BR',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}</time></div>)}</div></section>}
    {/* O player de vídeo vale para o mapa, a lista e as Escolhas. */}
-   {cinemaItem?.motion?.video&&<MotionCinema item={cinemaItem} detail={detail.data} sequence={sequence} copy={copy} onClose={()=>select(null)} onDetails={()=>setCinema(false)} onOpen={(id,ws)=>{select(id,ws);setCinema(true);}}/>}
+   {cinemaItem&&<MotionCinema item={cinemaItem} detail={detail.data} sequence={sequence} vocab={vocab} copy={copy} onClose={()=>select(null)} onDetails={()=>setCinema(false)} onOpen={(id,ws)=>{select(id,ws);setCinema(true);}}/>}
   </main>
   {notice&&<div className="toast" role="status" aria-label="Notificação"><Check size={16}/>{notice}{undo&&<button onClick={async()=>{const u=undo;setUndo(null);await change({id:u.id,membership_revision:u.membership_revision,workspace_id:u.workspace_id,state:'trashed'} as Reference,u.state);setUndo(null);}}>Desfazer</button>}<button aria-label="Fechar aviso" onClick={()=>setNotice('')}><X size={14}/></button></div>}
   {error&&<div className="toast error" role="alert">{error}<button aria-label="Fechar erro" onClick={()=>setError('')}><X size={14}/></button></div>}

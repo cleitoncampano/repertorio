@@ -144,6 +144,9 @@ test('eixo abre explicação, técnica e referências conectadas',async({page})=
  const technique=page.getByRole('complementary',{name:'Detalhes da técnica'});
  await expect(technique).toBeVisible();
  await technique.locator('.result-row').filter({hasText:'Abertura criativa'}).click();
+ // A referência abre em tela grande; a ficha completa fica a um clique.
+ await expect(page.locator('.cinema-info h2')).toHaveText('Abertura criativa');
+ await page.getByRole('button',{name:'Ficha completa'}).click();
  await expect(page.locator('.detail-body h2')).toHaveText('Abertura criativa');
 });
 
@@ -221,6 +224,8 @@ test('escolhas do agente: aprovar, comentar, cortar e abrir detalhes',async({req
  await expect(page.getByRole('status').filter({hasText:'sem resposta'})).toContainText('0 sem resposta');
  await expect.poll(async()=>(await (await request.get('/api/packs/'+pack.id)).json()).references[0].review?.note).toBe('Usar só a tipografia');
  await deck.getByRole('button',{name:'Ver detalhes de Abertura criativa'}).click();
+ await expect(page.locator('.cinema-info h2')).toHaveText('Abertura criativa');
+ await page.getByRole('button',{name:'Ficha completa'}).click();
  await expect(page.locator('.detail-body h2')).toHaveText('Abertura criativa');
  expect(errors).toEqual([]);
 });

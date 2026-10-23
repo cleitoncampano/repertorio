@@ -122,14 +122,15 @@ def test_video_guides_reach_the_agent(library,context):
     (root/'biblioteca/motion/guias').mkdir(parents=True)
     (root/'biblioteca/motion/guias/lancamento.md').write_text('# Lançamento de produto\n\nCurto ganha.')
     (root/'kit/motion').mkdir(parents=True);(root/'kit/motion/LEIA-ME.md').write_text('# Kit de motion')
-    assert library.guides()==['lancamento','kit']
+    (root/'biblioteca/guias').mkdir(parents=True);(root/'biblioteca/guias/abertura.md').write_text('# Abertura')
+    assert library.guides()==['abertura','lancamento','kit']
     with TestClient(create_app(library.settings,run_worker=False),base_url='http://127.0.0.1:8767') as client:
         headers={'Accept':'application/json, text/event-stream','MCP-Protocol-Version':'2025-11-25'}
         call=lambda method,params:client.post('/mcp',headers=headers,json={'jsonrpc':'2.0','id':1,'method':method,'params':params}).json()
         call('initialize',{'protocolVersion':'2025-11-25','capabilities':{},'clientInfo':{'name':'t','version':'1'}})
         listed=call('tools/call',{'name':'get_guide','arguments':{}})['result']
-        assert json.loads(listed['content'][0]['text'])==['lancamento','kit']
+        assert json.loads(listed['content'][0]['text'])==['abertura','lancamento','kit']
         text=call('tools/call',{'name':'get_guide','arguments':{'name':'lancamento'}})['result']['content'][0]['text']
         assert 'Curto ganha' in text
         assert call('tools/call',{'name':'get_guide','arguments':{'name':'../segredo'}})['result'].get('isError')
-    assert library.start(s.StartContext(project_id=context['project_id'],demand='Vídeo',workspace_ids=['pp-treta']))['video_guides_available']==['lancamento','kit']
+    assert library.start(s.StartContext(project_id=context['project_id'],demand='Vídeo',workspace_ids=['pp-treta']))['guides_available']==['abertura','lancamento','kit']

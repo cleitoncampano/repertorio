@@ -87,11 +87,12 @@ VIDEO_SUFFIXES={'.mp4','.mov','.webm'}
 
 
 def aspect(width,height):
-    """Formato de tela: horizontal (16:9, YouTube e sites), vertical (9:16, Reels e TikTok) ou quadrado (1:1 e 4:5, feed)."""
+    """Formato de tela: horizontal (16:9, YouTube, sites e slides), vertical (9:16, Reels, TikTok e stories)
+    ou quadrado (1:1 e 4:5, feed e carrossel). O 4:5 (0,8) fica com o feed, não com o vertical."""
     if not width or not height:
         return ''
     ratio=width/height
-    return 'horizontal' if ratio>1.2 else 'vertical' if ratio<.85 else 'quadrado'
+    return 'horizontal' if ratio>1.2 else 'vertical' if ratio<.7 else 'quadrado'
 
 
 def probe(path):

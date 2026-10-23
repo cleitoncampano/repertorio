@@ -76,10 +76,11 @@ def create_mcp(lib,worker):
 
     @mcp.tool()
     def get_guide(name:str='')->str:
-        """Guias para criar vídeos de motion, tirados da galeria do espaço Motion. Sem nome, lista os disponíveis.
-        Um guia por tipo de vídeo (lancamento, showreel, explicativo, dados, tipografia, historia, abstrato, vinheta), com estrutura
-        cena a cena, duração, ritmo, erros e prompt base; formatos (horizontal, vertical, quadrado); prompt (como pedir o vídeo);
-        kit (blocos do HyperFrames para cada movimento e um projeto inicial testado). Leia o do tipo antes de criar."""
+        """Guias de criação tirados do acervo. Sem nome, lista os disponíveis. Leia o do momento ou do tipo antes de criar.
+        Slides, carrosséis e peças de imagem, por papel na história: abertura, agenda-e-divisores, impacto-e-destaque,
+        apresentar-pessoas, explicar-e-sequenciar, agrupar-e-comparar, provar-com-dados, mostrar-e-localizar, fechamento e
+        formatos-e-carrossel; kit-apresentacao é o motor HTML. Vídeos de motion, por tipo: lancamento, showreel, explicativo,
+        dados, tipografia, historia, abstrato, vinheta; mais formatos, prompt e kit (blocos do HyperFrames e projeto inicial)."""
         if not name:
             from .db import dumps
             return dumps(lib.guides())

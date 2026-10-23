@@ -79,6 +79,17 @@ def register(lib,req):
     return lib.operation(oid)
 
 
+def friendly_error(exc):
+    """Falhas comuns do processamento em linguagem simples; as demais seguem como vieram."""
+    from PIL import UnidentifiedImageError
+    import pypdfium2
+    if isinstance(exc,UnidentifiedImageError):return 'O arquivo parece corrompido ou não é uma imagem que o app consegue ler.'
+    if isinstance(exc,Image.DecompressionBombError):return 'A imagem é grande demais para gerar a prévia.'
+    if isinstance(exc,pypdfium2.PdfiumError):return 'O PDF parece corrompido ou protegido por senha.'
+    if isinstance(exc,zipfile.BadZipFile):return 'A apresentação parece corrompida.'
+    return str(exc)
+
+
 class Worker:
     def __init__(self,lib):
         self.lib=lib;self.stop_event=threading.Event();self.thread=None
@@ -189,9 +200,10 @@ class Worker:
             try:clean_up(self.lib.settings,job['files']+job['previews'])
             except OSError:pass
         except Exception as exc:
+            error=friendly_error(exc)[:1500]
             with self.lib.db.engine.begin() as conn:
-                conn.execute(text("UPDATE operations SET state='failed',error=:e,updated=:t WHERE id=:id"),dict(e=str(exc)[:1500],t=now(),id=oid))
-                self.lib.db.log(conn,'operation_failed',row['ref_id'],row['context_id'],workspace_ids=self.lib.operation(oid)['target_workspace_ids'],operation_id=oid,error=str(exc)[:1500])
+                conn.execute(text("UPDATE operations SET state='failed',error=:e,updated=:t WHERE id=:id"),dict(e=error,t=now(),id=oid))
+                self.lib.db.log(conn,'operation_failed',row['ref_id'],row['context_id'],workspace_ids=self.lib.operation(oid)['target_workspace_ids'],operation_id=oid,error=error)
 
     def retry(self,oid):
         with self.lib.db.engine.begin() as conn:

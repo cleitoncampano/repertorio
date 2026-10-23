@@ -183,3 +183,16 @@ def test_files_added_in_the_app_become_published_references(library):
     assert ref['title']=='Capa da campanha' and ref['idea']==PENDING_IDEA and ref['state']=='published'
     assert not list((library.settings.home/'envios').rglob('*.png'))
     assert library.search(Search(workspace_ids=['referencias'],query='sem explicação'))['total']==1
+
+
+def test_processing_failures_are_explained_in_plain_language(library,context):
+    root=Path(library.context(context['id'])['root'])
+    (root/'quebrada.png').write_bytes(b'nao e imagem')
+    op=register(library,Register(context_id=context['id'],request_key='broken-image',data=data(),files=['quebrada.png'],target_workspace_ids=['referencias']))
+    Worker(library).process(op['id'])
+    failed=library.operation(op['id'])
+    assert failed['state']=='failed' and failed['error']=='O arquivo parece corrompido ou não é uma imagem que o app consegue ler.'
+    (root/'quebrado.pdf').write_bytes(b'%PDF-1.4 quebrado')
+    op=register(library,Register(context_id=context['id'],request_key='broken-pdf',data=data(),files=['quebrado.pdf'],target_workspace_ids=['referencias']))
+    Worker(library).process(op['id'])
+    assert library.operation(op['id'])['error']=='O PDF parece corrompido ou protegido por senha.'

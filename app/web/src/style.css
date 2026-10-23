@@ -521,3 +521,14 @@ button.product-primary { background: var(--accent); color: var(--accent-ink); bo
 .purge-actions>button:first-child{padding:8px 14px;border:1px solid var(--line);border-radius:6px;font-size:12px;color:var(--text)}
 @media (max-width:640px){.trash-toolbar{gap:10px}.trash-toolbar [role=status]{flex-basis:100%;order:3}.trash-check,.trash-all input{width:22px;height:22px}}
 @media(max-width:360px) { .nav-item { width: 34px; } }
+
+/* Aviso de serviço fora do ar e tela de erro inesperado */
+.service-banner{position:fixed;top:64px;left:50%;transform:translateX(-50%);z-index:120;max-width:calc(100vw - 32px);padding:10px 14px;border:1px solid var(--danger);border-radius:8px;background:var(--surface);color:var(--text);font-size:12px;line-height:1.5;box-shadow:0 10px 40px var(--shadow)}
+.crash-screen{min-height:100vh;background:var(--canvas)}
+.empty button:has(svg){display:inline-flex;align-items:center;gap:6px}
+.empty button svg{width:14px;height:14px;margin:0;opacity:1}
+/* Escolha do agente no diálogo de conexão */
+.agent-tabs{display:flex;flex-wrap:wrap;gap:2px;margin:0 0 10px}
+.agent-tabs button{padding:7px 10px;font-size:12px;border-radius:6px;color:var(--muted)}
+.agent-tabs button:hover{background:var(--surface-hover)}
+.agent-tabs button[aria-pressed="true"]{background:var(--surface-hover);color:var(--text)}

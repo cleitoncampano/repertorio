@@ -1,4 +1,6 @@
-<p align="center"><img src="app/mac/icone.png" width="96" alt="Ícone do Repertório"></p>
+<p align="center">
+  <img src="app/mac/icone.png" width="128" height="128" alt="Repertório: R branco em três fragmentos sobre fundo preto">
+</p>
 
 <h1 align="center">Repertório</h1>
 

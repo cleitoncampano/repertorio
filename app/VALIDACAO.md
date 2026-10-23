@@ -1,5 +1,9 @@
 # Validação da primeira versão
 
+## Troca de imagem e de material na tela grande em 22/10/2026
+
+- A pedido: com uma imagem aberta, as setas sobre a peça, ← →, dois dedos no trackpad e o deslize passam pelas imagens do material; os botões ‹ › do canto direito, ↑ ↓, N e P trocam de material. Na primeira e na última imagem, só aparece a seta que tem para onde ir. Material de uma imagem só não mostra setas sobre a peça, e ← → e o deslize trocam de material. Vídeos seguem trocando de vídeo pelas setas. A faixa mostra "Imagem 2 de 4". Conferido na apresentação Cérebro (4 imagens): →, seta, trackpad, canto › e ↑ fizeram cada um o esperado, sem erros. 60 testes da interface e 30 de navegador aprovados.
+
 ## Nova organização do mapa das imagens em 22/10/2026
 
 - Os quatro eixos do olhar saíram da tela. A legenda passa a oferecer **História**, **Recurso visual** e **Formato**, salvos por espaço (escolhas antigas de eixos viram recurso visual).

@@ -115,7 +115,7 @@ As seis fases foram executadas na ordem 0 a 5.
 ## Pendências fora do escopo do método
 
 Para decisão do Cleiton:
-- A busca lê pedidos descritivos de forma genérica e, sem `kind: "slide"`, traz as capas dos e-books; mesma pendência apontada nos testes da Perestroika.
+- Resolvido em 23/10/2026: a busca lia pedidos descritivos de forma genérica e, sem `kind: "slide"`, trazia as capas dos e-books. Ajuste medido em `docs/RETOMADA.md` (Busca dos agentes).
 - O template de gráficos saiu pelo Keynote com textos sobrepostos em algumas páginas (o PowerPoint o exporta incompleto).
 - O bloco de instruções de outros projetos conectados (por exemplo o Growmate Marketing) ainda cita só `metodo-perestroika`; atualiza com `connect --write-instructions` no projeto.
 

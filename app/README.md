@@ -99,7 +99,7 @@ Depois, abra uma nova sessão e peça: **“Busque no Repertório referências p
 | Ferramenta | Uso |
 |---|---|
 | `start_context` | Recebe `project_id`, `demand` e `workspace_ids`; retorna um `id` de contexto independente |
-| `search_references` | Recebe `request` com `query` em português comum, `context_id` e filtros opcionais. Frases conhecidas viram intenção, técnica, movimento ou estética (`understood`); o resto é buscado no texto. Sem `kind`, deixa mídias soltas de fora. `per_group` (padrão 1) limita peças da mesma apresentação. Devolve também uma prancha numerada (`contact_sheet`, padrão ligado) |
+| `search_references` | Recebe `request` com `query` em português comum, `context_id` e filtros opcionais. Frases conhecidas viram intenção, técnica, movimento ou estética (`understood`); o resto é buscado no texto, que inclui `how` e `good_for`. Palavra solta e comum vale pouco como item do vocabulário e também conta como texto; vêm primeiro as fichas que atendem mais partes do pedido, e a força só desempata (medição em `ferramentas/medir_busca.py`). Sem `kind`, deixa mídias soltas de fora. `per_group` (padrão 1) limita peças da mesma apresentação. Devolve também uma prancha numerada (`contact_sheet`, padrão ligado) |
 | `get_reference` | Recebe `reference_id` e `context_id` ou `workspace_ids`; `include_image: true` inclui imagem raster no resultado MCP (em vídeos, a prancha de oito quadros) |
 | `get_guide` | Guias de criação de vídeo: sem `name`, lista os disponíveis; com `name` (`lancamento`, `formatos`, `prompt`, `kit`...), devolve o texto |
 | `register_reference` | Recebe `request` com arquivos, ficha, `target_workspace_ids` e intenção de publicação; retorna uma operação |

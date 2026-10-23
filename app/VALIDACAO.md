@@ -1,5 +1,11 @@
 # Validação da primeira versão
 
+## Busca dos agentes para pedidos descritivos em 23/10/2026
+
+- A pedido: `search_references` passou a contar quantas partes do pedido cada ficha atende, a tratar palavra solta e comum do vocabulário como sinal fraco que também vale como texto e a buscar no "como funciona" e no "serve para" (migração `0005`, só nas fichas com o texto de busca padrão).
+- Medição com `ferramentas/medir_busca.py` em cópia do banco: nDCG@8 de 0,38 para 0,52, item certo entre os 3 primeiros em 25 de 35 pedidos (antes 18). Pedidos que já funcionavam ("números grandes", "linha do tempo", "comparar antes e depois", "abertura com impacto") ficaram iguais ou melhores.
+- Testes novos: leitura das palavras soltas, pedido descritivo à frente de item com força maior só pela palavra solta, e a migração (texto padrão refeito, texto próprio intacto). 52 testes do servidor aprovados. Backup antes, serviço reiniciado com a migração aplicada; conferido pela linha de comando e pelo MCP.
+
 ## Espaço e método SOAP em 23/10/2026
 
 - A pedido: o material da SOAP virou o espaço SOAP (75 apresentações, 507 slides, `reusable=false`), 62 fichas e modelos em `biblioteca/metodos/soap/` servidos por `get_guide`, e as skills `soap-fala` e `soap-pitch` no catálogo (categoria Método).

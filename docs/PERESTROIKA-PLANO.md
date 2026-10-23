@@ -87,7 +87,7 @@ As cinco fases foram executadas na ordem 1, 4, 2, 3 e 5: o espaço visual entrou
 ## Pendências fora do escopo do método
 
 Apontadas pelos testes, envolvem a busca e os guias de todos os espaços; ficam para decisão do Cleiton:
-- A busca lê palavras comuns como filtro ("tela" vira MOSTRAR, "grade" vira AGRUPAR, "segundos" vira ordinal) e não acha "cronômetro" nem "chat"; `get_reference` traz uma lista longa de apresentações relacionadas só por técnica.
+- Resolvido em 23/10/2026: a busca lia palavras comuns como filtro ("tela" virava MOSTRAR) e não achava "cronômetro" nem "chat" (ver `docs/RETOMADA.md`, Busca dos agentes). Continua pendente: `get_reference` traz uma lista longa de apresentações relacionadas só por técnica.
 - Algumas fichas de slide de Referências herdam a ideia da apresentação e vêm sem `como_funciona`.
 - Não há referências de interface de atendimento (chat, ticket, painel) fora do espaço Growmate, e os guias por momento citam o Growmate mesmo quando o usuário não escolheu esse espaço.
 - `biblioteca/processo.md` (passo 3) ainda manda usar `roteiro.py` e `buscar.py`, que o AGENTS.md diz não refletirem a curadoria.

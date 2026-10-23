@@ -53,7 +53,8 @@ http://127.0.0.1:8766. Ele fica sempre ligado no Mac do dono do projeto (ícone 
 ## Busca
 
 O Repertório entende pedidos em português comum: "abertura com impacto", "números grandes em fundo escuro", "linha do tempo da empresa".
-Frases conhecidas viram intenção, técnica, movimento ou estética (o campo `understood` mostra a leitura) e o resto é buscado no texto.
+Frases conhecidas viram intenção, técnica, movimento ou estética (o campo `understood` mostra a leitura) e o resto é buscado no texto, inclusive no "como funciona" e no "serve para" das fichas. Palavra solta e comum ("tela", "ligação") vale pouco como item do vocabulário e também é buscada no texto. Vêm primeiro as fichas que atendem mais partes do pedido; a força só desempata. Por isso, descreva o que quer ver.
+Para mudar a pontuação, meça antes e depois com `ferramentas/medir_busca.py` (35 pedidos reais com notas em `ferramentas/busca_pedidos.json`).
 Sem `kind`, mídias soltas ficam de fora (use `kind="midia"` para buscá-las); `per_group` evita repetir a mesma apresentação.
 A resposta traz uma prancha numerada com as prévias, na ordem da lista: olhe a prancha antes de abrir fichas.
 

@@ -7,12 +7,15 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 from .db import dumps
 
-STOP=set('a o e de da do das dos em no na nos nas um uma uns umas para pra por com sem que se ao aos as os ou mais muito bem tipo algo coisa quero preciso queria gostaria fazer criar montar slide slides apresentacao apresentacoes palestra deck referencia referencias ideia ideias sobre estilo jeito forma visual bonito legal cima baixo the of and'.split())
+STOP=set('a o e de da do das dos em no na nos nas um uma uns umas para pra por com sem que se ao aos as os ou mais muito bem tipo algo coisa quero preciso queria gostaria fazer criar montar slide slides apresentacao apresentacoes palestra deck referencia referencias ideia ideias sobre estilo jeito forma visual bonito legal cima baixo num numa ele ela eles elas onde quem como entre dentro vai cada seu sua seus suas isso esse essa este esta pelo pela pelos pelas nem ja tem ser sao foi mesmo outro outra tambem so quando qual quais ate the of and'.split())
 # IDs do vocabulário genéricos demais para valer sozinhos (o nome completo continua valendo)
 SKIP={('movements','texto')}
 KINDS='arquivo,slide,referencia,criacao'
 KIND_ORDER={'slide':0,'arquivo':1,'referencia':2,'criacao':3,'midia':4}
 KIND_NAMES={'arquivo':'apresentação','slide':'slide','referencia':'referência externa','criacao':'criação','midia':'mídia'}
+# Pontuação: fração das partes do pedido que a ficha atende (pelo vocabulário ou pelo texto), relevância do texto (BM25),
+# força da ficha (só desempata) e o peso de um item do vocabulário pedido com palavra solta e comum ("tela", "abertura").
+COVER_WEIGHT,RANK_WEIGHT,STRENGTH_WEIGHT,LOOSE_WEIGHT=5.0,2.0,0.3,0.3
 # campo da ficha, chave no vocabulário, rótulo, peso na pontuação
 FIELDS=[('intentions','intencoes','intenção',3.0),('techniques','tecnicas','técnica',2.5),('movements','movimentos','movimento',2.0),('aesthetics','esteticas','estética',1.5)]
 # Jeitos comuns de pedir cada item. Os nomes e IDs do vocabulário já entram sozinhos.
@@ -133,10 +136,13 @@ def singular(w):
 
 
 def phrases(vocab):
-    table={}
-    def add(text,field,value):
+    """Frase normalizada -> itens do vocabulário. Palavra solta de EXTRA fica marcada como fraca (loose)."""
+    table={};loose=set();named=set()
+    def add(text,field,value,extra=False):
         key=tuple(singular(w) for w in norm(text))
-        if key and (field,value) not in table.setdefault(key,[]):table[key].append((field,value))
+        if not key:return
+        if (field,value) not in table.setdefault(key,[]):table[key].append((field,value))
+        (loose if extra and len(key)==1 else named).add((key,field,value))
     for field,key,_,_ in FIELDS:
         known=set()
         for item in vocab.get(key,{}).get('itens',[]):
@@ -146,14 +152,22 @@ def phrases(vocab):
             if isinstance(item,dict) and item.get('nome'):add(item['nome'],field,value)
         for value,extra in EXTRA[field].items():
             if value in known:
-                for text in extra:add(text,field,value)
-    return table
+                for text in extra:add(text,field,value,extra=True)
+    return table,loose-named
+
+
+def term(word):
+    s=singular(word);return s if word.startswith(s) else word
 
 
 def interpret(query,vocab):
-    """Converte o pedido em itens do vocabulário; o que sobra vira busca por texto."""
-    table=phrases(vocab);longest=max(map(len,table),default=1)
-    words=norm(query);found={f:[] for f,*_ in FIELDS};understood=[];text=[]
+    """Divide o pedido em partes: itens do vocabulário e palavras buscadas no texto das fichas.
+
+    Cada parte é (itens, palavras). Estética e palavra solta e comum ("tela", "ligação") marcam o item e continuam valendo
+    como texto, porque costumam ser também o assunto; os itens lidos só desse jeito (weak) valem menos na pontuação."""
+    table,loose=phrases(vocab);longest=max(map(len,table),default=1)
+    words=norm(query);found={f:[] for f,*_ in FIELDS};understood=[];parts={};strong=set();weak=set()
+    labels={f:l for f,_,l,_ in FIELDS}
     i=0
     while i<len(words):
         for n in range(min(longest,len(words)-i),0,-1):
@@ -161,27 +175,25 @@ def interpret(query,vocab):
             if key in table:
                 for field,value in table[key]:
                     if value not in found[field]:found[field].append(value)
-                labels={f:l for f,_,l,_ in FIELDS}
+                    (weak if (key,field,value) in loose else strong).add((field,value))
                 understood.append(dict(term=' '.join(words[i:i+n]),meaning=[f'{labels[f]}: {v}' for f,v in table[key]]))
-                # estética é sinal fraco e costuma ser também o assunto: continua valendo como texto
-                if all(f=='aesthetics' for f,_ in table[key]):text+=[w for w in words[i:i+n] if w not in STOP]
+                text=all(f=='aesthetics' or (key,f,v) in loose for f,v in table[key])
+                parts[(tuple(table[key]),tuple(term(w) for w in words[i:i+n] if w not in STOP) if text else ())]=1
                 i+=n;break
         else:
-            if words[i] not in STOP and len(words[i])>1:text.append(words[i])
+            if words[i] not in STOP and len(words[i])>1:parts[((),(term(words[i]),))]=1
             i+=1
-    terms=[]
-    for w in text:
-        s=singular(w);t=s if w.startswith(s) else w
-        if t not in terms:terms.append(t)
-    return found,understood,terms[:30]
+    parts=list(parts)[:30]
+    terms=list(dict.fromkeys(t for _,ws in parts for t in ws))
+    return found,understood,terms,parts,weak-strong
 
 
 def smart_search(lib,args,log=True):
     ids=lib.scope(args.workspace_ids,args.context_id)
-    found,understood,terms=interpret(args.query,lib.meta('vocabulary',{}))
+    found,understood,terms,parts,weak=interpret(args.query,lib.meta('vocabulary',{}))
     params={}
     clauses=lib.filters(args.model_copy(update={'kind':args.kind or KINDS}),params)
-    soft=[];join='';rank='NULL AS rank'
+    soft=[];join='';rank='NULL AS rank';flags=''
     for field,*_ in FIELDS:
         if found[field]:
             params['v_'+field]=dumps(found[field])
@@ -190,20 +202,27 @@ def smart_search(lib,args,log=True):
         params['match']=' OR '.join('"'+w+'"*' for w in terms)
         join=' LEFT JOIN (SELECT id AS sid,bm25(ref_search,0,5,1) AS rank FROM ref_search WHERE ref_search MATCH :match) t ON t.sid=r.id'
         rank='t.rank AS rank';soft.append('t.sid IS NOT NULL')
+        # quais palavras do pedido cada ficha tem, calculado no próprio banco só para as fichas encontradas
+        for n,w in enumerate(terms):
+            params[f'w{n}']='"'+w+'"*';flags+=f',r.id IN (SELECT id FROM ref_search WHERE ref_search MATCH :w{n}) AS w{n}'
     if soft:clauses.append('('+' OR '.join(soft)+')')
     rows=lib.db.query(f'''SELECT r.id,r.kind,r.parent_id,{rank},COALESCE(json_extract(r.payload,'$.strength'),3) AS strength,
         json_extract(r.payload,'$.intentions') AS intentions,json_extract(r.payload,'$.techniques') AS techniques,
-        json_extract(r.payload,'$.movements') AS movements,json_extract(r.payload,'$.aesthetics') AS aesthetics
+        json_extract(r.payload,'$.movements') AS movements,json_extract(r.payload,'$.aesthetics') AS aesthetics{flags}
         FROM refs r{join} WHERE {' AND '.join(clauses)}''',**params)
     best=min([r['rank'] for r in rows if r['rank'] is not None],default=0)
     scored=[]
     for r in rows:
-        score=0.7*r['strength'];hits=[]
-        if r['rank'] is not None and best<0:
-            score+=3*r['rank']/best;hits.append('texto: '+' '.join(terms))
+        score=STRENGTH_WEIGHT*r['strength'];hits=[]
+        # quantas partes do pedido a ficha atende: quem atende todas passa à frente de quem só repete uma
+        tags={(f,v) for f,*_ in FIELDS for v in json.loads(r[f] or '[]')};words={w for n,w in enumerate(terms) if r[f'w{n}']}
+        if parts:score+=COVER_WEIGHT*sum(1 for t,w in parts if tags.intersection(t) or words.intersection(w))/len(parts)
+        if words:
+            score+=RANK_WEIGHT*r['rank']/best if r['rank'] is not None and best<0 else 0
+            hits.append('texto: '+' '.join(t for t in terms if t in words))
         for field,_,label,weight in FIELDS:
-            common=[v for v in found[field] if v in json.loads(r[field] or '[]')]
-            score+=weight*len(common);hits+=[f'{label}: {v}' for v in common]
+            common=[v for v in found[field] if (field,v) in tags]
+            score+=sum(weight*(LOOSE_WEIGHT if (field,v) in weak else 1) for v in common);hits+=[f'{label}: {v}' for v in common]
         scored.append((score,r,hits))
     scored.sort(key=lambda x:(-x[0],KIND_ORDER.get(x[1]['kind'],9),x[1]['id']))
     seen={};kept=[]

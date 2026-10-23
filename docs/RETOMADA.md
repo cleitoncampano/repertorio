@@ -1,5 +1,11 @@
 # Retomada do projeto
 
+## Landing page com identidade Growmate em 23/10/2026
+
+A pedido do Cleiton, revisão visual v2 no Growmate Marketing, `produtos/repertorio/landing-page/dist/index.html`, aberta localmente no Chrome sem login. Usa Inter Tight, ícones do kit Growmate, roxo de produtos, o R aprovado e telas reais de acervo, mapa, motion, inspiração e ficha. Consulta pelo MCP somente ao espaço Growmate, contexto `6ed179f9-3dc3-43d2-bc8f-0879c28d2f6c`. Capturas em cópia temporária do banco; nenhum original ou dado de execução entra na página. Inspeção final sem falhas em 1440, 768 e 390 pixels; interações, vídeo, movimento reduzido e arquivo local testados também em 320 pixels. Continuidade e evidências na pasta da produção.
+
+Oferta ainda por conciliar: o pedido desta conversa inclui aplicativo + acervo, mas o commit `eaa097d` das 09:06 em `docs/produto/COMERCIALIZACAO.md` registra uma decisão posterior de vender só o aplicativo, com biblioteca vazia. Pergunta enviada ao Cleiton; preservar a decisão comercial existente até a resposta. A fonte visual v2 está no Sites (`3fbef323260475266f251a6930bc7192cd3aa8f6`), ainda sem atualizar a publicação privada. Próxima ação: incorporar a resposta sobre a oferta e publicar no mesmo Site. R$ 97 provisório; checkout pendente.
+
 ## Ler o conteúdo das skills em 23/10/2026
 
 A pedido do Cleiton, cada cartão da aba Skills ganhou **Ler a skill**: abre o texto da SKILL.md formatado (títulos, listas, tabelas, código), sem a ficha de abertura, e um seletor com os arquivos de apoio em texto da mesma pasta; links entre esses arquivos abrem dentro da leitura e **Montar pedido** leva ao pedido. O texto vira elementos da página sem executar HTML do arquivo. Servidor: `GET /api/skills/{id}/content?file=` (`Library.skill_content`), só para skills do catálogo, procurando em `CLAUDE_CONFIG_DIR/skills`, `~/.claude/skills`, `~/.agents/skills`, `~/.codex/skills` e `~/.codex/skills/.system` (`REPERTORIO_SKILL_DIRS` troca a lista); fora da pasta da skill, `node_modules`, pastas ocultas e arquivos que não são texto ficam de fora. Skill não instalada mostra o aviso e o link do repositório. Neste Mac, 25 das 26 skills do catálogo abrem; `Presentations` é plugin do Codex sem arquivo local. Testes: 70 do servidor, 70 da interface e 37 de navegador aprovados; interface compilada e serviço reiniciado.

@@ -280,12 +280,21 @@ def lotes(args):
         print(f'lote-{n + 1:02d}', len(chunk))
 
 
+def aspect(width, height):
+    """Formato de tela: horizontal (16:9, YouTube e sites), vertical (9:16, Reels e TikTok) ou quadrado (1:1 e 4:5, feed)."""
+    if not width or not height:
+        return ''
+    ratio = width / height
+    return 'horizontal' if ratio > 1.2 else 'vertical' if ratio < .85 else 'quadrado'
+
+
 def montar(args):
     """Une coleta, medidas e classificação criativa numa ficha por vídeo."""
     data = json.loads(CATALOG.read_text())
     vocab = json.loads((ROOT / 'dados/vocabulario.json').read_text())
     allowed = {k: {i['id'] if isinstance(i, dict) else i for i in vocab[v]['itens']}
                for k, v in [('techniques', 'tecnicas'), ('intentions', 'intencoes'), ('movements', 'movimentos'), ('aesthetics', 'esteticas'), ('tone', 'tons')]}
+    genres = json.loads((ROOT / 'dados/motion/generos.json').read_text())['videos']
     fichas = {}
     for f in sorted(WORK.glob('fichas-*.jsonl')):
         for line in f.read_text().splitlines():
@@ -317,6 +326,7 @@ def montar(args):
             'skill': e.get('skill'), 'content_tags': e.get('contentTags', []), 'source_tags': e.get('tags', []),
             'media': {'poster': str((folder / 'capa.webp').relative_to(ROOT)), 'loop': str((folder / 'loop.mp4').relative_to(ROOT)),
                       'video': str((folder / 'video.mp4').relative_to(ROOT)), 'storyboard': str((folder / 'quadros.jpg').relative_to(ROOT))},
+            'genres': genres.get(e['slug'], []), 'aspect': aspect(meta.get('width') or e.get('width'), meta.get('height') or e.get('height')),
             'width': meta.get('width') or e.get('width'), 'height': meta.get('height') or e.get('height'),
             'duration': meta.get('duration'), 'fps': meta.get('fps'), 'audio': meta.get('audio'),
         })
@@ -328,7 +338,7 @@ def montar(args):
         rows.append({'id': 'motion-' + t['slug'], 'slug': t['slug'], 'collection': 'prompt-motion', 'template': True,
                      **{k: f.get(k) for k in KEYS if f.get(k) is not None},
                      'title_original': t['title'], 'prompt': f.get('prompt') or '\n\n'.join(t.get('text') or []),
-                     'author': 'Prompt Motion', 'handle': 'p4nthera_', 'page': t['page'], 'content_tags': [], 'source_tags': ['template'],
+                     'genres': ['modelo'], 'aspect': 'modelo', 'author': 'Prompt Motion', 'handle': 'p4nthera_', 'page': t['page'], 'content_tags': [], 'source_tags': ['template'],
                      'media': {'poster': str((DEST / t['slug'] / 'capa.webp').relative_to(ROOT))}})
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(''.join(json.dumps(r, ensure_ascii=False) + '\n' for r in rows))

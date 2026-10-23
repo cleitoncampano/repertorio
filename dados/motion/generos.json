@@ -1,0 +1,786 @@
+{
+ "sobre": "Tipo de vídeo de cada peça da galeria Prompt Motion, para organizar o espaço Motion no mapa. O primeiro tipo é o principal; o segundo, quando houver, também vira conexão. Revisado à mão a partir das fichas.",
+ "tipos": {
+  "lancamento": "Lançamento de produto",
+  "showreel": "Showreel de motion",
+  "explicativo": "Explicativo",
+  "dados": "Dados e números",
+  "tipografia": "Tipografia e mensagem",
+  "historia": "Histórias e personagens",
+  "abstrato": "Arte abstrata e 3D",
+  "vinheta": "Marca e vinheta",
+  "modelo": "Prompt-modelo"
+ },
+ "videos": {
+  "stephanlivera-df17a2": [
+   "showreel"
+  ],
+  "twoclipping-5cba86": [
+   "lancamento"
+  ],
+  "shneural-2abdfa": [
+   "showreel",
+   "abstrato"
+  ],
+  "ajith-io-b5626e": [
+   "showreel"
+  ],
+  "twoclipping-221cab": [
+   "lancamento"
+  ],
+  "twoclipping-d89be5": [
+   "lancamento"
+  ],
+  "himanshutwtxs-5f4b43": [
+   "showreel",
+   "explicativo"
+  ],
+  "gabrielbuzziv-4ff0c6": [
+   "lancamento"
+  ],
+  "lexnlin-038035": [
+   "lancamento",
+   "vinheta"
+  ],
+  "ror-fly-9950f1": [
+   "explicativo"
+  ],
+  "notdwd-c2037d": [
+   "lancamento"
+  ],
+  "thismacapital-dfba20": [
+   "lancamento"
+  ],
+  "lexnlin-f9b3bd8": [
+   "lancamento"
+  ],
+  "ajith-io-c52e09": [
+   "explicativo",
+   "lancamento"
+  ],
+  "twoclipping-6dd14e": [
+   "lancamento"
+  ],
+  "samuel-yostt-891f87": [
+   "lancamento"
+  ],
+  "emollick-8661a8": [
+   "explicativo"
+  ],
+  "lexnlin-6161a6": [
+   "lancamento"
+  ],
+  "steventey-0d20e4": [
+   "lancamento"
+  ],
+  "alex-prompter-1ea044": [
+   "explicativo"
+  ],
+  "majin-appsheet-2d3c1a": [
+   "vinheta"
+  ],
+  "tdinh-me-815acb": [
+   "vinheta"
+  ],
+  "thayto-dev-44b911": [
+   "lancamento"
+  ],
+  "sab8a-364a5a": [
+   "tipografia"
+  ],
+  "anthonyriera-9b1b2a": [
+   "lancamento"
+  ],
+  "davidmarcus-a28a60": [
+   "tipografia",
+   "lancamento"
+  ],
+  "ultimaxbt-bbebf5": [
+   "showreel",
+   "abstrato"
+  ],
+  "rossaxbt-94583b": [
+   "lancamento"
+  ],
+  "itsolelehmann-e47532": [
+   "historia"
+  ],
+  "linearuncle-5d2bae": [
+   "explicativo"
+  ],
+  "jacksonfall-54b2ac": [
+   "showreel"
+  ],
+  "kloss-xyz-fe0c31": [
+   "explicativo"
+  ],
+  "jasonzhou1993-8595e0": [
+   "showreel"
+  ],
+  "robj3d3-b18fad": [
+   "vinheta",
+   "lancamento"
+  ],
+  "ho-ba-f3f0e9": [
+   "lancamento"
+  ],
+  "itisrazak-3ad902": [
+   "lancamento"
+  ],
+  "notdwd-7de38a": [
+   "lancamento",
+   "vinheta"
+  ],
+  "viktoroddy-98c1d8": [
+   "lancamento",
+   "dados"
+  ],
+  "ismailfahmi-557268": [
+   "dados"
+  ],
+  "melvynx-6cde6c": [
+   "lancamento",
+   "tipografia"
+  ],
+  "rossaxbt-3085b7": [
+   "lancamento"
+  ],
+  "tequilafunks-97f6c9": [
+   "showreel",
+   "abstrato"
+  ],
+  "sudo-kiran-49176d": [
+   "showreel",
+   "abstrato"
+  ],
+  "lukasersil-0ed38e": [
+   "showreel",
+   "abstrato"
+  ],
+  "nft-chen-5f8bb0": [
+   "historia"
+  ],
+  "axtonliu-0b861d": [
+   "historia"
+  ],
+  "gizakdag-cf4ae6": [
+   "tipografia",
+   "abstrato"
+  ],
+  "mandelduck-95fd08": [
+   "historia"
+  ],
+  "gorden-sun-041f56": [
+   "abstrato"
+  ],
+  "ajith-io-4c248f": [
+   "lancamento"
+  ],
+  "polydao-7a572b": [
+   "explicativo"
+  ],
+  "ajith-io-ea7f2d": [
+   "lancamento"
+  ],
+  "ayushunleashed-ece3e3": [
+   "showreel"
+  ],
+  "chatgptastra-0d95c7": [
+   "showreel",
+   "explicativo"
+  ],
+  "ultimaxbt-2ddf1e": [
+   "lancamento"
+  ],
+  "monokern-ade5b6": [
+   "showreel"
+  ],
+  "kloss-xyz-15182a": [
+   "tipografia"
+  ],
+  "0xnfrith-5be616": [
+   "explicativo"
+  ],
+  "math-files-39c9d0": [
+   "showreel"
+  ],
+  "hanifproduktif-54bdee": [
+   "showreel",
+   "tipografia"
+  ],
+  "nikolajankovic-ce4ff4": [
+   "explicativo",
+   "lancamento"
+  ],
+  "ddryo-loos-300829": [
+   "lancamento",
+   "explicativo"
+  ],
+  "eyishazyer-af035b": [
+   "showreel"
+  ],
+  "blue-clarity-ef56d0": [
+   "showreel"
+  ],
+  "roundtablespace-d3a1be": [
+   "showreel"
+  ],
+  "1littlecoder-9fef89": [
+   "tipografia"
+  ],
+  "sayan-shanky-f850d8": [
+   "explicativo"
+  ],
+  "yunn260414-60d996": [
+   "explicativo"
+  ],
+  "brainextends-e19ac3": [
+   "lancamento"
+  ],
+  "pankajkumar-dev-0bee87": [
+   "tipografia"
+  ],
+  "sudo-kiran-b055de": [
+   "explicativo"
+  ],
+  "raphaelaubryy-4b137e": [
+   "showreel",
+   "abstrato"
+  ],
+  "jake11moran-a269c4": [
+   "historia"
+  ],
+  "arjunsh1607-93005d": [
+   "showreel"
+  ],
+  "codestackr-c071bf": [
+   "showreel"
+  ],
+  "hqmank-7c61f1": [
+   "lancamento"
+  ],
+  "ratheejaisal-1f4538": [
+   "lancamento"
+  ],
+  "tankazunori0914-0fc886": [
+   "dados"
+  ],
+  "prasad-pilla-2c0cba": [
+   "lancamento",
+   "explicativo"
+  ],
+  "dale-vaz-cc612a": [
+   "lancamento"
+  ],
+  "sarut0bisasuke-cefa43": [
+   "explicativo"
+  ],
+  "maxalexweber-67688b": [
+   "lancamento"
+  ],
+  "ezshine-c90d73": [
+   "lancamento"
+  ],
+  "samuel-spitz-974923": [
+   "showreel"
+  ],
+  "tak3sh8-be5012": [
+   "explicativo"
+  ],
+  "hbcoop-de365c": [
+   "abstrato"
+  ],
+  "aistocksavvy-3fb9f5": [
+   "lancamento"
+  ],
+  "techyoutbe-945b56": [
+   "lancamento"
+  ],
+  "micheleharmonic-77628e": [
+   "abstrato",
+   "tipografia"
+  ],
+  "lemomo-ai-0d9cff": [
+   "explicativo"
+  ],
+  "triglyceee-bd5b08": [
+   "explicativo",
+   "dados"
+  ],
+  "zheke-38deff": [
+   "showreel",
+   "tipografia"
+  ],
+  "deifosv-04e4d3": [
+   "lancamento"
+  ],
+  "sudeepsd-1a3485": [
+   "explicativo",
+   "lancamento"
+  ],
+  "visheshbaghell-3aba37": [
+   "lancamento"
+  ],
+  "imthatcarlos-e04bfe": [
+   "explicativo",
+   "lancamento"
+  ],
+  "paulo-kombucha-96431c": [
+   "lancamento"
+  ],
+  "gigabit-million-16b3a0": [
+   "lancamento"
+  ],
+  "sudo-kiran-6609ed": [
+   "explicativo",
+   "lancamento"
+  ],
+  "demonugc-4c5753": [
+   "lancamento"
+  ],
+  "jhylee95-e1152f": [
+   "lancamento"
+  ],
+  "sachaarbonel-8f14f4": [
+   "lancamento"
+  ],
+  "gdgtify-287ddf": [
+   "tipografia"
+  ],
+  "ercankeskinx-ec2568": [
+   "lancamento"
+  ],
+  "influencer-seo-ce8c33": [
+   "tipografia",
+   "showreel"
+  ],
+  "agonaliu-466a8f": [
+   "lancamento"
+  ],
+  "daniel-haida-8691d4": [
+   "lancamento"
+  ],
+  "bthreeagency-b9b8d9": [
+   "lancamento",
+   "abstrato"
+  ],
+  "henkvaness-0e06af": [
+   "explicativo"
+  ],
+  "ndhabarde11-f155b4": [
+   "showreel",
+   "abstrato"
+  ],
+  "topi-003-9ca6b5": [
+   "showreel"
+  ],
+  "rendesr-86be44": [
+   "showreel"
+  ],
+  "bogdandragomir-35e024": [
+   "lancamento"
+  ],
+  "en-ra-81c6dd": [
+   "lancamento"
+  ],
+  "jesscaroline7-1ff7cb": [
+   "lancamento",
+   "dados"
+  ],
+  "theviableedge-9065be": [
+   "lancamento"
+  ],
+  "0xfemyn-e114d3": [
+   "lancamento"
+  ],
+  "misbahsy-80eaec": [
+   "lancamento"
+  ],
+  "reyzostyle-b55864": [
+   "lancamento"
+  ],
+  "mdaman010-e7226a": [
+   "explicativo",
+   "abstrato"
+  ],
+  "motiondsgnr-9dcfa6": [
+   "showreel"
+  ],
+  "astrodevil-3f2054": [
+   "showreel",
+   "dados"
+  ],
+  "hoyoyoda-3a5c08": [
+   "historia"
+  ],
+  "macrohou-33959d": [
+   "lancamento"
+  ],
+  "madhav-xo-f97f20": [
+   "abstrato"
+  ],
+  "buildfastwithai-ed9447": [
+   "abstrato"
+  ],
+  "rames-jusso-589f80": [
+   "abstrato"
+  ],
+  "topi-003-b0e12c": [
+   "historia",
+   "showreel"
+  ],
+  "ik-builds-b8bdcf": [
+   "lancamento",
+   "explicativo"
+  ],
+  "wani-shola-16ca7a": [
+   "showreel",
+   "lancamento"
+  ],
+  "manuelogomigo-f33ca9": [
+   "lancamento"
+  ],
+  "0xevinho-3777d8": [
+   "historia",
+   "dados"
+  ],
+  "chrisjdimarco-f068db": [
+   "historia",
+   "vinheta"
+  ],
+  "jayscambler-3f8889": [
+   "lancamento"
+  ],
+  "utopyaszx-1b2f94": [
+   "lancamento"
+  ],
+  "aschapmann-131210": [
+   "lancamento"
+  ],
+  "marklaunches-3b9492": [
+   "lancamento"
+  ],
+  "web3wesley-7bb108": [
+   "showreel"
+  ],
+  "reflex-cloud-72ffe5": [
+   "tipografia",
+   "lancamento"
+  ],
+  "1stnoel-c20a89": [
+   "lancamento",
+   "explicativo"
+  ],
+  "ryzoft-4f85bd": [
+   "historia"
+  ],
+  "kamstudiolabs-c9bb28": [
+   "historia"
+  ],
+  "devius-maximus-beab45": [
+   "lancamento"
+  ],
+  "elliot-garreffa-f334bc": [
+   "lancamento"
+  ],
+  "adamdesgns-478d6d": [
+   "lancamento"
+  ],
+  "andginja-333d32": [
+   "showreel",
+   "lancamento"
+  ],
+  "l3d1c-0e35a3": [
+   "lancamento"
+  ],
+  "wozu-co-242285": [
+   "lancamento"
+  ],
+  "buildfastwithai-53234e": [
+   "explicativo",
+   "historia"
+  ],
+  "allforbigfire-86ff3c": [
+   "historia"
+  ],
+  "tstfully-0aa6b4": [
+   "lancamento"
+  ],
+  "bizibeast-10f264": [
+   "lancamento"
+  ],
+  "heyiammallik-e72d17": [
+   "showreel",
+   "tipografia"
+  ],
+  "sudiyasa-f48ac9": [
+   "dados",
+   "abstrato"
+  ],
+  "davidshulmanfl-371638": [
+   "historia"
+  ],
+  "demitiyageekzen-7770ad": [
+   "historia",
+   "tipografia"
+  ],
+  "faroukzy-9ff23e": [
+   "historia"
+  ],
+  "m1n9-k7-ff9ab9": [
+   "showreel"
+  ],
+  "quickdesignio-dd93d0": [
+   "lancamento"
+  ],
+  "rebutonepress-810f78": [
+   "historia"
+  ],
+  "slvdev-64c45a": [
+   "lancamento"
+  ],
+  "sudo-kiran-4f8b59": [
+   "explicativo",
+   "lancamento"
+  ],
+  "xelandre-363f00": [
+   "lancamento"
+  ],
+  "justincooperman-e7bbc4": [
+   "lancamento"
+  ],
+  "henkpoley-3d3407": [
+   "showreel"
+  ],
+  "fractadev-149adc": [
+   "lancamento"
+  ],
+  "gautam-mer1-2ae354": [
+   "lancamento"
+  ],
+  "levabashidze-2d713a": [
+   "showreel"
+  ],
+  "miskinho-443898": [
+   "lancamento",
+   "showreel"
+  ],
+  "zaqailo-212ad3": [
+   "showreel",
+   "abstrato"
+  ],
+  "crazyalphaaa-bc7e75": [
+   "showreel"
+  ],
+  "fionntobin-97b7af": [
+   "showreel"
+  ],
+  "francoxavier33-d2dfd2": [
+   "lancamento"
+  ],
+  "itsuki-dev-10942d": [
+   "showreel"
+  ],
+  "kangaroohere-b10f8d": [
+   "lancamento"
+  ],
+  "kyonax-on-tech-aabc1d": [
+   "showreel",
+   "lancamento"
+  ],
+  "loicrambo-ad6830": [
+   "historia"
+  ],
+  "madebyjmayala-b9204d": [
+   "lancamento"
+  ],
+  "tolgayhickiran-e90799": [
+   "showreel"
+  ],
+  "antonio-kodheli-490109": [
+   "lancamento"
+  ],
+  "oliahmed205-3e31c4": [
+   "lancamento"
+  ],
+  "aisongman-71ffac": [
+   "historia"
+  ],
+  "danilowm-d3720d": [
+   "lancamento"
+  ],
+  "kmasiff-cc72cb": [
+   "lancamento"
+  ],
+  "pluginplay-3d4006": [
+   "explicativo",
+   "historia"
+  ],
+  "rammanq-f5a90f": [
+   "lancamento",
+   "dados"
+  ],
+  "robvjourney-ce3e1a": [
+   "lancamento"
+  ],
+  "vanshwtfff-db0466": [
+   "showreel",
+   "abstrato"
+  ],
+  "3xtihor-0f6911": [
+   "showreel"
+  ],
+  "amol909s-27533e": [
+   "lancamento"
+  ],
+  "cansincengiz-me-cf68dd": [
+   "lancamento"
+  ],
+  "ghinaiya-nirmal-5d8fec": [
+   "showreel"
+  ],
+  "johnsavage-ai-b091c0": [
+   "showreel",
+   "tipografia"
+  ],
+  "leonkohli-6dc01b": [
+   "showreel"
+  ],
+  "marouanegazouzi-6071d5": [
+   "lancamento",
+   "showreel"
+  ],
+  "mehul4795-4a7007": [
+   "lancamento"
+  ],
+  "safarkhanshuvo-ffd52d": [
+   "showreel",
+   "tipografia"
+  ],
+  "sahildesigner23-ee3155": [
+   "showreel"
+  ],
+  "abderrahmen-g-9e8ed0": [
+   "historia"
+  ],
+  "palashbagchi11-0a4b6b": [
+   "dados",
+   "lancamento"
+  ],
+  "x4b47x-9cc84f": [
+   "historia"
+  ],
+  "kamstudiolabs-447565": [
+   "abstrato"
+  ],
+  "grace-sunnyy-29bc61": [
+   "showreel"
+  ],
+  "blueoctopusai-dd17bd": [
+   "explicativo"
+  ],
+  "apoorvjain25-d24184": [
+   "explicativo",
+   "historia"
+  ],
+  "deebeeeff-50fcd0": [
+   "vinheta"
+  ],
+  "listudio-820c7b": [
+   "lancamento"
+  ],
+  "thilina-a-891c09": [
+   "lancamento"
+  ],
+  "amitsingha89-150378": [
+   "explicativo",
+   "lancamento"
+  ],
+  "blushpetal795-0c85c2": [
+   "dados"
+  ],
+  "ceowinkz-7c776b": [
+   "lancamento"
+  ],
+  "ibrahimwasim240-809370": [
+   "lancamento",
+   "historia"
+  ],
+  "jazzen-chen-4542ae": [
+   "lancamento"
+  ],
+  "lester-tyy-f897f7": [
+   "lancamento"
+  ],
+  "majorbaguette-fb11d7": [
+   "lancamento"
+  ],
+  "nolkeeg-bf062e": [
+   "dados"
+  ],
+  "souravbhar871-61f424": [
+   "tipografia"
+  ],
+  "spearwtf-3c1fd1": [
+   "tipografia",
+   "lancamento"
+  ],
+  "teslachartz-c58b32": [
+   "showreel"
+  ],
+  "ai-baymax-0ef9dd": [
+   "lancamento"
+  ],
+  "anas0ra-e57aea": [
+   "lancamento",
+   "historia"
+  ],
+  "iammxfschr-d68f90": [
+   "lancamento"
+  ],
+  "kikelopezdesign-7cc9e8": [
+   "lancamento"
+  ],
+  "leadnotifi-e83f94": [
+   "lancamento"
+  ],
+  "rneayan-474bcf": [
+   "vinheta"
+  ],
+  "rneayan-ea6129": [
+   "vinheta"
+  ],
+  "samaote-5e2fc2": [
+   "tipografia"
+  ],
+  "shinskinakamoto-20190b": [
+   "showreel",
+   "abstrato"
+  ],
+  "anilraok-eff262": [
+   "historia"
+  ],
+  "kantamk-61f410": [
+   "abstrato"
+  ],
+  "parkerrex-1a54fe": [
+   "explicativo",
+   "dados"
+  ],
+  "charlesmendez-73b6e4": [
+   "lancamento"
+  ],
+  "gonzalomacagno-2de1a9": [
+   "tipografia"
+  ],
+  "kamstudiolabs-0b0824": [
+   "historia"
+  ],
+  "template-showreel": [
+   "modelo"
+  ],
+  "template-realtime": [
+   "modelo"
+  ]
+ }
+}

@@ -70,9 +70,10 @@ class Library(Workspaces):
         aid=row.get('thumbnail')
         if aid:
             out['thumbnail']=f'/api/assets/{aid}'
-        if d.get('motion'):
-            # Vídeo de motion: o mapa toca o loop curto e a ficha, o vídeo completo.
-            out['motion']={**{k:f'/api/assets/{v}' for k,v in d['motion'].items()},**(d.get('video') or {})}
+        if d.get('motion') is not None:
+            # Coleção de motion: o mapa toca o loop curto, o player toca o vídeo completo e o espaço se organiza
+            # por formato de tela e tipo de vídeo.
+            out['motion']={**{k:f'/api/assets/{v}' for k,v in d['motion'].items()},**(d.get('video') or {}),'aspect':d.get('aspect') or '','genres':d.get('genres') or []}
         out['url']=self.settings.url+'/?ref='+__import__('urllib.parse',fromlist=['quote']).quote(row['id'],safe='')
         return out
 

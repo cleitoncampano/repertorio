@@ -12,6 +12,11 @@ from .importer import asset, index_text, read_jsonl
 
 # A mídia continua dos autores: entra só como referência.
 USAGE = 'Vídeo de terceiros: estude o movimento, o ritmo e o prompt, e recrie a ideia com o tema e a identidade do projeto. Não incorpore a mídia.'
+# Formato de tela e tipo de vídeo organizam o espaço no mapa; os nomes também valem para a busca.
+ASPECTS = {'horizontal':'horizontal 16:9 youtube site apresentação tela larga','vertical':'vertical 9:16 reels tiktok shorts stories celular',
+           'quadrado':'quadrado 1:1 4:5 feed instagram linkedin','modelo':'prompt modelo'}
+GENRES = {'lancamento':'lançamento de produto','showreel':'showreel de motion','explicativo':'explicativo','dados':'dados e números',
+          'tipografia':'tipografia e mensagem','historia':'histórias e personagens','abstrato':'arte abstrata e 3D','vinheta':'marca e vinheta','modelo':'prompt-modelo'}
 TAGS = {'product-ui':'interface de produto','kinetic-type':'tipografia cinética','music':'trilha sonora','particles':'partículas',
         'shapes':'formas geométricas','charts':'gráficos animados','diagrams':'diagramas','characters':'personagens',
         'photos':'fotografias','phone':'celular','code':'código'}
@@ -28,7 +33,8 @@ def payload(d):
         usage_notes=' '.join(x for x in [USAGE,d.get('cautions',''),f"Autor: {d.get('author')} (@{d['handle']})." if d.get('handle') else ''] if x),
         text=d.get('prompt') or '',prompt=d.get('prompt') or '',prompt_note=d.get('prompt_note') or '',
         good_for=d.get('good_for') or [],format='mp4' if (d.get('media') or {}).get('video') else 'txt',
-        keywords=' '.join(['motion','vídeo','animação']+tags+[d.get('how',''),d.get('author',''),d.get('handle',''),' '.join(d.get('good_for') or [])]),
+        genres=d.get('genres') or [],aspect=d.get('aspect') or '',
+        keywords=' '.join(['motion','vídeo','animação',ASPECTS.get(d.get('aspect') or '','')]+[GENRES.get(g,g) for g in d.get('genres') or []]+tags+[d.get('how',''),d.get('author',''),d.get('handle',''),' '.join(d.get('good_for') or [])]),
         source=source,template=bool(d.get('template')),
         video=({k:d.get(k) for k in ('duration','width','height','fps','audio')} if (d.get('media') or {}).get('video') else None),
     )
@@ -48,7 +54,7 @@ def import_motion(db, workspace_id, folder=None):
         existing={r['id']:dict(r) for r in conn.execute(text("SELECT id,source_hash,curated FROM refs WHERE id IN (SELECT value FROM json_each(:ids))"),dict(ids=dumps([d['id'] for d in records]))).mappings()}
         for d in records:
             rid=d['id']
-            digest=hashlib.sha256(('motion-1:'+dumps(d)).encode()).hexdigest()
+            digest=hashlib.sha256(('motion-2:'+dumps(d)).encode()).hexdigest()
             old=existing.get(rid)
             conn.execute(text('''INSERT OR IGNORE INTO workspace_references(workspace_id,ref_id,state,created,updated)
                 SELECT :w,id,'published',:t,:t FROM refs WHERE id=:r'''),dict(w=workspace_id,t=stamp,r=rid))
@@ -69,7 +75,7 @@ def import_motion(db, workspace_id, folder=None):
             for key,role in (('poster','preview'),('storyboard','storyboard'),('loop','motion'),('video','original')):
                 if media.get(key):ids[key]=asset(conn,db.settings,rid,media[key],role)
             # O mapa e a ficha tocam o vídeo sem consultar os arquivos de cada referência.
-            data['motion']={k:v for k,v in (('loop',ids.get('loop')),('video',ids.get('video')),('storyboard',ids.get('storyboard'))) if v} or None
+            data['motion']={k:v for k,v in (('loop',ids.get('loop')),('video',ids.get('video')),('storyboard',ids.get('storyboard'))) if v}
             conn.execute(text('UPDATE refs SET payload=:p WHERE id=:id'),dict(p=dumps(data),id=rid))
         report['missing_assets']=conn.execute(text("SELECT COUNT(*) FROM assets WHERE missing=1 AND ref_id IN (SELECT value FROM json_each(:ids))"),dict(ids=dumps([d['id'] for d in records]))).scalar()
         db.log(conn,'library_imported',workspace_ids=[workspace_id],collection='motion',**report)

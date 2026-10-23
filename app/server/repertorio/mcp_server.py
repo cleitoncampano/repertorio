@@ -55,7 +55,8 @@ def create_mcp(lib,worker):
     def get_reference(reference_id:str,include_image:bool=False,context_id:str|None=None,workspace_ids:list[str]|None=None):
         """Retorna ficha, relações e prévias. include_image inclui uma imagem raster visível ao modelo.
         Vídeos de motion (format="mp4") trazem o prompt original em prompt, a decupagem em how, duração e formato em video,
-        procedência em source, e a imagem é uma prancha com oito momentos do vídeo."""
+        procedência em source, formato de tela em aspect (horizontal, vertical ou quadrado), tipo de vídeo em genres,
+        e a imagem é uma prancha com oito momentos do vídeo."""
         ref=lib.get(reference_id,workspace_ids=workspace_ids,context_id=context_id)
         ref['children_total']=len(ref.get('children',[]))
         ref['children']=ref.get('children',[])[:12]

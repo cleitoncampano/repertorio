@@ -23,7 +23,7 @@ def motion_library(library):
             'stack':'HyperFrames','content_tags':['kinetic-type'],
             'media':{'poster':'_originais/motion/giro/capa.png','storyboard':'_originais/motion/giro/quadros.jpg',
                      'loop':'_originais/motion/giro/loop.mp4','video':'_originais/motion/giro/video.mp4'},
-            'width':1920,'height':1080,'duration':4.2,'fps':30,'audio':True}
+            'genres':['vinheta'],'aspect':'vertical','width':1080,'height':1920,'duration':4.2,'fps':30,'audio':True}
     (root/'dados/motion').mkdir(parents=True)
     (root/'dados/motion/teste.jsonl').write_text(json.dumps(record,ensure_ascii=False)+'\n')
     return library.save_workspace(s.Workspace(name='Motion'))['id']
@@ -38,6 +38,9 @@ def test_motion_import_links_videos_to_the_map_and_preserves_curation(library):
     video=graph[0]['motion']
     assert video['loop'].startswith('/api/assets/') and video['video'].startswith('/api/assets/') and video['duration']==4.2
     assert graph[0]['techniques']==['contraste'] and graph[0]['reusable'] is False
+    # Formato de tela e tipo de vídeo chegam ao mapa e à busca, pelo nome da plataforma.
+    assert video['aspect']=='vertical' and video['genres']==['vinheta']
+    assert smart_search(library,s.AgentSearch(query='reels',workspace_ids=[wid]))['items'][0]['id']=='motion-giro'
     # O espaço anterior continua igual, sem vídeos.
     assert all('motion' not in i for i in library.graph('pp-treta')['items'])
     ref=library.get('motion-giro',workspace_ids=[wid])

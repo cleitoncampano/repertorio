@@ -118,7 +118,7 @@ No app, o banco (`app/.runtime/library.sqlite3`) é a fonte de verdade: importa 
 
 Se os arquivos de `_originais/` mudarem, refaça na ordem: `ferramentas/construir/extrair.py`, `pranchas.py`, `pacotes.py`, fichas novas (instruções em `dados/_trabalho/INSTRUCOES-FICHAS.md`), `montar.py`. Depois rode `./app/run.sh import --workspace pp-treta`: ele preserva a curadoria do app.
 O catálogo visual se refaz com `_catalogo/gerador/` (ver `LEIA-ME.txt` lá dentro).
-Vídeos de motion (espaço Motion, galeria do Prompt Motion): `ferramentas/incorporar_prompt_motion.py` coleta páginas e prompts, baixa capas e vídeos para `_originais/prompt-motion/`, gera a prancha de quadros, separa lotes e monta `dados/motion/prompt-motion.jsonl` a partir das fichas de `dados/motion/_trabalho/` (instruções no mesmo lugar). Depois: `./app/run.sh import-motion --workspace ID_DO_ESPACO`. Os vídeos são de terceiros: servem de referência de movimento, ritmo e prompt, nunca como mídia de entrega.
+Vídeos de motion (espaço Motion, galeria do Prompt Motion): `ferramentas/incorporar_prompt_motion.py` coleta páginas e prompts, baixa capas e vídeos para `_originais/prompt-motion/`, gera a prancha de quadros, separa lotes e monta `dados/motion/prompt-motion.jsonl` a partir das fichas de `dados/motion/_trabalho/` (instruções no mesmo lugar) e do tipo de cada vídeo em `dados/motion/generos.json`; o formato de tela sai das medidas do vídeo. Depois: `./app/run.sh import-motion --workspace ID_DO_ESPACO`. Os vídeos são de terceiros: servem de referência de movimento, ritmo e prompt, nunca como mídia de entrega.
 O bloco abaixo é gerado por `./app/run.sh connect --write-instructions`; se mudar o texto, mude também o modelo em `app/server/repertorio/cli.py`.
 
 <!-- repertorio:start -->

@@ -62,7 +62,7 @@ test('vídeos de motion tocam no mapa e na ficha, com prompt e quadros',async({p
  await expect(panel.locator('.motion-prompt')).toContainText('logo sting');
  await expect(panel.getByRole('heading',{name:'Decupagem'})).toBeVisible();
  await expect(panel.getByRole('link',{name:'Post do autor'})).toHaveAttribute('href','https://x.com/ana/status/1');
- await expect(panel.locator('.reference-meta')).toContainText('Vídeo · 0:04 · 16:9 · com som');
+ await expect(panel.locator('.reference-meta')).toContainText('Vídeo · 0:04 · 9:16 · com som');
  await panel.getByRole('button',{name:'Ver quadros'}).click();
  await expect(page.getByRole('dialog')).toContainText('Quadros do vídeo');
  await page.keyboard.press('Escape');

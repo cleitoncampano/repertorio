@@ -80,7 +80,10 @@ def create_mcp(lib,worker):
         Slides, carrosséis e peças de imagem, por papel na história: abertura, agenda-e-divisores, impacto-e-destaque,
         apresentar-pessoas, explicar-e-sequenciar, agrupar-e-comparar, provar-com-dados, mostrar-e-localizar, fechamento e
         formatos-e-carrossel; kit-apresentacao é o motor HTML. Vídeos de motion, por tipo: lancamento, showreel, explicativo,
-        dados, tipografia, historia, abstrato, vinheta; mais formatos, prompt e kit (blocos do HyperFrames e projeto inicial)."""
+        dados, tipografia, historia, abstrato, vinheta; mais formatos, prompt e kit (blocos do HyperFrames e projeto inicial).
+        Métodos da Perestroika: metodo-perestroika é o índice (tese, treco, 8 cartas do storytelling, checklist, arco, frameworks);
+        cada ficha abre como perestroika/<ficha>. Experiências de aprendizagem: aula-e-workshop, curso-e-programa,
+        encontro-e-evento; revisao-apresentacao confere uma peça pronta."""
         if not name:
             from .db import dumps
             return dumps(lib.guides())

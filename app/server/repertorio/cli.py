@@ -30,6 +30,7 @@ def main():
     demo=sub.add_parser('demo');demo.add_argument('--home',required=True);demo.add_argument('--port',type=int,default=8768);demo.add_argument('--serve',action='store_true')
     imp=sub.add_parser('import');imp.add_argument('--workspace',required=True)
     motion=sub.add_parser('import-motion',help='importa os vídeos de dados/motion para um espaço');motion.add_argument('--workspace',required=True);motion.add_argument('--folder')
+    decks=sub.add_parser('import-decks',help='importa apresentações em PDF de dados/<coleção> para um espaço');decks.add_argument('--workspace',required=True);decks.add_argument('--folder',required=True)
     sub.add_parser('workspaces')
     space=sub.add_parser('create-workspace');space.add_argument('name')
     rename=sub.add_parser('rename-workspace');rename.add_argument('id');rename.add_argument('name');rename.add_argument('--revision',type=int,required=True)
@@ -70,6 +71,9 @@ def main():
     if args.cmd=='import-motion':
         from .motion import import_motion
         db=Database(settings);db.migrate();output(import_motion(db,args.workspace,args.folder));return
+    if args.cmd=='import-decks':
+        from .decks import import_decks
+        db=Database(settings);db.migrate();output(import_decks(db,args.workspace,settings.root/args.folder));return
     if args.cmd=='relocate':
         from .relocate import relocate
         output(relocate(settings,args.previous_root,args.backup));return
@@ -98,13 +102,16 @@ def main():
             root=Path(args.path).expanduser().resolve()
             response=client.post('/api/projects',json={'name':args.name or root.name,'root':str(root)});response.raise_for_status();data=response.json()
             runner=f'powershell -NoProfile -ExecutionPolicy Bypass -File "{settings.root / "app/run.ps1"}"' if sys.platform=='win32' else str(settings.root/'app/run.sh')
+            # Métodos instalados nesta biblioteca (ex.: Perestroika); instalações novas não têm e não citam.
+            methods=[p.stem for p in sorted((settings.root/'biblioteca/metodos').glob('*/guias/metodo-*.md'))]
+            method_note=(' Para a tese e o roteiro de qualquer peça, e para aulas, workshops, treinamentos e eventos, leia também '+', '.join(f'`{m}`' for m in methods)+': o índice diz qual ficha abrir.') if methods else ''
             instructions=f'''<!-- repertorio:start -->
 ## Repertório: inspiração para demandas criativas
 
 Serviço local: {url}/mcp. Projeto cadastrado: `{data['id']}`.
 Antes de criar apresentações, sites, carrosséis ou vídeos, use o MCP Repertório:
 1. Consulte `list_workspaces` e pergunte ao usuário quais espaços do repertório usar se ele não indicou. Inicie um contexto com `start_context`, projeto `{data['id']}`, `workspace_ids` explícitos e a demanda atual. Não use o espaço aberto no app como padrão.
-2. Leia com `get_guide` o guia de cada momento ou tipo (sem nome, a ferramenta lista os disponíveis): para slides e carrosséis, o papel na história (`abertura`, `provar-com-dados`, `fechamento`...) e `formatos-e-carrossel`; para vídeos, o tipo (`lancamento`, `explicativo`...), `formatos`, `prompt` e `kit`. Cada guia traz estrutura, erros, prompt base e as referências para abrir primeiro.
+2. Leia com `get_guide` o guia de cada momento ou tipo (sem nome, a ferramenta lista os disponíveis): para slides e carrosséis, o papel na história (`abertura`, `provar-com-dados`, `fechamento`...) e `formatos-e-carrossel`; para vídeos, o tipo (`lancamento`, `explicativo`...), `formatos`, `prompt` e `kit`. Cada guia traz estrutura, erros, prompt base e as referências para abrir primeiro.{method_note}
 3. Busque referências com `search_references`, escrevendo o pedido em português comum (ex.: "abertura com impacto", "números grandes em fundo escuro", "vídeo vertical para Reels"). A resposta mostra como o pedido foi lido (`understood`) e traz uma prancha numerada com as prévias: olhe a prancha primeiro e só depois abra as fichas escolhidas com `get_reference(include_image=true)`. Vídeos de motion ficam no espaço Motion (`format="mp4"`): a imagem deles é uma prancha de oito quadros e a ficha traz o prompt original.
 4. Selecione ideias transferíveis e diga ao usuário quais referências vai usar e por quê, com os links do app (`url` de cada ficha). Siga a identidade deste projeto.
 5. Quando o usuário pedir para incorporar um resultado, use `register_reference` com os arquivos finais, prévias, `target_workspace_ids` explícitos e `user_requested=true`; em vídeos, informe também `data.genres` (tipo de vídeo) e `data.prompt`. Consultar um espaço não o torna destino. Sugestões espontâneas usam `false`. Para compartilhar uma ficha existente, use `set_reference_workspaces`, sem reenviar arquivos.

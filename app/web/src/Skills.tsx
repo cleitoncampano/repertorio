@@ -1,11 +1,11 @@
 import {useId,useRef,useState} from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import {ArrowUpRight,Check,Clapperboard,Code2,Copy,Film,Image,Layers,LayoutTemplate,Paintbrush,Presentation,Search,Sparkles,X} from 'lucide-react';
+import {ArrowUpRight,Check,Clapperboard,ClipboardCheck,Code2,Copy,Film,GraduationCap,Image,Layers,LayoutTemplate,Paintbrush,Presentation,Search,Sparkles,Target,X} from 'lucide-react';
 import {buildSkillRequest,searchSkills,skills,type Skill,type SkillCategory} from './skillCatalog';
 import type {Workspace} from './types';
 
-const icons:Record<string,typeof Sparkles>={impeccable:Paintbrush,'frontend-design':Code2,'landing-page-design':LayoutTemplate,imagegen:Image,'presentations:Presentations':Presentation,hyperframes:Film,'hyperframes-creative':Clapperboard};
-const categories:('Todas'|SkillCategory)[]=['Todas','Design','Imagens','Apresentações','Vídeo'];
+const icons:Record<string,typeof Sparkles>={impeccable:Paintbrush,'frontend-design':Code2,'landing-page-design':LayoutTemplate,imagegen:Image,'presentations:Presentations':Presentation,hyperframes:Film,'hyperframes-creative':Clapperboard,'perestroika-tese':Target,'perestroika-experiencia':GraduationCap,'perestroika-revisao':ClipboardCheck};
+const categories:('Todas'|SkillCategory)[]=['Todas','Design','Imagens','Apresentações','Vídeo','Método'];
 
 export function Skills({workspace}:{workspace?:Workspace}){
  const [query,setQuery]=useState(''),[category,setCategory]=useState<SkillCategory|'Todas'>('Todas');

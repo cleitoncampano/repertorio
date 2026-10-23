@@ -9,6 +9,7 @@ describe('descoberta de skills',()=>{
  it('combina as palavras da busca com a categoria escolhida',()=>{
   expect(searchSkills('visual','Vídeo').map(skill=>skill.id)).toEqual(['hyperframes-creative']);
   expect(searchSkills('impeccable','Imagens')).toEqual([]);
+  expect(searchSkills('workshop','Método').map(skill=>skill.id)).toEqual(['perestroika-experiencia']);
   expect(searchSkills('   ','Design')).toHaveLength(3);
  });
  it('inclui somente o espaço indicado no pedido e pede as referências com os links',()=>{

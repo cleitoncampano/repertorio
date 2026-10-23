@@ -1,4 +1,4 @@
-export type SkillCategory='Design'|'Imagens'|'Apresentações'|'Vídeo';
+export type SkillCategory='Design'|'Imagens'|'Apresentações'|'Vídeo'|'Método';
 export type Skill={
  id:string;
  name:string;
@@ -38,6 +38,18 @@ export const skills:readonly Skill[]=[
   description:'Define a direção criativa de vídeos: estilo, paleta, tipografia, narração e sequência de cenas.',
   when:'Preciso definir o conceito visual antes de produzir.',
   example:'Defina a direção criativa de um vídeo institucional: conceito, paleta, tipografia e sequência de cenas.'},
+ {id:'perestroika-tese',name:'Tese e roteiro',category:'Método',
+  description:'Fecha a tese, a frase-resumo, o momento-surpresa e o que a plateia leva no dia seguinte, antes de qualquer slide ou vídeo.',
+  when:'Tenho um tema e preciso saber o que a peça defende.',
+  example:'Antes de criar a apresentação, defina a tese, a frase-resumo, o momento-surpresa e o que a plateia vai saber fazer no dia seguinte.'},
+ {id:'perestroika-experiencia',name:'Aula e workshop',category:'Método',
+  description:'Desenha aulas, workshops, treinamentos, cursos e eventos: jornada, blocos com horário, abertura, encerramento e dinâmicas.',
+  when:'Vou conduzir um encontro, não só apresentar slides.',
+  example:'Desenhe um workshop de 3 horas para gestores de atendimento, com blocos, horários, abertura, dinâmica prática e encerramento.'},
+ {id:'perestroika-revisao',name:'Revisão de apresentação',category:'Método',
+  description:'Confere uma peça pronta: planejamento, tese, começo que prende, um protagonista por slide, cores, fontes e animações.',
+  when:'A apresentação está pronta e quero saber o que melhorar.',
+  example:'Revise esta apresentação pelo checklist e me diga, em ordem de prioridade, o que corrigir.'},
 ];
 
 const normalize=(text:string)=>text.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR');

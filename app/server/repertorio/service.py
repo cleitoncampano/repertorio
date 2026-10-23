@@ -67,19 +67,25 @@ class Library(Workspaces):
         """Guias de criação: por papel na história (slides, carrosséis e peças de imagem), por tipo de vídeo,
         formatos, como pedir o vídeo e os dois kits (movimentos do HyperFrames e motor de apresentação em HTML)."""
         root=self.settings.root;found={}
-        for folder in (root/'biblioteca/guias',root/'biblioteca/motion/guias'):
+        # Métodos (biblioteca/metodos/<coleção>/guias): índice do método e guias de experiências de aprendizagem.
+        for folder in (root/'biblioteca/guias',root/'biblioteca/motion/guias',*sorted((root/'biblioteca/metodos').glob('*/guias'))):
             if folder.is_dir():found.update({p.stem:p for p in sorted(folder.glob('*.md')) if p.stem!='LEIA-ME'})
         for name,path in (('kit',root/'kit/motion/LEIA-ME.md'),('kit-apresentacao',root/'kit/LEIA-ME.md')):
             if path.is_file():found[name]=path
         return found
 
+    def method_files(self):
+        """Fichas de método e modelos para preencher, abertas pelo índice do método como <coleção>/<ficha>; ficam fora da lista de guias."""
+        root=self.settings.root/'biblioteca/metodos'
+        return {f'{p.parent.parent.name}/{p.stem}':p for p in sorted([*root.glob('*/conceitos/*.md'),*root.glob('*/modelos/*.md')])}
+
     def guides(self):
         return list(self.guide_files())
 
     def guide(self,name):
-        files=self.guide_files()
+        files={**self.method_files(),**self.guide_files()}
         if name not in files:
-            raise Problem(404,'Guia não encontrado. Disponíveis: '+', '.join(files))
+            raise Problem(404,'Guia não encontrado. Disponíveis: '+', '.join(self.guide_files())+'. Fichas de método: abra o guia metodo-<coleção>.')
         return files[name].read_text()
 
     def summary(self, row):

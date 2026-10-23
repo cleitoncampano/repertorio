@@ -65,12 +65,12 @@ O antes e depois do gráfico de analfabetismo (p11-12), passado pelo bloco Desig
 - D7: legenda para um único dado. Correção: legenda pequena sob uma linha, chamando menos atenção.
 
 ## Exemplo aplicado
-Aplicação no Repertório: deck de 14 slides para o onboarding de novos atendentes, 30 minutos. Números da correção são ilustrativos.
-- Tese que entendi: "não encontrei". O deck lista as ferramentas do time. (P4) Correção: "Em 30 dias, você resolve sozinho os 10 casos mais comuns; o resto, você sabe a quem passar."
-- Slides 1-4: capa, agenda, história da empresa e organograma ocupam 8 minutos antes do conteúdo. (P2, E1) Correção: abrir com a pergunta "Qual foi a última vez que você esperou uma resposta e desistiu?" e mover a história da empresa para um slide no fim.
-- Slide 7: 12 ícones de ferramentas do mesmo tamanho. (D2, D6) Correção: dois slides; no primeiro, só a ferramenta usada em todo atendimento, grande; no segundo, as outras em grade menor.
-- Slide 9: tabela de prazos inteira, toda cinza. (D6, D7) Correção: destacar os dois prazos que o atendente controla e reduzir a tabela a apoio.
-- Slide 14: "Obrigado!". (E4, F3) Correção: a tese de volta, o primeiro caso para treinar amanhã e o canal para dúvidas.
+Aplicação no Repertório: deck de 14 slides para a integração de novos operadores de uma fábrica, sobre separação de resíduos, 30 minutos. Números da correção são ilustrativos.
+- Tese que entendi: "não encontrei". O deck lista as regras ambientais da fábrica. (P4) Correção: "Em 30 dias, você separa sozinho os 5 resíduos mais comuns da sua linha; o resto, você sabe a quem perguntar."
+- Slides 1-4: capa, agenda, história da empresa e organograma ocupam 8 minutos antes do conteúdo. (P2, E1) Correção: abrir com a pergunta "Quanto do que a sua linha joga fora ainda era matéria-prima?" e mover a história da empresa para um slide no fim.
+- Slide 7: 12 ícones de tipos de resíduo do mesmo tamanho. (D2, D6) Correção: dois slides; no primeiro, só o resíduo que toda linha gera, grande; no segundo, os outros em grade menor.
+- Slide 9: tabela de horários de coleta inteira, toda cinza. (D6, D7) Correção: destacar os dois horários que o operador controla e reduzir a tabela a apoio.
+- Slide 14: "Obrigado!". (E4, F3) Correção: a tese de volta, o primeiro resíduo para separar amanhã e o canal para dúvidas.
 - O que já funciona: paleta de três cores e grade consistente (D3, D5).
 
 ## Modelo em branco

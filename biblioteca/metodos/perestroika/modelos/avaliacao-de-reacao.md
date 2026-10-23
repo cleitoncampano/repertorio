@@ -24,9 +24,9 @@ Pesquisa curta aplicada ao fim de um treinamento ou palestra para medir a reaç�
 Palestra "Vai lá e faz" para a Red Bull (p19): conteúdo apresentado, 91% na nota 1 e 9% na nota 2; aplicabilidade, 87% e 13%; palestrante, 83% e 17%. Embaixo, três opiniões, entre elas "abordagem de um assunto abstrato de maneira simples e concreta, inacreditável!". Pesquisa do Grupo RBS (p20): 100% das notas entre 9 e 10.
 
 ## Exemplo aplicado
-Aplicação no Repertório: workshop "IA no atendimento" para supervisores.
-- **Conteúdo:** "O conteúdo sobre IA no atendimento foi..." (1 muito satisfeito, 5 nada satisfeito).
-- **Aplicabilidade:** "Consigo aplicar o que vi na minha fila já na próxima semana." (mesma escala)
+Aplicação no Repertório: workshop "Leitura em sala" para professores do ensino fundamental.
+- **Conteúdo:** "O conteúdo sobre leitura em sala foi..." (1 muito satisfeito, 5 nada satisfeito).
+- **Aplicabilidade:** "Consigo aplicar o que vi com a minha turma já na próxima semana." (mesma escala)
 - **Facilitador:** "A condução de [nome] foi..." (mesma escala)
 - **Opiniões:** "O que você vai fazer diferente amanhã?"
 - **Relatório:** três gráficos iguais com a porcentagem de cada nota; três respostas abertas que citem ações concretas. Números só depois da coleta: não preencha resultados antes da pesquisa.

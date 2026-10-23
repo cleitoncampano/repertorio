@@ -23,7 +23,7 @@ Perestroika, Checklist Apresentações Poderosas (bloco Planejamento, material d
 
 3. **Quem vai ouvir você?** Antes de montar o PPT, pense no que o público já sabe do tema, em quanto ele conhece você, em quanto você conhece ele e em qual problema você vai resolver (p5).
 4. **Qual a sua tese?** Pergunta central: "Qual mensagem você quer gravar na mente do público?" (p5). Essa mensagem é a tese defendida e precisa estar muito clara para quem apresenta. Teste com as perguntas de apoio: por que esta apresentação é relevante para este público? O que ele vai saber depois que não sabia antes e que é muito importante?
-5. Aplicação no Repertório: escreva as quatro respostas num bloco no topo do roteiro, antes do método de `biblioteca/principios/narrativa.md` (seção 8). A tese aqui é o "destino" do passo 1 de lá; o 1/3 é o teto para os pesos das pontas no passo 4.
+5. Aplicação no Repertório: escreva as quatro respostas num bloco no topo do roteiro, antes do método de `biblioteca/principios/narrativa.md` (seção 8). A tese aqui é o "destino" do passo 1 de lá; o 1/3 é o teto para os pesos das pontas no passo 4. Contam como ponta só a abertura (até a tese ser dita) e o fechamento (conclusão e chamada); crítica, virada, provas e paradas das formas S, W e Z são meio.
 
 ## Perguntas
 - Para você: formato e duração saem do pedido? Quem é o público e que problema dele a peça resolve? Qual frase o público deve repetir ao sair?
@@ -41,7 +41,7 @@ Perestroika, Checklist Apresentações Poderosas (bloco Planejamento, material d
 - Abertura e encerramento que comem o conteúdo, como apresentação institucional longa, agenda detalhada e agradecimentos (Aplicação no Repertório: exemplos de onde o 1/3 costuma estourar).
 - Tese vaga ou só na cabeça de quem apresenta; a fonte pede que esteja muito clara (p5).
 - Ignorar o formato: fundo e roupa ruins no online (p4).
-- Aplicação no Repertório: confundir tema com tese. "IA no atendimento" é tema; "a IA libera o time para os casos difíceis" é tese.
+- Aplicação no Repertório: confundir tema com tese. "Trabalho remoto" é tema; "time remoto precisa de menos reunião e de mais texto escrito" é tese.
 
 ## Exemplo da Perestroika
 As quatro perguntas aparecem em duas páginas de duas colunas, cada pergunta em letra condensada laranja seguida da explicação (p4-5), depois de um divisor com a frase "Tem um início antes do início" (p3). Uma nota escrita à mão ao lado da pergunta sobre formato diz para pensar no ambiente e adaptar. A frase sobre o online termina incompleta no original. [Divisor com anel de palavra manuscrita](http://127.0.0.1:8766/?workspace=0cbf5669-0d0a-4745-844e-0745357c0419&ref=perestroika-checklist-completo-apresentacoes-poderosas%233).

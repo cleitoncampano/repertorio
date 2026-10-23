@@ -13,7 +13,7 @@ Perestroika, Checklist Apresentações Poderosas (bloco Estrutura, material do c
 ## Como aplicar
 1. Tenha a tese escrita antes (`perestroika/planejamento-da-apresentacao`). Sem ela, o meio não tem o que reforçar.
 2. **Início: "jogue uma bomba (calma, é metafórica)"** (p8). Escolha uma das três bombas da fonte: dado impactante, pergunta instigante ou apresentação de um problema. O início abre e instiga o desejo de escutar o resto. Você tem 30 segundos (p6).
-3. Aplicação no Repertório: os 30 segundos são o primeiro slide e as duas ou três primeiras frases. Agenda, "bom dia, meu nome é" e currículo ficam fora deles; a credencial vem depois da bomba.
+3. Aplicação no Repertório: os 30 segundos são o primeiro slide e as duas ou três primeiras frases. Agenda, "bom dia, meu nome é" e currículo ficam fora deles; a credencial vem depois da bomba. Se a bomba for uma pergunta ou dinâmica com a plateia, ela pode vir antes da capa; o título entra logo depois, no slide 2 ou 3.
 4. **Meio: coeso** (p8). Desenvolva com subteses e argumentos bem articulados que reforçam a tese principal. Às vezes são precisas várias respostas para resolver a pergunta aberta no início.
 5. Aplicação no Repertório: escreva 2 a 4 subteses, cada uma uma frase que completa "porque..." em direção à tese. Cada slide do meio prova uma subtese; slide que não prova nenhuma sai.
 6. **Fim: encerramento emocional, com próximos passos e reforço da tese** (p8). Depois, o convite ao público para perguntar, comentar e conhecer mais (p21, em `perestroika/ensaio-e-finalizacao`).

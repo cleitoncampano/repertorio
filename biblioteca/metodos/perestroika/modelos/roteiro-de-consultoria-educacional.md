@@ -26,13 +26,13 @@ Conduz e propõe uma consultoria que ajuda uma escola ou empresa a mudar o jeito
 A Scholé lista as 5 etapas para escolas (p9): contextualização de cenário; pesquisa e diagnóstico com alunos e educadores; report das observações (perfil da escola); como iniciar a mudança na minha escola (aplicação do protótipo); avaliação e recomendação final. A Sputnik descreve a versão para empresas (p35-36): a escola corporativa como forma "mais efetiva, prática e barata" de capacitar, talentos internos virando instrutores, e as três entregas; clientes citados, Grupo Reserva e Escola RBS. Nenhum dos dois decks mostra uma consultoria preenchida.
 
 ## Exemplo aplicado
-Aplicação no Repertório, caso fictício: central de atendimento com 120 pessoas que quer uma academia interna.
-- **Objetivo:** fazer os melhores atendentes ensinarem os demais, em vez de depender de treinamentos externos pontuais.
-- **1. Cenário:** IA assumindo as perguntas repetitivas; clientes no WhatsApp esperando resposta rápida; rotatividade alta, com novato atendendo na primeira semana.
-- **2. Diagnóstico:** conversas com 12 atendentes (novatos e veteranos) e 4 supervisores, informais, quali, presenciais; leitura de 50 conversas reais.
-- **3. Report:** onboarding feito "no ombro" de quem estiver livre; três veteranos já ensinam sem nome nem tempo para isso; ninguém revisa as respostas da IA.
-- **4. Protótipo:** trilha "Primeira semana" com 4 encontros ao vivo de 2h, dada por dois veteranos formados antes em uma Super Aula interna (raciocínio visual, layout, storytelling, ferramentas).
-- **5. Avaliação e recomendação:** reação da turma em conteúdo, aplicabilidade e instrutor; recomendação de abrir a segunda trilha (revisão de respostas da IA) com o mesmo formato.
+Aplicação no Repertório, caso fictício: rede de restaurantes com 120 pessoas na cozinha que quer uma academia interna.
+- **Objetivo:** fazer os melhores cozinheiros ensinarem os demais, em vez de depender de treinamentos externos pontuais.
+- **1. Cenário:** pedidos por aplicativo pesando cada vez mais no jantar; cardápio que muda a cada estação; rotatividade alta, com novato na chapa na primeira semana.
+- **2. Diagnóstico:** conversas com 12 cozinheiros (novatos e veteranos) e 4 chefs, informais, quali, presenciais; acompanhamento de 10 serviços de jantar.
+- **3. Report:** onboarding feito "no ombro" de quem estiver livre; três veteranos já ensinam sem nome nem tempo para isso; ninguém confere se as fichas técnicas são seguidas.
+- **4. Protótipo:** trilha "Primeira semana" com 2 encontros presenciais de 4h na cozinha da unidade central, dada por dois veteranos formados antes em uma Super Aula interna (raciocínio visual, layout, storytelling, ferramentas).
+- **5. Avaliação e recomendação:** reação da turma em conteúdo, aplicabilidade e instrutor; recomendação de abrir a segunda trilha (ficha técnica e montagem dos pratos) com o mesmo formato.
 - **Entregas:** metodologia da academia em uma página; programas das duas trilhas; formação dos instrutores internos.
 
 ## Modelo em branco

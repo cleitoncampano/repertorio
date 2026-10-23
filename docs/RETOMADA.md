@@ -8,9 +8,11 @@ A pedido do Cleiton, os carrosséis e o kit da Growmate saíram do espaço Inspi
 
 O espaço Referências tem o ID `referencias` e a origem das apresentações se chama `acervo`. Não reintroduza o nome antigo em textos, código ou dados. Detalhes em `app/VALIDACAO.md`.
 
-## Plano da Perestroika em 22/10/2026
+## Perestroika acionável para modelos em 23/10/2026
 
-O Cleiton pediu para transformar `perestroika/` em material acionável para modelos, além do visual. Plano em `docs/PERESTROIKA-PLANO.md`: métodos em `.md` com modelos para preencher, entrada pelo MCP e por três skills, espaço visual próprio e revisor opcional. Nada executado ainda; próxima ação: o Cleiton escolher por onde começar.
+A pedido do Cleiton, o material de `perestroika/` (24 PDFs, cerca de 760 páginas, e um vídeo) foi lido página por página e virou três portas para os agentes. (1) Método: 53 fichas e modelos em `biblioteca/metodos/perestroika/` (Experience Learning, Chora PPT, Mapa do Storytelling, checklist, educação corporativa), servidos por `get_guide`: índice `metodo-perestroika`, guias `aula-e-workshop`, `curso-e-programa`, `encontro-e-evento`, `revisao-apresentacao` e fichas como `perestroika/<ficha>`. (2) Skills `perestroika-tese`, `perestroika-experiencia` e `perestroika-revisao` em `~/.agents/skills/` (ligadas em `~/.claude/skills`), também no catálogo de Skills do app, categoria Método. (3) Espaço Perestroika no app: 23 apresentações, 191 slides fichados e o vídeo do Chora PPT, com `reusable=false`. Plano e decisões em `docs/PERESTROIKA-PLANO.md`; manutenção em `biblioteca/metodos/perestroika/LEIA-ME.md`.
+
+Novos no app: `import-decks` (PDF como apresentação com slides) e `get_guide` lendo `biblioteca/metodos/`. Testes: 47 do servidor, 60 da interface e 29 de navegador aprovados; interface compilada (atualizar com ⌘R); serviço reiniciado com o código novo. Dois testes às cegas (workshop de 3 horas e palestra de 15 minutos) guiaram as correções: exemplos variados, ficha de processamento, modelo de instrumento do dia seguinte, tabela das 8 cartas com os guias. Backup antes da importação no iCloud (`repertorio-2026-10-22-235524`). Próxima ação: o Cleiton usar as skills numa demanda real; melhorias da busca apontadas pelos testes estão no plano, em Pendências.
 
 ## Espaço Inspiração em 22/10/2026
 

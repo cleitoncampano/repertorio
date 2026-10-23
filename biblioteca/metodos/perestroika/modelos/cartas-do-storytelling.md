@@ -29,19 +29,19 @@ O material traz o formulário vazio: uma grade de 2 por 4 com o nome da carta em
 Leitura desta ficha: a própria página do mapa responde às cartas, e serve de exemplo. Catraca: estruturar narrativas que vendem ideias com 8 cartas. Vulnerabilidade: a dor de todo mundo, "e agora, José? Por onde começar?", seguida de "você não está só". Sou f#da: o método saiu de estudo de discursos e de uma professora especialista que trabalhou com grandes marcas. Fator surpresa: o método vira jogo e tabuleiro. Poder de escuta: a grade devolve a palavra ao leitor. Conclusão: o convite para o curso Chorinho.
 
 ## Exemplo aplicado
-Aplicação no Repertório: apresentação de 20 minutos à diretoria pedindo um piloto de IA no atendimento. Números entre colchetes são do usuário; não invente.
-- Tema, público, tempo: IA no atendimento; diretoria, que conhece os custos e não conhece a rotina da fila; 20 minutos, presencial.
-- Catraca: a diretoria sai sabendo que a IA responde as perguntas repetidas, guarda o contexto e libera o time para os casos difíceis, e aprova um piloto de 60 dias. Entra: a fila, o piloto, o risco. Fica de fora: comparação de fornecedores e arquitetura (anexo).
-- Tenho dados: [mensagens recebidas fora do horário por semana], com a história "cada uma é um cliente esperando até segunda"; [parte das perguntas que se repetem], tirada das conversas do último mês; [tempo da primeira resposta hoje].
-- Didatismo na veia: o que a IA faz e o que não faz, explicado como "o atendente novo que leu todo o manual e chama o supervisor quando não sabe"; como a conversa passa para uma pessoa sem o cliente repetir a história.
-- Sou f#da: [anos coordenando o atendimento]; "li as conversas de março, uma por uma" (pendente: confirmar com o usuário).
-- Poder de escuta: abertura com "Quem aqui já desistiu de uma compra porque ninguém respondeu?" (mãos levantadas); no meio, "Qual pergunta vocês mais ouvem dos clientes?"; no fim, perguntas abertas.
-- Quebra-gelo: o tom é de urgência; a quebra vem com leveza, mostrando o que o time faria com as horas livres.
-- Vulnerabilidade: a sexta-feira em que a pessoa que apresenta respondeu dezenas de mensagens pelo celular e ainda perdeu um cliente (pendente: a história real do usuário).
-- Fator surpresa: pontos de contato: convite da reunião, abertura, demonstração, mensagem do dia seguinte. Surpresa: um diretor manda uma pergunta pelo WhatsApp durante a apresentação e a resposta aparece no telão.
-- Introdução (até 3 min): Poder de escuta (as mãos), Tenho dados (o número das mensagens sem resposta), Sou f#da em uma linha.
-- Desenvolvimento (cerca de 14 min): Vulnerabilidade (a sexta-feira), Didatismo (o que a IA faz e não faz), Fator surpresa (a demonstração), Quebra-gelo (as horas livres), Tenho dados (o desenho do piloto).
-- Conclusão (até 3 min): Catraca (a tese de volta e o pedido do piloto), Poder de escuta (perguntas); depois, a mensagem com o print da demonstração.
+Aplicação no Repertório: palestra de 20 minutos sobre segurança do trabalho para os mestres de obra de uma construtora. Números entre colchetes são do usuário; não invente.
+- Tema, público, tempo: segurança no canteiro; mestres de obra, que conhecem as normas e decidem o ritmo das equipes, mas veem o equipamento de proteção como atraso; 20 minutos, presencial, no refeitório da obra.
+- Catraca: os mestres saem sabendo que o acidente começa na pressa que eles mesmos autorizam, e se comprometem a abrir cada turno com 5 minutos de conversa de segurança. Entra: a pressa, a conversa de 5 minutos, o exemplo do mestre. Fica de fora: a norma artigo por artigo e as multas (material impresso).
+- Tenho dados: [afastamentos por acidente nas obras da empresa no último ano], com a história "cada um é uma família que ficou um mês sem o salário inteiro"; [parte dos acidentes que aconteceram em dia de prazo apertado], tirada dos registros da obra; [dias sem acidente nesta obra hoje].
+- Didatismo na veia: por que o cinto de segurança só protege se estiver preso, explicado como "o cinto do carro jogado no banco: está ali e não segura ninguém"; quem pode mandar parar uma tarefa e o que acontece depois que ela para.
+- Sou f#da: [anos como mestre ou técnico de segurança]; "subi em todos os andaimes desta obra na semana passada" (pendente: confirmar com o usuário).
+- Poder de escuta: abertura com "Quem aqui já viu um colega se machucar numa obra?" (mãos levantadas); no meio, "Qual atalho vocês mais veem a equipe tomar?"; no fim, perguntas abertas.
+- Quebra-gelo: o tom é sério; a quebra vem com orgulho, quando cada mestre lembra a obra entregue de que mais se orgulha.
+- Vulnerabilidade: o dia de concretagem em que a pessoa que apresenta liberou o andaime sem conferir a ancoragem, para não atrasar, e viu um ajudante escorregar (pendente: a história real do usuário).
+- Fator surpresa: pontos de contato: convite no quadro da obra, abertura, demonstração, conversa de segurança do dia seguinte. Surpresa: um saco de areia com o peso de uma pessoa cai de um andaime baixo, primeiro preso ao cinto, depois solto.
+- Introdução (até 3 min): Poder de escuta (as mãos), Tenho dados (o número de afastamentos), Sou f#da em uma linha.
+- Desenvolvimento (cerca de 14 min): Vulnerabilidade (o dia da concretagem), Didatismo (o cinto jogado no banco), Fator surpresa (o saco de areia), Quebra-gelo (a obra de que cada um se orgulha), Tenho dados (os acidentes em dia de prazo).
+- Conclusão (até 3 min): Catraca (a tese de volta e o compromisso dos 5 minutos), Poder de escuta (perguntas); depois, a mensagem com o vídeo da demonstração e o roteiro da conversa de segurança.
 
 ## Modelo em branco
 ```

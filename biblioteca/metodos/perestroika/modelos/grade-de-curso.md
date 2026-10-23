@@ -47,19 +47,19 @@ Curso Empreendedorismo Criativo (EC), framework atualizado (p11-12):
 A fonte não explica as pesquisas 1 e 2. Segundo exemplo, o rascunho do Yakuza (14 aulas, p13-14): check-in com conceito; case; case; how to I com checkpoint; case; conceito; case; how to II; master class; vivencial; case; case; how to III; conceito com check-out. O projeto é anunciado na aula 1, entregue perto do fim, votado nas últimas aulas e premiado na festa final.
 
 ## Exemplo aplicado
-Aplicação no Repertório. Programa "Atendimento com IA" para uma equipe de suporte: 8 encontros semanais de 2h30.
-- Tese: a IA responde o repetitivo para o atendente ter tempo de resolver o que é difícil.
-- Arco: de "a IA vai me substituir e eu não sei usar" para "uso a IA no repetitivo e sei quando a conversa precisa de mim".
+Aplicação no Repertório. Programa "Cuidar Antes" para agentes comunitários de saúde: 8 encontros semanais de 2h30.
+- Tese: prevenção se decide na visita, não na campanha. É a conversa na casa que leva a pessoa a fazer o exame.
+- Arco: de "eu entrego o folheto e anoto a visita" para "eu saio da visita com o exame marcado e sei quem precisa de retorno".
 - Marcos: checkpoint e esboço do projeto depois do encontro 5. Sociais: 1 happy hour depois do encontro 3 e festa depois da banca.
 
 | encontro | bloco | pergunta que responde |
 |---|---|---|
 | 1 | Check-in (aula inaugural) | O que cada um espera e como vamos trabalhar? Anúncio do projeto final. |
-| 2, 3 | Intro e conceitos | Como a IA lê um pedido de cliente? Onde ela erra? |
-| 4, 5 | Ferramentas e how to | Como montar respostas e triagem com IA na nossa ferramenta? |
-| 6 | Cases e master class | Como outra empresa fez, e o que deu errado lá? |
-| 7 | Connecting dots e check-out | O que mudou no nosso atendimento desde o encontro 1? |
-| 8 | Projeto e banca | Cada dupla apresenta à liderança um fluxo de atendimento redesenhado. |
+| 2, 3 | Intro e conceitos | Por que a pessoa adia o exame? O que pesa na decisão dela? |
+| 4, 5 | Ferramentas e how to | Como conduzir a conversa da visita e marcar o exame antes de sair da casa? |
+| 6 | Cases e master class | Como outra equipe fez, e o que deu errado lá? |
+| 7 | Connecting dots e check-out | O que mudou nas nossas visitas desde o encontro 1? |
+| 8 | Projeto e banca | Cada dupla apresenta à coordenação um roteiro de visita redesenhado. |
 
 ## Modelo em branco
 ```

@@ -35,6 +35,15 @@ Perestroika, Experience Learning, capítulo 4 (Metodologia de Forma, ponto 10). 
 6. Reserve tempo e processamento. Numa aula de 2h30, o treco ocupa 30 minutos (instruções e execução) e é seguido de 15 minutos de processamento (`06-estrutural` p21). Um treco forte também salva uma parte expositiva fraca (`06-estrutural` p25).
 7. Divida o trabalho: quem ensina entrega tese, perguntas, instrumento e tagline; a escola cria o treco junto com essa pessoa (p37).
 
+## Produção para grupo
+Aplicação no Repertório: a escola cria o treco junto com quem ensina; quando o agente desenha sozinho, feche a produção por escrito.
+- **Papéis:** quem conduz, quem cuida do tempo, quem opera som, luz ou tela, e os voluntários ou atores combinados antes (nunca alguém exposto sem saber).
+- **Montagem:** o que precisa estar pronto antes e o que se monta no intervalo; quanto tempo leva.
+- **Kit:** lista de materiais com quantidade, por grupo de 5 a 6 pessoas quando a turma passa de 15.
+- **Instruções:** no máximo três frases, ditas e projetadas; tempo visível no telão.
+- **Plano B:** versão de 10 minutos e versão sem material, se algo faltar ou o tempo apertar.
+- **Saída:** como se volta ao roteiro e quem puxa o processamento (`perestroika/processamento`).
+
 ## Perguntas
 - Para você: qual é a imagem da tagline? Que recursos existem (sala, plateia, objeto, tela, tempo)? O que pode virar físico ou literal?
 - Para o usuário: "O que o espaço e o orçamento permitem: interromper, mover a plateia, objetos, convidado surpresa?"
@@ -55,7 +64,7 @@ Perestroika, Experience Learning, capítulo 4 (Metodologia de Forma, ponto 10). 
 Aula "O futuro já passou", do curso Tomorrow (p47-48), reescrita. As seis primeiras cadeiras recebem 1, 2, 4, 8, 16 e 32 bolhas de plástico. A distribuição para e a turma tenta calcular as próximas; logo se perde. Pergunta-se quanto receberia a cadeira 20, e um rolo de 100 metros de plástico bolha é desenrolado sobre essa pessoa: 1.048.576 bolhas. Segundo o material, o objetivo é mostrar o tamanho do impacto do pensamento exponencial; a tagline ("sempre lembre da bolha") ganha uma imagem que a turma viveu.
 
 ## Em cada formato
-- **Palestra de 20 minutos:** Aplicação no Repertório: um treco de até 4 minutos, a mesma proporção dos 30 minutos numa aula de 150 da escola. Coloque depois da prova principal, por volta dos 12 a 15 minutos, e use 1 minuto para ligar com a tagline antes do fechamento. Se o mecanismo for quebrar a expectativa, pode abrir a fala, como a Branca de Neve abriu a aula. Exemplo, palestra sobre atendimento com IA, tagline "O cliente não repete a história.": um voluntário conta o mesmo problema a cinco "atendentes" da primeira fila, recomeçando do zero a cada transferência, com cronômetro no telão; o sexto atendente abre lendo o resumo da conversa e resolve na hora.
+- **Palestra de 20 minutos:** Aplicação no Repertório: um treco de até 20% do tempo (4 minutos numa fala de 20, 3 numa de 15), a mesma proporção dos 30 minutos numa aula de 150 da escola. Coloque depois da prova principal, entre 60% e 75% da fala (12 a 15 minutos numa de 20), e use 1 minuto para ligar com a tagline antes do fechamento. Se o mecanismo for quebrar a expectativa, pode abrir a fala, como a Branca de Neve abriu a aula. Exemplo, palestra sobre acessibilidade digital, tagline "Se não dá para todo mundo, não está pronto.": a plateia tenta preencher um formulário curto no próprio celular com o brilho no mínimo e o texto ampliado ao máximo, contra o relógio no telão; quase ninguém termina, e a versão acessível do mesmo formulário é preenchida por todos em seguida.
 - **Vídeo de 60 segundos:** Aplicação no Repertório: o treco é o único evento visual grande do vídeo e torna a tagline literal. Monte a regra até uns 35 segundos, solte o treco entre 35 e 50 e feche com a tagline na tela. Exemplo, a bolha em vídeo: cards com 1, 2, 4, 8 bolhas, a câmera recua e um rolo cobre a tela inteira enquanto o contador dispara. Técnicas `padrao-e-quebra`, `escala-impossivel`, `progressao-de-escala`; movimento `contagem`.
 - **Apresentação (slides):** Aplicação no Repertório: o slide do treco é um IMPACTAR que muda o mundo visual (sangria, cor invertida, objeto real) e vem junto de um gesto ao vivo; só a tela raramente vira notícia.
 - **Carrossel ou post:** Aplicação no Repertório: a lâmina que quebra o padrão das anteriores, ou uma tarefa que o leitor faz antes de passar ("conte as bolhas"). Um panorama em várias lâminas pode tornar um número físico pela largura.

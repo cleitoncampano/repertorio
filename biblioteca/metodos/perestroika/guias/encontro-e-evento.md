@@ -1,6 +1,6 @@
 # Encontro e evento
 
-Um acontecimento para um grupo, em geral único: palestra com plateia, kickoff, convenção, lançamento interno, meetup, festa de encerramento de projeto, encontro de clientes. Escolha este guia quando o objetivo principal é a experiência coletiva e o vínculo, não um conteúdo extenso. Para um encontro de formação, use `aula-e-workshop`.
+Um acontecimento para um grupo, em geral único: palestra com plateia, kickoff, convenção, lançamento interno, meetup, festa de encerramento de projeto, encontro de clientes. Escolha este guia quando o objetivo principal é a experiência coletiva e o vínculo, não um conteúdo extenso. Para um encontro de formação, use `aula-e-workshop`. Para uma fala curta dentro do evento de outra pessoa (10 a 20 minutos), siga a linha "palestra" do índice `metodo-perestroika`: tese, início, meio e fim e treco, sem a parte de anfitrião.
 
 Base: Experience Learning, Metodologia Emocional e Forma (escola Perestroika). Fichas em `get_guide("perestroika/<ficha>")`.
 

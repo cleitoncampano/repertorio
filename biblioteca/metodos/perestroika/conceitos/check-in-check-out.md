@@ -18,7 +18,7 @@ Perestroika, Experience Learning, capítulo 5 (Metodologia Emocional, ponto 12).
 5. Escolha a dinâmica pelo grupo. A Perestroika mistura técnicas e muda a abordagem conforme cidade, professor e equipe; não existe padrão (p11).
 6. Ponha na condução alguém com sensibilidade e inteligência emocional: é um processo delicado (p10).
 7. Aplicação no Repertório: anote as expectativas do check-in (quadro, post-it, documento) e leia de volta no check-out.
-8. Aplicação no Repertório: calcule o tempo pelo grupo, com 1 a 2 minutos por pessoa até 15 pessoas; acima disso, rodadas em trios e uma frase por trio para todos.
+8. Aplicação no Repertório: calcule o tempo pelo grupo. Até 15 pessoas, 1 a 2 minutos por pessoa. Acima disso, cada pessoa diz uma frase curta para a roda (cerca de 30 segundos), ou a conversa acontece em trios e cada trio devolve uma frase; num workshop de 3 horas, o bloco não passa de 20 minutos.
 
 ## Perguntas
 - Para você: quantas pessoas, quanto tempo total, é o primeiro contato do grupo, é presencial ou online, existe um encontro final?
@@ -26,7 +26,7 @@ Perestroika, Experience Learning, capítulo 5 (Metodologia Emocional, ponto 12).
 
 ## Deu certo quando
 - A agenda mostra check-in no primeiro bloco e check-out no último, cada um com tempo próprio.
-- Todas as pessoas falaram pelo menos uma vez em cada momento.
+- Todas as pessoas falaram pelo menos uma vez em cada momento, na roda ou no seu trio.
 - O check-out cita de volta as expectativas ditas no check-in.
 - O grupo sai com "cola social" (p11): as pessoas se conhecem pelo nome e pela intenção.
 

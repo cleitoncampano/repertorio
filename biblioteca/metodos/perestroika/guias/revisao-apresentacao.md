@@ -27,6 +27,8 @@ Olhe a peça como a plateia vai ver: capturas de cada slide em tamanho real, tod
 
 Use `perestroika/checklist-apresentacao` como lista completa.
 
+Só há roteiro, sem slides? Revise história e estrutura por inteiro. Em design e acabamento, comente o que a descrição de cada slide já permite (número de elementos, onde está o protagonista, se o gráfico tem um só dado) e liste o que precisa ser conferido nas capturas quando os slides existirem.
+
 ## Formato da entrega
 
 ```markdown

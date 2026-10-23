@@ -45,12 +45,12 @@ O próprio material mostra a ordem: a ficha aparece no capítulo de Conteúdo s�
 - Treco: as seis primeiras cadeiras recebem 1, 2, 4, 8, 16 e 32 bolhas de plástico; a turma tenta seguir a conta e se perde; na pergunta sobre a cadeira 20, um rolo de 100 metros é desenrolado sobre a pessoa: 1.048.576 bolhas.
 
 ## Exemplo aplicado
-Aplicação no Repertório: workshop interno de 2 horas para a equipe de atendimento que vai trabalhar com IA.
-- Curso: Trilha Atendimento com IA. Tema: atendimento ao cliente com IA. Conteúdo: como passar a conversa entre IA e pessoa sem perder o contexto. Nome: "Do começo, de novo?"
-- Tese: Responder rápido virou o mínimo. O cliente fica com quem lembra da conversa anterior, seja a IA, seja a pessoa.
-- Tagline: "O cliente não repete a história."
-- Treco: um voluntário faz o cliente e conta o mesmo problema a cinco "atendentes" da primeira fila, recomeçando do zero a cada transferência, com cronômetro no telão. No sexto atendimento, a atendente abre lendo o resumo que a IA deixou e resolve em 30 segundos. A sala compara os dois tempos.
-- O mesmo TTT num vídeo de 60 segundos: a cena acelerada, um contador de "vezes que repetiu a história" sobe a cada corte até 5 e zera no último atendimento; a tagline entra na tela nos 10 segundos finais.
+Aplicação no Repertório: workshop interno de 2 horas para vendedores recém-contratados de uma rede de academias.
+- Curso: Integração comercial. Tema: venda consultiva. Conteúdo: a primeira conversa com quem entra na academia. Nome: "Antes da tabela"
+- Tese: Quem procura academia está tentando recomeçar pela terceira vez. Quem vende o recomeço fecha; quem abre pela tabela de preços perde para a desistência anterior.
+- Tagline: "Primeiro a história, depois o plano."
+- Treco: dois vendedores voluntários atendem o mesmo "visitante" (um ator combinado antes). Um abre pela tabela; o outro pergunta o que trouxe a pessoa até ali. A sala vota em quem fecharia; o ator então conta que já desistiu duas vezes e diz com qual dos dois voltaria.
+- O mesmo TTT num vídeo de 60 segundos: tela dividida com as duas conversas; a da tabela trava num "vou pensar", a da história avança; a tagline entra nos 10 segundos finais.
 
 ## Modelo em branco
 ```

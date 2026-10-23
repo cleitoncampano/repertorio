@@ -15,10 +15,10 @@ Base: Experience Learning, a metodologia da escola Perestroika (23 pontos em 4 g
 ## Passo a passo
 
 1. **Tese e entrega.** Preencha `perestroika/ficha-de-tese` (tese, tagline, treco) e responda: "no dia seguinte, sentado no computador, o que a pessoa vai saber fazer?". Se não houver resposta concreta, a tese ainda está abstrata.
-2. **Perguntas que o encontro responde.** De 3 a 5 perguntas, na ordem em que serão respondidas (`perestroika/entrega-minima-e-dia-seguinte`). Elas viram os blocos de conteúdo.
-3. **Blocos com horário.** Monte a grade com o modelo `perestroika/grade-de-aula` (conceito em `perestroika/framework-de-aula`): abertura (check-in curto, retomada, apresentação), conteúdo expositivo em partes de até 45 minutos, perguntas, intervalo, treco com instruções e execução, processamento (o que aconteceu e o que isso tem a ver com a tese), finalização com a tagline e o check-out. Troque de estímulo pelo menos a cada 30 a 45 minutos: expor, fazer, discutir.
-4. **O treco.** Escolha uma experiência intensa que prove a tagline no corpo, não só na fala (aula de trás para a frente, invasão surpresa, jogo em grupo, simulação). Ela precisa de instruções claras e de um momento de processamento depois.
-5. **Materiais.** Slides só para o expositivo e para as instruções do treco; o instrumento do dia seguinte (checklist, ficha, modelo) como arquivo que a pessoa leva.
+2. **Perguntas que o encontro responde.** De 3 a 5 perguntas, na ordem em que serão respondidas (`perestroika/entrega-minima`). Elas viram os blocos de conteúdo. A tabela aula por aula (`perestroika/entrega-minima-e-dia-seguinte`) é para cursos; num encontro único, preencha só uma linha.
+3. **Blocos com horário.** Monte a grade com o modelo `perestroika/grade-de-aula` (conceito em `perestroika/framework-de-aula`): abertura (check-in curto, retomada, apresentação), conteúdo expositivo em partes de até 45 minutos, perguntas, intervalo, treco com instruções e execução, processamento (`perestroika/processamento`: o que aconteceu, o que tem a ver com a tese, o que muda amanhã), um bloco de mão na massa para cada pessoa preencher o instrumento do dia seguinte com um caso dela, finalização com a tagline e o check-out. Troque de estímulo pelo menos a cada 30 a 45 minutos entre os três tipos da escola: expositivo, mão na massa e descentralizado (discussão em grupo).
+4. **O treco.** Escolha uma experiência intensa que prove a tagline no corpo, não só na fala (aula de trás para a frente, invasão surpresa, jogo em grupo, simulação). Feche a produção (papéis, montagem, kit, instruções, plano B) pela seção "Produção para grupo" de `perestroika/treco`.
+5. **Materiais.** Slides só para o expositivo e para as instruções do treco; o instrumento do dia seguinte montado pelo modelo `perestroika/instrumento-do-dia-seguinte`, impresso e em arquivo.
 6. **Deck.** Para os slides, siga o fluxo normal do Repertório: guias por momento (`abertura`, `explicar-e-sequenciar`, `fechamento`) e referências do espaço escolhido. A tagline volta no último slide.
 
 ## Formato da entrega
@@ -29,9 +29,9 @@ Tese: ...           Tagline: "..."            Treco: ...
 Dia seguinte: o participante sai sabendo ... e leva <instrumento>.
 Perguntas que o encontro responde: 1. ... 2. ... 3. ...
 
-| bloco | começa | termina | o que acontece | estímulo | material |
-|---|---|---|---|---|---|
-| Check-in | 09:00 | 09:15 | ... | conversa | ... |
+| # | bloco | começa | termina | min | estímulo | o que acontece | material |
+|---|---|---|---|---|---|---|---|
+| 1 | Check-in | 09:00 | 09:15 | 15 | descentralizado | ... | ... |
 ...
 Check-out: pergunta de saída e como registrar o que mudou.
 Riscos e plano B: o que fazer se o treco não couber no tempo ou se o grupo for menor.
@@ -51,7 +51,7 @@ Riscos e plano B: o que fazer se o treco não couber no tempo ou se o grupo for 
 
 ## Fichas para abrir, nesta ordem
 
-`perestroika/tese`, `perestroika/ficha-de-tese`, `perestroika/fator-dia-seguinte`, `perestroika/framework-de-aula`, `perestroika/grade-de-aula`, `perestroika/treco`, `perestroika/check-in-check-out`. Se o encontro for parte de um curso: `perestroika/arco`, `perestroika/mapa-conectivo`.
+`perestroika/tese`, `perestroika/tagline`, `perestroika/ficha-de-tese`, `perestroika/fator-dia-seguinte`, `perestroika/entrega-minima`, `perestroika/framework-de-aula`, `perestroika/grade-de-aula`, `perestroika/treco`, `perestroika/processamento`, `perestroika/instrumento-do-dia-seguinte`, `perestroika/check-in-check-out`. Se o encontro for parte de um curso: `perestroika/arco`, `perestroika/mapa-conectivo`.
 
 ## Referências para abrir primeiro
 

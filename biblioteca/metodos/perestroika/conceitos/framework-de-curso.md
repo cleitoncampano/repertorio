@@ -17,7 +17,7 @@ Perestroika, Experience Learning, capítulo 6 (Metodologia Estrutural, ponto 19)
 5. Leia a distribuição: a mistura de conceito, prática e casos está equilibrada? As abordagens de aprendizado estão todas lá? (p10).
 6. Se ativar módulo vivencial, projetos, banca ou Go Pro, eles precisam constar no framework (p35, p46).
 7. Mantenha flexível: cada curso tem seu desenho, nem todo curso tem todos os tipos e a ordem não é rígida (p15-17).
-8. Preencha o modelo em `perestroika/framework-de-curso`.
+8. Preencha o modelo `perestroika/grade-de-curso`.
 
 ## Perguntas
 - Para você: quantos encontros, de que duração, que tipos de encontro o tema pede, há entrega prática?

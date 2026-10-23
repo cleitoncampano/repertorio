@@ -12,7 +12,8 @@ O método vale junto com qualquer espaço do Repertório: ele decide o que a pe�
 | A apresentação está pronta e quero saber o que melhorar | guia `revisao-apresentacao`, `perestroika/checklist-apresentacao` |
 | Vou conduzir uma aula, workshop, treinamento ou onboarding | guia `aula-e-workshop` |
 | São vários encontros: curso, trilha, programa, escola corporativa | guia `curso-e-programa` |
-| É um acontecimento: palestra com plateia, kickoff, convenção, evento | guia `encontro-e-evento` |
+| Vou dar uma palestra de 10 a 20 minutos, dentro de um evento | `perestroika/tese`, `perestroika/inicio-meio-fim`, `perestroika/treco` (seção "Em cada formato", palestra), depois os guias por momento do Repertório |
+| Vou organizar o acontecimento inteiro: kickoff, convenção, evento com várias falas | guia `encontro-e-evento` |
 | Preciso propor um treinamento para um cliente | `perestroika/proposta-de-programa`, `perestroika/roteiro-de-consultoria-educacional` |
 
 ## História e mensagem
@@ -23,6 +24,7 @@ O método vale junto com qualquer espaço do Repertório: ele decide o que a pe�
 - `perestroika/treco`: a experiência intensa que prova a tagline.
 - `perestroika/fluxo-ttt`: conteúdo mais visão autoral vira tese, tagline e treco numa linha só.
 - `perestroika/fator-dia-seguinte`: o que a pessoa sabe fazer amanhã.
+- `perestroika/processamento`: a conversa depois do treco que transforma vivência em aprendizado.
 - `perestroika/entrega-minima`: as perguntas que cada encontro precisa responder.
 - `perestroika/mapa-do-storytelling`: as 8 cartas (Catraca, Tenho dados, Didatismo na veia, Sou foda, Poder de escuta, Quebra-gelo, Vulnerabilidade, Fator surpresa).
 - `perestroika/padroes-de-storytelling`: os padrões base e alegóricos do curso Chorinho.
@@ -64,14 +66,32 @@ O método vale junto com qualquer espaço do Repertório: ele decide o que a pe�
 - `perestroika/oito-movimentos-da-educacao`: o cenário da aprendizagem, para peças sobre educação e treinamento.
 - `perestroika/experience-learning`: visão geral dos 23 pontos.
 
+## As 8 cartas e os guias do Repertório
+
+Aplicação no Repertório: onde cada carta costuma cair no roteiro, com a intenção do vocabulário e o guia do momento.
+
+| carta | o que vira na peça | intenção | guia |
+|---|---|---|---|
+| Catraca (objetivo) | a tese; decide o que entra, não é um slide | | |
+| Tenho dados | o número ou gráfico que prova | PROVAR | `provar-com-dados` |
+| Didatismo na veia | o esquema que explica | EXPLICAR, SEQUENCIAR | `explicar-e-sequenciar` |
+| Sou foda (credencial) | quem fala e por que ouvir | APRESENTAR | `apresentar-pessoas` |
+| Poder de escuta | a pergunta ou a pausa para a plateia | CITAR (pergunta) | `impacto-e-destaque` |
+| Quebra-gelo | a mudança de emoção | IMPACTAR | `impacto-e-destaque` |
+| Vulnerabilidade | a história humana, o erro contado | CITAR | `impacto-e-destaque` |
+| Fator surpresa | o treco | IMPACTAR | `impacto-e-destaque` |
+| (tagline) | a frase que fica | DESTACAR, depois FECHAR | `impacto-e-destaque`, `fechamento` |
+
 ## Modelos para preencher
 
-`perestroika/ficha-de-tese`, `perestroika/cartas-do-storytelling`, `perestroika/entrega-minima-e-dia-seguinte`, `perestroika/grade-de-aula`, `perestroika/grade-de-curso`, `perestroika/proposta-de-programa`, `perestroika/roteiro-de-consultoria-educacional`, `perestroika/avaliacao-de-reacao`, `perestroika/checklist-apresentacao`.
+`perestroika/ficha-de-tese`, `perestroika/cartas-do-storytelling`, `perestroika/entrega-minima-e-dia-seguinte`, `perestroika/instrumento-do-dia-seguinte`, `perestroika/grade-de-aula`, `perestroika/grade-de-curso`, `perestroika/proposta-de-programa`, `perestroika/roteiro-de-consultoria-educacional`, `perestroika/avaliacao-de-reacao`, `perestroika/checklist-apresentacao`.
 
 ## Como se liga ao resto do Repertório
 
 1. História primeiro: tese, tagline e cartas antes de `biblioteca/processo.md` e dos guias por momento (`abertura`, `impacto-e-destaque`, `fechamento`...). A tagline costuma virar o slide DESTACAR e voltar no FECHAR; o treco costuma ser o IMPACTAR.
-2. Visual depois: referências dos espaços escolhidos pelo usuário. No espaço Perestroika, busque pelo nome do conceito ("treco", "tagline", "framework de aula") para ver como a escola desenhou a ideia.
+2. Visual depois: referências dos espaços escolhidos pelo usuário. No espaço Perestroika, busque pelo nome do conceito ("treco", "tagline", "framework de aula") para ver como a escola desenhou a ideia; a busca mostra um slide por apresentação, e `per_group` maior traz mais slides do mesmo PDF.
 3. Antes de entregar: guia `revisao-apresentacao`.
+
+Os exemplos marcados como "Aplicação no Repertório" nas fichas são ilustrações: não reaproveite tagline, treco ou nomes deles; crie os do tema do usuário.
 
 Diga ao usuário quais fichas e referências usou e por quê. O método é de terceiros: aplique as ideias com o tema e a identidade do projeto, sem copiar textos ou slides.

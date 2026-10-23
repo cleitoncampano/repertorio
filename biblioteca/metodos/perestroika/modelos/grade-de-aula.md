@@ -46,18 +46,18 @@ Aula das 20:00 às 22:30 (p21). Os minutos foram calculados a partir dos horári
 | 10 | Finalização | 22:25 | 22:30 | 5 | expositivo |
 
 ## Exemplo aplicado
-Aplicação no Repertório. Tema: atendimento ao cliente com IA. Tese: a IA responde o repetitivo para o atendente resolver o difícil. Tagline: "a máquina tira a fila, você resolve". Treco: corrida com tickets reais, metade da sala com IA e metade sem; depois trocam e comparam qualidade, não só tempo.
+Aplicação no Repertório. Tema: onboarding de recepcionistas de hotel. Tese: o check-in é o primeiro minuto da estadia, e o hóspede decide ali como vai ser o resto. Tagline: "olho no hóspede, não na tela". Treco: check-in encenado com hóspedes combinados antes, metade da sala atende olhando a tela e metade olhando o hóspede; depois trocam e comparam o que o hóspede sentiu, não só o tempo.
 
 **60 minutos** (aula avulsa; abaixo de 90 minutos, sem intervalo):
 
 | # | bloco | começa | termina | min | estímulo | o que acontece |
 |---|---|---|---|---|---|---|
-| 1 | Voz da turma | 9:00 | 9:05 | 5 | descentralizado | uma pessoa conta um atendimento difícil da semana |
+| 1 | Voz da turma | 9:00 | 9:05 | 5 | descentralizado | uma pessoa conta a melhor chegada que já teve num hotel |
 | 2 | Recados e aquecimento | 9:05 | 9:08 | 3 | expositivo | combinados e tese em uma frase |
-| 3 | Conteúdo expositivo | 9:08 | 9:28 | 20 | expositivo | onde a IA ajuda e onde erra |
+| 3 | Conteúdo expositivo | 9:08 | 9:28 | 20 | expositivo | o check-in passo a passo e onde o hóspede espera |
 | 4 | Perguntas | 9:28 | 9:35 | 7 | descentralizado | dúvidas e objeções |
-| 5 | Treco curto | 9:35 | 9:50 | 15 | mão na massa | duplas respondem o mesmo ticket com e sem IA |
-| 6 | Processamento | 9:50 | 9:57 | 7 | descentralizado | o que mudou na qualidade |
+| 5 | Treco curto | 9:35 | 9:50 | 15 | mão na massa | duplas fazem o mesmo check-in olhando a tela e olhando o hóspede |
+| 6 | Processamento | 9:50 | 9:57 | 7 | descentralizado | o que o hóspede percebeu |
 | 7 | Finalização | 9:57 | 10:00 | 3 | expositivo | tagline e uma palavra por pessoa |
 
 **3 horas** (workshop único; check-in e check-out nas pontas):
@@ -69,7 +69,7 @@ Aplicação no Repertório. Tema: atendimento ao cliente com IA. Tese: a IA resp
 | 3 | Conteúdo expositivo | 14:25 | 15:05 | 40 | expositivo |
 | 4 | Perguntas e debate | 15:05 | 15:20 | 15 | descentralizado |
 | 5 | Intervalo | 15:20 | 15:35 | 15 | |
-| 6 | Treco: a corrida com e sem IA | 15:35 | 16:15 | 40 | mão na massa |
+| 6 | Treco: o check-in encenado nas duas versões | 15:35 | 16:15 | 40 | mão na massa |
 | 7 | Processamento | 16:15 | 16:35 | 20 | descentralizado |
 | 8 | Finalização: tagline e o que fazer amanhã | 16:35 | 16:45 | 10 | expositivo |
 | 9 | Check-out: expectativas de volta | 16:45 | 17:00 | 15 | descentralizado |

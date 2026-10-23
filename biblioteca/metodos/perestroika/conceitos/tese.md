@@ -13,8 +13,8 @@ Perestroika, Experience Learning, capítulo 3 (Metodologia de Conteúdo, ponto 2
 ## Como aplicar
 1. Some o conteúdo à visão de quem fala: conteúdo + visão autoral = tese (`04-forma` p41). Sem visão própria, abra `perestroika/autoralidade` antes.
 2. Olhe para frente. A escola prefere uma visão sobre o que vem a uma análise do que já foi feito (p8).
-3. Escreva como afirmação, em 1 a 3 frases curtas. As três teses de aula do material têm de 13 a 20 palavras, e duas delas terminam numa consequência prática ("o humorista precisa planejar essa surpresa") (p14-16).
-4. Aplicação no Repertório: teste se é tese ou tema. Se ninguém da área discordaria, ou se a frase é só o nome do assunto ("IA no atendimento"), ainda é tema.
+3. Escreva como afirmação: a tese inteira em 1 a 3 frases curtas (Aplicação no Repertório: até umas 40 palavras no total). As três teses de aula do material têm, cada uma inteira, de 13 a 20 palavras, e duas delas terminam numa consequência prática ("o humorista precisa planejar essa surpresa") (p14-16).
+4. Aplicação no Repertório: teste se é tese ou tema. Se ninguém da área discordaria, ou se a frase é só o nome do assunto ("café por assinatura"), ainda é tema.
 5. Ponha tudo a serviço dela: histórias, raciocínios, exemplos e casos existem para prová-la (p11). Corte o que não prova.
 6. Encaixe os níveis. A tese de curso pode ser um parágrafo (a do MOOD tem cinco frases, `04-forma` p33); as teses de aula são curtas e constroem a do curso.
 7. Passe pelo `perestroika/fator-dia-seguinte`: a tese muda algo na rotina do público? Se não, reescreva (`03-conteudo` p23).
@@ -50,7 +50,7 @@ Três aulas que acompanham os capítulos 3 e 4 (p14-16):
 A primeira aula da escola, em 2007, já tinha tese: a criatividade aparece em qualquer manifestação humana, provada com casos engenhosos do mundo do crime (`07-como-surgiu` p15).
 
 ## Em cada formato
-- **Apresentação ou pitch:** Aplicação no Repertório: a tese é a frase que o decisor precisa aceitar no fim. Exemplo, pitch de plataforma de atendimento com IA. Tema: "IA no atendimento". Tese: "Responder rápido virou o mínimo. O cliente fica com quem lembra da conversa anterior." Cada bloco prova uma parte: o dado de abandono, o caso, a demonstração, o preço do piloto. Na forma Z da narrativa a tese aparece cedo; na forma S, logo depois do problema.
+- **Apresentação ou pitch:** Aplicação no Repertório: a tese é a frase que o decisor precisa aceitar no fim. Exemplo, pitch de café por assinatura de uma rede de padarias. Tema: "café por assinatura". Tese: "Café bom a padaria já tem. Quem assina paga para não pensar: o pedido de sempre, pronto na hora de sempre." Cada bloco prova uma parte: a fila das 7h, o caso da loja que testou, a demonstração do pedido pronto, o preço do piloto. Na forma Z da narrativa a tese aparece cedo; na forma S, logo depois do problema.
 - **Carrossel ou post:** Aplicação no Repertório: uma tese por carrossel. A capa provoca com o lado mais discutível dela, o miolo prova, a lâmina de virada ou a final diz a tese inteira.
 - **Vídeo:** Aplicação no Repertório: 60 segundos comportam uma tese de uma frase. Se precisar de duas, são dois vídeos.
 - **Aula, workshop ou evento:** tese de curso, de módulo e de aula. A tese do curso é apresentada na aula inaugural (`05-emocional` p19; `perestroika/aula-inaugural`) e construída aula a aula pelo arco (`perestroika/arco`).

@@ -38,21 +38,21 @@ VIRA, catálogo 2025 (p26-28), reescrito:
 - **Formatos:** gravado com 6 módulos, 29 aulas, 5h; híbrido com 30 aulas, 7h (hangout de 2h, online ou presencial); ao vivo em 3 encontros de 2h; palestra de no mínimo 1h, logística à parte.
 
 ## Exemplo aplicado
-Aplicação no Repertório, tema fictício para mostrar a transferência (mesmo tema do exemplo de `perestroika/framework-de-curso`):
-- **Nome e promessa:** ELO. Atenda mais rápido sem perder o humano.
-- **Abertura:** seu time já usa IA no atendimento, mas o cliente ainda repete a história para cada pessoa. No ELO, você aprende o que a IA resolve sozinha, quando ela passa a conversa para alguém e como revisar o que ela respondeu. Você sai com o roteiro de transferência da sua fila desenhado. Topa tirar o robô da frente do problema?
-- **Público:** líderes e analistas de atendimento que usam ou vão implantar IA no WhatsApp e no chat.
-- **Temas:** IA no atendimento, transferência para humano, qualidade de resposta, métricas de experiência.
+Aplicação no Repertório, tema fictício para mostrar a transferência:
+- **Nome e promessa:** PRUMO. Lidere a loja sem apagar incêndio.
+- **Abertura:** você virou gerente porque era o melhor do setor, e agora passa o dia cobrindo falta, conferindo gôndola vazia e resolvendo o que ninguém resolveu. No PRUMO, você aprende a montar uma escala que se sustenta, a entregar a abertura da loja a outra pessoa e a alinhar o time em 10 minutos por dia. Você sai com o ritual de liderança da sua loja desenhado. Topa largar o extintor?
+- **Público:** gerentes e subgerentes de supermercado promovidos da operação, que lideram vários setores ao mesmo tempo (caixa, açougue, padaria, reposição).
+- **Temas:** liderança de loja, escala e turnos, delegação, feedback, indicadores de loja.
 - **Módulos:**
-  1. Check-in: conheça a jornada, quem guia e o retrato do atendimento de cada um hoje.
-  2. O que mudou: descubra o que a IA já faz bem no atendimento e onde ainda tropeça.
-  3. Quem responde o quê: separe as conversas da operação em resolver, encaminhar e escalar.
-  4. Passagem de bastão: desenhe a transferência da IA para a pessoa sem o cliente repetir nada.
-  5. Revisar sem microgerenciar: aprenda a revisar uma amostra de conversas e a dar feedback em eu gosto / eu desejo.
-  6. Check-out: apresente o roteiro de transferência da sua fila e o primeiro passo para segunda-feira.
-- **Quem guia:** [nome], que implantou IA em [n] operações de atendimento.
+  1. Check-in: conheça a jornada, quem guia e o retrato da semana de cada gerente hoje.
+  2. Do setor à loja: descubra o que muda quando você deixa de fazer e passa a fazer acontecer.
+  3. Quem cuida do quê: separe as tarefas da loja em fazer, delegar e acompanhar.
+  4. Os 10 minutos antes de abrir: desenhe o encontro diário com o time, com uma prioridade por setor.
+  5. Cobrar sem desgastar: aprenda a acompanhar ruptura e perdas e a dar feedback em eu gosto / eu desejo.
+  6. Check-out: apresente o ritual de liderança da sua loja e o primeiro passo para segunda-feira.
+- **Quem guia:** [nome], que gerenciou [n] lojas de supermercado.
 - **Formatos:** gravado com 6 módulos, 24 aulas, 5h; híbrido com 25 aulas, 7h; ao vivo em 3 encontros de 2h; presencial em 2 encontros de 3h.
-- **Entregas:** acesso por 6 meses; e-book com o modelo de roteiro de transferência; certificado com 70%.
+- **Entregas:** acesso por 6 meses; e-book com o modelo de ritual de liderança; certificado com 70%.
 - **Avaliação:** conteúdo, aplicabilidade e facilitador em escala de 1 a 5, mais opiniões abertas.
 
 ## Modelo em branco

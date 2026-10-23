@@ -36,14 +36,14 @@ Curso MOOD. Tese do curso, resumida: ler cenários e tendências vai deixar de s
 | 6. Exercício de framework de tendências | Carol Alt | (o exercício, sem pergunta) | (o mesmo exercício) |
 
 ## Exemplo aplicado
-Aplicação no Repertório: onboarding em 4 encontros para atendentes que vão trabalhar com IA. Tese do programa: a IA resolve o repetitivo; a pessoa cuida do que exige julgamento e não deixa o cliente repetir a história.
+Aplicação no Repertório: curso de planilhas em 4 encontros para a equipe financeira. Tese do programa: planilha boa não é a que tem mais fórmulas; é a que outra pessoa abre na segunda-feira e entende sem perguntar.
 
 | aula | quem ensina | perguntas | instrumento do dia seguinte |
 |---|---|---|---|
-| 1. O que a IA já faz sozinha | coordenação de atendimento | que pedidos a IA resolve sem ajuda? onde ela erra hoje? | marcar no painel as conversas que precisam de pessoa |
-| 2. A passagem de bastão | supervisão | quando a IA deve passar a conversa? o que o resumo precisa ter? | assumir uma conversa pelo resumo, sem pedir dados de novo |
-| 3. O que só a pessoa faz | atendente sênior | como lidar com cliente irritado ou caso fora do roteiro? quando abrir exceção? | conduzir um caso fora do roteiro com três perguntas fixas |
-| 4. Ensinar a IA | qualidade | como uma correção vira regra? quem aprova? | registrar uma correção no formulário de melhoria |
+| 1. A planilha que só o autor entende | coordenação financeira | por que a planilha do colega trava a minha semana? o que toda planilha da equipe precisa mostrar? | montar a aba de capa: para que serve, de onde vêm os dados, quem atualiza |
+| 2. Dados limpos | analista sênior | como trazer o extrato do banco sem colar à mão? onde nascem os erros de digitação? | importar um extrato e padronizar datas e valores numa tabela |
+| 3. Fórmulas que se explicam | controladoria | quando usar PROCX, SOMASES ou tabela dinâmica? como outra pessoa confere a minha conta? | refazer a conciliação da semana com uma fórmula por coluna, comentada |
+| 4. Fechamento sem susto | gerência financeira | o que conferir primeiro no fechamento do mês? como mostrar o resultado numa tela só? | entregar o resumo do mês num painel de uma tela |
 
 Aplicação no Repertório: numa palestra ou apresentação única, use uma linha por bloco da fala em vez de uma por aula.
 

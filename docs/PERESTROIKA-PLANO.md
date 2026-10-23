@@ -73,3 +73,22 @@ Uma criação de verdade usando o espaço sozinho (ex.: um workshop Growmate) e 
 ## Ordem e custo
 
 Fases 1 a 3 entregam o que é mais acionável (método, modelos, skills) e não mexem no mapa. A fase 1 é a mais cara, pela leitura visual de 760 páginas. A fase 4 repete o trabalho de Referências e pode vir depois sem prejuízo das anteriores.
+
+## Resultado (23/10/2026)
+
+As cinco fases foram executadas na ordem 1, 4, 2, 3 e 5: o espaço visual entrou antes das fichas para os guias já apontarem para os slides.
+
+- Leitura: 760 páginas, todas lidas; estudos por PDF em `_referencias/perestroika/`.
+- Método: 53 fichas e modelos, 5 guias de entrada, conferidos por `ferramentas/incorporar_perestroika.py validar`.
+- Skills: `perestroika-tese`, `perestroika-experiencia`, `perestroika-revisao`, no catálogo do app (categoria Método).
+- Espaço Perestroika: 23 apresentações, 191 slides e 1 vídeo. O Mood SP (cópia do Mood RIO) ficou fora. Branding não virou ficha: o material só cita os conceitos.
+- Teste às cegas: um workshop de 3 horas (só Perestroika) e uma palestra de 15 minutos (Referências, Inspiração e Perestroika). Os dois aplicaram tese, tagline, treco e dia seguinte. As falhas encontradas foram corrigidas: exemplos repetidos, falta de ficha de processamento e de modelo de instrumento, palestra curta sem rota, regras de tempo ambíguas.
+
+## Pendências fora do escopo do método
+
+Apontadas pelos testes, envolvem a busca e os guias de todos os espaços; ficam para decisão do Cleiton:
+- A busca lê palavras comuns como filtro ("tela" vira MOSTRAR, "grade" vira AGRUPAR, "segundos" vira ordinal) e não acha "cronômetro" nem "chat"; `get_reference` traz uma lista longa de apresentações relacionadas só por técnica.
+- Algumas fichas de slide de Referências herdam a ideia da apresentação e vêm sem `como_funciona`.
+- Não há referências de interface de atendimento (chat, ticket, painel) fora do espaço Growmate, e os guias por momento citam o Growmate mesmo quando o usuário não escolheu esse espaço.
+- `biblioteca/processo.md` (passo 3) ainda manda usar `roteiro.py` e `buscar.py`, que o AGENTS.md diz não refletirem a curadoria.
+- Falta uma regra para dado público lembrado pelo agente (sugerir com fonte, ano e marca provisória).

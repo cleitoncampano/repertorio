@@ -18,7 +18,7 @@ Perestroika, Experience Learning, capítulo 6 (Metodologia Estrutural, ponto 20)
 5. No aquecimento, ligue com o que veio antes: mapa conectivo, retomada da última aula, apresentação de quem conduz (p21).
 6. Depois da prática, reserve um bloco de processamento para o grupo digerir o que viveu, e só então finalize (p21).
 7. Aplicação no Repertório: nenhum bloco expositivo passa de 45 minutos, o maior bloco do exemplo da fonte.
-8. Preencha o modelo em `perestroika/framework-de-aula`, que traz versões para 60 minutos, 3 horas e um dia inteiro.
+8. Preencha o modelo `perestroika/grade-de-aula`, que traz versões para 60 minutos, 3 horas e um dia inteiro.
 
 ## As três vantagens de dividir (p22-25)
 1. Cabem estímulos e técnicas diferentes: uma parte expositiva, outra mão na massa, outra descentralizada (p23).

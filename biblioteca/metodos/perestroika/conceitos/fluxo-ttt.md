@@ -48,11 +48,11 @@ O material apresenta os três casos como exemplos de narrativa e entrega única 
 A ficha aparece pela primeira vez no capítulo de Conteúdo só com a tese preenchida (`03-conteudo` p14-16) e volta completa no de Forma: a própria ordem de montagem.
 
 ## Exemplo aplicado
-Aplicação no Repertório: pitch de 10 minutos de uma plataforma de atendimento com IA.
-- Tese: responder rápido virou o mínimo; o cliente fica com quem lembra da conversa anterior.
-- Tagline: "O cliente não repete a história."
-- Treco: no meio do pitch, quem apresenta liga para o número de demonstração no viva-voz e conta um problema. Desliga, liga de novo, e o atendimento abre dizendo onde a conversa parou.
-- Elos: a tagline diz a tese em cinco palavras; o treco mostra o cliente que não precisa repetir; quem contar a demonstração explica a tese.
+Aplicação no Repertório: pitch de 10 minutos de um aplicativo de finanças para trabalhadores autônomos.
+- Tese: autônomo não precisa de mais uma planilha; precisa saber, todo dia, quanto pode gastar sem faltar no fim do mês.
+- Tagline: "Quanto dá para gastar hoje?"
+- Treco: no meio do pitch, quem apresenta pergunta a três pessoas da plateia quanto podem gastar hoje; ninguém sabe. Abre o aplicativo com o caso de uma usuária real (anônimo) e a resposta aparece em dois segundos.
+- Elos: a tagline é a pergunta que a tese responde; o treco mostra a pergunta sem resposta e depois respondida; quem contar a demonstração explica a tese.
 
 ## Em cada formato
 - **Apresentação:** Aplicação no Repertório: a tese organiza o roteiro, a tagline aparece nos lembretes e no slide final, o treco ocupa o slide de virada.

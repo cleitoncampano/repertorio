@@ -12,7 +12,7 @@ Projeto e biblioteca local de referências para criar apresentações, sites e v
 ## Comece pelo trabalho atual
 
 - O produto é local em Mac e Windows, com navegador nos dois sistemas e aplicativo opcional no Mac. Definição e preparação comercial em `docs/produto/PRODUTO.md` e `docs/produto/COMERCIALIZACAO.md`. Não apresentar como SaaS ou como gerador autônomo de peças.
-- Os materiais da Perestroika e da SOAP viraram os espaços Perestroika e SOAP e os métodos em `biblioteca/metodos/perestroika/` e `biblioteca/metodos/soap/`. Não apagar a pasta `soap/` nem o que ficou em `perestroika/`: os 23 PDFs que as fichas abrem e a leitura dos agentes em `_trabalho/leitura/` (o resto saiu em 23/10/2026), nem incluir esses materiais (originais, fichas ou espaços) em pacotes de demonstração ou distribuição: são de terceiros.
+- Os materiais da Perestroika e da SOAP viraram os espaços Perestroika e SOAP e os métodos em `biblioteca/metodos/perestroika/` e `biblioteca/metodos/soap/`. Não apagar o que ficou em `perestroika/` e `soap/` (os PDFs que as fichas abrem como original e o trabalho dos agentes em `_trabalho/`; o resto saiu na limpeza de 23/10/2026), nem incluir esses materiais (originais, fichas ou espaços) em pacotes de demonstração ou distribuição: são de terceiros.
 - Demonstrações usam `demo --home PASTA_SEPARADA --serve`, com exemplos originais e outra porta. Instalações novas usam `init`, sem importar automaticamente o acervo de desenvolvimento.
 
 - Ao retomar uma demanda, leia `docs/RETOMADA.md`, confira o Git e os arquivos envolvidos. Não releia todos os manuais por rotina.

@@ -1,5 +1,9 @@
 # Retomada do projeto
 
+## Limpeza do projeto em 23/10/2026
+
+A pedido do Cleiton, o projeto ficou só com o que o app usa ou o que não dá para refazer. Regra usada: fica todo arquivo ligado a uma ficha do app, tudo o que está no Git e o trabalho escrito pelos agentes; sai o que os comandos do projeto recriam e o material de apoio já transformado em fichas. Saíram 1 GB e cerca de 4.200 arquivos, para o Lixo do Mac em `repertorio-limpeza-2026-10-23`: em `soap/`, os PowerPoints de origem, o zip do kit, as páginas, o texto e as folhas de contato (detalhes em `biblioteca/metodos/soap/LEIA-ME.md`); em `dados/_trabalho/`, os lotes de imagens e os pacotes, que `ferramentas/construir/` recria (`lotes.py`, `lotes_midia.py`, `lotes_referencias.py`, `pacotes.py`; as fichas escritas pelos agentes ficaram); em `_referencias/videos/`, os cinco vídeos do YouTube, os quadros brutos, as pranchas de contato e os `video.info.json` (ficaram os estudos, as transcrições e os quadros escolhidos, que o espaço Inspiração usa). Nenhum arquivo usado pelo app sumiu; Referências, Perestroika, SOAP, Inspiração e Apresentações abrem normalmente.
+
 ## Pasta perestroika enxuta em 23/10/2026
 
 A pedido do Cleiton, `perestroika/` ficou só com o que é acionável: os 23 PDFs que as fichas do espaço abrem como original e a leitura dos agentes em `_trabalho/leitura/` (base do `montar`, não dá para refazer sem nova leitura). Os outros 857 arquivos (167 MB: páginas, texto e folhas de contato de `_trabalho/`, que `paginas` recria, índice antigo, pranchetas, o Mood SP repetido e o vídeo do Chora PPT, que já estava na lixeira) foram para o Lixo do Mac, em `perestroika-excluidos-2026-10-23`. Mapa, busca, imagens dos slides, métodos e skills não dependiam deles (as imagens ficam em `_originais/perestroika/`). Para remontar o espaço: `paginas` e depois `montar`.

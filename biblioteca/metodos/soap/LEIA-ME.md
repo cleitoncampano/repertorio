@@ -16,6 +16,8 @@ O serviço lê `guias/` como guias e `conceitos/` e `modelos/` como fichas (`app
 
 Plano e andamento em `docs/SOAP-PLANO.md`. Ferramenta: `ferramentas/incorporar_colecao.py soap <comando>`.
 
+Na limpeza de 23/10/2026, a pedido do Cleiton, `soap/` ficou só com o que é acionável: os 58 PDFs de `ebooks_e_guias/` e `checklists_e_infograficos/`, os 17 PDFs de `_trabalho/pdf-templates/` (os três são os originais que as fichas abrem) e o trabalho dos agentes em `_trabalho/leitura/`, `_trabalho/relatorios/` e a transcrição da planilha em `_trabalho/kit-express/`. Os PowerPoints de origem, o zip do kit, as páginas, o texto e as folhas de contato saíram: `paginas` recria o que `conferir` e `montar` exigem, e a importação usa só os PDFs.
+
 1. Templates `.ppt` e `.pptx` exportados para PDF pelo PowerPoint (o de gráficos pelo Keynote, porque o PowerPoint o exportava incompleto) em `soap/_trabalho/pdf-templates/`; a planilha do kit transcrita em `soap/_trabalho/kit-express/`.
 2. `paginas`: renderiza as 1.755 páginas, o texto por página e as folhas de contato em `soap/_trabalho/`.
 3. Leitura página por página (texto e imagem) por 10 agentes, com `dados/_trabalho/INSTRUCOES-SOAP-LEITURA.md`; `conferir` valida. Saída em `soap/_trabalho/leitura/` (fora do Git); o resumo de cada PDF fica também em `_referencias/soap/<slug>.md`. Lotes e conclusões em `soap/_trabalho/relatorios/`.

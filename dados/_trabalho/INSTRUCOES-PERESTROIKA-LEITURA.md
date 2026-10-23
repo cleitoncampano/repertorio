@@ -4,14 +4,14 @@ Objetivo: ler cada página dos PDFs da Perestroika (texto e imagem) e produzir d
 
 ## Onde está o material
 
-- Páginas renderizadas: `perestroika/_trabalho/paginas/<slug>/pNNN.jpg` (até 1600 px).
-- Folhas de contato (6 páginas por imagem, numeradas no canto): `perestroika/_trabalho/folhas/<slug>_NN.jpg`. Comece por elas.
-- Texto extraído do PDF por página: `perestroika/_trabalho/texto/<slug>.txt` (incompleto: metade das páginas tem texto só na imagem).
-- Vocabulário visual: `perestroika/_trabalho/VOCABULARIO.md`.
+- Páginas renderizadas: `_originais/perestroika/_trabalho/paginas/<slug>/pNNN.jpg` (até 1600 px).
+- Folhas de contato (6 páginas por imagem, numeradas no canto): `_originais/perestroika/_trabalho/folhas/<slug>_NN.jpg`. Comece por elas.
+- Texto extraído do PDF por página: `_originais/perestroika/_trabalho/texto/<slug>.txt` (incompleto: metade das páginas tem texto só na imagem).
+- Vocabulário visual: `_originais/perestroika/_trabalho/VOCABULARIO.md`.
 
 Abra a folha de contato com a ferramenta de leitura de arquivos. Quando uma página tiver texto pequeno ou um diagrama, abra a página inteira (`paginas/<slug>/pNNN.jpg`). Não pule páginas.
 
-## Saída 1: `perestroika/_trabalho/leitura/<slug>.jsonl`
+## Saída 1: `_originais/perestroika/_trabalho/leitura/<slug>.jsonl`
 
 Uma linha JSON por página, na ordem, com estes campos:
 
@@ -42,7 +42,7 @@ Uma linha JSON por página, na ordem, com estes campos:
 
 `forca`: 1 a 5, quão bom e transferível é o slide como referência (5 = exemplar raro). Use só ids do `VOCABULARIO.md`.
 
-## Saída 2: `perestroika/_trabalho/leitura/<slug>.md`
+## Saída 2: `_originais/perestroika/_trabalho/leitura/<slug>.md`
 
 Resumo do PDF para quem vai escrever as fichas de método. Seções:
 

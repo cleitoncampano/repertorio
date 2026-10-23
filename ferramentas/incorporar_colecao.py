@@ -137,10 +137,10 @@ SOAP_CAUTIONS = {
 SOAP_SKIP = {'template-graficos': {10, 16, 18, 22, 24, 40, 46}}
 
 COLLECTIONS = {
-    'perestroika': dict(label='Perestroika', source='perestroika', extra=(), what='PDF da Perestroika',
+    'perestroika': dict(label='Perestroika', source='_originais/perestroika', extra=(), what='PDF da Perestroika',
                         slugs={}, titles=PERESTROIKA_TITLES),
-    # Templates em PowerPoint e o kit do zip são exportados para PDF em soap/_trabalho/pdf-templates/ e seguem como PDF.
-    'soap': dict(label='SOAP', source='soap', extra=('soap/_trabalho/pdf-templates',), what='PDF da SOAP',
+    # Templates em PowerPoint e o kit do zip são exportados para PDF em _originais/soap/_trabalho/pdf-templates/ e seguem como PDF.
+    'soap': dict(label='SOAP', source='_originais/soap', extra=('_originais/soap/_trabalho/pdf-templates',), what='PDF da SOAP',
                  what_converted='Template da SOAP, exportado para PDF,', slugs={k: v[0] for k, v in SOAP_FILES.items()},
                  titles={v[0]: v[1] for v in SOAP_FILES.values()}, cautions=SOAP_CAUTIONS, skip=SOAP_SKIP),
 }

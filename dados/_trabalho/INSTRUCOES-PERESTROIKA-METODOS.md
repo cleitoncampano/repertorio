@@ -3,9 +3,9 @@
 Objetivo: transformar a leitura dos PDFs da Perestroika em fichas `.md` que um modelo de IA consulta no meio de uma criação (apresentação, carrossel, vídeo, aula, workshop, evento) e consegue aplicar sem ler o material original.
 
 Fontes, em ordem:
-1. `perestroika/_trabalho/leitura/<slug>.md`: o que cada PDF ensina, com páginas.
-2. `perestroika/_trabalho/leitura/<slug>.jsonl`: texto e descrição de cada página (procure pelo campo `conceitos`).
-3. A página original, quando precisar conferir: `perestroika/_trabalho/paginas/<slug>/pNNN.jpg`.
+1. `_originais/perestroika/_trabalho/leitura/<slug>.md`: o que cada PDF ensina, com páginas.
+2. `_originais/perestroika/_trabalho/leitura/<slug>.jsonl`: texto e descrição de cada página (procure pelo campo `conceitos`).
+3. A página original, quando precisar conferir: `_originais/perestroika/_trabalho/paginas/<slug>/pNNN.jpg`.
 4. Para ligar com o Repertório: `biblioteca/principios/narrativa.md`, `biblioteca/principios/direcao-de-arte.md`, `biblioteca/vocabulario.md` (técnicas e intenções) e os guias em `biblioteca/guias/` (`abertura`, `agenda-e-divisores`, `impacto-e-destaque`, `apresentar-pessoas`, `explicar-e-sequenciar`, `agrupar-e-comparar`, `provar-com-dados`, `mostrar-e-localizar`, `fechamento`, `formatos-e-carrossel`).
 
 Destino: `biblioteca/metodos/perestroika/conceitos/<id>.md` (conceitos) e `biblioteca/metodos/perestroika/modelos/<id>.md` (modelos para preencher). O agente abre cada uma com `get_guide("perestroika/<id>")`.

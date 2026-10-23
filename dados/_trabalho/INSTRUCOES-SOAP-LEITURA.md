@@ -6,16 +6,16 @@ O SOAP é uma agência de apresentações corporativas. O material ensina a mont
 
 ## Onde está o material
 
-- Páginas renderizadas: `soap/_trabalho/paginas/<slug>/pNNN.jpg` (1600 px no lado maior).
-- Folhas de contato (6 páginas por imagem, numeradas no canto): `soap/_trabalho/folhas/<slug>_NN.jpg`. Comece por elas.
-- Texto extraído do PDF por página: `soap/_trabalho/texto/<slug>.txt`. Cerca de 400 páginas não têm texto extraível (o texto está na imagem): nesses decks a leitura é visual.
-- Inventário (slug, arquivo, páginas, páginas sem texto): `soap/_trabalho/inventario.json`.
-- Vocabulário visual: `soap/_trabalho/VOCABULARIO.md`.
-- Templates (`template-*`, `presente-*`) foram exportados do PowerPoint para PDF; o original está em `soap/templates/`.
+- Páginas renderizadas: `_originais/soap/_trabalho/paginas/<slug>/pNNN.jpg` (1600 px no lado maior).
+- Folhas de contato (6 páginas por imagem, numeradas no canto): `_originais/soap/_trabalho/folhas/<slug>_NN.jpg`. Comece por elas.
+- Texto extraído do PDF por página: `_originais/soap/_trabalho/texto/<slug>.txt`. Cerca de 400 páginas não têm texto extraível (o texto está na imagem): nesses decks a leitura é visual.
+- Inventário (slug, arquivo, páginas, páginas sem texto): `_originais/soap/_trabalho/inventario.json`.
+- Vocabulário visual: `_originais/soap/_trabalho/VOCABULARIO.md`.
+- Templates (`template-*`, `presente-*`) foram exportados do PowerPoint para PDF; o PowerPoint de origem saiu do projeto na limpeza de 23/10/2026.
 
 Abra a folha de contato com a ferramenta de leitura de arquivos. Quando uma página tiver texto pequeno, tabela ou diagrama, abra a página inteira (`paginas/<slug>/pNNN.jpg`). Não pule páginas. Use o `.txt` para conferir a grafia, mas descreva o que a página mostra pela imagem.
 
-## Saída 1: `soap/_trabalho/leitura/<slug>.jsonl`
+## Saída 1: `_originais/soap/_trabalho/leitura/<slug>.jsonl`
 
 Uma linha JSON por página, na ordem, com estes campos:
 
@@ -47,7 +47,7 @@ Uma linha JSON por página, na ordem, com estes campos:
 
 `forca`: 1 a 5, quão bom e transferível é o slide como referência (5 = exemplar raro; um template genérico de banco de imagens raramente passa de 3). Use só ids do `VOCABULARIO.md`. Quando um e-book mostra exemplos de "antes e depois" ou de "certo e errado", selecione a página que mostra o certo, ou a comparação inteira se ela for o ensinamento.
 
-## Saída 2: `soap/_trabalho/leitura/<slug>.md`
+## Saída 2: `_originais/soap/_trabalho/leitura/<slug>.md`
 
 Resumo do PDF para quem vai escrever as fichas de método. Seções:
 
@@ -73,5 +73,5 @@ Quando o assunto já existir no método da Perestroika, use o mesmo id: `tese`, 
 - Não invente: se não der para ler, diga `ilegível` e siga.
 - Retratos de pessoas reais: descreva o papel ("retrato de executivo", "foto de banco de imagens"), sem identificar ninguém além do nome que estiver escrito na página.
 - Páginas de divulgação da SOAP (cursos, serviços, "fale conosco", redes sociais) entram no `.jsonl` com `selecionar:false` e `motivo:"divulgação"`; no `.md`, só uma linha.
-- Grave os arquivos com a ferramenta de escrita, um PDF de cada vez (termine o `.jsonl` e o `.md` de um PDF antes de abrir o próximo). Se precisar de script (por exemplo, para conferir o JSON), use só a pasta `soap/_trabalho/tmp/<seu-lote>/`: outro leitor pode estar usando outro nome de arquivo na pasta comum.
+- Grave os arquivos com a ferramenta de escrita, um PDF de cada vez (termine o `.jsonl` e o `.md` de um PDF antes de abrir o próximo). Se precisar de script (por exemplo, para conferir o JSON), use só a pasta `_originais/soap/_trabalho/tmp/<seu-lote>/`: outro leitor pode estar usando outro nome de arquivo na pasta comum.
 - Ao terminar cada PDF, confira que o `.jsonl` tem exatamente uma linha por página, que todo JSON é válido e que só há ids do vocabulário nas fichas. Comando pronto: `app/.venv/bin/python -I ferramentas/incorporar_colecao.py soap conferir <slug>`.

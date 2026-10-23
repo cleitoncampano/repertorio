@@ -3,9 +3,9 @@
 Objetivo: transformar a leitura dos materiais da agência SOAP em fichas `.md` que um modelo de IA consulta no meio de uma criação (apresentação, pitch, proposta, carrossel, vídeo, fala ao vivo, evento, comunicação interna) e consegue aplicar sem ler o material original.
 
 Fontes, em ordem:
-1. `soap/_trabalho/leitura/<slug>.md`: o que cada PDF ensina, com páginas.
-2. `soap/_trabalho/leitura/<slug>.jsonl`: texto e descrição de cada página (procure pelo campo `conceitos`).
-3. A página original, quando precisar conferir: `soap/_trabalho/paginas/<slug>/pNNN.jpg`.
+1. `_originais/soap/_trabalho/leitura/<slug>.md`: o que cada PDF ensina, com páginas.
+2. `_originais/soap/_trabalho/leitura/<slug>.jsonl`: texto e descrição de cada página (procure pelo campo `conceitos`).
+3. A página original, quando precisar conferir: `_originais/soap/_trabalho/paginas/<slug>/pNNN.jpg`.
 4. Para ligar com o Repertório: `biblioteca/principios/narrativa.md`, `biblioteca/principios/direcao-de-arte.md`, `biblioteca/vocabulario.md` (técnicas e intenções) e os guias em `biblioteca/guias/` (`abertura`, `agenda-e-divisores`, `impacto-e-destaque`, `apresentar-pessoas`, `explicar-e-sequenciar`, `agrupar-e-comparar`, `provar-com-dados`, `mostrar-e-localizar`, `fechamento`, `formatos-e-carrossel`).
 5. O método da Perestroika, que já cobre parte dos assuntos: índice em `biblioteca/metodos/perestroika/guias/metodo-perestroika.md` e fichas em `biblioteca/metodos/perestroika/conceitos/` e `modelos/`.
 
@@ -105,6 +105,6 @@ Cada ficha recebe no pedido um tema próprio para o exemplo aplicado. Use exatam
 - Conceito e modelo nunca com o mesmo id. Modelo ganha nome de objeto (`roteiro-de-pitch`, `matriz-tosw`); conceito, nome de ideia (`pitch-para-investidores`, `analise-tosw`).
 - Ids em minúsculas com hífen, os da lista do pedido.
 - Tamanho: 40 a 120 linhas por ficha. Conceitos pequenos podem ser mais curtos; não encha.
-- Se precisar de script, use só a pasta `soap/_trabalho/tmp/<seu-grupo>/`.
+- Se precisar de script, use só a pasta `_originais/soap/_trabalho/tmp/<seu-grupo>/`.
 - Ao terminar, rode `app/.venv/bin/python -I ferramentas/incorporar_colecao.py soap validar` e corrija o que for das suas fichas (fichas citadas que ainda não existem porque outro redator está escrevendo podem aparecer: confira contra a lista completa de ids do pedido).
 - Relatório final (na resposta, não em arquivo): fichas escritas, fichas da lista que não criou e por quê, contradições com a Perestroika encontradas, e ids citados de outros grupos.

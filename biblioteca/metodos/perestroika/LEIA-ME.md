@@ -1,6 +1,6 @@
 # Método Perestroika no Repertório
 
-O material da escola Perestroika (pasta `perestroika/`, fora do Git e dos pacotes) virou três coisas que os modelos usam:
+O material da escola Perestroika (pasta `_originais/perestroika/`, fora do Git e dos pacotes) virou três coisas que os modelos usam:
 
 | o quê | onde | como o agente chega |
 |---|---|---|
@@ -14,7 +14,7 @@ O serviço lê `guias/` como guias e `conceitos/` e `modelos/` como fichas (`app
 
 ## Como foi feito e como refazer
 
-1. Páginas renderizadas e lidas uma a uma (texto e imagem) por agentes, com `dados/_trabalho/INSTRUCOES-PERESTROIKA-LEITURA.md`. Saída em `perestroika/_trabalho/leitura/` (fora do Git); o resumo de cada PDF fica também em `_referencias/perestroika/<slug>.md`. Em 23/10/2026, a pedido do Cleiton, a pasta ficou só com os 23 PDFs que as fichas abrem e essa leitura; páginas, texto e folhas de contato saíram e voltam com `paginas`, que `conferir` e `montar` exigem antes.
+1. Páginas renderizadas e lidas uma a uma (texto e imagem) por agentes, com `dados/_trabalho/INSTRUCOES-PERESTROIKA-LEITURA.md`. Saída em `_originais/perestroika/_trabalho/leitura/` (fora do Git); o resumo de cada PDF fica também em `_referencias/perestroika/<slug>.md`. Em 23/10/2026, a pedido do Cleiton, a pasta (hoje em `_originais/perestroika/`) ficou só com os 23 PDFs que as fichas abrem e essa leitura; páginas, texto e folhas de contato saíram e voltam com `paginas`, que `conferir` e `montar` exigem antes.
 2. Fichas e modelos escritos a partir da leitura com `dados/_trabalho/INSTRUCOES-PERESTROIKA-METODOS.md`. Os guias de entrada foram escritos à mão sobre as fichas.
 3. Espaço visual: `app/.venv/bin/python -I ferramentas/incorporar_perestroika.py montar` (grava `dados/perestroika/`, copia as páginas para `_originais/perestroika/`), `... pranchas` para conferir, depois `./app/run.sh import-decks --workspace ID --folder dados/perestroika`.
 

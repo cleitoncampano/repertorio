@@ -86,6 +86,43 @@ test('move pela interface preservando outros vínculos',async({page,request})=>{
  expect((await (await request.get('/api/references/deck?workspace_id=referencias')).json()).state).toBe('published');
 });
 
+test('lixeira seleciona uma, seleciona tudo e exclui de vez só neste espaço',async({page,request})=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ const ws=await (await request.post('/api/workspaces',{data:{name:'Lixeira QA'}})).json();
+ for(const id of ['deck','free']){
+  const ref=await (await request.get('/api/references/'+id+'?workspace_id=referencias')).json();
+  expect((await request.post('/api/references/'+id+'/workspaces',{data:{source_workspace_id:'referencias',target_workspace_ids:[ws.id],expected_membership_revision:ref.membership_revision}})).ok()).toBeTruthy();
+  const here=await (await request.get('/api/references/'+id+'?workspace_id='+ws.id)).json();
+  expect((await request.post('/api/references/'+id+'/state',{data:{workspace_id:ws.id,expected_membership_revision:here.membership_revision,state:'trashed'}})).ok()).toBeTruthy();
+ }
+ await page.goto('/?workspace='+ws.id+'&view=trashed');
+ await expect(page.locator('.trash-item')).toHaveCount(2);
+ const toolbar=page.locator('.trash-toolbar'),purge=toolbar.getByRole('button',{name:'Excluir definitivamente'});
+ await expect(purge).toBeDisabled();
+ await page.getByRole('checkbox',{name:'Selecionar Abertura criativa'}).check();
+ await expect(toolbar).toContainText('1 selecionada');
+ await page.getByRole('checkbox',{name:'Selecionar tudo',exact:true}).check();
+ await expect(toolbar).toContainText('2 selecionadas');
+ await page.getByRole('checkbox',{name:'Selecionar Textura verde'}).uncheck();
+ await expect(toolbar).toContainText('1 selecionada');
+ await purge.click();
+ const dialog=page.getByRole('dialog');
+ await expect(dialog).toContainText('Excluir 1 referência definitivamente?');
+ await page.screenshot({path:evidence+'/lixeira-confirmar.png'});
+ await dialog.getByRole('button',{name:'Excluir definitivamente'}).click();
+ await expect(page.getByRole('status',{name:'Notificação'})).toContainText('Referência excluída definitivamente.');
+ await expect(page.locator('.trash-item')).toHaveCount(1);
+ await expect(page.locator('.trash-item')).toContainText('Textura verde');
+ expect((await request.get('/api/references/deck?workspace_id='+ws.id)).status()).toBe(404);
+ expect((await (await request.get('/api/references/deck?workspace_id=referencias')).json()).state).toBe('published');
+ await page.getByRole('checkbox',{name:'Selecionar tudo',exact:true}).check();
+ await toolbar.getByRole('button',{name:'Excluir definitivamente'}).click();
+ await page.getByRole('dialog').getByRole('button',{name:'Excluir definitivamente'}).click();
+ await expect(page.getByRole('heading',{name:'A lixeira está vazia.'})).toBeVisible();
+ await page.screenshot({path:evidence+'/lixeira-vazia.png'});
+ expect(errors).toEqual([]);
+});
+
 test('excluir todos os espaços permite criar e voltar a trabalhar',async({page,request})=>{
  const spaces=await (await request.get('/api/workspaces')).json();
  for(const space of spaces)expect((await request.post('/api/workspaces/'+space.id+'/state',{data:{deleted:true,expected_revision:space.revision}})).ok()).toBeTruthy();

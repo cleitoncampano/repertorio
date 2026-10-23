@@ -1,5 +1,6 @@
 import json
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
@@ -236,3 +237,41 @@ def test_migrate_legacy_ids_and_history(tmp_path):
         db.migrate()
         assert len(lib.workspaces())==1
     finally:db.engine.dispose()
+
+
+def test_purge_trash_for_good_keeps_other_spaces_and_originals(library):
+    a=space(library)
+    link(library,a)
+    state(library,PP);state(library,PP,'free')
+    with pytest.raises(Problem) as error:library.purge_trash(PP,s.TrashPurge(ids=['thirdparty']))
+    assert error.value.status==409
+    with pytest.raises(Problem) as error:library.purge_trash(PP,s.TrashPurge())
+    assert error.value.status==422
+    assert library.purge_trash(PP,s.TrashPurge(ids=['deck']))['purged']==1
+    with pytest.raises(Problem):library.get('deck',workspace_ids=[PP])
+    assert library.get('deck',workspace_ids=[a])['children']
+    assert [r['id'] for r in library.search(s.Search(workspace_ids=[PP],state='trashed'))['items']]==['free']
+    import_library(library.db)
+    with pytest.raises(Problem):library.get('deck',workspace_ids=[PP])
+    # Sem outro espaço, a ficha some; o original fora da pasta do app continua no disco.
+    original=library.db.one("SELECT path FROM assets WHERE ref_id='free'")['path']
+    assert library.purge_trash(PP,s.TrashPurge(all=True))['purged']==1
+    assert library.db.one("SELECT payload,search_text FROM refs WHERE id='free'")['search_text']==''
+    assert not library.db.query("SELECT 1 FROM assets WHERE ref_id='free'")
+    assert Path(original).exists()
+    assert any(e['action']=='reference_purged' for e in library.events(workspace_id=PP))
+
+
+def test_purge_all_respects_kept_items_and_removes_app_copies(library,context):
+    req=s.Register(context_id=context['id'],target_workspace_ids=[PP],request_key='purge-job',files=['carrossel.png'],
+        user_requested=True,data=s.ReferenceData(title='Criação para excluir',description='Teste',idea='Some de vez'))
+    op=register(library,req);Worker(library).process(op['id'])
+    copies=[Path(r['path']) for r in library.db.query('SELECT path FROM assets WHERE ref_id=:id',id=op['ref_id'])]
+    assert copies and all(p.exists() for p in copies)
+    state(library,PP,op['ref_id']);state(library,PP,'free')
+    with TestClient(create_app(library.settings,run_worker=False)) as client:
+        out=client.post(f'/api/workspaces/{PP}/trash/purge',json={'all':True,'keep':['free']}).json()
+    assert out['purged']==1 and out['files_removed']>=1
+    assert not any(p.exists() for p in copies)
+    assert library.get('free',workspace_ids=[PP])['state']=='trashed'
+    assert library.search(s.Search(workspace_ids=[PP],kind='criacao'))['total']==0

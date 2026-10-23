@@ -176,6 +176,55 @@ class Workspaces:
             self.db.log(conn,'reference_moved' if req.move else 'reference_linked',rid,req.context_id,workspace_ids=list(dict.fromkeys(ids+targets)),title=ref['title'])
         return dict(reference_id=root,workspace_ids=[m['workspace_id'] for m in self.memberships(root)])
 
+    def purge_trash(self, workspace_id, req):
+        """Exclui de vez o que está na lixeira do espaço. O vínculo fica desligado (uma nova importação não traz a peça de
+        volta); se nenhum outro espaço usa a peça, a ficha vira um registro vazio e saem os arquivos que o próprio app guardou.
+        Originais fora da pasta do app nunca são apagados."""
+        from pathlib import Path
+        self.workspace(workspace_id)
+        removed_assets = []
+        with self.db.engine.begin() as conn:
+            trashed = set(conn.execute(text("SELECT ref_id FROM workspace_references WHERE workspace_id=:w AND state='trashed' AND detached=0"),
+                                       dict(w=workspace_id)).scalars().all())
+            targets = (trashed if req.all else set(req.ids)) - set(req.keep)
+            if not targets:
+                raise Problem(422, 'Escolha ao menos uma referência da lixeira.')
+            if targets - trashed:
+                raise Problem(409, 'Algumas referências não estão mais na lixeira. Atualize a página.')
+            family = sorted(set(conn.execute(text('SELECT id FROM refs WHERE id IN (SELECT value FROM json_each(:ids)) OR parent_id IN (SELECT value FROM json_each(:ids))'),
+                                             dict(ids=dumps(sorted(targets)))).scalars().all()))
+            stamp = now()
+            conn.execute(text('UPDATE workspace_references SET detached=1,revision=revision+1,updated=:t WHERE workspace_id=:w AND detached=0 AND ref_id IN (SELECT value FROM json_each(:ids))'),
+                         dict(t=stamp, w=workspace_id, ids=dumps(family)))
+            titles = dict(conn.execute(text('SELECT id,title FROM refs WHERE id IN (SELECT value FROM json_each(:ids))'), dict(ids=dumps(sorted(targets)))).all())
+            for rid in sorted(targets):
+                self.db.log(conn, 'reference_purged', rid, None, workspace_ids=[workspace_id], title=titles.get(rid, rid))
+            orphans = conn.execute(text('''SELECT id FROM refs WHERE id IN (SELECT value FROM json_each(:ids))
+                AND NOT EXISTS(SELECT 1 FROM workspace_references m WHERE m.ref_id=refs.id AND m.detached=0)'''), dict(ids=dumps(family))).scalars().all()
+            if orphans:
+                params = dict(ids=dumps(orphans))
+                removed_assets = conn.execute(text('SELECT id,path FROM assets WHERE ref_id IN (SELECT value FROM json_each(:ids))'), params).all()
+                conn.execute(text('DELETE FROM assets WHERE ref_id IN (SELECT value FROM json_each(:ids))'), params)
+                conn.execute(text('DELETE FROM revisions WHERE ref_id IN (SELECT value FROM json_each(:ids))'), params)
+                conn.execute(text("DELETE FROM meta WHERE key IN (SELECT 'transitions:'||value FROM json_each(:ids))"), params)
+                for rid in orphans:
+                    conn.execute(text("UPDATE refs SET title=:id,payload=:p,search_text='',hidden=1,curated=1,revision=revision+1,updated=:t WHERE id=:id"),
+                                 dict(id=rid, p=dumps({'title': rid, 'purged': stamp}), t=stamp))
+        home = Path(self.settings.home).resolve()
+        files = 0
+        for aid, path in removed_assets:
+            for thumb in (home / 'miniaturas').glob(f'{aid}-*.webp'):
+                thumb.unlink(missing_ok=True)
+            target = Path(path).resolve()
+            if home not in target.parents or self.db.one('SELECT 1 AS n FROM assets WHERE path=:p', p=path):
+                continue
+            if target.is_file():
+                target.unlink()
+                files += 1
+            if target.parent != home and not any(target.parent.iterdir()):
+                target.parent.rmdir()
+        return dict(purged=len(targets), files_removed=files)
+
     def operations(self, workspace_id):
         self.workspace(workspace_id)
         return self.db.query('''SELECT o.id,o.ref_id,o.state,o.progress,o.error,o.updated FROM operations o

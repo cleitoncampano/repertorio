@@ -1,5 +1,10 @@
 # Validação da primeira versão
 
+## Exclusão definitiva na Lixeira em 23/10/2026
+
+- A pedido: a Lixeira ganhou seleção. Cada cartão tem um quadrado para marcar, **Selecionar tudo** marca o espaço inteiro (inclusive as páginas seguintes, e dá para desmarcar algumas) e **Excluir definitivamente** pede confirmação antes. O vínculo com o espaço é desligado de vez, então reimportar não traz a peça de volta; se ela não estiver em nenhum outro espaço, a ficha vira um registro vazio, saem as revisões, as transições, os vínculos de arquivo e as miniaturas, e os arquivos copiados para a pasta do app são apagados. Originais externos ficam. A Atividade registra cada exclusão.
+- Testes novos: servidor (escopo, recusa do que não está na lixeira, reimportação, outro espaço intacto, arquivos do app apagados e originais preservados, "tudo" com exceções) e navegador (marcar uma, selecionar tudo, desmarcar, confirmar, esvaziar). 50 testes do servidor, 61 de unidade e 30 de navegador aprovados; conferido na Lixeira real (12 itens) no computador e no celular, sem excluir nada.
+
 ## Materiais que citam o criador do curso excluídos em 22/10/2026
 
 - A pedido: 11 apresentações de Referências que traziam o nome do criador do curso (assinatura, créditos e o nome usado como exemplo em slides pessoais e currículos) foram para a Lixeira do espaço, pela mesma regra de **Excluir deste espaço**: Plásticos no Mar, Slide pessoal (cenário esfumaçado), Pessoal Chique, IA com vídeo, Círculos com impacto, Créditos Filme, CV Círculos, CV Dinâmico, Currículo Empurrão, Criativo e Vogue. Uma 12ª (Slide Pessoal, Escritório) já estava na Lixeira. Backup antes.

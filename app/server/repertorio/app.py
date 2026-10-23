@@ -90,6 +90,10 @@ def create_app(settings=None,run_worker=True):
     @app.post('/api/workspaces/{wid}/state')
     def workspace_state(wid:str,req:schemas.WorkspaceState):return lib.workspace_state(wid,req)
 
+    # Só a interface exclui de vez; os agentes não têm essa ferramenta.
+    @app.post('/api/workspaces/{wid}/trash/purge')
+    def purge_trash(wid:str,req:schemas.TrashPurge):return lib.purge_trash(wid,req)
+
     @app.get('/api/vocabulary')
     def vocab():return lib.meta('vocabulary',{})
 

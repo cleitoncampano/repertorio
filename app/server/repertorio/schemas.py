@@ -102,6 +102,12 @@ class WorkspaceState(Model):
     deleted: Literal[True]
 
 
+class TrashPurge(Model):
+    ids: list[str] = Field(default_factory=list, max_length=20000)
+    all: bool = False
+    keep: list[str] = Field(default_factory=list, max_length=20000)
+
+
 class ReferenceWorkspaces(Model):
     source_workspace_id: str
     target_workspace_ids: list[str] = Field(min_length=1, max_length=50)

@@ -10,8 +10,6 @@ Uma palavra marcada por cor, marca-texto, peso, sublinhado ou caixa dentro da fr
 
 ## Arquivos do acervo
 
-- **091-reel-11-06** (Plásticos no Mar, força 4): Mostre o problema disfarçado no cenário: refaça os elementos naturais da cena com o material que é o problema, abra com a imagem ampliada e recue a câmera para o título entrar só depois que a plateia percebeu.  
-  `_catalogo/pranchas/091-reel-11-06.jpg`
 - **152-reel-2024** (Ano-novo, força 4): Recorte uma palavra ou número gigante num véu escuro e ponha um vídeo por trás: o movimento só aparece dentro das letras, e a palavra vira janela para a cena.  
   `_catalogo/pranchas/152-reel-2024.jpg`
 - **165-reel-23-01** (Efeito Carrossel, força 4): Espalhe uma foto larga por dois ou mais slides e passe de um para o outro empurrando de lado, como um carrossel de rede social: a imagem continua sem emenda e o texto de cada parte completa o anterior.  
@@ -33,8 +31,6 @@ Uma palavra marcada por cor, marca-texto, peso, sublinhado ou caixa dentro da fr
   `_catalogo/miniaturas/132-reel-17-09/07.jpg`
 - **132-reel-17-09#8** (Tucano - Efeito Raio-X, força 5): mesma frase; quadrado de imagem desloca para a direita (não aparece na miniatura)  
   `_catalogo/miniaturas/132-reel-17-09/08.jpg`
-- **091-reel-11-06#2** (Plásticos no Mar, força 4): câmera recua e o título espaçado em dois pesos sobe ao centro  
-  `_catalogo/miniaturas/091-reel-11-06/02.jpg`
 - **152-reel-2024#4** (Ano-novo, força 4): mesmo vazado, palavra em caixa alta espaçada no centro  
   `_catalogo/miniaturas/152-reel-2024/04.jpg`
 - **165-reel-23-01#1** (Efeito Carrossel, força 4): metade esquerda da foto, frase em cursiva e caixa alta entre aspas gigantes translúcidas  

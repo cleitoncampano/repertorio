@@ -1,5 +1,10 @@
 # Validação da primeira versão
 
+## Materiais que citam o criador do curso excluídos em 22/10/2026
+
+- A pedido: 11 apresentações de Referências que traziam o nome do criador do curso (assinatura, créditos e o nome usado como exemplo em slides pessoais e currículos) foram para a Lixeira do espaço, pela mesma regra de **Excluir deste espaço**: Plásticos no Mar, Slide pessoal (cenário esfumaçado), Pessoal Chique, IA com vídeo, Círculos com impacto, Créditos Filme, CV Círculos, CV Dinâmico, Currículo Empurrão, Criativo e Vogue. Uma 12ª (Slide Pessoal, Escritório) já estava na Lixeira. Backup antes.
+- O mapa de Referências passou de 711 para 700 peças; a busca pelo nome não encontra mais nada. Guias e páginas da biblioteca (efeitos, componentes e duas técnicas) deixaram de indicar essas peças.
+
 ## Inspiração sem carrosséis Growmate em 22/10/2026
 
 - A pedido: as 33 criações (32 carrosséis #Livros e o kit) saíram de Inspiração pela mesma regra do botão **Excluir deste espaço** (lixeira do espaço, reversível). Nenhuma era exclusiva de Inspiração: as 33 seguem publicadas em Growmate. As 277 referências externas de Inspiração não mencionam carrossel nem Growmate e foram mantidas.

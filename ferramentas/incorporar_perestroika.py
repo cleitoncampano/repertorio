@@ -29,6 +29,20 @@ STUDIES = ROOT / '_referencias/perestroika'
 VIDEO = 'perestroika/chora_ppt_e_storytelling/ChoraPPT_Hero_Video_Slides.mp4'
 COURSE = 'https://perestroika.com.br/cursos/chora-ppt/'
 DASHES = (chr(0x2014), chr(0x2013))
+# Nome da apresentação no mapa; o título que a leitura deu ao deck fica na descrição.
+TITLES = {
+    '01-contextualizacao': 'Experience Learning 1 · Contextualização', '02-experience-learning': 'Experience Learning 2 · O método',
+    '03-conteudo': 'Experience Learning 3 · Metodologia de Conteúdo', '04-forma': 'Experience Learning 4 · Metodologia de Forma',
+    '05-emocional': 'Experience Learning 5 · Metodologia Emocional', '06-estrutural': 'Experience Learning 6 · Metodologia Estrutural',
+    '07-como-surgiu': 'Experience Learning 7 · Como surgiu', '08-contexto-mundial': 'Experience Learning 8 · Contexto mundial',
+    'checklist-completo-apresentacoes-poderosas': 'Checklist Apresentações Poderosas', 'mapa-do-storytelling': 'Mapa do Storytelling em 8 cartas',
+    'chorappt-curso-completo-sp': 'Chora PPT · Programa do curso', 'chorappt-edicao-historica-2012': 'Chora PPT · Edição de 2012',
+    'liga-os-pontos-rio': 'Liga os Pontos · Antropologia do consumo', 'mood-pesquisa-tendencias-rio': 'Mood · Pesquisa de tendências',
+    'swag-criatividade-poa': 'Swag · Curso de skate para meninas', 'tetris-inovacao-e-solucoes-bsb': 'Tetris · Pesquisa e comportamento',
+    'yakuza-rio': 'Yakuza · Processos e referências criativas', 'sputnik-educacao-corporativa': 'Sputnik · Educação corporativa',
+    'schole-aprendizagem': 'Scholé · Nova educação', 'branding-cwb': 'Branding · Curso com a Farm (Curitiba)',
+    'print-me-bh': 'Print.me · Estamparia (Belo Horizonte)', 'print-me-design-grafico-poa': 'Print.me · Estamparia e portfólio (Porto Alegre)', 'perestroika-catalogo-cursos-incompany': 'Peres In Company · Catálogo de cursos',
+}
 
 
 def clean(value):
@@ -99,9 +113,15 @@ def montar():
         total = len(list((WORK / 'paginas' / slug).glob('p[0-9][0-9][0-9].jpg')))
         if len(pages) != total:
             problems.append(f'{slug}: {len(pages)} linhas para {total} páginas')
+        STUDIES.mkdir(parents=True, exist_ok=True)
+        (STUDIES / f'{slug}.md').write_text(md)
         deck_id = f'perestroika-{slug}'
-        meta = deck_card(md)
         chosen = [p for p in pages if p.get('selecionar') and p.get('ficha')]
+        if not chosen:
+            # Cópia de outro deck (Mood SP) ou só divulgação: fica no estudo, fora do mapa.
+            problems.append(f'{slug}: nenhuma página escolhida, fica fora do espaço')
+            continue
+        meta = deck_card(md)
         cover = int(meta.get('capa') or (chosen[0]['pagina'] if chosen else 1))
         dest = MEDIA / 'paginas' / slug
         dest.mkdir(parents=True, exist_ok=True)
@@ -114,15 +134,14 @@ def montar():
         deck = dict(base, doc='arquivo', id=deck_id, preview=rel(cover), original=str(pdfs[slug]), pages=len(pages),
                     concepts=concepts(c for p in pages for c in p.get('conceitos') or []),
                     keywords=f'perestroika {slug.replace("-", " ")}', **card(meta, vocab, problems, slug))
-        deck['description'] = clean(f"{deck['description']} PDF da Perestroika com {len(pages)} páginas; {len(chosen)} estão no espaço como slides.")
+        deck['description'] = clean(f"{deck['title']}. {deck['description']} PDF da Perestroika com {len(pages)} páginas; {len(chosen)} estão no espaço como slides.")
+        deck['title'] = 'Perestroika · ' + TITLES.get(slug, deck['title'])
         decks.append(deck)
         for p in chosen:
             n = p['pagina']
             slides.append(dict(base, doc='slide', id=f'{deck_id}#{n}', deck=deck_id, n=n, page=n, preview=rel(n),
                                text=clean(p.get('texto', '')), concepts=concepts(p.get('conceitos')),
                                keywords='perestroika', **card(p['ficha'], vocab, problems, f'{slug} p{n}')))
-        STUDIES.mkdir(parents=True, exist_ok=True)
-        (STUDIES / f'{slug}.md').write_text(md)
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / 'decks.jsonl').write_text(''.join(json.dumps(d, ensure_ascii=False) + '\n' for d in decks + slides))
     video()

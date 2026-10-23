@@ -59,7 +59,7 @@ Escolha quando a tarefa é deixar uma frase na memória e dizer à plateia o que
 2. Clichê no lugar do resultado: aperto de mãos recortado sobre foto desfocada. [Negócio Fechado](http://127.0.0.1:8766/?workspace=referencias&ref=377-reel-handshake)
 3. Chamada ou passos ilegíveis: nomes miúdos em laranja escuro sobre preto, título branco sobre amarelo, QR pequeno demais para escanear da plateia. [3 próximos passos](http://127.0.0.1:8766/?workspace=referencias&ref=228-reel-3steps), [Mulheres](http://127.0.0.1:8766/?workspace=referencias&ref=322-reel-empurrao-mulheres)
 4. Lista no lugar da conclusão: sete formas de terminar em duas colunas, fileira de links recomendados; o fim vira índice. [Manifesto Writing](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-04-cheatsheet-7-ways-to-end), [Eyecannndy (técnicas de câmera e edição)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-06-08-eyecannndy-page-resources)
-5. Créditos ou texto longo rolando mais rápido do que se lê. [Letra de Música](http://127.0.0.1:8766/?workspace=referencias&ref=401-reel-letra), [Créditos Filme](http://127.0.0.1:8766/?workspace=referencias&ref=223-reel-30-12)
+5. Créditos ou texto longo rolando mais rápido do que se lê. [Letra de Música](http://127.0.0.1:8766/?workspace=referencias&ref=401-reel-letra)
 6. Loop que volta a uma capa quase vazia: o ciclo fecha, mas a última tela fica muda, com uma palavra miúda no centro. [Time Brasil](http://127.0.0.1:8766/?workspace=referencias&ref=525-reel-timebrasil)
 
 ## Prompt base

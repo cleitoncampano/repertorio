@@ -16,8 +16,6 @@ Título-pergunta ou lacuna que pede resposta e segura a atenção até o próxim
   `_catalogo/pranchas/068-reel-06-09.jpg`
 - **070-reel-06-11** (Comunicar-se com Impacto, força 4): Deixe a frase incompleta em letra pequena sobre preto e faça a palavra que falta aparecer só quando um vídeo de cor ou movimento passa por trás das letras vazadas; a revelação é a própria palavra.  
   `_catalogo/pranchas/070-reel-06-11.jpg`
-- **091-reel-11-06** (Plásticos no Mar, força 4): Mostre o problema disfarçado no cenário: refaça os elementos naturais da cena com o material que é o problema, abra com a imagem ampliada e recue a câmera para o título entrar só depois que a plateia percebeu.  
-  `_catalogo/pranchas/091-reel-11-06.jpg`
 - **130-reel-17-07** (Luz com botão, força 4): Desenhe um controle de interface (interruptor, botão, controle deslizante) na tela e faça o avanço parecer que a plateia acionou o controle: a imagem muda de estado junto e a frase se completa com a palavra-chave.  
   `_catalogo/pranchas/130-reel-17-07.jpg`
 - **179-reel-25-05** (Copa 2026, força 4): Use o símbolo do tema como moldura de cada opção: todos começam iguais e em cinza, e na vez de cada um a moldura cresce, ganha as cores dele em camadas e volta, até a pergunta final.  

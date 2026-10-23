@@ -21,7 +21,7 @@ Escolha quando a sala precisa olhar para a tela e entender em segundos qual é o
 
 ## Movimento
 
-- Abra em dois tempos: slide 1 com a imagem sozinha (sem texto) ou o título sozinho; slide 2 com o Morph trazendo o que falta. A plateia olha primeiro e lê depois. [Força de Trabalho](http://127.0.0.1:8766/?workspace=referencias&ref=172-reel-24-05), [Plásticos no Mar](http://127.0.0.1:8766/?workspace=referencias&ref=091-reel-11-06).
+- Abra em dois tempos: slide 1 com a imagem sozinha (sem texto) ou o título sozinho; slide 2 com o Morph trazendo o que falta. A plateia olha primeiro e lê depois. [Força de Trabalho](http://127.0.0.1:8766/?workspace=referencias&ref=172-reel-24-05).
 - Voo é o gesto mais comum (45% dos fortes): o título ou um painel entra pela borda enquanto a foto recua de 5 a 10% ou desliza para abrir espaço. Empurre a foto, nunca a estique. [Frida Kahlo](http://127.0.0.1:8766/?workspace=referencias&ref=141-reel-19-07).
 - Mergulho: da capa para o primeiro conteúdo, a câmera atravessa uma letra (16 a 28 vezes) ou a moldura (3 a 12 vezes). A capa vira porta e o conteúdo usa a imagem dela como fundo. [Albert Einstein](http://127.0.0.1:8766/?workspace=referencias&ref=117-reel-15-11), [Portfolio](http://127.0.0.1:8766/?workspace=referencias&ref=462-reel-portfolio).
 - Recuo: comece tão perto que só se vê cor ou pedaço de letra e recue até o objeto inteiro na frente do nome. [AirPods Max](http://127.0.0.1:8766/?workspace=referencias&ref=568-reels-airpods).
@@ -49,7 +49,7 @@ Escolha quando a sala precisa olhar para a tela e entender em segundos qual é o
 2. Silêncio antes do nome: o rosto, a paisagem ou o problema fica sozinho por um clique. [Africa](http://127.0.0.1:8766/?workspace=referencias&ref=027-reel-01-01)
 3. A capa já é a porta do conteúdo: o slide 2 acontece dentro da imagem da capa (letra atravessada, janela, moldura). [Toscana](http://127.0.0.1:8766/?workspace=referencias&ref=136-reel-18-08)
 4. Escala extrema: palavra que vaza a tela ou objeto em close contra um nome minúsculo; nunca dois elementos do mesmo tamanho. [Portfolio](http://127.0.0.1:8766/?workspace=referencias&ref=462-reel-portfolio)
-5. Metáfora do tema percebida em segundos: o problema disfarçado no cenário, a camada interna à mostra, o dado como fundo. [Plásticos no Mar](http://127.0.0.1:8766/?workspace=referencias&ref=091-reel-11-06), [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-14-award-economist)
+5. Metáfora do tema percebida em segundos: o problema disfarçado no cenário, a camada interna à mostra, o dado como fundo. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-14-award-economist)
 6. Título que invade a imagem: começa no fundo liso e termina sobre a foto, unindo as duas zonas. [Dave Dye (anúncios)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-05-14-nike-wk-01)
 7. Frase incompleta ou pesquisa digitada que só se fecha no clique. [Comunicar-se com Impacto](http://127.0.0.1:8766/?workspace=referencias&ref=070-reel-06-11), [Wimbledon](http://127.0.0.1:8766/?workspace=referencias&ref=559-reel-wimbledon-search)
 8. Paleta tirada só da marca ou da foto, com uma cor de acento: o mesmo conteúdo passa a parecer peça oficial. [American Airlines](http://127.0.0.1:8766/?workspace=referencias&ref=566-reels-aa-coolors)

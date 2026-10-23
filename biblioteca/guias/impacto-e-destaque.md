@@ -40,7 +40,7 @@ reduz a uma frase e três números. [Slides Dallagnol 2.0](http://127.0.0.1:8766
 
 ## Movimento
 
-- Silêncio antes do texto: o primeiro slide é só a imagem ampliada (120% a 133%), sem palavra; um Morph lento de 2 s recua a imagem e o título sobe. A plateia percebe a metáfora antes de ler. [Plásticos no Mar](http://127.0.0.1:8766/?workspace=referencias&ref=091-reel-11-06), [A Moda e o Lixo](http://127.0.0.1:8766/?workspace=referencias&ref=178-reel-25-04).
+- Silêncio antes do texto: o primeiro slide é só a imagem ampliada (120% a 133%), sem palavra; um Morph lento de 2 s recua a imagem e o título sobe. A plateia percebe a metáfora antes de ler. [A Moda e o Lixo](http://127.0.0.1:8766/?workspace=referencias&ref=178-reel-25-04).
 - Mergulho pela letra: a placa vazada cresce de 3 a 28 vezes com a origem no vão de uma letra (1,2 s), a foto fica limpa e a frase entra depois, esmaecendo. [Rio de Janeiro](http://127.0.0.1:8766/?workspace=referencias&ref=157-reel-21-08-efeito-wow-rio-de-janeiro), [Albert Einstein](http://127.0.0.1:8766/?workspace=referencias&ref=117-reel-15-11).
 - Revelação por vídeo: a palavra só existe enquanto a fumaça, a tinta ou o clarão passa por trás. Espere o vídeo correr antes de avançar. [Fumaça Preta](http://127.0.0.1:8766/?workspace=referencias&ref=074-reel-07-07), [Comunicar-se com Impacto](http://127.0.0.1:8766/?workspace=referencias&ref=070-reel-06-11).
 - Lente que anda: um quadrado com a versão de dentro da imagem desce por 3 paradas, sai, e então a tela inteira vira a versão de dentro. [Tucano - Efeito Raio-X](http://127.0.0.1:8766/?workspace=referencias&ref=132-reel-17-09).

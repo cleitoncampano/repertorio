@@ -54,6 +54,39 @@ test('catálogo sugerido do pacote, busca por objetivo e pedido ligado ao espaç
  expect(errors).toEqual([]);
 });
 
+test('ler a skill instalada, arquivos de apoio e skill que não está no computador',async({page})=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('/?workspace=&view=skills');
+ await page.getByRole('button',{name:'Ler a skill Frontend Design',exact:true}).click();
+ const reader=page.getByRole('dialog',{name:'Frontend Design'});
+ const text=reader.getByLabel('Texto de Frontend Design');
+ await expect(text.getByRole('heading',{name:'Frontend Design',level:3})).toBeVisible();
+ await expect(text).not.toContainText('description:');
+ await expect(text.locator('strong')).toHaveText('direção clara');
+ await expect(text.locator('li li')).toHaveText('brutal ou refinado');
+ await expect(text.getByRole('cell',{name:'Que problema resolve?'})).toBeVisible();
+ await expect(text.locator('pre')).toContainText('--cor: #121212');
+ await expect(text.getByRole('link',{name:'site'})).toHaveAttribute('href','https://example.com');
+ await page.screenshot({path:evidence+'/leitura-escuro.png',animations:'disabled'});
+ await text.getByRole('button',{name:'o guia de tipografia',exact:true}).click();
+ await expect(text.getByRole('heading',{name:'Guia de tipografia'})).toBeVisible();
+ await expect(reader.getByLabel('Arquivo')).toHaveValue('references/guia.md');
+ await text.getByRole('button',{name:'Voltar',exact:true}).click();
+ await expect(text.getByRole('heading',{name:'Frontend Design',level:3})).toBeVisible();
+ await reader.getByLabel('Arquivo').selectOption('references/guia.md');
+ await expect(text.getByRole('heading',{name:'Guia de tipografia'})).toBeVisible();
+ await reader.getByRole('button',{name:'Montar pedido',exact:true}).click();
+ await expect(page.getByRole('dialog',{name:'Frontend Design'}).getByRole('textbox',{name:'Seu pedido para o agente'})).toHaveValue(/skill frontend-design/);
+ await page.keyboard.press('Escape');
+ await expect(page.getByRole('button',{name:'Ler a skill Frontend Design',exact:true})).toBeFocused();
+ await page.getByRole('button',{name:'Ler a skill Impeccable',exact:true}).click();
+ const missing=page.getByRole('dialog',{name:'Impeccable'});
+ await expect(missing.getByRole('alert')).toContainText('não está instalada neste computador');
+ await expect(missing.getByRole('link',{name:/repositório da skill/})).toHaveAttribute('href',/^https:\/\/github\.com\//);
+ await page.keyboard.press('Escape');
+ expect(errors).toEqual([]);
+});
+
 test('skills globais, navegação e celular em tema claro sem transbordamento',async({page})=>{
  await page.setViewportSize({width:390,height:844});
  await page.goto('/?workspace=&view=skills');
@@ -67,6 +100,11 @@ test('skills globais, navegação e celular em tema claro sem transbordamento',a
  await expect(page.getByRole('textbox',{name:'Seu pedido para o agente'})).toHaveValue(/me pergunte qual espaço/);
  await page.screenshot({path:evidence+'/pedido-mobile-claro.png',animations:'disabled'});
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+ await page.keyboard.press('Escape');
+ await page.getByRole('button',{name:'Ler a skill Frontend Design',exact:true}).click();
+ await expect(page.getByLabel('Texto de Frontend Design').getByRole('heading',{name:'Frontend Design',level:3})).toBeVisible();
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+ await page.screenshot({path:evidence+'/leitura-mobile-claro.png',animations:'disabled'});
  await page.keyboard.press('Escape');
  await page.getByRole('button',{name:'Mapa',exact:true}).click();
  await expect(page.getByRole('heading',{name:'Seu repertório, em espaços.'})).toBeVisible();

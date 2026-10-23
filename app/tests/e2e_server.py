@@ -14,6 +14,11 @@ from repertorio.schemas import Project
 with tempfile.TemporaryDirectory(prefix='repertorio-e2e-') as temp:
     tmp=Path(temp)
     os.environ.setdefault('REPERTORIO_BACKUP_DIR',str(tmp/'backups'))
+    # Skills instaladas de mentira: a leitura na aba Skills não depende do computador de quem testa.
+    skill=tmp/'skills'/'frontend-design';(skill/'references').mkdir(parents=True)
+    (skill/'SKILL.md').write_text('---\nname: frontend-design\ndescription: Interfaces marcantes.\n---\n\n# Frontend Design\n\nCrie interfaces com **direção clara** e `tokens` próprios. Leia [o guia de tipografia](references/guia.md) e o [site](https://example.com).\n\n- Escolha um tom\n  - brutal ou refinado\n- Execute com precisão\n\n| Etapa | Pergunta |\n|---|:-:|\n| Propósito | Que problema resolve? |\n\n```css\n:root { --cor: #121212; }\n```\n',encoding='utf-8')
+    (skill/'references'/'guia.md').write_text('# Guia de tipografia\n\nPares de fontes com contraste. [Voltar](../SKILL.md)\n',encoding='utf-8')
+    os.environ.setdefault('REPERTORIO_SKILL_DIRS',str(tmp/'skills'))
     fixture=library.__wrapped__(tmp)
     lib=next(fixture)
     context.__wrapped__(lib,tmp)

@@ -110,6 +110,10 @@ def create_app(settings=None,run_worker=True,lock=None):
     @app.get('/api/catalog')
     def catalog():return lib.catalog()
 
+    # Texto de uma skill instalada neste computador; file abre um arquivo de apoio da mesma pasta.
+    @app.get('/api/skills/{sid}/content')
+    def skill_content(sid:str,file:str|None=None):return lib.skill_content(sid,file)
+
     # Envio de arquivos pela interface: cada um vira uma referência publicada, com a ficha para o agente completar.
     @app.post('/api/workspaces/{wid}/upload')
     def upload(wid:str,files:list[UploadFile]=File(...)):

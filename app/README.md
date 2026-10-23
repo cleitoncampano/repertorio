@@ -164,7 +164,7 @@ HTML e demais originais são entregues como download, não executados no domíni
 ./app/run.sh doctor
 ```
 
-A API está documentada em **http://127.0.0.1:8766/docs**. Browser, CLI e MCP usam a mesma camada de serviço. Grafo, contadores, demandas, operações, atividade e prévias recebem `workspace_id`; buscas recebem `workspace_ids` ou `context_id`. A ficha mantém `revision` editorial e o vínculo mantém `membership_revision`. A alteração de estado exige `workspace_id` e `expected_membership_revision`. Chamadas sem repertório explícito retornam 422; links antigos da interface continuam abrindo Referências. Não há busca vetorial nem API de IA paga embutida; o agente do harness interpreta o pedido e escolhe consultas complementares.
+A aba Skills lê o texto das skills instaladas em `~/.claude/skills`, `~/.agents/skills` e `~/.codex/skills` (`GET /api/skills/{id}/content`); `REPERTORIO_SKILL_DIRS` troca essas pastas. A API está documentada em **http://127.0.0.1:8766/docs**. Browser, CLI e MCP usam a mesma camada de serviço. Grafo, contadores, demandas, operações, atividade e prévias recebem `workspace_id`; buscas recebem `workspace_ids` ou `context_id`. A ficha mantém `revision` editorial e o vínculo mantém `membership_revision`. A alteração de estado exige `workspace_id` e `expected_membership_revision`. Chamadas sem repertório explícito retornam 422; links antigos da interface continuam abrindo Referências. Não há busca vetorial nem API de IA paga embutida; o agente do harness interpreta o pedido e escolhe consultas complementares.
 
 ## Persistência, importação e recuperação
 

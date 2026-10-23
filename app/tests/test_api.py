@@ -107,6 +107,30 @@ def test_slow_mcp_tool_does_not_freeze_the_service(library,monkeypatch):
     assert not tool['result'].get('isError'),tool
 
 
+def test_skill_content_reads_installed_text_only(library,tmp_path,monkeypatch):
+    first,second=tmp_path/'claude',tmp_path/'agents'
+    skill=second/'frontend-design';(skill/'references').mkdir(parents=True);(skill/'node_modules').mkdir();(skill/'.git').mkdir()
+    (skill/'SKILL.md').write_text('---\nname: frontend-design\ndescription: Interfaces.\n---\n\n# Frontend\n\nUse [o guia](references/guia.md).\n')
+    (skill/'references/guia.md').write_text('# Guia')
+    (skill/'node_modules/x.md').write_text('fora');(skill/'.git/HEAD.md').write_text('fora');(skill/'script.py').write_text('fora')
+    (tmp_path/'segredo.md').write_text('fora')
+    (first/'impeccable').mkdir(parents=True)
+    monkeypatch.setenv('REPERTORIO_SKILL_DIRS',f'{first}:{second}')
+    (library.settings.home/'catalogo.json').write_text(json.dumps({'skills':[{'id':'frontend-design'},{'id':'impeccable'},{'id':'plugin:Nome'},{'id':'..'}]}))
+    data=library.skill_content('frontend-design')
+    assert data['content'].startswith('# Frontend') and 'description:' not in data['content']
+    assert data['files']==['references/guia.md'] and data['file']=='SKILL.md'
+    assert library.skill_content('frontend-design','references/guia.md')['content']=='# Guia'
+    with TestClient(create_app(library.settings,run_worker=False),base_url='http://127.0.0.1:8767') as client:
+        assert client.get('/api/skills/frontend-design/content').json()['files']==['references/guia.md']
+        for path in ['/api/skills/frontend-design/content?file=../../segredo.md','/api/skills/frontend-design/content?file=script.py',
+                     '/api/skills/frontend-design/content?file=node_modules/x.md','/api/skills/impeccable/content','/api/skills/nao-existe/content',
+                     '/api/skills/plugin:Nome/content','/api/skills/../content']:
+            response=client.get(path)
+            assert response.status_code==404 and response.json()['detail'],path
+        assert client.get('/api/skills/plugin:Nome/content').json()['detail']=='Esta skill não está instalada neste computador.'
+
+
 def test_catalog_prefers_user_file_then_library_then_package(library):
     import json
     default=library.catalog()

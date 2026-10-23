@@ -1,5 +1,6 @@
 import hashlib
 import json
+import os
 import re
 import uuid
 from pathlib import Path
@@ -8,6 +9,11 @@ from .db import dumps, now
 from .importer import index_text
 from .schemas import Search
 from .workspaces import Workspaces, Problem
+
+# Leitura de skills na interface: arquivos de texto, até 400 mil caracteres cada e 200 arquivos de apoio por skill.
+SKILL_TEXT={'.md','.markdown','.txt'}
+SKILL_MAX=400_000
+SKILL_FILES=200
 
 
 class Library(Workspaces):
@@ -69,6 +75,39 @@ class Library(Workspaces):
             if path.is_file():
                 data=json.loads(path.read_text(encoding='utf-8'))
                 return {'skills':data.get('skills',[]),'repos':data.get('repos',[]),'personal':personal}
+
+    def skill_dirs(self):
+        """Pastas onde os agentes instalam skills: Claude Code, a pasta compartilhada do `npx skills` e o Codex.
+        REPERTORIO_SKILL_DIRS troca a lista (separada como o PATH)."""
+        if os.getenv('REPERTORIO_SKILL_DIRS'):
+            return [Path(p).expanduser() for p in os.getenv('REPERTORIO_SKILL_DIRS').split(os.pathsep) if p]
+        home=Path.home()
+        dirs=[Path(os.getenv('CLAUDE_CONFIG_DIR')).expanduser()/'skills'] if os.getenv('CLAUDE_CONFIG_DIR') else []
+        return dirs+[home/'.claude/skills',home/'.agents/skills',home/'.codex/skills',home/'.codex/skills/.system']
+
+    def skill_content(self,sid,file=None):
+        """Texto de uma skill do catálogo instalada neste computador, para ler na interface. Só a SKILL.md e os
+        arquivos de texto da própria pasta; a ficha de abertura (frontmatter) fica de fora."""
+        if sid not in {s.get('id') for s in self.catalog()['skills']}:
+            raise Problem(404,'Skill fora do catálogo.')
+        # Nomes de plugin (com dois-pontos) e caminhos não viram pasta.
+        folder=next((d/sid for d in self.skill_dirs() if (d/sid/'SKILL.md').is_file()),None) if re.fullmatch(r'\w[\w.-]*',sid) else None
+        if not folder:
+            raise Problem(404,'Esta skill não está instalada neste computador.')
+        base=folder.resolve();files=[]
+        for parent,dirs,names in os.walk(base):
+            dirs[:]=sorted(d for d in dirs if not d.startswith('.') and d!='node_modules')
+            files+=[(Path(parent)/n).relative_to(base).as_posix() for n in sorted(names) if Path(n).suffix.lower() in SKILL_TEXT and n!='SKILL.md']
+        target=base/'SKILL.md'
+        if file:
+            target=(base/file).resolve()
+            if not target.is_relative_to(base) or target.relative_to(base).as_posix() not in files:
+                raise Problem(404,'Arquivo não encontrado nesta skill.')
+        content=target.read_text(encoding='utf-8',errors='replace')[:SKILL_MAX]
+        content=re.sub(r'\A---\r?\n.*?\r?\n---[ \t]*(\r?\n|\Z)','',content,count=1,flags=re.S).lstrip('\n')
+        where=str(folder);home=str(Path.home())
+        return dict(id=sid,file=file or 'SKILL.md',content=content,files=files[:SKILL_FILES],
+                    location='~'+where[len(home):] if where.startswith(home) else where)
 
     def guide_files(self):
         """Guias de criação: por papel na história (slides, carrosséis e peças de imagem), por tipo de vídeo,

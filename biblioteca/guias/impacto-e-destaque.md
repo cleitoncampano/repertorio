@@ -23,7 +23,7 @@ recorte: o nome continua legível sem cobrir o rosto. Texto de apoio só quando 
 
 **3. A frase ocupa a tela.** Grito: fundo de uma cor forte, frase de 5 a 8 palavras em grotesca preta pesada ocupando 80% da
 altura, entrelinha 0,9 e as últimas palavras em itálico, como a ênfase da voz. Sussurro: fundo preto, frase serifada de 2 linhas
-(cerca de 100 px) no centro, com uma palavra em itálico. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-09-19-decade10-businessweek-spying) (grito), [Tucano - Efeito Raio-X](http://127.0.0.1:8766/?workspace=pp-treta&ref=132-reel-17-09#7) (sussurro).
+(cerca de 100 px) no centro, com uma palavra em itálico. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-19-decade10-businessweek-spying) (grito), [Tucano - Efeito Raio-X](http://127.0.0.1:8766/?workspace=pp-treta&ref=132-reel-17-09#7) (sussurro).
 
 **4. Virada de estado.** A mesma cena em dois estados com enquadramento idêntico: escura e acesa, desenho e foto, normal e
 raio-X, muitos e um. O primeiro estado traz a primeira metade da frase, pequena e em suspenso; o segundo, a conclusão. Um
@@ -66,9 +66,9 @@ onde a interface do app cobre, e use o vídeo dentro das letras como capa em loo
 
 ## O que os melhores fazem
 
-- Materializam a ideia numa imagem só e deixam o título pequeno: a sacola que vira iceberg, a sombra que vira barco, a grade perfeita com duas janelas quebradas. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-09-05-classic-national-geographic), [Jason Murray (vídeo: Art Direction Techniques You Can Use)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-v-o_b_ei-08-lego-shadow-imagination-visual-metaphor), [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-09-18-decade10-california-sunday-ma).
-- Calam o ruído e deixam uma palavra com ponto final: foto tingida de uma cor só e a palavra branca no terço de baixo. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-09-30-impact-time-magazine).
-- Fazem imagem e frase parecerem se contradizer, ou mostram só o pedaço do objeto de que a pergunta fala: a plateia precisa da próxima frase. [Dave Dye (anúncios)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-05-10-vw-ddb-02), [Dave Dye (anúncios)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-05-13-vw-ddb-05).
+- Materializam a ideia numa imagem só e deixam o título pequeno: a sacola que vira iceberg, a sombra que vira barco, a grade perfeita com duas janelas quebradas. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-05-classic-national-geographic), [Jason Murray (vídeo: Art Direction Techniques You Can Use)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-v-o_b_ei-08-lego-shadow-imagination-visual-metaphor), [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-18-decade10-california-sunday-ma).
+- Calam o ruído e deixam uma palavra com ponto final: foto tingida de uma cor só e a palavra branca no terço de baixo. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-30-impact-time-magazine).
+- Fazem imagem e frase parecerem se contradizer, ou mostram só o pedaço do objeto de que a pergunta fala: a plateia precisa da próxima frase. [Dave Dye (anúncios)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-05-10-vw-ddb-02), [Dave Dye (anúncios)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-05-13-vw-ddb-05).
 - Põem a palavra entre camadas da foto (atrás do pico, das dunas, do sujeito) e repetem a mesma palavra com outra luz para virar a frase: nítida na superfície, desfocada debaixo d'água. [Iceberg](http://127.0.0.1:8766/?workspace=pp-treta&ref=581-reels-iceberg).
 - Simplificam diante da plateia: o painel lotado vira uma frase, 29 círculos convergem num só. [Dashboard Sopa de Letrinhas](http://127.0.0.1:8766/?workspace=pp-treta&ref=503-reel-sopa-letrinhas), [Círculos em movimento](http://127.0.0.1:8766/?workspace=pp-treta&ref=221-reel-30-09).
 - Dão um gesto ao autor da citação: o retrato que se recolhe dentro de uma vírgula gigante, a assinatura escrita ao vivo. [Frase - Einstein](http://127.0.0.1:8766/?workspace=pp-treta&ref=097-reel-12-08), [Einstein](http://127.0.0.1:8766/?workspace=pp-treta&ref=318-reel-einstein).
@@ -122,4 +122,4 @@ contorno casa com as letras de trás e se a frase se lê em 3 segundos.
 - [Rio de Janeiro](http://127.0.0.1:8766/?workspace=pp-treta&ref=157-reel-21-08-efeito-wow-rio-de-janeiro): mergulho por dentro de uma letra até a frase.
 - [Botão ligar](http://127.0.0.1:8766/?workspace=pp-treta&ref=257-reel-botao-on-off): virada de estado com a frase em duas metades.
 - [Frase do Steve](http://127.0.0.1:8766/?workspace=pp-treta&ref=478-reel-quote-stevejobs): citação com o mesmo retrato nítido e depois desfocado.
-- [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-09-19-decade10-businessweek-spying): frase categórica ocupando a tela, itálico no fim.
+- [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-19-decade10-businessweek-spying): frase categórica ocupando a tela, itálico no fim.

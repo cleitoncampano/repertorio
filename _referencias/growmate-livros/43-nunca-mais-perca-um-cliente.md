@@ -46,4 +46,4 @@ Originais e dependências: `_originais/growmate-livros/carrosseis/43-nunca-mais-
 
 Estudo da construção, sem aprovação automática para copiar a peça. O conjunto mistura criação da Growmate e fotografias de terceiros. As condições registradas na produção foram preservadas em `fontes.md`; recortar uma fotografia não altera sua origem. As referências externas não foram revalidadas nesta incorporação.
 
-Ficha no app: [Nunca Mais Perca um Cliente · Os 100 dias (v2)](http://127.0.0.1:8766/?ref=criacao-7c29d389-48fc-4173-a94a-fd2525be83a2).
+Ficha no app: [Nunca Mais Perca um Cliente · Os 100 dias (v2)](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-7c29d389-48fc-4173-a94a-fd2525be83a2).

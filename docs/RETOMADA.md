@@ -1,5 +1,9 @@
 # Retomada do projeto
 
+## Espaço Inspiração em 22/10/2026
+
+Referências guarda só apresentações e material do PPT Treta. Referências externas e criações (carrosséis Growmate) estão em **Inspiração**; as criações seguem também em Growmate. Para slides e carrosséis, consulte Referências e Inspiração juntos. Detalhes em `app/VALIDACAO.md`.
+
 ## Sem Escolhas e momentos da história revistos em 22/10/2026
 
 A tela Escolhas saiu: o agente diz na conversa quais referências vai usar e por quê, com o link de cada ficha (`url`, já com o espaço). Sugestões espontâneas ficam em **Sugestões**, visível só com pendências. Na organização História, Fechar virou papel dentro de Marcar, porque quase nenhuma peça tem fechamento como papel principal; são cinco momentos. Detalhes em `app/VALIDACAO.md`.

@@ -47,4 +47,4 @@ Originais e dependências: `_originais/growmate-livros/carrosseis/33-muito-alem-
 
 Estudo da construção, sem aprovação automática para copiar a peça. O conjunto mistura criação da Growmate e fotografias de terceiros. As condições registradas na produção foram preservadas em `fontes.md`; recortar uma fotografia não altera sua origem. As referências externas não foram revalidadas nesta incorporação.
 
-Ficha no app: [Muito Além da Sorte · A história do milk-shake (v2)](http://127.0.0.1:8766/?ref=criacao-050831e5-06a1-4c56-adb0-1fd784f13210).
+Ficha no app: [Muito Além da Sorte · A história do milk-shake (v2)](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-050831e5-06a1-4c56-adb0-1fd784f13210).

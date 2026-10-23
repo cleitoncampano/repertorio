@@ -256,7 +256,7 @@
       ],
       "operation_id": "29859009-f9f1-476e-9067-e93b251e1d39",
       "reference_id": "criacao-8a1d4658-5511-4799-97ed-124e8490880d",
-      "url": "http://127.0.0.1:8766/?ref=criacao-8a1d4658-5511-4799-97ed-124e8490880d"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-8a1d4658-5511-4799-97ed-124e8490880d"
     },
     {
       "folder": "19-customer-experience-b2b",
@@ -553,7 +553,7 @@
       ],
       "operation_id": "c6411e3c-7815-4cbb-a994-2c02273b1199",
       "reference_id": "criacao-ef8caf5c-18f6-4e5a-9f21-1f9d6c0d56e6",
-      "url": "http://127.0.0.1:8766/?ref=criacao-ef8caf5c-18f6-4e5a-9f21-1f9d6c0d56e6"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-ef8caf5c-18f6-4e5a-9f21-1f9d6c0d56e6"
     },
     {
       "folder": "20-pergunta-definitiva-lucro",
@@ -791,7 +791,7 @@
       ],
       "operation_id": "6c946276-76aa-46d3-99b6-84d9a94718ff",
       "reference_id": "criacao-3e6b1b1f-1c23-4534-8eb6-4d8caba62791",
-      "url": "http://127.0.0.1:8766/?ref=criacao-3e6b1b1f-1c23-4534-8eb6-4d8caba62791"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-3e6b1b1f-1c23-4534-8eb6-4d8caba62791"
     },
     {
       "folder": "21-pergunta-definitiva-sistema",
@@ -1047,7 +1047,7 @@
       ],
       "operation_id": "14efeea8-7080-4670-a167-fffe42dce2ba",
       "reference_id": "criacao-9e9cd874-79d2-4826-8810-5f9018fed5d9",
-      "url": "http://127.0.0.1:8766/?ref=criacao-9e9cd874-79d2-4826-8810-5f9018fed5d9"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-9e9cd874-79d2-4826-8810-5f9018fed5d9"
     },
     {
       "folder": "22-vencendo-com-proposito",
@@ -1302,7 +1302,7 @@
       ],
       "operation_id": "7efacb34-76c2-4890-8939-6508d04ea46a",
       "reference_id": "criacao-b946012d-1b8f-4f86-9619-566ed690e340",
-      "url": "http://127.0.0.1:8766/?ref=criacao-b946012d-1b8f-4f86-9619-566ed690e340"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-b946012d-1b8f-4f86-9619-566ed690e340"
     },
     {
       "folder": "23-hug-your-haters",
@@ -1558,7 +1558,7 @@
       ],
       "operation_id": "507ece84-b2de-41d9-b67e-63826146d34d",
       "reference_id": "criacao-7b2f925d-b8f4-4fe0-87de-6fb7a62a1e3f",
-      "url": "http://127.0.0.1:8766/?ref=criacao-7b2f925d-b8f4-4fe0-87de-6fb7a62a1e3f"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-7b2f925d-b8f4-4fe0-87de-6fb7a62a1e3f"
     },
     {
       "folder": "24-effortless-encantar",
@@ -1765,7 +1765,7 @@
       ],
       "operation_id": "c17253f4-c31c-49bd-9465-7d2e6d9ea399",
       "reference_id": "criacao-3a75b847-266d-4846-97fe-45383b1bd8e8",
-      "url": "http://127.0.0.1:8766/?ref=criacao-3a75b847-266d-4846-97fe-45383b1bd8e8"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-3a75b847-266d-4846-97fe-45383b1bd8e8"
     },
     {
       "folder": "25-effortless-recontato",
@@ -2010,7 +2010,7 @@
       ],
       "operation_id": "d0a25c18-3c25-4a48-b271-a8664b138ef7",
       "reference_id": "criacao-fab8a88d-57de-4515-b76c-562828f60c64",
-      "url": "http://127.0.0.1:8766/?ref=criacao-fab8a88d-57de-4515-b76c-562828f60c64"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-fab8a88d-57de-4515-b76c-562828f60c64"
     },
     {
       "folder": "26-effortless-esforco",
@@ -2231,7 +2231,7 @@
       ],
       "operation_id": "b173390b-ec7e-4dec-a37f-f3f11ffa5f5f",
       "reference_id": "criacao-604007e1-1701-4ee2-ad7d-9a603260786f",
-      "url": "http://127.0.0.1:8766/?ref=criacao-604007e1-1701-4ee2-ad7d-9a603260786f"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-604007e1-1701-4ee2-ad7d-9a603260786f"
     },
     {
       "folder": "27-hora-da-verdade-momentos",
@@ -2485,7 +2485,7 @@
       ],
       "operation_id": "2226d55b-4057-49a6-b5bb-1bd36fbdf702",
       "reference_id": "criacao-8e8b1fa9-2868-4ebd-a67e-140abb1d579e",
-      "url": "http://127.0.0.1:8766/?ref=criacao-8e8b1fa9-2868-4ebd-a67e-140abb1d579e"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-8e8b1fa9-2868-4ebd-a67e-140abb1d579e"
     },
     {
       "folder": "28-hora-da-verdade-piramide",
@@ -2698,7 +2698,7 @@
       ],
       "operation_id": "4716d295-6ff2-44b3-90e9-41513841cd99",
       "reference_id": "criacao-3acb1ec9-bc32-4dcf-866e-50bdeaf93194",
-      "url": "http://127.0.0.1:8766/?ref=criacao-3acb1ec9-bc32-4dcf-866e-50bdeaf93194"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-3acb1ec9-bc32-4dcf-866e-50bdeaf93194"
     },
     {
       "folder": "29-poder-dos-momentos-elementos",
@@ -2946,7 +2946,7 @@
       ],
       "operation_id": "3826c1cd-4b4d-415a-b0b2-8eff14f9f3db",
       "reference_id": "criacao-22343db9-9088-4716-a69e-0e150925645f",
-      "url": "http://127.0.0.1:8766/?ref=criacao-22343db9-9088-4716-a69e-0e150925645f"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-22343db9-9088-4716-a69e-0e150925645f"
     },
     {
       "folder": "30-poder-dos-momentos-pico-fim",
@@ -3159,7 +3159,7 @@
       ],
       "operation_id": "afc8333d-6557-4b2b-a0ef-6fcd86ffc898",
       "reference_id": "criacao-da0c89e3-8f4b-4b46-af5b-4fb6e6ae1cd4",
-      "url": "http://127.0.0.1:8766/?ref=criacao-da0c89e3-8f4b-4b46-af5b-4fb6e6ae1cd4"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-da0c89e3-8f4b-4b46-af5b-4fb6e6ae1cd4"
     },
     {
       "folder": "31-mapeamento-de-experiencias",
@@ -3394,7 +3394,7 @@
       ],
       "operation_id": "4fa531e3-c651-4c50-83b6-7ee80d96737f",
       "reference_id": "criacao-d06d6308-ef2a-4057-914b-071e8107ce34",
-      "url": "http://127.0.0.1:8766/?ref=criacao-d06d6308-ef2a-4057-914b-071e8107ce34"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-d06d6308-ef2a-4057-914b-071e8107ce34"
     },
     {
       "folder": "32-design-thinking-de-servicos",
@@ -3628,7 +3628,7 @@
       ],
       "operation_id": "869bc9f6-c348-4e65-a645-bf4ff1b47ce6",
       "reference_id": "criacao-38c8578f-7c5e-4ead-ae7b-856fb3a60257",
-      "url": "http://127.0.0.1:8766/?ref=criacao-38c8578f-7c5e-4ead-ae7b-856fb3a60257"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-38c8578f-7c5e-4ead-ae7b-856fb3a60257"
     },
     {
       "folder": "33-muito-alem-da-sorte",
@@ -3888,7 +3888,7 @@
       ],
       "operation_id": "fe48ed64-3471-4b29-a6b3-c3c773392b07",
       "reference_id": "criacao-050831e5-06a1-4c56-adb0-1fd784f13210",
-      "url": "http://127.0.0.1:8766/?ref=criacao-050831e5-06a1-4c56-adb0-1fd784f13210"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-050831e5-06a1-4c56-adb0-1fd784f13210"
     },
     {
       "folder": "34-hospitalidade-irracional-sentir",
@@ -4151,7 +4151,7 @@
       ],
       "operation_id": "2eb81d27-e678-4c5a-84f4-70fad0b9d07a",
       "reference_id": "criacao-60753922-93c7-4342-97a1-425ae3c49e81",
-      "url": "http://127.0.0.1:8766/?ref=criacao-60753922-93c7-4342-97a1-425ae3c49e81"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-60753922-93c7-4342-97a1-425ae3c49e81"
     },
     {
       "folder": "35-hospitalidade-irracional-95-5",
@@ -4434,7 +4434,7 @@
       ],
       "operation_id": "339bc3b0-4180-4f71-b59e-c9fd6c5079ba",
       "reference_id": "criacao-669321a5-4cb0-492d-8914-e82eb48b6c86",
-      "url": "http://127.0.0.1:8766/?ref=criacao-669321a5-4cb0-492d-8914-e82eb48b6c86"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-669321a5-4cb0-492d-8914-e82eb48b6c86"
     },
     {
       "folder": "36-hospitalidade-e-negocios",
@@ -4653,7 +4653,7 @@
       ],
       "operation_id": "6ffaf6fd-af98-4778-b016-ec6385369906",
       "reference_id": "criacao-ddc7589f-1c5b-44a0-8f3e-f9a337ef3f08",
-      "url": "http://127.0.0.1:8766/?ref=criacao-ddc7589f-1c5b-44a0-8f3e-f9a337ef3f08"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-ddc7589f-1c5b-44a0-8f3e-f9a337ef3f08"
     },
     {
       "folder": "37-jeito-disney",
@@ -4858,7 +4858,7 @@
       ],
       "operation_id": "bbdfba11-4ff1-4af2-9f3d-a53fc7f703fa",
       "reference_id": "criacao-5a95720a-35c3-49ac-ab81-4ec3fdf87ff1",
-      "url": "http://127.0.0.1:8766/?ref=criacao-5a95720a-35c3-49ac-ab81-4ec3fdf87ff1"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-5a95720a-35c3-49ac-ab81-4ec3fdf87ff1"
     },
     {
       "folder": "38-satisfacao-garantida",
@@ -5090,7 +5090,7 @@
       ],
       "operation_id": "5664c18b-e4eb-4412-8cea-bf14793b90d9",
       "reference_id": "criacao-bef90665-b647-436b-84cf-cf0899ef0b3a",
-      "url": "http://127.0.0.1:8766/?ref=criacao-bef90665-b647-436b-84cf-cf0899ef0b3a"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-bef90665-b647-436b-84cf-cf0899ef0b3a"
     },
     {
       "folder": "39-lucro-na-prestacao-de-servicos",
@@ -5345,7 +5345,7 @@
       ],
       "operation_id": "1f3ae083-b859-4d0a-8e54-747c493b2446",
       "reference_id": "criacao-d6b7208c-25c5-4bb5-b377-e6838ad5181a",
-      "url": "http://127.0.0.1:8766/?ref=criacao-d6b7208c-25c5-4bb5-b377-e6838ad5181a"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-d6b7208c-25c5-4bb5-b377-e6838ad5181a"
     },
     {
       "folder": "40-faria-isso-com-sua-mae",
@@ -5572,7 +5572,7 @@
       ],
       "operation_id": "ae332f7c-5676-4166-a3c2-158ecd2ca34b",
       "reference_id": "criacao-a8c67c5d-406d-4a89-adff-06c25cac835d",
-      "url": "http://127.0.0.1:8766/?ref=criacao-a8c67c5d-406d-4a89-adff-06c25cac835d"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-a8c67c5d-406d-4a89-adff-06c25cac835d"
     },
     {
       "folder": "41-customer-success-afastar",
@@ -5802,7 +5802,7 @@
       ],
       "operation_id": "d4e5b338-4d74-4018-bea7-98b0240028c2",
       "reference_id": "criacao-f5f82384-6fca-4cdb-8037-c6e4c1ac5c34",
-      "url": "http://127.0.0.1:8766/?ref=criacao-f5f82384-6fca-4cdb-8037-c6e4c1ac5c34"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-f5f82384-6fca-4cdb-8037-c6e4c1ac5c34"
     },
     {
       "folder": "42-customer-success-saude",
@@ -6051,7 +6051,7 @@
       ],
       "operation_id": "5d7f5b99-3ddb-4438-ab11-705e427856f2",
       "reference_id": "criacao-6bc4f29b-7e53-4b0d-87d3-568b6064ef40",
-      "url": "http://127.0.0.1:8766/?ref=criacao-6bc4f29b-7e53-4b0d-87d3-568b6064ef40"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-6bc4f29b-7e53-4b0d-87d3-568b6064ef40"
     },
     {
       "folder": "43-nunca-mais-perca-um-cliente",
@@ -6296,7 +6296,7 @@
       ],
       "operation_id": "9094d308-cc17-4f80-9264-458d4e6186e4",
       "reference_id": "criacao-7c29d389-48fc-4173-a94a-fd2525be83a2",
-      "url": "http://127.0.0.1:8766/?ref=criacao-7c29d389-48fc-4173-a94a-fd2525be83a2"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-7c29d389-48fc-4173-a94a-fd2525be83a2"
     },
     {
       "folder": "44-customer-centricity",
@@ -6531,7 +6531,7 @@
       ],
       "operation_id": "0d3063c9-d7d9-4b41-b862-7be3b05249a8",
       "reference_id": "criacao-aff820ea-5d8b-49c6-8d9d-3a6a58c57935",
-      "url": "http://127.0.0.1:8766/?ref=criacao-aff820ea-5d8b-49c6-8d9d-3a6a58c57935"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-aff820ea-5d8b-49c6-8d9d-3a6a58c57935"
     },
     {
       "folder": "45-outside-in",
@@ -6803,7 +6803,7 @@
       ],
       "operation_id": "9a1f77f8-db5b-4076-9cca-8dcfcff7b9e1",
       "reference_id": "criacao-464fe20d-f27a-4c07-a4af-8b34da0247e9",
-      "url": "http://127.0.0.1:8766/?ref=criacao-464fe20d-f27a-4c07-a4af-8b34da0247e9"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-464fe20d-f27a-4c07-a4af-8b34da0247e9"
     },
     {
       "folder": "46-espetaculo-dos-negocios",
@@ -7075,7 +7075,7 @@
       ],
       "operation_id": "4c489774-d3a0-4412-ae22-da9a3bbe20e2",
       "reference_id": "criacao-44fbcf2b-0367-4d43-81e8-2512956004d8",
-      "url": "http://127.0.0.1:8766/?ref=criacao-44fbcf2b-0367-4d43-81e8-2512956004d8"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-44fbcf2b-0367-4d43-81e8-2512956004d8"
     },
     {
       "folder": "47-madruga-relacionamento",
@@ -7319,7 +7319,7 @@
       ],
       "operation_id": "514c696b-8ec0-47e7-8dce-b5d1ea57c903",
       "reference_id": "criacao-4e796812-49cc-4fbb-8543-273613c814ce",
-      "url": "http://127.0.0.1:8766/?ref=criacao-4e796812-49cc-4fbb-8543-273613c814ce"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-4e796812-49cc-4fbb-8543-273613c814ce"
     },
     {
       "folder": "48-customer-experience-3-0",
@@ -7553,7 +7553,7 @@
       ],
       "operation_id": "9a585335-8058-498c-a1ce-59401a6eb15d",
       "reference_id": "criacao-d9d7eef7-1993-4675-a2df-5f478d5257e2",
-      "url": "http://127.0.0.1:8766/?ref=criacao-d9d7eef7-1993-4675-a2df-5f478d5257e2"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-d9d7eef7-1993-4675-a2df-5f478d5257e2"
     },
     {
       "folder": "49-biblioteca-do-gerente-de-cx",
@@ -8177,7 +8177,7 @@
       ],
       "operation_id": "dadedb92-92a0-4588-93c0-c003caec304f",
       "reference_id": "criacao-3cd5f79e-1776-4c3f-882c-31f131b7806a",
-      "url": "http://127.0.0.1:8766/?ref=criacao-3cd5f79e-1776-4c3f-882c-31f131b7806a"
+      "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-3cd5f79e-1776-4c3f-882c-31f131b7806a"
     }
   ],
   "icons": 73,
@@ -8185,7 +8185,7 @@
   "kit": {
     "reference_id": "criacao-b6d2ab25-b054-43d6-a592-833fb2fca647",
     "operation_id": "b38c3419-b836-4859-8d55-31914750c775",
-    "url": "http://127.0.0.1:8766/?ref=criacao-b6d2ab25-b054-43d6-a592-833fb2fca647",
+    "url": "http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-b6d2ab25-b054-43d6-a592-833fb2fca647",
     "workspace_ids": [
       "pp-treta",
       "ff1be998-6589-4e3d-a1f2-e7682406e853"

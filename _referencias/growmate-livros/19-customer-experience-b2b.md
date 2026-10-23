@@ -44,4 +44,4 @@ Originais e dependências: `_originais/growmate-livros/carrosseis/19-customer-ex
 
 Estudo da construção, sem aprovação automática para copiar a peça. O conjunto mistura criação da Growmate e fotografias de terceiros. As condições registradas na produção foram preservadas em `fontes.md`; recortar uma fotografia não altera sua origem. As referências externas não foram revalidadas nesta incorporação.
 
-Ficha no app: [Customer Experience B2B](http://127.0.0.1:8766/?ref=criacao-ef8caf5c-18f6-4e5a-9f21-1f9d6c0d56e6).
+Ficha no app: [Customer Experience B2B](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-ef8caf5c-18f6-4e5a-9f21-1f9d6c0d56e6).

@@ -44,4 +44,4 @@ Originais e dependências: `_originais/growmate-livros/carrosseis/32-design-thin
 
 Estudo da construção, sem aprovação automática para copiar a peça. O conjunto mistura criação da Growmate e fotografias de terceiros. As condições registradas na produção foram preservadas em `fontes.md`; recortar uma fotografia não altera sua origem. As referências externas não foram revalidadas nesta incorporação.
 
-Ficha no app: [Isto é Design Thinking de Serviços · A linha de visibilidade (v2)](http://127.0.0.1:8766/?ref=criacao-38c8578f-7c5e-4ead-ae7b-856fb3a60257).
+Ficha no app: [Isto é Design Thinking de Serviços · A linha de visibilidade (v2)](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-38c8578f-7c5e-4ead-ae7b-856fb3a60257).

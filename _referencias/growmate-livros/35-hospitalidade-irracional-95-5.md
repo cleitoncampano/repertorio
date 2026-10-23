@@ -51,4 +51,4 @@ Originais e dependências: `_originais/growmate-livros/carrosseis/35-hospitalida
 
 Estudo da construção, sem aprovação automática para copiar a peça. O conjunto mistura criação da Growmate e fotografias de terceiros. As condições registradas na produção foram preservadas em `fontes.md`; recortar uma fotografia não altera sua origem. As referências externas não foram revalidadas nesta incorporação.
 
-Ficha no app: [Hospitalidade Irracional (2/2) · A régua 95/5](http://127.0.0.1:8766/?ref=criacao-669321a5-4cb0-492d-8914-e82eb48b6c86).
+Ficha no app: [Hospitalidade Irracional (2/2) · A régua 95/5](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-669321a5-4cb0-492d-8914-e82eb48b6c86).

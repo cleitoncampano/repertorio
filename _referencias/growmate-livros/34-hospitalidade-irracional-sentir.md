@@ -45,4 +45,4 @@ Originais e dependências: `_originais/growmate-livros/carrosseis/34-hospitalida
 
 Estudo da construção, sem aprovação automática para copiar a peça. O conjunto mistura criação da Growmate e fotografias de terceiros. As condições registradas na produção foram preservadas em `fontes.md`; recortar uma fotografia não altera sua origem. As referências externas não foram revalidadas nesta incorporação.
 
-Ficha no app: [Hospitalidade Irracional (1/2) · Do preto e branco à cor](http://127.0.0.1:8766/?ref=criacao-60753922-93c7-4342-97a1-425ae3c49e81).
+Ficha no app: [Hospitalidade Irracional (1/2) · Do preto e branco à cor](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-60753922-93c7-4342-97a1-425ae3c49e81).

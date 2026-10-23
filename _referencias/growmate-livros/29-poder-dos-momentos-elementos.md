@@ -44,4 +44,4 @@ Originais e dependências: `_originais/growmate-livros/carrosseis/29-poder-dos-m
 
 Estudo da construção, sem aprovação automática para copiar a peça. O conjunto mistura criação da Growmate e fotografias de terceiros. As condições registradas na produção foram preservadas em `fontes.md`; recortar uma fotografia não altera sua origem. As referências externas não foram revalidadas nesta incorporação.
 
-Ficha no app: [O Poder dos Momentos (1/2) · A linha plana que ganha picos](http://127.0.0.1:8766/?ref=criacao-22343db9-9088-4716-a69e-0e150925645f).
+Ficha no app: [O Poder dos Momentos (1/2) · A linha plana que ganha picos](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-22343db9-9088-4716-a69e-0e150925645f).

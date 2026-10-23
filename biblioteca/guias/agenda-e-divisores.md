@@ -35,7 +35,7 @@ do título. Em cada capítulo a aba da vez desliza e cobre a tela com sua cor; d
 branco em 2 linhas à direita. As abas restantes continuam à vista e contam quanto falta. [Avent](http://127.0.0.1:8766/?workspace=pp-treta&ref=341-reel-fichario-avent).
 
 **6. Respiro de uma cor.** Depois de um bloco pesado ou antes de um assunto delicado: a tela inteira numa cor só ou num degradê de
-céu, uma palavra pequena no topo e 2 ou 3 linhas curtas na base, com o meio vazio. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-09-06-classic-vogue) (capa roxa), [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-09-01-classic-vogue) (céu).
+céu, uma palavra pequena no topo e 2 ou 3 linhas curtas na base, com o meio vazio. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-06-classic-vogue) (capa roxa), [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-01-classic-vogue) (céu).
 
 ## Movimento
 
@@ -72,7 +72,7 @@ linhas): mantenha o marcador no terço central.
 - Tratam o divisor como tipografia: uma palavra enorme, cortada pela borda, com a frase de ligação pequena e espaçada. [Table top com zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=129-reel-17-06), [Tokyo](http://127.0.0.1:8766/?workspace=pp-treta&ref=163-reel-22-08a).
 - Ligam o divisor ao capítulo: a forma, a foto ou a palavra do divisor continua no slide seguinte. [Magic Masks](http://127.0.0.1:8766/?workspace=pp-treta&ref=647-template-magic-masks-v1), [Onboarding](http://127.0.0.1:8766/?workspace=pp-treta&ref=659-template-onboarding).
 - Abrem os itens um a um e deixam abertos os já vistos, para a lista se completar diante da plateia. [MSC Foundation](http://127.0.0.1:8766/?workspace=pp-treta&ref=425-reel-msc).
-- Usam o vazio como mudança de tom: uma cor e quase nada escrito. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-09-06-classic-vogue).
+- Usam o vazio como mudança de tom: uma cor e quase nada escrito. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-06-classic-vogue).
 
 ## Erros que derrubam
 
@@ -117,5 +117,5 @@ Marque com class="provisorio" fotos, nomes e números que o usuário precisa tro
 - [Onboarding](http://127.0.0.1:8766/?workspace=pp-treta&ref=659-template-onboarding): palavra do divisor que encolhe para etiqueta e volta no capítulo seguinte.
 - [Magic Masks](http://127.0.0.1:8766/?workspace=pp-treta&ref=647-template-magic-masks-v1): moldura que cresce até virar o divisor e empurrar entre capítulos.
 - [Avent](http://127.0.0.1:8766/?workspace=pp-treta&ref=341-reel-fichario-avent): capítulos como abas de fichário na borda da capa.
-- [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-09-06-classic-vogue): divisor de respiro, uma cor e quase nada.
+- [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-06-classic-vogue): divisor de respiro, uma cor e quase nada.
 - [Ponto final](http://127.0.0.1:8766/?workspace=pp-treta&ref=461-reel-ponto-final): o ponto do título vira portal para o capítulo.

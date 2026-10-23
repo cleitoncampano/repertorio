@@ -1,5 +1,11 @@
 # Validação da primeira versão
 
+## Espaço Inspiração em 22/10/2026
+
+- A pedido: o espaço Referências (`pp-treta`) ficou só com as apresentações e o material do PPT Treta (711 arquivos no mapa, 4.797 slides e 9.843 mídias). As 277 referências externas e as 33 criações (32 carrosséis Growmate e o kit) foram movidas pela mesma regra do botão **Mover para o espaço** para o novo espaço **Inspiração** (`62224bbe-f662-4bb4-88af-fcf44b1c1e98`). As criações continuam também em Growmate. Nada foi apagado; backup no iCloud antes.
+- 182 links de 43 documentos (guias de imagem, estudos Growmate #Livros e manifesto) passaram a apontar o espaço novo; o script de incorporação dos carrosséis usa Growmate e Inspiração. Uma nova importação de `dados/` não devolve as peças movidas a Referências.
+- Conferido no app real: Referências com 711 peças, Inspiração com 310, os cinco momentos da história nos dois e a ficha de um carrossel aberta pelo link novo.
+
 ## Sem Escolhas e sem o momento Fechar em 22/10/2026
 
 - A pedido: a tela **Escolhas** saiu da navegação e do projeto. O agente passa a dizer na conversa quais referências vai usar e por quê, com o link de cada ficha, que abre no espaço certo. Saíram a tela (`Choices.tsx`), as rotas `/api/packs` e `/api/demands`, as ferramentas MCP `build_inspiration_pack` e `get_pack`, o recurso `repertorio://packs/{id}`, o comando `pack` e a seleção da demonstração. As tabelas antigas ficam no banco, sem migração. Sugestões espontâneas dos agentes ganharam item próprio na navegação, **Sugestões**, que só aparece quando há pendências.

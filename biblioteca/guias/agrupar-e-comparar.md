@@ -31,7 +31,7 @@ Escolha quando a ordem não muda o sentido; se muda, use o guia Explicar e seque
 **4. Divisória que corre (antes e depois)**
 - Duas fotos do mesmo ponto de vista sobrepostas; linha vertical branca com alça no meio; rótulos ANTES e DEPOIS nas laterais.
 - Slide 2: a divisória corre e o antes ocupa quase tudo, com o rótulo aceso; slide 3: o mesmo para o depois. Serve também para desenho técnico contra foto real.
-- [Antes x Depois](http://127.0.0.1:8766/?workspace=pp-treta&ref=233-reel-antes-depois-obra), [Antes e Depois](http://127.0.0.1:8766/?workspace=pp-treta&ref=573-reels-comparacao). Para abrir o tema: o presente rasgando a foto do passado em [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-09-11-award-new-york-times-magaz).
+- [Antes x Depois](http://127.0.0.1:8766/?workspace=pp-treta&ref=233-reel-antes-depois-obra), [Antes e Depois](http://127.0.0.1:8766/?workspace=pp-treta&ref=573-reels-comparacao). Para abrir o tema: o presente rasgando a foto do passado em [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-11-award-new-york-times-magaz).
 
 **5. Luz que troca de lado (prós e contras)**
 - Duas colunas de texto; uma camada escura gigante com uma fatia aberta ilumina só o lado em discussão; um giro de meia volta passa a luz para o outro.
@@ -61,7 +61,7 @@ Escolha quando a ordem não muda o sentido; se muda, use o guia Explicar e seque
 
 ## Em carrossel e story
 
-- A biblioteca não tem exemplos deste papel em 4:5 ou 9:16. No motor, `data-formato="4:5"` desenha em 1080 x 1350, a mesma base do [Growmate #Livros · Paleta, ícones e construção](http://127.0.0.1:8766/?workspace=pp-treta&ref=criacao-b6d2ab25-b054-43d6-a592-833fb2fca647): as faixas da sanfona viram linhas empilhadas (cabem 3) e o versus divide a tela em cima e embaixo.
+- A biblioteca não tem exemplos deste papel em 4:5 ou 9:16. No motor, `data-formato="4:5"` desenha em 1080 x 1350, a mesma base do [Growmate #Livros · Paleta, ícones e construção](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-b6d2ab25-b054-43d6-a592-833fb2fca647): as faixas da sanfona viram linhas empilhadas (cabem 3) e o versus divide a tela em cima e embaixo.
 - Em carrossel, use uma lâmina por item com o mesmo molde, trocando só a cor, o objeto e o nome, e feche numa lâmina com todos lado a lado. Em 9:16, um item por tela, com as faixas de cima e de baixo livres para a interface.
 
 ## O que os melhores fazem
@@ -70,9 +70,9 @@ Escolha quando a ordem não muda o sentido; se muda, use o guia Explicar e seque
 - A cor é o holofote: só o item da vez tem cor, os outros ficam em preto e branco, e no fim todos acendem juntos ([Jogadores Copa](http://127.0.0.1:8766/?workspace=pp-treta&ref=195-reel-27-05), [Jogadores](http://127.0.0.1:8766/?workspace=pp-treta&ref=171-reel-24-04)).
 - Um molde idêntico, uma variável. Em [Canva: Formula 1 - Transição](http://127.0.0.1:8766/?workspace=pp-treta&ref=canva-21) só a cor, o nome e o carro trocam; em [Refrigerantes](http://127.0.0.1:8766/?workspace=pp-treta&ref=288-reel-coca-morph2) o fundo assume a cor do produto da vez.
 - O próprio item é o dado: produto no topo da coluna, embalagem que se enche até o valor ([Páscoa Nestlé](http://127.0.0.1:8766/?workspace=pp-treta&ref=585-reels-nestle-grafico), [RedBull](http://127.0.0.1:8766/?workspace=pp-treta&ref=149-reel-20-08-graficos-e-esquemas-redbull)).
-- Comparam no mesmo lugar, não lado a lado: duas versões sobrepostas e uma divisória ([Antes x Depois](http://127.0.0.1:8766/?workspace=pp-treta&ref=233-reel-antes-depois-obra)), a foto atual aparecendo pelo rasgo da antiga ([Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-09-11-award-new-york-times-magaz)).
-- O separador é a imagem: as letras VS ultracondensadas, da altura da página, viram a parede entre os rivais ([Dave Dye (anúncios)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-05-15-nike-wk-02)); um X gigante abre uma janela para cada lado ([Pilotos - X](http://127.0.0.1:8766/?workspace=pp-treta&ref=123-reel-16-08)).
-- Foco de lente no lugar de caixa: a variação da vez nítida e as outras desfocadas ([Pringles Desfoque](http://127.0.0.1:8766/?workspace=pp-treta&ref=112-reel-15-05)); o barulhento borrado na frente e o calmo nítido atrás dizem quem manda ([Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-09-26-decade20-economist)).
+- Comparam no mesmo lugar, não lado a lado: duas versões sobrepostas e uma divisória ([Antes x Depois](http://127.0.0.1:8766/?workspace=pp-treta&ref=233-reel-antes-depois-obra)), a foto atual aparecendo pelo rasgo da antiga ([Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-11-award-new-york-times-magaz)).
+- O separador é a imagem: as letras VS ultracondensadas, da altura da página, viram a parede entre os rivais ([Dave Dye (anúncios)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-05-15-nike-wk-02)); um X gigante abre uma janela para cada lado ([Pilotos - X](http://127.0.0.1:8766/?workspace=pp-treta&ref=123-reel-16-08)).
+- Foco de lente no lugar de caixa: a variação da vez nítida e as outras desfocadas ([Pringles Desfoque](http://127.0.0.1:8766/?workspace=pp-treta&ref=112-reel-15-05)); o barulhento borrado na frente e o calmo nítido atrás dizem quem manda ([Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-26-decade20-economist)).
 
 ## Erros que derrubam
 

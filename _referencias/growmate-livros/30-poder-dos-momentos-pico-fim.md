@@ -42,4 +42,4 @@ Originais e dependências: `_originais/growmate-livros/carrosseis/30-poder-dos-m
 
 Estudo da construção, sem aprovação automática para copiar a peça. O conjunto mistura criação da Growmate e fotografias de terceiros. As condições registradas na produção foram preservadas em `fontes.md`; recortar uma fotografia não altera sua origem. As referências externas não foram revalidadas nesta incorporação.
 
-Ficha no app: [O Poder dos Momentos (2/2) · A curva da emoção](http://127.0.0.1:8766/?ref=criacao-da0c89e3-8f4b-4b46-af5b-4fb6e6ae1cd4).
+Ficha no app: [O Poder dos Momentos (2/2) · A curva da emoção](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-da0c89e3-8f4b-4b46-af5b-4fb6e6ae1cd4).

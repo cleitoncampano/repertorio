@@ -46,4 +46,4 @@ Originais e dependências: `_originais/growmate-livros/carrosseis/27-hora-da-ver
 
 Estudo da construção, sem aprovação automática para copiar a peça. O conjunto mistura criação da Growmate e fotografias de terceiros. As condições registradas na produção foram preservadas em `fontes.md`; recortar uma fotografia não altera sua origem. As referências externas não foram revalidadas nesta incorporação.
 
-Ficha no app: [A Hora da Verdade (1/2) · O voo](http://127.0.0.1:8766/?ref=criacao-8e8b1fa9-2868-4ebd-a67e-140abb1d579e).
+Ficha no app: [A Hora da Verdade (1/2) · O voo](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-8e8b1fa9-2868-4ebd-a67e-140abb1d579e).

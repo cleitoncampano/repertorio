@@ -24,6 +24,8 @@ STUDIES = ROOT / '_referencias/growmate-livros'
 MANIFEST = ROOT / 'docs/REPERTORIO-GROWMATE-LIVROS.json'
 PROJECT = 'repert-rio-87e17c'
 URL = 'http://127.0.0.1:8766'
+# Os carrosséis ficam no espaço Growmate e em Inspiração; Referências guarda só o material do PPT Treta.
+WORKSPACES = ['ff1be998-6589-4e3d-a1f2-e7682406e853', '62224bbe-f662-4bb4-88af-fcf44b1c1e98']
 COLORS = {
     'base': '#0A0A0A', 'papel': '#F5F2EB', 'texto-claro': '#EFEDE6',
     'coral': '#FF4D2E', 'coral-sobre-claro': '#C8321C', 'amarelo-gradiente': '#FFE66B',
@@ -242,7 +244,7 @@ async def mcp_work(mode):
 
             if mode == 'register':
                 if not manifest.get('context_id'):
-                    context = await call('start_context', dict(project_id=PROJECT, workspace_ids=['pp-treta'], demand=
+                    context = await call('start_context', dict(project_id=PROJECT, workspace_ids=WORKSPACES, demand=
                         'Incorporar por pedido explícito do usuário os 32 carrosséis Growmate da pasta '
                         '18 (Simon Sinek) à 49, com lâminas, assets, cores, tipografia, créditos e '
                         'construção narrativa para servir de repertório neste projeto.'))
@@ -254,11 +256,11 @@ async def mcp_work(mode):
                     files = [html] + entry['files']
                     assert len(files) <= 60
                     op = await call('register_reference', dict(request=dict(
-                        context_id=manifest['context_id'], target_workspace_ids=['pp-treta'], request_key='growmate-livros-20261017-' + entry['folder'],
+                        context_id=manifest['context_id'], target_workspace_ids=WORKSPACES, request_key='growmate-livros-20261017-' + entry['folder'],
                         user_requested=True, files=files, previews=entry['previews'], data=reference_data(entry))))
                     entry['operation_id'] = op['id']
                     entry['reference_id'] = op['ref_id']
-                    entry['url'] = URL + '/?ref=' + op['ref_id']
+                    entry['url'] = URL + '/?workspace=' + WORKSPACES[0] + '&ref=' + op['ref_id']
                     save(MANIFEST, manifest)
                     print(entry['folder'], op['state'], flush=True)
                 kit_path = DEST / 'series/livros-kit'
@@ -285,11 +287,11 @@ async def mcp_work(mode):
                                 'Fontes WOFF2 guardadas como dependência da produção, sem nova auditoria de licença.',
                 )
                 kit = await call('register_reference', dict(request=dict(
-                    context_id=manifest['context_id'], target_workspace_ids=['pp-treta'], request_key='growmate-livros-20261017-componentes',
+                    context_id=manifest['context_id'], target_workspace_ids=WORKSPACES, request_key='growmate-livros-20261017-componentes',
                     user_requested=True, data=kit_data,
                     files=[str((kit_path / 'repertorio-componentes.html').relative_to(ROOT))],
                     previews=[str((kit_path / 'repertorio-componentes.png').relative_to(ROOT))])))
-                manifest['kit'] = dict(reference_id=kit['ref_id'], operation_id=kit['id'], url=URL + '/?ref=' + kit['ref_id'])
+                manifest['kit'] = dict(reference_id=kit['ref_id'], operation_id=kit['id'], url=URL + '/?workspace=' + WORKSPACES[0] + '&ref=' + kit['ref_id'])
                 save(MANIFEST, manifest)
             else:
                 entries = manifest['entries'] + [manifest['kit']]
@@ -301,7 +303,7 @@ async def mcp_work(mode):
                             break
                         await asyncio.sleep(3)
                         op = await call('get_operation', dict(operation_id=entry['operation_id']))
-                    ref = await call('get_reference', dict(reference_id=entry['reference_id'], include_image=False, workspace_ids=['pp-treta']))
+                    ref = await call('get_reference', dict(reference_id=entry['reference_id'], include_image=False, workspace_ids=WORKSPACES))
                     assert op['state'] == 'completed', (entry.get('folder'), op)
                     assert ref['ready'] and ref['state'] == 'published'
                     assert not any(a['missing'] for a in ref['assets'])

@@ -45,4 +45,4 @@ Originais e dependências: `_originais/growmate-livros/carrosseis/21-pergunta-de
 
 Estudo da construção, sem aprovação automática para copiar a peça. O conjunto mistura criação da Growmate e fotografias de terceiros. As condições registradas na produção foram preservadas em `fontes.md`; recortar uma fotografia não altera sua origem. As referências externas não foram revalidadas nesta incorporação.
 
-Ficha no app: [A Pergunta Definitiva 2.0 (2/2) · O ciclo · v2](http://127.0.0.1:8766/?ref=criacao-9e9cd874-79d2-4826-8810-5f9018fed5d9).
+Ficha no app: [A Pergunta Definitiva 2.0 (2/2) · O ciclo · v2](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-9e9cd874-79d2-4826-8810-5f9018fed5d9).

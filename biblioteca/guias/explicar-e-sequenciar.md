@@ -62,11 +62,11 @@ Escolha quando as partes estão ligadas por causa, por camada ou por tempo; se f
 ## Em carrossel e story
 
 - Os 32 carrosséis Growmate (4:5, 2160 x 2700 px, 10 a 20 lâminas) explicam um livro inteiro com um fio contínuo que atravessa todas as lâminas e é o próprio modelo:
-  - uma escada cujos degraus entram 110 px na lâmina seguinte e mudam de cor com o valor: [Growmate #Livros 29 · O Espetáculo dos Negócios · A escada do café](http://127.0.0.1:8766/?workspace=pp-treta&ref=criacao-44fbcf2b-0367-4d43-81e8-2512956004d8);
-  - um corte de terreno em que a camada da vez engrossa e guarda o texto: [Growmate #Livros 30 · Gestão do Relacionamento e Customer Experience · As camadas](http://127.0.0.1:8766/?workspace=pp-treta&ref=criacao-4e796812-49cc-4fbb-8543-273613c814ce);
-  - uma régua em que cada lâmina vale exatamente 5%: [Growmate #Livros 18 · Hospitalidade Irracional (2/2) · A régua 95/5](http://127.0.0.1:8766/?workspace=pp-treta&ref=criacao-669321a5-4cb0-492d-8914-e82eb48b6c86).
+  - uma escada cujos degraus entram 110 px na lâmina seguinte e mudam de cor com o valor: [Growmate #Livros 29 · O Espetáculo dos Negócios · A escada do café](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-44fbcf2b-0367-4d43-81e8-2512956004d8);
+  - um corte de terreno em que a camada da vez engrossa e guarda o texto: [Growmate #Livros 30 · Gestão do Relacionamento e Customer Experience · As camadas](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-4e796812-49cc-4fbb-8543-273613c814ce);
+  - uma régua em que cada lâmina vale exatamente 5%: [Growmate #Livros 18 · Hospitalidade Irracional (2/2) · A régua 95/5](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-669321a5-4cb0-492d-8914-e82eb48b6c86).
 - Desenhe o panorama inteiro (lâminas lado a lado) e só depois recorte. Peças que cruzam a divisa ficam metade em cada lâmina; uma etapa ou camada por lâmina.
-- A última lâmina sai na mesma altura em que a capa entra: o anel de [Growmate #Livros 04 · A Pergunta Definitiva 2.0 (2/2) · O ciclo · v2](http://127.0.0.1:8766/?workspace=pp-treta&ref=criacao-9e9cd874-79d2-4826-8810-5f9018fed5d9) só se fecha ao passar da lâmina 14 para a 1.
+- A última lâmina sai na mesma altura em que a capa entra: o anel de [Growmate #Livros 04 · A Pergunta Definitiva 2.0 (2/2) · O ciclo · v2](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-9e9cd874-79d2-4826-8810-5f9018fed5d9) só se fecha ao passar da lâmina 14 para a 1.
 - No motor, `data-formato="4:5"` desenha em 1080 x 1350. Em 9:16 não há exemplos: ponha a linha do tempo de pé (tambor de cima para baixo), uma etapa por tela, com as faixas de cima e de baixo livres para a interface do aplicativo.
 
 ## O que os melhores fazem
@@ -109,4 +109,4 @@ Antes de entregar: rode python3 -I ferramentas/ver.py, confira cada passo e cada
 - [Timeline Azul](http://127.0.0.1:8766/?workspace=pp-treta&ref=527-reel-timeline-timeline-timeline-azul): tambor com seta fixa, a versão mais simples de montar.
 - [Gol](http://127.0.0.1:8766/?workspace=pp-treta&ref=468-reel-projeto-4step): processo corporativo com menu de fases e barra que muda de cor.
 - [Table Top Zoom](http://127.0.0.1:8766/?workspace=pp-treta&ref=562-reel-zoom): cena com uma porta para cada passo e volta ao mapa.
-- [Growmate #Livros 30 · Gestão do Relacionamento e Customer Experience · As camadas](http://127.0.0.1:8766/?workspace=pp-treta&ref=criacao-4e796812-49cc-4fbb-8543-273613c814ce): carrossel 4:5 em que o fio contínuo é o próprio modelo.
+- [Growmate #Livros 30 · Gestão do Relacionamento e Customer Experience · As camadas](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-4e796812-49cc-4fbb-8543-273613c814ce): carrossel 4:5 em que o fio contínuo é o próprio modelo.

@@ -42,4 +42,4 @@ Originais e dependências: `_originais/growmate-livros/carrosseis/38-satisfacao-
 
 Estudo da construção, sem aprovação automática para copiar a peça. O conjunto mistura criação da Growmate e fotografias de terceiros. As condições registradas na produção foram preservadas em `fontes.md`; recortar uma fotografia não altera sua origem. As referências externas não foram revalidadas nesta incorporação.
 
-Ficha no app: [Satisfação Garantida · Que meta pune quem resolve?](http://127.0.0.1:8766/?ref=criacao-bef90665-b647-436b-84cf-cf0899ef0b3a).
+Ficha no app: [Satisfação Garantida · Que meta pune quem resolve?](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-bef90665-b647-436b-84cf-cf0899ef0b3a).

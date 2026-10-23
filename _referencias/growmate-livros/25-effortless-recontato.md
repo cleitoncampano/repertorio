@@ -46,4 +46,4 @@ Originais e dependências: `_originais/growmate-livros/carrosseis/25-effortless-
 
 Estudo da construção, sem aprovação automática para copiar a peça. O conjunto mistura criação da Growmate e fotografias de terceiros. As condições registradas na produção foram preservadas em `fontes.md`; recortar uma fotografia não altera sua origem. As referências externas não foram revalidadas nesta incorporação.
 
-Ficha no app: [The Effortless Experience (2/3) · Uma cliente, três protocolos](http://127.0.0.1:8766/?ref=criacao-fab8a88d-57de-4515-b76c-562828f60c64).
+Ficha no app: [The Effortless Experience (2/3) · Uma cliente, três protocolos](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-fab8a88d-57de-4515-b76c-562828f60c64).

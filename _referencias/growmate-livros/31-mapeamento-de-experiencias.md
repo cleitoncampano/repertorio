@@ -42,4 +42,4 @@ Originais e dependências: `_originais/growmate-livros/carrosseis/31-mapeamento-
 
 Estudo da construção, sem aprovação automática para copiar a peça. O conjunto mistura criação da Growmate e fotografias de terceiros. As condições registradas na produção foram preservadas em `fontes.md`; recortar uma fotografia não altera sua origem. As referências externas não foram revalidadas nesta incorporação.
 
-Ficha no app: [Mapeamento de Experiências · O mapa que se desdobra (v2)](http://127.0.0.1:8766/?ref=criacao-d06d6308-ef2a-4057-914b-071e8107ce34).
+Ficha no app: [Mapeamento de Experiências · O mapa que se desdobra (v2)](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-d06d6308-ef2a-4057-914b-071e8107ce34).

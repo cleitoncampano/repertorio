@@ -44,4 +44,4 @@ Originais e dependências: `_originais/growmate-livros/carrosseis/37-jeito-disne
 
 Estudo da construção, sem aprovação automática para copiar a peça. O conjunto mistura criação da Growmate e fotografias de terceiros. As condições registradas na produção foram preservadas em `fontes.md`; recortar uma fotografia não altera sua origem. As referências externas não foram revalidadas nesta incorporação.
 
-Ficha no app: [O Jeito Disney de Encantar os Clientes · O jogo do desempate (v2)](http://127.0.0.1:8766/?ref=criacao-5a95720a-35c3-49ac-ab81-4ec3fdf87ff1).
+Ficha no app: [O Jeito Disney de Encantar os Clientes · O jogo do desempate (v2)](http://127.0.0.1:8766/?workspace=ff1be998-6589-4e3d-a1f2-e7682406e853&ref=criacao-5a95720a-35c3-49ac-ab81-4ec3fdf87ff1).

@@ -74,7 +74,7 @@ Escolha quando o rosto precisa virar confiança antes do conteúdo; se o assunto
 - A plateia vê o time se formar: cada apresentado fica numa fila ao lado. [Galeria de Jogadores - Seleção](http://127.0.0.1:8766/?workspace=pp-treta&ref=073-reel-07-06).
 - Abrem espaço para o texto empurrando a foto, sem esticar: [Frida Kahlo](http://127.0.0.1:8766/?workspace=pp-treta&ref=141-reel-19-07), [The Last Dance - Neymar](http://127.0.0.1:8766/?workspace=pp-treta&ref=147-reel-20-06).
 - Dupla ou sócios: holofote de palco que alterna entre os dois ([Sócios](http://127.0.0.1:8766/?workspace=pp-treta&ref=498-reel-socios)) ou rivais nas bordas com o nome no centro ([Hamilton x Verstappen](http://127.0.0.1:8766/?workspace=pp-treta&ref=057-reel-05-05)).
-- Retrato tratado como obra: moldura dupla, foto serena e uma palavra de legenda. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=pp-treta&ref=ref-09-34-typo-gentlewoman-westwood).
+- Retrato tratado como obra: moldura dupla, foto serena e uma palavra de legenda. [Coverjunkie (capas de revista)](http://127.0.0.1:8766/?workspace=62224bbe-f662-4bb4-88af-fcf44b1c1e98&ref=ref-09-34-typo-gentlewoman-westwood).
 
 ## Erros que derrubam
 

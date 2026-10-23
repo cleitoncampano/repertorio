@@ -46,6 +46,7 @@ Projeto e biblioteca local de referências para criar apresentações, sites e v
 | Técnicas, movimento e vocabulário | `biblioteca/LEIA-PRIMEIRO.md` |
 | Carrosséis Growmate, cores, assets e construção | `_referencias/growmate-livros/README.md` (32 carrosséis desde Simon Sinek; fichas no MCP e originais locais) |
 | Apresentação HTML e entrega offline | `kit/LEIA-ME.md` |
+| Slides e carrosséis: guias por papel na história | `biblioteca/guias/` (MCP `get_guide`) |
 | Vídeo de motion: guias por tipo e kit de movimentos | `biblioteca/motion/guias/`, `kit/motion/LEIA-ME.md` (MCP `get_guide`) |
 | Desenvolvimento, serviço e manutenção do app | `app/README.md`, `biblioteca/manual-agentes.md` |
 | Validações anteriores do app | `app/VALIDACAO.md` |

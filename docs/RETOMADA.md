@@ -2,7 +2,7 @@
 
 ## Pasta perestroika enxuta em 23/10/2026
 
-A pedido do Cleiton, `perestroika/` ficou só com os 23 PDFs que as fichas do espaço abrem como original. Os outros 905 arquivos (168 MB: páginas renderizadas e leitura em `_trabalho/`, índice antigo, pranchetas, o Mood SP repetido e o vídeo do Chora PPT, que já estava na lixeira) foram para o Lixo do Mac, em `perestroika-excluidos-2026-10-23`. Mapa, busca, imagens dos slides, métodos e skills não dependiam deles (as imagens ficam em `_originais/perestroika/`). Refazer a importação exige rodar `paginas` e a leitura de novo.
+A pedido do Cleiton, `perestroika/` ficou só com o que é acionável: os 23 PDFs que as fichas do espaço abrem como original e a leitura dos agentes em `_trabalho/leitura/` (base do `montar`, não dá para refazer sem nova leitura). Os outros 857 arquivos (167 MB: páginas, texto e folhas de contato de `_trabalho/`, que `paginas` recria, índice antigo, pranchetas, o Mood SP repetido e o vídeo do Chora PPT, que já estava na lixeira) foram para o Lixo do Mac, em `perestroika-excluidos-2026-10-23`. Mapa, busca, imagens dos slides, métodos e skills não dependiam deles (as imagens ficam em `_originais/perestroika/`). Para remontar o espaço: `paginas` e depois `montar`.
 
 ## Espaço Apresentações em 23/10/2026
 

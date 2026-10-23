@@ -1,5 +1,9 @@
 # Retomada do projeto
 
+## Skills do Emil Kowalski em 23/10/2026
+
+A pedido do Cleiton, as 15 skills de `github.com/emilkowalski/skills` (MIT, commit `2d22863`) foram instaladas com `npx skills add emilkowalski/skills -g` para Claude Code (`~/.claude/skills`) e Codex (`~/.agents/skills`); atualizar com `npx skills update`. No catálogo do app entraram 5 em Design, 7 na nova categoria Animação (movimento de sites e apps, diferente de Vídeo) e 3 na nova categoria Código, somando 25 skills. `prototype`, `review-animations` e `pick-ui-library` só rodam quando chamadas pelo comando: o pedido montado no app começa com `/<skill>` (campo `manual` em `skillCatalog.ts`). Testes da interface (61) e de navegador da aba Skills (2) aprovados; interface compilada, atualizar com ⌘R.
+
 ## Inspiração sem carrosséis Growmate em 22/10/2026
 
 A pedido do Cleiton, os carrosséis e o kit da Growmate saíram do espaço Inspiração: as 33 criações foram para a lixeira de Inspiração (recuperáveis pela lixeira do espaço) e seguem publicadas no espaço Growmate. Inspiração ficou só com as 277 referências externas. Nada saiu do acervo nem de Growmate; cópia do banco antes da alteração. `ferramentas/incorporar_growmate_livros.py` agora usa só Growmate. Detalhes em `app/VALIDACAO.md`.

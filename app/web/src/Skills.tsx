@@ -1,11 +1,12 @@
 import {useId,useRef,useState} from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import {ArrowUpRight,Check,Clapperboard,ClipboardCheck,Code2,Copy,Film,GraduationCap,Image,Layers,LayoutTemplate,Paintbrush,Presentation,Search,Sparkles,Target,X} from 'lucide-react';
+import {ArrowUpRight,BellRing,BookA,Bug,Check,Clapperboard,ClipboardCheck,Code2,Copy,FileCode2,Film,Gauge,Gem,GraduationCap,Image,Layers,LayoutTemplate,Lightbulb,ListChecks,Package,Paintbrush,Presentation,ScanEye,Search,Shuffle,Smartphone,Sparkles,Target,Vibrate,WandSparkles,Waves,X} from 'lucide-react';
 import {buildSkillRequest,searchSkills,skills,type Skill,type SkillCategory} from './skillCatalog';
 import type {Workspace} from './types';
 
-const icons:Record<string,typeof Sparkles>={impeccable:Paintbrush,'frontend-design':Code2,'landing-page-design':LayoutTemplate,imagegen:Image,'presentations:Presentations':Presentation,hyperframes:Film,'hyperframes-creative':Clapperboard,'perestroika-tese':Target,'perestroika-experiencia':GraduationCap,'perestroika-revisao':ClipboardCheck};
-const categories:('Todas'|SkillCategory)[]=['Todas','Design','Imagens','Apresentações','Vídeo','Método'];
+const icons:Record<string,typeof Sparkles>={impeccable:Paintbrush,'frontend-design':Code2,'landing-page-design':LayoutTemplate,imagegen:Image,'presentations:Presentations':Presentation,hyperframes:Film,'hyperframes-creative':Clapperboard,'perestroika-tese':Target,'perestroika-experiencia':GraduationCap,'perestroika-revisao':ClipboardCheck,
+ 'emil-design-eng':Gem,'apple-design':Waves,prototype:Shuffle,'break-ui':Bug,'mobile-native':Smartphone,animate:WandSparkles,'animate-expo':Vibrate,'review-animations':ScanEye,'improve-animations':ListChecks,'find-animation-opportunities':Lightbulb,'animation-performance':Gauge,'animation-vocabulary':BookA,'pick-ui-library':Package,'ask-sonner':BellRing,'write-swift':FileCode2};
+const categories:('Todas'|SkillCategory)[]=['Todas','Design','Animação','Imagens','Apresentações','Vídeo','Método','Código'];
 
 export function Skills({workspace}:{workspace?:Workspace}){
  const [query,setQuery]=useState(''),[category,setCategory]=useState<SkillCategory|'Todas'>('Todas');

@@ -3,6 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import {ChevronLeft,ChevronRight,Copy,ExternalLink,Link,Maximize,Minimize,PanelRight,Pause,Play,RectangleHorizontal,SkipBack,SkipForward,Trash2,Volume2,VolumeX,X} from 'lucide-react';
 import {sized} from './api';
 import {motionSummary} from './MotionParts';
+import {OpenFile} from './OpenFile';
 import {kindName,terms,type Detail,type Reference,type Vocabulary} from './types';
 
 // Ver uma referência em tela grande, como no YouTube: modo padrão (peça grande, ficha e parecidos ao lado),
@@ -168,6 +169,7 @@ export function MotionCinema({item,detail,sequence,vocab,busy,notices,onClose,on
      <p className="cinema-description">{item.description}</p>
      <div className="cinema-actions">
       <button onClick={onDetails}><PanelRight size={14}/> Ficha completa</button>
+      {d&&<OpenFile key={d.id} detail={d}/>}
       {d?.prompt&&<button onClick={()=>copy(d.prompt!)}><Copy size={14}/> Copiar prompt</button>}
       {!isVideo&&<button onClick={()=>copy(item.url)}><Link size={14}/> Copiar link</button>}
       {source?.post&&<a href={source.post} target="_blank" rel="noreferrer"><ExternalLink size={14}/> Post do autor</a>}

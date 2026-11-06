@@ -203,3 +203,23 @@ test('prévia abre em destaque, passa os slides, aproxima e volta ao painel',asy
  expect(errors).toEqual([]);
 });
 
+test('apresentação e slide abrem no PowerPoint pela tela grande e pela ficha',async({page})=>{
+ // Simulado: o teste não abre programas no computador de quem roda.
+ const opened:string[]=[];
+ await page.route('**/api/assets/*/open',route=>{opened.push(route.request().method());return route.fulfill({json:{ok:true}});});
+ await page.goto('/');
+ await page.locator('#map-legend').getByRole('button',{name:'Abrir',exact:true}).click();
+ const panel=page.getByRole('complementary',{name:'Detalhes do momento'});
+ await panel.locator('.technique-index button').first().click();
+ await page.getByRole('complementary',{name:'Detalhes do papel'}).locator('.result-row').filter({hasText:'Abertura criativa'}).click();
+ const cinema=page.locator('.cinema-actions');
+ await cinema.getByRole('button',{name:'Abrir no PowerPoint'}).click();
+ await expect.poll(()=>opened).toEqual(['POST']);
+ await cinema.getByRole('button',{name:'Ficha completa'}).click();
+ await page.locator('.detail-actions').getByRole('button',{name:'Abrir no PowerPoint'}).click();
+ await expect.poll(()=>opened.length).toBe(2);
+ // O slide mostra o mesmo botão, para abrir a apresentação de onde ele veio.
+ await page.goto('/?workspace=referencias&ref='+encodeURIComponent('deck#1'));
+ await page.locator('.detail-actions').getByRole('button',{name:'Abrir no PowerPoint'}).click();
+ await expect.poll(()=>opened.length).toBe(3);
+});

@@ -196,3 +196,15 @@ def test_processing_failures_are_explained_in_plain_language(library,context):
     op=register(library,Register(context_id=context['id'],request_key='broken-pdf',data=data(),files=['quebrado.pdf'],target_workspace_ids=['referencias']))
     Worker(library).process(op['id'])
     assert library.operation(op['id'])['error']=='O PDF parece corrompido ou protegido por senha.'
+
+
+def test_slide_opens_the_presentation_it_came_from(library):
+    deck=library.get('deck',workspace_ids=['referencias'])
+    original=next(a for a in deck['assets'] if a['role']=='original')
+    assert deck['presentation_file']=={'id':original['id'],'mime':original['mime']}
+    # O slide não tem arquivo próprio: o botão abre a apresentação de origem.
+    assert library.get('deck#1',workspace_ids=['referencias'])['presentation_file']==deck['presentation_file']
+    assert library.get('free',workspace_ids=['referencias'])['presentation_file'] is None
+    # Apresentação fora da biblioteca ativa não é oferecida a partir do slide.
+    library.state('deck',StateChange(expected_membership_revision=deck['membership_revision'],state='trashed',workspace_id='referencias'),from_ui=True)
+    assert library.get('deck#1',workspace_ids=['referencias'])['presentation_file'] is None

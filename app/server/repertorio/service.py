@@ -239,6 +239,9 @@ class Library(Workspaces):
                 self.db.log(conn,'references_searched',context_id=args.context_id,query=args.query,total=total)
         return dict(items=results,total=total,offset=args.offset,limit=args.limit)
 
+    def presentation_file(self,rid):
+        return self.db.one("SELECT id,mime FROM assets WHERE ref_id=:id AND role='original' AND COALESCE(member,'')='' AND missing=0 AND mime IN ('application/pdf','application/vnd.openxmlformats-officedocument.presentationml.presentation') ORDER BY path,id LIMIT 1",id=rid)
+
     def get(self,rid,include_children=True,workspace_ids=None,context_id=None):
         ids=self.scope(workspace_ids,context_id)
         row=self.db.one('SELECT * FROM refs WHERE id=:id',id=rid)
@@ -250,6 +253,9 @@ class Library(Workspaces):
         if row['parent_id']:
             parent=self.db.one('SELECT hidden,ready FROM refs WHERE id=:id',id=row['parent_id'])
             out['unavailable_by_parent']=not bool(parent and not parent['hidden'] and parent['ready'] and any(m['state']=='published' and m['workspace_id'] in out['workspace_ids'] for m in self.memberships(row['parent_id'],ids)))
+        # O botão de abrir: o PowerPoint ou PDF da própria ficha ou, no slide, o da apresentação de origem.
+        out['presentation_file']=self.presentation_file(rid)
+        if not out['presentation_file'] and row['parent_id'] and not out['unavailable_by_parent']:out['presentation_file']=self.presentation_file(row['parent_id'])
         if include_children:
             params={'id':rid}
             clause=self.membership_clause(ids,params,'published')

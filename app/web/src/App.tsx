@@ -1,7 +1,7 @@
 import {useEffect,useLayoutEffect,useMemo,useRef,useState} from 'react';
 import {useQuery,useQueryClient} from '@tanstack/react-query';
 import * as Dialog from '@radix-ui/react-dialog';
-import {Sun,Moon,Search,Network,Activity,Trash2,ArrowUpRight,ChevronRight,ArrowLeft,X,Plug,Check,Copy,Download,RotateCcw,LayoutGrid,Sparkles,SlidersHorizontal,LoaderCircle,ExternalLink,BookOpen,Maximize2,Layers,CircleHelp,Inbox,FolderGit2,Upload} from 'lucide-react';
+import {Sun,Moon,Search,Network,Activity,Trash2,ArrowUpRight,ChevronRight,ArrowLeft,X,Plug,Check,Copy,Download,RotateCcw,LayoutGrid,Sparkles,SlidersHorizontal,LoaderCircle,BookOpen,Maximize2,Layers,CircleHelp,Inbox,FolderGit2,Upload} from 'lucide-react';
 import {api,sized,uploadFiles} from './api';
 import {WorkspaceMenu,ReferenceSpaces} from './Workspaces';
 import {Map} from './Map';
@@ -9,6 +9,7 @@ import {TermPanel} from './TermPanel';
 import {Viewer} from './Viewer';
 import {MotionInfo,MotionThumb,motionSummary} from './MotionParts';
 import {MotionCinema} from './MotionCinema';
+import {OpenFile} from './OpenFile';
 import {ORGANIZATIONS,defaultOrganization,organizationLabels,organizeMap,savedOrganization,type Organization} from './motionMap';
 import {Skills} from './Skills';
 import {Repositories} from './Repositories';
@@ -211,8 +212,8 @@ function Pagination({total,offset,setOffset}:{total:number;offset:number;setOffs
 function Code({text,copy}:{text:string;copy:(text:string)=>void}){return <div className="code-block"><pre>{text}</pre><button title="Copiar" aria-label="Copiar" onClick={()=>copy(text)}><Copy size={15}/></button></div>;}
 
 function DetailPanel({detail:d,loading,error,onClose,onSelect,onChange,busy,copy,vocab,onTechnique,onWatch}:{detail?:Detail;loading:boolean;error?:string;onClose:()=>void;onSelect:(id:string,sourceWorkspace?:string)=>void;onChange:(r:Reference,state:string)=>void;busy:boolean;copy:(s:string)=>void;vocab?:Vocabulary;onTechnique:(id:string)=>void;onWatch?:()=>void}){
- const [page,setPage]=useState(0),[localError,setLocalError]=useState(''),[viewer,setViewer]=useState(false),previewButton=useRef<HTMLButtonElement>(null);
- useEffect(()=>{setPage(0);setLocalError('');setViewer(false);},[d?.id]);
+ const [page,setPage]=useState(0),[viewer,setViewer]=useState(false),previewButton=useRef<HTMLButtonElement>(null);
+ useEffect(()=>{setPage(0);setViewer(false);},[d?.id]);
  const previews=d?.assets.filter(a=>a.role==='preview'&&!a.missing)||[];
  const boards=d?.assets.filter(a=>a.role==='storyboard'&&!a.missing)||[];
  // Em destaque: as prévias da peça, os quadros de um vídeo e, numa apresentação, cada slide em seguida.
@@ -229,7 +230,7 @@ function DetailPanel({detail:d,loading,error,onClose,onSelect,onChange,busy,copy
   {!!d.movements.length&&<section className="detail-section"><h3>Movimento</h3><p>{d.movements.join(' · ')}</p></section>}{d.how&&<section className="detail-section"><h3>{d.motion?'Decupagem':'Como funciona'}</h3><p>{d.how}</p></section>}
   <MotionInfo detail={d} copy={copy}/>
   <section className="detail-section"><h3>Uso da referência</h3><p>{d.reusable===true?'Sem restrição de terceiros indicada na classificação do acervo. Confira as condições da fonte antes de reutilizar.':d.reusable===false?'Mídia de terceiros: use como inspiração, sem incorporar ao material do cliente.':'Condições de reutilização não verificadas. Use o princípio criativo como referência.'}</p>{d.usage_notes&&<p>{d.usage_notes}</p>}</section>
-  <div className="detail-actions"><button onClick={()=>copy(d.url)}><Copy size={14}/> Copiar link</button>{original&&!original.missing&&<a href={original.url+'?download=true'}><Download size={14}/> Original</a>}{original&&['application/pdf','application/vnd.openxmlformats-officedocument.presentationml.presentation'].includes(original.mime)&&<button onClick={async()=>{try{await api('/assets/'+original.id+'/open',{});}catch(e){setLocalError((e as Error).message);}}}><ExternalLink size={14}/> Abrir</button>}</div>{localError&&<p role="alert">{localError}</p>}
+  <div className="detail-actions"><button onClick={()=>copy(d.url)}><Copy size={14}/> Copiar link</button>{original&&!original.missing&&<a href={original.url+'?download=true'}><Download size={14}/> Original</a>}<OpenFile key={d.id} detail={d}/></div>
   <details className="agent-context"><summary>O que o agente recebe <ChevronRight size={14}/></summary><Code text={JSON.stringify({id:d.id,revision:d.revision,description:d.description,idea:d.idea,techniques:d.techniques,intentions:d.intentions,movements:d.movements,reusable:d.reusable,usage_notes:d.usage_notes,previews:previews.map(a=>a.url),...(d.motion?{how:d.how,prompt:d.prompt,video:d.motion,source:d.source}:{})},null,2)} copy={copy}/></details>
   {!!d.children?.length&&<section className="detail-section"><h3>Dentro desta apresentação <span>{d.children.length}</span></h3><div className="slide-strip">{d.children.map((s,i)=><button key={s.id} onClick={()=>onSelect(s.id,s.workspace_id)}>{s.thumbnail?<img loading="lazy" src={sized(s.thumbnail,256)} alt={`Slide ${i+1}`}/>:<BookOpen/>}<span>{i+1}</span></button>)}</div></section>}
   {!!d.related?.length&&<section className="detail-section"><h3>Continue explorando</h3>{d.related.slice(0,4).map(r=><button className="related-row" key={r.id} onClick={()=>onSelect(r.id,r.workspace_id)}>{r.thumbnail&&<img src={sized(r.thumbnail,256)} alt="" loading="lazy"/>}<span>{r.title}</span><ArrowUpRight size={14}/></button>)}</section>}

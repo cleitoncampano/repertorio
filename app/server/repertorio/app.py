@@ -229,7 +229,7 @@ def create_app(settings=None,run_worker=True,lock=None):
                 if info.file_size>200_000_000:raise Problem(413,'Mídia muito grande para extração direta.')
                 return Response(z.read(info),media_type='application/octet-stream',headers={'Content-Disposition':f'attachment; filename="media{Path(info.filename).suffix}"'})
         raster=path.suffix.lower() in {'.jpg','.jpeg','.png','.webp','.gif'}
-        inline=row['role'] in ('preview','thumbnail','storyboard') and raster and not download
+        inline=row['role'] in ('cover','preview','thumbnail','storyboard') and raster and not download
         # Vídeos tocam no próprio app; o pedido por partes (Range) permite avançar sem baixar tudo.
         inline=inline or (row['role'] in ('motion','original') and row['mime'].startswith('video/') and not download)
         if inline and w:

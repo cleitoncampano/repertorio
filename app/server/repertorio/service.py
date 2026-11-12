@@ -227,7 +227,7 @@ class Library(Workspaces):
         where=' AND '.join(clauses)
         total=self.db.one(f'SELECT COUNT(*) AS n FROM refs r {join} WHERE {where}',**params)['n']
         rows=self.db.query(f'''SELECT r.*, {rank},
-            (SELECT a.id FROM assets a WHERE a.ref_id=r.id AND a.missing=0 AND a.role IN ('thumbnail','preview') ORDER BY CASE a.role WHEN 'thumbnail' THEN 0 ELSE 1 END,a.id LIMIT 1) AS thumbnail
+            (SELECT a.id FROM assets a WHERE a.ref_id=r.id AND a.missing=0 AND a.role IN ('cover','thumbnail','preview') ORDER BY CASE a.role WHEN 'cover' THEN -1 WHEN 'thumbnail' THEN 0 ELSE 1 END,a.id LIMIT 1) AS thumbnail
             FROM refs r {join} WHERE {where} ORDER BY rank ASC,COALESCE(json_extract(r.payload,'$.strength'),3) DESC,r.id LIMIT :limit OFFSET :offset''',**params)
         results=[]
         for s in self.scoped_summaries(rows,ids,state=args.state):

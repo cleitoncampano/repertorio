@@ -1,5 +1,13 @@
 # Retomada do projeto
 
+## Oito capas alternativas aplicadas em 12/11/2026
+
+Cleiton pediu concluir a troca pendente das capas. Retomado o piloto de oito apresentações preparado em 27/10, em `growmate-marketing/produtos/repertorio/capas-simuladas/`. As imagens já estavam geradas; exportadas em JPG 1600 × 900, com manifesto e comparação em `piloto/index.html`. O pedido atual autorizou a implementação e a aplicação dessas oito; não ampliar para o restante do acervo sem avaliação do piloto.
+
+Novo papel de asset `cover`, separado dos originais. `app/server/repertorio/covers.py` guarda cópia por hash de conteúdo e oferece `set_cover` e `clear_cover`. A lista, mapa, pacote de miniaturas, ficha, cinema e MCP preferem a capa alternativa. Os slides originais continuam acessíveis, a importação preserva a escolha e a reversão remove só a escolha alternativa. O grafo mantém suas consultas em lote.
+
+Validado primeiro em cópia SQLite isolada, porta 8769: 73 testes do servidor, 70 da interface, build, teste de imagens no navegador e conferência visual das oito capas. Sem erros JavaScript; comparação em 1440 e 390 pixels. Aplicação real concluída às 10:33 BRT, com backup em `app/.runtime/cover-backups/before-covers-20261112T133324574174Z.sqlite3`. Todas as linhas de fichas e assets originais e 75 arquivos originais ligados às oito apresentações permaneceram idênticos. Relatórios, ferramenta de aplicação/reversão e evidências em `growmate-marketing/produtos/repertorio/capas-simuladas/piloto/`. Interface compilada; serviço reiniciado pelo procedimento do app nativo. Atualizar a janela aberta com ⌘R.
+
 ## Landing page com identidade Growmate em 23/10/2026
 
 A pedido do Cleiton, revisão visual v2 no Growmate Marketing, `produtos/repertorio/landing-page/dist/index.html`, aberta localmente no Chrome sem login. Usa Inter Tight, ícones do kit Growmate, roxo de produtos, o R aprovado e telas reais de acervo, mapa, motion, inspiração e ficha. Consulta pelo MCP somente ao espaço Growmate, contexto `6ed179f9-3dc3-43d2-bc8f-0879c28d2f6c`. Capturas em cópia temporária do banco; nenhum original completo ou dado de execução entra na página. Inspeção final sem falhas em 1440, 768 e 390 pixels; interações, vídeo, movimento reduzido e arquivo local testados também em 320 pixels. Na sequência, a pedido do Cleiton, Motion passou a mostrar oito prévias tocando em gravação real do aplicativo (dez segundos, sem som e em loop), na seção, na aba da abertura e na ampliação. Verificadas reprodução com mudança de quadros, pausa, retomada, suspensão fora da tela, celular e movimento reduzido. Continuidade e evidências na pasta da produção.

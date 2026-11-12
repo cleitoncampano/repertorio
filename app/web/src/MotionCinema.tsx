@@ -33,7 +33,8 @@ export function MotionCinema({item,detail,sequence,vocab,busy,notices,onClose,on
  // Imagem: numa apresentação, os slides em sequência; nas outras peças, as prévias.
  const slides=(d?.children||[]).filter(c=>c.thumbnail).map((c,i)=>({url:c.thumbnail!,label:`Slide ${c.number??i+1}`}));
  const previews=(d?.assets||[]).filter(a=>a.role==='preview'&&!a.missing).map((a,i,all)=>({url:a.url,label:all.length>1?`Prévia ${i+1}`:'Prévia'}));
- const frames=slides.length?slides:previews.length?previews:item.thumbnail?[{url:item.thumbnail,label:'Prévia'}]:[];
+ const covers=(d?.assets||[]).filter(a=>a.role==='cover'&&!a.missing).map(a=>({url:a.url,label:'Capa'}));
+ const frames=[...covers,...(slides.length?slides:previews.length?previews:item.thumbnail?[{url:item.thumbnail,label:'Prévia'}]:[])];
  const [frame,setFrame]=useState(0);
  useEffect(()=>setFrame(0),[item.id]);
  const shown=frames[Math.min(frame,frames.length-1)];

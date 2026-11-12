@@ -148,8 +148,8 @@ class Workspaces:
         args = Search(workspace_ids=[workspace_id],kind='arquivo,referencia,criacao')
         params = {}
         clauses = self.filters(args, params)
-        rows = self.db.query(f'''SELECT r.*,(SELECT a.id FROM assets a WHERE a.ref_id=r.id AND a.missing=0 AND a.role IN ('thumbnail','preview')
-            ORDER BY CASE a.role WHEN 'thumbnail' THEN 0 ELSE 1 END,a.id LIMIT 1) AS thumbnail
+        rows = self.db.query(f'''SELECT r.*,(SELECT a.id FROM assets a WHERE a.ref_id=r.id AND a.missing=0 AND a.role IN ('cover','thumbnail','preview')
+            ORDER BY CASE a.role WHEN 'cover' THEN -1 WHEN 'thumbnail' THEN 0 ELSE 1 END,a.id LIMIT 1) AS thumbnail
             FROM refs r WHERE {' AND '.join(clauses)} ORDER BY r.id''', **params)
         return dict(items=self.scoped_summaries(rows,[workspace_id]),vocabulary=self.meta('vocabulary',{}))
 

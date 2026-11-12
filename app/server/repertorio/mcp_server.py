@@ -80,7 +80,7 @@ def create_mcp(lib,worker):
         from .db import dumps
         contents=[dumps(ref)]
         # Vídeo: a prancha de quadros mostra o movimento ao longo do tempo; os demais usam a prévia.
-        a=lib.db.one("SELECT path FROM assets WHERE ref_id=:id AND role IN ('storyboard','preview') AND missing=0 ORDER BY CASE role WHEN 'storyboard' THEN 0 ELSE 1 END,path,id LIMIT 1",id=reference_id)
+        a=lib.db.one("SELECT path FROM assets WHERE ref_id=:id AND role IN ('cover','storyboard','preview') AND missing=0 ORDER BY CASE role WHEN 'cover' THEN -1 WHEN 'storyboard' THEN 0 ELSE 1 END,path,id LIMIT 1",id=reference_id)
         if a and Path(a['path']).suffix.lower() in {'.jpg','.jpeg','.png','.webp','.gif'}:
             with PILImage.open(a['path']) as im:
                 im=im.convert('RGB');im.thumbnail((1200,1200));buf=io.BytesIO();im.save(buf,format='JPEG',quality=85)

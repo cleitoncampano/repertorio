@@ -1,3 +1,9 @@
+## Capas alternativas, 12/11/2026
+
+Piloto com oito imagens geradas anteriormente, aplicado após pedido explícito de conclusão. Papel `cover` com armazenamento por conteúdo; prioridade no grafo, busca, MCP, pacotes de miniaturas e visualizadores. `clear_cover` restaura a capa anterior sem alterar originais; sincronização do acervo mantém a escolha.
+
+Verificações: 73 testes do servidor (um teste de porta local repetido fora do sandbox), 70 testes da interface, build e `imagens.spec.ts` aprovados. Dois testes novos cobrem troca, idempotência, nova chave de cache, importação, reversão, rejeição de slide/imagem inválida e HTTP inline/redução. Conferência da cópia real no Chrome: oito capas na ficha e no cinema, primeiro slide original acessível em todas, nenhum erro JavaScript; comparação local em 1440 e 390 pixels. Na aplicação real, as linhas de todas as fichas e assets originais ficaram idênticas; SHA-256 conferiu 75 arquivos originais, sem alteração. Backup e relatório em `docs/RETOMADA.md` e no projeto da produção no Growmate Marketing.
+
 # Validação da primeira versão
 
 ## Guias, fichas resumidas e limpeza do SOAP em 23/10/2026

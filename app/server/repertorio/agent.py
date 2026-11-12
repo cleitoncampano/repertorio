@@ -233,7 +233,7 @@ def smart_search(lib,args,log=True):
     page=kept[args.offset:args.offset+args.limit]
     items=[]
     for n,(_,r,hits) in enumerate(page,args.offset+1):
-        row=lib.db.one('''SELECT r.*,(SELECT a.id FROM assets a WHERE a.ref_id=r.id AND a.missing=0 AND a.role IN ('thumbnail','preview') ORDER BY CASE a.role WHEN 'thumbnail' THEN 0 ELSE 1 END,a.id LIMIT 1) AS thumbnail
+        row=lib.db.one('''SELECT r.*,(SELECT a.id FROM assets a WHERE a.ref_id=r.id AND a.missing=0 AND a.role IN ('cover','thumbnail','preview') ORDER BY CASE a.role WHEN 'cover' THEN -1 WHEN 'thumbnail' THEN 0 ELSE 1 END,a.id LIMIT 1) AS thumbnail
             FROM refs r WHERE r.id=:id''',id=r['id'])
         items.append({'n':n,**lib.scoped_summary(row,ids,state=args.state),'matched_by':hits})
     if log and args.context_id:
@@ -271,13 +271,13 @@ def fit(draw,text,face,width):
 
 def picture(lib,item):
     """Apresentação usa o primeiro slide visível: a miniatura do mapa é pequena e a prévia é uma faixa com todos."""
-    a=None
-    if item.get('kind')=='arquivo':
+    a=lib.db.one("SELECT path FROM assets WHERE ref_id=:id AND role='cover' AND missing=0 LIMIT 1",id=item['id'])
+    if not a and item.get('kind')=='arquivo':
         params={'id':item['id']}
         clause=lib.membership_clause(item['workspace_ids'],params,'published',alias='c')
         a=lib.db.one(f"""SELECT a.path FROM refs c JOIN assets a ON a.ref_id=c.id AND a.role='preview' AND a.missing=0
             WHERE c.parent_id=:id AND c.hidden=0 AND {clause} ORDER BY CAST(json_extract(c.payload,'$.number') AS INTEGER) LIMIT 1""",**params)
-    a=a or lib.db.one("SELECT path FROM assets WHERE ref_id=:id AND missing=0 AND role IN ('thumbnail','preview') ORDER BY CASE role WHEN 'preview' THEN 0 ELSE 1 END,path,id LIMIT 1",id=item['id'])
+    a=a or lib.db.one("SELECT path FROM assets WHERE ref_id=:id AND missing=0 AND role IN ('cover','thumbnail','preview') ORDER BY CASE role WHEN 'preview' THEN 0 ELSE 1 END,path,id LIMIT 1",id=item['id'])
     return Path(a['path']) if a else None
 
 

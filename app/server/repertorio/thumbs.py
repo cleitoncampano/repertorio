@@ -38,7 +38,7 @@ def graph_assets(lib,workspace_id=None):
     ids=lib.scope([workspace_id]) if workspace_id else [w['id'] for w in lib.workspaces()]
     params={}
     clause=lib.membership_clause(ids,params,'published')
-    rows=lib.db.query(f"""SELECT a.id AS aid,a.path FROM refs r JOIN assets a ON a.id=(SELECT b.id FROM assets b WHERE b.ref_id=r.id AND b.missing=0 AND b.role IN ('thumbnail','preview') ORDER BY CASE b.role WHEN 'thumbnail' THEN 0 ELSE 1 END,b.id LIMIT 1)
+    rows=lib.db.query(f"""SELECT a.id AS aid,a.path FROM refs r JOIN assets a ON a.id=(SELECT b.id FROM assets b WHERE b.ref_id=r.id AND b.missing=0 AND b.role IN ('cover','thumbnail','preview') ORDER BY CASE b.role WHEN 'cover' THEN -1 WHEN 'thumbnail' THEN 0 ELSE 1 END,b.id LIMIT 1)
         WHERE {clause} AND r.ready=1 AND r.hidden=0 AND r.kind IN ('arquivo','referencia','criacao')""",**params)
     return [(r['aid'],Path(r['path'])) for r in rows if Path(r['path']).suffix.lower() in RASTER]
 

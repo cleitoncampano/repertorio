@@ -2,6 +2,8 @@
 
 ## Oito capas alternativas aplicadas em 12/11/2026
 
+**GitHub pendente:** código salvo no commit local `fca0e74`. A revisão automática bloqueou o push por falta de autorização para o destino remoto. Conferência somente leitura com `gh repo view` retornou `isPrivate=false` para `cleitoncampano/repertorio`, contrariando a documentação anterior. Nenhum push foi feito; manter local até decisão explícita do Cleiton sobre o envio público. As oito capas já estão aplicadas e verificadas no aplicativo real.
+
 Cleiton pediu concluir a troca pendente das capas. Retomado o piloto de oito apresentações preparado em 27/10, em `growmate-marketing/produtos/repertorio/capas-simuladas/`. As imagens já estavam geradas; exportadas em JPG 1600 × 900, com manifesto e comparação em `piloto/index.html`. O pedido atual autorizou a implementação e a aplicação dessas oito; não ampliar para o restante do acervo sem avaliação do piloto.
 
 Novo papel de asset `cover`, separado dos originais. `app/server/repertorio/covers.py` guarda cópia por hash de conteúdo e oferece `set_cover` e `clear_cover`. A lista, mapa, pacote de miniaturas, ficha, cinema e MCP preferem a capa alternativa. Os slides originais continuam acessíveis, a importação preserva a escolha e a reversão remove só a escolha alternativa. O grafo mantém suas consultas em lote.

@@ -1,5 +1,9 @@
 # Retomada do projeto
 
+## Seis vídeos novos do Prompt Motion em 18/11/2026
+
+A pedido do Cleiton, o espaço Motion foi atualizado com a galeria do prompt-motion.com: 240 vídeos no site, 6 novos e nenhum removido; os 234 antigos não mudaram na origem. Novos: demo de app em HTML (Meng To, skill html-demo), pôster tipográfico quadrado (TechHalla), voo de câmera por landing page (Voicely), teaser do NotchBrowser, lançamento do Hoplite e showreel em capítulos. Rotina usada: `coletar`, `baixar`, `quadros`, fichas escritas a partir das pranchas em `dados/motion/_trabalho/fichas-07.jsonl` (lote em `lotes/lote-07.json`), tipos em `generos.json`, `montar` e `./app/run.sh import-motion --workspace 81287ed7-121b-4249-88f2-bff35d60e1cb`. Resultado: 6 inseridos, 236 preservados, nenhum arquivo faltando; busca pelo MCP confere. Backup da curadoria feito antes da importação. O site agora tem também um blog com 6 artigos sobre prompts de motion (inclui Remotion contra HyperFrames e como tirar a cara de IA), ainda não aproveitado nos guias. Commit local, sem push, pela pendência do repositório público registrada abaixo.
+
 ## Oito capas alternativas aplicadas em 12/11/2026
 
 **GitHub pendente:** código salvo no commit local `fca0e74`. A revisão automática bloqueou o push por falta de autorização para o destino remoto. Conferência somente leitura com `gh repo view` retornou `isPrivate=false` para `cleitoncampano/repertorio`, contrariando a documentação anterior. Nenhum push foi feito; manter local até decisão explícita do Cleiton sobre o envio público. As oito capas já estão aplicadas e verificadas no aplicativo real.
